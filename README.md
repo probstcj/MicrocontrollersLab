@@ -15,3 +15,7 @@ Created for future reference. In each folder, there are 3 sub folders:
 # For Future Reference
 
 Eventually, all labs will be named accordingly, but don't want to jump ahead. GIT should auto update those names accordingly without many issues.
+
+# Before you PUSH to the Repository
+
+Make sure to pull any updated files up to your local repository before pushing content to the repository.
