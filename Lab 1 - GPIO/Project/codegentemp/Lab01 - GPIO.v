@@ -1,6 +1,6 @@
 // ======================================================================
 // Lab01 - GPIO.v generated from TopDesign.cysch
-// 01/17/2023 at 13:55
+// 01/17/2023 at 14:53
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -484,7 +484,7 @@ module top ;
 
 	cy_psoc3_pins_v1_10
 		#(.id("fbfabc3c-8eb5-418d-98d7-75de280aaa87"),
-		  .drive_mode(3'b001),
+		  .drive_mode(3'b011),
 		  .ibuf_enabled(1'b1),
 		  .init_dr_st(1'b0),
 		  .input_clk_en(0),
@@ -559,7 +559,7 @@ module top ;
 
 	cy_psoc3_pins_v1_10
 		#(.id("2641d5d2-fb25-490f-8e6e-1463ef591c1b"),
-		  .drive_mode(3'b001),
+		  .drive_mode(3'b011),
 		  .ibuf_enabled(1'b1),
 		  .init_dr_st(1'b0),
 		  .input_clk_en(0),
@@ -634,7 +634,7 @@ module top ;
 
 	cy_psoc3_pins_v1_10
 		#(.id("4c50f0a0-178a-4487-8807-6b391e82b040"),
-		  .drive_mode(3'b001),
+		  .drive_mode(3'b011),
 		  .ibuf_enabled(1'b1),
 		  .init_dr_st(1'b0),
 		  .input_clk_en(0),
@@ -709,7 +709,7 @@ module top ;
 
 	cy_psoc3_pins_v1_10
 		#(.id("95dc0aa5-91ba-48f9-b85d-93b7a042b7fe"),
-		  .drive_mode(3'b001),
+		  .drive_mode(3'b011),
 		  .ibuf_enabled(1'b1),
 		  .init_dr_st(1'b0),
 		  .input_clk_en(0),

@@ -1,5 +1,5 @@
 # Lab01 - GPIO
-# 2023-01-17 19:55:33Z
+# 2023-01-17 20:53:34Z
 
 # IO_2@[IOP=(3)][IoId=(2)] is reserved: SWDDebugEnabled
 dont_use_io iocell 3 2

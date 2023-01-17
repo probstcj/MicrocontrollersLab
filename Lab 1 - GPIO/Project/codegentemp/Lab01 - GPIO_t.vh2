@@ -1,5 +1,5 @@
 -- Project:   C:\Users\Hello Kitty\Documents\PSoC Creator\Lab01 - GPIO\Lab01 - GPIO.cydsn\Lab01 - GPIO.cyprj
--- Generated: 01/17/2023 13:55:35
+-- Generated: 01/17/2023 14:53:35
 -- PSoC Creator  4.2
 
 ENTITY \Lab01 - GPIO\ IS
@@ -627,7 +627,7 @@ BEGIN
 
     C0:logicalport
         GENERIC MAP(
-            drive_mode => "001",
+            drive_mode => "011",
             ibuf_enabled => "1",
             id => "fbfabc3c-8eb5-418d-98d7-75de280aaa87",
             init_dr_st => "0",
@@ -717,7 +717,7 @@ BEGIN
 
     C1:logicalport
         GENERIC MAP(
-            drive_mode => "001",
+            drive_mode => "011",
             ibuf_enabled => "1",
             id => "2641d5d2-fb25-490f-8e6e-1463ef591c1b",
             init_dr_st => "0",
@@ -807,7 +807,7 @@ BEGIN
 
     C2:logicalport
         GENERIC MAP(
-            drive_mode => "001",
+            drive_mode => "011",
             ibuf_enabled => "1",
             id => "4c50f0a0-178a-4487-8807-6b391e82b040",
             init_dr_st => "0",
@@ -897,7 +897,7 @@ BEGIN
 
     C3:logicalport
         GENERIC MAP(
-            drive_mode => "001",
+            drive_mode => "011",
             ibuf_enabled => "1",
             id => "95dc0aa5-91ba-48f9-b85d-93b7a042b7fe",
             init_dr_st => "0",

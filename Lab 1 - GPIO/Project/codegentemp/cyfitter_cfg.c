@@ -283,7 +283,7 @@ void cyfitter_cfg(void)
 
 	/* Perform second pass device configuration. These items must be configured in specific order after the regular configuration is done. */
 	/* IOPINS0_1 Starting address: CYDEV_GPIO_PRT1_BASE */
-	CY_SET_REG32((void *)(CYREG_GPIO_PRT1_PC), 0x00000276u);
+	CY_SET_REG32((void *)(CYREG_GPIO_PRT1_PC), 0x000006F6u);
 
 	/* IOPINS0_2 Starting address: CYDEV_GPIO_PRT2_BASE */
 	CY_SET_REG32((void *)(CYREG_GPIO_PRT2_PC), 0x001B6DB6u);
@@ -292,7 +292,7 @@ void cyfitter_cfg(void)
 	CY_SET_REG32((void *)(CYREG_GPIO_PRT3_PC), 0x00000DB6u);
 
 	/* IOPINS0_5 Starting address: CYDEV_GPIO_PRT5_BASE */
-	CY_SET_REG32((void *)(CYREG_GPIO_PRT5_PC), 0x00008200u);
+	CY_SET_REG32((void *)(CYREG_GPIO_PRT5_PC), 0x00018600u);
 
 
 	/* Setup clocks based on selections from Clock DWR */
