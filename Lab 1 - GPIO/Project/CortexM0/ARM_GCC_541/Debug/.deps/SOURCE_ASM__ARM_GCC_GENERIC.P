@@ -1,0 +1,8 @@
+C:/Users/Hello\ Kitty/Documents/PSoC\ Creator/Lab01\ -\ GPIO/Lab01\ -\ GPIO.cydsn/CortexM0/ARM_GCC_541/Debug/CyBootAsmGnu.o : C:/Users/Hello\ Kitty/Documents/PSoC\ Creator/Lab01\ -\ GPIO/Lab01\ -\ GPIO.cydsn/Generated_Source/PSoC4/CyBootAsmGnu.s C:/Users/Hello\ Kitty/Documents/PSoC\ Creator/Lab01\ -\ GPIO/Lab01\ -\ GPIO.cydsn/Generated_Source/PSoC4/cydevicegnu_trm.inc C:/Users/Hello\ Kitty/Documents/PSoC\ Creator/Lab01\ -\ GPIO/Lab01\ -\ GPIO.cydsn/Generated_Source/PSoC4/cyfittergnu.inc 
+
+C:/Users/Hello\ Kitty/Documents/PSoC\ Creator/Lab01\ -\ GPIO/Lab01\ -\ GPIO.cydsn/Generated_Source/PSoC4/CyBootAsmGnu.s : 
+
+C:/Users/Hello\ Kitty/Documents/PSoC\ Creator/Lab01\ -\ GPIO/Lab01\ -\ GPIO.cydsn/Generated_Source/PSoC4/cydevicegnu_trm.inc : 
+
+C:/Users/Hello\ Kitty/Documents/PSoC\ Creator/Lab01\ -\ GPIO/Lab01\ -\ GPIO.cydsn/Generated_Source/PSoC4/cyfittergnu.inc : 
+
