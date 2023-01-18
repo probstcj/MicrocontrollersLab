@@ -1,0 +1,5 @@
+Possible Issues - 
+Holding button at a certain force
+Pressing 2 or more at the same time
+	Solution - Track a variable, use a switch statement to keep track of which button was pressed, use while loop to see when released
+Pressing button on a column, then pressing a different button on the same column
