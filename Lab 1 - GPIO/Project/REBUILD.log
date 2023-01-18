@@ -1,4 +1,4 @@
---------------- Rebuild Started: 01/17/2023 14:53:30 Project: Lab01 - GPIO, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+--------------- Rebuild Started: 01/17/2023 17:43:43 Project: Lab01 - GPIO, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
 Deleting file ".\CortexM0\ARM_GCC_541\Debug\main.o"
 Deleting file ".\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o"
 Deleting file ".\CortexM0\ARM_GCC_541\Debug\cymetadata.o"
@@ -95,6 +95,6 @@ No ELF section .cychecksum found, creating one
 Application checksum calculated and stored in ELF section .cychecksum
 Checksum calculated and stored in ELF section .cymeta
 cyelftool.exe -S "C:\Users\Hello Kitty\Documents\PSoC Creator\Lab01 - GPIO\Lab01 - GPIO.cydsn\CortexM0\ARM_GCC_541\Debug\Lab01 - GPIO.elf"
-Flash used: 1960 of 131072 bytes (1.5%).
+Flash used: 2560 of 131072 bytes (2.0%).
 SRAM used: 2576 of 16384 bytes (15.7%). Stack: 2048 bytes. Heap: 128 bytes.
---------------- Rebuild Succeeded: 01/17/2023 14:53:44 ---------------
+--------------- Rebuild Succeeded: 01/17/2023 17:43:55 ---------------

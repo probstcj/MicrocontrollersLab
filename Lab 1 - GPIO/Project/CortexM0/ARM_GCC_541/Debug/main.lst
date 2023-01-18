@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cchJiU99.s 			page 1
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 1
 
 
    1              		.syntax unified
@@ -45,313 +45,2044 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cchJiU99.s 			page 1
   15:main.c        **** {
   28              		.loc 1 15 0
   29              		.cfi_startproc
-  30              		@ Volatile: function does not return.
-  31              		@ args = 0, pretend = 0, frame = 0
-  32              		@ frame_needed = 0, uses_anonymous_args = 0
-  33              		@ link register save eliminated.
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 70B5     		push	{r4, r5, r6, lr}
+  33              		.cfi_def_cfa_offset 16
+  34              		.cfi_offset 4, -16
+  35              		.cfi_offset 5, -12
+  36              		.cfi_offset 6, -8
+  37              		.cfi_offset 14, -4
   16:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
-  34              		.loc 1 16 0
-  35              		.syntax divided
-  36              	@ 16 "main.c" 1
-  37 0000 62B6     		CPSIE   i
-  38              	@ 0 "" 2
-  39              		.thumb
-  40              		.syntax unified
-  41              	.L2:
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cchJiU99.s 			page 2
+  38              		.loc 1 16 0
+  39              		.syntax divided
+  40              	@ 16 "main.c" 1
+  41 0002 62B6     		CPSIE   i
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 2
 
 
-  42 0002 FEE7     		b	.L2
-  43              		.cfi_endproc
-  44              	.LFE34:
-  45              		.size	main, .-main
-  46              		.text
-  47              	.Letext0:
-  48              		.section	.debug_info,"",%progbits
-  49              	.Ldebug_info0:
-  50 0000 A0000000 		.4byte	0xa0
-  51 0004 0400     		.2byte	0x4
-  52 0006 00000000 		.4byte	.Ldebug_abbrev0
-  53 000a 04       		.byte	0x4
-  54 000b 01       		.uleb128 0x1
-  55 000c 79000000 		.4byte	.LASF14
-  56 0010 0C       		.byte	0xc
-  57 0011 1B000000 		.4byte	.LASF15
-  58 0015 3C010000 		.4byte	.LASF16
-  59 0019 00000000 		.4byte	.Ldebug_ranges0+0
-  60 001d 00000000 		.4byte	0
-  61 0021 00000000 		.4byte	.Ldebug_line0
-  62 0025 02       		.uleb128 0x2
-  63 0026 01       		.byte	0x1
-  64 0027 06       		.byte	0x6
-  65 0028 1A010000 		.4byte	.LASF0
-  66 002c 02       		.uleb128 0x2
-  67 002d 01       		.byte	0x1
-  68 002e 08       		.byte	0x8
-  69 002f 56000000 		.4byte	.LASF1
-  70 0033 02       		.uleb128 0x2
-  71 0034 02       		.byte	0x2
-  72 0035 05       		.byte	0x5
-  73 0036 32010000 		.4byte	.LASF2
-  74 003a 02       		.uleb128 0x2
-  75 003b 02       		.byte	0x2
-  76 003c 07       		.byte	0x7
-  77 003d 07010000 		.4byte	.LASF3
-  78 0041 02       		.uleb128 0x2
-  79 0042 04       		.byte	0x4
-  80 0043 05       		.byte	0x5
-  81 0044 69000000 		.4byte	.LASF4
-  82 0048 02       		.uleb128 0x2
-  83 0049 04       		.byte	0x4
-  84 004a 07       		.byte	0x7
-  85 004b 27000000 		.4byte	.LASF5
-  86 004f 02       		.uleb128 0x2
-  87 0050 08       		.byte	0x8
-  88 0051 05       		.byte	0x5
-  89 0052 00000000 		.4byte	.LASF6
-  90 0056 02       		.uleb128 0x2
-  91 0057 08       		.byte	0x8
-  92 0058 07       		.byte	0x7
-  93 0059 39000000 		.4byte	.LASF7
-  94 005d 03       		.uleb128 0x3
-  95 005e 04       		.byte	0x4
-  96 005f 05       		.byte	0x5
-  97 0060 696E7400 		.ascii	"int\000"
-  98 0064 02       		.uleb128 0x2
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cchJiU99.s 			page 3
+  42              	@ 0 "" 2
+  43              	.LVL0:
+  17:main.c        **** 
+  18:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  19:main.c        ****     int x = 0;
+  20:main.c        ****     int length = 0;
+  21:main.c        ****     LCD_Start();
+  44              		.loc 1 21 0
+  45              		.thumb
+  46              		.syntax unified
+  47 0004 FFF7FEFF 		bl	LCD_Start
+  48              	.LVL1:
+  22:main.c        ****     LCD_ClearDisplay();
+  49              		.loc 1 22 0
+  50 0008 0120     		movs	r0, #1
+  51 000a FFF7FEFF 		bl	LCD_WriteControl
+  52              	.LVL2:
+  20:main.c        ****     LCD_Start();
+  53              		.loc 1 20 0
+  54 000e 0024     		movs	r4, #0
+  19:main.c        ****     int length = 0;
+  55              		.loc 1 19 0
+  56 0010 0025     		movs	r5, #0
+  57 0012 29E0     		b	.L2
+  58              	.LVL3:
+  59              	.L10:
+  23:main.c        ****     for(;;)
+  24:main.c        ****     {
+  25:main.c        ****         // Works
+  26:main.c        ****         // Polling Process
+  27:main.c        ****         while(C0_Read() == 0 && C1_Read() == 0 && C2_Read() == 0 && C3_Read() == 0){
+  28:main.c        ****             switch(x){
+  60              		.loc 1 28 0
+  61 0014 012D     		cmp	r5, #1
+  62 0016 10D0     		beq	.L4
+  63 0018 02DC     		bgt	.L5
+  64 001a 002D     		cmp	r5, #0
+  65 001c 05D0     		beq	.L6
+  66 001e 23E0     		b	.L2
+  67              	.L5:
+  68 0020 022D     		cmp	r5, #2
+  69 0022 12D0     		beq	.L7
+  70 0024 032D     		cmp	r5, #3
+  71 0026 18D0     		beq	.L8
+  72 0028 1EE0     		b	.L2
+  73              	.L6:
+  29:main.c        ****                 case 0:
+  30:main.c        ****                     R3_Write(0);
+  74              		.loc 1 30 0
+  75 002a 0020     		movs	r0, #0
+  76 002c FFF7FEFF 		bl	R3_Write
+  77              	.LVL4:
+  31:main.c        ****                     R0_Write(1);
+  78              		.loc 1 31 0
+  79 0030 0120     		movs	r0, #1
+  80 0032 FFF7FEFF 		bl	R0_Write
+  81              	.LVL5:
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 3
 
 
-  99 0065 04       		.byte	0x4
- 100 0066 07       		.byte	0x7
- 101 0067 0E000000 		.4byte	.LASF8
- 102 006b 02       		.uleb128 0x2
- 103 006c 04       		.byte	0x4
- 104 006d 04       		.byte	0x4
- 105 006e 50000000 		.4byte	.LASF9
- 106 0072 02       		.uleb128 0x2
- 107 0073 08       		.byte	0x8
- 108 0074 04       		.byte	0x4
- 109 0075 72000000 		.4byte	.LASF10
- 110 0079 02       		.uleb128 0x2
- 111 007a 01       		.byte	0x1
- 112 007b 08       		.byte	0x8
- 113 007c 64000000 		.4byte	.LASF11
- 114 0080 02       		.uleb128 0x2
- 115 0081 04       		.byte	0x4
- 116 0082 07       		.byte	0x7
- 117 0083 88010000 		.4byte	.LASF12
- 118 0087 02       		.uleb128 0x2
- 119 0088 08       		.byte	0x8
- 120 0089 04       		.byte	0x4
- 121 008a 26010000 		.4byte	.LASF13
- 122 008e 04       		.uleb128 0x4
- 123 008f 22000000 		.4byte	.LASF17
- 124 0093 01       		.byte	0x1
- 125 0094 0E       		.byte	0xe
- 126 0095 5D000000 		.4byte	0x5d
- 127 0099 00000000 		.4byte	.LFB34
- 128 009d 04000000 		.4byte	.LFE34-.LFB34
- 129 00a1 01       		.uleb128 0x1
- 130 00a2 9C       		.byte	0x9c
- 131 00a3 00       		.byte	0
- 132              		.section	.debug_abbrev,"",%progbits
- 133              	.Ldebug_abbrev0:
- 134 0000 01       		.uleb128 0x1
- 135 0001 11       		.uleb128 0x11
- 136 0002 01       		.byte	0x1
- 137 0003 25       		.uleb128 0x25
- 138 0004 0E       		.uleb128 0xe
- 139 0005 13       		.uleb128 0x13
- 140 0006 0B       		.uleb128 0xb
- 141 0007 03       		.uleb128 0x3
- 142 0008 0E       		.uleb128 0xe
- 143 0009 1B       		.uleb128 0x1b
- 144 000a 0E       		.uleb128 0xe
- 145 000b 55       		.uleb128 0x55
- 146 000c 17       		.uleb128 0x17
- 147 000d 11       		.uleb128 0x11
- 148 000e 01       		.uleb128 0x1
- 149 000f 10       		.uleb128 0x10
- 150 0010 17       		.uleb128 0x17
- 151 0011 00       		.byte	0
- 152 0012 00       		.byte	0
- 153 0013 02       		.uleb128 0x2
- 154 0014 24       		.uleb128 0x24
- 155 0015 00       		.byte	0
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cchJiU99.s 			page 4
+  32:main.c        ****                     x++;
+  82              		.loc 1 32 0
+  83 0036 0135     		adds	r5, r5, #1
+  84              	.LVL6:
+  33:main.c        ****                     break;
+  85              		.loc 1 33 0
+  86 0038 16E0     		b	.L2
+  87              	.L4:
+  34:main.c        ****                 case 1:
+  35:main.c        ****                     R0_Write(0);
+  88              		.loc 1 35 0
+  89 003a 0020     		movs	r0, #0
+  90 003c FFF7FEFF 		bl	R0_Write
+  91              	.LVL7:
+  36:main.c        ****                     R1_Write(1);
+  92              		.loc 1 36 0
+  93 0040 0120     		movs	r0, #1
+  94 0042 FFF7FEFF 		bl	R1_Write
+  95              	.LVL8:
+  37:main.c        ****                     x++;
+  96              		.loc 1 37 0
+  97 0046 0135     		adds	r5, r5, #1
+  98              	.LVL9:
+  38:main.c        ****                     break;
+  99              		.loc 1 38 0
+ 100 0048 0EE0     		b	.L2
+ 101              	.L7:
+  39:main.c        ****                 case 2:
+  40:main.c        ****                     R1_Write(0);
+ 102              		.loc 1 40 0
+ 103 004a 0020     		movs	r0, #0
+ 104 004c FFF7FEFF 		bl	R1_Write
+ 105              	.LVL10:
+  41:main.c        ****                     R2_Write(1);
+ 106              		.loc 1 41 0
+ 107 0050 0120     		movs	r0, #1
+ 108 0052 FFF7FEFF 		bl	R2_Write
+ 109              	.LVL11:
+  42:main.c        ****                     x++;
+ 110              		.loc 1 42 0
+ 111 0056 0135     		adds	r5, r5, #1
+ 112              	.LVL12:
+  43:main.c        ****                     break;
+ 113              		.loc 1 43 0
+ 114 0058 06E0     		b	.L2
+ 115              	.L8:
+  44:main.c        ****                 case 3:
+  45:main.c        ****                     R2_Write(0);
+ 116              		.loc 1 45 0
+ 117 005a 0020     		movs	r0, #0
+ 118 005c FFF7FEFF 		bl	R2_Write
+ 119              	.LVL13:
+  46:main.c        ****                     R3_Write(1);
+ 120              		.loc 1 46 0
+ 121 0060 0120     		movs	r0, #1
+ 122 0062 FFF7FEFF 		bl	R3_Write
+ 123              	.LVL14:
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 4
 
 
- 156 0016 0B       		.uleb128 0xb
- 157 0017 0B       		.uleb128 0xb
- 158 0018 3E       		.uleb128 0x3e
- 159 0019 0B       		.uleb128 0xb
- 160 001a 03       		.uleb128 0x3
- 161 001b 0E       		.uleb128 0xe
- 162 001c 00       		.byte	0
- 163 001d 00       		.byte	0
- 164 001e 03       		.uleb128 0x3
- 165 001f 24       		.uleb128 0x24
- 166 0020 00       		.byte	0
- 167 0021 0B       		.uleb128 0xb
- 168 0022 0B       		.uleb128 0xb
- 169 0023 3E       		.uleb128 0x3e
- 170 0024 0B       		.uleb128 0xb
- 171 0025 03       		.uleb128 0x3
- 172 0026 08       		.uleb128 0x8
- 173 0027 00       		.byte	0
- 174 0028 00       		.byte	0
- 175 0029 04       		.uleb128 0x4
- 176 002a 2E       		.uleb128 0x2e
- 177 002b 00       		.byte	0
- 178 002c 3F       		.uleb128 0x3f
- 179 002d 19       		.uleb128 0x19
- 180 002e 03       		.uleb128 0x3
- 181 002f 0E       		.uleb128 0xe
- 182 0030 3A       		.uleb128 0x3a
- 183 0031 0B       		.uleb128 0xb
- 184 0032 3B       		.uleb128 0x3b
- 185 0033 0B       		.uleb128 0xb
- 186 0034 27       		.uleb128 0x27
- 187 0035 19       		.uleb128 0x19
- 188 0036 49       		.uleb128 0x49
- 189 0037 13       		.uleb128 0x13
- 190 0038 8701     		.uleb128 0x87
- 191 003a 19       		.uleb128 0x19
- 192 003b 11       		.uleb128 0x11
- 193 003c 01       		.uleb128 0x1
- 194 003d 12       		.uleb128 0x12
- 195 003e 06       		.uleb128 0x6
- 196 003f 40       		.uleb128 0x40
- 197 0040 18       		.uleb128 0x18
- 198 0041 9742     		.uleb128 0x2117
- 199 0043 19       		.uleb128 0x19
- 200 0044 00       		.byte	0
- 201 0045 00       		.byte	0
- 202 0046 00       		.byte	0
- 203              		.section	.debug_aranges,"",%progbits
- 204 0000 1C000000 		.4byte	0x1c
- 205 0004 0200     		.2byte	0x2
- 206 0006 00000000 		.4byte	.Ldebug_info0
- 207 000a 04       		.byte	0x4
- 208 000b 00       		.byte	0
- 209 000c 0000     		.2byte	0
- 210 000e 0000     		.2byte	0
- 211 0010 00000000 		.4byte	.LFB34
- 212 0014 04000000 		.4byte	.LFE34-.LFB34
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cchJiU99.s 			page 5
+  47:main.c        ****                     x=0;
+ 124              		.loc 1 47 0
+ 125 0066 0025     		movs	r5, #0
+ 126              	.LVL15:
+ 127              	.L2:
+  27:main.c        ****             switch(x){
+ 128              		.loc 1 27 0
+ 129 0068 FFF7FEFF 		bl	C0_Read
+ 130              	.LVL16:
+ 131 006c 0028     		cmp	r0, #0
+ 132 006e 0BD1     		bne	.L9
+  27:main.c        ****             switch(x){
+ 133              		.loc 1 27 0 is_stmt 0 discriminator 1
+ 134 0070 FFF7FEFF 		bl	C1_Read
+ 135              	.LVL17:
+ 136 0074 0028     		cmp	r0, #0
+ 137 0076 07D1     		bne	.L9
+  27:main.c        ****             switch(x){
+ 138              		.loc 1 27 0 discriminator 2
+ 139 0078 FFF7FEFF 		bl	C2_Read
+ 140              	.LVL18:
+ 141 007c 0028     		cmp	r0, #0
+ 142 007e 03D1     		bne	.L9
+  27:main.c        ****             switch(x){
+ 143              		.loc 1 27 0 discriminator 3
+ 144 0080 FFF7FEFF 		bl	C3_Read
+ 145              	.LVL19:
+ 146 0084 0028     		cmp	r0, #0
+ 147 0086 C5D0     		beq	.L10
+ 148              	.L9:
+  48:main.c        ****                     break;
+  49:main.c        ****             }
+  50:main.c        ****         }
+  51:main.c        ****         // End Polling
+  52:main.c        ****         // Delay
+  53:main.c        ****         CyDelay(10);
+ 149              		.loc 1 53 0 is_stmt 1
+ 150 0088 0A20     		movs	r0, #10
+ 151 008a FFF7FEFF 		bl	CyDelay
+ 152              	.LVL20:
+  54:main.c        ****         // Do whatever
+  55:main.c        ****         if(C0_Read() == 1){
+ 153              		.loc 1 55 0
+ 154 008e FFF7FEFF 		bl	C0_Read
+ 155              	.LVL21:
+ 156 0092 0128     		cmp	r0, #1
+ 157 0094 36D1     		bne	.L11
+  56:main.c        ****             switch(x){
+ 158              		.loc 1 56 0
+ 159 0096 012D     		cmp	r5, #1
+ 160 0098 08D0     		beq	.L13
+ 161 009a 02DC     		bgt	.L14
+ 162 009c 002D     		cmp	r5, #0
+ 163 009e 26D0     		beq	.L15
+ 164 00a0 E0E0     		b	.L52
+ 165              	.L14:
+ 166 00a2 022D     		cmp	r5, #2
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 5
 
 
- 213 0018 00000000 		.4byte	0
- 214 001c 00000000 		.4byte	0
- 215              		.section	.debug_ranges,"",%progbits
- 216              	.Ldebug_ranges0:
- 217 0000 00000000 		.4byte	.LFB34
- 218 0004 04000000 		.4byte	.LFE34
- 219 0008 00000000 		.4byte	0
- 220 000c 00000000 		.4byte	0
- 221              		.section	.debug_line,"",%progbits
- 222              	.Ldebug_line0:
- 223 0000 33000000 		.section	.debug_str,"MS",%progbits,1
- 223      02001D00 
- 223      00000201 
- 223      FB0E0D00 
- 223      01010101 
- 224              	.LASF6:
- 225 0000 6C6F6E67 		.ascii	"long long int\000"
- 225      206C6F6E 
- 225      6720696E 
- 225      7400
- 226              	.LASF8:
- 227 000e 756E7369 		.ascii	"unsigned int\000"
- 227      676E6564 
- 227      20696E74 
- 227      00
- 228              	.LASF15:
- 229 001b 6D61696E 		.ascii	"main.c\000"
- 229      2E6300
- 230              	.LASF17:
- 231 0022 6D61696E 		.ascii	"main\000"
- 231      00
- 232              	.LASF5:
- 233 0027 6C6F6E67 		.ascii	"long unsigned int\000"
- 233      20756E73 
- 233      69676E65 
- 233      6420696E 
- 233      7400
- 234              	.LASF7:
- 235 0039 6C6F6E67 		.ascii	"long long unsigned int\000"
- 235      206C6F6E 
- 235      6720756E 
- 235      7369676E 
- 235      65642069 
- 236              	.LASF9:
- 237 0050 666C6F61 		.ascii	"float\000"
- 237      7400
- 238              	.LASF1:
- 239 0056 756E7369 		.ascii	"unsigned char\000"
- 239      676E6564 
- 239      20636861 
- 239      7200
- 240              	.LASF11:
- 241 0064 63686172 		.ascii	"char\000"
- 241      00
- 242              	.LASF4:
- 243 0069 6C6F6E67 		.ascii	"long int\000"
- 243      20696E74 
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cchJiU99.s 			page 6
+ 167 00a4 0DD0     		beq	.L16
+ 168 00a6 032D     		cmp	r5, #3
+ 169 00a8 16D0     		beq	.L17
+ 170 00aa DBE0     		b	.L52
+ 171              	.L13:
+  57:main.c        ****                 case 1:
+  58:main.c        ****                     // 0, 0 (Print 1)
+  59:main.c        ****                     if(length == 16){
+ 172              		.loc 1 59 0
+ 173 00ac 102C     		cmp	r4, #16
+ 174 00ae 03D1     		bne	.L18
+ 175              	.LVL22:
+  60:main.c        ****                         length = 0;
+  61:main.c        ****                         LCD_ClearDisplay();
+ 176              		.loc 1 61 0
+ 177 00b0 0120     		movs	r0, #1
+ 178 00b2 FFF7FEFF 		bl	LCD_WriteControl
+ 179              	.LVL23:
+  60:main.c        ****                         length = 0;
+ 180              		.loc 1 60 0
+ 181 00b6 0024     		movs	r4, #0
+ 182              	.LVL24:
+ 183              	.L18:
+  62:main.c        ****                     }
+  63:main.c        ****                     LCD_WriteData('1');
+ 184              		.loc 1 63 0
+ 185 00b8 3120     		movs	r0, #49
+ 186 00ba FFF7FEFF 		bl	LCD_WriteData
+ 187              	.LVL25:
+  64:main.c        ****                     length++;
+ 188              		.loc 1 64 0
+ 189 00be 0134     		adds	r4, r4, #1
+ 190              	.LVL26:
+  65:main.c        ****                     break;
+ 191              		.loc 1 65 0
+ 192 00c0 D0E0     		b	.L52
+ 193              	.L16:
+  66:main.c        ****                 case 2:
+  67:main.c        ****                     // 0, 1 (Print 4)
+  68:main.c        ****                     if(length == 16){
+ 194              		.loc 1 68 0
+ 195 00c2 102C     		cmp	r4, #16
+ 196 00c4 03D1     		bne	.L19
+ 197              	.LVL27:
+  69:main.c        ****                         length = 0;
+  70:main.c        ****                         LCD_ClearDisplay();
+ 198              		.loc 1 70 0
+ 199 00c6 0120     		movs	r0, #1
+ 200 00c8 FFF7FEFF 		bl	LCD_WriteControl
+ 201              	.LVL28:
+  69:main.c        ****                         length = 0;
+ 202              		.loc 1 69 0
+ 203 00cc 0024     		movs	r4, #0
+ 204              	.LVL29:
+ 205              	.L19:
+  71:main.c        ****                     }
+  72:main.c        ****                     LCD_WriteData('4');
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 6
 
 
- 243      00
- 244              	.LASF10:
- 245 0072 646F7562 		.ascii	"double\000"
- 245      6C6500
- 246              	.LASF14:
- 247 0079 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 247      43313120 
- 247      352E342E 
- 247      31203230 
- 247      31363036 
- 248 00ac 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
- 248      20726576 
- 248      6973696F 
- 248      6E203233 
- 248      37373135 
- 249 00df 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 249      66756E63 
- 249      74696F6E 
- 249      2D736563 
- 249      74696F6E 
- 250              	.LASF3:
- 251 0107 73686F72 		.ascii	"short unsigned int\000"
- 251      7420756E 
- 251      7369676E 
- 251      65642069 
- 251      6E7400
- 252              	.LASF0:
- 253 011a 7369676E 		.ascii	"signed char\000"
- 253      65642063 
- 253      68617200 
- 254              	.LASF13:
- 255 0126 6C6F6E67 		.ascii	"long double\000"
- 255      20646F75 
- 255      626C6500 
- 256              	.LASF2:
- 257 0132 73686F72 		.ascii	"short int\000"
- 257      7420696E 
- 257      7400
- 258              	.LASF16:
- 259 013c 433A5C55 		.ascii	"C:\\Users\\Hello Kitty\\Documents\\PSoC Creator\\La"
- 259      73657273 
- 259      5C48656C 
- 259      6C6F204B 
- 259      69747479 
- 260 016a 62303120 		.ascii	"b01 - GPIO\\Lab01 - GPIO.cydsn\000"
- 260      2D204750 
- 260      494F5C4C 
- 260      61623031 
- 260      202D2047 
- 261              	.LASF12:
- 262 0188 73697A65 		.ascii	"sizetype\000"
- 262      74797065 
- 262      00
- 263              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 206              		.loc 1 72 0
+ 207 00ce 3420     		movs	r0, #52
+ 208 00d0 FFF7FEFF 		bl	LCD_WriteData
+ 209              	.LVL30:
+  73:main.c        ****                     length++;
+ 210              		.loc 1 73 0
+ 211 00d4 0134     		adds	r4, r4, #1
+ 212              	.LVL31:
+  74:main.c        ****                     break;
+ 213              		.loc 1 74 0
+ 214 00d6 C5E0     		b	.L52
+ 215              	.L17:
+  75:main.c        ****                 case 3:
+  76:main.c        ****                     // 0, 2 (Print 7)
+  77:main.c        ****                     if(length == 16){
+ 216              		.loc 1 77 0
+ 217 00d8 102C     		cmp	r4, #16
+ 218 00da 03D1     		bne	.L20
+ 219              	.LVL32:
+  78:main.c        ****                         length = 0;
+  79:main.c        ****                         LCD_ClearDisplay();
+ 220              		.loc 1 79 0
+ 221 00dc 0120     		movs	r0, #1
+ 222 00de FFF7FEFF 		bl	LCD_WriteControl
+ 223              	.LVL33:
+  78:main.c        ****                         length = 0;
+ 224              		.loc 1 78 0
+ 225 00e2 0024     		movs	r4, #0
+ 226              	.LVL34:
+ 227              	.L20:
+  80:main.c        ****                     }
+  81:main.c        ****                     LCD_WriteData('7');
+ 228              		.loc 1 81 0
+ 229 00e4 3720     		movs	r0, #55
+ 230 00e6 FFF7FEFF 		bl	LCD_WriteData
+ 231              	.LVL35:
+  82:main.c        ****                     length++;
+ 232              		.loc 1 82 0
+ 233 00ea 0134     		adds	r4, r4, #1
+ 234              	.LVL36:
+  83:main.c        ****                     break;
+ 235              		.loc 1 83 0
+ 236 00ec BAE0     		b	.L52
+ 237              	.L15:
+  84:main.c        ****                 case 0:
+  85:main.c        ****                     // 0, 3 (Print *)
+  86:main.c        ****                     if(length == 16){
+ 238              		.loc 1 86 0
+ 239 00ee 102C     		cmp	r4, #16
+ 240 00f0 03D1     		bne	.L21
+ 241              	.LVL37:
+  87:main.c        ****                         length = 0;
+  88:main.c        ****                         LCD_ClearDisplay();
+ 242              		.loc 1 88 0
+ 243 00f2 0120     		movs	r0, #1
+ 244 00f4 FFF7FEFF 		bl	LCD_WriteControl
+ 245              	.LVL38:
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 7
+
+
+  87:main.c        ****                         length = 0;
+ 246              		.loc 1 87 0
+ 247 00f8 0024     		movs	r4, #0
+ 248              	.LVL39:
+ 249              	.L21:
+  89:main.c        ****                     }
+  90:main.c        ****                     LCD_WriteData('*');
+ 250              		.loc 1 90 0
+ 251 00fa 2A20     		movs	r0, #42
+ 252 00fc FFF7FEFF 		bl	LCD_WriteData
+ 253              	.LVL40:
+  91:main.c        ****                     length++;
+ 254              		.loc 1 91 0
+ 255 0100 0134     		adds	r4, r4, #1
+ 256              	.LVL41:
+  92:main.c        ****                     break;
+ 257              		.loc 1 92 0
+ 258 0102 AFE0     		b	.L52
+ 259              	.L11:
+  93:main.c        ****             }
+  94:main.c        ****         }
+  95:main.c        ****         else if(C1_Read() == 1){
+ 260              		.loc 1 95 0
+ 261 0104 FFF7FEFF 		bl	C1_Read
+ 262              	.LVL42:
+ 263 0108 0128     		cmp	r0, #1
+ 264 010a 36D1     		bne	.L22
+  96:main.c        ****             switch(x){
+ 265              		.loc 1 96 0
+ 266 010c 012D     		cmp	r5, #1
+ 267 010e 08D0     		beq	.L23
+ 268 0110 02DC     		bgt	.L24
+ 269 0112 002D     		cmp	r5, #0
+ 270 0114 26D0     		beq	.L25
+ 271 0116 A5E0     		b	.L52
+ 272              	.L24:
+ 273 0118 022D     		cmp	r5, #2
+ 274 011a 0DD0     		beq	.L26
+ 275 011c 032D     		cmp	r5, #3
+ 276 011e 16D0     		beq	.L27
+ 277 0120 A0E0     		b	.L52
+ 278              	.L23:
+  97:main.c        ****                 case 1:
+  98:main.c        ****                     // 1, 0 (Print 2)
+  99:main.c        ****                     if(length == 16){
+ 279              		.loc 1 99 0
+ 280 0122 102C     		cmp	r4, #16
+ 281 0124 03D1     		bne	.L28
+ 282              	.LVL43:
+ 100:main.c        ****                         length = 0;
+ 101:main.c        ****                         LCD_ClearDisplay();
+ 283              		.loc 1 101 0
+ 284 0126 0120     		movs	r0, #1
+ 285 0128 FFF7FEFF 		bl	LCD_WriteControl
+ 286              	.LVL44:
+ 100:main.c        ****                         length = 0;
+ 287              		.loc 1 100 0
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 8
+
+
+ 288 012c 0024     		movs	r4, #0
+ 289              	.LVL45:
+ 290              	.L28:
+ 102:main.c        ****                     }
+ 103:main.c        ****                     LCD_WriteData('2');
+ 291              		.loc 1 103 0
+ 292 012e 3220     		movs	r0, #50
+ 293 0130 FFF7FEFF 		bl	LCD_WriteData
+ 294              	.LVL46:
+ 104:main.c        ****                     length++;
+ 295              		.loc 1 104 0
+ 296 0134 0134     		adds	r4, r4, #1
+ 297              	.LVL47:
+ 105:main.c        ****                     break;
+ 298              		.loc 1 105 0
+ 299 0136 95E0     		b	.L52
+ 300              	.L26:
+ 106:main.c        ****                 case 2:
+ 107:main.c        ****                     // 1, 1 (Print 5)
+ 108:main.c        ****                     if(length == 16){
+ 301              		.loc 1 108 0
+ 302 0138 102C     		cmp	r4, #16
+ 303 013a 03D1     		bne	.L29
+ 304              	.LVL48:
+ 109:main.c        ****                         length = 0;
+ 110:main.c        ****                         LCD_ClearDisplay();
+ 305              		.loc 1 110 0
+ 306 013c 0120     		movs	r0, #1
+ 307 013e FFF7FEFF 		bl	LCD_WriteControl
+ 308              	.LVL49:
+ 109:main.c        ****                         length = 0;
+ 309              		.loc 1 109 0
+ 310 0142 0024     		movs	r4, #0
+ 311              	.LVL50:
+ 312              	.L29:
+ 111:main.c        ****                     }
+ 112:main.c        ****                     LCD_WriteData('5');
+ 313              		.loc 1 112 0
+ 314 0144 3520     		movs	r0, #53
+ 315 0146 FFF7FEFF 		bl	LCD_WriteData
+ 316              	.LVL51:
+ 113:main.c        ****                     length++;
+ 317              		.loc 1 113 0
+ 318 014a 0134     		adds	r4, r4, #1
+ 319              	.LVL52:
+ 114:main.c        ****                     break;
+ 320              		.loc 1 114 0
+ 321 014c 8AE0     		b	.L52
+ 322              	.L27:
+ 115:main.c        ****                 case 3:
+ 116:main.c        ****                     // 1, 2 (Print 8)
+ 117:main.c        ****                     if(length == 16){
+ 323              		.loc 1 117 0
+ 324 014e 102C     		cmp	r4, #16
+ 325 0150 03D1     		bne	.L30
+ 326              	.LVL53:
+ 118:main.c        ****                         length = 0;
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 9
+
+
+ 119:main.c        ****                         LCD_ClearDisplay();
+ 327              		.loc 1 119 0
+ 328 0152 0120     		movs	r0, #1
+ 329 0154 FFF7FEFF 		bl	LCD_WriteControl
+ 330              	.LVL54:
+ 118:main.c        ****                         length = 0;
+ 331              		.loc 1 118 0
+ 332 0158 0024     		movs	r4, #0
+ 333              	.LVL55:
+ 334              	.L30:
+ 120:main.c        ****                     }
+ 121:main.c        ****                     LCD_WriteData('8');
+ 335              		.loc 1 121 0
+ 336 015a 3820     		movs	r0, #56
+ 337 015c FFF7FEFF 		bl	LCD_WriteData
+ 338              	.LVL56:
+ 122:main.c        ****                     length++;
+ 339              		.loc 1 122 0
+ 340 0160 0134     		adds	r4, r4, #1
+ 341              	.LVL57:
+ 123:main.c        ****                     break;
+ 342              		.loc 1 123 0
+ 343 0162 7FE0     		b	.L52
+ 344              	.L25:
+ 124:main.c        ****                 case 0:
+ 125:main.c        ****                     // 1, 3 (Print 0)
+ 126:main.c        ****                     if(length == 16){
+ 345              		.loc 1 126 0
+ 346 0164 102C     		cmp	r4, #16
+ 347 0166 03D1     		bne	.L31
+ 348              	.LVL58:
+ 127:main.c        ****                         length = 0;
+ 128:main.c        ****                         LCD_ClearDisplay();
+ 349              		.loc 1 128 0
+ 350 0168 0120     		movs	r0, #1
+ 351 016a FFF7FEFF 		bl	LCD_WriteControl
+ 352              	.LVL59:
+ 127:main.c        ****                         length = 0;
+ 353              		.loc 1 127 0
+ 354 016e 0024     		movs	r4, #0
+ 355              	.LVL60:
+ 356              	.L31:
+ 129:main.c        ****                     }
+ 130:main.c        ****                     LCD_WriteData('0');
+ 357              		.loc 1 130 0
+ 358 0170 3020     		movs	r0, #48
+ 359 0172 FFF7FEFF 		bl	LCD_WriteData
+ 360              	.LVL61:
+ 131:main.c        ****                     length++;
+ 361              		.loc 1 131 0
+ 362 0176 0134     		adds	r4, r4, #1
+ 363              	.LVL62:
+ 132:main.c        ****                     break;
+ 364              		.loc 1 132 0
+ 365 0178 74E0     		b	.L52
+ 366              	.L22:
+ 133:main.c        ****             }
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 10
+
+
+ 134:main.c        ****         }
+ 135:main.c        ****         else if(C2_Read() == 1){
+ 367              		.loc 1 135 0
+ 368 017a FFF7FEFF 		bl	C2_Read
+ 369              	.LVL63:
+ 370 017e 0128     		cmp	r0, #1
+ 371 0180 36D1     		bne	.L32
+ 136:main.c        ****             switch(x){
+ 372              		.loc 1 136 0
+ 373 0182 012D     		cmp	r5, #1
+ 374 0184 08D0     		beq	.L33
+ 375 0186 02DC     		bgt	.L34
+ 376 0188 002D     		cmp	r5, #0
+ 377 018a 26D0     		beq	.L35
+ 378 018c 6AE0     		b	.L52
+ 379              	.L34:
+ 380 018e 022D     		cmp	r5, #2
+ 381 0190 0DD0     		beq	.L36
+ 382 0192 032D     		cmp	r5, #3
+ 383 0194 16D0     		beq	.L37
+ 384 0196 65E0     		b	.L52
+ 385              	.L33:
+ 137:main.c        ****                 case 1:
+ 138:main.c        ****                     // 2, 0 (Print 3)
+ 139:main.c        ****                     if(length == 16){
+ 386              		.loc 1 139 0
+ 387 0198 102C     		cmp	r4, #16
+ 388 019a 03D1     		bne	.L38
+ 389              	.LVL64:
+ 140:main.c        ****                         length = 0;
+ 141:main.c        ****                         LCD_ClearDisplay();
+ 390              		.loc 1 141 0
+ 391 019c 0120     		movs	r0, #1
+ 392 019e FFF7FEFF 		bl	LCD_WriteControl
+ 393              	.LVL65:
+ 140:main.c        ****                         length = 0;
+ 394              		.loc 1 140 0
+ 395 01a2 0024     		movs	r4, #0
+ 396              	.LVL66:
+ 397              	.L38:
+ 142:main.c        ****                     }
+ 143:main.c        ****                     LCD_WriteData('3');
+ 398              		.loc 1 143 0
+ 399 01a4 3320     		movs	r0, #51
+ 400 01a6 FFF7FEFF 		bl	LCD_WriteData
+ 401              	.LVL67:
+ 144:main.c        ****                     length++;
+ 402              		.loc 1 144 0
+ 403 01aa 0134     		adds	r4, r4, #1
+ 404              	.LVL68:
+ 145:main.c        ****                     break;
+ 405              		.loc 1 145 0
+ 406 01ac 5AE0     		b	.L52
+ 407              	.L36:
+ 146:main.c        ****                 case 2:
+ 147:main.c        ****                     // 2, 1 (Print 6)
+ 148:main.c        ****                     if(length == 16){
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 11
+
+
+ 408              		.loc 1 148 0
+ 409 01ae 102C     		cmp	r4, #16
+ 410 01b0 03D1     		bne	.L40
+ 411              	.LVL69:
+ 149:main.c        ****                         length = 0;
+ 150:main.c        ****                         LCD_ClearDisplay();
+ 412              		.loc 1 150 0
+ 413 01b2 0120     		movs	r0, #1
+ 414 01b4 FFF7FEFF 		bl	LCD_WriteControl
+ 415              	.LVL70:
+ 149:main.c        ****                         length = 0;
+ 416              		.loc 1 149 0
+ 417 01b8 0024     		movs	r4, #0
+ 418              	.LVL71:
+ 419              	.L40:
+ 151:main.c        ****                     }
+ 152:main.c        ****                     LCD_WriteData('6');
+ 420              		.loc 1 152 0
+ 421 01ba 3620     		movs	r0, #54
+ 422 01bc FFF7FEFF 		bl	LCD_WriteData
+ 423              	.LVL72:
+ 153:main.c        ****                     length++;
+ 424              		.loc 1 153 0
+ 425 01c0 0134     		adds	r4, r4, #1
+ 426              	.LVL73:
+ 154:main.c        ****                     break;
+ 427              		.loc 1 154 0
+ 428 01c2 4FE0     		b	.L52
+ 429              	.L37:
+ 155:main.c        ****                 case 3:
+ 156:main.c        ****                     // 2, 2 (Print 9)
+ 157:main.c        ****                     if(length == 16){
+ 430              		.loc 1 157 0
+ 431 01c4 102C     		cmp	r4, #16
+ 432 01c6 03D1     		bne	.L41
+ 433              	.LVL74:
+ 158:main.c        ****                         length = 0;
+ 159:main.c        ****                         LCD_ClearDisplay();
+ 434              		.loc 1 159 0
+ 435 01c8 0120     		movs	r0, #1
+ 436 01ca FFF7FEFF 		bl	LCD_WriteControl
+ 437              	.LVL75:
+ 158:main.c        ****                         length = 0;
+ 438              		.loc 1 158 0
+ 439 01ce 0024     		movs	r4, #0
+ 440              	.LVL76:
+ 441              	.L41:
+ 160:main.c        ****                     }
+ 161:main.c        ****                     LCD_WriteData('9');
+ 442              		.loc 1 161 0
+ 443 01d0 3920     		movs	r0, #57
+ 444 01d2 FFF7FEFF 		bl	LCD_WriteData
+ 445              	.LVL77:
+ 162:main.c        ****                     length++;
+ 446              		.loc 1 162 0
+ 447 01d6 0134     		adds	r4, r4, #1
+ 448              	.LVL78:
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 12
+
+
+ 163:main.c        ****                     break;
+ 449              		.loc 1 163 0
+ 450 01d8 44E0     		b	.L52
+ 451              	.L35:
+ 164:main.c        ****                 case 0:
+ 165:main.c        ****                     // 2, 3 (Print #)
+ 166:main.c        ****                     if(length == 16){
+ 452              		.loc 1 166 0
+ 453 01da 102C     		cmp	r4, #16
+ 454 01dc 03D1     		bne	.L42
+ 455              	.LVL79:
+ 167:main.c        ****                         length = 0;
+ 168:main.c        ****                         LCD_ClearDisplay();
+ 456              		.loc 1 168 0
+ 457 01de 0120     		movs	r0, #1
+ 458 01e0 FFF7FEFF 		bl	LCD_WriteControl
+ 459              	.LVL80:
+ 167:main.c        ****                         length = 0;
+ 460              		.loc 1 167 0
+ 461 01e4 0024     		movs	r4, #0
+ 462              	.LVL81:
+ 463              	.L42:
+ 169:main.c        ****                     }
+ 170:main.c        ****                     LCD_WriteData('#');
+ 464              		.loc 1 170 0
+ 465 01e6 2320     		movs	r0, #35
+ 466 01e8 FFF7FEFF 		bl	LCD_WriteData
+ 467              	.LVL82:
+ 171:main.c        ****                     length++;
+ 468              		.loc 1 171 0
+ 469 01ec 0134     		adds	r4, r4, #1
+ 470              	.LVL83:
+ 172:main.c        ****                     break;
+ 471              		.loc 1 172 0
+ 472 01ee 39E0     		b	.L52
+ 473              	.L32:
+ 173:main.c        ****             }
+ 174:main.c        ****         }
+ 175:main.c        ****         else if(C3_Read() == 1){
+ 474              		.loc 1 175 0
+ 475 01f0 FFF7FEFF 		bl	C3_Read
+ 476              	.LVL84:
+ 477 01f4 0128     		cmp	r0, #1
+ 478 01f6 35D1     		bne	.L52
+ 176:main.c        ****             switch(x){
+ 479              		.loc 1 176 0
+ 480 01f8 012D     		cmp	r5, #1
+ 481 01fa 08D0     		beq	.L43
+ 482 01fc 02DC     		bgt	.L44
+ 483 01fe 002D     		cmp	r5, #0
+ 484 0200 26D0     		beq	.L45
+ 485 0202 2FE0     		b	.L52
+ 486              	.L44:
+ 487 0204 022D     		cmp	r5, #2
+ 488 0206 0DD0     		beq	.L46
+ 489 0208 032D     		cmp	r5, #3
+ 490 020a 16D0     		beq	.L47
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 13
+
+
+ 491 020c 2AE0     		b	.L52
+ 492              	.L43:
+ 177:main.c        ****                 case 1:
+ 178:main.c        ****                     // 3, 0 (Print A)
+ 179:main.c        ****                     if(length == 16){
+ 493              		.loc 1 179 0
+ 494 020e 102C     		cmp	r4, #16
+ 495 0210 03D1     		bne	.L48
+ 496              	.LVL85:
+ 180:main.c        ****                         length = 0;
+ 181:main.c        ****                         LCD_ClearDisplay();
+ 497              		.loc 1 181 0
+ 498 0212 0120     		movs	r0, #1
+ 499 0214 FFF7FEFF 		bl	LCD_WriteControl
+ 500              	.LVL86:
+ 180:main.c        ****                         length = 0;
+ 501              		.loc 1 180 0
+ 502 0218 0024     		movs	r4, #0
+ 503              	.LVL87:
+ 504              	.L48:
+ 182:main.c        ****                     }
+ 183:main.c        ****                     LCD_WriteData('A');
+ 505              		.loc 1 183 0
+ 506 021a 4120     		movs	r0, #65
+ 507 021c FFF7FEFF 		bl	LCD_WriteData
+ 508              	.LVL88:
+ 184:main.c        ****                     length++;
+ 509              		.loc 1 184 0
+ 510 0220 0134     		adds	r4, r4, #1
+ 511              	.LVL89:
+ 185:main.c        ****                     break;
+ 512              		.loc 1 185 0
+ 513 0222 1FE0     		b	.L52
+ 514              	.L46:
+ 186:main.c        ****                 case 2:
+ 187:main.c        ****                     // 3, 1 (Print B)
+ 188:main.c        ****                     if(length == 16){
+ 515              		.loc 1 188 0
+ 516 0224 102C     		cmp	r4, #16
+ 517 0226 03D1     		bne	.L49
+ 518              	.LVL90:
+ 189:main.c        ****                         length = 0;
+ 190:main.c        ****                         LCD_ClearDisplay();
+ 519              		.loc 1 190 0
+ 520 0228 0120     		movs	r0, #1
+ 521 022a FFF7FEFF 		bl	LCD_WriteControl
+ 522              	.LVL91:
+ 189:main.c        ****                         length = 0;
+ 523              		.loc 1 189 0
+ 524 022e 0024     		movs	r4, #0
+ 525              	.LVL92:
+ 526              	.L49:
+ 191:main.c        ****                     }
+ 192:main.c        ****                     LCD_WriteData('B');
+ 527              		.loc 1 192 0
+ 528 0230 4220     		movs	r0, #66
+ 529 0232 FFF7FEFF 		bl	LCD_WriteData
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 14
+
+
+ 530              	.LVL93:
+ 193:main.c        ****                     length++;
+ 531              		.loc 1 193 0
+ 532 0236 0134     		adds	r4, r4, #1
+ 533              	.LVL94:
+ 194:main.c        ****                     break;
+ 534              		.loc 1 194 0
+ 535 0238 14E0     		b	.L52
+ 536              	.L47:
+ 195:main.c        ****                 case 3:
+ 196:main.c        ****                     // 3, 2 (Print C)
+ 197:main.c        ****                     if(length == 16){
+ 537              		.loc 1 197 0
+ 538 023a 102C     		cmp	r4, #16
+ 539 023c 03D1     		bne	.L50
+ 540              	.LVL95:
+ 198:main.c        ****                         length = 0;
+ 199:main.c        ****                         LCD_ClearDisplay();
+ 541              		.loc 1 199 0
+ 542 023e 0120     		movs	r0, #1
+ 543 0240 FFF7FEFF 		bl	LCD_WriteControl
+ 544              	.LVL96:
+ 198:main.c        ****                         length = 0;
+ 545              		.loc 1 198 0
+ 546 0244 0024     		movs	r4, #0
+ 547              	.LVL97:
+ 548              	.L50:
+ 200:main.c        ****                     }
+ 201:main.c        ****                     LCD_WriteData('C');
+ 549              		.loc 1 201 0
+ 550 0246 4320     		movs	r0, #67
+ 551 0248 FFF7FEFF 		bl	LCD_WriteData
+ 552              	.LVL98:
+ 202:main.c        ****                     length++;
+ 553              		.loc 1 202 0
+ 554 024c 0134     		adds	r4, r4, #1
+ 555              	.LVL99:
+ 203:main.c        ****                     break;
+ 556              		.loc 1 203 0
+ 557 024e 09E0     		b	.L52
+ 558              	.L45:
+ 204:main.c        ****                 case 0:
+ 205:main.c        ****                     // 3, 3 (Print D)
+ 206:main.c        ****                     if(length == 16){
+ 559              		.loc 1 206 0
+ 560 0250 102C     		cmp	r4, #16
+ 561 0252 03D1     		bne	.L51
+ 562              	.LVL100:
+ 207:main.c        ****                         length = 0;
+ 208:main.c        ****                         LCD_ClearDisplay();
+ 563              		.loc 1 208 0
+ 564 0254 0120     		movs	r0, #1
+ 565 0256 FFF7FEFF 		bl	LCD_WriteControl
+ 566              	.LVL101:
+ 207:main.c        ****                         length = 0;
+ 567              		.loc 1 207 0
+ 568 025a 0024     		movs	r4, #0
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 15
+
+
+ 569              	.LVL102:
+ 570              	.L51:
+ 209:main.c        ****                     }
+ 210:main.c        ****                     LCD_WriteData('D');
+ 571              		.loc 1 210 0
+ 572 025c 4420     		movs	r0, #68
+ 573 025e FFF7FEFF 		bl	LCD_WriteData
+ 574              	.LVL103:
+ 211:main.c        ****                     length++;
+ 575              		.loc 1 211 0
+ 576 0262 0134     		adds	r4, r4, #1
+ 577              	.LVL104:
+ 578              	.L52:
+ 212:main.c        ****                     break;
+ 213:main.c        ****             }
+ 214:main.c        ****         }
+ 215:main.c        ****         // Check for release
+ 216:main.c        ****         while(C0_Read() == 1 || C1_Read() == 1 || C2_Read() == 1 || C3_Read() == 1);
+ 579              		.loc 1 216 0 discriminator 7
+ 580 0264 FFF7FEFF 		bl	C0_Read
+ 581              	.LVL105:
+ 582 0268 0128     		cmp	r0, #1
+ 583 026a FBD0     		beq	.L52
+ 584              		.loc 1 216 0 is_stmt 0 discriminator 2
+ 585 026c FFF7FEFF 		bl	C1_Read
+ 586              	.LVL106:
+ 587 0270 0128     		cmp	r0, #1
+ 588 0272 F7D0     		beq	.L52
+ 589              		.loc 1 216 0 discriminator 4
+ 590 0274 FFF7FEFF 		bl	C2_Read
+ 591              	.LVL107:
+ 592 0278 0128     		cmp	r0, #1
+ 593 027a F3D0     		beq	.L52
+ 594              		.loc 1 216 0 discriminator 6
+ 595 027c FFF7FEFF 		bl	C3_Read
+ 596              	.LVL108:
+ 597 0280 0128     		cmp	r0, #1
+ 598 0282 EFD0     		beq	.L52
+ 599 0284 F0E6     		b	.L2
+ 600              		.cfi_endproc
+ 601              	.LFE34:
+ 602              		.size	main, .-main
+ 603 0286 C046     		.text
+ 604              	.Letext0:
+ 605              		.file 2 "Generated_Source\\PSoC4/LCD.h"
+ 606              		.file 3 "Generated_Source\\PSoC4/R3.h"
+ 607              		.file 4 "Generated_Source\\PSoC4/R0.h"
+ 608              		.file 5 "Generated_Source\\PSoC4/R1.h"
+ 609              		.file 6 "Generated_Source\\PSoC4/R2.h"
+ 610              		.file 7 "Generated_Source\\PSoC4/C0.h"
+ 611              		.file 8 "Generated_Source\\PSoC4/C1.h"
+ 612              		.file 9 "Generated_Source\\PSoC4/C2.h"
+ 613              		.file 10 "Generated_Source\\PSoC4/C3.h"
+ 614              		.file 11 "Generated_Source\\PSoC4/CyLib.h"
+ 615              		.section	.debug_info,"",%progbits
+ 616              	.Ldebug_info0:
+ 617 0000 E8040000 		.4byte	0x4e8
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 16
+
+
+ 618 0004 0400     		.2byte	0x4
+ 619 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 620 000a 04       		.byte	0x4
+ 621 000b 01       		.uleb128 0x1
+ 622 000c 1A010000 		.4byte	.LASF27
+ 623 0010 0C       		.byte	0xc
+ 624 0011 BF010000 		.4byte	.LASF28
+ 625 0015 11000000 		.4byte	.LASF29
+ 626 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 627 001d 00000000 		.4byte	0
+ 628 0021 00000000 		.4byte	.Ldebug_line0
+ 629 0025 02       		.uleb128 0x2
+ 630 0026 01       		.byte	0x1
+ 631 0027 06       		.byte	0x6
+ 632 0028 F1010000 		.4byte	.LASF0
+ 633 002c 02       		.uleb128 0x2
+ 634 002d 01       		.byte	0x1
+ 635 002e 08       		.byte	0x8
+ 636 002f 95000000 		.4byte	.LASF1
+ 637 0033 02       		.uleb128 0x2
+ 638 0034 02       		.byte	0x2
+ 639 0035 05       		.byte	0x5
+ 640 0036 CB010000 		.4byte	.LASF2
+ 641 003a 02       		.uleb128 0x2
+ 642 003b 02       		.byte	0x2
+ 643 003c 07       		.byte	0x7
+ 644 003d BD000000 		.4byte	.LASF3
+ 645 0041 02       		.uleb128 0x2
+ 646 0042 04       		.byte	0x4
+ 647 0043 05       		.byte	0x5
+ 648 0044 DC010000 		.4byte	.LASF4
+ 649 0048 02       		.uleb128 0x2
+ 650 0049 04       		.byte	0x4
+ 651 004a 07       		.byte	0x7
+ 652 004b AB000000 		.4byte	.LASF5
+ 653 004f 02       		.uleb128 0x2
+ 654 0050 08       		.byte	0x8
+ 655 0051 05       		.byte	0x5
+ 656 0052 B1010000 		.4byte	.LASF6
+ 657 0056 02       		.uleb128 0x2
+ 658 0057 08       		.byte	0x8
+ 659 0058 07       		.byte	0x7
+ 660 0059 03010000 		.4byte	.LASF7
+ 661 005d 03       		.uleb128 0x3
+ 662 005e 04       		.byte	0x4
+ 663 005f 05       		.byte	0x5
+ 664 0060 696E7400 		.ascii	"int\000"
+ 665 0064 02       		.uleb128 0x2
+ 666 0065 04       		.byte	0x4
+ 667 0066 07       		.byte	0x7
+ 668 0067 F6000000 		.4byte	.LASF8
+ 669 006b 02       		.uleb128 0x2
+ 670 006c 04       		.byte	0x4
+ 671 006d 04       		.byte	0x4
+ 672 006e 7C000000 		.4byte	.LASF9
+ 673 0072 02       		.uleb128 0x2
+ 674 0073 08       		.byte	0x8
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 17
+
+
+ 675 0074 04       		.byte	0x4
+ 676 0075 D9000000 		.4byte	.LASF10
+ 677 0079 02       		.uleb128 0x2
+ 678 007a 01       		.byte	0x1
+ 679 007b 08       		.byte	0x8
+ 680 007c C6010000 		.4byte	.LASF11
+ 681 0080 02       		.uleb128 0x2
+ 682 0081 04       		.byte	0x4
+ 683 0082 07       		.byte	0x7
+ 684 0083 A8010000 		.4byte	.LASF12
+ 685 0087 02       		.uleb128 0x2
+ 686 0088 08       		.byte	0x8
+ 687 0089 04       		.byte	0x4
+ 688 008a E5010000 		.4byte	.LASF13
+ 689 008e 04       		.uleb128 0x4
+ 690 008f E9000000 		.4byte	.LASF30
+ 691 0093 01       		.byte	0x1
+ 692 0094 0E       		.byte	0xe
+ 693 0095 5D000000 		.4byte	0x5d
+ 694 0099 00000000 		.4byte	.LFB34
+ 695 009d 86020000 		.4byte	.LFE34-.LFB34
+ 696 00a1 01       		.uleb128 0x1
+ 697 00a2 9C       		.byte	0x9c
+ 698 00a3 67040000 		.4byte	0x467
+ 699 00a7 05       		.uleb128 0x5
+ 700 00a8 7800     		.ascii	"x\000"
+ 701 00aa 01       		.byte	0x1
+ 702 00ab 13       		.byte	0x13
+ 703 00ac 5D000000 		.4byte	0x5d
+ 704 00b0 00000000 		.4byte	.LLST0
+ 705 00b4 06       		.uleb128 0x6
+ 706 00b5 D5010000 		.4byte	.LASF14
+ 707 00b9 01       		.byte	0x1
+ 708 00ba 14       		.byte	0x14
+ 709 00bb 5D000000 		.4byte	0x5d
+ 710 00bf 36000000 		.4byte	.LLST1
+ 711 00c3 07       		.uleb128 0x7
+ 712 00c4 08000000 		.4byte	.LVL1
+ 713 00c8 67040000 		.4byte	0x467
+ 714 00cc 08       		.uleb128 0x8
+ 715 00cd 0E000000 		.4byte	.LVL2
+ 716 00d1 72040000 		.4byte	0x472
+ 717 00d5 DF000000 		.4byte	0xdf
+ 718 00d9 09       		.uleb128 0x9
+ 719 00da 01       		.uleb128 0x1
+ 720 00db 50       		.byte	0x50
+ 721 00dc 01       		.uleb128 0x1
+ 722 00dd 31       		.byte	0x31
+ 723 00de 00       		.byte	0
+ 724 00df 08       		.uleb128 0x8
+ 725 00e0 30000000 		.4byte	.LVL4
+ 726 00e4 7D040000 		.4byte	0x47d
+ 727 00e8 F2000000 		.4byte	0xf2
+ 728 00ec 09       		.uleb128 0x9
+ 729 00ed 01       		.uleb128 0x1
+ 730 00ee 50       		.byte	0x50
+ 731 00ef 01       		.uleb128 0x1
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 18
+
+
+ 732 00f0 30       		.byte	0x30
+ 733 00f1 00       		.byte	0
+ 734 00f2 08       		.uleb128 0x8
+ 735 00f3 36000000 		.4byte	.LVL5
+ 736 00f7 88040000 		.4byte	0x488
+ 737 00fb 05010000 		.4byte	0x105
+ 738 00ff 09       		.uleb128 0x9
+ 739 0100 01       		.uleb128 0x1
+ 740 0101 50       		.byte	0x50
+ 741 0102 01       		.uleb128 0x1
+ 742 0103 31       		.byte	0x31
+ 743 0104 00       		.byte	0
+ 744 0105 08       		.uleb128 0x8
+ 745 0106 40000000 		.4byte	.LVL7
+ 746 010a 88040000 		.4byte	0x488
+ 747 010e 18010000 		.4byte	0x118
+ 748 0112 09       		.uleb128 0x9
+ 749 0113 01       		.uleb128 0x1
+ 750 0114 50       		.byte	0x50
+ 751 0115 01       		.uleb128 0x1
+ 752 0116 30       		.byte	0x30
+ 753 0117 00       		.byte	0
+ 754 0118 08       		.uleb128 0x8
+ 755 0119 46000000 		.4byte	.LVL8
+ 756 011d 93040000 		.4byte	0x493
+ 757 0121 2B010000 		.4byte	0x12b
+ 758 0125 09       		.uleb128 0x9
+ 759 0126 01       		.uleb128 0x1
+ 760 0127 50       		.byte	0x50
+ 761 0128 01       		.uleb128 0x1
+ 762 0129 31       		.byte	0x31
+ 763 012a 00       		.byte	0
+ 764 012b 08       		.uleb128 0x8
+ 765 012c 50000000 		.4byte	.LVL10
+ 766 0130 93040000 		.4byte	0x493
+ 767 0134 3E010000 		.4byte	0x13e
+ 768 0138 09       		.uleb128 0x9
+ 769 0139 01       		.uleb128 0x1
+ 770 013a 50       		.byte	0x50
+ 771 013b 01       		.uleb128 0x1
+ 772 013c 30       		.byte	0x30
+ 773 013d 00       		.byte	0
+ 774 013e 08       		.uleb128 0x8
+ 775 013f 56000000 		.4byte	.LVL11
+ 776 0143 9E040000 		.4byte	0x49e
+ 777 0147 51010000 		.4byte	0x151
+ 778 014b 09       		.uleb128 0x9
+ 779 014c 01       		.uleb128 0x1
+ 780 014d 50       		.byte	0x50
+ 781 014e 01       		.uleb128 0x1
+ 782 014f 31       		.byte	0x31
+ 783 0150 00       		.byte	0
+ 784 0151 08       		.uleb128 0x8
+ 785 0152 60000000 		.4byte	.LVL13
+ 786 0156 9E040000 		.4byte	0x49e
+ 787 015a 64010000 		.4byte	0x164
+ 788 015e 09       		.uleb128 0x9
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 19
+
+
+ 789 015f 01       		.uleb128 0x1
+ 790 0160 50       		.byte	0x50
+ 791 0161 01       		.uleb128 0x1
+ 792 0162 30       		.byte	0x30
+ 793 0163 00       		.byte	0
+ 794 0164 08       		.uleb128 0x8
+ 795 0165 66000000 		.4byte	.LVL14
+ 796 0169 7D040000 		.4byte	0x47d
+ 797 016d 77010000 		.4byte	0x177
+ 798 0171 09       		.uleb128 0x9
+ 799 0172 01       		.uleb128 0x1
+ 800 0173 50       		.byte	0x50
+ 801 0174 01       		.uleb128 0x1
+ 802 0175 31       		.byte	0x31
+ 803 0176 00       		.byte	0
+ 804 0177 07       		.uleb128 0x7
+ 805 0178 6C000000 		.4byte	.LVL16
+ 806 017c A9040000 		.4byte	0x4a9
+ 807 0180 07       		.uleb128 0x7
+ 808 0181 74000000 		.4byte	.LVL17
+ 809 0185 B4040000 		.4byte	0x4b4
+ 810 0189 07       		.uleb128 0x7
+ 811 018a 7C000000 		.4byte	.LVL18
+ 812 018e BF040000 		.4byte	0x4bf
+ 813 0192 07       		.uleb128 0x7
+ 814 0193 84000000 		.4byte	.LVL19
+ 815 0197 CA040000 		.4byte	0x4ca
+ 816 019b 08       		.uleb128 0x8
+ 817 019c 8E000000 		.4byte	.LVL20
+ 818 01a0 D5040000 		.4byte	0x4d5
+ 819 01a4 AE010000 		.4byte	0x1ae
+ 820 01a8 09       		.uleb128 0x9
+ 821 01a9 01       		.uleb128 0x1
+ 822 01aa 50       		.byte	0x50
+ 823 01ab 01       		.uleb128 0x1
+ 824 01ac 3A       		.byte	0x3a
+ 825 01ad 00       		.byte	0
+ 826 01ae 07       		.uleb128 0x7
+ 827 01af 92000000 		.4byte	.LVL21
+ 828 01b3 A9040000 		.4byte	0x4a9
+ 829 01b7 08       		.uleb128 0x8
+ 830 01b8 B6000000 		.4byte	.LVL23
+ 831 01bc 72040000 		.4byte	0x472
+ 832 01c0 CA010000 		.4byte	0x1ca
+ 833 01c4 09       		.uleb128 0x9
+ 834 01c5 01       		.uleb128 0x1
+ 835 01c6 50       		.byte	0x50
+ 836 01c7 01       		.uleb128 0x1
+ 837 01c8 31       		.byte	0x31
+ 838 01c9 00       		.byte	0
+ 839 01ca 08       		.uleb128 0x8
+ 840 01cb BE000000 		.4byte	.LVL25
+ 841 01cf E0040000 		.4byte	0x4e0
+ 842 01d3 DE010000 		.4byte	0x1de
+ 843 01d7 09       		.uleb128 0x9
+ 844 01d8 01       		.uleb128 0x1
+ 845 01d9 50       		.byte	0x50
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 20
+
+
+ 846 01da 02       		.uleb128 0x2
+ 847 01db 08       		.byte	0x8
+ 848 01dc 31       		.byte	0x31
+ 849 01dd 00       		.byte	0
+ 850 01de 08       		.uleb128 0x8
+ 851 01df CC000000 		.4byte	.LVL28
+ 852 01e3 72040000 		.4byte	0x472
+ 853 01e7 F1010000 		.4byte	0x1f1
+ 854 01eb 09       		.uleb128 0x9
+ 855 01ec 01       		.uleb128 0x1
+ 856 01ed 50       		.byte	0x50
+ 857 01ee 01       		.uleb128 0x1
+ 858 01ef 31       		.byte	0x31
+ 859 01f0 00       		.byte	0
+ 860 01f1 08       		.uleb128 0x8
+ 861 01f2 D4000000 		.4byte	.LVL30
+ 862 01f6 E0040000 		.4byte	0x4e0
+ 863 01fa 05020000 		.4byte	0x205
+ 864 01fe 09       		.uleb128 0x9
+ 865 01ff 01       		.uleb128 0x1
+ 866 0200 50       		.byte	0x50
+ 867 0201 02       		.uleb128 0x2
+ 868 0202 08       		.byte	0x8
+ 869 0203 34       		.byte	0x34
+ 870 0204 00       		.byte	0
+ 871 0205 08       		.uleb128 0x8
+ 872 0206 E2000000 		.4byte	.LVL33
+ 873 020a 72040000 		.4byte	0x472
+ 874 020e 18020000 		.4byte	0x218
+ 875 0212 09       		.uleb128 0x9
+ 876 0213 01       		.uleb128 0x1
+ 877 0214 50       		.byte	0x50
+ 878 0215 01       		.uleb128 0x1
+ 879 0216 31       		.byte	0x31
+ 880 0217 00       		.byte	0
+ 881 0218 08       		.uleb128 0x8
+ 882 0219 EA000000 		.4byte	.LVL35
+ 883 021d E0040000 		.4byte	0x4e0
+ 884 0221 2C020000 		.4byte	0x22c
+ 885 0225 09       		.uleb128 0x9
+ 886 0226 01       		.uleb128 0x1
+ 887 0227 50       		.byte	0x50
+ 888 0228 02       		.uleb128 0x2
+ 889 0229 08       		.byte	0x8
+ 890 022a 37       		.byte	0x37
+ 891 022b 00       		.byte	0
+ 892 022c 08       		.uleb128 0x8
+ 893 022d F8000000 		.4byte	.LVL38
+ 894 0231 72040000 		.4byte	0x472
+ 895 0235 3F020000 		.4byte	0x23f
+ 896 0239 09       		.uleb128 0x9
+ 897 023a 01       		.uleb128 0x1
+ 898 023b 50       		.byte	0x50
+ 899 023c 01       		.uleb128 0x1
+ 900 023d 31       		.byte	0x31
+ 901 023e 00       		.byte	0
+ 902 023f 08       		.uleb128 0x8
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 21
+
+
+ 903 0240 00010000 		.4byte	.LVL40
+ 904 0244 E0040000 		.4byte	0x4e0
+ 905 0248 53020000 		.4byte	0x253
+ 906 024c 09       		.uleb128 0x9
+ 907 024d 01       		.uleb128 0x1
+ 908 024e 50       		.byte	0x50
+ 909 024f 02       		.uleb128 0x2
+ 910 0250 08       		.byte	0x8
+ 911 0251 2A       		.byte	0x2a
+ 912 0252 00       		.byte	0
+ 913 0253 07       		.uleb128 0x7
+ 914 0254 08010000 		.4byte	.LVL42
+ 915 0258 B4040000 		.4byte	0x4b4
+ 916 025c 08       		.uleb128 0x8
+ 917 025d 2C010000 		.4byte	.LVL44
+ 918 0261 72040000 		.4byte	0x472
+ 919 0265 6F020000 		.4byte	0x26f
+ 920 0269 09       		.uleb128 0x9
+ 921 026a 01       		.uleb128 0x1
+ 922 026b 50       		.byte	0x50
+ 923 026c 01       		.uleb128 0x1
+ 924 026d 31       		.byte	0x31
+ 925 026e 00       		.byte	0
+ 926 026f 08       		.uleb128 0x8
+ 927 0270 34010000 		.4byte	.LVL46
+ 928 0274 E0040000 		.4byte	0x4e0
+ 929 0278 83020000 		.4byte	0x283
+ 930 027c 09       		.uleb128 0x9
+ 931 027d 01       		.uleb128 0x1
+ 932 027e 50       		.byte	0x50
+ 933 027f 02       		.uleb128 0x2
+ 934 0280 08       		.byte	0x8
+ 935 0281 32       		.byte	0x32
+ 936 0282 00       		.byte	0
+ 937 0283 08       		.uleb128 0x8
+ 938 0284 42010000 		.4byte	.LVL49
+ 939 0288 72040000 		.4byte	0x472
+ 940 028c 96020000 		.4byte	0x296
+ 941 0290 09       		.uleb128 0x9
+ 942 0291 01       		.uleb128 0x1
+ 943 0292 50       		.byte	0x50
+ 944 0293 01       		.uleb128 0x1
+ 945 0294 31       		.byte	0x31
+ 946 0295 00       		.byte	0
+ 947 0296 08       		.uleb128 0x8
+ 948 0297 4A010000 		.4byte	.LVL51
+ 949 029b E0040000 		.4byte	0x4e0
+ 950 029f AA020000 		.4byte	0x2aa
+ 951 02a3 09       		.uleb128 0x9
+ 952 02a4 01       		.uleb128 0x1
+ 953 02a5 50       		.byte	0x50
+ 954 02a6 02       		.uleb128 0x2
+ 955 02a7 08       		.byte	0x8
+ 956 02a8 35       		.byte	0x35
+ 957 02a9 00       		.byte	0
+ 958 02aa 08       		.uleb128 0x8
+ 959 02ab 58010000 		.4byte	.LVL54
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 22
+
+
+ 960 02af 72040000 		.4byte	0x472
+ 961 02b3 BD020000 		.4byte	0x2bd
+ 962 02b7 09       		.uleb128 0x9
+ 963 02b8 01       		.uleb128 0x1
+ 964 02b9 50       		.byte	0x50
+ 965 02ba 01       		.uleb128 0x1
+ 966 02bb 31       		.byte	0x31
+ 967 02bc 00       		.byte	0
+ 968 02bd 08       		.uleb128 0x8
+ 969 02be 60010000 		.4byte	.LVL56
+ 970 02c2 E0040000 		.4byte	0x4e0
+ 971 02c6 D1020000 		.4byte	0x2d1
+ 972 02ca 09       		.uleb128 0x9
+ 973 02cb 01       		.uleb128 0x1
+ 974 02cc 50       		.byte	0x50
+ 975 02cd 02       		.uleb128 0x2
+ 976 02ce 08       		.byte	0x8
+ 977 02cf 38       		.byte	0x38
+ 978 02d0 00       		.byte	0
+ 979 02d1 08       		.uleb128 0x8
+ 980 02d2 6E010000 		.4byte	.LVL59
+ 981 02d6 72040000 		.4byte	0x472
+ 982 02da E4020000 		.4byte	0x2e4
+ 983 02de 09       		.uleb128 0x9
+ 984 02df 01       		.uleb128 0x1
+ 985 02e0 50       		.byte	0x50
+ 986 02e1 01       		.uleb128 0x1
+ 987 02e2 31       		.byte	0x31
+ 988 02e3 00       		.byte	0
+ 989 02e4 08       		.uleb128 0x8
+ 990 02e5 76010000 		.4byte	.LVL61
+ 991 02e9 E0040000 		.4byte	0x4e0
+ 992 02ed F8020000 		.4byte	0x2f8
+ 993 02f1 09       		.uleb128 0x9
+ 994 02f2 01       		.uleb128 0x1
+ 995 02f3 50       		.byte	0x50
+ 996 02f4 02       		.uleb128 0x2
+ 997 02f5 08       		.byte	0x8
+ 998 02f6 30       		.byte	0x30
+ 999 02f7 00       		.byte	0
+ 1000 02f8 07       		.uleb128 0x7
+ 1001 02f9 7E010000 		.4byte	.LVL63
+ 1002 02fd BF040000 		.4byte	0x4bf
+ 1003 0301 08       		.uleb128 0x8
+ 1004 0302 A2010000 		.4byte	.LVL65
+ 1005 0306 72040000 		.4byte	0x472
+ 1006 030a 14030000 		.4byte	0x314
+ 1007 030e 09       		.uleb128 0x9
+ 1008 030f 01       		.uleb128 0x1
+ 1009 0310 50       		.byte	0x50
+ 1010 0311 01       		.uleb128 0x1
+ 1011 0312 31       		.byte	0x31
+ 1012 0313 00       		.byte	0
+ 1013 0314 08       		.uleb128 0x8
+ 1014 0315 AA010000 		.4byte	.LVL67
+ 1015 0319 E0040000 		.4byte	0x4e0
+ 1016 031d 28030000 		.4byte	0x328
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 23
+
+
+ 1017 0321 09       		.uleb128 0x9
+ 1018 0322 01       		.uleb128 0x1
+ 1019 0323 50       		.byte	0x50
+ 1020 0324 02       		.uleb128 0x2
+ 1021 0325 08       		.byte	0x8
+ 1022 0326 33       		.byte	0x33
+ 1023 0327 00       		.byte	0
+ 1024 0328 08       		.uleb128 0x8
+ 1025 0329 B8010000 		.4byte	.LVL70
+ 1026 032d 72040000 		.4byte	0x472
+ 1027 0331 3B030000 		.4byte	0x33b
+ 1028 0335 09       		.uleb128 0x9
+ 1029 0336 01       		.uleb128 0x1
+ 1030 0337 50       		.byte	0x50
+ 1031 0338 01       		.uleb128 0x1
+ 1032 0339 31       		.byte	0x31
+ 1033 033a 00       		.byte	0
+ 1034 033b 08       		.uleb128 0x8
+ 1035 033c C0010000 		.4byte	.LVL72
+ 1036 0340 E0040000 		.4byte	0x4e0
+ 1037 0344 4F030000 		.4byte	0x34f
+ 1038 0348 09       		.uleb128 0x9
+ 1039 0349 01       		.uleb128 0x1
+ 1040 034a 50       		.byte	0x50
+ 1041 034b 02       		.uleb128 0x2
+ 1042 034c 08       		.byte	0x8
+ 1043 034d 36       		.byte	0x36
+ 1044 034e 00       		.byte	0
+ 1045 034f 08       		.uleb128 0x8
+ 1046 0350 CE010000 		.4byte	.LVL75
+ 1047 0354 72040000 		.4byte	0x472
+ 1048 0358 62030000 		.4byte	0x362
+ 1049 035c 09       		.uleb128 0x9
+ 1050 035d 01       		.uleb128 0x1
+ 1051 035e 50       		.byte	0x50
+ 1052 035f 01       		.uleb128 0x1
+ 1053 0360 31       		.byte	0x31
+ 1054 0361 00       		.byte	0
+ 1055 0362 08       		.uleb128 0x8
+ 1056 0363 D6010000 		.4byte	.LVL77
+ 1057 0367 E0040000 		.4byte	0x4e0
+ 1058 036b 76030000 		.4byte	0x376
+ 1059 036f 09       		.uleb128 0x9
+ 1060 0370 01       		.uleb128 0x1
+ 1061 0371 50       		.byte	0x50
+ 1062 0372 02       		.uleb128 0x2
+ 1063 0373 08       		.byte	0x8
+ 1064 0374 39       		.byte	0x39
+ 1065 0375 00       		.byte	0
+ 1066 0376 08       		.uleb128 0x8
+ 1067 0377 E4010000 		.4byte	.LVL80
+ 1068 037b 72040000 		.4byte	0x472
+ 1069 037f 89030000 		.4byte	0x389
+ 1070 0383 09       		.uleb128 0x9
+ 1071 0384 01       		.uleb128 0x1
+ 1072 0385 50       		.byte	0x50
+ 1073 0386 01       		.uleb128 0x1
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 24
+
+
+ 1074 0387 31       		.byte	0x31
+ 1075 0388 00       		.byte	0
+ 1076 0389 08       		.uleb128 0x8
+ 1077 038a EC010000 		.4byte	.LVL82
+ 1078 038e E0040000 		.4byte	0x4e0
+ 1079 0392 9D030000 		.4byte	0x39d
+ 1080 0396 09       		.uleb128 0x9
+ 1081 0397 01       		.uleb128 0x1
+ 1082 0398 50       		.byte	0x50
+ 1083 0399 02       		.uleb128 0x2
+ 1084 039a 08       		.byte	0x8
+ 1085 039b 23       		.byte	0x23
+ 1086 039c 00       		.byte	0
+ 1087 039d 07       		.uleb128 0x7
+ 1088 039e F4010000 		.4byte	.LVL84
+ 1089 03a2 CA040000 		.4byte	0x4ca
+ 1090 03a6 08       		.uleb128 0x8
+ 1091 03a7 18020000 		.4byte	.LVL86
+ 1092 03ab 72040000 		.4byte	0x472
+ 1093 03af B9030000 		.4byte	0x3b9
+ 1094 03b3 09       		.uleb128 0x9
+ 1095 03b4 01       		.uleb128 0x1
+ 1096 03b5 50       		.byte	0x50
+ 1097 03b6 01       		.uleb128 0x1
+ 1098 03b7 31       		.byte	0x31
+ 1099 03b8 00       		.byte	0
+ 1100 03b9 08       		.uleb128 0x8
+ 1101 03ba 20020000 		.4byte	.LVL88
+ 1102 03be E0040000 		.4byte	0x4e0
+ 1103 03c2 CD030000 		.4byte	0x3cd
+ 1104 03c6 09       		.uleb128 0x9
+ 1105 03c7 01       		.uleb128 0x1
+ 1106 03c8 50       		.byte	0x50
+ 1107 03c9 02       		.uleb128 0x2
+ 1108 03ca 08       		.byte	0x8
+ 1109 03cb 41       		.byte	0x41
+ 1110 03cc 00       		.byte	0
+ 1111 03cd 08       		.uleb128 0x8
+ 1112 03ce 2E020000 		.4byte	.LVL91
+ 1113 03d2 72040000 		.4byte	0x472
+ 1114 03d6 E0030000 		.4byte	0x3e0
+ 1115 03da 09       		.uleb128 0x9
+ 1116 03db 01       		.uleb128 0x1
+ 1117 03dc 50       		.byte	0x50
+ 1118 03dd 01       		.uleb128 0x1
+ 1119 03de 31       		.byte	0x31
+ 1120 03df 00       		.byte	0
+ 1121 03e0 08       		.uleb128 0x8
+ 1122 03e1 36020000 		.4byte	.LVL93
+ 1123 03e5 E0040000 		.4byte	0x4e0
+ 1124 03e9 F4030000 		.4byte	0x3f4
+ 1125 03ed 09       		.uleb128 0x9
+ 1126 03ee 01       		.uleb128 0x1
+ 1127 03ef 50       		.byte	0x50
+ 1128 03f0 02       		.uleb128 0x2
+ 1129 03f1 08       		.byte	0x8
+ 1130 03f2 42       		.byte	0x42
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 25
+
+
+ 1131 03f3 00       		.byte	0
+ 1132 03f4 08       		.uleb128 0x8
+ 1133 03f5 44020000 		.4byte	.LVL96
+ 1134 03f9 72040000 		.4byte	0x472
+ 1135 03fd 07040000 		.4byte	0x407
+ 1136 0401 09       		.uleb128 0x9
+ 1137 0402 01       		.uleb128 0x1
+ 1138 0403 50       		.byte	0x50
+ 1139 0404 01       		.uleb128 0x1
+ 1140 0405 31       		.byte	0x31
+ 1141 0406 00       		.byte	0
+ 1142 0407 08       		.uleb128 0x8
+ 1143 0408 4C020000 		.4byte	.LVL98
+ 1144 040c E0040000 		.4byte	0x4e0
+ 1145 0410 1B040000 		.4byte	0x41b
+ 1146 0414 09       		.uleb128 0x9
+ 1147 0415 01       		.uleb128 0x1
+ 1148 0416 50       		.byte	0x50
+ 1149 0417 02       		.uleb128 0x2
+ 1150 0418 08       		.byte	0x8
+ 1151 0419 43       		.byte	0x43
+ 1152 041a 00       		.byte	0
+ 1153 041b 08       		.uleb128 0x8
+ 1154 041c 5A020000 		.4byte	.LVL101
+ 1155 0420 72040000 		.4byte	0x472
+ 1156 0424 2E040000 		.4byte	0x42e
+ 1157 0428 09       		.uleb128 0x9
+ 1158 0429 01       		.uleb128 0x1
+ 1159 042a 50       		.byte	0x50
+ 1160 042b 01       		.uleb128 0x1
+ 1161 042c 31       		.byte	0x31
+ 1162 042d 00       		.byte	0
+ 1163 042e 08       		.uleb128 0x8
+ 1164 042f 62020000 		.4byte	.LVL103
+ 1165 0433 E0040000 		.4byte	0x4e0
+ 1166 0437 42040000 		.4byte	0x442
+ 1167 043b 09       		.uleb128 0x9
+ 1168 043c 01       		.uleb128 0x1
+ 1169 043d 50       		.byte	0x50
+ 1170 043e 02       		.uleb128 0x2
+ 1171 043f 08       		.byte	0x8
+ 1172 0440 44       		.byte	0x44
+ 1173 0441 00       		.byte	0
+ 1174 0442 07       		.uleb128 0x7
+ 1175 0443 68020000 		.4byte	.LVL105
+ 1176 0447 A9040000 		.4byte	0x4a9
+ 1177 044b 07       		.uleb128 0x7
+ 1178 044c 70020000 		.4byte	.LVL106
+ 1179 0450 B4040000 		.4byte	0x4b4
+ 1180 0454 07       		.uleb128 0x7
+ 1181 0455 78020000 		.4byte	.LVL107
+ 1182 0459 BF040000 		.4byte	0x4bf
+ 1183 045d 07       		.uleb128 0x7
+ 1184 045e 80020000 		.4byte	.LVL108
+ 1185 0462 CA040000 		.4byte	0x4ca
+ 1186 0466 00       		.byte	0
+ 1187 0467 0A       		.uleb128 0xa
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 26
+
+
+ 1188 0468 82000000 		.4byte	.LASF15
+ 1189 046c 82000000 		.4byte	.LASF15
+ 1190 0470 02       		.byte	0x2
+ 1191 0471 38       		.byte	0x38
+ 1192 0472 0A       		.uleb128 0xa
+ 1193 0473 00000000 		.4byte	.LASF16
+ 1194 0477 00000000 		.4byte	.LASF16
+ 1195 047b 02       		.byte	0x2
+ 1196 047c 3A       		.byte	0x3a
+ 1197 047d 0A       		.uleb128 0xa
+ 1198 047e E0000000 		.4byte	.LASF17
+ 1199 0482 E0000000 		.4byte	.LASF17
+ 1200 0486 03       		.byte	0x3
+ 1201 0487 33       		.byte	0x33
+ 1202 0488 0A       		.uleb128 0xa
+ 1203 0489 65000000 		.4byte	.LASF18
+ 1204 048d 65000000 		.4byte	.LASF18
+ 1205 0491 04       		.byte	0x4
+ 1206 0492 33       		.byte	0x33
+ 1207 0493 0A       		.uleb128 0xa
+ 1208 0494 8C000000 		.4byte	.LASF19
+ 1209 0498 8C000000 		.4byte	.LASF19
+ 1210 049c 05       		.byte	0x5
+ 1211 049d 33       		.byte	0x33
+ 1212 049e 0A       		.uleb128 0xa
+ 1213 049f D0000000 		.4byte	.LASF20
+ 1214 04a3 D0000000 		.4byte	.LASF20
+ 1215 04a7 06       		.byte	0x6
+ 1216 04a8 33       		.byte	0x33
+ 1217 04a9 0A       		.uleb128 0xa
+ 1218 04aa FD010000 		.4byte	.LASF21
+ 1219 04ae FD010000 		.4byte	.LASF21
+ 1220 04b2 07       		.byte	0x7
+ 1221 04b3 32       		.byte	0x32
+ 1222 04b4 0A       		.uleb128 0xa
+ 1223 04b5 A3000000 		.4byte	.LASF22
+ 1224 04b9 A3000000 		.4byte	.LASF22
+ 1225 04bd 08       		.byte	0x8
+ 1226 04be 32       		.byte	0x32
+ 1227 04bf 0A       		.uleb128 0xa
+ 1228 04c0 EE000000 		.4byte	.LASF23
+ 1229 04c4 EE000000 		.4byte	.LASF23
+ 1230 04c8 09       		.byte	0x9
+ 1231 04c9 32       		.byte	0x32
+ 1232 04ca 0A       		.uleb128 0xa
+ 1233 04cb 5D000000 		.4byte	.LASF24
+ 1234 04cf 5D000000 		.4byte	.LASF24
+ 1235 04d3 0A       		.byte	0xa
+ 1236 04d4 32       		.byte	0x32
+ 1237 04d5 0A       		.uleb128 0xa
+ 1238 04d6 05020000 		.4byte	.LASF25
+ 1239 04da 05020000 		.4byte	.LASF25
+ 1240 04de 0B       		.byte	0xb
+ 1241 04df D9       		.byte	0xd9
+ 1242 04e0 0A       		.uleb128 0xa
+ 1243 04e1 6E000000 		.4byte	.LASF26
+ 1244 04e5 6E000000 		.4byte	.LASF26
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 27
+
+
+ 1245 04e9 02       		.byte	0x2
+ 1246 04ea 3B       		.byte	0x3b
+ 1247 04eb 00       		.byte	0
+ 1248              		.section	.debug_abbrev,"",%progbits
+ 1249              	.Ldebug_abbrev0:
+ 1250 0000 01       		.uleb128 0x1
+ 1251 0001 11       		.uleb128 0x11
+ 1252 0002 01       		.byte	0x1
+ 1253 0003 25       		.uleb128 0x25
+ 1254 0004 0E       		.uleb128 0xe
+ 1255 0005 13       		.uleb128 0x13
+ 1256 0006 0B       		.uleb128 0xb
+ 1257 0007 03       		.uleb128 0x3
+ 1258 0008 0E       		.uleb128 0xe
+ 1259 0009 1B       		.uleb128 0x1b
+ 1260 000a 0E       		.uleb128 0xe
+ 1261 000b 55       		.uleb128 0x55
+ 1262 000c 17       		.uleb128 0x17
+ 1263 000d 11       		.uleb128 0x11
+ 1264 000e 01       		.uleb128 0x1
+ 1265 000f 10       		.uleb128 0x10
+ 1266 0010 17       		.uleb128 0x17
+ 1267 0011 00       		.byte	0
+ 1268 0012 00       		.byte	0
+ 1269 0013 02       		.uleb128 0x2
+ 1270 0014 24       		.uleb128 0x24
+ 1271 0015 00       		.byte	0
+ 1272 0016 0B       		.uleb128 0xb
+ 1273 0017 0B       		.uleb128 0xb
+ 1274 0018 3E       		.uleb128 0x3e
+ 1275 0019 0B       		.uleb128 0xb
+ 1276 001a 03       		.uleb128 0x3
+ 1277 001b 0E       		.uleb128 0xe
+ 1278 001c 00       		.byte	0
+ 1279 001d 00       		.byte	0
+ 1280 001e 03       		.uleb128 0x3
+ 1281 001f 24       		.uleb128 0x24
+ 1282 0020 00       		.byte	0
+ 1283 0021 0B       		.uleb128 0xb
+ 1284 0022 0B       		.uleb128 0xb
+ 1285 0023 3E       		.uleb128 0x3e
+ 1286 0024 0B       		.uleb128 0xb
+ 1287 0025 03       		.uleb128 0x3
+ 1288 0026 08       		.uleb128 0x8
+ 1289 0027 00       		.byte	0
+ 1290 0028 00       		.byte	0
+ 1291 0029 04       		.uleb128 0x4
+ 1292 002a 2E       		.uleb128 0x2e
+ 1293 002b 01       		.byte	0x1
+ 1294 002c 3F       		.uleb128 0x3f
+ 1295 002d 19       		.uleb128 0x19
+ 1296 002e 03       		.uleb128 0x3
+ 1297 002f 0E       		.uleb128 0xe
+ 1298 0030 3A       		.uleb128 0x3a
+ 1299 0031 0B       		.uleb128 0xb
+ 1300 0032 3B       		.uleb128 0x3b
+ 1301 0033 0B       		.uleb128 0xb
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 28
+
+
+ 1302 0034 27       		.uleb128 0x27
+ 1303 0035 19       		.uleb128 0x19
+ 1304 0036 49       		.uleb128 0x49
+ 1305 0037 13       		.uleb128 0x13
+ 1306 0038 8701     		.uleb128 0x87
+ 1307 003a 19       		.uleb128 0x19
+ 1308 003b 11       		.uleb128 0x11
+ 1309 003c 01       		.uleb128 0x1
+ 1310 003d 12       		.uleb128 0x12
+ 1311 003e 06       		.uleb128 0x6
+ 1312 003f 40       		.uleb128 0x40
+ 1313 0040 18       		.uleb128 0x18
+ 1314 0041 9742     		.uleb128 0x2117
+ 1315 0043 19       		.uleb128 0x19
+ 1316 0044 01       		.uleb128 0x1
+ 1317 0045 13       		.uleb128 0x13
+ 1318 0046 00       		.byte	0
+ 1319 0047 00       		.byte	0
+ 1320 0048 05       		.uleb128 0x5
+ 1321 0049 34       		.uleb128 0x34
+ 1322 004a 00       		.byte	0
+ 1323 004b 03       		.uleb128 0x3
+ 1324 004c 08       		.uleb128 0x8
+ 1325 004d 3A       		.uleb128 0x3a
+ 1326 004e 0B       		.uleb128 0xb
+ 1327 004f 3B       		.uleb128 0x3b
+ 1328 0050 0B       		.uleb128 0xb
+ 1329 0051 49       		.uleb128 0x49
+ 1330 0052 13       		.uleb128 0x13
+ 1331 0053 02       		.uleb128 0x2
+ 1332 0054 17       		.uleb128 0x17
+ 1333 0055 00       		.byte	0
+ 1334 0056 00       		.byte	0
+ 1335 0057 06       		.uleb128 0x6
+ 1336 0058 34       		.uleb128 0x34
+ 1337 0059 00       		.byte	0
+ 1338 005a 03       		.uleb128 0x3
+ 1339 005b 0E       		.uleb128 0xe
+ 1340 005c 3A       		.uleb128 0x3a
+ 1341 005d 0B       		.uleb128 0xb
+ 1342 005e 3B       		.uleb128 0x3b
+ 1343 005f 0B       		.uleb128 0xb
+ 1344 0060 49       		.uleb128 0x49
+ 1345 0061 13       		.uleb128 0x13
+ 1346 0062 02       		.uleb128 0x2
+ 1347 0063 17       		.uleb128 0x17
+ 1348 0064 00       		.byte	0
+ 1349 0065 00       		.byte	0
+ 1350 0066 07       		.uleb128 0x7
+ 1351 0067 898201   		.uleb128 0x4109
+ 1352 006a 00       		.byte	0
+ 1353 006b 11       		.uleb128 0x11
+ 1354 006c 01       		.uleb128 0x1
+ 1355 006d 31       		.uleb128 0x31
+ 1356 006e 13       		.uleb128 0x13
+ 1357 006f 00       		.byte	0
+ 1358 0070 00       		.byte	0
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 29
+
+
+ 1359 0071 08       		.uleb128 0x8
+ 1360 0072 898201   		.uleb128 0x4109
+ 1361 0075 01       		.byte	0x1
+ 1362 0076 11       		.uleb128 0x11
+ 1363 0077 01       		.uleb128 0x1
+ 1364 0078 31       		.uleb128 0x31
+ 1365 0079 13       		.uleb128 0x13
+ 1366 007a 01       		.uleb128 0x1
+ 1367 007b 13       		.uleb128 0x13
+ 1368 007c 00       		.byte	0
+ 1369 007d 00       		.byte	0
+ 1370 007e 09       		.uleb128 0x9
+ 1371 007f 8A8201   		.uleb128 0x410a
+ 1372 0082 00       		.byte	0
+ 1373 0083 02       		.uleb128 0x2
+ 1374 0084 18       		.uleb128 0x18
+ 1375 0085 9142     		.uleb128 0x2111
+ 1376 0087 18       		.uleb128 0x18
+ 1377 0088 00       		.byte	0
+ 1378 0089 00       		.byte	0
+ 1379 008a 0A       		.uleb128 0xa
+ 1380 008b 2E       		.uleb128 0x2e
+ 1381 008c 00       		.byte	0
+ 1382 008d 3F       		.uleb128 0x3f
+ 1383 008e 19       		.uleb128 0x19
+ 1384 008f 3C       		.uleb128 0x3c
+ 1385 0090 19       		.uleb128 0x19
+ 1386 0091 6E       		.uleb128 0x6e
+ 1387 0092 0E       		.uleb128 0xe
+ 1388 0093 03       		.uleb128 0x3
+ 1389 0094 0E       		.uleb128 0xe
+ 1390 0095 3A       		.uleb128 0x3a
+ 1391 0096 0B       		.uleb128 0xb
+ 1392 0097 3B       		.uleb128 0x3b
+ 1393 0098 0B       		.uleb128 0xb
+ 1394 0099 00       		.byte	0
+ 1395 009a 00       		.byte	0
+ 1396 009b 00       		.byte	0
+ 1397              		.section	.debug_loc,"",%progbits
+ 1398              	.Ldebug_loc0:
+ 1399              	.LLST0:
+ 1400 0000 04000000 		.4byte	.LVL0
+ 1401 0004 14000000 		.4byte	.LVL3
+ 1402 0008 0200     		.2byte	0x2
+ 1403 000a 30       		.byte	0x30
+ 1404 000b 9F       		.byte	0x9f
+ 1405 000c 14000000 		.4byte	.LVL3
+ 1406 0010 66000000 		.4byte	.LVL14
+ 1407 0014 0100     		.2byte	0x1
+ 1408 0016 55       		.byte	0x55
+ 1409 0017 66000000 		.4byte	.LVL14
+ 1410 001b 68000000 		.4byte	.LVL15
+ 1411 001f 0200     		.2byte	0x2
+ 1412 0021 30       		.byte	0x30
+ 1413 0022 9F       		.byte	0x9f
+ 1414 0023 68000000 		.4byte	.LVL15
+ 1415 0027 86020000 		.4byte	.LFE34
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 30
+
+
+ 1416 002b 0100     		.2byte	0x1
+ 1417 002d 55       		.byte	0x55
+ 1418 002e 00000000 		.4byte	0
+ 1419 0032 00000000 		.4byte	0
+ 1420              	.LLST1:
+ 1421 0036 04000000 		.4byte	.LVL0
+ 1422 003a 14000000 		.4byte	.LVL3
+ 1423 003e 0200     		.2byte	0x2
+ 1424 0040 30       		.byte	0x30
+ 1425 0041 9F       		.byte	0x9f
+ 1426 0042 14000000 		.4byte	.LVL3
+ 1427 0046 B0000000 		.4byte	.LVL22
+ 1428 004a 0100     		.2byte	0x1
+ 1429 004c 54       		.byte	0x54
+ 1430 004d B0000000 		.4byte	.LVL22
+ 1431 0051 B8000000 		.4byte	.LVL24
+ 1432 0055 0200     		.2byte	0x2
+ 1433 0057 30       		.byte	0x30
+ 1434 0058 9F       		.byte	0x9f
+ 1435 0059 B8000000 		.4byte	.LVL24
+ 1436 005d C6000000 		.4byte	.LVL27
+ 1437 0061 0100     		.2byte	0x1
+ 1438 0063 54       		.byte	0x54
+ 1439 0064 C6000000 		.4byte	.LVL27
+ 1440 0068 CE000000 		.4byte	.LVL29
+ 1441 006c 0200     		.2byte	0x2
+ 1442 006e 30       		.byte	0x30
+ 1443 006f 9F       		.byte	0x9f
+ 1444 0070 CE000000 		.4byte	.LVL29
+ 1445 0074 DC000000 		.4byte	.LVL32
+ 1446 0078 0100     		.2byte	0x1
+ 1447 007a 54       		.byte	0x54
+ 1448 007b DC000000 		.4byte	.LVL32
+ 1449 007f E4000000 		.4byte	.LVL34
+ 1450 0083 0200     		.2byte	0x2
+ 1451 0085 30       		.byte	0x30
+ 1452 0086 9F       		.byte	0x9f
+ 1453 0087 E4000000 		.4byte	.LVL34
+ 1454 008b F2000000 		.4byte	.LVL37
+ 1455 008f 0100     		.2byte	0x1
+ 1456 0091 54       		.byte	0x54
+ 1457 0092 F2000000 		.4byte	.LVL37
+ 1458 0096 FA000000 		.4byte	.LVL39
+ 1459 009a 0200     		.2byte	0x2
+ 1460 009c 30       		.byte	0x30
+ 1461 009d 9F       		.byte	0x9f
+ 1462 009e FA000000 		.4byte	.LVL39
+ 1463 00a2 26010000 		.4byte	.LVL43
+ 1464 00a6 0100     		.2byte	0x1
+ 1465 00a8 54       		.byte	0x54
+ 1466 00a9 26010000 		.4byte	.LVL43
+ 1467 00ad 2E010000 		.4byte	.LVL45
+ 1468 00b1 0200     		.2byte	0x2
+ 1469 00b3 30       		.byte	0x30
+ 1470 00b4 9F       		.byte	0x9f
+ 1471 00b5 2E010000 		.4byte	.LVL45
+ 1472 00b9 3C010000 		.4byte	.LVL48
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 31
+
+
+ 1473 00bd 0100     		.2byte	0x1
+ 1474 00bf 54       		.byte	0x54
+ 1475 00c0 3C010000 		.4byte	.LVL48
+ 1476 00c4 44010000 		.4byte	.LVL50
+ 1477 00c8 0200     		.2byte	0x2
+ 1478 00ca 30       		.byte	0x30
+ 1479 00cb 9F       		.byte	0x9f
+ 1480 00cc 44010000 		.4byte	.LVL50
+ 1481 00d0 52010000 		.4byte	.LVL53
+ 1482 00d4 0100     		.2byte	0x1
+ 1483 00d6 54       		.byte	0x54
+ 1484 00d7 52010000 		.4byte	.LVL53
+ 1485 00db 5A010000 		.4byte	.LVL55
+ 1486 00df 0200     		.2byte	0x2
+ 1487 00e1 30       		.byte	0x30
+ 1488 00e2 9F       		.byte	0x9f
+ 1489 00e3 5A010000 		.4byte	.LVL55
+ 1490 00e7 68010000 		.4byte	.LVL58
+ 1491 00eb 0100     		.2byte	0x1
+ 1492 00ed 54       		.byte	0x54
+ 1493 00ee 68010000 		.4byte	.LVL58
+ 1494 00f2 70010000 		.4byte	.LVL60
+ 1495 00f6 0200     		.2byte	0x2
+ 1496 00f8 30       		.byte	0x30
+ 1497 00f9 9F       		.byte	0x9f
+ 1498 00fa 70010000 		.4byte	.LVL60
+ 1499 00fe 9C010000 		.4byte	.LVL64
+ 1500 0102 0100     		.2byte	0x1
+ 1501 0104 54       		.byte	0x54
+ 1502 0105 9C010000 		.4byte	.LVL64
+ 1503 0109 A4010000 		.4byte	.LVL66
+ 1504 010d 0200     		.2byte	0x2
+ 1505 010f 30       		.byte	0x30
+ 1506 0110 9F       		.byte	0x9f
+ 1507 0111 A4010000 		.4byte	.LVL66
+ 1508 0115 B2010000 		.4byte	.LVL69
+ 1509 0119 0100     		.2byte	0x1
+ 1510 011b 54       		.byte	0x54
+ 1511 011c B2010000 		.4byte	.LVL69
+ 1512 0120 BA010000 		.4byte	.LVL71
+ 1513 0124 0200     		.2byte	0x2
+ 1514 0126 30       		.byte	0x30
+ 1515 0127 9F       		.byte	0x9f
+ 1516 0128 BA010000 		.4byte	.LVL71
+ 1517 012c C8010000 		.4byte	.LVL74
+ 1518 0130 0100     		.2byte	0x1
+ 1519 0132 54       		.byte	0x54
+ 1520 0133 C8010000 		.4byte	.LVL74
+ 1521 0137 D0010000 		.4byte	.LVL76
+ 1522 013b 0200     		.2byte	0x2
+ 1523 013d 30       		.byte	0x30
+ 1524 013e 9F       		.byte	0x9f
+ 1525 013f D0010000 		.4byte	.LVL76
+ 1526 0143 DE010000 		.4byte	.LVL79
+ 1527 0147 0100     		.2byte	0x1
+ 1528 0149 54       		.byte	0x54
+ 1529 014a DE010000 		.4byte	.LVL79
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 32
+
+
+ 1530 014e E6010000 		.4byte	.LVL81
+ 1531 0152 0200     		.2byte	0x2
+ 1532 0154 30       		.byte	0x30
+ 1533 0155 9F       		.byte	0x9f
+ 1534 0156 E6010000 		.4byte	.LVL81
+ 1535 015a 12020000 		.4byte	.LVL85
+ 1536 015e 0100     		.2byte	0x1
+ 1537 0160 54       		.byte	0x54
+ 1538 0161 12020000 		.4byte	.LVL85
+ 1539 0165 1A020000 		.4byte	.LVL87
+ 1540 0169 0200     		.2byte	0x2
+ 1541 016b 30       		.byte	0x30
+ 1542 016c 9F       		.byte	0x9f
+ 1543 016d 1A020000 		.4byte	.LVL87
+ 1544 0171 28020000 		.4byte	.LVL90
+ 1545 0175 0100     		.2byte	0x1
+ 1546 0177 54       		.byte	0x54
+ 1547 0178 28020000 		.4byte	.LVL90
+ 1548 017c 30020000 		.4byte	.LVL92
+ 1549 0180 0200     		.2byte	0x2
+ 1550 0182 30       		.byte	0x30
+ 1551 0183 9F       		.byte	0x9f
+ 1552 0184 30020000 		.4byte	.LVL92
+ 1553 0188 3E020000 		.4byte	.LVL95
+ 1554 018c 0100     		.2byte	0x1
+ 1555 018e 54       		.byte	0x54
+ 1556 018f 3E020000 		.4byte	.LVL95
+ 1557 0193 46020000 		.4byte	.LVL97
+ 1558 0197 0200     		.2byte	0x2
+ 1559 0199 30       		.byte	0x30
+ 1560 019a 9F       		.byte	0x9f
+ 1561 019b 46020000 		.4byte	.LVL97
+ 1562 019f 54020000 		.4byte	.LVL100
+ 1563 01a3 0100     		.2byte	0x1
+ 1564 01a5 54       		.byte	0x54
+ 1565 01a6 54020000 		.4byte	.LVL100
+ 1566 01aa 5C020000 		.4byte	.LVL102
+ 1567 01ae 0200     		.2byte	0x2
+ 1568 01b0 30       		.byte	0x30
+ 1569 01b1 9F       		.byte	0x9f
+ 1570 01b2 5C020000 		.4byte	.LVL102
+ 1571 01b6 86020000 		.4byte	.LFE34
+ 1572 01ba 0100     		.2byte	0x1
+ 1573 01bc 54       		.byte	0x54
+ 1574 01bd 00000000 		.4byte	0
+ 1575 01c1 00000000 		.4byte	0
+ 1576              		.section	.debug_aranges,"",%progbits
+ 1577 0000 1C000000 		.4byte	0x1c
+ 1578 0004 0200     		.2byte	0x2
+ 1579 0006 00000000 		.4byte	.Ldebug_info0
+ 1580 000a 04       		.byte	0x4
+ 1581 000b 00       		.byte	0
+ 1582 000c 0000     		.2byte	0
+ 1583 000e 0000     		.2byte	0
+ 1584 0010 00000000 		.4byte	.LFB34
+ 1585 0014 86020000 		.4byte	.LFE34-.LFB34
+ 1586 0018 00000000 		.4byte	0
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 33
+
+
+ 1587 001c 00000000 		.4byte	0
+ 1588              		.section	.debug_ranges,"",%progbits
+ 1589              	.Ldebug_ranges0:
+ 1590 0000 00000000 		.4byte	.LFB34
+ 1591 0004 86020000 		.4byte	.LFE34
+ 1592 0008 00000000 		.4byte	0
+ 1593 000c 00000000 		.4byte	0
+ 1594              		.section	.debug_line,"",%progbits
+ 1595              	.Ldebug_line0:
+ 1596 0000 47010000 		.section	.debug_str,"MS",%progbits,1
+ 1596      02008800 
+ 1596      00000201 
+ 1596      FB0E0D00 
+ 1596      01010101 
+ 1597              	.LASF16:
+ 1598 0000 4C43445F 		.ascii	"LCD_WriteControl\000"
+ 1598      57726974 
+ 1598      65436F6E 
+ 1598      74726F6C 
+ 1598      00
+ 1599              	.LASF29:
+ 1600 0011 433A5C55 		.ascii	"C:\\Users\\Hello Kitty\\Documents\\PSoC Creator\\La"
+ 1600      73657273 
+ 1600      5C48656C 
+ 1600      6C6F204B 
+ 1600      69747479 
+ 1601 003f 62303120 		.ascii	"b01 - GPIO\\Lab01 - GPIO.cydsn\000"
+ 1601      2D204750 
+ 1601      494F5C4C 
+ 1601      61623031 
+ 1601      202D2047 
+ 1602              	.LASF24:
+ 1603 005d 43335F52 		.ascii	"C3_Read\000"
+ 1603      65616400 
+ 1604              	.LASF18:
+ 1605 0065 52305F57 		.ascii	"R0_Write\000"
+ 1605      72697465 
+ 1605      00
+ 1606              	.LASF26:
+ 1607 006e 4C43445F 		.ascii	"LCD_WriteData\000"
+ 1607      57726974 
+ 1607      65446174 
+ 1607      6100
+ 1608              	.LASF9:
+ 1609 007c 666C6F61 		.ascii	"float\000"
+ 1609      7400
+ 1610              	.LASF15:
+ 1611 0082 4C43445F 		.ascii	"LCD_Start\000"
+ 1611      53746172 
+ 1611      7400
+ 1612              	.LASF19:
+ 1613 008c 52315F57 		.ascii	"R1_Write\000"
+ 1613      72697465 
+ 1613      00
+ 1614              	.LASF1:
+ 1615 0095 756E7369 		.ascii	"unsigned char\000"
+ 1615      676E6564 
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 34
+
+
+ 1615      20636861 
+ 1615      7200
+ 1616              	.LASF22:
+ 1617 00a3 43315F52 		.ascii	"C1_Read\000"
+ 1617      65616400 
+ 1618              	.LASF5:
+ 1619 00ab 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1619      20756E73 
+ 1619      69676E65 
+ 1619      6420696E 
+ 1619      7400
+ 1620              	.LASF3:
+ 1621 00bd 73686F72 		.ascii	"short unsigned int\000"
+ 1621      7420756E 
+ 1621      7369676E 
+ 1621      65642069 
+ 1621      6E7400
+ 1622              	.LASF20:
+ 1623 00d0 52325F57 		.ascii	"R2_Write\000"
+ 1623      72697465 
+ 1623      00
+ 1624              	.LASF10:
+ 1625 00d9 646F7562 		.ascii	"double\000"
+ 1625      6C6500
+ 1626              	.LASF17:
+ 1627 00e0 52335F57 		.ascii	"R3_Write\000"
+ 1627      72697465 
+ 1627      00
+ 1628              	.LASF30:
+ 1629 00e9 6D61696E 		.ascii	"main\000"
+ 1629      00
+ 1630              	.LASF23:
+ 1631 00ee 43325F52 		.ascii	"C2_Read\000"
+ 1631      65616400 
+ 1632              	.LASF8:
+ 1633 00f6 756E7369 		.ascii	"unsigned int\000"
+ 1633      676E6564 
+ 1633      20696E74 
+ 1633      00
+ 1634              	.LASF7:
+ 1635 0103 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1635      206C6F6E 
+ 1635      6720756E 
+ 1635      7369676E 
+ 1635      65642069 
+ 1636              	.LASF27:
+ 1637 011a 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1637      43313120 
+ 1637      352E342E 
+ 1637      31203230 
+ 1637      31363036 
+ 1638 014d 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 1638      20726576 
+ 1638      6973696F 
+ 1638      6E203233 
+ 1638      37373135 
+ 1639 0180 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE84a6V.s 			page 35
+
+
+ 1639      66756E63 
+ 1639      74696F6E 
+ 1639      2D736563 
+ 1639      74696F6E 
+ 1640              	.LASF12:
+ 1641 01a8 73697A65 		.ascii	"sizetype\000"
+ 1641      74797065 
+ 1641      00
+ 1642              	.LASF6:
+ 1643 01b1 6C6F6E67 		.ascii	"long long int\000"
+ 1643      206C6F6E 
+ 1643      6720696E 
+ 1643      7400
+ 1644              	.LASF28:
+ 1645 01bf 6D61696E 		.ascii	"main.c\000"
+ 1645      2E6300
+ 1646              	.LASF11:
+ 1647 01c6 63686172 		.ascii	"char\000"
+ 1647      00
+ 1648              	.LASF2:
+ 1649 01cb 73686F72 		.ascii	"short int\000"
+ 1649      7420696E 
+ 1649      7400
+ 1650              	.LASF14:
+ 1651 01d5 6C656E67 		.ascii	"length\000"
+ 1651      746800
+ 1652              	.LASF4:
+ 1653 01dc 6C6F6E67 		.ascii	"long int\000"
+ 1653      20696E74 
+ 1653      00
+ 1654              	.LASF13:
+ 1655 01e5 6C6F6E67 		.ascii	"long double\000"
+ 1655      20646F75 
+ 1655      626C6500 
+ 1656              	.LASF0:
+ 1657 01f1 7369676E 		.ascii	"signed char\000"
+ 1657      65642063 
+ 1657      68617200 
+ 1658              	.LASF21:
+ 1659 01fd 43305F52 		.ascii	"C0_Read\000"
+ 1659      65616400 
+ 1660              	.LASF25:
+ 1661 0205 43794465 		.ascii	"CyDelay\000"
+ 1661      6C617900 
+ 1662              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
