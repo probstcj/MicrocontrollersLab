@@ -10,7 +10,15 @@
  * ========================================
 */
 #include "project.h"
-
+int printChar(char print, int length){
+    if(length == 16){
+        length = 0;
+        LCD_ClearDisplay();
+    }
+    LCD_WriteData(print);
+    length++;
+    return length;
+}
 int main(void)
 {
     CyGlobalIntEnable; /* Enable global interrupts. */
@@ -55,160 +63,80 @@ int main(void)
         if(C0_Read() == 1){
             switch(x){
                 case 1:
-                    // 0, 0 (Print 1)
-                    if(length == 16){
-                        length = 0;
-                        LCD_ClearDisplay();
-                    }
-                    LCD_WriteData('1');
-                    length++;
+                    // Print 1 (0,0)
+                    length = printChar('1', length);
                     break;
                 case 2:
-                    // 0, 1 (Print 4)
-                    if(length == 16){
-                        length = 0;
-                        LCD_ClearDisplay();
-                    }
-                    LCD_WriteData('4');
-                    length++;
+                    // Print 4 (0,1)
+                    length = printChar('4',length);
                     break;
                 case 3:
-                    // 0, 2 (Print 7)
-                    if(length == 16){
-                        length = 0;
-                        LCD_ClearDisplay();
-                    }
-                    LCD_WriteData('7');
-                    length++;
+                    // Print 7 (0,2)
+                    length = printChar('7',length);
                     break;
                 case 0:
-                    // 0, 3 (Print *)
-                    if(length == 16){
-                        length = 0;
-                        LCD_ClearDisplay();
-                    }
-                    LCD_WriteData('*');
-                    length++;
+                    // Print * (0,3)
+                    length = printChar('*',length);
                     break;
             }
         }
         else if(C1_Read() == 1){
             switch(x){
                 case 1:
-                    // 1, 0 (Print 2)
-                    if(length == 16){
-                        length = 0;
-                        LCD_ClearDisplay();
-                    }
-                    LCD_WriteData('2');
-                    length++;
+                    // Print 2 (1,0)
+                    length = printChar('2',length);
                     break;
                 case 2:
-                    // 1, 1 (Print 5)
-                    if(length == 16){
-                        length = 0;
-                        LCD_ClearDisplay();
-                    }
-                    LCD_WriteData('5');
-                    length++;
+                    // Print 5 (1,1)
+                    length = printChar('5',length);
                     break;
                 case 3:
-                    // 1, 2 (Print 8)
-                    if(length == 16){
-                        length = 0;
-                        LCD_ClearDisplay();
-                    }
-                    LCD_WriteData('8');
-                    length++;
+                    // Print 8 (1,2)
+                    length = printChar('8',length);
                     break;
                 case 0:
-                    // 1, 3 (Print 0)
-                    if(length == 16){
-                        length = 0;
-                        LCD_ClearDisplay();
-                    }
-                    LCD_WriteData('0');
-                    length++;
+                    // Print 0 (1,3)
+                    length = printChar('0',length);
                     break;
             }
         }
         else if(C2_Read() == 1){
             switch(x){
                 case 1:
-                    // 2, 0 (Print 3)
-                    if(length == 16){
-                        length = 0;
-                        LCD_ClearDisplay();
-                    }
-                    LCD_WriteData('3');
-                    length++;
+                    // Print 3 (2,0)
+                    length = printChar('3',length);
                     break;
                 case 2:
-                    // 2, 1 (Print 6)
-                    if(length == 16){
-                        length = 0;
-                        LCD_ClearDisplay();
-                    }
-                    LCD_WriteData('6');
-                    length++;
+                    // Print 6 (2,1)
+                    length = printChar('6',length);
                     break;
                 case 3:
-                    // 2, 2 (Print 9)
-                    if(length == 16){
-                        length = 0;
-                        LCD_ClearDisplay();
-                    }
-                    LCD_WriteData('9');
-                    length++;
+                    // Print 9 (2,2)
+                    length = printChar('9',length);
                     break;
                 case 0:
-                    // 2, 3 (Print #)
-                    if(length == 16){
-                        length = 0;
-                        LCD_ClearDisplay();
-                    }
-                    LCD_WriteData('#');
-                    length++;
+                    // Print # (2,3)
+                    length = printChar('#',length);
                     break;
             }
         }
         else if(C3_Read() == 1){
             switch(x){
                 case 1:
-                    // 3, 0 (Print A)
-                    if(length == 16){
-                        length = 0;
-                        LCD_ClearDisplay();
-                    }
-                    LCD_WriteData('A');
-                    length++;
+                    // Print A (3,0)
+                    length = printChar('A',length);
                     break;
                 case 2:
-                    // 3, 1 (Print B)
-                    if(length == 16){
-                        length = 0;
-                        LCD_ClearDisplay();
-                    }
-                    LCD_WriteData('B');
-                    length++;
+                    // Print B (3,1)
+                    length = printChar('B',length);
                     break;
                 case 3:
-                    // 3, 2 (Print C)
-                    if(length == 16){
-                        length = 0;
-                        LCD_ClearDisplay();
-                    }
-                    LCD_WriteData('C');
-                    length++;
+                    // Print C (3,2)
+                    length = printChar('C',length);
                     break;
                 case 0:
-                    // 3, 3 (Print D)
-                    if(length == 16){
-                        length = 0;
-                        LCD_ClearDisplay();
-                    }
-                    LCD_WriteData('D');
-                    length++;
+                    // Print D (3,3)
+                    length = printChar('D',length);
                     break;
             }
         }
