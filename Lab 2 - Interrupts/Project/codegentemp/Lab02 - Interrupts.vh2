@@ -2,7 +2,7 @@
 --	Conversion of Lab02 - Interrupts.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Thu Jan 26 13:58:08 2023
+--	Thu Jan 26 15:41:14 2023
 --
 
 USE cypress.cypress.all;
@@ -145,7 +145,7 @@ ENC_ISR:cy_isr_v1_0
 	PORT MAP(int_signal=>Net_3);
 BTN:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"97b2472d-3418-4e6b-8299-dd6e9a97d4c5",
-		drive_mode=>"001",
+		drive_mode=>"011",
 		ibuf_enabled=>"1",
 		init_dr_st=>"0",
 		input_sync=>"0",
@@ -302,7 +302,7 @@ CLK:cy_clock_v1_0
 		id=>"e797aed5-58f6-42d5-97e7-d664d691f647",
 		source_clock_id=>"",
 		divisor=>0,
-		period=>"83333333.3333333",
+		period=>"1000000000000",
 		is_direct=>'0',
 		is_digital=>'0')
 	PORT MAP(clock_out=>Net_41,

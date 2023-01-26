@@ -1,6 +1,6 @@
 // ======================================================================
 // Lab02 - Interrupts.v generated from TopDesign.cysch
-// 01/26/2023 at 13:58
+// 01/26/2023 at 15:41
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -375,7 +375,7 @@ module top ;
 
 	cy_psoc3_pins_v1_10
 		#(.id("97b2472d-3418-4e6b-8299-dd6e9a97d4c5"),
-		  .drive_mode(3'b001),
+		  .drive_mode(3'b011),
 		  .ibuf_enabled(1'b1),
 		  .init_dr_st(1'b0),
 		  .input_clk_en(0),
@@ -463,7 +463,7 @@ module top ;
 		#(.id("e797aed5-58f6-42d5-97e7-d664d691f647"),
 		  .source_clock_id(""),
 		  .divisor(0),
-		  .period("83333333.3333333"),
+		  .period("1000000000000"),
 		  .is_direct(0),
 		  .is_digital(0))
 		CLK

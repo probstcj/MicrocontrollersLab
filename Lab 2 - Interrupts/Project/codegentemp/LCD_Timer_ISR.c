@@ -27,7 +27,8 @@
 *  Place your includes, defines and code here 
 ********************************************************************************/
 /* `#START LCD_Timer_ISR_intc` */
-
+#include "LCD_Timer.h"
+extern volatile int barSync;
 /* `#END` */
 
 extern cyisraddress CyRamVectors[CYINT_IRQ_BASE + CY_NUM_INTERRUPTS];
@@ -164,7 +165,9 @@ CY_ISR(LCD_Timer_ISR_Interrupt)
 
     /*  Place your Interrupt code here. */
     /* `#START LCD_Timer_ISR_Interrupt` */
-
+    LCD_Timer_ClearInterrupt(LCD_Timer_INTR_MASK_TC);
+    barSync = 1;
+    
     /* `#END` */
 }
 

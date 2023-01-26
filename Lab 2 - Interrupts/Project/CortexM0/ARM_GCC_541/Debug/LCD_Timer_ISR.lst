@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 1
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 1
 
 
    1              		.syntax unified
@@ -57,1998 +57,2055 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 1
   27:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *  Place your includes, defines and code here 
   28:Generated_Source\PSoC4/LCD_Timer_ISR.c **** ********************************************************************************/
   29:Generated_Source\PSoC4/LCD_Timer_ISR.c **** /* `#START LCD_Timer_ISR_intc` */
-  30:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 2
+  30:Generated_Source\PSoC4/LCD_Timer_ISR.c **** #include "LCD_Timer.h"
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 2
 
 
-  31:Generated_Source\PSoC4/LCD_Timer_ISR.c **** /* `#END` */
-  32:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
-  33:Generated_Source\PSoC4/LCD_Timer_ISR.c **** extern cyisraddress CyRamVectors[CYINT_IRQ_BASE + CY_NUM_INTERRUPTS];
-  34:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
-  35:Generated_Source\PSoC4/LCD_Timer_ISR.c **** /* Declared in startup, used to set unused interrupts to. */
-  36:Generated_Source\PSoC4/LCD_Timer_ISR.c **** CY_ISR_PROTO(IntDefaultHandler);
-  37:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+  31:Generated_Source\PSoC4/LCD_Timer_ISR.c **** extern volatile int barSync;
+  32:Generated_Source\PSoC4/LCD_Timer_ISR.c **** /* `#END` */
+  33:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+  34:Generated_Source\PSoC4/LCD_Timer_ISR.c **** extern cyisraddress CyRamVectors[CYINT_IRQ_BASE + CY_NUM_INTERRUPTS];
+  35:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+  36:Generated_Source\PSoC4/LCD_Timer_ISR.c **** /* Declared in startup, used to set unused interrupts to. */
+  37:Generated_Source\PSoC4/LCD_Timer_ISR.c **** CY_ISR_PROTO(IntDefaultHandler);
   38:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
-  39:Generated_Source\PSoC4/LCD_Timer_ISR.c **** /*******************************************************************************
-  40:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Function Name: LCD_Timer_ISR_Start
-  41:Generated_Source\PSoC4/LCD_Timer_ISR.c **** ********************************************************************************
-  42:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
-  43:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Summary:
-  44:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *  Set up the interrupt and enable it. This function disables the interrupt, 
-  45:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *  sets the default interrupt vector, sets the priority from the value in the
-  46:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *  Design Wide Resources Interrupt Editor, then enables the interrupt to the 
-  47:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *  interrupt controller.
-  48:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
-  49:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Parameters:  
-  50:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
-  51:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
-  52:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Return:
-  53:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
-  54:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
-  55:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *******************************************************************************/
-  56:Generated_Source\PSoC4/LCD_Timer_ISR.c **** void LCD_Timer_ISR_Start(void)
-  57:Generated_Source\PSoC4/LCD_Timer_ISR.c **** {
-  58:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* For all we know the interrupt is active. */
-  59:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     LCD_Timer_ISR_Disable();
-  60:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
-  61:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* Set the ISR to point to the LCD_Timer_ISR Interrupt. */
-  62:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     LCD_Timer_ISR_SetVector(&LCD_Timer_ISR_Interrupt);
-  63:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
-  64:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* Set the priority. */
-  65:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     LCD_Timer_ISR_SetPriority((uint8)LCD_Timer_ISR_INTC_PRIOR_NUMBER);
-  66:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
-  67:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* Enable it. */
-  68:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     LCD_Timer_ISR_Enable();
-  69:Generated_Source\PSoC4/LCD_Timer_ISR.c **** }
-  70:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+  39:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+  40:Generated_Source\PSoC4/LCD_Timer_ISR.c **** /*******************************************************************************
+  41:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Function Name: LCD_Timer_ISR_Start
+  42:Generated_Source\PSoC4/LCD_Timer_ISR.c **** ********************************************************************************
+  43:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+  44:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Summary:
+  45:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *  Set up the interrupt and enable it. This function disables the interrupt, 
+  46:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *  sets the default interrupt vector, sets the priority from the value in the
+  47:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *  Design Wide Resources Interrupt Editor, then enables the interrupt to the 
+  48:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *  interrupt controller.
+  49:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+  50:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Parameters:  
+  51:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
+  52:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+  53:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Return:
+  54:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
+  55:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+  56:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *******************************************************************************/
+  57:Generated_Source\PSoC4/LCD_Timer_ISR.c **** void LCD_Timer_ISR_Start(void)
+  58:Generated_Source\PSoC4/LCD_Timer_ISR.c **** {
+  59:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* For all we know the interrupt is active. */
+  60:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     LCD_Timer_ISR_Disable();
+  61:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+  62:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* Set the ISR to point to the LCD_Timer_ISR Interrupt. */
+  63:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     LCD_Timer_ISR_SetVector(&LCD_Timer_ISR_Interrupt);
+  64:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+  65:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* Set the priority. */
+  66:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     LCD_Timer_ISR_SetPriority((uint8)LCD_Timer_ISR_INTC_PRIOR_NUMBER);
+  67:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+  68:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* Enable it. */
+  69:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     LCD_Timer_ISR_Enable();
+  70:Generated_Source\PSoC4/LCD_Timer_ISR.c **** }
   71:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
-  72:Generated_Source\PSoC4/LCD_Timer_ISR.c **** /*******************************************************************************
-  73:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Function Name: LCD_Timer_ISR_StartEx
-  74:Generated_Source\PSoC4/LCD_Timer_ISR.c **** ********************************************************************************
-  75:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
-  76:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Summary:
-  77:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *  Sets up the interrupt and enables it. This function disables the interrupt,
-  78:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *  sets the interrupt vector based on the address passed in, sets the priority 
-  79:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *  from the value in the Design Wide Resources Interrupt Editor, then enables 
-  80:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *  the interrupt to the interrupt controller.
-  81:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *  
-  82:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *  When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
-  83:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *  used to provide consistent definition across compilers:
-  84:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *  
-  85:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *  Function definition example:
-  86:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   CY_ISR(MyISR)
-  87:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   {
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 3
+  72:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+  73:Generated_Source\PSoC4/LCD_Timer_ISR.c **** /*******************************************************************************
+  74:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Function Name: LCD_Timer_ISR_StartEx
+  75:Generated_Source\PSoC4/LCD_Timer_ISR.c **** ********************************************************************************
+  76:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+  77:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Summary:
+  78:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *  Sets up the interrupt and enables it. This function disables the interrupt,
+  79:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *  sets the interrupt vector based on the address passed in, sets the priority 
+  80:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *  from the value in the Design Wide Resources Interrupt Editor, then enables 
+  81:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *  the interrupt to the interrupt controller.
+  82:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *  
+  83:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *  When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
+  84:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *  used to provide consistent definition across compilers:
+  85:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *  
+  86:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *  Function definition example:
+  87:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   CY_ISR(MyISR)
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 3
 
 
-  88:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   }
-  89:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Function prototype example:
-  90:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   CY_ISR_PROTO(MyISR);
-  91:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
-  92:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Parameters:  
-  93:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   address: Address of the ISR to set in the interrupt vector table.
-  94:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
-  95:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Return:
-  96:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
-  97:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
-  98:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *******************************************************************************/
-  99:Generated_Source\PSoC4/LCD_Timer_ISR.c **** void LCD_Timer_ISR_StartEx(cyisraddress address)
- 100:Generated_Source\PSoC4/LCD_Timer_ISR.c **** {
- 101:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* For all we know the interrupt is active. */
- 102:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     LCD_Timer_ISR_Disable();
- 103:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 104:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* Set the ISR to point to the LCD_Timer_ISR Interrupt. */
- 105:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     LCD_Timer_ISR_SetVector(address);
- 106:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 107:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* Set the priority. */
- 108:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     LCD_Timer_ISR_SetPriority((uint8)LCD_Timer_ISR_INTC_PRIOR_NUMBER);
- 109:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 110:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* Enable it. */
- 111:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     LCD_Timer_ISR_Enable();
- 112:Generated_Source\PSoC4/LCD_Timer_ISR.c **** }
- 113:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+  88:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   {
+  89:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   }
+  90:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Function prototype example:
+  91:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   CY_ISR_PROTO(MyISR);
+  92:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+  93:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Parameters:  
+  94:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   address: Address of the ISR to set in the interrupt vector table.
+  95:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+  96:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Return:
+  97:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
+  98:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+  99:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *******************************************************************************/
+ 100:Generated_Source\PSoC4/LCD_Timer_ISR.c **** void LCD_Timer_ISR_StartEx(cyisraddress address)
+ 101:Generated_Source\PSoC4/LCD_Timer_ISR.c **** {
+ 102:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* For all we know the interrupt is active. */
+ 103:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     LCD_Timer_ISR_Disable();
+ 104:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 105:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* Set the ISR to point to the LCD_Timer_ISR Interrupt. */
+ 106:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     LCD_Timer_ISR_SetVector(address);
+ 107:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 108:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* Set the priority. */
+ 109:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     LCD_Timer_ISR_SetPriority((uint8)LCD_Timer_ISR_INTC_PRIOR_NUMBER);
+ 110:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 111:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* Enable it. */
+ 112:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     LCD_Timer_ISR_Enable();
+ 113:Generated_Source\PSoC4/LCD_Timer_ISR.c **** }
  114:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 115:Generated_Source\PSoC4/LCD_Timer_ISR.c **** /*******************************************************************************
- 116:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Function Name: LCD_Timer_ISR_Stop
- 117:Generated_Source\PSoC4/LCD_Timer_ISR.c **** ********************************************************************************
- 118:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 119:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Summary:
- 120:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Disables and removes the interrupt.
- 121:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 122:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Parameters:  
- 123:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
- 124:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 125:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Return:
- 126:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
- 127:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 128:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *******************************************************************************/
- 129:Generated_Source\PSoC4/LCD_Timer_ISR.c **** void LCD_Timer_ISR_Stop(void)
- 130:Generated_Source\PSoC4/LCD_Timer_ISR.c **** {
- 131:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* Disable this interrupt. */
- 132:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     LCD_Timer_ISR_Disable();
- 133:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 134:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* Set the ISR to point to the passive one. */
- 135:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     LCD_Timer_ISR_SetVector(&IntDefaultHandler);
- 136:Generated_Source\PSoC4/LCD_Timer_ISR.c **** }
- 137:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 115:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 116:Generated_Source\PSoC4/LCD_Timer_ISR.c **** /*******************************************************************************
+ 117:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Function Name: LCD_Timer_ISR_Stop
+ 118:Generated_Source\PSoC4/LCD_Timer_ISR.c **** ********************************************************************************
+ 119:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+ 120:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Summary:
+ 121:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Disables and removes the interrupt.
+ 122:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+ 123:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Parameters:  
+ 124:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
+ 125:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+ 126:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Return:
+ 127:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
+ 128:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+ 129:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *******************************************************************************/
+ 130:Generated_Source\PSoC4/LCD_Timer_ISR.c **** void LCD_Timer_ISR_Stop(void)
+ 131:Generated_Source\PSoC4/LCD_Timer_ISR.c **** {
+ 132:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* Disable this interrupt. */
+ 133:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     LCD_Timer_ISR_Disable();
+ 134:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 135:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* Set the ISR to point to the passive one. */
+ 136:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     LCD_Timer_ISR_SetVector(&IntDefaultHandler);
+ 137:Generated_Source\PSoC4/LCD_Timer_ISR.c **** }
  138:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 139:Generated_Source\PSoC4/LCD_Timer_ISR.c **** /*******************************************************************************
- 140:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Function Name: LCD_Timer_ISR_Interrupt
- 141:Generated_Source\PSoC4/LCD_Timer_ISR.c **** ********************************************************************************
- 142:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 143:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Summary:
- 144:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   The default Interrupt Service Routine for LCD_Timer_ISR.
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 4
+ 139:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 140:Generated_Source\PSoC4/LCD_Timer_ISR.c **** /*******************************************************************************
+ 141:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Function Name: LCD_Timer_ISR_Interrupt
+ 142:Generated_Source\PSoC4/LCD_Timer_ISR.c **** ********************************************************************************
+ 143:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+ 144:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Summary:
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 4
 
 
- 145:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 146:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Add custom code between the START and END comments to keep the next version
- 147:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   of this file from over-writing your code.
- 148:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 149:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Note You may use either the default ISR by using this API, or you may define
- 150:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   your own separate ISR through ISR_StartEx().
- 151:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 152:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Parameters:  
- 153:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
- 154:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 155:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Return:
- 156:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
- 157:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 158:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *******************************************************************************/
- 159:Generated_Source\PSoC4/LCD_Timer_ISR.c **** CY_ISR(LCD_Timer_ISR_Interrupt)
- 160:Generated_Source\PSoC4/LCD_Timer_ISR.c **** {
-  28              		.loc 1 160 0
+ 145:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   The default Interrupt Service Routine for LCD_Timer_ISR.
+ 146:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+ 147:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Add custom code between the START and END comments to keep the next version
+ 148:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   of this file from over-writing your code.
+ 149:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+ 150:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Note You may use either the default ISR by using this API, or you may define
+ 151:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   your own separate ISR through ISR_StartEx().
+ 152:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+ 153:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Parameters:  
+ 154:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
+ 155:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+ 156:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Return:
+ 157:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
+ 158:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+ 159:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *******************************************************************************/
+ 160:Generated_Source\PSoC4/LCD_Timer_ISR.c **** CY_ISR(LCD_Timer_ISR_Interrupt)
+ 161:Generated_Source\PSoC4/LCD_Timer_ISR.c **** {
+  28              		.loc 1 161 0
   29              		.cfi_startproc
   30              		@ args = 0, pretend = 0, frame = 0
   31              		@ frame_needed = 0, uses_anonymous_args = 0
-  32              		@ link register save eliminated.
- 161:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     #ifdef LCD_Timer_ISR_INTERRUPT_INTERRUPT_CALLBACK
- 162:Generated_Source\PSoC4/LCD_Timer_ISR.c ****         LCD_Timer_ISR_Interrupt_InterruptCallback();
- 163:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     #endif /* LCD_Timer_ISR_INTERRUPT_INTERRUPT_CALLBACK */ 
- 164:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 165:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /*  Place your Interrupt code here. */
- 166:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* `#START LCD_Timer_ISR_Interrupt` */
- 167:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 168:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* `#END` */
- 169:Generated_Source\PSoC4/LCD_Timer_ISR.c **** }
-  33              		.loc 1 169 0
-  34              		@ sp needed
-  35 0000 7047     		bx	lr
-  36              		.cfi_endproc
-  37              	.LFE4:
-  38              		.size	LCD_Timer_ISR_Interrupt, .-LCD_Timer_ISR_Interrupt
-  39 0002 C046     		.section	.text.LCD_Timer_ISR_SetVector,"ax",%progbits
-  40              		.align	2
-  41              		.global	LCD_Timer_ISR_SetVector
-  42              		.code	16
-  43              		.thumb_func
-  44              		.type	LCD_Timer_ISR_SetVector, %function
-  45              	LCD_Timer_ISR_SetVector:
-  46              	.LFB5:
- 170:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 171:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 172:Generated_Source\PSoC4/LCD_Timer_ISR.c **** /*******************************************************************************
- 173:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Function Name: LCD_Timer_ISR_SetVector
- 174:Generated_Source\PSoC4/LCD_Timer_ISR.c **** ********************************************************************************
- 175:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 176:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Summary:
- 177:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Change the ISR vector for the Interrupt. Note calling LCD_Timer_ISR_Start
- 178:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   will override any effect this method would have had. To set the vector 
- 179:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   before the component has been started use LCD_Timer_ISR_StartEx instead.
- 180:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * 
- 181:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
- 182:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   used to provide consistent definition across compilers:
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 5
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+ 162:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     #ifdef LCD_Timer_ISR_INTERRUPT_INTERRUPT_CALLBACK
+ 163:Generated_Source\PSoC4/LCD_Timer_ISR.c ****         LCD_Timer_ISR_Interrupt_InterruptCallback();
+ 164:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     #endif /* LCD_Timer_ISR_INTERRUPT_INTERRUPT_CALLBACK */ 
+ 165:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 166:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /*  Place your Interrupt code here. */
+ 167:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* `#START LCD_Timer_ISR_Interrupt` */
+ 168:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     LCD_Timer_ClearInterrupt(LCD_Timer_TC_INTERRUPT_MASK);
+  36              		.loc 1 168 0
+  37 0002 0120     		movs	r0, #1
+  38 0004 FFF7FEFF 		bl	LCD_Timer_ClearInterrupt
+  39              	.LVL0:
+ 169:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     barSync = 1;
+  40              		.loc 1 169 0
+  41 0008 0122     		movs	r2, #1
+  42 000a 014B     		ldr	r3, .L2
+  43 000c 1A60     		str	r2, [r3]
+ 170:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     
+ 171:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* `#END` */
+ 172:Generated_Source\PSoC4/LCD_Timer_ISR.c **** }
+  44              		.loc 1 172 0
+  45              		@ sp needed
+  46 000e 10BD     		pop	{r4, pc}
+  47              	.L3:
+  48              		.align	2
+  49              	.L2:
+  50 0010 00000000 		.word	barSync
+  51              		.cfi_endproc
+  52              	.LFE4:
+  53              		.size	LCD_Timer_ISR_Interrupt, .-LCD_Timer_ISR_Interrupt
+  54              		.section	.text.LCD_Timer_ISR_SetVector,"ax",%progbits
+  55              		.align	2
+  56              		.global	LCD_Timer_ISR_SetVector
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 5
 
 
- 183:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 184:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Function definition example:
- 185:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   CY_ISR(MyISR)
- 186:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   {
- 187:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   }
- 188:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 189:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Function prototype example:
- 190:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *     CY_ISR_PROTO(MyISR);
+  57              		.code	16
+  58              		.thumb_func
+  59              		.type	LCD_Timer_ISR_SetVector, %function
+  60              	LCD_Timer_ISR_SetVector:
+  61              	.LFB5:
+ 173:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 174:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 175:Generated_Source\PSoC4/LCD_Timer_ISR.c **** /*******************************************************************************
+ 176:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Function Name: LCD_Timer_ISR_SetVector
+ 177:Generated_Source\PSoC4/LCD_Timer_ISR.c **** ********************************************************************************
+ 178:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+ 179:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Summary:
+ 180:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Change the ISR vector for the Interrupt. Note calling LCD_Timer_ISR_Start
+ 181:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   will override any effect this method would have had. To set the vector 
+ 182:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   before the component has been started use LCD_Timer_ISR_StartEx instead.
+ 183:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * 
+ 184:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
+ 185:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   used to provide consistent definition across compilers:
+ 186:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+ 187:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Function definition example:
+ 188:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   CY_ISR(MyISR)
+ 189:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   {
+ 190:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   }
  191:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 192:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Parameters:
- 193:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   address: Address of the ISR to set in the interrupt vector table.
+ 192:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Function prototype example:
+ 193:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *     CY_ISR_PROTO(MyISR);
  194:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 195:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Return:
- 196:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
+ 195:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Parameters:
+ 196:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   address: Address of the ISR to set in the interrupt vector table.
  197:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 198:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *******************************************************************************/
- 199:Generated_Source\PSoC4/LCD_Timer_ISR.c **** void LCD_Timer_ISR_SetVector(cyisraddress address)
- 200:Generated_Source\PSoC4/LCD_Timer_ISR.c **** {
-  47              		.loc 1 200 0
-  48              		.cfi_startproc
-  49              		@ args = 0, pretend = 0, frame = 0
-  50              		@ frame_needed = 0, uses_anonymous_args = 0
-  51              		@ link register save eliminated.
-  52              	.LVL0:
- 201:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     CyRamVectors[CYINT_IRQ_BASE + LCD_Timer_ISR__INTC_NUMBER] = address;
-  53              		.loc 1 201 0
-  54 0000 8C23     		movs	r3, #140
-  55 0002 014A     		ldr	r2, .L3
-  56 0004 D050     		str	r0, [r2, r3]
- 202:Generated_Source\PSoC4/LCD_Timer_ISR.c **** }
-  57              		.loc 1 202 0
-  58              		@ sp needed
-  59 0006 7047     		bx	lr
-  60              	.L4:
-  61              		.align	2
-  62              	.L3:
-  63 0008 00000000 		.word	CyRamVectors
-  64              		.cfi_endproc
-  65              	.LFE5:
-  66              		.size	LCD_Timer_ISR_SetVector, .-LCD_Timer_ISR_SetVector
-  67              		.section	.text.LCD_Timer_ISR_GetVector,"ax",%progbits
-  68              		.align	2
-  69              		.global	LCD_Timer_ISR_GetVector
-  70              		.code	16
-  71              		.thumb_func
-  72              		.type	LCD_Timer_ISR_GetVector, %function
-  73              	LCD_Timer_ISR_GetVector:
-  74              	.LFB6:
- 203:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 204:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 205:Generated_Source\PSoC4/LCD_Timer_ISR.c **** /*******************************************************************************
- 206:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Function Name: LCD_Timer_ISR_GetVector
- 207:Generated_Source\PSoC4/LCD_Timer_ISR.c **** ********************************************************************************
- 208:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 209:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Summary:
- 210:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Gets the "address" of the current ISR vector for the Interrupt.
+ 198:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Return:
+ 199:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
+ 200:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+ 201:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *******************************************************************************/
+ 202:Generated_Source\PSoC4/LCD_Timer_ISR.c **** void LCD_Timer_ISR_SetVector(cyisraddress address)
+ 203:Generated_Source\PSoC4/LCD_Timer_ISR.c **** {
+  62              		.loc 1 203 0
+  63              		.cfi_startproc
+  64              		@ args = 0, pretend = 0, frame = 0
+  65              		@ frame_needed = 0, uses_anonymous_args = 0
+  66              		@ link register save eliminated.
+  67              	.LVL1:
+ 204:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     CyRamVectors[CYINT_IRQ_BASE + LCD_Timer_ISR__INTC_NUMBER] = address;
+  68              		.loc 1 204 0
+  69 0000 8C23     		movs	r3, #140
+  70 0002 014A     		ldr	r2, .L5
+  71 0004 D050     		str	r0, [r2, r3]
+ 205:Generated_Source\PSoC4/LCD_Timer_ISR.c **** }
+  72              		.loc 1 205 0
+  73              		@ sp needed
+  74 0006 7047     		bx	lr
+  75              	.L6:
+  76              		.align	2
+  77              	.L5:
+  78 0008 00000000 		.word	CyRamVectors
+  79              		.cfi_endproc
+  80              	.LFE5:
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 6
+
+
+  81              		.size	LCD_Timer_ISR_SetVector, .-LCD_Timer_ISR_SetVector
+  82              		.section	.text.LCD_Timer_ISR_GetVector,"ax",%progbits
+  83              		.align	2
+  84              		.global	LCD_Timer_ISR_GetVector
+  85              		.code	16
+  86              		.thumb_func
+  87              		.type	LCD_Timer_ISR_GetVector, %function
+  88              	LCD_Timer_ISR_GetVector:
+  89              	.LFB6:
+ 206:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 207:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 208:Generated_Source\PSoC4/LCD_Timer_ISR.c **** /*******************************************************************************
+ 209:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Function Name: LCD_Timer_ISR_GetVector
+ 210:Generated_Source\PSoC4/LCD_Timer_ISR.c **** ********************************************************************************
  211:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 6
-
-
- 212:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Parameters:
- 213:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
+ 212:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Summary:
+ 213:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Gets the "address" of the current ISR vector for the Interrupt.
  214:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 215:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Return:
- 216:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Address of the ISR in the interrupt vector table.
+ 215:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Parameters:
+ 216:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
  217:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 218:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *******************************************************************************/
- 219:Generated_Source\PSoC4/LCD_Timer_ISR.c **** cyisraddress LCD_Timer_ISR_GetVector(void)
- 220:Generated_Source\PSoC4/LCD_Timer_ISR.c **** {
-  75              		.loc 1 220 0
-  76              		.cfi_startproc
-  77              		@ args = 0, pretend = 0, frame = 0
-  78              		@ frame_needed = 0, uses_anonymous_args = 0
-  79              		@ link register save eliminated.
- 221:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     return CyRamVectors[CYINT_IRQ_BASE + LCD_Timer_ISR__INTC_NUMBER];
-  80              		.loc 1 221 0
-  81 0000 8C23     		movs	r3, #140
-  82 0002 014A     		ldr	r2, .L6
-  83 0004 D058     		ldr	r0, [r2, r3]
- 222:Generated_Source\PSoC4/LCD_Timer_ISR.c **** }
-  84              		.loc 1 222 0
-  85              		@ sp needed
-  86 0006 7047     		bx	lr
-  87              	.L7:
-  88              		.align	2
-  89              	.L6:
-  90 0008 00000000 		.word	CyRamVectors
-  91              		.cfi_endproc
-  92              	.LFE6:
-  93              		.size	LCD_Timer_ISR_GetVector, .-LCD_Timer_ISR_GetVector
-  94              		.section	.text.LCD_Timer_ISR_SetPriority,"ax",%progbits
-  95              		.align	2
-  96              		.global	LCD_Timer_ISR_SetPriority
-  97              		.code	16
-  98              		.thumb_func
-  99              		.type	LCD_Timer_ISR_SetPriority, %function
- 100              	LCD_Timer_ISR_SetPriority:
- 101              	.LFB7:
- 223:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 224:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 225:Generated_Source\PSoC4/LCD_Timer_ISR.c **** /*******************************************************************************
- 226:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Function Name: LCD_Timer_ISR_SetPriority
- 227:Generated_Source\PSoC4/LCD_Timer_ISR.c **** ********************************************************************************
- 228:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 229:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Summary:
- 230:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Sets the Priority of the Interrupt. 
+ 218:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Return:
+ 219:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Address of the ISR in the interrupt vector table.
+ 220:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+ 221:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *******************************************************************************/
+ 222:Generated_Source\PSoC4/LCD_Timer_ISR.c **** cyisraddress LCD_Timer_ISR_GetVector(void)
+ 223:Generated_Source\PSoC4/LCD_Timer_ISR.c **** {
+  90              		.loc 1 223 0
+  91              		.cfi_startproc
+  92              		@ args = 0, pretend = 0, frame = 0
+  93              		@ frame_needed = 0, uses_anonymous_args = 0
+  94              		@ link register save eliminated.
+ 224:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     return CyRamVectors[CYINT_IRQ_BASE + LCD_Timer_ISR__INTC_NUMBER];
+  95              		.loc 1 224 0
+  96 0000 8C23     		movs	r3, #140
+  97 0002 014A     		ldr	r2, .L8
+  98 0004 D058     		ldr	r0, [r2, r3]
+ 225:Generated_Source\PSoC4/LCD_Timer_ISR.c **** }
+  99              		.loc 1 225 0
+ 100              		@ sp needed
+ 101 0006 7047     		bx	lr
+ 102              	.L9:
+ 103              		.align	2
+ 104              	.L8:
+ 105 0008 00000000 		.word	CyRamVectors
+ 106              		.cfi_endproc
+ 107              	.LFE6:
+ 108              		.size	LCD_Timer_ISR_GetVector, .-LCD_Timer_ISR_GetVector
+ 109              		.section	.text.LCD_Timer_ISR_SetPriority,"ax",%progbits
+ 110              		.align	2
+ 111              		.global	LCD_Timer_ISR_SetPriority
+ 112              		.code	16
+ 113              		.thumb_func
+ 114              		.type	LCD_Timer_ISR_SetPriority, %function
+ 115              	LCD_Timer_ISR_SetPriority:
+ 116              	.LFB7:
+ 226:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 7
+
+
+ 227:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 228:Generated_Source\PSoC4/LCD_Timer_ISR.c **** /*******************************************************************************
+ 229:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Function Name: LCD_Timer_ISR_SetPriority
+ 230:Generated_Source\PSoC4/LCD_Timer_ISR.c **** ********************************************************************************
  231:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 232:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Note calling LCD_Timer_ISR_Start or LCD_Timer_ISR_StartEx will 
- 233:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   override any effect this API would have had. This API should only be called
- 234:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   after LCD_Timer_ISR_Start or LCD_Timer_ISR_StartEx has been called. 
- 235:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   To set the initial priority for the component, use the Design-Wide Resources
- 236:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Interrupt Editor.
- 237:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 238:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Note This API has no effect on Non-maskable interrupt NMI).
- 239:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 240:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Parameters:
- 241:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   priority: Priority of the interrupt, 0 being the highest priority
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 7
-
-
- 242:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *             PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
- 243:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *             PSoC 4: Priority is from 0 to 3.
- 244:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 245:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Return:
- 246:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
+ 232:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Summary:
+ 233:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Sets the Priority of the Interrupt. 
+ 234:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+ 235:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Note calling LCD_Timer_ISR_Start or LCD_Timer_ISR_StartEx will 
+ 236:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   override any effect this API would have had. This API should only be called
+ 237:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   after LCD_Timer_ISR_Start or LCD_Timer_ISR_StartEx has been called. 
+ 238:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   To set the initial priority for the component, use the Design-Wide Resources
+ 239:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Interrupt Editor.
+ 240:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+ 241:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Note This API has no effect on Non-maskable interrupt NMI).
+ 242:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+ 243:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Parameters:
+ 244:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   priority: Priority of the interrupt, 0 being the highest priority
+ 245:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *             PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
+ 246:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *             PSoC 4: Priority is from 0 to 3.
  247:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 248:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *******************************************************************************/
- 249:Generated_Source\PSoC4/LCD_Timer_ISR.c **** void LCD_Timer_ISR_SetPriority(uint8 priority)
- 250:Generated_Source\PSoC4/LCD_Timer_ISR.c **** {
- 102              		.loc 1 250 0
- 103              		.cfi_startproc
- 104              		@ args = 0, pretend = 0, frame = 0
- 105              		@ frame_needed = 0, uses_anonymous_args = 0
- 106              	.LVL1:
- 107 0000 10B5     		push	{r4, lr}
- 108              		.cfi_def_cfa_offset 8
- 109              		.cfi_offset 4, -8
- 110              		.cfi_offset 14, -4
- 111 0002 0400     		movs	r4, r0
- 112              	.LVL2:
- 251:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 	uint8 interruptState;
- 252:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     uint32 priorityOffset = ((LCD_Timer_ISR__INTC_NUMBER % 4u) * 8u) + 6u;
- 253:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     
- 254:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 	interruptState = CyEnterCriticalSection();
- 113              		.loc 1 254 0
- 114 0004 FFF7FEFF 		bl	CyEnterCriticalSection
- 115              	.LVL3:
- 255:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     *LCD_Timer_ISR_INTC_PRIOR = (*LCD_Timer_ISR_INTC_PRIOR & (uint32)(~LCD_Timer_ISR__INTC_PRIOR_MA
- 116              		.loc 1 255 0
- 117 0008 044A     		ldr	r2, .L9
- 118 000a 1368     		ldr	r3, [r2]
- 119 000c 9B00     		lsls	r3, r3, #2
- 120 000e 9B08     		lsrs	r3, r3, #2
- 256:Generated_Source\PSoC4/LCD_Timer_ISR.c ****                                     ((uint32)priority << priorityOffset);
- 121              		.loc 1 256 0
- 122 0010 A407     		lsls	r4, r4, #30
- 255:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     *LCD_Timer_ISR_INTC_PRIOR = (*LCD_Timer_ISR_INTC_PRIOR & (uint32)(~LCD_Timer_ISR__INTC_PRIOR_MA
- 123              		.loc 1 255 0
- 124 0012 1C43     		orrs	r4, r3
- 125 0014 1460     		str	r4, [r2]
- 257:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 	CyExitCriticalSection(interruptState);
- 126              		.loc 1 257 0
- 127 0016 FFF7FEFF 		bl	CyExitCriticalSection
- 128              	.LVL4:
- 258:Generated_Source\PSoC4/LCD_Timer_ISR.c **** }
- 129              		.loc 1 258 0
- 130              		@ sp needed
- 131 001a 10BD     		pop	{r4, pc}
- 132              	.L10:
- 133              		.align	2
- 134              	.L9:
- 135 001c 10E400E0 		.word	-536812528
- 136              		.cfi_endproc
- 137              	.LFE7:
- 138              		.size	LCD_Timer_ISR_SetPriority, .-LCD_Timer_ISR_SetPriority
- 139              		.section	.text.LCD_Timer_ISR_GetPriority,"ax",%progbits
- 140              		.align	2
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 8
+ 248:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Return:
+ 249:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
+ 250:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+ 251:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *******************************************************************************/
+ 252:Generated_Source\PSoC4/LCD_Timer_ISR.c **** void LCD_Timer_ISR_SetPriority(uint8 priority)
+ 253:Generated_Source\PSoC4/LCD_Timer_ISR.c **** {
+ 117              		.loc 1 253 0
+ 118              		.cfi_startproc
+ 119              		@ args = 0, pretend = 0, frame = 0
+ 120              		@ frame_needed = 0, uses_anonymous_args = 0
+ 121              	.LVL2:
+ 122 0000 10B5     		push	{r4, lr}
+ 123              		.cfi_def_cfa_offset 8
+ 124              		.cfi_offset 4, -8
+ 125              		.cfi_offset 14, -4
+ 126 0002 0400     		movs	r4, r0
+ 127              	.LVL3:
+ 254:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 	uint8 interruptState;
+ 255:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     uint32 priorityOffset = ((LCD_Timer_ISR__INTC_NUMBER % 4u) * 8u) + 6u;
+ 256:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     
+ 257:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 	interruptState = CyEnterCriticalSection();
+ 128              		.loc 1 257 0
+ 129 0004 FFF7FEFF 		bl	CyEnterCriticalSection
+ 130              	.LVL4:
+ 258:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     *LCD_Timer_ISR_INTC_PRIOR = (*LCD_Timer_ISR_INTC_PRIOR & (uint32)(~LCD_Timer_ISR__INTC_PRIOR_MA
+ 131              		.loc 1 258 0
+ 132 0008 044A     		ldr	r2, .L11
+ 133 000a 1368     		ldr	r3, [r2]
+ 134 000c 9B00     		lsls	r3, r3, #2
+ 135 000e 9B08     		lsrs	r3, r3, #2
+ 259:Generated_Source\PSoC4/LCD_Timer_ISR.c ****                                     ((uint32)priority << priorityOffset);
+ 136              		.loc 1 259 0
+ 137 0010 A407     		lsls	r4, r4, #30
+ 258:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     *LCD_Timer_ISR_INTC_PRIOR = (*LCD_Timer_ISR_INTC_PRIOR & (uint32)(~LCD_Timer_ISR__INTC_PRIOR_MA
+ 138              		.loc 1 258 0
+ 139 0012 1C43     		orrs	r4, r3
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 8
 
 
- 141              		.global	LCD_Timer_ISR_GetPriority
- 142              		.code	16
- 143              		.thumb_func
- 144              		.type	LCD_Timer_ISR_GetPriority, %function
- 145              	LCD_Timer_ISR_GetPriority:
- 146              	.LFB8:
- 259:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 260:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 261:Generated_Source\PSoC4/LCD_Timer_ISR.c **** /*******************************************************************************
- 262:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Function Name: LCD_Timer_ISR_GetPriority
- 263:Generated_Source\PSoC4/LCD_Timer_ISR.c **** ********************************************************************************
- 264:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 265:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Summary:
- 266:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Gets the Priority of the Interrupt.
+ 140 0014 1460     		str	r4, [r2]
+ 260:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 	CyExitCriticalSection(interruptState);
+ 141              		.loc 1 260 0
+ 142 0016 FFF7FEFF 		bl	CyExitCriticalSection
+ 143              	.LVL5:
+ 261:Generated_Source\PSoC4/LCD_Timer_ISR.c **** }
+ 144              		.loc 1 261 0
+ 145              		@ sp needed
+ 146 001a 10BD     		pop	{r4, pc}
+ 147              	.L12:
+ 148              		.align	2
+ 149              	.L11:
+ 150 001c 10E400E0 		.word	-536812528
+ 151              		.cfi_endproc
+ 152              	.LFE7:
+ 153              		.size	LCD_Timer_ISR_SetPriority, .-LCD_Timer_ISR_SetPriority
+ 154              		.section	.text.LCD_Timer_ISR_GetPriority,"ax",%progbits
+ 155              		.align	2
+ 156              		.global	LCD_Timer_ISR_GetPriority
+ 157              		.code	16
+ 158              		.thumb_func
+ 159              		.type	LCD_Timer_ISR_GetPriority, %function
+ 160              	LCD_Timer_ISR_GetPriority:
+ 161              	.LFB8:
+ 262:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 263:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 264:Generated_Source\PSoC4/LCD_Timer_ISR.c **** /*******************************************************************************
+ 265:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Function Name: LCD_Timer_ISR_GetPriority
+ 266:Generated_Source\PSoC4/LCD_Timer_ISR.c **** ********************************************************************************
  267:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 268:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Parameters:
- 269:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
+ 268:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Summary:
+ 269:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Gets the Priority of the Interrupt.
  270:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 271:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Return:
- 272:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Priority of the interrupt, 0 being the highest priority
- 273:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *    PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
- 274:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *    PSoC 4: Priority is from 0 to 3.
- 275:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 276:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *******************************************************************************/
- 277:Generated_Source\PSoC4/LCD_Timer_ISR.c **** uint8 LCD_Timer_ISR_GetPriority(void)
- 278:Generated_Source\PSoC4/LCD_Timer_ISR.c **** {
- 147              		.loc 1 278 0
- 148              		.cfi_startproc
- 149              		@ args = 0, pretend = 0, frame = 0
- 150              		@ frame_needed = 0, uses_anonymous_args = 0
- 151              		@ link register save eliminated.
- 152              	.LVL5:
- 279:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     uint32 priority;
- 280:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 	uint32 priorityOffset = ((LCD_Timer_ISR__INTC_NUMBER % 4u) * 8u) + 6u;
- 281:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 282:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     priority = (*LCD_Timer_ISR_INTC_PRIOR & LCD_Timer_ISR__INTC_PRIOR_MASK) >> priorityOffset;
- 153              		.loc 1 282 0
- 154 0000 014B     		ldr	r3, .L12
- 155 0002 1868     		ldr	r0, [r3]
- 156              	.LVL6:
- 283:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 284:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     return (uint8)priority;
- 157              		.loc 1 284 0
- 158 0004 800F     		lsrs	r0, r0, #30
- 159              	.LVL7:
- 285:Generated_Source\PSoC4/LCD_Timer_ISR.c **** }
- 160              		.loc 1 285 0
- 161              		@ sp needed
- 162 0006 7047     		bx	lr
- 163              	.L13:
- 164              		.align	2
- 165              	.L12:
- 166 0008 10E400E0 		.word	-536812528
- 167              		.cfi_endproc
- 168              	.LFE8:
- 169              		.size	LCD_Timer_ISR_GetPriority, .-LCD_Timer_ISR_GetPriority
- 170              		.section	.text.LCD_Timer_ISR_Enable,"ax",%progbits
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 9
+ 271:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Parameters:
+ 272:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
+ 273:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+ 274:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Return:
+ 275:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Priority of the interrupt, 0 being the highest priority
+ 276:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *    PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
+ 277:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *    PSoC 4: Priority is from 0 to 3.
+ 278:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+ 279:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *******************************************************************************/
+ 280:Generated_Source\PSoC4/LCD_Timer_ISR.c **** uint8 LCD_Timer_ISR_GetPriority(void)
+ 281:Generated_Source\PSoC4/LCD_Timer_ISR.c **** {
+ 162              		.loc 1 281 0
+ 163              		.cfi_startproc
+ 164              		@ args = 0, pretend = 0, frame = 0
+ 165              		@ frame_needed = 0, uses_anonymous_args = 0
+ 166              		@ link register save eliminated.
+ 167              	.LVL6:
+ 282:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     uint32 priority;
+ 283:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 	uint32 priorityOffset = ((LCD_Timer_ISR__INTC_NUMBER % 4u) * 8u) + 6u;
+ 284:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 285:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     priority = (*LCD_Timer_ISR_INTC_PRIOR & LCD_Timer_ISR__INTC_PRIOR_MASK) >> priorityOffset;
+ 168              		.loc 1 285 0
+ 169 0000 014B     		ldr	r3, .L14
+ 170 0002 1868     		ldr	r0, [r3]
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 9
 
 
- 171              		.align	2
- 172              		.global	LCD_Timer_ISR_Enable
- 173              		.code	16
- 174              		.thumb_func
- 175              		.type	LCD_Timer_ISR_Enable, %function
- 176              	LCD_Timer_ISR_Enable:
- 177              	.LFB9:
+ 171              	.LVL7:
  286:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 287:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 288:Generated_Source\PSoC4/LCD_Timer_ISR.c **** /*******************************************************************************
- 289:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Function Name: LCD_Timer_ISR_Enable
- 290:Generated_Source\PSoC4/LCD_Timer_ISR.c **** ********************************************************************************
- 291:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 292:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Summary:
- 293:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Enables the interrupt to the interrupt controller. Do not call this function
- 294:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   unless ISR_Start() has been called or the functionality of the ISR_Start() 
- 295:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   function, which sets the vector and the priority, has been called.
- 296:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 297:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Parameters:
- 298:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
+ 287:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     return (uint8)priority;
+ 172              		.loc 1 287 0
+ 173 0004 800F     		lsrs	r0, r0, #30
+ 174              	.LVL8:
+ 288:Generated_Source\PSoC4/LCD_Timer_ISR.c **** }
+ 175              		.loc 1 288 0
+ 176              		@ sp needed
+ 177 0006 7047     		bx	lr
+ 178              	.L15:
+ 179              		.align	2
+ 180              	.L14:
+ 181 0008 10E400E0 		.word	-536812528
+ 182              		.cfi_endproc
+ 183              	.LFE8:
+ 184              		.size	LCD_Timer_ISR_GetPriority, .-LCD_Timer_ISR_GetPriority
+ 185              		.section	.text.LCD_Timer_ISR_Enable,"ax",%progbits
+ 186              		.align	2
+ 187              		.global	LCD_Timer_ISR_Enable
+ 188              		.code	16
+ 189              		.thumb_func
+ 190              		.type	LCD_Timer_ISR_Enable, %function
+ 191              	LCD_Timer_ISR_Enable:
+ 192              	.LFB9:
+ 289:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 290:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 291:Generated_Source\PSoC4/LCD_Timer_ISR.c **** /*******************************************************************************
+ 292:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Function Name: LCD_Timer_ISR_Enable
+ 293:Generated_Source\PSoC4/LCD_Timer_ISR.c **** ********************************************************************************
+ 294:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+ 295:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Summary:
+ 296:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Enables the interrupt to the interrupt controller. Do not call this function
+ 297:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   unless ISR_Start() has been called or the functionality of the ISR_Start() 
+ 298:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   function, which sets the vector and the priority, has been called.
  299:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 300:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Return:
+ 300:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Parameters:
  301:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
  302:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 303:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *******************************************************************************/
- 304:Generated_Source\PSoC4/LCD_Timer_ISR.c **** void LCD_Timer_ISR_Enable(void)
- 305:Generated_Source\PSoC4/LCD_Timer_ISR.c **** {
- 178              		.loc 1 305 0
- 179              		.cfi_startproc
- 180              		@ args = 0, pretend = 0, frame = 0
- 181              		@ frame_needed = 0, uses_anonymous_args = 0
- 182              		@ link register save eliminated.
- 306:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* Enable the general interrupt. */
- 307:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     *LCD_Timer_ISR_INTC_SET_EN = LCD_Timer_ISR__INTC_MASK;
- 183              		.loc 1 307 0
- 184 0000 8022     		movs	r2, #128
- 185 0002 1203     		lsls	r2, r2, #12
- 186 0004 014B     		ldr	r3, .L15
- 187 0006 1A60     		str	r2, [r3]
- 308:Generated_Source\PSoC4/LCD_Timer_ISR.c **** }
- 188              		.loc 1 308 0
- 189              		@ sp needed
- 190 0008 7047     		bx	lr
- 191              	.L16:
- 192 000a C046     		.align	2
- 193              	.L15:
- 194 000c 00E100E0 		.word	-536813312
- 195              		.cfi_endproc
- 196              	.LFE9:
- 197              		.size	LCD_Timer_ISR_Enable, .-LCD_Timer_ISR_Enable
- 198              		.section	.text.LCD_Timer_ISR_GetState,"ax",%progbits
- 199              		.align	2
- 200              		.global	LCD_Timer_ISR_GetState
- 201              		.code	16
- 202              		.thumb_func
- 203              		.type	LCD_Timer_ISR_GetState, %function
- 204              	LCD_Timer_ISR_GetState:
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 10
+ 303:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Return:
+ 304:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
+ 305:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+ 306:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *******************************************************************************/
+ 307:Generated_Source\PSoC4/LCD_Timer_ISR.c **** void LCD_Timer_ISR_Enable(void)
+ 308:Generated_Source\PSoC4/LCD_Timer_ISR.c **** {
+ 193              		.loc 1 308 0
+ 194              		.cfi_startproc
+ 195              		@ args = 0, pretend = 0, frame = 0
+ 196              		@ frame_needed = 0, uses_anonymous_args = 0
+ 197              		@ link register save eliminated.
+ 309:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* Enable the general interrupt. */
+ 310:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     *LCD_Timer_ISR_INTC_SET_EN = LCD_Timer_ISR__INTC_MASK;
+ 198              		.loc 1 310 0
+ 199 0000 8022     		movs	r2, #128
+ 200 0002 1203     		lsls	r2, r2, #12
+ 201 0004 014B     		ldr	r3, .L17
+ 202 0006 1A60     		str	r2, [r3]
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 10
 
 
- 205              	.LFB10:
- 309:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 310:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 311:Generated_Source\PSoC4/LCD_Timer_ISR.c **** /*******************************************************************************
- 312:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Function Name: LCD_Timer_ISR_GetState
- 313:Generated_Source\PSoC4/LCD_Timer_ISR.c **** ********************************************************************************
- 314:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 315:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Summary:
- 316:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Gets the state (enabled, disabled) of the Interrupt.
+ 311:Generated_Source\PSoC4/LCD_Timer_ISR.c **** }
+ 203              		.loc 1 311 0
+ 204              		@ sp needed
+ 205 0008 7047     		bx	lr
+ 206              	.L18:
+ 207 000a C046     		.align	2
+ 208              	.L17:
+ 209 000c 00E100E0 		.word	-536813312
+ 210              		.cfi_endproc
+ 211              	.LFE9:
+ 212              		.size	LCD_Timer_ISR_Enable, .-LCD_Timer_ISR_Enable
+ 213              		.section	.text.LCD_Timer_ISR_GetState,"ax",%progbits
+ 214              		.align	2
+ 215              		.global	LCD_Timer_ISR_GetState
+ 216              		.code	16
+ 217              		.thumb_func
+ 218              		.type	LCD_Timer_ISR_GetState, %function
+ 219              	LCD_Timer_ISR_GetState:
+ 220              	.LFB10:
+ 312:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 313:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 314:Generated_Source\PSoC4/LCD_Timer_ISR.c **** /*******************************************************************************
+ 315:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Function Name: LCD_Timer_ISR_GetState
+ 316:Generated_Source\PSoC4/LCD_Timer_ISR.c **** ********************************************************************************
  317:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 318:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Parameters:
- 319:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
+ 318:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Summary:
+ 319:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Gets the state (enabled, disabled) of the Interrupt.
  320:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 321:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Return:
- 322:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   1 if enabled, 0 if disabled.
+ 321:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Parameters:
+ 322:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
  323:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 324:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *******************************************************************************/
- 325:Generated_Source\PSoC4/LCD_Timer_ISR.c **** uint8 LCD_Timer_ISR_GetState(void)
- 326:Generated_Source\PSoC4/LCD_Timer_ISR.c **** {
- 206              		.loc 1 326 0
- 207              		.cfi_startproc
- 208              		@ args = 0, pretend = 0, frame = 0
- 209              		@ frame_needed = 0, uses_anonymous_args = 0
- 210              		@ link register save eliminated.
- 327:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* Get the state of the general interrupt. */
- 328:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     return ((*LCD_Timer_ISR_INTC_SET_EN & (uint32)LCD_Timer_ISR__INTC_MASK) != 0u) ? 1u:0u;
- 211              		.loc 1 328 0
- 212 0000 034B     		ldr	r3, .L20
- 213 0002 1B68     		ldr	r3, [r3]
- 214 0004 1B03     		lsls	r3, r3, #12
- 215 0006 01D5     		bpl	.L19
- 216 0008 0120     		movs	r0, #1
- 217 000a 00E0     		b	.L18
- 218              	.L19:
- 219 000c 0020     		movs	r0, #0
- 220              	.L18:
- 329:Generated_Source\PSoC4/LCD_Timer_ISR.c **** }
- 221              		.loc 1 329 0 discriminator 4
- 222              		@ sp needed
- 223 000e 7047     		bx	lr
- 224              	.L21:
- 225              		.align	2
- 226              	.L20:
- 227 0010 00E100E0 		.word	-536813312
- 228              		.cfi_endproc
- 229              	.LFE10:
- 230              		.size	LCD_Timer_ISR_GetState, .-LCD_Timer_ISR_GetState
- 231              		.section	.text.LCD_Timer_ISR_Disable,"ax",%progbits
- 232              		.align	2
- 233              		.global	LCD_Timer_ISR_Disable
- 234              		.code	16
- 235              		.thumb_func
- 236              		.type	LCD_Timer_ISR_Disable, %function
- 237              	LCD_Timer_ISR_Disable:
- 238              	.LFB11:
- 330:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 331:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 11
+ 324:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Return:
+ 325:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   1 if enabled, 0 if disabled.
+ 326:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+ 327:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *******************************************************************************/
+ 328:Generated_Source\PSoC4/LCD_Timer_ISR.c **** uint8 LCD_Timer_ISR_GetState(void)
+ 329:Generated_Source\PSoC4/LCD_Timer_ISR.c **** {
+ 221              		.loc 1 329 0
+ 222              		.cfi_startproc
+ 223              		@ args = 0, pretend = 0, frame = 0
+ 224              		@ frame_needed = 0, uses_anonymous_args = 0
+ 225              		@ link register save eliminated.
+ 330:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* Get the state of the general interrupt. */
+ 331:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     return ((*LCD_Timer_ISR_INTC_SET_EN & (uint32)LCD_Timer_ISR__INTC_MASK) != 0u) ? 1u:0u;
+ 226              		.loc 1 331 0
+ 227 0000 034B     		ldr	r3, .L22
+ 228 0002 1B68     		ldr	r3, [r3]
+ 229 0004 1B03     		lsls	r3, r3, #12
+ 230 0006 01D5     		bpl	.L21
+ 231 0008 0120     		movs	r0, #1
+ 232 000a 00E0     		b	.L20
+ 233              	.L21:
+ 234 000c 0020     		movs	r0, #0
+ 235              	.L20:
+ 332:Generated_Source\PSoC4/LCD_Timer_ISR.c **** }
+ 236              		.loc 1 332 0 discriminator 4
+ 237              		@ sp needed
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 11
 
 
- 332:Generated_Source\PSoC4/LCD_Timer_ISR.c **** /*******************************************************************************
- 333:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Function Name: LCD_Timer_ISR_Disable
- 334:Generated_Source\PSoC4/LCD_Timer_ISR.c **** ********************************************************************************
- 335:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 336:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Summary:
- 337:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Disables the Interrupt in the interrupt controller.
+ 238 000e 7047     		bx	lr
+ 239              	.L23:
+ 240              		.align	2
+ 241              	.L22:
+ 242 0010 00E100E0 		.word	-536813312
+ 243              		.cfi_endproc
+ 244              	.LFE10:
+ 245              		.size	LCD_Timer_ISR_GetState, .-LCD_Timer_ISR_GetState
+ 246              		.section	.text.LCD_Timer_ISR_Disable,"ax",%progbits
+ 247              		.align	2
+ 248              		.global	LCD_Timer_ISR_Disable
+ 249              		.code	16
+ 250              		.thumb_func
+ 251              		.type	LCD_Timer_ISR_Disable, %function
+ 252              	LCD_Timer_ISR_Disable:
+ 253              	.LFB11:
+ 333:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 334:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 335:Generated_Source\PSoC4/LCD_Timer_ISR.c **** /*******************************************************************************
+ 336:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Function Name: LCD_Timer_ISR_Disable
+ 337:Generated_Source\PSoC4/LCD_Timer_ISR.c **** ********************************************************************************
  338:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 339:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Parameters:
- 340:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
+ 339:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Summary:
+ 340:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Disables the Interrupt in the interrupt controller.
  341:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 342:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Return:
+ 342:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Parameters:
  343:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
  344:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 345:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *******************************************************************************/
- 346:Generated_Source\PSoC4/LCD_Timer_ISR.c **** void LCD_Timer_ISR_Disable(void)
- 347:Generated_Source\PSoC4/LCD_Timer_ISR.c **** {
- 239              		.loc 1 347 0
- 240              		.cfi_startproc
- 241              		@ args = 0, pretend = 0, frame = 0
- 242              		@ frame_needed = 0, uses_anonymous_args = 0
- 243              		@ link register save eliminated.
- 348:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* Disable the general interrupt. */
- 349:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     *LCD_Timer_ISR_INTC_CLR_EN = LCD_Timer_ISR__INTC_MASK;
- 244              		.loc 1 349 0
- 245 0000 8022     		movs	r2, #128
- 246 0002 1203     		lsls	r2, r2, #12
- 247 0004 014B     		ldr	r3, .L23
- 248 0006 1A60     		str	r2, [r3]
- 350:Generated_Source\PSoC4/LCD_Timer_ISR.c **** }
- 249              		.loc 1 350 0
- 250              		@ sp needed
- 251 0008 7047     		bx	lr
- 252              	.L24:
- 253 000a C046     		.align	2
- 254              	.L23:
- 255 000c 80E100E0 		.word	-536813184
- 256              		.cfi_endproc
- 257              	.LFE11:
- 258              		.size	LCD_Timer_ISR_Disable, .-LCD_Timer_ISR_Disable
- 259              		.section	.text.LCD_Timer_ISR_Start,"ax",%progbits
- 260              		.align	2
- 261              		.global	LCD_Timer_ISR_Start
- 262              		.code	16
- 263              		.thumb_func
- 264              		.type	LCD_Timer_ISR_Start, %function
- 265              	LCD_Timer_ISR_Start:
- 266              	.LFB1:
-  57:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* For all we know the interrupt is active. */
- 267              		.loc 1 57 0
- 268              		.cfi_startproc
- 269              		@ args = 0, pretend = 0, frame = 0
- 270              		@ frame_needed = 0, uses_anonymous_args = 0
- 271 0000 10B5     		push	{r4, lr}
- 272              		.cfi_def_cfa_offset 8
- 273              		.cfi_offset 4, -8
- 274              		.cfi_offset 14, -4
-  59:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 12
+ 345:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Return:
+ 346:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
+ 347:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+ 348:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *******************************************************************************/
+ 349:Generated_Source\PSoC4/LCD_Timer_ISR.c **** void LCD_Timer_ISR_Disable(void)
+ 350:Generated_Source\PSoC4/LCD_Timer_ISR.c **** {
+ 254              		.loc 1 350 0
+ 255              		.cfi_startproc
+ 256              		@ args = 0, pretend = 0, frame = 0
+ 257              		@ frame_needed = 0, uses_anonymous_args = 0
+ 258              		@ link register save eliminated.
+ 351:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* Disable the general interrupt. */
+ 352:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     *LCD_Timer_ISR_INTC_CLR_EN = LCD_Timer_ISR__INTC_MASK;
+ 259              		.loc 1 352 0
+ 260 0000 8022     		movs	r2, #128
+ 261 0002 1203     		lsls	r2, r2, #12
+ 262 0004 014B     		ldr	r3, .L25
+ 263 0006 1A60     		str	r2, [r3]
+ 353:Generated_Source\PSoC4/LCD_Timer_ISR.c **** }
+ 264              		.loc 1 353 0
+ 265              		@ sp needed
+ 266 0008 7047     		bx	lr
+ 267              	.L26:
+ 268 000a C046     		.align	2
+ 269              	.L25:
+ 270 000c 80E100E0 		.word	-536813184
+ 271              		.cfi_endproc
+ 272              	.LFE11:
+ 273              		.size	LCD_Timer_ISR_Disable, .-LCD_Timer_ISR_Disable
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 12
 
 
- 275              		.loc 1 59 0
- 276 0002 FFF7FEFF 		bl	LCD_Timer_ISR_Disable
- 277              	.LVL8:
-  62:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 278              		.loc 1 62 0
- 279 0006 0448     		ldr	r0, .L26
- 280 0008 FFF7FEFF 		bl	LCD_Timer_ISR_SetVector
- 281              	.LVL9:
-  65:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 282              		.loc 1 65 0
- 283 000c 0320     		movs	r0, #3
- 284 000e FFF7FEFF 		bl	LCD_Timer_ISR_SetPriority
- 285              	.LVL10:
-  68:Generated_Source\PSoC4/LCD_Timer_ISR.c **** }
- 286              		.loc 1 68 0
- 287 0012 FFF7FEFF 		bl	LCD_Timer_ISR_Enable
- 288              	.LVL11:
-  69:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 289              		.loc 1 69 0
- 290              		@ sp needed
- 291 0016 10BD     		pop	{r4, pc}
- 292              	.L27:
- 293              		.align	2
- 294              	.L26:
- 295 0018 00000000 		.word	LCD_Timer_ISR_Interrupt
- 296              		.cfi_endproc
- 297              	.LFE1:
- 298              		.size	LCD_Timer_ISR_Start, .-LCD_Timer_ISR_Start
- 299              		.section	.text.LCD_Timer_ISR_StartEx,"ax",%progbits
- 300              		.align	2
- 301              		.global	LCD_Timer_ISR_StartEx
- 302              		.code	16
- 303              		.thumb_func
- 304              		.type	LCD_Timer_ISR_StartEx, %function
- 305              	LCD_Timer_ISR_StartEx:
- 306              	.LFB2:
- 100:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* For all we know the interrupt is active. */
- 307              		.loc 1 100 0
- 308              		.cfi_startproc
- 309              		@ args = 0, pretend = 0, frame = 0
- 310              		@ frame_needed = 0, uses_anonymous_args = 0
- 311              	.LVL12:
- 312 0000 10B5     		push	{r4, lr}
- 313              		.cfi_def_cfa_offset 8
- 314              		.cfi_offset 4, -8
- 315              		.cfi_offset 14, -4
- 316 0002 0400     		movs	r4, r0
- 102:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 317              		.loc 1 102 0
- 318 0004 FFF7FEFF 		bl	LCD_Timer_ISR_Disable
- 319              	.LVL13:
- 105:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 320              		.loc 1 105 0
- 321 0008 2000     		movs	r0, r4
- 322 000a FFF7FEFF 		bl	LCD_Timer_ISR_SetVector
- 323              	.LVL14:
- 108:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 13
+ 274              		.section	.text.LCD_Timer_ISR_Start,"ax",%progbits
+ 275              		.align	2
+ 276              		.global	LCD_Timer_ISR_Start
+ 277              		.code	16
+ 278              		.thumb_func
+ 279              		.type	LCD_Timer_ISR_Start, %function
+ 280              	LCD_Timer_ISR_Start:
+ 281              	.LFB1:
+  58:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* For all we know the interrupt is active. */
+ 282              		.loc 1 58 0
+ 283              		.cfi_startproc
+ 284              		@ args = 0, pretend = 0, frame = 0
+ 285              		@ frame_needed = 0, uses_anonymous_args = 0
+ 286 0000 10B5     		push	{r4, lr}
+ 287              		.cfi_def_cfa_offset 8
+ 288              		.cfi_offset 4, -8
+ 289              		.cfi_offset 14, -4
+  60:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 290              		.loc 1 60 0
+ 291 0002 FFF7FEFF 		bl	LCD_Timer_ISR_Disable
+ 292              	.LVL9:
+  63:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 293              		.loc 1 63 0
+ 294 0006 0448     		ldr	r0, .L28
+ 295 0008 FFF7FEFF 		bl	LCD_Timer_ISR_SetVector
+ 296              	.LVL10:
+  66:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 297              		.loc 1 66 0
+ 298 000c 0320     		movs	r0, #3
+ 299 000e FFF7FEFF 		bl	LCD_Timer_ISR_SetPriority
+ 300              	.LVL11:
+  69:Generated_Source\PSoC4/LCD_Timer_ISR.c **** }
+ 301              		.loc 1 69 0
+ 302 0012 FFF7FEFF 		bl	LCD_Timer_ISR_Enable
+ 303              	.LVL12:
+  70:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 304              		.loc 1 70 0
+ 305              		@ sp needed
+ 306 0016 10BD     		pop	{r4, pc}
+ 307              	.L29:
+ 308              		.align	2
+ 309              	.L28:
+ 310 0018 00000000 		.word	LCD_Timer_ISR_Interrupt
+ 311              		.cfi_endproc
+ 312              	.LFE1:
+ 313              		.size	LCD_Timer_ISR_Start, .-LCD_Timer_ISR_Start
+ 314              		.section	.text.LCD_Timer_ISR_StartEx,"ax",%progbits
+ 315              		.align	2
+ 316              		.global	LCD_Timer_ISR_StartEx
+ 317              		.code	16
+ 318              		.thumb_func
+ 319              		.type	LCD_Timer_ISR_StartEx, %function
+ 320              	LCD_Timer_ISR_StartEx:
+ 321              	.LFB2:
+ 101:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* For all we know the interrupt is active. */
+ 322              		.loc 1 101 0
+ 323              		.cfi_startproc
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 13
 
 
- 324              		.loc 1 108 0
- 325 000e 0320     		movs	r0, #3
- 326 0010 FFF7FEFF 		bl	LCD_Timer_ISR_SetPriority
- 327              	.LVL15:
- 111:Generated_Source\PSoC4/LCD_Timer_ISR.c **** }
- 328              		.loc 1 111 0
- 329 0014 FFF7FEFF 		bl	LCD_Timer_ISR_Enable
- 330              	.LVL16:
- 112:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 331              		.loc 1 112 0
- 332              		@ sp needed
- 333              	.LVL17:
- 334 0018 10BD     		pop	{r4, pc}
- 335              		.cfi_endproc
- 336              	.LFE2:
- 337              		.size	LCD_Timer_ISR_StartEx, .-LCD_Timer_ISR_StartEx
- 338 001a C046     		.section	.text.LCD_Timer_ISR_Stop,"ax",%progbits
- 339              		.align	2
- 340              		.global	LCD_Timer_ISR_Stop
- 341              		.code	16
- 342              		.thumb_func
- 343              		.type	LCD_Timer_ISR_Stop, %function
- 344              	LCD_Timer_ISR_Stop:
- 345              	.LFB3:
- 130:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* Disable this interrupt. */
- 346              		.loc 1 130 0
- 347              		.cfi_startproc
- 348              		@ args = 0, pretend = 0, frame = 0
- 349              		@ frame_needed = 0, uses_anonymous_args = 0
- 350 0000 10B5     		push	{r4, lr}
- 351              		.cfi_def_cfa_offset 8
- 352              		.cfi_offset 4, -8
- 353              		.cfi_offset 14, -4
- 132:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 354              		.loc 1 132 0
- 355 0002 FFF7FEFF 		bl	LCD_Timer_ISR_Disable
- 356              	.LVL18:
- 135:Generated_Source\PSoC4/LCD_Timer_ISR.c **** }
- 357              		.loc 1 135 0
- 358 0006 0248     		ldr	r0, .L30
- 359 0008 FFF7FEFF 		bl	LCD_Timer_ISR_SetVector
- 360              	.LVL19:
- 136:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 361              		.loc 1 136 0
- 362              		@ sp needed
- 363 000c 10BD     		pop	{r4, pc}
- 364              	.L31:
- 365 000e C046     		.align	2
- 366              	.L30:
- 367 0010 00000000 		.word	IntDefaultHandler
- 368              		.cfi_endproc
- 369              	.LFE3:
- 370              		.size	LCD_Timer_ISR_Stop, .-LCD_Timer_ISR_Stop
- 371              		.section	.text.LCD_Timer_ISR_SetPending,"ax",%progbits
- 372              		.align	2
- 373              		.global	LCD_Timer_ISR_SetPending
- 374              		.code	16
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 14
+ 324              		@ args = 0, pretend = 0, frame = 0
+ 325              		@ frame_needed = 0, uses_anonymous_args = 0
+ 326              	.LVL13:
+ 327 0000 10B5     		push	{r4, lr}
+ 328              		.cfi_def_cfa_offset 8
+ 329              		.cfi_offset 4, -8
+ 330              		.cfi_offset 14, -4
+ 331 0002 0400     		movs	r4, r0
+ 103:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 332              		.loc 1 103 0
+ 333 0004 FFF7FEFF 		bl	LCD_Timer_ISR_Disable
+ 334              	.LVL14:
+ 106:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 335              		.loc 1 106 0
+ 336 0008 2000     		movs	r0, r4
+ 337 000a FFF7FEFF 		bl	LCD_Timer_ISR_SetVector
+ 338              	.LVL15:
+ 109:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 339              		.loc 1 109 0
+ 340 000e 0320     		movs	r0, #3
+ 341 0010 FFF7FEFF 		bl	LCD_Timer_ISR_SetPriority
+ 342              	.LVL16:
+ 112:Generated_Source\PSoC4/LCD_Timer_ISR.c **** }
+ 343              		.loc 1 112 0
+ 344 0014 FFF7FEFF 		bl	LCD_Timer_ISR_Enable
+ 345              	.LVL17:
+ 113:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 346              		.loc 1 113 0
+ 347              		@ sp needed
+ 348              	.LVL18:
+ 349 0018 10BD     		pop	{r4, pc}
+ 350              		.cfi_endproc
+ 351              	.LFE2:
+ 352              		.size	LCD_Timer_ISR_StartEx, .-LCD_Timer_ISR_StartEx
+ 353 001a C046     		.section	.text.LCD_Timer_ISR_Stop,"ax",%progbits
+ 354              		.align	2
+ 355              		.global	LCD_Timer_ISR_Stop
+ 356              		.code	16
+ 357              		.thumb_func
+ 358              		.type	LCD_Timer_ISR_Stop, %function
+ 359              	LCD_Timer_ISR_Stop:
+ 360              	.LFB3:
+ 131:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     /* Disable this interrupt. */
+ 361              		.loc 1 131 0
+ 362              		.cfi_startproc
+ 363              		@ args = 0, pretend = 0, frame = 0
+ 364              		@ frame_needed = 0, uses_anonymous_args = 0
+ 365 0000 10B5     		push	{r4, lr}
+ 366              		.cfi_def_cfa_offset 8
+ 367              		.cfi_offset 4, -8
+ 368              		.cfi_offset 14, -4
+ 133:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 369              		.loc 1 133 0
+ 370 0002 FFF7FEFF 		bl	LCD_Timer_ISR_Disable
+ 371              	.LVL19:
+ 136:Generated_Source\PSoC4/LCD_Timer_ISR.c **** }
+ 372              		.loc 1 136 0
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 14
 
 
- 375              		.thumb_func
- 376              		.type	LCD_Timer_ISR_SetPending, %function
- 377              	LCD_Timer_ISR_SetPending:
- 378              	.LFB12:
- 351:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 352:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 353:Generated_Source\PSoC4/LCD_Timer_ISR.c **** /*******************************************************************************
- 354:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Function Name: LCD_Timer_ISR_SetPending
- 355:Generated_Source\PSoC4/LCD_Timer_ISR.c **** ********************************************************************************
- 356:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 357:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Summary:
- 358:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Causes the Interrupt to enter the pending state, a software method of
- 359:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   generating the interrupt.
- 360:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 361:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Parameters:
- 362:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
+ 373 0006 0248     		ldr	r0, .L32
+ 374 0008 FFF7FEFF 		bl	LCD_Timer_ISR_SetVector
+ 375              	.LVL20:
+ 137:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 376              		.loc 1 137 0
+ 377              		@ sp needed
+ 378 000c 10BD     		pop	{r4, pc}
+ 379              	.L33:
+ 380 000e C046     		.align	2
+ 381              	.L32:
+ 382 0010 00000000 		.word	IntDefaultHandler
+ 383              		.cfi_endproc
+ 384              	.LFE3:
+ 385              		.size	LCD_Timer_ISR_Stop, .-LCD_Timer_ISR_Stop
+ 386              		.section	.text.LCD_Timer_ISR_SetPending,"ax",%progbits
+ 387              		.align	2
+ 388              		.global	LCD_Timer_ISR_SetPending
+ 389              		.code	16
+ 390              		.thumb_func
+ 391              		.type	LCD_Timer_ISR_SetPending, %function
+ 392              	LCD_Timer_ISR_SetPending:
+ 393              	.LFB12:
+ 354:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 355:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 356:Generated_Source\PSoC4/LCD_Timer_ISR.c **** /*******************************************************************************
+ 357:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Function Name: LCD_Timer_ISR_SetPending
+ 358:Generated_Source\PSoC4/LCD_Timer_ISR.c **** ********************************************************************************
+ 359:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+ 360:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Summary:
+ 361:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Causes the Interrupt to enter the pending state, a software method of
+ 362:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   generating the interrupt.
  363:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 364:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Return:
+ 364:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Parameters:
  365:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
  366:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 367:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Side Effects:
- 368:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   If interrupts are enabled and the interrupt is set up properly, the ISR is
- 369:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   entered (depending on the priority of this interrupt and other pending 
- 370:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   interrupts).
- 371:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 372:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *******************************************************************************/
- 373:Generated_Source\PSoC4/LCD_Timer_ISR.c **** void LCD_Timer_ISR_SetPending(void)
- 374:Generated_Source\PSoC4/LCD_Timer_ISR.c **** {
- 379              		.loc 1 374 0
- 380              		.cfi_startproc
- 381              		@ args = 0, pretend = 0, frame = 0
- 382              		@ frame_needed = 0, uses_anonymous_args = 0
- 383              		@ link register save eliminated.
- 375:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     *LCD_Timer_ISR_INTC_SET_PD = LCD_Timer_ISR__INTC_MASK;
- 384              		.loc 1 375 0
- 385 0000 8022     		movs	r2, #128
- 386 0002 1203     		lsls	r2, r2, #12
- 387 0004 014B     		ldr	r3, .L33
- 388 0006 1A60     		str	r2, [r3]
- 376:Generated_Source\PSoC4/LCD_Timer_ISR.c **** }
- 389              		.loc 1 376 0
- 390              		@ sp needed
- 391 0008 7047     		bx	lr
- 392              	.L34:
- 393 000a C046     		.align	2
- 394              	.L33:
- 395 000c 00E200E0 		.word	-536813056
- 396              		.cfi_endproc
- 397              	.LFE12:
- 398              		.size	LCD_Timer_ISR_SetPending, .-LCD_Timer_ISR_SetPending
- 399              		.section	.text.LCD_Timer_ISR_ClearPending,"ax",%progbits
- 400              		.align	2
- 401              		.global	LCD_Timer_ISR_ClearPending
- 402              		.code	16
- 403              		.thumb_func
- 404              		.type	LCD_Timer_ISR_ClearPending, %function
- 405              	LCD_Timer_ISR_ClearPending:
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 15
+ 367:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Return:
+ 368:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
+ 369:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+ 370:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Side Effects:
+ 371:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   If interrupts are enabled and the interrupt is set up properly, the ISR is
+ 372:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   entered (depending on the priority of this interrupt and other pending 
+ 373:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   interrupts).
+ 374:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+ 375:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *******************************************************************************/
+ 376:Generated_Source\PSoC4/LCD_Timer_ISR.c **** void LCD_Timer_ISR_SetPending(void)
+ 377:Generated_Source\PSoC4/LCD_Timer_ISR.c **** {
+ 394              		.loc 1 377 0
+ 395              		.cfi_startproc
+ 396              		@ args = 0, pretend = 0, frame = 0
+ 397              		@ frame_needed = 0, uses_anonymous_args = 0
+ 398              		@ link register save eliminated.
+ 378:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     *LCD_Timer_ISR_INTC_SET_PD = LCD_Timer_ISR__INTC_MASK;
+ 399              		.loc 1 378 0
+ 400 0000 8022     		movs	r2, #128
+ 401 0002 1203     		lsls	r2, r2, #12
+ 402 0004 014B     		ldr	r3, .L35
+ 403 0006 1A60     		str	r2, [r3]
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 15
 
 
- 406              	.LFB13:
- 377:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 378:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
- 379:Generated_Source\PSoC4/LCD_Timer_ISR.c **** /*******************************************************************************
- 380:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Function Name: LCD_Timer_ISR_ClearPending
- 381:Generated_Source\PSoC4/LCD_Timer_ISR.c **** ********************************************************************************
- 382:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 383:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Summary:
- 384:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Clears a pending interrupt in the interrupt controller.
+ 379:Generated_Source\PSoC4/LCD_Timer_ISR.c **** }
+ 404              		.loc 1 379 0
+ 405              		@ sp needed
+ 406 0008 7047     		bx	lr
+ 407              	.L36:
+ 408 000a C046     		.align	2
+ 409              	.L35:
+ 410 000c 00E200E0 		.word	-536813056
+ 411              		.cfi_endproc
+ 412              	.LFE12:
+ 413              		.size	LCD_Timer_ISR_SetPending, .-LCD_Timer_ISR_SetPending
+ 414              		.section	.text.LCD_Timer_ISR_ClearPending,"ax",%progbits
+ 415              		.align	2
+ 416              		.global	LCD_Timer_ISR_ClearPending
+ 417              		.code	16
+ 418              		.thumb_func
+ 419              		.type	LCD_Timer_ISR_ClearPending, %function
+ 420              	LCD_Timer_ISR_ClearPending:
+ 421              	.LFB13:
+ 380:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 381:Generated_Source\PSoC4/LCD_Timer_ISR.c **** 
+ 382:Generated_Source\PSoC4/LCD_Timer_ISR.c **** /*******************************************************************************
+ 383:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Function Name: LCD_Timer_ISR_ClearPending
+ 384:Generated_Source\PSoC4/LCD_Timer_ISR.c **** ********************************************************************************
  385:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 386:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Note Some interrupt sources are clear-on-read and require the block 
- 387:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   interrupt/status register to be read/cleared with the appropriate block API 
- 388:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   (GPIO, UART, and so on). Otherwise the ISR will continue to remain in 
- 389:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   pending state even though the interrupt itself is cleared using this API.
- 390:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 391:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Parameters:
- 392:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
+ 386:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Summary:
+ 387:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Clears a pending interrupt in the interrupt controller.
+ 388:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+ 389:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   Note Some interrupt sources are clear-on-read and require the block 
+ 390:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   interrupt/status register to be read/cleared with the appropriate block API 
+ 391:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   (GPIO, UART, and so on). Otherwise the ISR will continue to remain in 
+ 392:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   pending state even though the interrupt itself is cleared using this API.
  393:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 394:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Return:
+ 394:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Parameters:
  395:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
  396:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
- 397:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *******************************************************************************/
- 398:Generated_Source\PSoC4/LCD_Timer_ISR.c **** void LCD_Timer_ISR_ClearPending(void)
- 399:Generated_Source\PSoC4/LCD_Timer_ISR.c **** {
- 407              		.loc 1 399 0
- 408              		.cfi_startproc
- 409              		@ args = 0, pretend = 0, frame = 0
- 410              		@ frame_needed = 0, uses_anonymous_args = 0
- 411              		@ link register save eliminated.
- 400:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     *LCD_Timer_ISR_INTC_CLR_PD = LCD_Timer_ISR__INTC_MASK;
- 412              		.loc 1 400 0
- 413 0000 8022     		movs	r2, #128
- 414 0002 1203     		lsls	r2, r2, #12
- 415 0004 014B     		ldr	r3, .L36
- 416 0006 1A60     		str	r2, [r3]
- 401:Generated_Source\PSoC4/LCD_Timer_ISR.c **** }
- 417              		.loc 1 401 0
- 418              		@ sp needed
- 419 0008 7047     		bx	lr
- 420              	.L37:
- 421 000a C046     		.align	2
- 422              	.L36:
- 423 000c 80E200E0 		.word	-536812928
- 424              		.cfi_endproc
- 425              	.LFE13:
- 426              		.size	LCD_Timer_ISR_ClearPending, .-LCD_Timer_ISR_ClearPending
- 427              		.text
- 428              	.Letext0:
- 429              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
- 430              		.file 3 "Generated_Source\\PSoC4/CyLib.h"
- 431              		.section	.debug_info,"",%progbits
- 432              	.Ldebug_info0:
- 433 0000 01030000 		.4byte	0x301
- 434 0004 0400     		.2byte	0x4
- 435 0006 00000000 		.4byte	.Ldebug_abbrev0
- 436 000a 04       		.byte	0x4
- 437 000b 01       		.uleb128 0x1
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 16
+ 397:Generated_Source\PSoC4/LCD_Timer_ISR.c **** * Return:
+ 398:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *   None
+ 399:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *
+ 400:Generated_Source\PSoC4/LCD_Timer_ISR.c **** *******************************************************************************/
+ 401:Generated_Source\PSoC4/LCD_Timer_ISR.c **** void LCD_Timer_ISR_ClearPending(void)
+ 402:Generated_Source\PSoC4/LCD_Timer_ISR.c **** {
+ 422              		.loc 1 402 0
+ 423              		.cfi_startproc
+ 424              		@ args = 0, pretend = 0, frame = 0
+ 425              		@ frame_needed = 0, uses_anonymous_args = 0
+ 426              		@ link register save eliminated.
+ 403:Generated_Source\PSoC4/LCD_Timer_ISR.c ****     *LCD_Timer_ISR_INTC_CLR_PD = LCD_Timer_ISR__INTC_MASK;
+ 427              		.loc 1 403 0
+ 428 0000 8022     		movs	r2, #128
+ 429 0002 1203     		lsls	r2, r2, #12
+ 430 0004 014B     		ldr	r3, .L38
+ 431 0006 1A60     		str	r2, [r3]
+ 404:Generated_Source\PSoC4/LCD_Timer_ISR.c **** }
+ 432              		.loc 1 404 0
+ 433              		@ sp needed
+ 434 0008 7047     		bx	lr
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 16
 
 
- 438 000c 9D010000 		.4byte	.LASF36
- 439 0010 0C       		.byte	0xc
- 440 0011 79020000 		.4byte	.LASF37
- 441 0015 A0020000 		.4byte	.LASF38
- 442 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 443 001d 00000000 		.4byte	0
- 444 0021 00000000 		.4byte	.Ldebug_line0
- 445 0025 02       		.uleb128 0x2
- 446 0026 01       		.byte	0x1
- 447 0027 06       		.byte	0x6
- 448 0028 3B030000 		.4byte	.LASF0
- 449 002c 02       		.uleb128 0x2
- 450 002d 01       		.byte	0x1
- 451 002e 08       		.byte	0x8
- 452 002f A2000000 		.4byte	.LASF1
- 453 0033 02       		.uleb128 0x2
- 454 0034 02       		.byte	0x2
- 455 0035 05       		.byte	0x5
- 456 0036 0D030000 		.4byte	.LASF2
- 457 003a 02       		.uleb128 0x2
- 458 003b 02       		.byte	0x2
- 459 003c 07       		.byte	0x7
- 460 003d 43000000 		.4byte	.LASF3
- 461 0041 02       		.uleb128 0x2
- 462 0042 04       		.byte	0x4
- 463 0043 05       		.byte	0x5
- 464 0044 26030000 		.4byte	.LASF4
- 465 0048 02       		.uleb128 0x2
- 466 0049 04       		.byte	0x4
- 467 004a 07       		.byte	0x7
- 468 004b BF000000 		.4byte	.LASF5
- 469 004f 02       		.uleb128 0x2
- 470 0050 08       		.byte	0x8
- 471 0051 05       		.byte	0x5
- 472 0052 66020000 		.4byte	.LASF6
- 473 0056 02       		.uleb128 0x2
- 474 0057 08       		.byte	0x8
- 475 0058 07       		.byte	0x7
- 476 0059 8B000000 		.4byte	.LASF7
- 477 005d 03       		.uleb128 0x3
- 478 005e 04       		.byte	0x4
- 479 005f 05       		.byte	0x5
- 480 0060 696E7400 		.ascii	"int\000"
- 481 0064 02       		.uleb128 0x2
- 482 0065 04       		.byte	0x4
- 483 0066 07       		.byte	0x7
- 484 0067 36010000 		.4byte	.LASF8
- 485 006b 04       		.uleb128 0x4
- 486 006c D1000000 		.4byte	.LASF9
- 487 0070 02       		.byte	0x2
- 488 0071 E401     		.2byte	0x1e4
- 489 0073 2C000000 		.4byte	0x2c
- 490 0077 04       		.uleb128 0x4
- 491 0078 18010000 		.4byte	.LASF10
- 492 007c 02       		.byte	0x2
- 493 007d E601     		.2byte	0x1e6
- 494 007f 48000000 		.4byte	0x48
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 17
+ 435              	.L39:
+ 436 000a C046     		.align	2
+ 437              	.L38:
+ 438 000c 80E200E0 		.word	-536812928
+ 439              		.cfi_endproc
+ 440              	.LFE13:
+ 441              		.size	LCD_Timer_ISR_ClearPending, .-LCD_Timer_ISR_ClearPending
+ 442              		.text
+ 443              	.Letext0:
+ 444              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 445              		.file 3 "Generated_Source\\PSoC4\\LCD_Timer.h"
+ 446              		.file 4 "Generated_Source\\PSoC4/CyLib.h"
+ 447              		.section	.debug_info,"",%progbits
+ 448              	.Ldebug_info0:
+ 449 0000 31030000 		.4byte	0x331
+ 450 0004 0400     		.2byte	0x4
+ 451 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 452 000a 04       		.byte	0x4
+ 453 000b 01       		.uleb128 0x1
+ 454 000c BE010000 		.4byte	.LASF39
+ 455 0010 0C       		.byte	0xc
+ 456 0011 9A020000 		.4byte	.LASF40
+ 457 0015 C1020000 		.4byte	.LASF41
+ 458 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 459 001d 00000000 		.4byte	0
+ 460 0021 00000000 		.4byte	.Ldebug_line0
+ 461 0025 02       		.uleb128 0x2
+ 462 0026 01       		.byte	0x1
+ 463 0027 06       		.byte	0x6
+ 464 0028 5C030000 		.4byte	.LASF0
+ 465 002c 02       		.uleb128 0x2
+ 466 002d 01       		.byte	0x1
+ 467 002e 08       		.byte	0x8
+ 468 002f A2000000 		.4byte	.LASF1
+ 469 0033 02       		.uleb128 0x2
+ 470 0034 02       		.byte	0x2
+ 471 0035 05       		.byte	0x5
+ 472 0036 2E030000 		.4byte	.LASF2
+ 473 003a 02       		.uleb128 0x2
+ 474 003b 02       		.byte	0x2
+ 475 003c 07       		.byte	0x7
+ 476 003d 43000000 		.4byte	.LASF3
+ 477 0041 02       		.uleb128 0x2
+ 478 0042 04       		.byte	0x4
+ 479 0043 05       		.byte	0x5
+ 480 0044 47030000 		.4byte	.LASF4
+ 481 0048 02       		.uleb128 0x2
+ 482 0049 04       		.byte	0x4
+ 483 004a 07       		.byte	0x7
+ 484 004b BF000000 		.4byte	.LASF5
+ 485 004f 02       		.uleb128 0x2
+ 486 0050 08       		.byte	0x8
+ 487 0051 05       		.byte	0x5
+ 488 0052 87020000 		.4byte	.LASF6
+ 489 0056 02       		.uleb128 0x2
+ 490 0057 08       		.byte	0x8
+ 491 0058 07       		.byte	0x7
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 17
 
 
- 495 0083 02       		.uleb128 0x2
- 496 0084 04       		.byte	0x4
- 497 0085 04       		.byte	0x4
- 498 0086 85000000 		.4byte	.LASF11
- 499 008a 02       		.uleb128 0x2
- 500 008b 08       		.byte	0x8
- 501 008c 04       		.byte	0x4
- 502 008d 11010000 		.4byte	.LASF12
- 503 0091 02       		.uleb128 0x2
- 504 0092 01       		.byte	0x1
- 505 0093 08       		.byte	0x8
- 506 0094 74020000 		.4byte	.LASF13
- 507 0098 04       		.uleb128 0x4
- 508 0099 00000000 		.4byte	.LASF14
- 509 009d 02       		.byte	0x2
- 510 009e 9002     		.2byte	0x290
- 511 00a0 A4000000 		.4byte	0xa4
- 512 00a4 05       		.uleb128 0x5
- 513 00a5 77000000 		.4byte	0x77
- 514 00a9 04       		.uleb128 0x4
- 515 00aa 77010000 		.4byte	.LASF15
- 516 00ae 02       		.byte	0x2
- 517 00af A002     		.2byte	0x2a0
- 518 00b1 B5000000 		.4byte	0xb5
- 519 00b5 06       		.uleb128 0x6
- 520 00b6 04       		.byte	0x4
- 521 00b7 BB000000 		.4byte	0xbb
- 522 00bb 07       		.uleb128 0x7
- 523 00bc 02       		.uleb128 0x2
- 524 00bd 08       		.byte	0x8
- 525 00be 04       		.byte	0x4
- 526 00bf 2F030000 		.4byte	.LASF16
- 527 00c3 02       		.uleb128 0x2
- 528 00c4 04       		.byte	0x4
- 529 00c5 07       		.byte	0x7
- 530 00c6 5D020000 		.4byte	.LASF17
- 531 00ca 08       		.uleb128 0x8
- 532 00cb 1E000000 		.4byte	.LASF24
- 533 00cf 01       		.byte	0x1
- 534 00d0 9F       		.byte	0x9f
- 535 00d1 00000000 		.4byte	.LFB4
- 536 00d5 02000000 		.4byte	.LFE4-.LFB4
- 537 00d9 01       		.uleb128 0x1
- 538 00da 9C       		.byte	0x9c
- 539 00db 09       		.uleb128 0x9
- 540 00dc 2B020000 		.4byte	.LASF18
- 541 00e0 01       		.byte	0x1
- 542 00e1 C7       		.byte	0xc7
- 543 00e2 00000000 		.4byte	.LFB5
- 544 00e6 0C000000 		.4byte	.LFE5-.LFB5
- 545 00ea 01       		.uleb128 0x1
- 546 00eb 9C       		.byte	0x9c
- 547 00ec FE000000 		.4byte	0xfe
- 548 00f0 0A       		.uleb128 0xa
- 549 00f1 43010000 		.4byte	.LASF20
- 550 00f5 01       		.byte	0x1
- 551 00f6 C7       		.byte	0xc7
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 18
+ 492 0059 8B000000 		.4byte	.LASF7
+ 493 005d 03       		.uleb128 0x3
+ 494 005e 04       		.byte	0x4
+ 495 005f 05       		.byte	0x5
+ 496 0060 696E7400 		.ascii	"int\000"
+ 497 0064 02       		.uleb128 0x2
+ 498 0065 04       		.byte	0x4
+ 499 0066 07       		.byte	0x7
+ 500 0067 4F010000 		.4byte	.LASF8
+ 501 006b 04       		.uleb128 0x4
+ 502 006c EA000000 		.4byte	.LASF9
+ 503 0070 02       		.byte	0x2
+ 504 0071 E401     		.2byte	0x1e4
+ 505 0073 2C000000 		.4byte	0x2c
+ 506 0077 04       		.uleb128 0x4
+ 507 0078 31010000 		.4byte	.LASF10
+ 508 007c 02       		.byte	0x2
+ 509 007d E601     		.2byte	0x1e6
+ 510 007f 48000000 		.4byte	0x48
+ 511 0083 02       		.uleb128 0x2
+ 512 0084 04       		.byte	0x4
+ 513 0085 04       		.byte	0x4
+ 514 0086 85000000 		.4byte	.LASF11
+ 515 008a 02       		.uleb128 0x2
+ 516 008b 08       		.byte	0x8
+ 517 008c 04       		.byte	0x4
+ 518 008d 2A010000 		.4byte	.LASF12
+ 519 0091 02       		.uleb128 0x2
+ 520 0092 01       		.byte	0x1
+ 521 0093 08       		.byte	0x8
+ 522 0094 95020000 		.4byte	.LASF13
+ 523 0098 04       		.uleb128 0x4
+ 524 0099 00000000 		.4byte	.LASF14
+ 525 009d 02       		.byte	0x2
+ 526 009e 9002     		.2byte	0x290
+ 527 00a0 A4000000 		.4byte	0xa4
+ 528 00a4 05       		.uleb128 0x5
+ 529 00a5 77000000 		.4byte	0x77
+ 530 00a9 04       		.uleb128 0x4
+ 531 00aa 98010000 		.4byte	.LASF15
+ 532 00ae 02       		.byte	0x2
+ 533 00af A002     		.2byte	0x2a0
+ 534 00b1 B5000000 		.4byte	0xb5
+ 535 00b5 06       		.uleb128 0x6
+ 536 00b6 04       		.byte	0x4
+ 537 00b7 BB000000 		.4byte	0xbb
+ 538 00bb 07       		.uleb128 0x7
+ 539 00bc 02       		.uleb128 0x2
+ 540 00bd 08       		.byte	0x8
+ 541 00be 04       		.byte	0x4
+ 542 00bf 50030000 		.4byte	.LASF16
+ 543 00c3 02       		.uleb128 0x2
+ 544 00c4 04       		.byte	0x4
+ 545 00c5 07       		.byte	0x7
+ 546 00c6 7E020000 		.4byte	.LASF17
+ 547 00ca 08       		.uleb128 0x8
+ 548 00cb 1E000000 		.4byte	.LASF18
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 18
 
 
- 552 00f7 A9000000 		.4byte	0xa9
- 553 00fb 01       		.uleb128 0x1
- 554 00fc 50       		.byte	0x50
- 555 00fd 00       		.byte	0
- 556 00fe 0B       		.uleb128 0xb
- 557 00ff 06000000 		.4byte	.LASF26
- 558 0103 01       		.byte	0x1
- 559 0104 DB       		.byte	0xdb
- 560 0105 A9000000 		.4byte	0xa9
- 561 0109 00000000 		.4byte	.LFB6
- 562 010d 0C000000 		.4byte	.LFE6-.LFB6
- 563 0111 01       		.uleb128 0x1
- 564 0112 9C       		.byte	0x9c
- 565 0113 09       		.uleb128 0x9
- 566 0114 43020000 		.4byte	.LASF19
- 567 0118 01       		.byte	0x1
- 568 0119 F9       		.byte	0xf9
- 569 011a 00000000 		.4byte	.LFB7
- 570 011e 20000000 		.4byte	.LFE7-.LFB7
- 571 0122 01       		.uleb128 0x1
- 572 0123 9C       		.byte	0x9c
- 573 0124 65010000 		.4byte	0x165
- 574 0128 0C       		.uleb128 0xc
- 575 0129 F1000000 		.4byte	.LASF21
- 576 012d 01       		.byte	0x1
- 577 012e F9       		.byte	0xf9
- 578 012f 6B000000 		.4byte	0x6b
- 579 0133 00000000 		.4byte	.LLST0
- 580 0137 0D       		.uleb128 0xd
- 581 0138 B0000000 		.4byte	.LASF22
- 582 013c 01       		.byte	0x1
- 583 013d FB       		.byte	0xfb
- 584 013e 6B000000 		.4byte	0x6b
- 585 0142 21000000 		.4byte	.LLST1
- 586 0146 0E       		.uleb128 0xe
- 587 0147 17030000 		.4byte	.LASF23
- 588 014b 01       		.byte	0x1
- 589 014c FC       		.byte	0xfc
- 590 014d 77000000 		.4byte	0x77
- 591 0151 1E       		.byte	0x1e
- 592 0152 0F       		.uleb128 0xf
- 593 0153 08000000 		.4byte	.LVL3
- 594 0157 EE020000 		.4byte	0x2ee
- 595 015b 0F       		.uleb128 0xf
- 596 015c 1A000000 		.4byte	.LVL4
- 597 0160 F9020000 		.4byte	0x2f9
- 598 0164 00       		.byte	0
- 599 0165 10       		.uleb128 0x10
- 600 0166 D7000000 		.4byte	.LASF39
- 601 016a 01       		.byte	0x1
- 602 016b 1501     		.2byte	0x115
- 603 016d 6B000000 		.4byte	0x6b
- 604 0171 00000000 		.4byte	.LFB8
- 605 0175 0C000000 		.4byte	.LFE8-.LFB8
- 606 0179 01       		.uleb128 0x1
- 607 017a 9C       		.byte	0x9c
- 608 017b 9D010000 		.4byte	0x19d
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 19
+ 549 00cf 01       		.byte	0x1
+ 550 00d0 A0       		.byte	0xa0
+ 551 00d1 00000000 		.4byte	.LFB4
+ 552 00d5 14000000 		.4byte	.LFE4-.LFB4
+ 553 00d9 01       		.uleb128 0x1
+ 554 00da 9C       		.byte	0x9c
+ 555 00db EF000000 		.4byte	0xef
+ 556 00df 09       		.uleb128 0x9
+ 557 00e0 08000000 		.4byte	.LVL0
+ 558 00e4 12030000 		.4byte	0x312
+ 559 00e8 0A       		.uleb128 0xa
+ 560 00e9 01       		.uleb128 0x1
+ 561 00ea 50       		.byte	0x50
+ 562 00eb 01       		.uleb128 0x1
+ 563 00ec 31       		.byte	0x31
+ 564 00ed 00       		.byte	0
+ 565 00ee 00       		.byte	0
+ 566 00ef 08       		.uleb128 0x8
+ 567 00f0 4C020000 		.4byte	.LASF19
+ 568 00f4 01       		.byte	0x1
+ 569 00f5 CA       		.byte	0xca
+ 570 00f6 00000000 		.4byte	.LFB5
+ 571 00fa 0C000000 		.4byte	.LFE5-.LFB5
+ 572 00fe 01       		.uleb128 0x1
+ 573 00ff 9C       		.byte	0x9c
+ 574 0100 12010000 		.4byte	0x112
+ 575 0104 0B       		.uleb128 0xb
+ 576 0105 5C010000 		.4byte	.LASF21
+ 577 0109 01       		.byte	0x1
+ 578 010a CA       		.byte	0xca
+ 579 010b A9000000 		.4byte	0xa9
+ 580 010f 01       		.uleb128 0x1
+ 581 0110 50       		.byte	0x50
+ 582 0111 00       		.byte	0
+ 583 0112 0C       		.uleb128 0xc
+ 584 0113 06000000 		.4byte	.LASF25
+ 585 0117 01       		.byte	0x1
+ 586 0118 DE       		.byte	0xde
+ 587 0119 A9000000 		.4byte	0xa9
+ 588 011d 00000000 		.4byte	.LFB6
+ 589 0121 0C000000 		.4byte	.LFE6-.LFB6
+ 590 0125 01       		.uleb128 0x1
+ 591 0126 9C       		.byte	0x9c
+ 592 0127 08       		.uleb128 0x8
+ 593 0128 64020000 		.4byte	.LASF20
+ 594 012c 01       		.byte	0x1
+ 595 012d FC       		.byte	0xfc
+ 596 012e 00000000 		.4byte	.LFB7
+ 597 0132 20000000 		.4byte	.LFE7-.LFB7
+ 598 0136 01       		.uleb128 0x1
+ 599 0137 9C       		.byte	0x9c
+ 600 0138 79010000 		.4byte	0x179
+ 601 013c 0D       		.uleb128 0xd
+ 602 013d 0A010000 		.4byte	.LASF22
+ 603 0141 01       		.byte	0x1
+ 604 0142 FC       		.byte	0xfc
+ 605 0143 6B000000 		.4byte	0x6b
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 19
 
 
- 609 017f 11       		.uleb128 0x11
- 610 0180 F1000000 		.4byte	.LASF21
- 611 0184 01       		.byte	0x1
- 612 0185 1701     		.2byte	0x117
- 613 0187 77000000 		.4byte	0x77
- 614 018b 34000000 		.4byte	.LLST2
- 615 018f 12       		.uleb128 0x12
- 616 0190 17030000 		.4byte	.LASF23
- 617 0194 01       		.byte	0x1
- 618 0195 1801     		.2byte	0x118
- 619 0197 77000000 		.4byte	0x77
- 620 019b 1E       		.byte	0x1e
- 621 019c 00       		.byte	0
- 622 019d 13       		.uleb128 0x13
- 623 019e F8020000 		.4byte	.LASF25
- 624 01a2 01       		.byte	0x1
- 625 01a3 3001     		.2byte	0x130
- 626 01a5 00000000 		.4byte	.LFB9
- 627 01a9 10000000 		.4byte	.LFE9-.LFB9
- 628 01ad 01       		.uleb128 0x1
- 629 01ae 9C       		.byte	0x9c
- 630 01af 14       		.uleb128 0x14
- 631 01b0 FA000000 		.4byte	.LASF27
- 632 01b4 01       		.byte	0x1
- 633 01b5 4501     		.2byte	0x145
- 634 01b7 6B000000 		.4byte	0x6b
- 635 01bb 00000000 		.4byte	.LFB10
- 636 01bf 14000000 		.4byte	.LFE10-.LFB10
- 637 01c3 01       		.uleb128 0x1
- 638 01c4 9C       		.byte	0x9c
- 639 01c5 13       		.uleb128 0x13
- 640 01c6 61010000 		.4byte	.LASF28
- 641 01ca 01       		.byte	0x1
- 642 01cb 5A01     		.2byte	0x15a
- 643 01cd 00000000 		.4byte	.LFB11
- 644 01d1 10000000 		.4byte	.LFE11-.LFB11
- 645 01d5 01       		.uleb128 0x1
- 646 01d6 9C       		.byte	0x9c
- 647 01d7 09       		.uleb128 0x9
- 648 01d8 56000000 		.4byte	.LASF29
- 649 01dc 01       		.byte	0x1
- 650 01dd 38       		.byte	0x38
- 651 01de 00000000 		.4byte	.LFB1
- 652 01e2 1C000000 		.4byte	.LFE1-.LFB1
- 653 01e6 01       		.uleb128 0x1
- 654 01e7 9C       		.byte	0x9c
- 655 01e8 29020000 		.4byte	0x229
- 656 01ec 0F       		.uleb128 0xf
- 657 01ed 06000000 		.4byte	.LVL8
- 658 01f1 C5010000 		.4byte	0x1c5
- 659 01f5 15       		.uleb128 0x15
- 660 01f6 0C000000 		.4byte	.LVL9
- 661 01fa DB000000 		.4byte	0xdb
- 662 01fe 0C020000 		.4byte	0x20c
- 663 0202 16       		.uleb128 0x16
- 664 0203 01       		.uleb128 0x1
- 665 0204 50       		.byte	0x50
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 20
+ 606 0147 00000000 		.4byte	.LLST0
+ 607 014b 0E       		.uleb128 0xe
+ 608 014c B0000000 		.4byte	.LASF23
+ 609 0150 01       		.byte	0x1
+ 610 0151 FE       		.byte	0xfe
+ 611 0152 6B000000 		.4byte	0x6b
+ 612 0156 21000000 		.4byte	.LLST1
+ 613 015a 0F       		.uleb128 0xf
+ 614 015b 38030000 		.4byte	.LASF24
+ 615 015f 01       		.byte	0x1
+ 616 0160 FF       		.byte	0xff
+ 617 0161 77000000 		.4byte	0x77
+ 618 0165 1E       		.byte	0x1e
+ 619 0166 10       		.uleb128 0x10
+ 620 0167 08000000 		.4byte	.LVL4
+ 621 016b 1E030000 		.4byte	0x31e
+ 622 016f 10       		.uleb128 0x10
+ 623 0170 1A000000 		.4byte	.LVL5
+ 624 0174 29030000 		.4byte	0x329
+ 625 0178 00       		.byte	0
+ 626 0179 11       		.uleb128 0x11
+ 627 017a F0000000 		.4byte	.LASF42
+ 628 017e 01       		.byte	0x1
+ 629 017f 1801     		.2byte	0x118
+ 630 0181 6B000000 		.4byte	0x6b
+ 631 0185 00000000 		.4byte	.LFB8
+ 632 0189 0C000000 		.4byte	.LFE8-.LFB8
+ 633 018d 01       		.uleb128 0x1
+ 634 018e 9C       		.byte	0x9c
+ 635 018f B1010000 		.4byte	0x1b1
+ 636 0193 12       		.uleb128 0x12
+ 637 0194 0A010000 		.4byte	.LASF22
+ 638 0198 01       		.byte	0x1
+ 639 0199 1A01     		.2byte	0x11a
+ 640 019b 77000000 		.4byte	0x77
+ 641 019f 34000000 		.4byte	.LLST2
+ 642 01a3 13       		.uleb128 0x13
+ 643 01a4 38030000 		.4byte	.LASF24
+ 644 01a8 01       		.byte	0x1
+ 645 01a9 1B01     		.2byte	0x11b
+ 646 01ab 77000000 		.4byte	0x77
+ 647 01af 1E       		.byte	0x1e
+ 648 01b0 00       		.byte	0
+ 649 01b1 14       		.uleb128 0x14
+ 650 01b2 19030000 		.4byte	.LASF27
+ 651 01b6 01       		.byte	0x1
+ 652 01b7 3301     		.2byte	0x133
+ 653 01b9 00000000 		.4byte	.LFB9
+ 654 01bd 10000000 		.4byte	.LFE9-.LFB9
+ 655 01c1 01       		.uleb128 0x1
+ 656 01c2 9C       		.byte	0x9c
+ 657 01c3 15       		.uleb128 0x15
+ 658 01c4 13010000 		.4byte	.LASF26
+ 659 01c8 01       		.byte	0x1
+ 660 01c9 4801     		.2byte	0x148
+ 661 01cb 6B000000 		.4byte	0x6b
+ 662 01cf 00000000 		.4byte	.LFB10
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 20
 
 
- 666 0205 05       		.uleb128 0x5
- 667 0206 03       		.byte	0x3
- 668 0207 00000000 		.4byte	LCD_Timer_ISR_Interrupt
- 669 020b 00       		.byte	0
- 670 020c 15       		.uleb128 0x15
- 671 020d 12000000 		.4byte	.LVL10
- 672 0211 13010000 		.4byte	0x113
- 673 0215 1F020000 		.4byte	0x21f
- 674 0219 16       		.uleb128 0x16
- 675 021a 01       		.uleb128 0x1
- 676 021b 50       		.byte	0x50
- 677 021c 01       		.uleb128 0x1
- 678 021d 33       		.byte	0x33
- 679 021e 00       		.byte	0
- 680 021f 0F       		.uleb128 0xf
- 681 0220 16000000 		.4byte	.LVL11
- 682 0224 9D010000 		.4byte	0x19d
- 683 0228 00       		.byte	0
- 684 0229 09       		.uleb128 0x9
- 685 022a 47030000 		.4byte	.LASF30
- 686 022e 01       		.byte	0x1
- 687 022f 63       		.byte	0x63
- 688 0230 00000000 		.4byte	.LFB2
- 689 0234 1A000000 		.4byte	.LFE2-.LFB2
- 690 0238 01       		.uleb128 0x1
- 691 0239 9C       		.byte	0x9c
- 692 023a 87020000 		.4byte	0x287
- 693 023e 0C       		.uleb128 0xc
- 694 023f 43010000 		.4byte	.LASF20
- 695 0243 01       		.byte	0x1
- 696 0244 63       		.byte	0x63
- 697 0245 A9000000 		.4byte	0xa9
- 698 0249 56000000 		.4byte	.LLST3
- 699 024d 0F       		.uleb128 0xf
- 700 024e 08000000 		.4byte	.LVL13
- 701 0252 C5010000 		.4byte	0x1c5
- 702 0256 15       		.uleb128 0x15
- 703 0257 0E000000 		.4byte	.LVL14
- 704 025b DB000000 		.4byte	0xdb
- 705 025f 6A020000 		.4byte	0x26a
- 706 0263 16       		.uleb128 0x16
- 707 0264 01       		.uleb128 0x1
- 708 0265 50       		.byte	0x50
- 709 0266 02       		.uleb128 0x2
- 710 0267 74       		.byte	0x74
- 711 0268 00       		.sleb128 0
- 712 0269 00       		.byte	0
- 713 026a 15       		.uleb128 0x15
- 714 026b 14000000 		.4byte	.LVL15
- 715 026f 13010000 		.4byte	0x113
- 716 0273 7D020000 		.4byte	0x27d
- 717 0277 16       		.uleb128 0x16
- 718 0278 01       		.uleb128 0x1
- 719 0279 50       		.byte	0x50
- 720 027a 01       		.uleb128 0x1
- 721 027b 33       		.byte	0x33
- 722 027c 00       		.byte	0
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 21
+ 663 01d3 14000000 		.4byte	.LFE10-.LFB10
+ 664 01d7 01       		.uleb128 0x1
+ 665 01d8 9C       		.byte	0x9c
+ 666 01d9 14       		.uleb128 0x14
+ 667 01da 82010000 		.4byte	.LASF28
+ 668 01de 01       		.byte	0x1
+ 669 01df 5D01     		.2byte	0x15d
+ 670 01e1 00000000 		.4byte	.LFB11
+ 671 01e5 10000000 		.4byte	.LFE11-.LFB11
+ 672 01e9 01       		.uleb128 0x1
+ 673 01ea 9C       		.byte	0x9c
+ 674 01eb 08       		.uleb128 0x8
+ 675 01ec 56000000 		.4byte	.LASF29
+ 676 01f0 01       		.byte	0x1
+ 677 01f1 39       		.byte	0x39
+ 678 01f2 00000000 		.4byte	.LFB1
+ 679 01f6 1C000000 		.4byte	.LFE1-.LFB1
+ 680 01fa 01       		.uleb128 0x1
+ 681 01fb 9C       		.byte	0x9c
+ 682 01fc 3D020000 		.4byte	0x23d
+ 683 0200 10       		.uleb128 0x10
+ 684 0201 06000000 		.4byte	.LVL9
+ 685 0205 D9010000 		.4byte	0x1d9
+ 686 0209 16       		.uleb128 0x16
+ 687 020a 0C000000 		.4byte	.LVL10
+ 688 020e EF000000 		.4byte	0xef
+ 689 0212 20020000 		.4byte	0x220
+ 690 0216 0A       		.uleb128 0xa
+ 691 0217 01       		.uleb128 0x1
+ 692 0218 50       		.byte	0x50
+ 693 0219 05       		.uleb128 0x5
+ 694 021a 03       		.byte	0x3
+ 695 021b 00000000 		.4byte	LCD_Timer_ISR_Interrupt
+ 696 021f 00       		.byte	0
+ 697 0220 16       		.uleb128 0x16
+ 698 0221 12000000 		.4byte	.LVL11
+ 699 0225 27010000 		.4byte	0x127
+ 700 0229 33020000 		.4byte	0x233
+ 701 022d 0A       		.uleb128 0xa
+ 702 022e 01       		.uleb128 0x1
+ 703 022f 50       		.byte	0x50
+ 704 0230 01       		.uleb128 0x1
+ 705 0231 33       		.byte	0x33
+ 706 0232 00       		.byte	0
+ 707 0233 10       		.uleb128 0x10
+ 708 0234 16000000 		.4byte	.LVL12
+ 709 0238 B1010000 		.4byte	0x1b1
+ 710 023c 00       		.byte	0
+ 711 023d 08       		.uleb128 0x8
+ 712 023e 68030000 		.4byte	.LASF30
+ 713 0242 01       		.byte	0x1
+ 714 0243 64       		.byte	0x64
+ 715 0244 00000000 		.4byte	.LFB2
+ 716 0248 1A000000 		.4byte	.LFE2-.LFB2
+ 717 024c 01       		.uleb128 0x1
+ 718 024d 9C       		.byte	0x9c
+ 719 024e 9B020000 		.4byte	0x29b
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 21
 
 
- 723 027d 0F       		.uleb128 0xf
- 724 027e 18000000 		.4byte	.LVL16
- 725 0282 9D010000 		.4byte	0x19d
- 726 0286 00       		.byte	0
- 727 0287 09       		.uleb128 0x9
- 728 0288 5D030000 		.4byte	.LASF31
- 729 028c 01       		.byte	0x1
- 730 028d 81       		.byte	0x81
- 731 028e 00000000 		.4byte	.LFB3
- 732 0292 14000000 		.4byte	.LFE3-.LFB3
- 733 0296 01       		.uleb128 0x1
- 734 0297 9C       		.byte	0x9c
- 735 0298 AF020000 		.4byte	0x2af
- 736 029c 0F       		.uleb128 0xf
- 737 029d 06000000 		.4byte	.LVL18
- 738 02a1 C5010000 		.4byte	0x1c5
- 739 02a5 0F       		.uleb128 0xf
- 740 02a6 0C000000 		.4byte	.LVL19
- 741 02aa DB000000 		.4byte	0xdb
- 742 02ae 00       		.byte	0
- 743 02af 13       		.uleb128 0x13
- 744 02b0 84010000 		.4byte	.LASF32
- 745 02b4 01       		.byte	0x1
- 746 02b5 7501     		.2byte	0x175
- 747 02b7 00000000 		.4byte	.LFB12
- 748 02bb 10000000 		.4byte	.LFE12-.LFB12
- 749 02bf 01       		.uleb128 0x1
- 750 02c0 9C       		.byte	0x9c
- 751 02c1 13       		.uleb128 0x13
- 752 02c2 6A000000 		.4byte	.LASF33
- 753 02c6 01       		.byte	0x1
- 754 02c7 8E01     		.2byte	0x18e
- 755 02c9 00000000 		.4byte	.LFB13
- 756 02cd 10000000 		.4byte	.LFE13-.LFB13
- 757 02d1 01       		.uleb128 0x1
- 758 02d2 9C       		.byte	0x9c
- 759 02d3 17       		.uleb128 0x17
- 760 02d4 A9000000 		.4byte	0xa9
- 761 02d8 E3020000 		.4byte	0x2e3
- 762 02dc 18       		.uleb128 0x18
- 763 02dd C3000000 		.4byte	0xc3
- 764 02e1 2F       		.byte	0x2f
- 765 02e2 00       		.byte	0
- 766 02e3 19       		.uleb128 0x19
- 767 02e4 36000000 		.4byte	.LASF40
- 768 02e8 01       		.byte	0x1
- 769 02e9 21       		.byte	0x21
- 770 02ea D3020000 		.4byte	0x2d3
- 771 02ee 1A       		.uleb128 0x1a
- 772 02ef 1F010000 		.4byte	.LASF34
- 773 02f3 1F010000 		.4byte	.LASF34
- 774 02f7 03       		.byte	0x3
- 775 02f8 E5       		.byte	0xe5
- 776 02f9 1A       		.uleb128 0x1a
- 777 02fa 4B010000 		.4byte	.LASF35
- 778 02fe 4B010000 		.4byte	.LASF35
- 779 0302 03       		.byte	0x3
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 22
+ 720 0252 0D       		.uleb128 0xd
+ 721 0253 5C010000 		.4byte	.LASF21
+ 722 0257 01       		.byte	0x1
+ 723 0258 64       		.byte	0x64
+ 724 0259 A9000000 		.4byte	0xa9
+ 725 025d 56000000 		.4byte	.LLST3
+ 726 0261 10       		.uleb128 0x10
+ 727 0262 08000000 		.4byte	.LVL14
+ 728 0266 D9010000 		.4byte	0x1d9
+ 729 026a 16       		.uleb128 0x16
+ 730 026b 0E000000 		.4byte	.LVL15
+ 731 026f EF000000 		.4byte	0xef
+ 732 0273 7E020000 		.4byte	0x27e
+ 733 0277 0A       		.uleb128 0xa
+ 734 0278 01       		.uleb128 0x1
+ 735 0279 50       		.byte	0x50
+ 736 027a 02       		.uleb128 0x2
+ 737 027b 74       		.byte	0x74
+ 738 027c 00       		.sleb128 0
+ 739 027d 00       		.byte	0
+ 740 027e 16       		.uleb128 0x16
+ 741 027f 14000000 		.4byte	.LVL16
+ 742 0283 27010000 		.4byte	0x127
+ 743 0287 91020000 		.4byte	0x291
+ 744 028b 0A       		.uleb128 0xa
+ 745 028c 01       		.uleb128 0x1
+ 746 028d 50       		.byte	0x50
+ 747 028e 01       		.uleb128 0x1
+ 748 028f 33       		.byte	0x33
+ 749 0290 00       		.byte	0
+ 750 0291 10       		.uleb128 0x10
+ 751 0292 18000000 		.4byte	.LVL17
+ 752 0296 B1010000 		.4byte	0x1b1
+ 753 029a 00       		.byte	0
+ 754 029b 08       		.uleb128 0x8
+ 755 029c 7E030000 		.4byte	.LASF31
+ 756 02a0 01       		.byte	0x1
+ 757 02a1 82       		.byte	0x82
+ 758 02a2 00000000 		.4byte	.LFB3
+ 759 02a6 14000000 		.4byte	.LFE3-.LFB3
+ 760 02aa 01       		.uleb128 0x1
+ 761 02ab 9C       		.byte	0x9c
+ 762 02ac C3020000 		.4byte	0x2c3
+ 763 02b0 10       		.uleb128 0x10
+ 764 02b1 06000000 		.4byte	.LVL19
+ 765 02b5 D9010000 		.4byte	0x1d9
+ 766 02b9 10       		.uleb128 0x10
+ 767 02ba 0C000000 		.4byte	.LVL20
+ 768 02be EF000000 		.4byte	0xef
+ 769 02c2 00       		.byte	0
+ 770 02c3 14       		.uleb128 0x14
+ 771 02c4 A5010000 		.4byte	.LASF32
+ 772 02c8 01       		.byte	0x1
+ 773 02c9 7801     		.2byte	0x178
+ 774 02cb 00000000 		.4byte	.LFB12
+ 775 02cf 10000000 		.4byte	.LFE12-.LFB12
+ 776 02d3 01       		.uleb128 0x1
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 22
 
 
- 780 0303 E6       		.byte	0xe6
- 781 0304 00       		.byte	0
- 782              		.section	.debug_abbrev,"",%progbits
- 783              	.Ldebug_abbrev0:
- 784 0000 01       		.uleb128 0x1
- 785 0001 11       		.uleb128 0x11
- 786 0002 01       		.byte	0x1
- 787 0003 25       		.uleb128 0x25
- 788 0004 0E       		.uleb128 0xe
- 789 0005 13       		.uleb128 0x13
- 790 0006 0B       		.uleb128 0xb
- 791 0007 03       		.uleb128 0x3
- 792 0008 0E       		.uleb128 0xe
- 793 0009 1B       		.uleb128 0x1b
- 794 000a 0E       		.uleb128 0xe
- 795 000b 55       		.uleb128 0x55
- 796 000c 17       		.uleb128 0x17
- 797 000d 11       		.uleb128 0x11
- 798 000e 01       		.uleb128 0x1
- 799 000f 10       		.uleb128 0x10
- 800 0010 17       		.uleb128 0x17
- 801 0011 00       		.byte	0
- 802 0012 00       		.byte	0
- 803 0013 02       		.uleb128 0x2
- 804 0014 24       		.uleb128 0x24
- 805 0015 00       		.byte	0
- 806 0016 0B       		.uleb128 0xb
- 807 0017 0B       		.uleb128 0xb
- 808 0018 3E       		.uleb128 0x3e
- 809 0019 0B       		.uleb128 0xb
- 810 001a 03       		.uleb128 0x3
- 811 001b 0E       		.uleb128 0xe
- 812 001c 00       		.byte	0
- 813 001d 00       		.byte	0
- 814 001e 03       		.uleb128 0x3
- 815 001f 24       		.uleb128 0x24
- 816 0020 00       		.byte	0
- 817 0021 0B       		.uleb128 0xb
- 818 0022 0B       		.uleb128 0xb
- 819 0023 3E       		.uleb128 0x3e
- 820 0024 0B       		.uleb128 0xb
- 821 0025 03       		.uleb128 0x3
- 822 0026 08       		.uleb128 0x8
- 823 0027 00       		.byte	0
- 824 0028 00       		.byte	0
- 825 0029 04       		.uleb128 0x4
- 826 002a 16       		.uleb128 0x16
- 827 002b 00       		.byte	0
- 828 002c 03       		.uleb128 0x3
- 829 002d 0E       		.uleb128 0xe
- 830 002e 3A       		.uleb128 0x3a
- 831 002f 0B       		.uleb128 0xb
- 832 0030 3B       		.uleb128 0x3b
- 833 0031 05       		.uleb128 0x5
- 834 0032 49       		.uleb128 0x49
- 835 0033 13       		.uleb128 0x13
- 836 0034 00       		.byte	0
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 23
+ 777 02d4 9C       		.byte	0x9c
+ 778 02d5 14       		.uleb128 0x14
+ 779 02d6 6A000000 		.4byte	.LASF33
+ 780 02da 01       		.byte	0x1
+ 781 02db 9101     		.2byte	0x191
+ 782 02dd 00000000 		.4byte	.LFB13
+ 783 02e1 10000000 		.4byte	.LFE13-.LFB13
+ 784 02e5 01       		.uleb128 0x1
+ 785 02e6 9C       		.byte	0x9c
+ 786 02e7 17       		.uleb128 0x17
+ 787 02e8 7A010000 		.4byte	.LASF34
+ 788 02ec 01       		.byte	0x1
+ 789 02ed 1F       		.byte	0x1f
+ 790 02ee F2020000 		.4byte	0x2f2
+ 791 02f2 05       		.uleb128 0x5
+ 792 02f3 5D000000 		.4byte	0x5d
+ 793 02f7 18       		.uleb128 0x18
+ 794 02f8 A9000000 		.4byte	0xa9
+ 795 02fc 07030000 		.4byte	0x307
+ 796 0300 19       		.uleb128 0x19
+ 797 0301 C3000000 		.4byte	0xc3
+ 798 0305 2F       		.byte	0x2f
+ 799 0306 00       		.byte	0
+ 800 0307 17       		.uleb128 0x17
+ 801 0308 36000000 		.4byte	.LASF35
+ 802 030c 01       		.byte	0x1
+ 803 030d 22       		.byte	0x22
+ 804 030e F7020000 		.4byte	0x2f7
+ 805 0312 1A       		.uleb128 0x1a
+ 806 0313 D1000000 		.4byte	.LASF36
+ 807 0317 D1000000 		.4byte	.LASF36
+ 808 031b 03       		.byte	0x3
+ 809 031c 4701     		.2byte	0x147
+ 810 031e 1B       		.uleb128 0x1b
+ 811 031f 38010000 		.4byte	.LASF37
+ 812 0323 38010000 		.4byte	.LASF37
+ 813 0327 04       		.byte	0x4
+ 814 0328 E5       		.byte	0xe5
+ 815 0329 1B       		.uleb128 0x1b
+ 816 032a 64010000 		.4byte	.LASF38
+ 817 032e 64010000 		.4byte	.LASF38
+ 818 0332 04       		.byte	0x4
+ 819 0333 E6       		.byte	0xe6
+ 820 0334 00       		.byte	0
+ 821              		.section	.debug_abbrev,"",%progbits
+ 822              	.Ldebug_abbrev0:
+ 823 0000 01       		.uleb128 0x1
+ 824 0001 11       		.uleb128 0x11
+ 825 0002 01       		.byte	0x1
+ 826 0003 25       		.uleb128 0x25
+ 827 0004 0E       		.uleb128 0xe
+ 828 0005 13       		.uleb128 0x13
+ 829 0006 0B       		.uleb128 0xb
+ 830 0007 03       		.uleb128 0x3
+ 831 0008 0E       		.uleb128 0xe
+ 832 0009 1B       		.uleb128 0x1b
+ 833 000a 0E       		.uleb128 0xe
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 23
 
 
- 837 0035 00       		.byte	0
- 838 0036 05       		.uleb128 0x5
- 839 0037 35       		.uleb128 0x35
- 840 0038 00       		.byte	0
- 841 0039 49       		.uleb128 0x49
- 842 003a 13       		.uleb128 0x13
- 843 003b 00       		.byte	0
- 844 003c 00       		.byte	0
- 845 003d 06       		.uleb128 0x6
- 846 003e 0F       		.uleb128 0xf
- 847 003f 00       		.byte	0
- 848 0040 0B       		.uleb128 0xb
- 849 0041 0B       		.uleb128 0xb
- 850 0042 49       		.uleb128 0x49
- 851 0043 13       		.uleb128 0x13
- 852 0044 00       		.byte	0
- 853 0045 00       		.byte	0
- 854 0046 07       		.uleb128 0x7
- 855 0047 15       		.uleb128 0x15
- 856 0048 00       		.byte	0
- 857 0049 27       		.uleb128 0x27
- 858 004a 19       		.uleb128 0x19
- 859 004b 00       		.byte	0
- 860 004c 00       		.byte	0
- 861 004d 08       		.uleb128 0x8
- 862 004e 2E       		.uleb128 0x2e
- 863 004f 00       		.byte	0
- 864 0050 3F       		.uleb128 0x3f
- 865 0051 19       		.uleb128 0x19
- 866 0052 03       		.uleb128 0x3
- 867 0053 0E       		.uleb128 0xe
- 868 0054 3A       		.uleb128 0x3a
- 869 0055 0B       		.uleb128 0xb
- 870 0056 3B       		.uleb128 0x3b
- 871 0057 0B       		.uleb128 0xb
- 872 0058 27       		.uleb128 0x27
- 873 0059 19       		.uleb128 0x19
- 874 005a 11       		.uleb128 0x11
- 875 005b 01       		.uleb128 0x1
- 876 005c 12       		.uleb128 0x12
- 877 005d 06       		.uleb128 0x6
- 878 005e 40       		.uleb128 0x40
- 879 005f 18       		.uleb128 0x18
- 880 0060 9742     		.uleb128 0x2117
- 881 0062 19       		.uleb128 0x19
- 882 0063 00       		.byte	0
- 883 0064 00       		.byte	0
- 884 0065 09       		.uleb128 0x9
- 885 0066 2E       		.uleb128 0x2e
- 886 0067 01       		.byte	0x1
- 887 0068 3F       		.uleb128 0x3f
- 888 0069 19       		.uleb128 0x19
- 889 006a 03       		.uleb128 0x3
- 890 006b 0E       		.uleb128 0xe
- 891 006c 3A       		.uleb128 0x3a
- 892 006d 0B       		.uleb128 0xb
- 893 006e 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 24
+ 834 000b 55       		.uleb128 0x55
+ 835 000c 17       		.uleb128 0x17
+ 836 000d 11       		.uleb128 0x11
+ 837 000e 01       		.uleb128 0x1
+ 838 000f 10       		.uleb128 0x10
+ 839 0010 17       		.uleb128 0x17
+ 840 0011 00       		.byte	0
+ 841 0012 00       		.byte	0
+ 842 0013 02       		.uleb128 0x2
+ 843 0014 24       		.uleb128 0x24
+ 844 0015 00       		.byte	0
+ 845 0016 0B       		.uleb128 0xb
+ 846 0017 0B       		.uleb128 0xb
+ 847 0018 3E       		.uleb128 0x3e
+ 848 0019 0B       		.uleb128 0xb
+ 849 001a 03       		.uleb128 0x3
+ 850 001b 0E       		.uleb128 0xe
+ 851 001c 00       		.byte	0
+ 852 001d 00       		.byte	0
+ 853 001e 03       		.uleb128 0x3
+ 854 001f 24       		.uleb128 0x24
+ 855 0020 00       		.byte	0
+ 856 0021 0B       		.uleb128 0xb
+ 857 0022 0B       		.uleb128 0xb
+ 858 0023 3E       		.uleb128 0x3e
+ 859 0024 0B       		.uleb128 0xb
+ 860 0025 03       		.uleb128 0x3
+ 861 0026 08       		.uleb128 0x8
+ 862 0027 00       		.byte	0
+ 863 0028 00       		.byte	0
+ 864 0029 04       		.uleb128 0x4
+ 865 002a 16       		.uleb128 0x16
+ 866 002b 00       		.byte	0
+ 867 002c 03       		.uleb128 0x3
+ 868 002d 0E       		.uleb128 0xe
+ 869 002e 3A       		.uleb128 0x3a
+ 870 002f 0B       		.uleb128 0xb
+ 871 0030 3B       		.uleb128 0x3b
+ 872 0031 05       		.uleb128 0x5
+ 873 0032 49       		.uleb128 0x49
+ 874 0033 13       		.uleb128 0x13
+ 875 0034 00       		.byte	0
+ 876 0035 00       		.byte	0
+ 877 0036 05       		.uleb128 0x5
+ 878 0037 35       		.uleb128 0x35
+ 879 0038 00       		.byte	0
+ 880 0039 49       		.uleb128 0x49
+ 881 003a 13       		.uleb128 0x13
+ 882 003b 00       		.byte	0
+ 883 003c 00       		.byte	0
+ 884 003d 06       		.uleb128 0x6
+ 885 003e 0F       		.uleb128 0xf
+ 886 003f 00       		.byte	0
+ 887 0040 0B       		.uleb128 0xb
+ 888 0041 0B       		.uleb128 0xb
+ 889 0042 49       		.uleb128 0x49
+ 890 0043 13       		.uleb128 0x13
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 24
 
 
- 894 006f 0B       		.uleb128 0xb
- 895 0070 27       		.uleb128 0x27
- 896 0071 19       		.uleb128 0x19
- 897 0072 11       		.uleb128 0x11
- 898 0073 01       		.uleb128 0x1
- 899 0074 12       		.uleb128 0x12
- 900 0075 06       		.uleb128 0x6
- 901 0076 40       		.uleb128 0x40
- 902 0077 18       		.uleb128 0x18
- 903 0078 9742     		.uleb128 0x2117
- 904 007a 19       		.uleb128 0x19
- 905 007b 01       		.uleb128 0x1
- 906 007c 13       		.uleb128 0x13
- 907 007d 00       		.byte	0
- 908 007e 00       		.byte	0
- 909 007f 0A       		.uleb128 0xa
- 910 0080 05       		.uleb128 0x5
- 911 0081 00       		.byte	0
- 912 0082 03       		.uleb128 0x3
- 913 0083 0E       		.uleb128 0xe
- 914 0084 3A       		.uleb128 0x3a
- 915 0085 0B       		.uleb128 0xb
- 916 0086 3B       		.uleb128 0x3b
- 917 0087 0B       		.uleb128 0xb
- 918 0088 49       		.uleb128 0x49
- 919 0089 13       		.uleb128 0x13
- 920 008a 02       		.uleb128 0x2
- 921 008b 18       		.uleb128 0x18
- 922 008c 00       		.byte	0
- 923 008d 00       		.byte	0
- 924 008e 0B       		.uleb128 0xb
- 925 008f 2E       		.uleb128 0x2e
- 926 0090 00       		.byte	0
- 927 0091 3F       		.uleb128 0x3f
- 928 0092 19       		.uleb128 0x19
- 929 0093 03       		.uleb128 0x3
- 930 0094 0E       		.uleb128 0xe
- 931 0095 3A       		.uleb128 0x3a
- 932 0096 0B       		.uleb128 0xb
- 933 0097 3B       		.uleb128 0x3b
- 934 0098 0B       		.uleb128 0xb
- 935 0099 27       		.uleb128 0x27
- 936 009a 19       		.uleb128 0x19
- 937 009b 49       		.uleb128 0x49
- 938 009c 13       		.uleb128 0x13
- 939 009d 11       		.uleb128 0x11
- 940 009e 01       		.uleb128 0x1
- 941 009f 12       		.uleb128 0x12
- 942 00a0 06       		.uleb128 0x6
- 943 00a1 40       		.uleb128 0x40
- 944 00a2 18       		.uleb128 0x18
- 945 00a3 9742     		.uleb128 0x2117
- 946 00a5 19       		.uleb128 0x19
- 947 00a6 00       		.byte	0
- 948 00a7 00       		.byte	0
- 949 00a8 0C       		.uleb128 0xc
- 950 00a9 05       		.uleb128 0x5
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 25
+ 891 0044 00       		.byte	0
+ 892 0045 00       		.byte	0
+ 893 0046 07       		.uleb128 0x7
+ 894 0047 15       		.uleb128 0x15
+ 895 0048 00       		.byte	0
+ 896 0049 27       		.uleb128 0x27
+ 897 004a 19       		.uleb128 0x19
+ 898 004b 00       		.byte	0
+ 899 004c 00       		.byte	0
+ 900 004d 08       		.uleb128 0x8
+ 901 004e 2E       		.uleb128 0x2e
+ 902 004f 01       		.byte	0x1
+ 903 0050 3F       		.uleb128 0x3f
+ 904 0051 19       		.uleb128 0x19
+ 905 0052 03       		.uleb128 0x3
+ 906 0053 0E       		.uleb128 0xe
+ 907 0054 3A       		.uleb128 0x3a
+ 908 0055 0B       		.uleb128 0xb
+ 909 0056 3B       		.uleb128 0x3b
+ 910 0057 0B       		.uleb128 0xb
+ 911 0058 27       		.uleb128 0x27
+ 912 0059 19       		.uleb128 0x19
+ 913 005a 11       		.uleb128 0x11
+ 914 005b 01       		.uleb128 0x1
+ 915 005c 12       		.uleb128 0x12
+ 916 005d 06       		.uleb128 0x6
+ 917 005e 40       		.uleb128 0x40
+ 918 005f 18       		.uleb128 0x18
+ 919 0060 9742     		.uleb128 0x2117
+ 920 0062 19       		.uleb128 0x19
+ 921 0063 01       		.uleb128 0x1
+ 922 0064 13       		.uleb128 0x13
+ 923 0065 00       		.byte	0
+ 924 0066 00       		.byte	0
+ 925 0067 09       		.uleb128 0x9
+ 926 0068 898201   		.uleb128 0x4109
+ 927 006b 01       		.byte	0x1
+ 928 006c 11       		.uleb128 0x11
+ 929 006d 01       		.uleb128 0x1
+ 930 006e 31       		.uleb128 0x31
+ 931 006f 13       		.uleb128 0x13
+ 932 0070 00       		.byte	0
+ 933 0071 00       		.byte	0
+ 934 0072 0A       		.uleb128 0xa
+ 935 0073 8A8201   		.uleb128 0x410a
+ 936 0076 00       		.byte	0
+ 937 0077 02       		.uleb128 0x2
+ 938 0078 18       		.uleb128 0x18
+ 939 0079 9142     		.uleb128 0x2111
+ 940 007b 18       		.uleb128 0x18
+ 941 007c 00       		.byte	0
+ 942 007d 00       		.byte	0
+ 943 007e 0B       		.uleb128 0xb
+ 944 007f 05       		.uleb128 0x5
+ 945 0080 00       		.byte	0
+ 946 0081 03       		.uleb128 0x3
+ 947 0082 0E       		.uleb128 0xe
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 25
 
 
- 951 00aa 00       		.byte	0
- 952 00ab 03       		.uleb128 0x3
- 953 00ac 0E       		.uleb128 0xe
- 954 00ad 3A       		.uleb128 0x3a
- 955 00ae 0B       		.uleb128 0xb
- 956 00af 3B       		.uleb128 0x3b
- 957 00b0 0B       		.uleb128 0xb
- 958 00b1 49       		.uleb128 0x49
- 959 00b2 13       		.uleb128 0x13
- 960 00b3 02       		.uleb128 0x2
- 961 00b4 17       		.uleb128 0x17
- 962 00b5 00       		.byte	0
- 963 00b6 00       		.byte	0
- 964 00b7 0D       		.uleb128 0xd
- 965 00b8 34       		.uleb128 0x34
- 966 00b9 00       		.byte	0
- 967 00ba 03       		.uleb128 0x3
- 968 00bb 0E       		.uleb128 0xe
- 969 00bc 3A       		.uleb128 0x3a
- 970 00bd 0B       		.uleb128 0xb
- 971 00be 3B       		.uleb128 0x3b
- 972 00bf 0B       		.uleb128 0xb
- 973 00c0 49       		.uleb128 0x49
- 974 00c1 13       		.uleb128 0x13
- 975 00c2 02       		.uleb128 0x2
- 976 00c3 17       		.uleb128 0x17
- 977 00c4 00       		.byte	0
- 978 00c5 00       		.byte	0
- 979 00c6 0E       		.uleb128 0xe
- 980 00c7 34       		.uleb128 0x34
- 981 00c8 00       		.byte	0
- 982 00c9 03       		.uleb128 0x3
- 983 00ca 0E       		.uleb128 0xe
- 984 00cb 3A       		.uleb128 0x3a
- 985 00cc 0B       		.uleb128 0xb
- 986 00cd 3B       		.uleb128 0x3b
- 987 00ce 0B       		.uleb128 0xb
- 988 00cf 49       		.uleb128 0x49
- 989 00d0 13       		.uleb128 0x13
- 990 00d1 1C       		.uleb128 0x1c
- 991 00d2 0B       		.uleb128 0xb
- 992 00d3 00       		.byte	0
- 993 00d4 00       		.byte	0
- 994 00d5 0F       		.uleb128 0xf
- 995 00d6 898201   		.uleb128 0x4109
- 996 00d9 00       		.byte	0
- 997 00da 11       		.uleb128 0x11
- 998 00db 01       		.uleb128 0x1
- 999 00dc 31       		.uleb128 0x31
- 1000 00dd 13       		.uleb128 0x13
- 1001 00de 00       		.byte	0
- 1002 00df 00       		.byte	0
- 1003 00e0 10       		.uleb128 0x10
- 1004 00e1 2E       		.uleb128 0x2e
- 1005 00e2 01       		.byte	0x1
- 1006 00e3 3F       		.uleb128 0x3f
- 1007 00e4 19       		.uleb128 0x19
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 26
+ 948 0083 3A       		.uleb128 0x3a
+ 949 0084 0B       		.uleb128 0xb
+ 950 0085 3B       		.uleb128 0x3b
+ 951 0086 0B       		.uleb128 0xb
+ 952 0087 49       		.uleb128 0x49
+ 953 0088 13       		.uleb128 0x13
+ 954 0089 02       		.uleb128 0x2
+ 955 008a 18       		.uleb128 0x18
+ 956 008b 00       		.byte	0
+ 957 008c 00       		.byte	0
+ 958 008d 0C       		.uleb128 0xc
+ 959 008e 2E       		.uleb128 0x2e
+ 960 008f 00       		.byte	0
+ 961 0090 3F       		.uleb128 0x3f
+ 962 0091 19       		.uleb128 0x19
+ 963 0092 03       		.uleb128 0x3
+ 964 0093 0E       		.uleb128 0xe
+ 965 0094 3A       		.uleb128 0x3a
+ 966 0095 0B       		.uleb128 0xb
+ 967 0096 3B       		.uleb128 0x3b
+ 968 0097 0B       		.uleb128 0xb
+ 969 0098 27       		.uleb128 0x27
+ 970 0099 19       		.uleb128 0x19
+ 971 009a 49       		.uleb128 0x49
+ 972 009b 13       		.uleb128 0x13
+ 973 009c 11       		.uleb128 0x11
+ 974 009d 01       		.uleb128 0x1
+ 975 009e 12       		.uleb128 0x12
+ 976 009f 06       		.uleb128 0x6
+ 977 00a0 40       		.uleb128 0x40
+ 978 00a1 18       		.uleb128 0x18
+ 979 00a2 9742     		.uleb128 0x2117
+ 980 00a4 19       		.uleb128 0x19
+ 981 00a5 00       		.byte	0
+ 982 00a6 00       		.byte	0
+ 983 00a7 0D       		.uleb128 0xd
+ 984 00a8 05       		.uleb128 0x5
+ 985 00a9 00       		.byte	0
+ 986 00aa 03       		.uleb128 0x3
+ 987 00ab 0E       		.uleb128 0xe
+ 988 00ac 3A       		.uleb128 0x3a
+ 989 00ad 0B       		.uleb128 0xb
+ 990 00ae 3B       		.uleb128 0x3b
+ 991 00af 0B       		.uleb128 0xb
+ 992 00b0 49       		.uleb128 0x49
+ 993 00b1 13       		.uleb128 0x13
+ 994 00b2 02       		.uleb128 0x2
+ 995 00b3 17       		.uleb128 0x17
+ 996 00b4 00       		.byte	0
+ 997 00b5 00       		.byte	0
+ 998 00b6 0E       		.uleb128 0xe
+ 999 00b7 34       		.uleb128 0x34
+ 1000 00b8 00       		.byte	0
+ 1001 00b9 03       		.uleb128 0x3
+ 1002 00ba 0E       		.uleb128 0xe
+ 1003 00bb 3A       		.uleb128 0x3a
+ 1004 00bc 0B       		.uleb128 0xb
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 26
 
 
- 1008 00e5 03       		.uleb128 0x3
- 1009 00e6 0E       		.uleb128 0xe
- 1010 00e7 3A       		.uleb128 0x3a
- 1011 00e8 0B       		.uleb128 0xb
- 1012 00e9 3B       		.uleb128 0x3b
- 1013 00ea 05       		.uleb128 0x5
- 1014 00eb 27       		.uleb128 0x27
- 1015 00ec 19       		.uleb128 0x19
- 1016 00ed 49       		.uleb128 0x49
- 1017 00ee 13       		.uleb128 0x13
- 1018 00ef 11       		.uleb128 0x11
- 1019 00f0 01       		.uleb128 0x1
- 1020 00f1 12       		.uleb128 0x12
- 1021 00f2 06       		.uleb128 0x6
- 1022 00f3 40       		.uleb128 0x40
- 1023 00f4 18       		.uleb128 0x18
- 1024 00f5 9742     		.uleb128 0x2117
- 1025 00f7 19       		.uleb128 0x19
- 1026 00f8 01       		.uleb128 0x1
- 1027 00f9 13       		.uleb128 0x13
- 1028 00fa 00       		.byte	0
- 1029 00fb 00       		.byte	0
- 1030 00fc 11       		.uleb128 0x11
- 1031 00fd 34       		.uleb128 0x34
- 1032 00fe 00       		.byte	0
- 1033 00ff 03       		.uleb128 0x3
- 1034 0100 0E       		.uleb128 0xe
- 1035 0101 3A       		.uleb128 0x3a
- 1036 0102 0B       		.uleb128 0xb
- 1037 0103 3B       		.uleb128 0x3b
- 1038 0104 05       		.uleb128 0x5
- 1039 0105 49       		.uleb128 0x49
- 1040 0106 13       		.uleb128 0x13
- 1041 0107 02       		.uleb128 0x2
- 1042 0108 17       		.uleb128 0x17
- 1043 0109 00       		.byte	0
- 1044 010a 00       		.byte	0
- 1045 010b 12       		.uleb128 0x12
- 1046 010c 34       		.uleb128 0x34
- 1047 010d 00       		.byte	0
- 1048 010e 03       		.uleb128 0x3
- 1049 010f 0E       		.uleb128 0xe
- 1050 0110 3A       		.uleb128 0x3a
- 1051 0111 0B       		.uleb128 0xb
- 1052 0112 3B       		.uleb128 0x3b
- 1053 0113 05       		.uleb128 0x5
- 1054 0114 49       		.uleb128 0x49
- 1055 0115 13       		.uleb128 0x13
- 1056 0116 1C       		.uleb128 0x1c
- 1057 0117 0B       		.uleb128 0xb
- 1058 0118 00       		.byte	0
- 1059 0119 00       		.byte	0
- 1060 011a 13       		.uleb128 0x13
- 1061 011b 2E       		.uleb128 0x2e
- 1062 011c 00       		.byte	0
- 1063 011d 3F       		.uleb128 0x3f
- 1064 011e 19       		.uleb128 0x19
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 27
+ 1005 00bd 3B       		.uleb128 0x3b
+ 1006 00be 0B       		.uleb128 0xb
+ 1007 00bf 49       		.uleb128 0x49
+ 1008 00c0 13       		.uleb128 0x13
+ 1009 00c1 02       		.uleb128 0x2
+ 1010 00c2 17       		.uleb128 0x17
+ 1011 00c3 00       		.byte	0
+ 1012 00c4 00       		.byte	0
+ 1013 00c5 0F       		.uleb128 0xf
+ 1014 00c6 34       		.uleb128 0x34
+ 1015 00c7 00       		.byte	0
+ 1016 00c8 03       		.uleb128 0x3
+ 1017 00c9 0E       		.uleb128 0xe
+ 1018 00ca 3A       		.uleb128 0x3a
+ 1019 00cb 0B       		.uleb128 0xb
+ 1020 00cc 3B       		.uleb128 0x3b
+ 1021 00cd 0B       		.uleb128 0xb
+ 1022 00ce 49       		.uleb128 0x49
+ 1023 00cf 13       		.uleb128 0x13
+ 1024 00d0 1C       		.uleb128 0x1c
+ 1025 00d1 0B       		.uleb128 0xb
+ 1026 00d2 00       		.byte	0
+ 1027 00d3 00       		.byte	0
+ 1028 00d4 10       		.uleb128 0x10
+ 1029 00d5 898201   		.uleb128 0x4109
+ 1030 00d8 00       		.byte	0
+ 1031 00d9 11       		.uleb128 0x11
+ 1032 00da 01       		.uleb128 0x1
+ 1033 00db 31       		.uleb128 0x31
+ 1034 00dc 13       		.uleb128 0x13
+ 1035 00dd 00       		.byte	0
+ 1036 00de 00       		.byte	0
+ 1037 00df 11       		.uleb128 0x11
+ 1038 00e0 2E       		.uleb128 0x2e
+ 1039 00e1 01       		.byte	0x1
+ 1040 00e2 3F       		.uleb128 0x3f
+ 1041 00e3 19       		.uleb128 0x19
+ 1042 00e4 03       		.uleb128 0x3
+ 1043 00e5 0E       		.uleb128 0xe
+ 1044 00e6 3A       		.uleb128 0x3a
+ 1045 00e7 0B       		.uleb128 0xb
+ 1046 00e8 3B       		.uleb128 0x3b
+ 1047 00e9 05       		.uleb128 0x5
+ 1048 00ea 27       		.uleb128 0x27
+ 1049 00eb 19       		.uleb128 0x19
+ 1050 00ec 49       		.uleb128 0x49
+ 1051 00ed 13       		.uleb128 0x13
+ 1052 00ee 11       		.uleb128 0x11
+ 1053 00ef 01       		.uleb128 0x1
+ 1054 00f0 12       		.uleb128 0x12
+ 1055 00f1 06       		.uleb128 0x6
+ 1056 00f2 40       		.uleb128 0x40
+ 1057 00f3 18       		.uleb128 0x18
+ 1058 00f4 9742     		.uleb128 0x2117
+ 1059 00f6 19       		.uleb128 0x19
+ 1060 00f7 01       		.uleb128 0x1
+ 1061 00f8 13       		.uleb128 0x13
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 27
 
 
- 1065 011f 03       		.uleb128 0x3
- 1066 0120 0E       		.uleb128 0xe
- 1067 0121 3A       		.uleb128 0x3a
- 1068 0122 0B       		.uleb128 0xb
- 1069 0123 3B       		.uleb128 0x3b
- 1070 0124 05       		.uleb128 0x5
- 1071 0125 27       		.uleb128 0x27
- 1072 0126 19       		.uleb128 0x19
- 1073 0127 11       		.uleb128 0x11
- 1074 0128 01       		.uleb128 0x1
- 1075 0129 12       		.uleb128 0x12
- 1076 012a 06       		.uleb128 0x6
- 1077 012b 40       		.uleb128 0x40
- 1078 012c 18       		.uleb128 0x18
- 1079 012d 9742     		.uleb128 0x2117
- 1080 012f 19       		.uleb128 0x19
- 1081 0130 00       		.byte	0
- 1082 0131 00       		.byte	0
- 1083 0132 14       		.uleb128 0x14
- 1084 0133 2E       		.uleb128 0x2e
- 1085 0134 00       		.byte	0
- 1086 0135 3F       		.uleb128 0x3f
- 1087 0136 19       		.uleb128 0x19
- 1088 0137 03       		.uleb128 0x3
- 1089 0138 0E       		.uleb128 0xe
- 1090 0139 3A       		.uleb128 0x3a
- 1091 013a 0B       		.uleb128 0xb
- 1092 013b 3B       		.uleb128 0x3b
- 1093 013c 05       		.uleb128 0x5
- 1094 013d 27       		.uleb128 0x27
- 1095 013e 19       		.uleb128 0x19
- 1096 013f 49       		.uleb128 0x49
- 1097 0140 13       		.uleb128 0x13
- 1098 0141 11       		.uleb128 0x11
- 1099 0142 01       		.uleb128 0x1
- 1100 0143 12       		.uleb128 0x12
- 1101 0144 06       		.uleb128 0x6
- 1102 0145 40       		.uleb128 0x40
- 1103 0146 18       		.uleb128 0x18
- 1104 0147 9742     		.uleb128 0x2117
- 1105 0149 19       		.uleb128 0x19
- 1106 014a 00       		.byte	0
- 1107 014b 00       		.byte	0
- 1108 014c 15       		.uleb128 0x15
- 1109 014d 898201   		.uleb128 0x4109
- 1110 0150 01       		.byte	0x1
- 1111 0151 11       		.uleb128 0x11
- 1112 0152 01       		.uleb128 0x1
- 1113 0153 31       		.uleb128 0x31
- 1114 0154 13       		.uleb128 0x13
- 1115 0155 01       		.uleb128 0x1
- 1116 0156 13       		.uleb128 0x13
- 1117 0157 00       		.byte	0
- 1118 0158 00       		.byte	0
- 1119 0159 16       		.uleb128 0x16
- 1120 015a 8A8201   		.uleb128 0x410a
- 1121 015d 00       		.byte	0
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 28
+ 1062 00f9 00       		.byte	0
+ 1063 00fa 00       		.byte	0
+ 1064 00fb 12       		.uleb128 0x12
+ 1065 00fc 34       		.uleb128 0x34
+ 1066 00fd 00       		.byte	0
+ 1067 00fe 03       		.uleb128 0x3
+ 1068 00ff 0E       		.uleb128 0xe
+ 1069 0100 3A       		.uleb128 0x3a
+ 1070 0101 0B       		.uleb128 0xb
+ 1071 0102 3B       		.uleb128 0x3b
+ 1072 0103 05       		.uleb128 0x5
+ 1073 0104 49       		.uleb128 0x49
+ 1074 0105 13       		.uleb128 0x13
+ 1075 0106 02       		.uleb128 0x2
+ 1076 0107 17       		.uleb128 0x17
+ 1077 0108 00       		.byte	0
+ 1078 0109 00       		.byte	0
+ 1079 010a 13       		.uleb128 0x13
+ 1080 010b 34       		.uleb128 0x34
+ 1081 010c 00       		.byte	0
+ 1082 010d 03       		.uleb128 0x3
+ 1083 010e 0E       		.uleb128 0xe
+ 1084 010f 3A       		.uleb128 0x3a
+ 1085 0110 0B       		.uleb128 0xb
+ 1086 0111 3B       		.uleb128 0x3b
+ 1087 0112 05       		.uleb128 0x5
+ 1088 0113 49       		.uleb128 0x49
+ 1089 0114 13       		.uleb128 0x13
+ 1090 0115 1C       		.uleb128 0x1c
+ 1091 0116 0B       		.uleb128 0xb
+ 1092 0117 00       		.byte	0
+ 1093 0118 00       		.byte	0
+ 1094 0119 14       		.uleb128 0x14
+ 1095 011a 2E       		.uleb128 0x2e
+ 1096 011b 00       		.byte	0
+ 1097 011c 3F       		.uleb128 0x3f
+ 1098 011d 19       		.uleb128 0x19
+ 1099 011e 03       		.uleb128 0x3
+ 1100 011f 0E       		.uleb128 0xe
+ 1101 0120 3A       		.uleb128 0x3a
+ 1102 0121 0B       		.uleb128 0xb
+ 1103 0122 3B       		.uleb128 0x3b
+ 1104 0123 05       		.uleb128 0x5
+ 1105 0124 27       		.uleb128 0x27
+ 1106 0125 19       		.uleb128 0x19
+ 1107 0126 11       		.uleb128 0x11
+ 1108 0127 01       		.uleb128 0x1
+ 1109 0128 12       		.uleb128 0x12
+ 1110 0129 06       		.uleb128 0x6
+ 1111 012a 40       		.uleb128 0x40
+ 1112 012b 18       		.uleb128 0x18
+ 1113 012c 9742     		.uleb128 0x2117
+ 1114 012e 19       		.uleb128 0x19
+ 1115 012f 00       		.byte	0
+ 1116 0130 00       		.byte	0
+ 1117 0131 15       		.uleb128 0x15
+ 1118 0132 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 28
 
 
- 1122 015e 02       		.uleb128 0x2
- 1123 015f 18       		.uleb128 0x18
- 1124 0160 9142     		.uleb128 0x2111
- 1125 0162 18       		.uleb128 0x18
- 1126 0163 00       		.byte	0
- 1127 0164 00       		.byte	0
- 1128 0165 17       		.uleb128 0x17
- 1129 0166 01       		.uleb128 0x1
- 1130 0167 01       		.byte	0x1
- 1131 0168 49       		.uleb128 0x49
- 1132 0169 13       		.uleb128 0x13
- 1133 016a 01       		.uleb128 0x1
- 1134 016b 13       		.uleb128 0x13
- 1135 016c 00       		.byte	0
- 1136 016d 00       		.byte	0
- 1137 016e 18       		.uleb128 0x18
- 1138 016f 21       		.uleb128 0x21
- 1139 0170 00       		.byte	0
- 1140 0171 49       		.uleb128 0x49
- 1141 0172 13       		.uleb128 0x13
- 1142 0173 2F       		.uleb128 0x2f
- 1143 0174 0B       		.uleb128 0xb
- 1144 0175 00       		.byte	0
- 1145 0176 00       		.byte	0
- 1146 0177 19       		.uleb128 0x19
- 1147 0178 34       		.uleb128 0x34
- 1148 0179 00       		.byte	0
- 1149 017a 03       		.uleb128 0x3
- 1150 017b 0E       		.uleb128 0xe
- 1151 017c 3A       		.uleb128 0x3a
- 1152 017d 0B       		.uleb128 0xb
- 1153 017e 3B       		.uleb128 0x3b
- 1154 017f 0B       		.uleb128 0xb
- 1155 0180 49       		.uleb128 0x49
- 1156 0181 13       		.uleb128 0x13
- 1157 0182 3F       		.uleb128 0x3f
- 1158 0183 19       		.uleb128 0x19
- 1159 0184 3C       		.uleb128 0x3c
- 1160 0185 19       		.uleb128 0x19
- 1161 0186 00       		.byte	0
- 1162 0187 00       		.byte	0
- 1163 0188 1A       		.uleb128 0x1a
- 1164 0189 2E       		.uleb128 0x2e
- 1165 018a 00       		.byte	0
- 1166 018b 3F       		.uleb128 0x3f
- 1167 018c 19       		.uleb128 0x19
- 1168 018d 3C       		.uleb128 0x3c
- 1169 018e 19       		.uleb128 0x19
- 1170 018f 6E       		.uleb128 0x6e
- 1171 0190 0E       		.uleb128 0xe
- 1172 0191 03       		.uleb128 0x3
- 1173 0192 0E       		.uleb128 0xe
- 1174 0193 3A       		.uleb128 0x3a
- 1175 0194 0B       		.uleb128 0xb
- 1176 0195 3B       		.uleb128 0x3b
- 1177 0196 0B       		.uleb128 0xb
- 1178 0197 00       		.byte	0
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 29
+ 1119 0133 00       		.byte	0
+ 1120 0134 3F       		.uleb128 0x3f
+ 1121 0135 19       		.uleb128 0x19
+ 1122 0136 03       		.uleb128 0x3
+ 1123 0137 0E       		.uleb128 0xe
+ 1124 0138 3A       		.uleb128 0x3a
+ 1125 0139 0B       		.uleb128 0xb
+ 1126 013a 3B       		.uleb128 0x3b
+ 1127 013b 05       		.uleb128 0x5
+ 1128 013c 27       		.uleb128 0x27
+ 1129 013d 19       		.uleb128 0x19
+ 1130 013e 49       		.uleb128 0x49
+ 1131 013f 13       		.uleb128 0x13
+ 1132 0140 11       		.uleb128 0x11
+ 1133 0141 01       		.uleb128 0x1
+ 1134 0142 12       		.uleb128 0x12
+ 1135 0143 06       		.uleb128 0x6
+ 1136 0144 40       		.uleb128 0x40
+ 1137 0145 18       		.uleb128 0x18
+ 1138 0146 9742     		.uleb128 0x2117
+ 1139 0148 19       		.uleb128 0x19
+ 1140 0149 00       		.byte	0
+ 1141 014a 00       		.byte	0
+ 1142 014b 16       		.uleb128 0x16
+ 1143 014c 898201   		.uleb128 0x4109
+ 1144 014f 01       		.byte	0x1
+ 1145 0150 11       		.uleb128 0x11
+ 1146 0151 01       		.uleb128 0x1
+ 1147 0152 31       		.uleb128 0x31
+ 1148 0153 13       		.uleb128 0x13
+ 1149 0154 01       		.uleb128 0x1
+ 1150 0155 13       		.uleb128 0x13
+ 1151 0156 00       		.byte	0
+ 1152 0157 00       		.byte	0
+ 1153 0158 17       		.uleb128 0x17
+ 1154 0159 34       		.uleb128 0x34
+ 1155 015a 00       		.byte	0
+ 1156 015b 03       		.uleb128 0x3
+ 1157 015c 0E       		.uleb128 0xe
+ 1158 015d 3A       		.uleb128 0x3a
+ 1159 015e 0B       		.uleb128 0xb
+ 1160 015f 3B       		.uleb128 0x3b
+ 1161 0160 0B       		.uleb128 0xb
+ 1162 0161 49       		.uleb128 0x49
+ 1163 0162 13       		.uleb128 0x13
+ 1164 0163 3F       		.uleb128 0x3f
+ 1165 0164 19       		.uleb128 0x19
+ 1166 0165 3C       		.uleb128 0x3c
+ 1167 0166 19       		.uleb128 0x19
+ 1168 0167 00       		.byte	0
+ 1169 0168 00       		.byte	0
+ 1170 0169 18       		.uleb128 0x18
+ 1171 016a 01       		.uleb128 0x1
+ 1172 016b 01       		.byte	0x1
+ 1173 016c 49       		.uleb128 0x49
+ 1174 016d 13       		.uleb128 0x13
+ 1175 016e 01       		.uleb128 0x1
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 29
 
 
- 1179 0198 00       		.byte	0
- 1180 0199 00       		.byte	0
- 1181              		.section	.debug_loc,"",%progbits
- 1182              	.Ldebug_loc0:
- 1183              	.LLST0:
- 1184 0000 00000000 		.4byte	.LVL1
- 1185 0004 07000000 		.4byte	.LVL3-1
- 1186 0008 0100     		.2byte	0x1
- 1187 000a 50       		.byte	0x50
- 1188 000b 07000000 		.4byte	.LVL3-1
- 1189 000f 20000000 		.4byte	.LFE7
- 1190 0013 0400     		.2byte	0x4
- 1191 0015 F3       		.byte	0xf3
- 1192 0016 01       		.uleb128 0x1
- 1193 0017 50       		.byte	0x50
- 1194 0018 9F       		.byte	0x9f
- 1195 0019 00000000 		.4byte	0
- 1196 001d 00000000 		.4byte	0
- 1197              	.LLST1:
- 1198 0021 08000000 		.4byte	.LVL3
- 1199 0025 19000000 		.4byte	.LVL4-1
- 1200 0029 0100     		.2byte	0x1
- 1201 002b 50       		.byte	0x50
- 1202 002c 00000000 		.4byte	0
- 1203 0030 00000000 		.4byte	0
- 1204              	.LLST2:
- 1205 0034 04000000 		.4byte	.LVL6
- 1206 0038 06000000 		.4byte	.LVL7
- 1207 003c 0500     		.2byte	0x5
- 1208 003e 70       		.byte	0x70
- 1209 003f 00       		.sleb128 0
- 1210 0040 4E       		.byte	0x4e
- 1211 0041 25       		.byte	0x25
- 1212 0042 9F       		.byte	0x9f
- 1213 0043 06000000 		.4byte	.LVL7
- 1214 0047 0C000000 		.4byte	.LFE8
- 1215 004b 0100     		.2byte	0x1
- 1216 004d 50       		.byte	0x50
- 1217 004e 00000000 		.4byte	0
- 1218 0052 00000000 		.4byte	0
- 1219              	.LLST3:
- 1220 0056 00000000 		.4byte	.LVL12
- 1221 005a 07000000 		.4byte	.LVL13-1
- 1222 005e 0100     		.2byte	0x1
- 1223 0060 50       		.byte	0x50
- 1224 0061 07000000 		.4byte	.LVL13-1
- 1225 0065 18000000 		.4byte	.LVL17
- 1226 0069 0100     		.2byte	0x1
- 1227 006b 54       		.byte	0x54
- 1228 006c 18000000 		.4byte	.LVL17
- 1229 0070 1A000000 		.4byte	.LFE2
- 1230 0074 0400     		.2byte	0x4
- 1231 0076 F3       		.byte	0xf3
- 1232 0077 01       		.uleb128 0x1
- 1233 0078 50       		.byte	0x50
- 1234 0079 9F       		.byte	0x9f
- 1235 007a 00000000 		.4byte	0
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 30
+ 1176 016f 13       		.uleb128 0x13
+ 1177 0170 00       		.byte	0
+ 1178 0171 00       		.byte	0
+ 1179 0172 19       		.uleb128 0x19
+ 1180 0173 21       		.uleb128 0x21
+ 1181 0174 00       		.byte	0
+ 1182 0175 49       		.uleb128 0x49
+ 1183 0176 13       		.uleb128 0x13
+ 1184 0177 2F       		.uleb128 0x2f
+ 1185 0178 0B       		.uleb128 0xb
+ 1186 0179 00       		.byte	0
+ 1187 017a 00       		.byte	0
+ 1188 017b 1A       		.uleb128 0x1a
+ 1189 017c 2E       		.uleb128 0x2e
+ 1190 017d 00       		.byte	0
+ 1191 017e 3F       		.uleb128 0x3f
+ 1192 017f 19       		.uleb128 0x19
+ 1193 0180 3C       		.uleb128 0x3c
+ 1194 0181 19       		.uleb128 0x19
+ 1195 0182 6E       		.uleb128 0x6e
+ 1196 0183 0E       		.uleb128 0xe
+ 1197 0184 03       		.uleb128 0x3
+ 1198 0185 0E       		.uleb128 0xe
+ 1199 0186 3A       		.uleb128 0x3a
+ 1200 0187 0B       		.uleb128 0xb
+ 1201 0188 3B       		.uleb128 0x3b
+ 1202 0189 05       		.uleb128 0x5
+ 1203 018a 00       		.byte	0
+ 1204 018b 00       		.byte	0
+ 1205 018c 1B       		.uleb128 0x1b
+ 1206 018d 2E       		.uleb128 0x2e
+ 1207 018e 00       		.byte	0
+ 1208 018f 3F       		.uleb128 0x3f
+ 1209 0190 19       		.uleb128 0x19
+ 1210 0191 3C       		.uleb128 0x3c
+ 1211 0192 19       		.uleb128 0x19
+ 1212 0193 6E       		.uleb128 0x6e
+ 1213 0194 0E       		.uleb128 0xe
+ 1214 0195 03       		.uleb128 0x3
+ 1215 0196 0E       		.uleb128 0xe
+ 1216 0197 3A       		.uleb128 0x3a
+ 1217 0198 0B       		.uleb128 0xb
+ 1218 0199 3B       		.uleb128 0x3b
+ 1219 019a 0B       		.uleb128 0xb
+ 1220 019b 00       		.byte	0
+ 1221 019c 00       		.byte	0
+ 1222 019d 00       		.byte	0
+ 1223              		.section	.debug_loc,"",%progbits
+ 1224              	.Ldebug_loc0:
+ 1225              	.LLST0:
+ 1226 0000 00000000 		.4byte	.LVL2
+ 1227 0004 07000000 		.4byte	.LVL4-1
+ 1228 0008 0100     		.2byte	0x1
+ 1229 000a 50       		.byte	0x50
+ 1230 000b 07000000 		.4byte	.LVL4-1
+ 1231 000f 20000000 		.4byte	.LFE7
+ 1232 0013 0400     		.2byte	0x4
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 30
 
 
- 1236 007e 00000000 		.4byte	0
- 1237              		.section	.debug_aranges,"",%progbits
- 1238 0000 7C000000 		.4byte	0x7c
- 1239 0004 0200     		.2byte	0x2
- 1240 0006 00000000 		.4byte	.Ldebug_info0
- 1241 000a 04       		.byte	0x4
- 1242 000b 00       		.byte	0
- 1243 000c 0000     		.2byte	0
- 1244 000e 0000     		.2byte	0
- 1245 0010 00000000 		.4byte	.LFB4
- 1246 0014 02000000 		.4byte	.LFE4-.LFB4
- 1247 0018 00000000 		.4byte	.LFB5
- 1248 001c 0C000000 		.4byte	.LFE5-.LFB5
- 1249 0020 00000000 		.4byte	.LFB6
- 1250 0024 0C000000 		.4byte	.LFE6-.LFB6
- 1251 0028 00000000 		.4byte	.LFB7
- 1252 002c 20000000 		.4byte	.LFE7-.LFB7
- 1253 0030 00000000 		.4byte	.LFB8
- 1254 0034 0C000000 		.4byte	.LFE8-.LFB8
- 1255 0038 00000000 		.4byte	.LFB9
- 1256 003c 10000000 		.4byte	.LFE9-.LFB9
- 1257 0040 00000000 		.4byte	.LFB10
- 1258 0044 14000000 		.4byte	.LFE10-.LFB10
- 1259 0048 00000000 		.4byte	.LFB11
- 1260 004c 10000000 		.4byte	.LFE11-.LFB11
- 1261 0050 00000000 		.4byte	.LFB1
- 1262 0054 1C000000 		.4byte	.LFE1-.LFB1
- 1263 0058 00000000 		.4byte	.LFB2
- 1264 005c 1A000000 		.4byte	.LFE2-.LFB2
- 1265 0060 00000000 		.4byte	.LFB3
- 1266 0064 14000000 		.4byte	.LFE3-.LFB3
- 1267 0068 00000000 		.4byte	.LFB12
- 1268 006c 10000000 		.4byte	.LFE12-.LFB12
- 1269 0070 00000000 		.4byte	.LFB13
- 1270 0074 10000000 		.4byte	.LFE13-.LFB13
- 1271 0078 00000000 		.4byte	0
- 1272 007c 00000000 		.4byte	0
- 1273              		.section	.debug_ranges,"",%progbits
- 1274              	.Ldebug_ranges0:
- 1275 0000 00000000 		.4byte	.LFB4
- 1276 0004 02000000 		.4byte	.LFE4
- 1277 0008 00000000 		.4byte	.LFB5
- 1278 000c 0C000000 		.4byte	.LFE5
- 1279 0010 00000000 		.4byte	.LFB6
- 1280 0014 0C000000 		.4byte	.LFE6
- 1281 0018 00000000 		.4byte	.LFB7
- 1282 001c 20000000 		.4byte	.LFE7
- 1283 0020 00000000 		.4byte	.LFB8
- 1284 0024 0C000000 		.4byte	.LFE8
- 1285 0028 00000000 		.4byte	.LFB9
- 1286 002c 10000000 		.4byte	.LFE9
- 1287 0030 00000000 		.4byte	.LFB10
- 1288 0034 14000000 		.4byte	.LFE10
- 1289 0038 00000000 		.4byte	.LFB11
- 1290 003c 10000000 		.4byte	.LFE11
- 1291 0040 00000000 		.4byte	.LFB1
- 1292 0044 1C000000 		.4byte	.LFE1
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 31
+ 1233 0015 F3       		.byte	0xf3
+ 1234 0016 01       		.uleb128 0x1
+ 1235 0017 50       		.byte	0x50
+ 1236 0018 9F       		.byte	0x9f
+ 1237 0019 00000000 		.4byte	0
+ 1238 001d 00000000 		.4byte	0
+ 1239              	.LLST1:
+ 1240 0021 08000000 		.4byte	.LVL4
+ 1241 0025 19000000 		.4byte	.LVL5-1
+ 1242 0029 0100     		.2byte	0x1
+ 1243 002b 50       		.byte	0x50
+ 1244 002c 00000000 		.4byte	0
+ 1245 0030 00000000 		.4byte	0
+ 1246              	.LLST2:
+ 1247 0034 04000000 		.4byte	.LVL7
+ 1248 0038 06000000 		.4byte	.LVL8
+ 1249 003c 0500     		.2byte	0x5
+ 1250 003e 70       		.byte	0x70
+ 1251 003f 00       		.sleb128 0
+ 1252 0040 4E       		.byte	0x4e
+ 1253 0041 25       		.byte	0x25
+ 1254 0042 9F       		.byte	0x9f
+ 1255 0043 06000000 		.4byte	.LVL8
+ 1256 0047 0C000000 		.4byte	.LFE8
+ 1257 004b 0100     		.2byte	0x1
+ 1258 004d 50       		.byte	0x50
+ 1259 004e 00000000 		.4byte	0
+ 1260 0052 00000000 		.4byte	0
+ 1261              	.LLST3:
+ 1262 0056 00000000 		.4byte	.LVL13
+ 1263 005a 07000000 		.4byte	.LVL14-1
+ 1264 005e 0100     		.2byte	0x1
+ 1265 0060 50       		.byte	0x50
+ 1266 0061 07000000 		.4byte	.LVL14-1
+ 1267 0065 18000000 		.4byte	.LVL18
+ 1268 0069 0100     		.2byte	0x1
+ 1269 006b 54       		.byte	0x54
+ 1270 006c 18000000 		.4byte	.LVL18
+ 1271 0070 1A000000 		.4byte	.LFE2
+ 1272 0074 0400     		.2byte	0x4
+ 1273 0076 F3       		.byte	0xf3
+ 1274 0077 01       		.uleb128 0x1
+ 1275 0078 50       		.byte	0x50
+ 1276 0079 9F       		.byte	0x9f
+ 1277 007a 00000000 		.4byte	0
+ 1278 007e 00000000 		.4byte	0
+ 1279              		.section	.debug_aranges,"",%progbits
+ 1280 0000 7C000000 		.4byte	0x7c
+ 1281 0004 0200     		.2byte	0x2
+ 1282 0006 00000000 		.4byte	.Ldebug_info0
+ 1283 000a 04       		.byte	0x4
+ 1284 000b 00       		.byte	0
+ 1285 000c 0000     		.2byte	0
+ 1286 000e 0000     		.2byte	0
+ 1287 0010 00000000 		.4byte	.LFB4
+ 1288 0014 14000000 		.4byte	.LFE4-.LFB4
+ 1289 0018 00000000 		.4byte	.LFB5
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 31
 
 
- 1293 0048 00000000 		.4byte	.LFB2
- 1294 004c 1A000000 		.4byte	.LFE2
- 1295 0050 00000000 		.4byte	.LFB3
- 1296 0054 14000000 		.4byte	.LFE3
- 1297 0058 00000000 		.4byte	.LFB12
- 1298 005c 10000000 		.4byte	.LFE12
- 1299 0060 00000000 		.4byte	.LFB13
- 1300 0064 10000000 		.4byte	.LFE13
- 1301 0068 00000000 		.4byte	0
- 1302 006c 00000000 		.4byte	0
- 1303              		.section	.debug_line,"",%progbits
- 1304              	.Ldebug_line0:
- 1305 0000 55010000 		.section	.debug_str,"MS",%progbits,1
- 1305      02005500 
- 1305      00000201 
- 1305      FB0E0D00 
- 1305      01010101 
- 1306              	.LASF14:
- 1307 0000 72656733 		.ascii	"reg32\000"
- 1307      3200
- 1308              	.LASF26:
- 1309 0006 4C43445F 		.ascii	"LCD_Timer_ISR_GetVector\000"
- 1309      54696D65 
- 1309      725F4953 
- 1309      525F4765 
- 1309      74566563 
- 1310              	.LASF24:
- 1311 001e 4C43445F 		.ascii	"LCD_Timer_ISR_Interrupt\000"
- 1311      54696D65 
- 1311      725F4953 
- 1311      525F496E 
- 1311      74657272 
- 1312              	.LASF40:
- 1313 0036 43795261 		.ascii	"CyRamVectors\000"
- 1313      6D566563 
- 1313      746F7273 
- 1313      00
- 1314              	.LASF3:
- 1315 0043 73686F72 		.ascii	"short unsigned int\000"
- 1315      7420756E 
- 1315      7369676E 
- 1315      65642069 
- 1315      6E7400
- 1316              	.LASF29:
- 1317 0056 4C43445F 		.ascii	"LCD_Timer_ISR_Start\000"
- 1317      54696D65 
- 1317      725F4953 
- 1317      525F5374 
- 1317      61727400 
- 1318              	.LASF33:
- 1319 006a 4C43445F 		.ascii	"LCD_Timer_ISR_ClearPending\000"
- 1319      54696D65 
- 1319      725F4953 
- 1319      525F436C 
- 1319      65617250 
- 1320              	.LASF11:
- 1321 0085 666C6F61 		.ascii	"float\000"
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 32
+ 1290 001c 0C000000 		.4byte	.LFE5-.LFB5
+ 1291 0020 00000000 		.4byte	.LFB6
+ 1292 0024 0C000000 		.4byte	.LFE6-.LFB6
+ 1293 0028 00000000 		.4byte	.LFB7
+ 1294 002c 20000000 		.4byte	.LFE7-.LFB7
+ 1295 0030 00000000 		.4byte	.LFB8
+ 1296 0034 0C000000 		.4byte	.LFE8-.LFB8
+ 1297 0038 00000000 		.4byte	.LFB9
+ 1298 003c 10000000 		.4byte	.LFE9-.LFB9
+ 1299 0040 00000000 		.4byte	.LFB10
+ 1300 0044 14000000 		.4byte	.LFE10-.LFB10
+ 1301 0048 00000000 		.4byte	.LFB11
+ 1302 004c 10000000 		.4byte	.LFE11-.LFB11
+ 1303 0050 00000000 		.4byte	.LFB1
+ 1304 0054 1C000000 		.4byte	.LFE1-.LFB1
+ 1305 0058 00000000 		.4byte	.LFB2
+ 1306 005c 1A000000 		.4byte	.LFE2-.LFB2
+ 1307 0060 00000000 		.4byte	.LFB3
+ 1308 0064 14000000 		.4byte	.LFE3-.LFB3
+ 1309 0068 00000000 		.4byte	.LFB12
+ 1310 006c 10000000 		.4byte	.LFE12-.LFB12
+ 1311 0070 00000000 		.4byte	.LFB13
+ 1312 0074 10000000 		.4byte	.LFE13-.LFB13
+ 1313 0078 00000000 		.4byte	0
+ 1314 007c 00000000 		.4byte	0
+ 1315              		.section	.debug_ranges,"",%progbits
+ 1316              	.Ldebug_ranges0:
+ 1317 0000 00000000 		.4byte	.LFB4
+ 1318 0004 14000000 		.4byte	.LFE4
+ 1319 0008 00000000 		.4byte	.LFB5
+ 1320 000c 0C000000 		.4byte	.LFE5
+ 1321 0010 00000000 		.4byte	.LFB6
+ 1322 0014 0C000000 		.4byte	.LFE6
+ 1323 0018 00000000 		.4byte	.LFB7
+ 1324 001c 20000000 		.4byte	.LFE7
+ 1325 0020 00000000 		.4byte	.LFB8
+ 1326 0024 0C000000 		.4byte	.LFE8
+ 1327 0028 00000000 		.4byte	.LFB9
+ 1328 002c 10000000 		.4byte	.LFE9
+ 1329 0030 00000000 		.4byte	.LFB10
+ 1330 0034 14000000 		.4byte	.LFE10
+ 1331 0038 00000000 		.4byte	.LFB11
+ 1332 003c 10000000 		.4byte	.LFE11
+ 1333 0040 00000000 		.4byte	.LFB1
+ 1334 0044 1C000000 		.4byte	.LFE1
+ 1335 0048 00000000 		.4byte	.LFB2
+ 1336 004c 1A000000 		.4byte	.LFE2
+ 1337 0050 00000000 		.4byte	.LFB3
+ 1338 0054 14000000 		.4byte	.LFE3
+ 1339 0058 00000000 		.4byte	.LFB12
+ 1340 005c 10000000 		.4byte	.LFE12
+ 1341 0060 00000000 		.4byte	.LFB13
+ 1342 0064 10000000 		.4byte	.LFE13
+ 1343 0068 00000000 		.4byte	0
+ 1344 006c 00000000 		.4byte	0
+ 1345              		.section	.debug_line,"",%progbits
+ 1346              	.Ldebug_line0:
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 32
 
 
- 1321      7400
- 1322              	.LASF7:
- 1323 008b 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1323      206C6F6E 
- 1323      6720756E 
- 1323      7369676E 
- 1323      65642069 
- 1324              	.LASF1:
- 1325 00a2 756E7369 		.ascii	"unsigned char\000"
- 1325      676E6564 
- 1325      20636861 
- 1325      7200
- 1326              	.LASF22:
- 1327 00b0 696E7465 		.ascii	"interruptState\000"
- 1327      72727570 
- 1327      74537461 
- 1327      746500
- 1328              	.LASF5:
- 1329 00bf 6C6F6E67 		.ascii	"long unsigned int\000"
- 1329      20756E73 
- 1329      69676E65 
- 1329      6420696E 
- 1329      7400
- 1330              	.LASF9:
- 1331 00d1 75696E74 		.ascii	"uint8\000"
- 1331      3800
- 1332              	.LASF39:
- 1333 00d7 4C43445F 		.ascii	"LCD_Timer_ISR_GetPriority\000"
- 1333      54696D65 
- 1333      725F4953 
- 1333      525F4765 
- 1333      74507269 
- 1334              	.LASF21:
- 1335 00f1 7072696F 		.ascii	"priority\000"
- 1335      72697479 
- 1335      00
- 1336              	.LASF27:
- 1337 00fa 4C43445F 		.ascii	"LCD_Timer_ISR_GetState\000"
- 1337      54696D65 
- 1337      725F4953 
- 1337      525F4765 
- 1337      74537461 
- 1338              	.LASF12:
- 1339 0111 646F7562 		.ascii	"double\000"
- 1339      6C6500
- 1340              	.LASF10:
- 1341 0118 75696E74 		.ascii	"uint32\000"
- 1341      333200
- 1342              	.LASF34:
- 1343 011f 4379456E 		.ascii	"CyEnterCriticalSection\000"
- 1343      74657243 
- 1343      72697469 
- 1343      63616C53 
- 1343      65637469 
- 1344              	.LASF8:
- 1345 0136 756E7369 		.ascii	"unsigned int\000"
- 1345      676E6564 
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 33
-
-
- 1345      20696E74 
- 1345      00
- 1346              	.LASF20:
- 1347 0143 61646472 		.ascii	"address\000"
- 1347      65737300 
- 1348              	.LASF35:
- 1349 014b 43794578 		.ascii	"CyExitCriticalSection\000"
- 1349      69744372 
- 1349      69746963 
- 1349      616C5365 
- 1349      6374696F 
- 1350              	.LASF28:
- 1351 0161 4C43445F 		.ascii	"LCD_Timer_ISR_Disable\000"
+ 1347 0000 64010000 		.section	.debug_str,"MS",%progbits,1
+ 1347      02006400 
+ 1347      00000201 
+ 1347      FB0E0D00 
+ 1347      01010101 
+ 1348              	.LASF14:
+ 1349 0000 72656733 		.ascii	"reg32\000"
+ 1349      3200
+ 1350              	.LASF25:
+ 1351 0006 4C43445F 		.ascii	"LCD_Timer_ISR_GetVector\000"
  1351      54696D65 
  1351      725F4953 
- 1351      525F4469 
- 1351      7361626C 
- 1352              	.LASF15:
- 1353 0177 63796973 		.ascii	"cyisraddress\000"
- 1353      72616464 
- 1353      72657373 
- 1353      00
- 1354              	.LASF32:
- 1355 0184 4C43445F 		.ascii	"LCD_Timer_ISR_SetPending\000"
- 1355      54696D65 
- 1355      725F4953 
- 1355      525F5365 
- 1355      7450656E 
- 1356              	.LASF36:
- 1357 019d 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 1357      43313120 
- 1357      352E342E 
- 1357      31203230 
- 1357      31363036 
- 1358 01d0 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
- 1358      20726576 
- 1358      6973696F 
- 1358      6E203233 
- 1358      37373135 
- 1359 0203 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 1359      66756E63 
- 1359      74696F6E 
- 1359      2D736563 
- 1359      74696F6E 
- 1360              	.LASF18:
- 1361 022b 4C43445F 		.ascii	"LCD_Timer_ISR_SetVector\000"
+ 1351      525F4765 
+ 1351      74566563 
+ 1352              	.LASF18:
+ 1353 001e 4C43445F 		.ascii	"LCD_Timer_ISR_Interrupt\000"
+ 1353      54696D65 
+ 1353      725F4953 
+ 1353      525F496E 
+ 1353      74657272 
+ 1354              	.LASF35:
+ 1355 0036 43795261 		.ascii	"CyRamVectors\000"
+ 1355      6D566563 
+ 1355      746F7273 
+ 1355      00
+ 1356              	.LASF3:
+ 1357 0043 73686F72 		.ascii	"short unsigned int\000"
+ 1357      7420756E 
+ 1357      7369676E 
+ 1357      65642069 
+ 1357      6E7400
+ 1358              	.LASF29:
+ 1359 0056 4C43445F 		.ascii	"LCD_Timer_ISR_Start\000"
+ 1359      54696D65 
+ 1359      725F4953 
+ 1359      525F5374 
+ 1359      61727400 
+ 1360              	.LASF33:
+ 1361 006a 4C43445F 		.ascii	"LCD_Timer_ISR_ClearPending\000"
  1361      54696D65 
  1361      725F4953 
- 1361      525F5365 
- 1361      74566563 
- 1362              	.LASF19:
- 1363 0243 4C43445F 		.ascii	"LCD_Timer_ISR_SetPriority\000"
- 1363      54696D65 
- 1363      725F4953 
- 1363      525F5365 
- 1363      74507269 
- 1364              	.LASF17:
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 34
+ 1361      525F436C 
+ 1361      65617250 
+ 1362              	.LASF11:
+ 1363 0085 666C6F61 		.ascii	"float\000"
+ 1363      7400
+ 1364              	.LASF7:
+ 1365 008b 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1365      206C6F6E 
+ 1365      6720756E 
+ 1365      7369676E 
+ 1365      65642069 
+ 1366              	.LASF1:
+ 1367 00a2 756E7369 		.ascii	"unsigned char\000"
+ 1367      676E6564 
+ 1367      20636861 
+ 1367      7200
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 33
 
 
- 1365 025d 73697A65 		.ascii	"sizetype\000"
- 1365      74797065 
- 1365      00
- 1366              	.LASF6:
- 1367 0266 6C6F6E67 		.ascii	"long long int\000"
- 1367      206C6F6E 
- 1367      6720696E 
- 1367      7400
- 1368              	.LASF13:
- 1369 0274 63686172 		.ascii	"char\000"
- 1369      00
- 1370              	.LASF37:
- 1371 0279 47656E65 		.ascii	"Generated_Source\\PSoC4\\LCD_Timer_ISR.c\000"
- 1371      72617465 
- 1371      645F536F 
- 1371      75726365 
- 1371      5C50536F 
- 1372              	.LASF38:
- 1373 02a0 433A5C55 		.ascii	"C:\\Users\\Hello Kitty\\Documents\\PSoC Creator\\La"
- 1373      73657273 
- 1373      5C48656C 
- 1373      6C6F204B 
- 1373      69747479 
- 1374 02ce 62303220 		.ascii	"b02 - Interrupts\\Lab02 - Interrupts.cydsn\000"
- 1374      2D20496E 
- 1374      74657272 
- 1374      75707473 
- 1374      5C4C6162 
- 1375              	.LASF25:
- 1376 02f8 4C43445F 		.ascii	"LCD_Timer_ISR_Enable\000"
- 1376      54696D65 
- 1376      725F4953 
- 1376      525F456E 
- 1376      61626C65 
- 1377              	.LASF2:
- 1378 030d 73686F72 		.ascii	"short int\000"
- 1378      7420696E 
- 1378      7400
- 1379              	.LASF23:
- 1380 0317 7072696F 		.ascii	"priorityOffset\000"
- 1380      72697479 
- 1380      4F666673 
- 1380      657400
- 1381              	.LASF4:
- 1382 0326 6C6F6E67 		.ascii	"long int\000"
- 1382      20696E74 
- 1382      00
- 1383              	.LASF16:
- 1384 032f 6C6F6E67 		.ascii	"long double\000"
- 1384      20646F75 
- 1384      626C6500 
- 1385              	.LASF0:
- 1386 033b 7369676E 		.ascii	"signed char\000"
- 1386      65642063 
- 1386      68617200 
- 1387              	.LASF30:
- 1388 0347 4C43445F 		.ascii	"LCD_Timer_ISR_StartEx\000"
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccjvML4X.s 			page 35
+ 1368              	.LASF23:
+ 1369 00b0 696E7465 		.ascii	"interruptState\000"
+ 1369      72727570 
+ 1369      74537461 
+ 1369      746500
+ 1370              	.LASF5:
+ 1371 00bf 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1371      20756E73 
+ 1371      69676E65 
+ 1371      6420696E 
+ 1371      7400
+ 1372              	.LASF36:
+ 1373 00d1 4C43445F 		.ascii	"LCD_Timer_ClearInterrupt\000"
+ 1373      54696D65 
+ 1373      725F436C 
+ 1373      65617249 
+ 1373      6E746572 
+ 1374              	.LASF9:
+ 1375 00ea 75696E74 		.ascii	"uint8\000"
+ 1375      3800
+ 1376              	.LASF42:
+ 1377 00f0 4C43445F 		.ascii	"LCD_Timer_ISR_GetPriority\000"
+ 1377      54696D65 
+ 1377      725F4953 
+ 1377      525F4765 
+ 1377      74507269 
+ 1378              	.LASF22:
+ 1379 010a 7072696F 		.ascii	"priority\000"
+ 1379      72697479 
+ 1379      00
+ 1380              	.LASF26:
+ 1381 0113 4C43445F 		.ascii	"LCD_Timer_ISR_GetState\000"
+ 1381      54696D65 
+ 1381      725F4953 
+ 1381      525F4765 
+ 1381      74537461 
+ 1382              	.LASF12:
+ 1383 012a 646F7562 		.ascii	"double\000"
+ 1383      6C6500
+ 1384              	.LASF10:
+ 1385 0131 75696E74 		.ascii	"uint32\000"
+ 1385      333200
+ 1386              	.LASF37:
+ 1387 0138 4379456E 		.ascii	"CyEnterCriticalSection\000"
+ 1387      74657243 
+ 1387      72697469 
+ 1387      63616C53 
+ 1387      65637469 
+ 1388              	.LASF8:
+ 1389 014f 756E7369 		.ascii	"unsigned int\000"
+ 1389      676E6564 
+ 1389      20696E74 
+ 1389      00
+ 1390              	.LASF21:
+ 1391 015c 61646472 		.ascii	"address\000"
+ 1391      65737300 
+ 1392              	.LASF38:
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 34
 
 
- 1388      54696D65 
- 1388      725F4953 
- 1388      525F5374 
- 1388      61727445 
- 1389              	.LASF31:
- 1390 035d 4C43445F 		.ascii	"LCD_Timer_ISR_Stop\000"
- 1390      54696D65 
- 1390      725F4953 
- 1390      525F5374 
- 1390      6F7000
- 1391              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 1393 0164 43794578 		.ascii	"CyExitCriticalSection\000"
+ 1393      69744372 
+ 1393      69746963 
+ 1393      616C5365 
+ 1393      6374696F 
+ 1394              	.LASF34:
+ 1395 017a 62617253 		.ascii	"barSync\000"
+ 1395      796E6300 
+ 1396              	.LASF28:
+ 1397 0182 4C43445F 		.ascii	"LCD_Timer_ISR_Disable\000"
+ 1397      54696D65 
+ 1397      725F4953 
+ 1397      525F4469 
+ 1397      7361626C 
+ 1398              	.LASF15:
+ 1399 0198 63796973 		.ascii	"cyisraddress\000"
+ 1399      72616464 
+ 1399      72657373 
+ 1399      00
+ 1400              	.LASF32:
+ 1401 01a5 4C43445F 		.ascii	"LCD_Timer_ISR_SetPending\000"
+ 1401      54696D65 
+ 1401      725F4953 
+ 1401      525F5365 
+ 1401      7450656E 
+ 1402              	.LASF39:
+ 1403 01be 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1403      43313120 
+ 1403      352E342E 
+ 1403      31203230 
+ 1403      31363036 
+ 1404 01f1 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 1404      20726576 
+ 1404      6973696F 
+ 1404      6E203233 
+ 1404      37373135 
+ 1405 0224 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1405      66756E63 
+ 1405      74696F6E 
+ 1405      2D736563 
+ 1405      74696F6E 
+ 1406              	.LASF19:
+ 1407 024c 4C43445F 		.ascii	"LCD_Timer_ISR_SetVector\000"
+ 1407      54696D65 
+ 1407      725F4953 
+ 1407      525F5365 
+ 1407      74566563 
+ 1408              	.LASF20:
+ 1409 0264 4C43445F 		.ascii	"LCD_Timer_ISR_SetPriority\000"
+ 1409      54696D65 
+ 1409      725F4953 
+ 1409      525F5365 
+ 1409      74507269 
+ 1410              	.LASF17:
+ 1411 027e 73697A65 		.ascii	"sizetype\000"
+ 1411      74797065 
+ 1411      00
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 35
+
+
+ 1412              	.LASF6:
+ 1413 0287 6C6F6E67 		.ascii	"long long int\000"
+ 1413      206C6F6E 
+ 1413      6720696E 
+ 1413      7400
+ 1414              	.LASF13:
+ 1415 0295 63686172 		.ascii	"char\000"
+ 1415      00
+ 1416              	.LASF40:
+ 1417 029a 47656E65 		.ascii	"Generated_Source\\PSoC4\\LCD_Timer_ISR.c\000"
+ 1417      72617465 
+ 1417      645F536F 
+ 1417      75726365 
+ 1417      5C50536F 
+ 1418              	.LASF41:
+ 1419 02c1 433A5C55 		.ascii	"C:\\Users\\Hello Kitty\\Documents\\PSoC Creator\\La"
+ 1419      73657273 
+ 1419      5C48656C 
+ 1419      6C6F204B 
+ 1419      69747479 
+ 1420 02ef 62303220 		.ascii	"b02 - Interrupts\\Lab02 - Interrupts.cydsn\000"
+ 1420      2D20496E 
+ 1420      74657272 
+ 1420      75707473 
+ 1420      5C4C6162 
+ 1421              	.LASF27:
+ 1422 0319 4C43445F 		.ascii	"LCD_Timer_ISR_Enable\000"
+ 1422      54696D65 
+ 1422      725F4953 
+ 1422      525F456E 
+ 1422      61626C65 
+ 1423              	.LASF2:
+ 1424 032e 73686F72 		.ascii	"short int\000"
+ 1424      7420696E 
+ 1424      7400
+ 1425              	.LASF24:
+ 1426 0338 7072696F 		.ascii	"priorityOffset\000"
+ 1426      72697479 
+ 1426      4F666673 
+ 1426      657400
+ 1427              	.LASF4:
+ 1428 0347 6C6F6E67 		.ascii	"long int\000"
+ 1428      20696E74 
+ 1428      00
+ 1429              	.LASF16:
+ 1430 0350 6C6F6E67 		.ascii	"long double\000"
+ 1430      20646F75 
+ 1430      626C6500 
+ 1431              	.LASF0:
+ 1432 035c 7369676E 		.ascii	"signed char\000"
+ 1432      65642063 
+ 1432      68617200 
+ 1433              	.LASF30:
+ 1434 0368 4C43445F 		.ascii	"LCD_Timer_ISR_StartEx\000"
+ 1434      54696D65 
+ 1434      725F4953 
+ 1434      525F5374 
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccoRRogI.s 			page 36
+
+
+ 1434      61727445 
+ 1435              	.LASF31:
+ 1436 037e 4C43445F 		.ascii	"LCD_Timer_ISR_Stop\000"
+ 1436      54696D65 
+ 1436      725F4953 
+ 1436      525F5374 
+ 1436      6F7000
+ 1437              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

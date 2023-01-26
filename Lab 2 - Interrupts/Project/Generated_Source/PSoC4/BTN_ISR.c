@@ -27,7 +27,8 @@
 *  Place your includes, defines and code here 
 ********************************************************************************/
 /* `#START BTN_ISR_intc` */
-
+#include "BTN.h"
+extern volatile int buttonAsync;
 /* `#END` */
 
 extern cyisraddress CyRamVectors[CYINT_IRQ_BASE + CY_NUM_INTERRUPTS];
@@ -164,7 +165,13 @@ CY_ISR(BTN_ISR_Interrupt)
 
     /*  Place your Interrupt code here. */
     /* `#START BTN_ISR_Interrupt` */
-
+    CyDelay(20);
+    
+    while(BTN_Read() == 0);
+    BTN_ClearInterrupt();
+    
+    buttonAsync = 1;
+    
     /* `#END` */
 }
 

@@ -1,5 +1,5 @@
 -- Project:   Lab02 - Interrupts
--- Generated: 01/26/2023 13:58:10
+-- Generated: 01/26/2023 15:41:15
 -- PSoC Creator  4.2
 
 ENTITY \Lab02 - Interrupts\ IS
@@ -394,7 +394,7 @@ BEGIN
 
     BTN:logicalport
         GENERIC MAP(
-            drive_mode => "001",
+            drive_mode => "011",
             ibuf_enabled => "1",
             id => "97b2472d-3418-4e6b-8299-dd6e9a97d4c5",
             init_dr_st => "0",
