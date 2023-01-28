@@ -1,0 +1,1115 @@
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccWBPsmK.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.drawMovingBar,"ax",%progbits
+  20              		.align	2
+  21              		.global	drawMovingBar
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	drawMovingBar, %function
+  25              	drawMovingBar:
+  26              	.LFB34:
+  27              		.file 1 "main.c"
+   1:main.c        **** /* ========================================
+   2:main.c        ****  *
+   3:main.c        ****  * Copyright YOUR COMPANY, THE YEAR
+   4:main.c        ****  * All Rights Reserved
+   5:main.c        ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:main.c        ****  *
+   7:main.c        ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:main.c        ****  * WHICH IS THE PROPERTY OF your company.
+   9:main.c        ****  *
+  10:main.c        ****  * ========================================
+  11:main.c        **** */
+  12:main.c        **** #include "project.h"
+  13:main.c        **** 
+  14:main.c        **** volatile int barSync;
+  15:main.c        **** volatile int buttonAsync;
+  16:main.c        **** volatile int encoderAsync;
+  17:main.c        **** volatile int encoderPos;
+  18:main.c        **** int movingDirection;
+  19:main.c        **** 
+  20:main.c        **** 
+  21:main.c        **** int drawMovingBar(int position){
+  28              		.loc 1 21 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              	.LVL0:
+  33 0000 10B5     		push	{r4, lr}
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 4, -8
+  36              		.cfi_offset 14, -4
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccWBPsmK.s 			page 2
+
+
+  22:main.c        ****     if(movingDirection == 0){
+  37              		.loc 1 22 0
+  38 0002 0F4B     		ldr	r3, .L7
+  39 0004 1B68     		ldr	r3, [r3]
+  40 0006 002B     		cmp	r3, #0
+  41 0008 01D1     		bne	.L2
+  23:main.c        ****         position++;
+  42              		.loc 1 23 0
+  43 000a 441C     		adds	r4, r0, #1
+  44              	.LVL1:
+  45 000c 00E0     		b	.L3
+  46              	.LVL2:
+  47              	.L2:
+  24:main.c        ****     }
+  25:main.c        ****     else{
+  26:main.c        ****         position--;
+  48              		.loc 1 26 0
+  49 000e 441E     		subs	r4, r0, #1
+  50              	.LVL3:
+  51              	.L3:
+  27:main.c        ****     }
+  28:main.c        ****     LCD_DrawHorizontalBG(1,0,16,position);
+  52              		.loc 1 28 0
+  53 0010 E3B2     		uxtb	r3, r4
+  54 0012 1022     		movs	r2, #16
+  55 0014 0021     		movs	r1, #0
+  56 0016 0120     		movs	r0, #1
+  57 0018 FFF7FEFF 		bl	LCD_DrawHorizontalBG
+  58              	.LVL4:
+  29:main.c        ****     if(position == 80 || position == 0){
+  59              		.loc 1 29 0
+  60 001c 502C     		cmp	r4, #80
+  61 001e 01D0     		beq	.L4
+  62              		.loc 1 29 0 is_stmt 0 discriminator 1
+  63 0020 002C     		cmp	r4, #0
+  64 0022 0AD1     		bne	.L5
+  65              	.L4:
+  30:main.c        ****         if(movingDirection == 0){
+  66              		.loc 1 30 0 is_stmt 1
+  67 0024 064B     		ldr	r3, .L7
+  68 0026 1B68     		ldr	r3, [r3]
+  69 0028 002B     		cmp	r3, #0
+  70 002a 03D1     		bne	.L6
+  31:main.c        ****             movingDirection = 1;
+  71              		.loc 1 31 0
+  72 002c 0122     		movs	r2, #1
+  73 002e 044B     		ldr	r3, .L7
+  74 0030 1A60     		str	r2, [r3]
+  75 0032 02E0     		b	.L5
+  76              	.L6:
+  32:main.c        ****         }
+  33:main.c        ****         else{
+  34:main.c        ****             movingDirection = 0;
+  77              		.loc 1 34 0
+  78 0034 0022     		movs	r2, #0
+  79 0036 024B     		ldr	r3, .L7
+  80 0038 1A60     		str	r2, [r3]
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccWBPsmK.s 			page 3
+
+
+  81              	.L5:
+  35:main.c        ****         }
+  36:main.c        ****     }
+  37:main.c        ****     return position;
+  38:main.c        **** }
+  82              		.loc 1 38 0
+  83 003a 2000     		movs	r0, r4
+  84              		@ sp needed
+  85              	.LVL5:
+  86 003c 10BD     		pop	{r4, pc}
+  87              	.L8:
+  88 003e C046     		.align	2
+  89              	.L7:
+  90 0040 00000000 		.word	movingDirection
+  91              		.cfi_endproc
+  92              	.LFE34:
+  93              		.size	drawMovingBar, .-drawMovingBar
+  94              		.section	.text.main,"ax",%progbits
+  95              		.align	2
+  96              		.global	main
+  97              		.code	16
+  98              		.thumb_func
+  99              		.type	main, %function
+ 100              	main:
+ 101              	.LFB35:
+  39:main.c        **** int main(void)
+  40:main.c        **** {
+ 102              		.loc 1 40 0
+ 103              		.cfi_startproc
+ 104              		@ args = 0, pretend = 0, frame = 0
+ 105              		@ frame_needed = 0, uses_anonymous_args = 0
+ 106 0000 10B5     		push	{r4, lr}
+ 107              		.cfi_def_cfa_offset 8
+ 108              		.cfi_offset 4, -8
+ 109              		.cfi_offset 14, -4
+  41:main.c        **** 
+  42:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  43:main.c        ****     // Start modules and timers
+  44:main.c        ****     LCD_Start();
+ 110              		.loc 1 44 0
+ 111 0002 FFF7FEFF 		bl	LCD_Start
+ 112              	.LVL6:
+  45:main.c        ****     ENC_ISR_Start();
+ 113              		.loc 1 45 0
+ 114 0006 FFF7FEFF 		bl	ENC_ISR_Start
+ 115              	.LVL7:
+  46:main.c        ****     BTN_ISR_Start();
+ 116              		.loc 1 46 0
+ 117 000a FFF7FEFF 		bl	BTN_ISR_Start
+ 118              	.LVL8:
+  47:main.c        ****     LCD_Timer_Start();
+ 119              		.loc 1 47 0
+ 120 000e FFF7FEFF 		bl	LCD_Timer_Start
+ 121              	.LVL9:
+  48:main.c        ****     LCD_Timer_ISR_Start();
+ 122              		.loc 1 48 0
+ 123 0012 FFF7FEFF 		bl	LCD_Timer_ISR_Start
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccWBPsmK.s 			page 4
+
+
+ 124              	.LVL10:
+  49:main.c        ****     LCD_Timer_WritePeriod(12);
+ 125              		.loc 1 49 0
+ 126 0016 0C20     		movs	r0, #12
+ 127 0018 FFF7FEFF 		bl	LCD_Timer_WritePeriod
+ 128              	.LVL11:
+  50:main.c        ****     barSync = 0;
+ 129              		.loc 1 50 0
+ 130 001c 0023     		movs	r3, #0
+ 131 001e 164A     		ldr	r2, .L17
+ 132 0020 1360     		str	r3, [r2]
+  51:main.c        ****     
+  52:main.c        ****     buttonAsync = 0;
+ 133              		.loc 1 52 0
+ 134 0022 164A     		ldr	r2, .L17+4
+ 135 0024 1360     		str	r3, [r2]
+  53:main.c        ****     movingDirection = 0;
+ 136              		.loc 1 53 0
+ 137 0026 164A     		ldr	r2, .L17+8
+ 138 0028 1360     		str	r3, [r2]
+ 139              	.LVL12:
+  54:main.c        ****     int barPos = 0;
+  55:main.c        ****     int barMove = 0;
+  56:main.c        ****     encoderAsync = 0;
+ 140              		.loc 1 56 0
+ 141 002a 164A     		ldr	r2, .L17+12
+ 142 002c 1360     		str	r3, [r2]
+  57:main.c        ****     encoderPos = 0;
+ 143              		.loc 1 57 0
+ 144 002e 164A     		ldr	r2, .L17+16
+ 145 0030 1360     		str	r3, [r2]
+  58:main.c        ****     CyGlobalIntEnable;
+ 146              		.loc 1 58 0
+ 147              		.syntax divided
+ 148              	@ 58 "main.c" 1
+ 149 0032 62B6     		CPSIE   i
+ 150              	@ 0 "" 2
+  55:main.c        ****     encoderAsync = 0;
+ 151              		.loc 1 55 0
+ 152              		.thumb
+ 153              		.syntax unified
+ 154 0034 0024     		movs	r4, #0
+ 155              	.LVL13:
+ 156              	.L10:
+  59:main.c        ****     for(;;)
+  60:main.c        ****     {
+  61:main.c        ****         
+  62:main.c        ****         /* Place your application code here. */
+  63:main.c        ****         
+  64:main.c        ****         if(barSync == 1){
+ 157              		.loc 1 64 0
+ 158 0036 104B     		ldr	r3, .L17
+ 159 0038 1B68     		ldr	r3, [r3]
+ 160 003a 012B     		cmp	r3, #1
+ 161 003c 03D1     		bne	.L11
+  65:main.c        ****             barSync = 0;
+ 162              		.loc 1 65 0
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccWBPsmK.s 			page 5
+
+
+ 163 003e 0022     		movs	r2, #0
+ 164 0040 0D4B     		ldr	r3, .L17
+ 165 0042 1A60     		str	r2, [r3]
+ 166 0044 F7E7     		b	.L10
+ 167              	.L11:
+  66:main.c        ****             if(barMove != 1){
+  67:main.c        ****              //   barPos = drawMovingBar(barPos);
+  68:main.c        ****             }
+  69:main.c        ****             //LCD_DrawHorizontalBG(1,0,16,80);
+  70:main.c        ****             //LCD_ClearDisplay();
+  71:main.c        ****             //CyDelay(1000);
+  72:main.c        ****             //LCD_ClearDisplay();
+  73:main.c        ****         }
+  74:main.c        ****         else if(buttonAsync == 1){
+ 168              		.loc 1 74 0
+ 169 0046 0D4B     		ldr	r3, .L17+4
+ 170 0048 1B68     		ldr	r3, [r3]
+ 171 004a 012B     		cmp	r3, #1
+ 172 004c 0CD1     		bne	.L13
+  75:main.c        ****             buttonAsync = 0;
+ 173              		.loc 1 75 0
+ 174 004e 0022     		movs	r2, #0
+ 175 0050 0A4B     		ldr	r3, .L17+4
+ 176 0052 1A60     		str	r2, [r3]
+  76:main.c        ****             if(barMove == 0){
+ 177              		.loc 1 76 0
+ 178 0054 002C     		cmp	r4, #0
+ 179 0056 01D1     		bne	.L16
+  77:main.c        ****                 barMove = 1;
+ 180              		.loc 1 77 0
+ 181 0058 0134     		adds	r4, r4, #1
+ 182              	.LVL14:
+ 183 005a 00E0     		b	.L15
+ 184              	.LVL15:
+ 185              	.L16:
+  78:main.c        ****             }
+  79:main.c        ****             else{
+  80:main.c        ****                 barMove = 0;
+ 186              		.loc 1 80 0
+ 187 005c 0024     		movs	r4, #0
+ 188              	.LVL16:
+ 189              	.L15:
+  81:main.c        ****             }
+  82:main.c        ****             while(BTN_Read() == 0);
+ 190              		.loc 1 82 0 discriminator 1
+ 191 005e FFF7FEFF 		bl	BTN_Read
+ 192              	.LVL17:
+ 193 0062 0028     		cmp	r0, #0
+ 194 0064 FBD0     		beq	.L15
+ 195 0066 E6E7     		b	.L10
+ 196              	.L13:
+  83:main.c        ****         }
+  84:main.c        ****         else if(encoderAsync == 1){
+ 197              		.loc 1 84 0
+ 198 0068 064B     		ldr	r3, .L17+12
+ 199 006a 1B68     		ldr	r3, [r3]
+ 200 006c 012B     		cmp	r3, #1
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccWBPsmK.s 			page 6
+
+
+ 201 006e E2D1     		bne	.L10
+  85:main.c        ****             encoderAsync = 0; // resetting the flag
+ 202              		.loc 1 85 0
+ 203 0070 0022     		movs	r2, #0
+ 204 0072 044B     		ldr	r3, .L17+12
+ 205 0074 1A60     		str	r2, [r3]
+ 206 0076 DEE7     		b	.L10
+ 207              	.L18:
+ 208              		.align	2
+ 209              	.L17:
+ 210 0078 00000000 		.word	barSync
+ 211 007c 00000000 		.word	buttonAsync
+ 212 0080 00000000 		.word	movingDirection
+ 213 0084 00000000 		.word	encoderAsync
+ 214 0088 00000000 		.word	encoderPos
+ 215              		.cfi_endproc
+ 216              	.LFE35:
+ 217              		.size	main, .-main
+ 218              		.comm	movingDirection,4,4
+ 219              		.comm	encoderPos,4,4
+ 220              		.comm	encoderAsync,4,4
+ 221              		.comm	buttonAsync,4,4
+ 222              		.comm	barSync,4,4
+ 223              		.text
+ 224              	.Letext0:
+ 225              		.file 2 "Generated_Source\\PSoC4/LCD.h"
+ 226              		.file 3 "Generated_Source\\PSoC4/ENC_ISR.h"
+ 227              		.file 4 "Generated_Source\\PSoC4/BTN_ISR.h"
+ 228              		.file 5 "Generated_Source\\PSoC4/LCD_Timer.h"
+ 229              		.file 6 "Generated_Source\\PSoC4/LCD_Timer_ISR.h"
+ 230              		.file 7 "Generated_Source\\PSoC4/BTN.h"
+ 231              		.section	.debug_info,"",%progbits
+ 232              	.Ldebug_info0:
+ 233 0000 05020000 		.4byte	0x205
+ 234 0004 0400     		.2byte	0x4
+ 235 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 236 000a 04       		.byte	0x4
+ 237 000b 01       		.uleb128 0x1
+ 238 000c 22010000 		.4byte	.LASF29
+ 239 0010 0C       		.byte	0xc
+ 240 0011 DE010000 		.4byte	.LASF30
+ 241 0015 15020000 		.4byte	.LASF31
+ 242 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 243 001d 00000000 		.4byte	0
+ 244 0021 00000000 		.4byte	.Ldebug_line0
+ 245 0025 02       		.uleb128 0x2
+ 246 0026 01       		.byte	0x1
+ 247 0027 06       		.byte	0x6
+ 248 0028 09020000 		.4byte	.LASF0
+ 249 002c 02       		.uleb128 0x2
+ 250 002d 01       		.byte	0x1
+ 251 002e 08       		.byte	0x8
+ 252 002f 59000000 		.4byte	.LASF1
+ 253 0033 02       		.uleb128 0x2
+ 254 0034 02       		.byte	0x2
+ 255 0035 05       		.byte	0x5
+ 256 0036 EA010000 		.4byte	.LASF2
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccWBPsmK.s 			page 7
+
+
+ 257 003a 02       		.uleb128 0x2
+ 258 003b 02       		.byte	0x2
+ 259 003c 07       		.byte	0x7
+ 260 003d 85000000 		.4byte	.LASF3
+ 261 0041 02       		.uleb128 0x2
+ 262 0042 04       		.byte	0x4
+ 263 0043 05       		.byte	0x5
+ 264 0044 F4010000 		.4byte	.LASF4
+ 265 0048 02       		.uleb128 0x2
+ 266 0049 04       		.byte	0x4
+ 267 004a 07       		.byte	0x7
+ 268 004b 73000000 		.4byte	.LASF5
+ 269 004f 02       		.uleb128 0x2
+ 270 0050 08       		.byte	0x8
+ 271 0051 05       		.byte	0x5
+ 272 0052 C2010000 		.4byte	.LASF6
+ 273 0056 02       		.uleb128 0x2
+ 274 0057 08       		.byte	0x8
+ 275 0058 07       		.byte	0x7
+ 276 0059 03010000 		.4byte	.LASF7
+ 277 005d 03       		.uleb128 0x3
+ 278 005e 04       		.byte	0x4
+ 279 005f 05       		.byte	0x5
+ 280 0060 696E7400 		.ascii	"int\000"
+ 281 0064 02       		.uleb128 0x2
+ 282 0065 04       		.byte	0x4
+ 283 0066 07       		.byte	0x7
+ 284 0067 F6000000 		.4byte	.LASF8
+ 285 006b 02       		.uleb128 0x2
+ 286 006c 04       		.byte	0x4
+ 287 006d 04       		.byte	0x4
+ 288 006e 49000000 		.4byte	.LASF9
+ 289 0072 02       		.uleb128 0x2
+ 290 0073 08       		.byte	0x8
+ 291 0074 04       		.byte	0x4
+ 292 0075 C5000000 		.4byte	.LASF10
+ 293 0079 02       		.uleb128 0x2
+ 294 007a 01       		.byte	0x1
+ 295 007b 08       		.byte	0x8
+ 296 007c E5010000 		.4byte	.LASF11
+ 297 0080 02       		.uleb128 0x2
+ 298 0081 08       		.byte	0x8
+ 299 0082 04       		.byte	0x4
+ 300 0083 FD010000 		.4byte	.LASF12
+ 301 0087 02       		.uleb128 0x2
+ 302 0088 04       		.byte	0x4
+ 303 0089 07       		.byte	0x7
+ 304 008a B0010000 		.4byte	.LASF13
+ 305 008e 04       		.uleb128 0x4
+ 306 008f E8000000 		.4byte	.LASF32
+ 307 0093 01       		.byte	0x1
+ 308 0094 15       		.byte	0x15
+ 309 0095 5D000000 		.4byte	0x5d
+ 310 0099 00000000 		.4byte	.LFB34
+ 311 009d 44000000 		.4byte	.LFE34-.LFB34
+ 312 00a1 01       		.uleb128 0x1
+ 313 00a2 9C       		.byte	0x9c
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccWBPsmK.s 			page 8
+
+
+ 314 00a3 D6000000 		.4byte	0xd6
+ 315 00a7 05       		.uleb128 0x5
+ 316 00a8 DF000000 		.4byte	.LASF33
+ 317 00ac 01       		.byte	0x1
+ 318 00ad 15       		.byte	0x15
+ 319 00ae 5D000000 		.4byte	0x5d
+ 320 00b2 00000000 		.4byte	.LLST0
+ 321 00b6 06       		.uleb128 0x6
+ 322 00b7 1C000000 		.4byte	.LVL4
+ 323 00bb AE010000 		.4byte	0x1ae
+ 324 00bf 07       		.uleb128 0x7
+ 325 00c0 01       		.uleb128 0x1
+ 326 00c1 50       		.byte	0x50
+ 327 00c2 01       		.uleb128 0x1
+ 328 00c3 31       		.byte	0x31
+ 329 00c4 07       		.uleb128 0x7
+ 330 00c5 01       		.uleb128 0x1
+ 331 00c6 51       		.byte	0x51
+ 332 00c7 01       		.uleb128 0x1
+ 333 00c8 30       		.byte	0x30
+ 334 00c9 07       		.uleb128 0x7
+ 335 00ca 01       		.uleb128 0x1
+ 336 00cb 52       		.byte	0x52
+ 337 00cc 01       		.uleb128 0x1
+ 338 00cd 40       		.byte	0x40
+ 339 00ce 07       		.uleb128 0x7
+ 340 00cf 01       		.uleb128 0x1
+ 341 00d0 53       		.byte	0x53
+ 342 00d1 02       		.uleb128 0x2
+ 343 00d2 74       		.byte	0x74
+ 344 00d3 00       		.sleb128 0
+ 345 00d4 00       		.byte	0
+ 346 00d5 00       		.byte	0
+ 347 00d6 08       		.uleb128 0x8
+ 348 00d7 DA000000 		.4byte	.LASF34
+ 349 00db 01       		.byte	0x1
+ 350 00dc 27       		.byte	0x27
+ 351 00dd 5D000000 		.4byte	0x5d
+ 352 00e1 00000000 		.4byte	.LFB35
+ 353 00e5 8C000000 		.4byte	.LFE35-.LFB35
+ 354 00e9 01       		.uleb128 0x1
+ 355 00ea 9C       		.byte	0x9c
+ 356 00eb 54010000 		.4byte	0x154
+ 357 00ef 09       		.uleb128 0x9
+ 358 00f0 2E000000 		.4byte	.LASF14
+ 359 00f4 01       		.byte	0x1
+ 360 00f5 36       		.byte	0x36
+ 361 00f6 5D000000 		.4byte	0x5d
+ 362 00fa 00       		.byte	0
+ 363 00fb 0A       		.uleb128 0xa
+ 364 00fc 16000000 		.4byte	.LASF15
+ 365 0100 01       		.byte	0x1
+ 366 0101 37       		.byte	0x37
+ 367 0102 5D000000 		.4byte	0x5d
+ 368 0106 3F000000 		.4byte	.LLST1
+ 369 010a 0B       		.uleb128 0xb
+ 370 010b 06000000 		.4byte	.LVL6
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccWBPsmK.s 			page 9
+
+
+ 371 010f B9010000 		.4byte	0x1b9
+ 372 0113 0B       		.uleb128 0xb
+ 373 0114 0A000000 		.4byte	.LVL7
+ 374 0118 C4010000 		.4byte	0x1c4
+ 375 011c 0B       		.uleb128 0xb
+ 376 011d 0E000000 		.4byte	.LVL8
+ 377 0121 CF010000 		.4byte	0x1cf
+ 378 0125 0B       		.uleb128 0xb
+ 379 0126 12000000 		.4byte	.LVL9
+ 380 012a DA010000 		.4byte	0x1da
+ 381 012e 0B       		.uleb128 0xb
+ 382 012f 16000000 		.4byte	.LVL10
+ 383 0133 E6010000 		.4byte	0x1e6
+ 384 0137 0C       		.uleb128 0xc
+ 385 0138 1C000000 		.4byte	.LVL11
+ 386 013c F1010000 		.4byte	0x1f1
+ 387 0140 4A010000 		.4byte	0x14a
+ 388 0144 07       		.uleb128 0x7
+ 389 0145 01       		.uleb128 0x1
+ 390 0146 50       		.byte	0x50
+ 391 0147 01       		.uleb128 0x1
+ 392 0148 3C       		.byte	0x3c
+ 393 0149 00       		.byte	0
+ 394 014a 0B       		.uleb128 0xb
+ 395 014b 62000000 		.4byte	.LVL17
+ 396 014f FD010000 		.4byte	0x1fd
+ 397 0153 00       		.byte	0
+ 398 0154 0D       		.uleb128 0xd
+ 399 0155 1A010000 		.4byte	.LASF16
+ 400 0159 01       		.byte	0x1
+ 401 015a 0E       		.byte	0xe
+ 402 015b 65010000 		.4byte	0x165
+ 403 015f 05       		.uleb128 0x5
+ 404 0160 03       		.byte	0x3
+ 405 0161 00000000 		.4byte	barSync
+ 406 0165 0E       		.uleb128 0xe
+ 407 0166 5D000000 		.4byte	0x5d
+ 408 016a 0D       		.uleb128 0xd
+ 409 016b 67000000 		.4byte	.LASF17
+ 410 016f 01       		.byte	0x1
+ 411 0170 0F       		.byte	0xf
+ 412 0171 65010000 		.4byte	0x165
+ 413 0175 05       		.uleb128 0x5
+ 414 0176 03       		.byte	0x3
+ 415 0177 00000000 		.4byte	buttonAsync
+ 416 017b 0D       		.uleb128 0xd
+ 417 017c 98000000 		.4byte	.LASF18
+ 418 0180 01       		.byte	0x1
+ 419 0181 10       		.byte	0x10
+ 420 0182 65010000 		.4byte	0x165
+ 421 0186 05       		.uleb128 0x5
+ 422 0187 03       		.byte	0x3
+ 423 0188 00000000 		.4byte	encoderAsync
+ 424 018c 0D       		.uleb128 0xd
+ 425 018d BA000000 		.4byte	.LASF19
+ 426 0191 01       		.byte	0x1
+ 427 0192 11       		.byte	0x11
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccWBPsmK.s 			page 10
+
+
+ 428 0193 65010000 		.4byte	0x165
+ 429 0197 05       		.uleb128 0x5
+ 430 0198 03       		.byte	0x3
+ 431 0199 00000000 		.4byte	encoderPos
+ 432 019d 0D       		.uleb128 0xd
+ 433 019e 78020000 		.4byte	.LASF20
+ 434 01a2 01       		.byte	0x1
+ 435 01a3 12       		.byte	0x12
+ 436 01a4 5D000000 		.4byte	0x5d
+ 437 01a8 05       		.uleb128 0x5
+ 438 01a9 03       		.byte	0x3
+ 439 01aa 00000000 		.4byte	movingDirection
+ 440 01ae 0F       		.uleb128 0xf
+ 441 01af A5000000 		.4byte	.LASF21
+ 442 01b3 A5000000 		.4byte	.LASF21
+ 443 01b7 02       		.byte	0x2
+ 444 01b8 4B       		.byte	0x4b
+ 445 01b9 0F       		.uleb128 0xf
+ 446 01ba 4F000000 		.4byte	.LASF22
+ 447 01be 4F000000 		.4byte	.LASF22
+ 448 01c2 02       		.byte	0x2
+ 449 01c3 38       		.byte	0x38
+ 450 01c4 0F       		.uleb128 0xf
+ 451 01c5 CC000000 		.4byte	.LASF23
+ 452 01c9 CC000000 		.4byte	.LASF23
+ 453 01cd 03       		.byte	0x3
+ 454 01ce 17       		.byte	0x17
+ 455 01cf 0F       		.uleb128 0xf
+ 456 01d0 D0010000 		.4byte	.LASF24
+ 457 01d4 D0010000 		.4byte	.LASF24
+ 458 01d8 04       		.byte	0x4
+ 459 01d9 17       		.byte	0x17
+ 460 01da 10       		.uleb128 0x10
+ 461 01db 1E000000 		.4byte	.LASF25
+ 462 01df 1E000000 		.4byte	.LASF25
+ 463 01e3 05       		.byte	0x5
+ 464 01e4 3201     		.2byte	0x132
+ 465 01e6 0F       		.uleb128 0xf
+ 466 01e7 35000000 		.4byte	.LASF26
+ 467 01eb 35000000 		.4byte	.LASF26
+ 468 01ef 06       		.byte	0x6
+ 469 01f0 17       		.byte	0x17
+ 470 01f1 10       		.uleb128 0x10
+ 471 01f2 00000000 		.4byte	.LASF27
+ 472 01f6 00000000 		.4byte	.LASF27
+ 473 01fa 05       		.byte	0x5
+ 474 01fb 5001     		.2byte	0x150
+ 475 01fd 0F       		.uleb128 0xf
+ 476 01fe B9010000 		.4byte	.LASF28
+ 477 0202 B9010000 		.4byte	.LASF28
+ 478 0206 07       		.byte	0x7
+ 479 0207 32       		.byte	0x32
+ 480 0208 00       		.byte	0
+ 481              		.section	.debug_abbrev,"",%progbits
+ 482              	.Ldebug_abbrev0:
+ 483 0000 01       		.uleb128 0x1
+ 484 0001 11       		.uleb128 0x11
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccWBPsmK.s 			page 11
+
+
+ 485 0002 01       		.byte	0x1
+ 486 0003 25       		.uleb128 0x25
+ 487 0004 0E       		.uleb128 0xe
+ 488 0005 13       		.uleb128 0x13
+ 489 0006 0B       		.uleb128 0xb
+ 490 0007 03       		.uleb128 0x3
+ 491 0008 0E       		.uleb128 0xe
+ 492 0009 1B       		.uleb128 0x1b
+ 493 000a 0E       		.uleb128 0xe
+ 494 000b 55       		.uleb128 0x55
+ 495 000c 17       		.uleb128 0x17
+ 496 000d 11       		.uleb128 0x11
+ 497 000e 01       		.uleb128 0x1
+ 498 000f 10       		.uleb128 0x10
+ 499 0010 17       		.uleb128 0x17
+ 500 0011 00       		.byte	0
+ 501 0012 00       		.byte	0
+ 502 0013 02       		.uleb128 0x2
+ 503 0014 24       		.uleb128 0x24
+ 504 0015 00       		.byte	0
+ 505 0016 0B       		.uleb128 0xb
+ 506 0017 0B       		.uleb128 0xb
+ 507 0018 3E       		.uleb128 0x3e
+ 508 0019 0B       		.uleb128 0xb
+ 509 001a 03       		.uleb128 0x3
+ 510 001b 0E       		.uleb128 0xe
+ 511 001c 00       		.byte	0
+ 512 001d 00       		.byte	0
+ 513 001e 03       		.uleb128 0x3
+ 514 001f 24       		.uleb128 0x24
+ 515 0020 00       		.byte	0
+ 516 0021 0B       		.uleb128 0xb
+ 517 0022 0B       		.uleb128 0xb
+ 518 0023 3E       		.uleb128 0x3e
+ 519 0024 0B       		.uleb128 0xb
+ 520 0025 03       		.uleb128 0x3
+ 521 0026 08       		.uleb128 0x8
+ 522 0027 00       		.byte	0
+ 523 0028 00       		.byte	0
+ 524 0029 04       		.uleb128 0x4
+ 525 002a 2E       		.uleb128 0x2e
+ 526 002b 01       		.byte	0x1
+ 527 002c 3F       		.uleb128 0x3f
+ 528 002d 19       		.uleb128 0x19
+ 529 002e 03       		.uleb128 0x3
+ 530 002f 0E       		.uleb128 0xe
+ 531 0030 3A       		.uleb128 0x3a
+ 532 0031 0B       		.uleb128 0xb
+ 533 0032 3B       		.uleb128 0x3b
+ 534 0033 0B       		.uleb128 0xb
+ 535 0034 27       		.uleb128 0x27
+ 536 0035 19       		.uleb128 0x19
+ 537 0036 49       		.uleb128 0x49
+ 538 0037 13       		.uleb128 0x13
+ 539 0038 11       		.uleb128 0x11
+ 540 0039 01       		.uleb128 0x1
+ 541 003a 12       		.uleb128 0x12
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccWBPsmK.s 			page 12
+
+
+ 542 003b 06       		.uleb128 0x6
+ 543 003c 40       		.uleb128 0x40
+ 544 003d 18       		.uleb128 0x18
+ 545 003e 9742     		.uleb128 0x2117
+ 546 0040 19       		.uleb128 0x19
+ 547 0041 01       		.uleb128 0x1
+ 548 0042 13       		.uleb128 0x13
+ 549 0043 00       		.byte	0
+ 550 0044 00       		.byte	0
+ 551 0045 05       		.uleb128 0x5
+ 552 0046 05       		.uleb128 0x5
+ 553 0047 00       		.byte	0
+ 554 0048 03       		.uleb128 0x3
+ 555 0049 0E       		.uleb128 0xe
+ 556 004a 3A       		.uleb128 0x3a
+ 557 004b 0B       		.uleb128 0xb
+ 558 004c 3B       		.uleb128 0x3b
+ 559 004d 0B       		.uleb128 0xb
+ 560 004e 49       		.uleb128 0x49
+ 561 004f 13       		.uleb128 0x13
+ 562 0050 02       		.uleb128 0x2
+ 563 0051 17       		.uleb128 0x17
+ 564 0052 00       		.byte	0
+ 565 0053 00       		.byte	0
+ 566 0054 06       		.uleb128 0x6
+ 567 0055 898201   		.uleb128 0x4109
+ 568 0058 01       		.byte	0x1
+ 569 0059 11       		.uleb128 0x11
+ 570 005a 01       		.uleb128 0x1
+ 571 005b 31       		.uleb128 0x31
+ 572 005c 13       		.uleb128 0x13
+ 573 005d 00       		.byte	0
+ 574 005e 00       		.byte	0
+ 575 005f 07       		.uleb128 0x7
+ 576 0060 8A8201   		.uleb128 0x410a
+ 577 0063 00       		.byte	0
+ 578 0064 02       		.uleb128 0x2
+ 579 0065 18       		.uleb128 0x18
+ 580 0066 9142     		.uleb128 0x2111
+ 581 0068 18       		.uleb128 0x18
+ 582 0069 00       		.byte	0
+ 583 006a 00       		.byte	0
+ 584 006b 08       		.uleb128 0x8
+ 585 006c 2E       		.uleb128 0x2e
+ 586 006d 01       		.byte	0x1
+ 587 006e 3F       		.uleb128 0x3f
+ 588 006f 19       		.uleb128 0x19
+ 589 0070 03       		.uleb128 0x3
+ 590 0071 0E       		.uleb128 0xe
+ 591 0072 3A       		.uleb128 0x3a
+ 592 0073 0B       		.uleb128 0xb
+ 593 0074 3B       		.uleb128 0x3b
+ 594 0075 0B       		.uleb128 0xb
+ 595 0076 27       		.uleb128 0x27
+ 596 0077 19       		.uleb128 0x19
+ 597 0078 49       		.uleb128 0x49
+ 598 0079 13       		.uleb128 0x13
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccWBPsmK.s 			page 13
+
+
+ 599 007a 8701     		.uleb128 0x87
+ 600 007c 19       		.uleb128 0x19
+ 601 007d 11       		.uleb128 0x11
+ 602 007e 01       		.uleb128 0x1
+ 603 007f 12       		.uleb128 0x12
+ 604 0080 06       		.uleb128 0x6
+ 605 0081 40       		.uleb128 0x40
+ 606 0082 18       		.uleb128 0x18
+ 607 0083 9742     		.uleb128 0x2117
+ 608 0085 19       		.uleb128 0x19
+ 609 0086 01       		.uleb128 0x1
+ 610 0087 13       		.uleb128 0x13
+ 611 0088 00       		.byte	0
+ 612 0089 00       		.byte	0
+ 613 008a 09       		.uleb128 0x9
+ 614 008b 34       		.uleb128 0x34
+ 615 008c 00       		.byte	0
+ 616 008d 03       		.uleb128 0x3
+ 617 008e 0E       		.uleb128 0xe
+ 618 008f 3A       		.uleb128 0x3a
+ 619 0090 0B       		.uleb128 0xb
+ 620 0091 3B       		.uleb128 0x3b
+ 621 0092 0B       		.uleb128 0xb
+ 622 0093 49       		.uleb128 0x49
+ 623 0094 13       		.uleb128 0x13
+ 624 0095 1C       		.uleb128 0x1c
+ 625 0096 0B       		.uleb128 0xb
+ 626 0097 00       		.byte	0
+ 627 0098 00       		.byte	0
+ 628 0099 0A       		.uleb128 0xa
+ 629 009a 34       		.uleb128 0x34
+ 630 009b 00       		.byte	0
+ 631 009c 03       		.uleb128 0x3
+ 632 009d 0E       		.uleb128 0xe
+ 633 009e 3A       		.uleb128 0x3a
+ 634 009f 0B       		.uleb128 0xb
+ 635 00a0 3B       		.uleb128 0x3b
+ 636 00a1 0B       		.uleb128 0xb
+ 637 00a2 49       		.uleb128 0x49
+ 638 00a3 13       		.uleb128 0x13
+ 639 00a4 02       		.uleb128 0x2
+ 640 00a5 17       		.uleb128 0x17
+ 641 00a6 00       		.byte	0
+ 642 00a7 00       		.byte	0
+ 643 00a8 0B       		.uleb128 0xb
+ 644 00a9 898201   		.uleb128 0x4109
+ 645 00ac 00       		.byte	0
+ 646 00ad 11       		.uleb128 0x11
+ 647 00ae 01       		.uleb128 0x1
+ 648 00af 31       		.uleb128 0x31
+ 649 00b0 13       		.uleb128 0x13
+ 650 00b1 00       		.byte	0
+ 651 00b2 00       		.byte	0
+ 652 00b3 0C       		.uleb128 0xc
+ 653 00b4 898201   		.uleb128 0x4109
+ 654 00b7 01       		.byte	0x1
+ 655 00b8 11       		.uleb128 0x11
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccWBPsmK.s 			page 14
+
+
+ 656 00b9 01       		.uleb128 0x1
+ 657 00ba 31       		.uleb128 0x31
+ 658 00bb 13       		.uleb128 0x13
+ 659 00bc 01       		.uleb128 0x1
+ 660 00bd 13       		.uleb128 0x13
+ 661 00be 00       		.byte	0
+ 662 00bf 00       		.byte	0
+ 663 00c0 0D       		.uleb128 0xd
+ 664 00c1 34       		.uleb128 0x34
+ 665 00c2 00       		.byte	0
+ 666 00c3 03       		.uleb128 0x3
+ 667 00c4 0E       		.uleb128 0xe
+ 668 00c5 3A       		.uleb128 0x3a
+ 669 00c6 0B       		.uleb128 0xb
+ 670 00c7 3B       		.uleb128 0x3b
+ 671 00c8 0B       		.uleb128 0xb
+ 672 00c9 49       		.uleb128 0x49
+ 673 00ca 13       		.uleb128 0x13
+ 674 00cb 3F       		.uleb128 0x3f
+ 675 00cc 19       		.uleb128 0x19
+ 676 00cd 02       		.uleb128 0x2
+ 677 00ce 18       		.uleb128 0x18
+ 678 00cf 00       		.byte	0
+ 679 00d0 00       		.byte	0
+ 680 00d1 0E       		.uleb128 0xe
+ 681 00d2 35       		.uleb128 0x35
+ 682 00d3 00       		.byte	0
+ 683 00d4 49       		.uleb128 0x49
+ 684 00d5 13       		.uleb128 0x13
+ 685 00d6 00       		.byte	0
+ 686 00d7 00       		.byte	0
+ 687 00d8 0F       		.uleb128 0xf
+ 688 00d9 2E       		.uleb128 0x2e
+ 689 00da 00       		.byte	0
+ 690 00db 3F       		.uleb128 0x3f
+ 691 00dc 19       		.uleb128 0x19
+ 692 00dd 3C       		.uleb128 0x3c
+ 693 00de 19       		.uleb128 0x19
+ 694 00df 6E       		.uleb128 0x6e
+ 695 00e0 0E       		.uleb128 0xe
+ 696 00e1 03       		.uleb128 0x3
+ 697 00e2 0E       		.uleb128 0xe
+ 698 00e3 3A       		.uleb128 0x3a
+ 699 00e4 0B       		.uleb128 0xb
+ 700 00e5 3B       		.uleb128 0x3b
+ 701 00e6 0B       		.uleb128 0xb
+ 702 00e7 00       		.byte	0
+ 703 00e8 00       		.byte	0
+ 704 00e9 10       		.uleb128 0x10
+ 705 00ea 2E       		.uleb128 0x2e
+ 706 00eb 00       		.byte	0
+ 707 00ec 3F       		.uleb128 0x3f
+ 708 00ed 19       		.uleb128 0x19
+ 709 00ee 3C       		.uleb128 0x3c
+ 710 00ef 19       		.uleb128 0x19
+ 711 00f0 6E       		.uleb128 0x6e
+ 712 00f1 0E       		.uleb128 0xe
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccWBPsmK.s 			page 15
+
+
+ 713 00f2 03       		.uleb128 0x3
+ 714 00f3 0E       		.uleb128 0xe
+ 715 00f4 3A       		.uleb128 0x3a
+ 716 00f5 0B       		.uleb128 0xb
+ 717 00f6 3B       		.uleb128 0x3b
+ 718 00f7 05       		.uleb128 0x5
+ 719 00f8 00       		.byte	0
+ 720 00f9 00       		.byte	0
+ 721 00fa 00       		.byte	0
+ 722              		.section	.debug_loc,"",%progbits
+ 723              	.Ldebug_loc0:
+ 724              	.LLST0:
+ 725 0000 00000000 		.4byte	.LVL0
+ 726 0004 0C000000 		.4byte	.LVL1
+ 727 0008 0100     		.2byte	0x1
+ 728 000a 50       		.byte	0x50
+ 729 000b 0C000000 		.4byte	.LVL1
+ 730 000f 0E000000 		.4byte	.LVL2
+ 731 0013 0100     		.2byte	0x1
+ 732 0015 54       		.byte	0x54
+ 733 0016 0E000000 		.4byte	.LVL2
+ 734 001a 10000000 		.4byte	.LVL3
+ 735 001e 0100     		.2byte	0x1
+ 736 0020 50       		.byte	0x50
+ 737 0021 10000000 		.4byte	.LVL3
+ 738 0025 3C000000 		.4byte	.LVL5
+ 739 0029 0100     		.2byte	0x1
+ 740 002b 54       		.byte	0x54
+ 741 002c 3C000000 		.4byte	.LVL5
+ 742 0030 44000000 		.4byte	.LFE34
+ 743 0034 0100     		.2byte	0x1
+ 744 0036 50       		.byte	0x50
+ 745 0037 00000000 		.4byte	0
+ 746 003b 00000000 		.4byte	0
+ 747              	.LLST1:
+ 748 003f 2A000000 		.4byte	.LVL12
+ 749 0043 36000000 		.4byte	.LVL13
+ 750 0047 0200     		.2byte	0x2
+ 751 0049 30       		.byte	0x30
+ 752 004a 9F       		.byte	0x9f
+ 753 004b 36000000 		.4byte	.LVL13
+ 754 004f 5A000000 		.4byte	.LVL14
+ 755 0053 0100     		.2byte	0x1
+ 756 0055 54       		.byte	0x54
+ 757 0056 5A000000 		.4byte	.LVL14
+ 758 005a 5C000000 		.4byte	.LVL15
+ 759 005e 0300     		.2byte	0x3
+ 760 0060 74       		.byte	0x74
+ 761 0061 7F       		.sleb128 -1
+ 762 0062 9F       		.byte	0x9f
+ 763 0063 5C000000 		.4byte	.LVL15
+ 764 0067 8C000000 		.4byte	.LFE35
+ 765 006b 0100     		.2byte	0x1
+ 766 006d 54       		.byte	0x54
+ 767 006e 00000000 		.4byte	0
+ 768 0072 00000000 		.4byte	0
+ 769              		.section	.debug_aranges,"",%progbits
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccWBPsmK.s 			page 16
+
+
+ 770 0000 24000000 		.4byte	0x24
+ 771 0004 0200     		.2byte	0x2
+ 772 0006 00000000 		.4byte	.Ldebug_info0
+ 773 000a 04       		.byte	0x4
+ 774 000b 00       		.byte	0
+ 775 000c 0000     		.2byte	0
+ 776 000e 0000     		.2byte	0
+ 777 0010 00000000 		.4byte	.LFB34
+ 778 0014 44000000 		.4byte	.LFE34-.LFB34
+ 779 0018 00000000 		.4byte	.LFB35
+ 780 001c 8C000000 		.4byte	.LFE35-.LFB35
+ 781 0020 00000000 		.4byte	0
+ 782 0024 00000000 		.4byte	0
+ 783              		.section	.debug_ranges,"",%progbits
+ 784              	.Ldebug_ranges0:
+ 785 0000 00000000 		.4byte	.LFB34
+ 786 0004 44000000 		.4byte	.LFE34
+ 787 0008 00000000 		.4byte	.LFB35
+ 788 000c 8C000000 		.4byte	.LFE35
+ 789 0010 00000000 		.4byte	0
+ 790 0014 00000000 		.4byte	0
+ 791              		.section	.debug_line,"",%progbits
+ 792              	.Ldebug_line0:
+ 793 0000 D5000000 		.section	.debug_str,"MS",%progbits,1
+ 793      02008200 
+ 793      00000201 
+ 793      FB0E0D00 
+ 793      01010101 
+ 794              	.LASF27:
+ 795 0000 4C43445F 		.ascii	"LCD_Timer_WritePeriod\000"
+ 795      54696D65 
+ 795      725F5772 
+ 795      69746550 
+ 795      6572696F 
+ 796              	.LASF15:
+ 797 0016 6261724D 		.ascii	"barMove\000"
+ 797      6F766500 
+ 798              	.LASF25:
+ 799 001e 4C43445F 		.ascii	"LCD_Timer_Start\000"
+ 799      54696D65 
+ 799      725F5374 
+ 799      61727400 
+ 800              	.LASF14:
+ 801 002e 62617250 		.ascii	"barPos\000"
+ 801      6F7300
+ 802              	.LASF26:
+ 803 0035 4C43445F 		.ascii	"LCD_Timer_ISR_Start\000"
+ 803      54696D65 
+ 803      725F4953 
+ 803      525F5374 
+ 803      61727400 
+ 804              	.LASF9:
+ 805 0049 666C6F61 		.ascii	"float\000"
+ 805      7400
+ 806              	.LASF22:
+ 807 004f 4C43445F 		.ascii	"LCD_Start\000"
+ 807      53746172 
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccWBPsmK.s 			page 17
+
+
+ 807      7400
+ 808              	.LASF1:
+ 809 0059 756E7369 		.ascii	"unsigned char\000"
+ 809      676E6564 
+ 809      20636861 
+ 809      7200
+ 810              	.LASF17:
+ 811 0067 62757474 		.ascii	"buttonAsync\000"
+ 811      6F6E4173 
+ 811      796E6300 
+ 812              	.LASF5:
+ 813 0073 6C6F6E67 		.ascii	"long unsigned int\000"
+ 813      20756E73 
+ 813      69676E65 
+ 813      6420696E 
+ 813      7400
+ 814              	.LASF3:
+ 815 0085 73686F72 		.ascii	"short unsigned int\000"
+ 815      7420756E 
+ 815      7369676E 
+ 815      65642069 
+ 815      6E7400
+ 816              	.LASF18:
+ 817 0098 656E636F 		.ascii	"encoderAsync\000"
+ 817      64657241 
+ 817      73796E63 
+ 817      00
+ 818              	.LASF21:
+ 819 00a5 4C43445F 		.ascii	"LCD_DrawHorizontalBG\000"
+ 819      44726177 
+ 819      486F7269 
+ 819      7A6F6E74 
+ 819      616C4247 
+ 820              	.LASF19:
+ 821 00ba 656E636F 		.ascii	"encoderPos\000"
+ 821      64657250 
+ 821      6F7300
+ 822              	.LASF10:
+ 823 00c5 646F7562 		.ascii	"double\000"
+ 823      6C6500
+ 824              	.LASF23:
+ 825 00cc 454E435F 		.ascii	"ENC_ISR_Start\000"
+ 825      4953525F 
+ 825      53746172 
+ 825      7400
+ 826              	.LASF34:
+ 827 00da 6D61696E 		.ascii	"main\000"
+ 827      00
+ 828              	.LASF33:
+ 829 00df 706F7369 		.ascii	"position\000"
+ 829      74696F6E 
+ 829      00
+ 830              	.LASF32:
+ 831 00e8 64726177 		.ascii	"drawMovingBar\000"
+ 831      4D6F7669 
+ 831      6E674261 
+ 831      7200
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccWBPsmK.s 			page 18
+
+
+ 832              	.LASF8:
+ 833 00f6 756E7369 		.ascii	"unsigned int\000"
+ 833      676E6564 
+ 833      20696E74 
+ 833      00
+ 834              	.LASF7:
+ 835 0103 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 835      206C6F6E 
+ 835      6720756E 
+ 835      7369676E 
+ 835      65642069 
+ 836              	.LASF16:
+ 837 011a 62617253 		.ascii	"barSync\000"
+ 837      796E6300 
+ 838              	.LASF29:
+ 839 0122 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 839      43313120 
+ 839      352E342E 
+ 839      31203230 
+ 839      31363036 
+ 840 0155 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 840      20726576 
+ 840      6973696F 
+ 840      6E203233 
+ 840      37373135 
+ 841 0188 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 841      66756E63 
+ 841      74696F6E 
+ 841      2D736563 
+ 841      74696F6E 
+ 842              	.LASF13:
+ 843 01b0 73697A65 		.ascii	"sizetype\000"
+ 843      74797065 
+ 843      00
+ 844              	.LASF28:
+ 845 01b9 42544E5F 		.ascii	"BTN_Read\000"
+ 845      52656164 
+ 845      00
+ 846              	.LASF6:
+ 847 01c2 6C6F6E67 		.ascii	"long long int\000"
+ 847      206C6F6E 
+ 847      6720696E 
+ 847      7400
+ 848              	.LASF24:
+ 849 01d0 42544E5F 		.ascii	"BTN_ISR_Start\000"
+ 849      4953525F 
+ 849      53746172 
+ 849      7400
+ 850              	.LASF30:
+ 851 01de 6D61696E 		.ascii	"main.c\000"
+ 851      2E6300
+ 852              	.LASF11:
+ 853 01e5 63686172 		.ascii	"char\000"
+ 853      00
+ 854              	.LASF2:
+ 855 01ea 73686F72 		.ascii	"short int\000"
+ 855      7420696E 
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccWBPsmK.s 			page 19
+
+
+ 855      7400
+ 856              	.LASF4:
+ 857 01f4 6C6F6E67 		.ascii	"long int\000"
+ 857      20696E74 
+ 857      00
+ 858              	.LASF12:
+ 859 01fd 6C6F6E67 		.ascii	"long double\000"
+ 859      20646F75 
+ 859      626C6500 
+ 860              	.LASF0:
+ 861 0209 7369676E 		.ascii	"signed char\000"
+ 861      65642063 
+ 861      68617200 
+ 862              	.LASF31:
+ 863 0215 433A5C55 		.ascii	"C:\\Users\\Leo Tejkowski\\Desktop\\ece381\\Lab 2 - "
+ 863      73657273 
+ 863      5C4C656F 
+ 863      2054656A 
+ 863      6B6F7773 
+ 864 0243 496E7465 		.ascii	"Interrupts\\Project\\Zip File\\Lab02 - Interrupts.c"
+ 864      72727570 
+ 864      74735C50 
+ 864      726F6A65 
+ 864      63745C5A 
+ 865 0273 7964736E 		.ascii	"ydsn\000"
+ 865      00
+ 866              	.LASF20:
+ 867 0278 6D6F7669 		.ascii	"movingDirection\000"
+ 867      6E674469 
+ 867      72656374 
+ 867      696F6E00 
+ 868              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
