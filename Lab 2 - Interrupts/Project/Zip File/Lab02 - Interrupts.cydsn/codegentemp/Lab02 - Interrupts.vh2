@@ -2,7 +2,7 @@
 --	Conversion of Lab02 - Interrupts.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Sat Jan 28 13:27:40 2023
+--	Sun Jan 29 12:54:22 2023
 --
 
 USE cypress.cypress.all;
@@ -77,7 +77,7 @@ ENC:cy_psoc3_pins_v1_10
 		input_sync=>"00",
 		input_clk_en=>'0',
 		input_sync_mode=>"00",
-		intr_mode=>"0010",
+		intr_mode=>"0101",
 		invert_in_clock=>'0',
 		invert_in_clock_en=>'0',
 		invert_in_reset=>'0',

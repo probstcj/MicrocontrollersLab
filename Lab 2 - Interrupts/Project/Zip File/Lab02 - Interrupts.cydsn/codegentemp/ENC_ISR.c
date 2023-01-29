@@ -177,8 +177,14 @@ CY_ISR(ENC_ISR_Interrupt)
     /* `#START ENC_ISR_Interrupt` */
     
 encoderPos = ENC_Read();
-volatile int ab  = ENC_Read();
-    
+volatile int a  = ENC_Read();
+CyDelay(1);
+volatile int b  = ENC_Read();
+CyDelay(1);
+volatile int c  = ENC_Read();
+CyDelay(1);
+volatile int d  = ENC_Read();
+CyDelay(1);
 
 CyDelay(20);
 ENC_ClearInterrupt();   

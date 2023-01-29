@@ -176,15 +176,32 @@ CY_ISR(ENC_ISR_Interrupt)
     /*  Place your Interrupt code here. */
     /* `#START ENC_ISR_Interrupt` */
     
-encoderPos = ENC_Read();
-volatile int ab  = ENC_Read();
-    
-
-CyDelay(20);
+volatile int a  = ENC_Read();
+while(a == ENC_Read());
+volatile int b  = ENC_Read();
+while(b == ENC_Read());
+volatile int c  = ENC_Read();
+while(c == ENC_Read());
+//CyDelay(20);
+if(a == 1 && c == 2){
+    // Clockwise (increase bar)
+    encoderAsync = 1;
+    if(encoderPos == 80){
+    }
+    else{
+        encoderPos++;
+    }
+}
+else if(a == 2 && c==1){
+    // Counter-Clockwise (decrease bar)
+    encoderAsync = 1;
+    if(encoderPos == 0){
+    }
+    else{
+        encoderPos--;
+    }
+}
 ENC_ClearInterrupt();   
-encoderAsync = 1;
-LCD_PrintNumber(ENC_ReadDataReg());
-
 
     
     
