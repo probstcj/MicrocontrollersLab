@@ -36,6 +36,9 @@ int drawMovingBar(int position){
     }
     return position;
 }
+void drawMovableBar(){
+    LCD_DrawHorizontalBG(0,0,16,encoderPos);
+}
 int main(void)
 {
 
@@ -52,39 +55,49 @@ int main(void)
     buttonAsync = 0;
     movingDirection = 0;
     int barPos = 0;
-    int barMove = 0;
+    int barMove = 1;
     encoderAsync = 0;
     encoderPos = 0;
     CyGlobalIntEnable;
+    
+    LCD_PrintString("Turn the dial,                          press button");
+    //                                                      ^end of row
     for(;;)
     {
-        
         /* Place your application code here. */
         
         if(barSync == 1){
             barSync = 0;
             if(barMove != 1){
-             //   barPos = drawMovingBar(barPos);
+                barPos = drawMovingBar(barPos);
             }
-            //LCD_DrawHorizontalBG(1,0,16,80);
-            //LCD_ClearDisplay();
-            //CyDelay(1000);
-            //LCD_ClearDisplay();
         }
         else if(buttonAsync == 1){
             buttonAsync = 0;
             if(barMove == 0){
                 barMove = 1;
+                LCD_ClearDisplay();
+                barPos = drawMovingBar(barPos);
+                drawMovableBar();
+                CyDelay(500);
+                LCD_ClearDisplay();
+                drawMovableBar();
+                if(barPos == encoderPos){
+                    LCD_PrintString("                        Congratulations!");
+                }
+                else{
+                    LCD_PrintString("                        You suck!!!!!!!!");
+                }
             }
             else{
                 barMove = 0;
             }
-            while(BTN_Read() == 0);
+            while(BTN_Read() != 0){
+            }
         }
         else if(encoderAsync == 1){
             encoderAsync = 0; // resetting the flag
-//            LCD_PrintNumber(encoderPos);
-            
+            drawMovableBar();
         }
         else{
            

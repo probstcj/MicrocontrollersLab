@@ -1,6 +1,6 @@
 -- Project:   Lab02 - Interrupts
--- Generated: 01/28/2023 13:27:42
--- PSoC Creator  4.4
+-- Generated: 01/29/2023 12:54:24
+-- PSoC Creator  4.2
 
 ENTITY \Lab02 - Interrupts\ IS
     PORT(
@@ -292,7 +292,7 @@ BEGIN
             input_clk_en => 0,
             input_sync => "00",
             input_sync_mode => "00",
-            intr_mode => "0010",
+            intr_mode => "0101",
             invert_in_clock => 0,
             invert_in_clock_en => 0,
             invert_in_reset => 0,
@@ -361,7 +361,7 @@ BEGIN
             oe_sync_mode => 0,
             logicalport => "ENC",
             logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+            io_capabilities => "0000000000000000000000000001000000000000000000000000000000000001")
         PORT MAP(
             pa_out => ENC(0)__PA,
             oe => open,

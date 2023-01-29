@@ -1,8 +1,6 @@
-C:\Users\Leo Tejkowski\Desktop\ece381\Lab 2 - Interrupts\Project\Zip File\Lab02 - Interrupts.cydsn\Lab02 - Interrupts.cyprj|f202081b-d187-4a10-9ae7-cf7782334b9f
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|38ece80d-c78c-4da5-97dc-a75cb1c168c8
-C:\Users\Leo Tejkowski\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|95eca7ea-bb49-40e1-aa7e-2aef806d0267
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|eabc9d62-a630-4f03-bdda-bcf0450b91c0
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|b98e25a3-6f68-48c3-8a28-c8f6a84120e0
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|6438d754-d73c-49d8-a299-a874ac66941a
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\dev\psoc4\PSoC4AnalogDevice\psoc4arch.cydsn\psoc4arch.cyprj|7e4b7850-9d48-4b1b-aebb-d7578f73fba2
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|8fd7f2e9-b1bb-45c0-9eca-ed88912691ca
+C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 2 - Interrupts\Project\Zip File\Lab02 - Interrupts.cydsn\Lab02 - Interrupts.cyprj|3983388b-21ab-4d5b-bdf2-5de9991aa9f9
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|7bc4251d-9a15-4265-9141-74e1ddef8556
+C:\Users\Hello Kitty\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|4c496a27-1a32-4ee4-9956-78862e89e001
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|e4571437-ae48-4055-a25d-3f8208d0774b
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|705e9458-dda8-4890-aa69-ba2711e533f8
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|8d4bd4cd-2fe0-450b-bdb7-dde3d213418d
