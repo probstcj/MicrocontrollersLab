@@ -36,6 +36,7 @@ int drawMovingBar(int position){
     }
     return position;
 }
+
 void drawMovableBar(){
     LCD_DrawHorizontalBG(0,0,16,encoderPos);
 }
@@ -69,10 +70,11 @@ int main(void)
         if(barSync == 1){
             barSync = 0;
             if(barMove != 1){
+                
                 barPos = drawMovingBar(barPos);
             }
         }
-        else if(buttonAsync == 1){
+        if(buttonAsync == 1){
             buttonAsync = 0;
             if(barMove == 0){
                 barMove = 1;
@@ -93,16 +95,18 @@ int main(void)
                 barMove = 0;
             }
             while(BTN_Read() != 0){
+                
             }
         }
-        else if(encoderAsync == 1){
+        if(encoderAsync == 1){
             encoderAsync = 0; // resetting the flag
             drawMovableBar();
+           
         }
-        else{
+        //else{
            
             //CySysPmSleep();
-        }
+        //}
     }
 }
 

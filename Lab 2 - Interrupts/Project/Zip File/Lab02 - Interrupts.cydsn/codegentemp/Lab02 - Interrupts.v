@@ -1,6 +1,6 @@
 // ======================================================================
 // Lab02 - Interrupts.v generated from TopDesign.cysch
-// 01/29/2023 at 12:54
+// 01/29/2023 at 17:30
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -34,61 +34,79 @@
 `define CYDEV_CHIP_MEMBER_4E 6
 `define CYDEV_CHIP_REVISION_4E_PRODUCTION 0
 `define CYDEV_CHIP_REVISION_4E_CCG2_NO_USBPD 0
-`define CYDEV_CHIP_MEMBER_4O 7
+`define CYDEV_CHIP_MEMBER_4X 7
+`define CYDEV_CHIP_REVISION_4X_PRODUCTION 0
+`define CYDEV_CHIP_MEMBER_4O 8
 `define CYDEV_CHIP_REVISION_4O_PRODUCTION 0
-`define CYDEV_CHIP_MEMBER_4R 8
+`define CYDEV_CHIP_MEMBER_4R 9
 `define CYDEV_CHIP_REVISION_4R_PRODUCTION 0
-`define CYDEV_CHIP_MEMBER_4T 9
+`define CYDEV_CHIP_MEMBER_4T 10
 `define CYDEV_CHIP_REVISION_4T_PRODUCTION 0
-`define CYDEV_CHIP_MEMBER_4N 10
+`define CYDEV_CHIP_MEMBER_4N 11
 `define CYDEV_CHIP_REVISION_4N_PRODUCTION 0
-`define CYDEV_CHIP_MEMBER_4S 11
+`define CYDEV_CHIP_MEMBER_4S 12
 `define CYDEV_CHIP_REVISION_4S_PRODUCTION 0
-`define CYDEV_CHIP_MEMBER_4Q 12
+`define CYDEV_CHIP_MEMBER_4W 13
+`define CYDEV_CHIP_REVISION_4W_PRODUCTION 0
+`define CYDEV_CHIP_MEMBER_4AC 14
+`define CYDEV_CHIP_REVISION_4AC_PRODUCTION 0
+`define CYDEV_CHIP_MEMBER_4AD 15
+`define CYDEV_CHIP_REVISION_4AD_PRODUCTION 0
+`define CYDEV_CHIP_MEMBER_4AE 16
+`define CYDEV_CHIP_REVISION_4AE_PRODUCTION 0
+`define CYDEV_CHIP_MEMBER_4Q 17
 `define CYDEV_CHIP_REVISION_4Q_PRODUCTION 0
-`define CYDEV_CHIP_MEMBER_4D 13
+`define CYDEV_CHIP_MEMBER_4Y 18
+`define CYDEV_CHIP_REVISION_4Y_PRODUCTION 0
+`define CYDEV_CHIP_MEMBER_4Z 19
+`define CYDEV_CHIP_REVISION_4Z_PRODUCTION 0
+`define CYDEV_CHIP_MEMBER_4D 20
 `define CYDEV_CHIP_REVISION_4D_PRODUCTION 0
-`define CYDEV_CHIP_MEMBER_4J 14
+`define CYDEV_CHIP_MEMBER_4J 21
 `define CYDEV_CHIP_REVISION_4J_PRODUCTION 0
-`define CYDEV_CHIP_MEMBER_4K 15
+`define CYDEV_CHIP_MEMBER_4K 22
 `define CYDEV_CHIP_REVISION_4K_PRODUCTION 0
-`define CYDEV_CHIP_MEMBER_4V 16
+`define CYDEV_CHIP_MEMBER_4V 23
 `define CYDEV_CHIP_REVISION_4V_PRODUCTION 0
-`define CYDEV_CHIP_MEMBER_4H 17
+`define CYDEV_CHIP_MEMBER_4H 24
 `define CYDEV_CHIP_REVISION_4H_PRODUCTION 0
-`define CYDEV_CHIP_MEMBER_4A 18
+`define CYDEV_CHIP_MEMBER_4AA 25
+`define CYDEV_CHIP_REVISION_4AA_PRODUCTION 0
+`define CYDEV_CHIP_MEMBER_4A 26
 `define CYDEV_CHIP_REVISION_4A_PRODUCTION 17
 `define CYDEV_CHIP_REVISION_4A_ES0 17
-`define CYDEV_CHIP_MEMBER_4F 19
+`define CYDEV_CHIP_MEMBER_4F 27
 `define CYDEV_CHIP_REVISION_4F_PRODUCTION 0
 `define CYDEV_CHIP_REVISION_4F_PRODUCTION_256K 0
 `define CYDEV_CHIP_REVISION_4F_PRODUCTION_256DMA 0
-`define CYDEV_CHIP_MEMBER_4P 20
+`define CYDEV_CHIP_MEMBER_4P 28
 `define CYDEV_CHIP_REVISION_4P_PRODUCTION 0
-`define CYDEV_CHIP_MEMBER_4M 21
+`define CYDEV_CHIP_MEMBER_4M 29
 `define CYDEV_CHIP_REVISION_4M_PRODUCTION 0
-`define CYDEV_CHIP_MEMBER_4L 22
+`define CYDEV_CHIP_MEMBER_4AB 30
+`define CYDEV_CHIP_REVISION_4AB_PRODUCTION 0
+`define CYDEV_CHIP_MEMBER_4L 31
 `define CYDEV_CHIP_REVISION_4L_PRODUCTION 0
-`define CYDEV_CHIP_MEMBER_4I 23
+`define CYDEV_CHIP_MEMBER_4I 32
 `define CYDEV_CHIP_REVISION_4I_PRODUCTION 0
-`define CYDEV_CHIP_MEMBER_6A 24
+`define CYDEV_CHIP_MEMBER_6A 33
 `define CYDEV_CHIP_REVISION_6A_ES 17
 `define CYDEV_CHIP_REVISION_6A_PRODUCTION 33
 `define CYDEV_CHIP_REVISION_6A_NO_UDB 33
-`define CYDEV_CHIP_MEMBER_PDL_FM0P_TYPE1 25
+`define CYDEV_CHIP_MEMBER_PDL_FM0P_TYPE1 34
 `define CYDEV_CHIP_REVISION_PDL_FM0P_TYPE1_PRODUCTION 0
-`define CYDEV_CHIP_MEMBER_PDL_FM0P_TYPE2 26
+`define CYDEV_CHIP_MEMBER_PDL_FM0P_TYPE2 35
 `define CYDEV_CHIP_REVISION_PDL_FM0P_TYPE2_PRODUCTION 0
-`define CYDEV_CHIP_MEMBER_PDL_FM0P_TYPE3 27
+`define CYDEV_CHIP_MEMBER_PDL_FM0P_TYPE3 36
 `define CYDEV_CHIP_REVISION_PDL_FM0P_TYPE3_PRODUCTION 0
-`define CYDEV_CHIP_MEMBER_FM3 28
+`define CYDEV_CHIP_MEMBER_FM3 37
 `define CYDEV_CHIP_REVISION_FM3_PRODUCTION 0
-`define CYDEV_CHIP_MEMBER_FM4 29
+`define CYDEV_CHIP_MEMBER_FM4 38
 `define CYDEV_CHIP_REVISION_FM4_PRODUCTION 0
 `define CYDEV_CHIP_FAMILY_USED 2
-`define CYDEV_CHIP_MEMBER_USED 21
+`define CYDEV_CHIP_MEMBER_USED 29
 `define CYDEV_CHIP_REVISION_USED 0
-// CharLCD_v2_20(ConversionRoutines=true, CUSTOM0=0,E,8,8,8,E,0, CUSTOM1=0,A,A,4,4,4,0, CUSTOM2=0,E,A,E,8,8,0, CUSTOM3=0,E,A,C,A,A,0, CUSTOM4=0,E,8,C,8,E,0, CUSTOM5=0,E,8,E,2,E,0, CUSTOM6=0,E,8,E,2,E,0, CUSTOM7=0,4,4,4,0,4,0, CustomCharacterSet=1, TypeReplacementString=uint32, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMMENT=, CY_COMPONENT_NAME=CharLCD_v2_20, CY_CONFIG_TITLE=LCD, CY_CONST_CONFIG=true, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=LCD, CY_INSTANCE_SHORT_NAME=LCD, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=20, CY_PDL_DRIVER_NAME=, CY_PDL_DRIVER_REQ_VERSION=, CY_PDL_DRIVER_SUBGROUP=, CY_PDL_DRIVER_VARIANT=, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  4.2, INSTANCE_NAME=LCD, )
+// CharLCD_v2_20(ConversionRoutines=true, CUSTOM0=0,E,8,8,8,E,0, CUSTOM1=0,A,A,4,4,4,0, CUSTOM2=0,E,A,E,8,8,0, CUSTOM3=0,E,A,C,A,A,0, CUSTOM4=0,E,8,C,8,E,0, CUSTOM5=0,E,8,E,2,E,0, CUSTOM6=0,E,8,E,2,E,0, CUSTOM7=0,4,4,4,0,4,0, CustomCharacterSet=1, TypeReplacementString=uint32, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMMENT=, CY_COMPONENT_NAME=CharLCD_v2_20, CY_CONFIG_TITLE=LCD, CY_CONST_CONFIG=true, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=LCD, CY_INSTANCE_SHORT_NAME=LCD, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=20, CY_PDL_DRIVER_NAME=, CY_PDL_DRIVER_REQ_VERSION=, CY_PDL_DRIVER_SUBGROUP=, CY_PDL_DRIVER_VARIANT=, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  4.4, INSTANCE_NAME=LCD, )
 module CharLCD_v2_20_0 ;
 
 
@@ -178,39 +196,39 @@ endmodule
 `endif
 
 `ifdef WARP
-`define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_virtualmux_v1_0"
-`include "C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v"
+`define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_virtualmux_v1_0"
+`include "C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v"
 `else
-`define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_virtualmux_v1_0"
-`include "C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v"
+`define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_virtualmux_v1_0"
+`include "C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v"
 `endif
 
-// TCPWM_P4_v2_10(Clock_CheckTolerance=true, Clock_desired_freq=12, Clock_desired_freq_unit=6, Clock_divisor=1, Clock_FractDividerDenominator=0, Clock_FractDividerNumerator=0, Clock_FractDividerUsed=false, Clock_is_direct=false, Clock_is_divider=false, Clock_is_freq=true, Clock_minus_tolerance=5, Clock_ph_align_clock_id=, Clock_ph_align_clock_name=, Clock_plus_tolerance=5, Clock_source_clock_id=, Clock_source_clock_name=, PinVisibility_index=false, PinVisibility_kill=false, PinVisibility_phiA=false, PinVisibility_phiB=false, PinVisibility_switch=false, PWMCompare=65535, PWMCompareBuf=65535, PWMCompareSwap=0, PWMCountMode=3, PWMCountPresent=false, PWMDeadTimeCycle=0, PWMInterruptMask=1, PWMKillEvent=0, PWMLinenSignal=0, PWMLineSignal=0, PWMMode=4, PWMPeriod=65535, PWMPeriodBuf=65535, PWMPeriodSwap=0, PWMPrescaler=0, PWMReloadMode=0, PWMReloadPresent=false, PWMRunMode=0, PWMSetAlign=0, PWMStartMode=0, PWMStartPresent=false, PWMStopEvent=0, PWMStopMode=0, PWMStopPresent=false, PWMSwitchMode=0, PWMSwitchPresent=false, QuadAutoStart=true, QuadEncodingModes=0, QuadIndexMode=0, QuadIndexPresent=false, QuadInterruptMask=1, QuadPhiAMode=3, QuadPhiBMode=3, QuadStopMode=0, QuadStopPresent=false, TCCaptureMode=0, TCCapturePresent=false, TCCompare=65535, TCCompareBuf=65535, TCCompareSwap=0, TCCompCapMode=2, TCCountingModes=0, TCCountMode=3, TCCountPresent=false, TCInterruptMask=1, TCPeriod=65535, TCPrescaler=0, TCPWMCapturePresent=false, TCPWMConfig=1, TCPWMCountPresent=false, TCPWMReloadPresent=false, TCPWMStartPresent=false, TCPWMStopPresent=false, TCReloadMode=0, TCReloadPresent=false, TCRunMode=0, TCStartMode=0, TCStartPresent=false, TCStopMode=0, TCStopPresent=false, TermMode_capture=0, TermMode_cc=0, TermMode_clock=0, TermMode_count=0, TermMode_interrupt=0, TermMode_line=0, TermMode_line_n=0, TermMode_ov=0, TermMode_reload=0, TermMode_start=0, TermMode_stop=0, TermMode_un=0, TermModeStates=, TermVisibility_capture=false, TermVisibility_cc=true, TermVisibility_clock=true, TermVisibility_count=false, TermVisibility_interrupt=true, TermVisibility_line=false, TermVisibility_line_n=false, TermVisibility_ov=true, TermVisibility_reload=false, TermVisibility_start=false, TermVisibility_stop=false, TermVisibility_un=true, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMMENT=, CY_COMPONENT_NAME=TCPWM_P4_v2_10, CY_CONFIG_TITLE=LCD_Timer, CY_CONST_CONFIG=true, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=LCD_Timer, CY_INSTANCE_SHORT_NAME=LCD_Timer, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=10, CY_PDL_DRIVER_NAME=, CY_PDL_DRIVER_REQ_VERSION=, CY_PDL_DRIVER_SUBGROUP=, CY_PDL_DRIVER_VARIANT=, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  4.2, INSTANCE_NAME=LCD_Timer, )
+// TCPWM_P4_v2_10(Clock_CheckTolerance=true, Clock_desired_freq=12, Clock_desired_freq_unit=6, Clock_divisor=1, Clock_FractDividerDenominator=0, Clock_FractDividerNumerator=0, Clock_FractDividerUsed=false, Clock_is_direct=false, Clock_is_divider=false, Clock_is_freq=true, Clock_minus_tolerance=5, Clock_ph_align_clock_id=, Clock_ph_align_clock_name=, Clock_plus_tolerance=5, Clock_source_clock_id=, Clock_source_clock_name=, PinVisibility_index=false, PinVisibility_kill=false, PinVisibility_phiA=false, PinVisibility_phiB=false, PinVisibility_switch=false, PWMCompare=65535, PWMCompareBuf=65535, PWMCompareSwap=0, PWMCountMode=3, PWMCountPresent=false, PWMDeadTimeCycle=0, PWMInterruptMask=1, PWMKillEvent=0, PWMLinenSignal=0, PWMLineSignal=0, PWMMode=4, PWMPeriod=65535, PWMPeriodBuf=65535, PWMPeriodSwap=0, PWMPrescaler=0, PWMReloadMode=0, PWMReloadPresent=false, PWMRunMode=0, PWMSetAlign=0, PWMStartMode=0, PWMStartPresent=false, PWMStopEvent=0, PWMStopMode=0, PWMStopPresent=false, PWMSwitchMode=0, PWMSwitchPresent=false, QuadAutoStart=true, QuadEncodingModes=0, QuadIndexMode=0, QuadIndexPresent=false, QuadInterruptMask=1, QuadPhiAMode=3, QuadPhiBMode=3, QuadStopMode=0, QuadStopPresent=false, TCCaptureMode=0, TCCapturePresent=false, TCCompare=65535, TCCompareBuf=65535, TCCompareSwap=0, TCCompCapMode=2, TCCountingModes=0, TCCountMode=3, TCCountPresent=false, TCInterruptMask=1, TCPeriod=65535, TCPrescaler=0, TCPWMCapturePresent=false, TCPWMConfig=1, TCPWMCountPresent=false, TCPWMReloadPresent=false, TCPWMStartPresent=false, TCPWMStopPresent=false, TCReloadMode=0, TCReloadPresent=false, TCRunMode=0, TCStartMode=0, TCStartPresent=false, TCStopMode=0, TCStopPresent=false, TermMode_capture=0, TermMode_cc=0, TermMode_clock=0, TermMode_count=0, TermMode_interrupt=0, TermMode_line=0, TermMode_line_n=0, TermMode_ov=0, TermMode_reload=0, TermMode_start=0, TermMode_stop=0, TermMode_un=0, TermModeStates=, TermVisibility_capture=false, TermVisibility_cc=true, TermVisibility_clock=true, TermVisibility_count=false, TermVisibility_interrupt=true, TermVisibility_line=false, TermVisibility_line_n=false, TermVisibility_ov=true, TermVisibility_reload=false, TermVisibility_start=false, TermVisibility_stop=false, TermVisibility_un=true, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMMENT=, CY_COMPONENT_NAME=TCPWM_P4_v2_10, CY_CONFIG_TITLE=LCD_Timer, CY_CONST_CONFIG=true, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=LCD_Timer, CY_INSTANCE_SHORT_NAME=LCD_Timer, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=10, CY_PDL_DRIVER_NAME=, CY_PDL_DRIVER_REQ_VERSION=, CY_PDL_DRIVER_SUBGROUP=, CY_PDL_DRIVER_VARIANT=, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  4.4, INSTANCE_NAME=LCD_Timer, )
 module TCPWM_P4_v2_10_1 (
-    stop,
-    reload,
-    start,
-    count,
     capture,
-    interrupt,
-    ov,
-    un,
     cc,
+    clock,
+    count,
+    interrupt,
     line,
     line_n,
-    clock);
-    input       stop;
-    input       reload;
-    input       start;
-    input       count;
+    ov,
+    reload,
+    start,
+    stop,
+    un);
     input       capture;
-    output      interrupt;
-    output      ov;
-    output      un;
     output      cc;
+    input       clock;
+    input       count;
+    output      interrupt;
     output      line;
     output      line_n;
-    input       clock;
+    output      ov;
+    input       reload;
+    input       start;
+    input       stop;
+    output      un;
 
 
           wire  Net_64;
@@ -234,17 +252,17 @@ module TCPWM_P4_v2_10_1 (
 
     cy_m0s8_tcpwm_v1_0 cy_m0s8_tcpwm_1 (
         .capture(Net_75),
-        .underflow(un),
-        .overflow(ov),
-        .line_out_compl(line_n),
-        .line_out(line),
+        .clock(Net_81),
         .compare_match(cc),
-        .interrupt(interrupt),
         .count(Net_69),
+        .interrupt(interrupt),
+        .line_out(line),
+        .line_out_compl(line_n),
+        .overflow(ov),
         .reload(Net_66),
-        .stop(Net_82),
         .start(Net_72),
-        .clock(Net_81));
+        .stop(Net_82),
+        .underflow(un));
 
 	// VMux_reload (cy_virtualmux_v1_0)
 	assign Net_66 = reload;
@@ -271,16 +289,16 @@ endmodule
 // top
 module top ;
 
-          wire  Net_40;
-          wire  Net_39;
-          wire  Net_38;
           wire  Net_37;
-          wire  Net_36;
-          wire  Net_34;
-          wire  Net_33;
+          wire  Net_30;
           wire  Net_32;
           wire  Net_31;
-          wire  Net_30;
+          wire  Net_36;
+          wire  Net_40;
+          wire  Net_39;
+          wire  Net_33;
+          wire  Net_38;
+          wire  Net_34;
           wire  Net_45;
           wire  Net_5;
           wire  Net_51;
@@ -471,18 +489,18 @@ module top ;
 
 
     TCPWM_P4_v2_10_1 LCD_Timer (
-        .stop(1'b0),
-        .reload(1'b0),
-        .start(1'b0),
-        .count(1'b1),
         .capture(1'b0),
-        .interrupt(Net_35),
-        .ov(Net_36),
-        .un(Net_37),
         .cc(Net_38),
+        .clock(Net_41),
+        .count(1'b1),
+        .interrupt(Net_35),
         .line(Net_39),
         .line_n(Net_40),
-        .clock(Net_41));
+        .ov(Net_36),
+        .reload(1'b0),
+        .start(1'b0),
+        .stop(1'b0),
+        .un(Net_37));
 
 
 

@@ -1,6 +1,6 @@
--- Project:   C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 2 - Interrupts\Project\Zip File\Lab02 - Interrupts.cydsn\Lab02 - Interrupts.cyprj
--- Generated: 01/29/2023 12:54:24
--- PSoC Creator  4.2
+-- Project:   C:\Users\Leo Tejkowski\Desktop\ece381\Lab 2 - Interrupts\Project\Zip File\Lab02 - Interrupts.cydsn\Lab02 - Interrupts.cyprj
+-- Generated: 01/29/2023 17:31:12
+-- PSoC Creator  4.4
 
 ENTITY \Lab02 - Interrupts\ IS
     PORT(
