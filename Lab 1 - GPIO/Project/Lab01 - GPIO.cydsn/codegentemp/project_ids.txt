@@ -1,0 +1,6 @@
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|9125fbea-faca-46bd-ab0a-bd380491e4e4
+C:\Users\Hello Kitty\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|27af9d94-2e6d-4c23-8742-4b9a075df707
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|5d9c4656-8498-4dec-8850-6f0f5b251945
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|f83bb68b-50cf-4b1f-82df-862ba81e6ef9
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|de2c4ac9-75c5-480d-8a70-91abb76aded3
+C:\Users\Hello Kitty\Documents\PSoC Creator\Lab01 - GPIO\Lab01 - GPIO.cydsn\Lab01 - GPIO.cyprj|995854b0-6eb6-44e6-9a9f-3df048fd5144

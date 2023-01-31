@@ -1,0 +1,5 @@
+<<<<<<< HEAD:Lab 1 - GPIO/Project/CortexM0/ARM_GCC_541/Debug/SOURCE_C__ARM_GCC_GENERIC.txt
+'C:\Users\Leo Tejkowski\Documents\PSoC Creator\Lab1\Lab1.cydsn\main.c' -o .o -T SOURCE_C__ARM_GCC_GENERIC -I 'C:\Users\Leo Tejkowski\Documents\PSoC Creator\Lab1\Lab1.cydsn' -I 'C:\Users\Leo Tejkowski\Documents\PSoC Creator\Lab1\Lab1.cydsn\Generated_Source\PSoC4' -f 'C:\Users\Leo Tejkowski\Documents\PSoC Creator\Lab1\Lab1.cydsn\CortexM0\ARM_GCC_541\Debug\.deps\SOURCE_C__ARM_GCC_GENERIC.d'
+=======
+'C:\Users\Hello Kitty\Documents\PSoC Creator\Lab01 - GPIO\Lab01 - GPIO.cydsn\main.c' -o .o -T SOURCE_C__ARM_GCC_GENERIC -I 'C:\Users\Hello Kitty\Documents\PSoC Creator\Lab01 - GPIO\Lab01 - GPIO.cydsn' -I 'C:\Users\Hello Kitty\Documents\PSoC Creator\Lab01 - GPIO\Lab01 - GPIO.cydsn\Generated_Source\PSoC4' -f 'C:\Users\Hello Kitty\Documents\PSoC Creator\Lab01 - GPIO\Lab01 - GPIO.cydsn\CortexM0\ARM_GCC_541\Debug\.deps\SOURCE_C__ARM_GCC_GENERIC.d'
+>>>>>>> 39e128b43cb56e007a9fbb21402df6de49b8417b:Lab 1 - GPIO/Project/Lab01 - GPIO.cydsn/CortexM0/ARM_GCC_541/Debug/SOURCE_C__ARM_GCC_GENERIC.txt

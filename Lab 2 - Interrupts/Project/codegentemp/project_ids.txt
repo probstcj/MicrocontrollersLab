@@ -1,6 +1,0 @@
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|ee1e3959-1d04-4493-b1ee-7696fcb5fac0
-C:\Users\Hello Kitty\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|ee97a7f9-d3f3-4ec0-b98f-5c4f0420a80d
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|0b80dddf-524e-48e6-8242-9deb302642cb
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|2c3155da-f0a3-4448-b514-2af4de4d35af
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|9db45582-9f33-4b02-8ef6-74b699f2882f
-C:\Users\Hello Kitty\Documents\PSoC Creator\Lab02 - Interrupts\Lab02 - Interrupts.cydsn\Lab02 - Interrupts.cyprj|a45801c2-b670-4b83-9b23-0f72fbf7b676
