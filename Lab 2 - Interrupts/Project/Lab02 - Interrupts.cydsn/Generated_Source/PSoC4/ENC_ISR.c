@@ -27,18 +27,10 @@
 *  Place your includes, defines and code here 
 ********************************************************************************/
 /* `#START ENC_ISR_intc` */
-    
 #include "ENC.h"
-#include "LCD.h"
+// Take variables from global space (main.c)
 extern volatile int encoderAsync;
 extern volatile int encoderPos;
-   
-    
-    
-    
-    
-    
-
 /* `#END` */
 
 extern cyisraddress CyRamVectors[CYINT_IRQ_BASE + CY_NUM_INTERRUPTS];
@@ -175,37 +167,40 @@ CY_ISR(ENC_ISR_Interrupt)
 
     /*  Place your Interrupt code here. */
     /* `#START ENC_ISR_Interrupt` */
-    
-volatile int a  = ENC_Read();
-while(a == ENC_Read());
-volatile int b  = ENC_Read();
-while(b == ENC_Read());
-volatile int c  = ENC_Read();
-while(c == ENC_Read());
-//CyDelay(20);
-if(a == 1 && c == 2){
-    // Clockwise (increase bar)
-    encoderAsync = 1;
-    if(encoderPos == 80){
+    // Read the first variable, then wait for it to change
+    volatile int a  = ENC_Read();
+    while(a == ENC_Read());
+    // Read next variable, then wait for it to change
+    volatile int b  = ENC_Read();
+    while(b == ENC_Read());
+    // Read next variable, then wait for it to change
+    volatile int c  = ENC_Read();
+    while(c == ENC_Read());
+    // Based on the following variables, decide whether it is CW or CCW
+    if(a == 1 && c == 2){
+        // Clockwise (increase bar)
+        // Set flag
+        encoderAsync = 1;
+        // Set limit of 80 on the right side
+        if(encoderPos == 80){}
+        // If not at limit, increase position
+        else{
+            encoderPos++;
+        }
     }
-    else{
-        encoderPos++;
+    else if(a == 2 && c==1){
+        // Counter-Clockwise (decrease bar)
+        // Set flag
+        encoderAsync = 1;
+        // Set limit of 0 on the left side
+        if(encoderPos == 0){}
+        // If not at limit, decrease position
+        else{
+            encoderPos--;
+        }
     }
-}
-else if(a == 2 && c==1){
-    // Counter-Clockwise (decrease bar)
-    encoderAsync = 1;
-    if(encoderPos == 0){
-    }
-    else{
-        encoderPos--;
-    }
-}
-ENC_ClearInterrupt();   
-
-    
-    
-    
+    // Clear interrupt
+    ENC_ClearInterrupt();   
     /* `#END` */
 }
 

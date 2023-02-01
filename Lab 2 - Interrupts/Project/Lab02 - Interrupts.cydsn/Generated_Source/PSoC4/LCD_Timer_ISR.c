@@ -28,6 +28,7 @@
 ********************************************************************************/
 /* `#START LCD_Timer_ISR_intc` */
 #include "LCD_Timer.h"
+// Take global variables from main.c
 extern volatile int barSync;
 /* `#END` */
 
@@ -165,7 +166,9 @@ CY_ISR(LCD_Timer_ISR_Interrupt)
 
     /*  Place your Interrupt code here. */
     /* `#START LCD_Timer_ISR_Interrupt` */
+    // Clear interrupt
     LCD_Timer_ClearInterrupt(LCD_Timer_TC_INTERRUPT_MASK);
+    // Set flag
     barSync = 1;
     
     /* `#END` */
