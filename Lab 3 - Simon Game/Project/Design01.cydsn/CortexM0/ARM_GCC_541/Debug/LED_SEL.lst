@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\cck31s97.s 			page 1
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccI7QfLA.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\cck31s97.s 			page 1
   28:Generated_Source\PSoC4/LED_SEL.c **** *  Write a byte to the Control Register.
   29:Generated_Source\PSoC4/LED_SEL.c **** *
   30:Generated_Source\PSoC4/LED_SEL.c **** * Parameters:
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\cck31s97.s 			page 2
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccI7QfLA.s 			page 2
 
 
   31:Generated_Source\PSoC4/LED_SEL.c **** *  control:  The value to be assigned to the Control Register.
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\cck31s97.s 			page 1
   58:Generated_Source\PSoC4/LED_SEL.c **** {
   55              		.loc 1 58 0
   56              		.cfi_startproc
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\cck31s97.s 			page 3
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccI7QfLA.s 			page 3
 
 
   57              		@ args = 0, pretend = 0, frame = 0
@@ -153,14 +153,14 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\cck31s97.s 			page 1
   84 000c AD000000 		.4byte	.LASF14
   85 0010 0C       		.byte	0xc
   86 0011 8C000000 		.4byte	.LASF15
-  87 0015 3B010000 		.4byte	.LASF16
+  87 0015 4E010000 		.4byte	.LASF16
   88 0019 00000000 		.4byte	.Ldebug_ranges0+0
   89 001d 00000000 		.4byte	0
   90 0021 00000000 		.4byte	.Ldebug_line0
   91 0025 02       		.uleb128 0x2
   92 0026 01       		.byte	0x1
   93 0027 06       		.byte	0x6
-  94 0028 BA010000 		.4byte	.LASF0
+  94 0028 C2010000 		.4byte	.LASF0
   95 002c 02       		.uleb128 0x2
   96 002d 01       		.byte	0x1
   97 002e 08       		.byte	0x8
@@ -168,7 +168,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\cck31s97.s 			page 1
   99 0033 02       		.uleb128 0x2
  100 0034 02       		.byte	0x2
  101 0035 05       		.byte	0x5
- 102 0036 A1010000 		.4byte	.LASF2
+ 102 0036 A9010000 		.4byte	.LASF2
  103 003a 02       		.uleb128 0x2
  104 003b 02       		.byte	0x2
  105 003c 07       		.byte	0x7
@@ -176,9 +176,9 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\cck31s97.s 			page 1
  107 0041 02       		.uleb128 0x2
  108 0042 04       		.byte	0x4
  109 0043 05       		.byte	0x5
- 110 0044 B1010000 		.4byte	.LASF4
+ 110 0044 B9010000 		.4byte	.LASF4
  111 0048 02       		.uleb128 0x2
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\cck31s97.s 			page 4
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccI7QfLA.s 			page 4
 
 
  112 0049 04       		.byte	0x4
@@ -187,7 +187,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\cck31s97.s 			page 1
  115 004f 02       		.uleb128 0x2
  116 0050 08       		.byte	0x8
  117 0051 05       		.byte	0x5
- 118 0052 8E010000 		.4byte	.LASF6
+ 118 0052 3B010000 		.4byte	.LASF6
  119 0056 02       		.uleb128 0x2
  120 0057 08       		.byte	0x8
  121 0058 07       		.byte	0x7
@@ -201,9 +201,9 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\cck31s97.s 			page 1
  129 0066 07       		.byte	0x7
  130 0067 68000000 		.4byte	.LASF8
  131 006b 04       		.uleb128 0x4
- 132 006c AB010000 		.4byte	.LASF12
+ 132 006c B3010000 		.4byte	.LASF12
  133 0070 02       		.byte	0x2
- 134 0071 FC01     		.2byte	0x1fc
+ 134 0071 E701     		.2byte	0x1e7
  135 0073 2C000000 		.4byte	0x2c
  136 0077 02       		.uleb128 0x2
  137 0078 04       		.byte	0x4
@@ -216,11 +216,11 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\cck31s97.s 			page 1
  144 0085 02       		.uleb128 0x2
  145 0086 01       		.byte	0x1
  146 0087 08       		.byte	0x8
- 147 0088 9C010000 		.4byte	.LASF11
+ 147 0088 49010000 		.4byte	.LASF11
  148 008c 04       		.uleb128 0x4
  149 008d 2F000000 		.4byte	.LASF13
  150 0091 02       		.byte	0x2
- 151 0092 A602     		.2byte	0x2a6
+ 151 0092 9102     		.2byte	0x291
  152 0094 98000000 		.4byte	0x98
  153 0098 05       		.uleb128 0x5
  154 0099 6B000000 		.4byte	0x6b
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\cck31s97.s 			page 1
  166 00b7 01       		.byte	0x1
  167 00b8 25       		.byte	0x25
  168 00b9 6B000000 		.4byte	0x6b
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\cck31s97.s 			page 5
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccI7QfLA.s 			page 5
 
 
  169 00bd 01       		.uleb128 0x1
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\cck31s97.s 			page 1
  223 0027 00       		.byte	0
  224 0028 00       		.byte	0
  225 0029 04       		.uleb128 0x4
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\cck31s97.s 			page 6
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccI7QfLA.s 			page 6
 
 
  226 002a 16       		.uleb128 0x16
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\cck31s97.s 			page 1
  280 0061 13       		.uleb128 0x13
  281 0062 02       		.uleb128 0x2
  282 0063 18       		.uleb128 0x18
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\cck31s97.s 			page 7
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccI7QfLA.s 			page 7
 
 
  283 0064 00       		.byte	0
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\cck31s97.s 			page 1
  335      00000201 
  335      FB0E0D00 
  335      01010101 
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\cck31s97.s 			page 8
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccI7QfLA.s 			page 8
 
 
  336              	.LASF19:
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\cck31s97.s 			page 1
  359      75726365 
  359      5C50536F 
  360              	.LASF14:
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\cck31s97.s 			page 9
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccI7QfLA.s 			page 9
 
 
  361 00ad 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
@@ -496,38 +496,38 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\cck31s97.s 			page 1
  363      74696F6E 
  363      2D736563 
  363      74696F6E 
- 364              	.LASF16:
- 365 013b 433A5C55 		.ascii	"C:\\Users\\tyork\\Documents\\PSoC Creator\\ECE381_S"
- 365      73657273 
- 365      5C74796F 
- 365      726B5C44 
- 365      6F63756D 
- 366 0169 5032335F 		.ascii	"P23_Lab03_Simon_Clone\\Design01.cydsn\000"
- 366      4C616230 
- 366      335F5369 
- 366      6D6F6E5F 
- 366      436C6F6E 
- 367              	.LASF6:
- 368 018e 6C6F6E67 		.ascii	"long long int\000"
- 368      206C6F6E 
- 368      6720696E 
- 368      7400
- 369              	.LASF11:
- 370 019c 63686172 		.ascii	"char\000"
- 370      00
+ 364              	.LASF6:
+ 365 013b 6C6F6E67 		.ascii	"long long int\000"
+ 365      206C6F6E 
+ 365      6720696E 
+ 365      7400
+ 366              	.LASF11:
+ 367 0149 63686172 		.ascii	"char\000"
+ 367      00
+ 368              	.LASF16:
+ 369 014e 433A5C55 		.ascii	"C:\\Users\\Hello Kitty\\Desktop\\MicrocontrollersLa"
+ 369      73657273 
+ 369      5C48656C 
+ 369      6C6F204B 
+ 369      69747479 
+ 370 017d 625C4C61 		.ascii	"b\\Lab 3 - Simon Game\\Project\\Design01.cydsn\000"
+ 370      62203320 
+ 370      2D205369 
+ 370      6D6F6E20 
+ 370      47616D65 
  371              	.LASF2:
- 372 01a1 73686F72 		.ascii	"short int\000"
+ 372 01a9 73686F72 		.ascii	"short int\000"
  372      7420696E 
  372      7400
  373              	.LASF12:
- 374 01ab 75696E74 		.ascii	"uint8\000"
+ 374 01b3 75696E74 		.ascii	"uint8\000"
  374      3800
  375              	.LASF4:
- 376 01b1 6C6F6E67 		.ascii	"long int\000"
+ 376 01b9 6C6F6E67 		.ascii	"long int\000"
  376      20696E74 
  376      00
  377              	.LASF0:
- 378 01ba 7369676E 		.ascii	"signed char\000"
+ 378 01c2 7369676E 		.ascii	"signed char\000"
  378      65642063 
  378      68617200 
  379              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

@@ -1,6 +1,6 @@
 -- Project:   Design01
--- Generated: 02/01/2023 15:17:33
--- PSoC Creator  4.4
+-- Generated: 02/02/2023 14:11:14
+-- PSoC Creator  4.2
 
 ENTITY Design01 IS
     PORT(

@@ -59,7 +59,14 @@ void play_color(int color, int dc, uint32 delay)
 // then turn them off for 500ms, then repeat 2 more times
 void play_start()
 {
-    
+    SPEAKER_PWM_Start();
+    // 50% duty cycle, 600 Hz
+    SPEAKER_PWM_WritePeriod(1000);
+    SPEAKER_PWM_WriteCompare(601);
+    for (int i = 0; i < 3; i++){
+         CyDelay(100);
+    }
+    //SPEAKER_PWM_Stop();
 }
 
 // This should play the fail sequence, which is to turn on
@@ -100,7 +107,6 @@ int main(void)
     INPUT_TIMER_Start();
     INPUT_TIMER_Stop();
     INPUT_TIMER_ISR_Start();
-
     for(;;)
     {
         /* Place your application code here. */

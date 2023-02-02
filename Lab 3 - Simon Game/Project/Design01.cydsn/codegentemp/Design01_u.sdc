@@ -1,3 +1,3 @@
-# Component constraints for C:\Users\tyork\Documents\PSoC Creator\ECE381_SP23_Lab03_Simon_Clone\Design01.cydsn\TopDesign\TopDesign.cysch
-# Project: C:\Users\tyork\Documents\PSoC Creator\ECE381_SP23_Lab03_Simon_Clone\Design01.cydsn\Design01.cyprj
-# Date: Wed, 01 Feb 2023 21:17:31 GMT
+# Component constraints for C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 3 - Simon Game\Project\Design01.cydsn\TopDesign\TopDesign.cysch
+# Project: C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 3 - Simon Game\Project\Design01.cydsn\Design01.cyprj
+# Date: Thu, 02 Feb 2023 20:11:12 GMT

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccvlEja4.s 			page 1
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc1FQUWL.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccvlEja4.s 			page 1
   32              		@ link register save eliminated.
   33              	.LVL0:
   24:main.c        ****     int button = 0;
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccvlEja4.s 			page 2
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc1FQUWL.s 			page 2
 
 
   25:main.c        ****     
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccvlEja4.s 			page 1
   57 0000 7047     		bx	lr
   58              		.cfi_endproc
   59              	.LFE35:
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccvlEja4.s 			page 3
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc1FQUWL.s 			page 3
 
 
   60              		.size	play_color, .-play_color
@@ -140,1431 +140,1644 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccvlEja4.s 			page 1
   70              		.cfi_startproc
   71              		@ args = 0, pretend = 0, frame = 0
   72              		@ frame_needed = 0, uses_anonymous_args = 0
-  73              		@ link register save eliminated.
-  62:main.c        ****     
-  63:main.c        **** }
-  74              		.loc 1 63 0
-  75              		@ sp needed
-  76 0000 7047     		bx	lr
-  77              		.cfi_endproc
-  78              	.LFE36:
-  79              		.size	play_start, .-play_start
-  80 0002 C046     		.section	.text.play_fail,"ax",%progbits
-  81              		.align	2
-  82              		.global	play_fail
-  83              		.code	16
-  84              		.thumb_func
-  85              		.type	play_fail, %function
-  86              	play_fail:
-  87              	.LFB37:
-  64:main.c        **** 
-  65:main.c        **** // This should play the fail sequence, which is to turn on
-  66:main.c        **** // all 4 LEDs and play a 42Hz tone for 1.5 seconds
-  67:main.c        **** void play_fail()
-  68:main.c        **** {
-  88              		.loc 1 68 0
-  89              		.cfi_startproc
-  90              		@ args = 0, pretend = 0, frame = 0
-  91              		@ frame_needed = 0, uses_anonymous_args = 0
-  92              		@ link register save eliminated.
-  69:main.c        ****     
+  73 0000 10B5     		push	{r4, lr}
+  74              		.cfi_def_cfa_offset 8
+  75              		.cfi_offset 4, -8
+  76              		.cfi_offset 14, -4
+  62:main.c        ****     SPEAKER_PWM_Start();
+  77              		.loc 1 62 0
+  78 0002 FFF7FEFF 		bl	SPEAKER_PWM_Start
+  79              	.LVL2:
+  63:main.c        ****     // 50% duty cycle, 600 Hz
+  64:main.c        ****     SPEAKER_PWM_WritePeriod(1000);
+  80              		.loc 1 64 0
+  81 0006 FA20     		movs	r0, #250
+  82 0008 8000     		lsls	r0, r0, #2
+  83 000a FFF7FEFF 		bl	SPEAKER_PWM_WritePeriod
+  84              	.LVL3:
+  65:main.c        ****     SPEAKER_PWM_WriteCompare(601);
+  85              		.loc 1 65 0
+  86 000e 0748     		ldr	r0, .L6
+  87 0010 FFF7FEFF 		bl	SPEAKER_PWM_WriteCompare
+  88              	.LVL4:
+  89              	.LBB2:
+  66:main.c        ****     for (int i = 0; i < 3; i++){
+  90              		.loc 1 66 0
+  91 0014 0024     		movs	r4, #0
+  92 0016 03E0     		b	.L4
+  93              	.LVL5:
+  94              	.L5:
+  67:main.c        ****          CyDelay(100);
+  95              		.loc 1 67 0 discriminator 3
+  96 0018 6420     		movs	r0, #100
+  97 001a FFF7FEFF 		bl	CyDelay
+  98              	.LVL6:
+  66:main.c        ****     for (int i = 0; i < 3; i++){
+  99              		.loc 1 66 0 discriminator 3
+ 100 001e 0134     		adds	r4, r4, #1
+ 101              	.LVL7:
+ 102              	.L4:
+  66:main.c        ****     for (int i = 0; i < 3; i++){
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc1FQUWL.s 			page 4
+
+
+ 103              		.loc 1 66 0 is_stmt 0 discriminator 1
+ 104 0020 022C     		cmp	r4, #2
+ 105 0022 F9DD     		ble	.L5
+ 106              	.LBE2:
+  68:main.c        ****     }
+  69:main.c        ****     SPEAKER_PWM_Stop();
+ 107              		.loc 1 69 0 is_stmt 1
+ 108 0024 FFF7FEFF 		bl	SPEAKER_PWM_Stop
+ 109              	.LVL8:
   70:main.c        **** }
-  93              		.loc 1 70 0
-  94              		@ sp needed
-  95 0000 7047     		bx	lr
-  96              		.cfi_endproc
-  97              	.LFE37:
-  98              		.size	play_fail, .-play_fail
-  99 0002 C046     		.section	.text.play_win,"ax",%progbits
- 100              		.align	2
- 101              		.global	play_win
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccvlEja4.s 			page 4
-
-
- 102              		.code	16
- 103              		.thumb_func
- 104              		.type	play_win, %function
- 105              	play_win:
- 106              	.LFB38:
+ 110              		.loc 1 70 0
+ 111              		@ sp needed
+ 112              	.LVL9:
+ 113 0028 10BD     		pop	{r4, pc}
+ 114              	.L7:
+ 115 002a C046     		.align	2
+ 116              	.L6:
+ 117 002c 59020000 		.word	601
+ 118              		.cfi_endproc
+ 119              	.LFE36:
+ 120              		.size	play_start, .-play_start
+ 121              		.section	.text.play_fail,"ax",%progbits
+ 122              		.align	2
+ 123              		.global	play_fail
+ 124              		.code	16
+ 125              		.thumb_func
+ 126              		.type	play_fail, %function
+ 127              	play_fail:
+ 128              	.LFB37:
   71:main.c        **** 
-  72:main.c        **** // This should play back the victory sequence. In the original
-  73:main.c        **** // Simon, that plays:
-  74:main.c        **** // R, Y, B, G in sequence 0.1s apart, 3 times
-  75:main.c        **** // then RY, 
-  76:main.c        **** // then play failure tone for 0.8s, while the lights then
-  77:main.c        **** // continually flash R Y B G 0.1s apart.
-  78:main.c        **** //
-  79:main.c        **** // You can implement whatever victory sequence you want if
-  80:main.c        **** // you don't feel like doing the original one.
-  81:main.c        **** void play_win()
-  82:main.c        **** {
- 107              		.loc 1 82 0
- 108              		.cfi_startproc
- 109              		@ args = 0, pretend = 0, frame = 0
- 110              		@ frame_needed = 0, uses_anonymous_args = 0
- 111              		@ link register save eliminated.
-  83:main.c        ****     
-  84:main.c        **** }
- 112              		.loc 1 84 0
- 113              		@ sp needed
- 114 0000 7047     		bx	lr
- 115              		.cfi_endproc
- 116              	.LFE38:
- 117              		.size	play_win, .-play_win
- 118 0002 C046     		.section	.text.main,"ax",%progbits
- 119              		.align	2
- 120              		.global	main
- 121              		.code	16
- 122              		.thumb_func
- 123              		.type	main, %function
- 124              	main:
- 125              	.LFB39:
-  85:main.c        **** 
-  86:main.c        **** int main(void)
-  87:main.c        **** {
- 126              		.loc 1 87 0
- 127              		.cfi_startproc
- 128              		@ args = 0, pretend = 0, frame = 80
- 129              		@ frame_needed = 0, uses_anonymous_args = 0
- 130 0000 70B5     		push	{r4, r5, r6, lr}
- 131              		.cfi_def_cfa_offset 16
- 132              		.cfi_offset 4, -16
- 133              		.cfi_offset 5, -12
- 134              		.cfi_offset 6, -8
- 135              		.cfi_offset 14, -4
- 136 0002 94B0     		sub	sp, sp, #80
- 137              		.cfi_def_cfa_offset 96
-  88:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
- 138              		.loc 1 88 0
- 139              		.syntax divided
- 140              	@ 88 "main.c" 1
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccvlEja4.s 			page 5
+  72:main.c        **** // This should play the fail sequence, which is to turn on
+  73:main.c        **** // all 4 LEDs and play a 42Hz tone for 1.5 seconds
+  74:main.c        **** void play_fail()
+  75:main.c        **** {
+ 129              		.loc 1 75 0
+ 130              		.cfi_startproc
+ 131              		@ args = 0, pretend = 0, frame = 0
+ 132              		@ frame_needed = 0, uses_anonymous_args = 0
+ 133              		@ link register save eliminated.
+  76:main.c        ****     
+  77:main.c        **** }
+ 134              		.loc 1 77 0
+ 135              		@ sp needed
+ 136 0000 7047     		bx	lr
+ 137              		.cfi_endproc
+ 138              	.LFE37:
+ 139              		.size	play_fail, .-play_fail
+ 140 0002 C046     		.section	.text.play_win,"ax",%progbits
+ 141              		.align	2
+ 142              		.global	play_win
+ 143              		.code	16
+ 144              		.thumb_func
+ 145              		.type	play_win, %function
+ 146              	play_win:
+ 147              	.LFB38:
+  78:main.c        **** 
+  79:main.c        **** // This should play back the victory sequence. In the original
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc1FQUWL.s 			page 5
 
 
- 141 0004 62B6     		CPSIE   i
- 142              	@ 0 "" 2
- 143              	.LVL2:
-  89:main.c        ****     
-  90:main.c        ****     /* Variables */
-  91:main.c        ****     int ix = 0, num_correct = 0, errors = 0, seq_ctr = 0;
-  92:main.c        ****     int simon_sequence[ROUNDS];
-  93:main.c        **** 
-  94:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
-  95:main.c        ****     PRS_Start();
- 144              		.loc 1 95 0
- 145              		.thumb
- 146              		.syntax unified
- 147 0006 FFF7FEFF 		bl	PRS_Start
- 148              	.LVL3:
-  96:main.c        ****     SPEAKER_PWM_Start();
- 149              		.loc 1 96 0
- 150 000a FFF7FEFF 		bl	SPEAKER_PWM_Start
- 151              	.LVL4:
-  97:main.c        ****     SPEAKER_PWM_Stop();
- 152              		.loc 1 97 0
- 153 000e FFF7FEFF 		bl	SPEAKER_PWM_Stop
- 154              	.LVL5:
-  98:main.c        ****     LED_PWM_Start();
- 155              		.loc 1 98 0
- 156 0012 FFF7FEFF 		bl	LED_PWM_Start
- 157              	.LVL6:
-  99:main.c        ****     LED_PWM_Stop();
- 158              		.loc 1 99 0
- 159 0016 FFF7FEFF 		bl	LED_PWM_Stop
- 160              	.LVL7:
- 100:main.c        ****     INPUT_TIMER_Start();
- 161              		.loc 1 100 0
- 162 001a FFF7FEFF 		bl	INPUT_TIMER_Start
- 163              	.LVL8:
- 101:main.c        ****     INPUT_TIMER_Stop();
- 164              		.loc 1 101 0
- 165 001e FFF7FEFF 		bl	INPUT_TIMER_Stop
- 166              	.LVL9:
- 102:main.c        ****     INPUT_TIMER_ISR_Start();
- 167              		.loc 1 102 0
- 168 0022 FFF7FEFF 		bl	INPUT_TIMER_ISR_Start
- 169              	.LVL10:
- 170              	.L7:
- 103:main.c        **** 
- 104:main.c        ****     for(;;)
- 105:main.c        ****     {
- 106:main.c        ****         /* Place your application code here. */
- 107:main.c        ****         
- 108:main.c        ****         // Wait for any button press  
- 109:main.c        ****         while (poll_button() == 0);
- 171              		.loc 1 109 0 discriminator 1
- 172 0026 FFF7FEFF 		bl	poll_button
- 173              	.LVL11:
- 174 002a 041E     		subs	r4, r0, #0
- 175 002c FBD0     		beq	.L7
- 176 002e 0125     		movs	r5, #1
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccvlEja4.s 			page 6
+  80:main.c        **** // Simon, that plays:
+  81:main.c        **** // R, Y, B, G in sequence 0.1s apart, 3 times
+  82:main.c        **** // then RY, 
+  83:main.c        **** // then play failure tone for 0.8s, while the lights then
+  84:main.c        **** // continually flash R Y B G 0.1s apart.
+  85:main.c        **** //
+  86:main.c        **** // You can implement whatever victory sequence you want if
+  87:main.c        **** // you don't feel like doing the original one.
+  88:main.c        **** void play_win()
+  89:main.c        **** {
+ 148              		.loc 1 89 0
+ 149              		.cfi_startproc
+ 150              		@ args = 0, pretend = 0, frame = 0
+ 151              		@ frame_needed = 0, uses_anonymous_args = 0
+ 152              		@ link register save eliminated.
+  90:main.c        ****     
+  91:main.c        **** }
+ 153              		.loc 1 91 0
+ 154              		@ sp needed
+ 155 0000 7047     		bx	lr
+ 156              		.cfi_endproc
+ 157              	.LFE38:
+ 158              		.size	play_win, .-play_win
+ 159 0002 C046     		.section	.text.main,"ax",%progbits
+ 160              		.align	2
+ 161              		.global	main
+ 162              		.code	16
+ 163              		.thumb_func
+ 164              		.type	main, %function
+ 165              	main:
+ 166              	.LFB39:
+  92:main.c        **** 
+  93:main.c        **** int main(void)
+  94:main.c        **** {
+ 167              		.loc 1 94 0
+ 168              		.cfi_startproc
+ 169              		@ args = 0, pretend = 0, frame = 80
+ 170              		@ frame_needed = 0, uses_anonymous_args = 0
+ 171 0000 70B5     		push	{r4, r5, r6, lr}
+ 172              		.cfi_def_cfa_offset 16
+ 173              		.cfi_offset 4, -16
+ 174              		.cfi_offset 5, -12
+ 175              		.cfi_offset 6, -8
+ 176              		.cfi_offset 14, -4
+ 177 0002 94B0     		sub	sp, sp, #80
+ 178              		.cfi_def_cfa_offset 96
+  95:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
+ 179              		.loc 1 95 0
+ 180              		.syntax divided
+ 181              	@ 95 "main.c" 1
+ 182 0004 62B6     		CPSIE   i
+ 183              	@ 0 "" 2
+ 184              	.LVL10:
+  96:main.c        ****     
+  97:main.c        ****     /* Variables */
+  98:main.c        ****     int ix = 0, num_correct = 0, errors = 0, seq_ctr = 0;
+  99:main.c        ****     int simon_sequence[ROUNDS];
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc1FQUWL.s 			page 6
 
 
- 177 0030 0026     		movs	r6, #0
- 178 0032 30E0     		b	.L8
- 179              	.LVL12:
- 180              	.L9:
- 110:main.c        ****         
- 111:main.c        ****         // Play the start sequence
- 112:main.c        ****         play_start();
+ 100:main.c        **** 
+ 101:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+ 102:main.c        ****     PRS_Start();
+ 185              		.loc 1 102 0
+ 186              		.thumb
+ 187              		.syntax unified
+ 188 0006 FFF7FEFF 		bl	PRS_Start
+ 189              	.LVL11:
+ 103:main.c        ****     SPEAKER_PWM_Start();
+ 190              		.loc 1 103 0
+ 191 000a FFF7FEFF 		bl	SPEAKER_PWM_Start
+ 192              	.LVL12:
+ 104:main.c        ****     SPEAKER_PWM_Stop();
+ 193              		.loc 1 104 0
+ 194 000e FFF7FEFF 		bl	SPEAKER_PWM_Stop
+ 195              	.LVL13:
+ 105:main.c        ****     LED_PWM_Start();
+ 196              		.loc 1 105 0
+ 197 0012 FFF7FEFF 		bl	LED_PWM_Start
+ 198              	.LVL14:
+ 106:main.c        ****     LED_PWM_Stop();
+ 199              		.loc 1 106 0
+ 200 0016 FFF7FEFF 		bl	LED_PWM_Stop
+ 201              	.LVL15:
+ 107:main.c        ****     INPUT_TIMER_Start();
+ 202              		.loc 1 107 0
+ 203 001a FFF7FEFF 		bl	INPUT_TIMER_Start
+ 204              	.LVL16:
+ 108:main.c        ****     INPUT_TIMER_Stop();
+ 205              		.loc 1 108 0
+ 206 001e FFF7FEFF 		bl	INPUT_TIMER_Stop
+ 207              	.LVL17:
+ 109:main.c        ****     INPUT_TIMER_ISR_Start();
+ 208              		.loc 1 109 0
+ 209 0022 FFF7FEFF 		bl	INPUT_TIMER_ISR_Start
+ 210              	.LVL18:
+ 211              	.L11:
+ 110:main.c        ****     for(;;)
+ 111:main.c        ****     {
+ 112:main.c        ****         /* Place your application code here. */
  113:main.c        ****         
- 114:main.c        ****         // XXX: Generate random sequnce of 20 rounds. Store it
- 115:main.c        ****         // in simon_sequence
+ 114:main.c        ****         // Wait for any button press  
+ 115:main.c        ****         while (poll_button() == 0);
+ 212              		.loc 1 115 0 discriminator 1
+ 213 0026 FFF7FEFF 		bl	poll_button
+ 214              	.LVL19:
+ 215 002a 041E     		subs	r4, r0, #0
+ 216 002c FBD0     		beq	.L11
  116:main.c        ****         
- 117:main.c        ****         
- 118:main.c        ****         // Zero the sequence counter. We use this variable to keep
- 119:main.c        ****         // track of how far along we are in the game        
- 120:main.c        ****         seq_ctr = 1;
- 121:main.c        ****         
- 122:main.c        ****         // These variables keep track of how many are correct each round and
- 123:main.c        ****         // if any errors are input.
- 124:main.c        ****         num_correct = 0, errors = 0;
- 125:main.c        **** 
- 126:main.c        ****         // Start the counter at 1 (Why not zero? Due to the nature of
- 127:main.c        ****         // for loops bounds checking! See below)
- 128:main.c        ****         seq_ctr = 1;        
- 129:main.c        ****         
- 130:main.c        ****         
- 131:main.c        ****         // The main game begins here. As long as there are no errors,
- 132:main.c        ****         // and we haven't gone through all rounds, we are stuck in here        
- 133:main.c        ****         while (seq_ctr < ROUNDS + 1 && errors == 0)
- 134:main.c        ****         {
- 135:main.c        ****             
- 136:main.c        ****             // For each round of the game, we start with having no
- 137:main.c        ****             // correct buttons pressed            
- 138:main.c        ****             num_correct = 0;
- 139:main.c        ****             
- 140:main.c        ****             // XXX: Playback current sequence. The LED should get
- 141:main.c        ****             // progressively dimmer for each color in the sequence
- 142:main.c        ****             for (ix = 0; ix < seq_ctr; ix++)
- 181              		.loc 1 142 0 discriminator 3
- 182 0034 0133     		adds	r3, r3, #1
- 183              	.LVL13:
- 184 0036 00E0     		b	.L18
- 185              	.LVL14:
- 186              	.L21:
- 187 0038 0023     		movs	r3, #0
- 188              	.L18:
- 189              	.LVL15:
- 190              		.loc 1 142 0 is_stmt 0 discriminator 1
- 191 003a AB42     		cmp	r3, r5
- 192 003c FADB     		blt	.L9
- 193 003e 0022     		movs	r2, #0
- 194 0040 1CE0     		b	.L10
- 195              	.LVL16:
- 196              	.L15:
- 143:main.c        ****             {
- 144:main.c        ****                 
- 145:main.c        ****             }
- 146:main.c        ****             
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccvlEja4.s 			page 7
+ 117:main.c        ****         // Play the start sequence
+ 118:main.c        ****         play_start();
+ 217              		.loc 1 118 0
+ 218 002e FFF7FEFF 		bl	play_start
+ 219              	.LVL20:
+ 119:main.c        ****         
+ 120:main.c        ****         // XXX: Generate random sequnce of 20 rounds. Store it
+ 121:main.c        ****         // in simon_sequence
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc1FQUWL.s 			page 7
 
 
- 147:main.c        ****             // Since seq_ctr keeps track of the current number we have
- 148:main.c        ****             // gotten correct so far, for each round we have to keep looping
- 149:main.c        ****             // until we get all correct (or break if an error)
- 150:main.c        ****             while (num_correct < seq_ctr)
- 151:main.c        ****             {
- 152:main.c        ****                 // Pressed keeps track of the current (if any) button that
- 153:main.c        ****                 // was pressed. Timeout starts at 0 and gets set from
- 154:main.c        ****                 // INPUT_TIMER_ISR if a button hasn't been pressed in
- 155:main.c        ****                 // 3s
- 156:main.c        ****                 pressed = 0;
- 197              		.loc 1 156 0 is_stmt 1
- 198 0042 0023     		movs	r3, #0
- 199 0044 1649     		ldr	r1, .L22
- 200 0046 0B60     		str	r3, [r1]
- 157:main.c        ****                 timeout = 0;      
- 201              		.loc 1 157 0
- 202 0048 1649     		ldr	r1, .L22+4
- 203 004a 0B60     		str	r3, [r1]
- 158:main.c        ****                 
- 159:main.c        ****                 // This is the main input loop. When poll_button returns
- 160:main.c        ****                 // something non-zero, that means a button is pressed.
- 161:main.c        ****                 // If timeout gets set to 1, that means 3s have elapsed
- 162:main.c        ****                 // without a button press
- 163:main.c        ****                 while(pressed == 0 && timeout == 0)
- 204              		.loc 1 163 0
- 205 004c 01E0     		b	.L11
- 206              	.L13:
- 164:main.c        ****                 {
- 165:main.c        ****                     pressed = poll_button();
- 207              		.loc 1 165 0
- 208 004e 144B     		ldr	r3, .L22
- 209 0050 1C60     		str	r4, [r3]
- 210              	.L11:
- 163:main.c        ****                 {
- 211              		.loc 1 163 0
- 212 0052 134B     		ldr	r3, .L22
- 213 0054 1B68     		ldr	r3, [r3]
- 214 0056 002B     		cmp	r3, #0
- 215 0058 03D1     		bne	.L12
- 163:main.c        ****                 {
- 216              		.loc 1 163 0 is_stmt 0 discriminator 1
- 217 005a 124B     		ldr	r3, .L22+4
- 218 005c 1B68     		ldr	r3, [r3]
- 219 005e 002B     		cmp	r3, #0
- 220 0060 F5D0     		beq	.L13
- 221              	.L12:
- 166:main.c        ****                 }                
- 167:main.c        ****                 
- 168:main.c        ****                 // If the main input loop breaks due a timeout, then 
- 169:main.c        ****                 if (timeout == 1)
- 222              		.loc 1 169 0 is_stmt 1
- 223 0062 104B     		ldr	r3, .L22+4
- 224 0064 1B68     		ldr	r3, [r3]
- 225 0066 012B     		cmp	r3, #1
- 226 0068 0BD0     		beq	.L19
+ 122:main.c        ****         
+ 123:main.c        ****         
+ 124:main.c        ****         // Zero the sequence counter. We use this variable to keep
+ 125:main.c        ****         // track of how far along we are in the game        
+ 126:main.c        ****         seq_ctr = 1;
+ 127:main.c        ****         
+ 128:main.c        ****         // These variables keep track of how many are correct each round and
+ 129:main.c        ****         // if any errors are input.
+ 130:main.c        ****         num_correct = 0, errors = 0;
+ 131:main.c        **** 
+ 132:main.c        ****         // Start the counter at 1 (Why not zero? Due to the nature of
+ 133:main.c        ****         // for loops bounds checking! See below)
+ 134:main.c        ****         seq_ctr = 1;        
+ 220              		.loc 1 134 0
+ 221 0032 0125     		movs	r5, #1
+ 130:main.c        **** 
+ 222              		.loc 1 130 0
+ 223 0034 0026     		movs	r6, #0
+ 135:main.c        ****         
+ 136:main.c        ****         
+ 137:main.c        ****         // The main game begins here. As long as there are no errors,
+ 138:main.c        ****         // and we haven't gone through all rounds, we are stuck in here        
+ 139:main.c        ****         while (seq_ctr < ROUNDS + 1 && errors == 0)
+ 224              		.loc 1 139 0
+ 225 0036 30E0     		b	.L12
+ 226              	.LVL21:
+ 227              	.L13:
+ 140:main.c        ****         {
+ 141:main.c        ****             
+ 142:main.c        ****             // For each round of the game, we start with having no
+ 143:main.c        ****             // correct buttons pressed            
+ 144:main.c        ****             num_correct = 0;
+ 145:main.c        ****             
+ 146:main.c        ****             // XXX: Playback current sequence. The LED should get
+ 147:main.c        ****             // progressively dimmer for each color in the sequence
+ 148:main.c        ****             for (ix = 0; ix < seq_ctr; ix++)
+ 228              		.loc 1 148 0 discriminator 3
+ 229 0038 0133     		adds	r3, r3, #1
+ 230              	.LVL22:
+ 231 003a 00E0     		b	.L22
+ 232              	.LVL23:
+ 233              	.L25:
+ 234 003c 0023     		movs	r3, #0
+ 235              	.L22:
+ 236              	.LVL24:
+ 237              		.loc 1 148 0 is_stmt 0 discriminator 1
+ 238 003e AB42     		cmp	r3, r5
+ 239 0040 FADB     		blt	.L13
+ 240 0042 0022     		movs	r2, #0
+ 241 0044 1CE0     		b	.L14
+ 242              	.LVL25:
+ 243              	.L19:
+ 149:main.c        ****             {
+ 150:main.c        ****                 
+ 151:main.c        ****             }
+ 152:main.c        ****             
+ 153:main.c        ****             // Since seq_ctr keeps track of the current number we have
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc1FQUWL.s 			page 8
+
+
+ 154:main.c        ****             // gotten correct so far, for each round we have to keep looping
+ 155:main.c        ****             // until we get all correct (or break if an error)
+ 156:main.c        ****             while (num_correct < seq_ctr)
+ 157:main.c        ****             {
+ 158:main.c        ****                 // Pressed keeps track of the current (if any) button that
+ 159:main.c        ****                 // was pressed. Timeout starts at 0 and gets set from
+ 160:main.c        ****                 // INPUT_TIMER_ISR if a button hasn't been pressed in
+ 161:main.c        ****                 // 3s
+ 162:main.c        ****                 pressed = 0;
+ 244              		.loc 1 162 0 is_stmt 1
+ 245 0046 0023     		movs	r3, #0
+ 246 0048 1649     		ldr	r1, .L26
+ 247 004a 0B60     		str	r3, [r1]
+ 163:main.c        ****                 timeout = 0;      
+ 248              		.loc 1 163 0
+ 249 004c 1649     		ldr	r1, .L26+4
+ 250 004e 0B60     		str	r3, [r1]
+ 164:main.c        ****                 
+ 165:main.c        ****                 // This is the main input loop. When poll_button returns
+ 166:main.c        ****                 // something non-zero, that means a button is pressed.
+ 167:main.c        ****                 // If timeout gets set to 1, that means 3s have elapsed
+ 168:main.c        ****                 // without a button press
+ 169:main.c        ****                 while(pressed == 0 && timeout == 0)
+ 251              		.loc 1 169 0
+ 252 0050 01E0     		b	.L15
+ 253              	.L17:
  170:main.c        ****                 {
- 171:main.c        ****                     // Play the fail sequence
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccvlEja4.s 			page 8
+ 171:main.c        ****                     pressed = poll_button();
+ 254              		.loc 1 171 0
+ 255 0052 144B     		ldr	r3, .L26
+ 256 0054 1C60     		str	r4, [r3]
+ 257              	.L15:
+ 169:main.c        ****                 {
+ 258              		.loc 1 169 0
+ 259 0056 134B     		ldr	r3, .L26
+ 260 0058 1B68     		ldr	r3, [r3]
+ 261 005a 002B     		cmp	r3, #0
+ 262 005c 03D1     		bne	.L16
+ 169:main.c        ****                 {
+ 263              		.loc 1 169 0 is_stmt 0 discriminator 1
+ 264 005e 124B     		ldr	r3, .L26+4
+ 265 0060 1B68     		ldr	r3, [r3]
+ 266 0062 002B     		cmp	r3, #0
+ 267 0064 F5D0     		beq	.L17
+ 268              	.L16:
+ 172:main.c        ****                 }                
+ 173:main.c        ****                 
+ 174:main.c        ****                 // If the main input loop breaks due a timeout, then 
+ 175:main.c        ****                 if (timeout == 1)
+ 269              		.loc 1 175 0 is_stmt 1
+ 270 0066 104B     		ldr	r3, .L26+4
+ 271 0068 1B68     		ldr	r3, [r3]
+ 272 006a 012B     		cmp	r3, #1
+ 273 006c 0BD0     		beq	.L23
+ 176:main.c        ****                 {
+ 177:main.c        ****                     // Play the fail sequence
+ 178:main.c        ****                     play_fail();
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc1FQUWL.s 			page 9
 
 
- 172:main.c        ****                     play_fail();
- 173:main.c        **** 
- 174:main.c        ****                     // Set the error counter
- 175:main.c        ****                     errors = 1;
- 176:main.c        **** 
- 177:main.c        ****                     // Break out of the loop for the current round.
- 178:main.c        ****                     // This combined with setting errors should get
- 179:main.c        ****                     // back to start of the gam
- 180:main.c        ****                     break;
- 181:main.c        ****                 }
- 182:main.c        ****                 // otherwise, the main input loop broke due to a button press.
- 183:main.c        ****                 else
- 184:main.c        ****                 {
- 185:main.c        ****                     // Whether right or wrong, playback the correct color
- 186:main.c        ****                     play_color(pressed, (100/ROUNDS)*(ROUNDS - seq_ctr + 1), 420);
- 227              		.loc 1 186 0
- 228 006a 0D49     		ldr	r1, .L22
- 229 006c 0B68     		ldr	r3, [r1]
- 187:main.c        **** 
- 188:main.c        ****                     // Check here to see pressed button is correct
- 189:main.c        ****                     if (pressed == simon_sequence[num_correct])
- 230              		.loc 1 189 0
- 231 006e 9300     		lsls	r3, r2, #2
- 232 0070 6846     		mov	r0, sp
- 233 0072 1858     		ldr	r0, [r3, r0]
- 234 0074 0B68     		ldr	r3, [r1]
- 235 0076 9842     		cmp	r0, r3
- 236 0078 05D1     		bne	.L20
- 190:main.c        ****                     {
- 191:main.c        ****                         // Increment the number of correctly input
- 192:main.c        ****                         // buttons for the sequence
- 193:main.c        ****                         num_correct++;
- 237              		.loc 1 193 0
- 238 007a 0132     		adds	r2, r2, #1
- 239              	.LVL17:
- 240              	.L10:
- 150:main.c        ****             {
- 241              		.loc 1 150 0
- 242 007c AA42     		cmp	r2, r5
- 243 007e E0DB     		blt	.L15
- 244 0080 02E0     		b	.L14
- 245              	.L19:
- 175:main.c        **** 
- 246              		.loc 1 175 0
- 247 0082 0126     		movs	r6, #1
- 248              	.LVL18:
- 249 0084 00E0     		b	.L14
- 250              	.LVL19:
- 251              	.L20:
- 194:main.c        ****                     }
- 195:main.c        ****                     // Otherwise, the button pressed didn't match the current sequence color
- 196:main.c        ****                     else
- 197:main.c        ****                     {
- 198:main.c        ****                         // Play the fail sequence
- 199:main.c        ****                         play_fail();
- 200:main.c        **** 
- 201:main.c        ****                         // Set the error counter
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccvlEja4.s 			page 9
+ 179:main.c        **** 
+ 180:main.c        ****                     // Set the error counter
+ 181:main.c        ****                     errors = 1;
+ 182:main.c        **** 
+ 183:main.c        ****                     // Break out of the loop for the current round.
+ 184:main.c        ****                     // This combined with setting errors should get
+ 185:main.c        ****                     // back to start of the gam
+ 186:main.c        ****                     break;
+ 187:main.c        ****                 }
+ 188:main.c        ****                 // otherwise, the main input loop broke due to a button press.
+ 189:main.c        ****                 else
+ 190:main.c        ****                 {
+ 191:main.c        ****                     // Whether right or wrong, playback the correct color
+ 192:main.c        ****                     play_color(pressed, (100/ROUNDS)*(ROUNDS - seq_ctr + 1), 420);
+ 274              		.loc 1 192 0
+ 275 006e 0D49     		ldr	r1, .L26
+ 276 0070 0B68     		ldr	r3, [r1]
+ 193:main.c        **** 
+ 194:main.c        ****                     // Check here to see pressed button is correct
+ 195:main.c        ****                     if (pressed == simon_sequence[num_correct])
+ 277              		.loc 1 195 0
+ 278 0072 9300     		lsls	r3, r2, #2
+ 279 0074 6846     		mov	r0, sp
+ 280 0076 1858     		ldr	r0, [r3, r0]
+ 281 0078 0B68     		ldr	r3, [r1]
+ 282 007a 9842     		cmp	r0, r3
+ 283 007c 05D1     		bne	.L24
+ 196:main.c        ****                     {
+ 197:main.c        ****                         // Increment the number of correctly input
+ 198:main.c        ****                         // buttons for the sequence
+ 199:main.c        ****                         num_correct++;
+ 284              		.loc 1 199 0
+ 285 007e 0132     		adds	r2, r2, #1
+ 286              	.LVL26:
+ 287              	.L14:
+ 156:main.c        ****             {
+ 288              		.loc 1 156 0
+ 289 0080 AA42     		cmp	r2, r5
+ 290 0082 E0DB     		blt	.L19
+ 291 0084 02E0     		b	.L18
+ 292              	.L23:
+ 181:main.c        **** 
+ 293              		.loc 1 181 0
+ 294 0086 0126     		movs	r6, #1
+ 295              	.LVL27:
+ 296 0088 00E0     		b	.L18
+ 297              	.LVL28:
+ 298              	.L24:
+ 200:main.c        ****                     }
+ 201:main.c        ****                     // Otherwise, the button pressed didn't match the current sequence color
+ 202:main.c        ****                     else
+ 203:main.c        ****                     {
+ 204:main.c        ****                         // Play the fail sequence
+ 205:main.c        ****                         play_fail();
+ 206:main.c        **** 
+ 207:main.c        ****                         // Set the error counter
+ 208:main.c        ****                         errors = 1;
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc1FQUWL.s 			page 10
 
 
- 202:main.c        ****                         errors = 1;
- 252              		.loc 1 202 0
- 253 0086 0126     		movs	r6, #1
- 254              	.LVL20:
- 255              	.L14:
- 203:main.c        **** 
- 204:main.c        ****                         // Break out of the loop for the current round.
- 205:main.c        ****                         // This combined with setting errors should get
- 206:main.c        ****                         // back to start of the game
- 207:main.c        ****                         break;
- 208:main.c        ****                     }
- 209:main.c        ****                 }                
- 210:main.c        ****                 
- 211:main.c        ****             }
- 212:main.c        ****             
- 213:main.c        ****             // If we get here, all the buttons entered for the current round
- 214:main.c        ****             // matched the sequence! We can increment the sequence counter
- 215:main.c        ****             // and go on to the next round. The original Simon delayed 0.8s
- 216:main.c        ****             // between rounds.
- 217:main.c        ****             if (errors == 0)
- 256              		.loc 1 217 0
- 257 0088 002E     		cmp	r6, #0
- 258 008a 04D1     		bne	.L8
- 218:main.c        ****             {
- 219:main.c        ****                 seq_ctr++;
- 259              		.loc 1 219 0
- 260 008c 0135     		adds	r5, r5, #1
- 261              	.LVL21:
- 220:main.c        ****                 CyDelay(800);
- 262              		.loc 1 220 0
- 263 008e C820     		movs	r0, #200
- 264 0090 8000     		lsls	r0, r0, #2
- 265 0092 FFF7FEFF 		bl	CyDelay
- 266              	.LVL22:
- 267              	.L8:
- 133:main.c        ****         {
- 268              		.loc 1 133 0
- 269 0096 142D     		cmp	r5, #20
- 270 0098 C5DC     		bgt	.L7
- 133:main.c        ****         {
- 271              		.loc 1 133 0 is_stmt 0 discriminator 1
- 272 009a 002E     		cmp	r6, #0
- 273 009c CCD0     		beq	.L21
- 274 009e C2E7     		b	.L7
- 275              	.L23:
- 276              		.align	2
- 277              	.L22:
- 278 00a0 00000000 		.word	pressed
- 279 00a4 00000000 		.word	timeout
- 280              		.cfi_endproc
- 281              	.LFE39:
- 282              		.size	main, .-main
- 283              		.comm	pressed,4,4
- 284              		.comm	timeout,4,4
- 285              		.text
- 286              	.Letext0:
- 287              		.file 2 "Generated_Source\\PSoC4/PRS.h"
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccvlEja4.s 			page 10
+ 299              		.loc 1 208 0
+ 300 008a 0126     		movs	r6, #1
+ 301              	.LVL29:
+ 302              	.L18:
+ 209:main.c        **** 
+ 210:main.c        ****                         // Break out of the loop for the current round.
+ 211:main.c        ****                         // This combined with setting errors should get
+ 212:main.c        ****                         // back to start of the game
+ 213:main.c        ****                         break;
+ 214:main.c        ****                     }
+ 215:main.c        ****                 }                
+ 216:main.c        ****                 
+ 217:main.c        ****             }
+ 218:main.c        ****             
+ 219:main.c        ****             // If we get here, all the buttons entered for the current round
+ 220:main.c        ****             // matched the sequence! We can increment the sequence counter
+ 221:main.c        ****             // and go on to the next round. The original Simon delayed 0.8s
+ 222:main.c        ****             // between rounds.
+ 223:main.c        ****             if (errors == 0)
+ 303              		.loc 1 223 0
+ 304 008c 002E     		cmp	r6, #0
+ 305 008e 04D1     		bne	.L12
+ 224:main.c        ****             {
+ 225:main.c        ****                 seq_ctr++;
+ 306              		.loc 1 225 0
+ 307 0090 0135     		adds	r5, r5, #1
+ 308              	.LVL30:
+ 226:main.c        ****                 CyDelay(800);
+ 309              		.loc 1 226 0
+ 310 0092 C820     		movs	r0, #200
+ 311 0094 8000     		lsls	r0, r0, #2
+ 312 0096 FFF7FEFF 		bl	CyDelay
+ 313              	.LVL31:
+ 314              	.L12:
+ 139:main.c        ****         {
+ 315              		.loc 1 139 0
+ 316 009a 142D     		cmp	r5, #20
+ 317 009c C3DC     		bgt	.L11
+ 139:main.c        ****         {
+ 318              		.loc 1 139 0 is_stmt 0 discriminator 1
+ 319 009e 002E     		cmp	r6, #0
+ 320 00a0 CCD0     		beq	.L25
+ 321 00a2 C0E7     		b	.L11
+ 322              	.L27:
+ 323              		.align	2
+ 324              	.L26:
+ 325 00a4 00000000 		.word	pressed
+ 326 00a8 00000000 		.word	timeout
+ 327              		.cfi_endproc
+ 328              	.LFE39:
+ 329              		.size	main, .-main
+ 330              		.comm	pressed,4,4
+ 331              		.comm	timeout,4,4
+ 332              		.text
+ 333              	.Letext0:
+ 334              		.file 2 "Generated_Source\\PSoC4/CyLib.h"
+ 335              		.file 3 "Generated_Source\\PSoC4/SPEAKER_PWM.h"
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc1FQUWL.s 			page 11
 
 
- 288              		.file 3 "Generated_Source\\PSoC4/SPEAKER_PWM.h"
- 289              		.file 4 "Generated_Source\\PSoC4/LED_PWM.h"
- 290              		.file 5 "Generated_Source\\PSoC4/INPUT_TIMER.h"
- 291              		.file 6 "Generated_Source\\PSoC4/INPUT_TIMER_ISR.h"
- 292              		.file 7 "Generated_Source\\PSoC4/CyLib.h"
- 293              		.file 8 "Generated_Source\\PSoC4/cytypes.h"
- 294              		.section	.debug_info,"",%progbits
- 295              	.Ldebug_info0:
- 296 0000 A3020000 		.4byte	0x2a3
- 297 0004 0400     		.2byte	0x4
- 298 0006 00000000 		.4byte	.Ldebug_abbrev0
- 299 000a 04       		.byte	0x4
- 300 000b 01       		.uleb128 0x1
- 301 000c 1E010000 		.4byte	.LASF38
- 302 0010 0C       		.byte	0xc
- 303 0011 16020000 		.4byte	.LASF39
- 304 0015 AC010000 		.4byte	.LASF40
- 305 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 306 001d 00000000 		.4byte	0
- 307 0021 00000000 		.4byte	.Ldebug_line0
- 308 0025 02       		.uleb128 0x2
- 309 0026 01       		.byte	0x1
- 310 0027 06       		.byte	0x6
- 311 0028 8A020000 		.4byte	.LASF0
- 312 002c 02       		.uleb128 0x2
- 313 002d 01       		.byte	0x1
- 314 002e 08       		.byte	0x8
- 315 002f 1E000000 		.4byte	.LASF1
- 316 0033 02       		.uleb128 0x2
- 317 0034 02       		.byte	0x2
- 318 0035 05       		.byte	0x5
- 319 0036 A0000000 		.4byte	.LASF2
- 320 003a 02       		.uleb128 0x2
- 321 003b 02       		.byte	0x2
- 322 003c 07       		.byte	0x7
- 323 003d 52000000 		.4byte	.LASF3
- 324 0041 02       		.uleb128 0x2
- 325 0042 04       		.byte	0x4
- 326 0043 05       		.byte	0x5
- 327 0044 69020000 		.4byte	.LASF4
- 328 0048 02       		.uleb128 0x2
- 329 0049 04       		.byte	0x4
- 330 004a 07       		.byte	0x7
- 331 004b 0C010000 		.4byte	.LASF5
- 332 004f 02       		.uleb128 0x2
- 333 0050 08       		.byte	0x8
- 334 0051 05       		.byte	0x5
- 335 0052 08020000 		.4byte	.LASF6
- 336 0056 02       		.uleb128 0x2
- 337 0057 08       		.byte	0x8
- 338 0058 07       		.byte	0x7
- 339 0059 F5000000 		.4byte	.LASF7
- 340 005d 03       		.uleb128 0x3
- 341 005e 04       		.byte	0x4
- 342 005f 05       		.byte	0x5
- 343 0060 696E7400 		.ascii	"int\000"
- 344 0064 02       		.uleb128 0x2
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccvlEja4.s 			page 11
+ 336              		.file 4 "Generated_Source\\PSoC4/PRS.h"
+ 337              		.file 5 "Generated_Source\\PSoC4/LED_PWM.h"
+ 338              		.file 6 "Generated_Source\\PSoC4/INPUT_TIMER.h"
+ 339              		.file 7 "Generated_Source\\PSoC4/INPUT_TIMER_ISR.h"
+ 340              		.file 8 "Generated_Source\\PSoC4/cytypes.h"
+ 341              		.section	.debug_info,"",%progbits
+ 342              	.Ldebug_info0:
+ 343 0000 30030000 		.4byte	0x330
+ 344 0004 0400     		.2byte	0x4
+ 345 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 346 000a 04       		.byte	0x4
+ 347 000b 01       		.uleb128 0x1
+ 348 000c 4F010000 		.4byte	.LASF39
+ 349 0010 0C       		.byte	0xc
+ 350 0011 F4010000 		.4byte	.LASF40
+ 351 0015 17020000 		.4byte	.LASF41
+ 352 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 353 001d 00000000 		.4byte	0
+ 354 0021 00000000 		.4byte	.Ldebug_line0
+ 355 0025 02       		.uleb128 0x2
+ 356 0026 01       		.byte	0x1
+ 357 0027 06       		.byte	0x6
+ 358 0028 C3020000 		.4byte	.LASF0
+ 359 002c 02       		.uleb128 0x2
+ 360 002d 01       		.byte	0x1
+ 361 002e 08       		.byte	0x8
+ 362 002f AB000000 		.4byte	.LASF1
+ 363 0033 02       		.uleb128 0x2
+ 364 0034 02       		.byte	0x2
+ 365 0035 05       		.byte	0x5
+ 366 0036 D1000000 		.4byte	.LASF2
+ 367 003a 02       		.uleb128 0x2
+ 368 003b 02       		.byte	0x2
+ 369 003c 07       		.byte	0x7
+ 370 003d 75000000 		.4byte	.LASF3
+ 371 0041 02       		.uleb128 0x2
+ 372 0042 04       		.byte	0x4
+ 373 0043 05       		.byte	0x5
+ 374 0044 A2020000 		.4byte	.LASF4
+ 375 0048 02       		.uleb128 0x2
+ 376 0049 04       		.byte	0x4
+ 377 004a 07       		.byte	0x7
+ 378 004b 3D010000 		.4byte	.LASF5
+ 379 004f 02       		.uleb128 0x2
+ 380 0050 08       		.byte	0x8
+ 381 0051 05       		.byte	0x5
+ 382 0052 E6010000 		.4byte	.LASF6
+ 383 0056 02       		.uleb128 0x2
+ 384 0057 08       		.byte	0x8
+ 385 0058 07       		.byte	0x7
+ 386 0059 26010000 		.4byte	.LASF7
+ 387 005d 03       		.uleb128 0x3
+ 388 005e 04       		.byte	0x4
+ 389 005f 05       		.byte	0x5
+ 390 0060 696E7400 		.ascii	"int\000"
+ 391 0064 02       		.uleb128 0x2
+ 392 0065 04       		.byte	0x4
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc1FQUWL.s 			page 12
 
 
- 345 0065 04       		.byte	0x4
- 346 0066 07       		.byte	0x7
- 347 0067 E8000000 		.4byte	.LASF8
- 348 006b 04       		.uleb128 0x4
- 349 006c D5000000 		.4byte	.LASF41
- 350 0070 08       		.byte	0x8
- 351 0071 FE01     		.2byte	0x1fe
- 352 0073 48000000 		.4byte	0x48
- 353 0077 02       		.uleb128 0x2
- 354 0078 04       		.byte	0x4
- 355 0079 04       		.byte	0x4
- 356 007a 12000000 		.4byte	.LASF9
- 357 007e 02       		.uleb128 0x2
- 358 007f 08       		.byte	0x8
- 359 0080 04       		.byte	0x4
- 360 0081 88000000 		.4byte	.LASF10
- 361 0085 02       		.uleb128 0x2
- 362 0086 01       		.byte	0x1
- 363 0087 08       		.byte	0x8
- 364 0088 72020000 		.4byte	.LASF11
- 365 008c 02       		.uleb128 0x2
- 366 008d 08       		.byte	0x8
- 367 008e 04       		.byte	0x4
- 368 008f 7E020000 		.4byte	.LASF12
- 369 0093 02       		.uleb128 0x2
- 370 0094 04       		.byte	0x4
- 371 0095 07       		.byte	0x7
- 372 0096 FF010000 		.4byte	.LASF13
- 373 009a 05       		.uleb128 0x5
- 374 009b 9D020000 		.4byte	.LASF14
- 375 009f 01       		.byte	0x1
- 376 00a0 16       		.byte	0x16
- 377 00a1 5D000000 		.4byte	0x5d
- 378 00a5 00000000 		.4byte	.LFB34
- 379 00a9 04000000 		.4byte	.LFE34-.LFB34
- 380 00ad 01       		.uleb128 0x1
- 381 00ae 9C       		.byte	0x9c
- 382 00af C0000000 		.4byte	0xc0
- 383 00b3 06       		.uleb128 0x6
- 384 00b4 77020000 		.4byte	.LASF21
- 385 00b8 01       		.byte	0x1
- 386 00b9 18       		.byte	0x18
- 387 00ba 5D000000 		.4byte	0x5d
- 388 00be 00       		.byte	0
- 389 00bf 00       		.byte	0
- 390 00c0 07       		.uleb128 0x7
- 391 00c1 2E020000 		.4byte	.LASF15
- 392 00c5 01       		.byte	0x1
- 393 00c6 34       		.byte	0x34
- 394 00c7 00000000 		.4byte	.LFB35
- 395 00cb 02000000 		.4byte	.LFE35-.LFB35
- 396 00cf 01       		.uleb128 0x1
- 397 00d0 9C       		.byte	0x9c
- 398 00d1 FC000000 		.4byte	0xfc
- 399 00d5 08       		.uleb128 0x8
- 400 00d6 AA000000 		.4byte	.LASF16
- 401 00da 01       		.byte	0x1
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccvlEja4.s 			page 12
+ 393 0066 07       		.byte	0x7
+ 394 0067 19010000 		.4byte	.LASF8
+ 395 006b 04       		.uleb128 0x4
+ 396 006c 06010000 		.4byte	.LASF42
+ 397 0070 08       		.byte	0x8
+ 398 0071 E901     		.2byte	0x1e9
+ 399 0073 48000000 		.4byte	0x48
+ 400 0077 02       		.uleb128 0x2
+ 401 0078 04       		.byte	0x4
+ 402 0079 04       		.byte	0x4
+ 403 007a 2B000000 		.4byte	.LASF9
+ 404 007e 02       		.uleb128 0x2
+ 405 007f 08       		.byte	0x8
+ 406 0080 04       		.byte	0x4
+ 407 0081 B9000000 		.4byte	.LASF10
+ 408 0085 02       		.uleb128 0x2
+ 409 0086 01       		.byte	0x1
+ 410 0087 08       		.byte	0x8
+ 411 0088 AB020000 		.4byte	.LASF11
+ 412 008c 02       		.uleb128 0x2
+ 413 008d 08       		.byte	0x8
+ 414 008e 04       		.byte	0x4
+ 415 008f B7020000 		.4byte	.LASF12
+ 416 0093 02       		.uleb128 0x2
+ 417 0094 04       		.byte	0x4
+ 418 0095 07       		.byte	0x7
+ 419 0096 DD010000 		.4byte	.LASF13
+ 420 009a 05       		.uleb128 0x5
+ 421 009b D6020000 		.4byte	.LASF14
+ 422 009f 01       		.byte	0x1
+ 423 00a0 16       		.byte	0x16
+ 424 00a1 5D000000 		.4byte	0x5d
+ 425 00a5 00000000 		.4byte	.LFB34
+ 426 00a9 04000000 		.4byte	.LFE34-.LFB34
+ 427 00ad 01       		.uleb128 0x1
+ 428 00ae 9C       		.byte	0x9c
+ 429 00af C0000000 		.4byte	0xc0
+ 430 00b3 06       		.uleb128 0x6
+ 431 00b4 B0020000 		.4byte	.LASF18
+ 432 00b8 01       		.byte	0x1
+ 433 00b9 18       		.byte	0x18
+ 434 00ba 5D000000 		.4byte	0x5d
+ 435 00be 00       		.byte	0
+ 436 00bf 00       		.byte	0
+ 437 00c0 07       		.uleb128 0x7
+ 438 00c1 0C020000 		.4byte	.LASF15
+ 439 00c5 01       		.byte	0x1
+ 440 00c6 34       		.byte	0x34
+ 441 00c7 00000000 		.4byte	.LFB35
+ 442 00cb 02000000 		.4byte	.LFE35-.LFB35
+ 443 00cf 01       		.uleb128 0x1
+ 444 00d0 9C       		.byte	0x9c
+ 445 00d1 FC000000 		.4byte	0xfc
+ 446 00d5 08       		.uleb128 0x8
+ 447 00d6 DB000000 		.4byte	.LASF16
+ 448 00da 01       		.byte	0x1
+ 449 00db 34       		.byte	0x34
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc1FQUWL.s 			page 13
 
 
- 402 00db 34       		.byte	0x34
- 403 00dc 5D000000 		.4byte	0x5d
- 404 00e0 01       		.uleb128 0x1
- 405 00e1 50       		.byte	0x50
- 406 00e2 09       		.uleb128 0x9
- 407 00e3 646300   		.ascii	"dc\000"
- 408 00e6 01       		.byte	0x1
- 409 00e7 34       		.byte	0x34
- 410 00e8 5D000000 		.4byte	0x5d
- 411 00ec 01       		.uleb128 0x1
- 412 00ed 51       		.byte	0x51
- 413 00ee 08       		.uleb128 0x8
- 414 00ef 18000000 		.4byte	.LASF17
- 415 00f3 01       		.byte	0x1
- 416 00f4 34       		.byte	0x34
- 417 00f5 6B000000 		.4byte	0x6b
- 418 00f9 01       		.uleb128 0x1
- 419 00fa 52       		.byte	0x52
- 420 00fb 00       		.byte	0
- 421 00fc 0A       		.uleb128 0xa
- 422 00fd 65000000 		.4byte	.LASF18
- 423 0101 01       		.byte	0x1
- 424 0102 3C       		.byte	0x3c
- 425 0103 00000000 		.4byte	.LFB36
- 426 0107 02000000 		.4byte	.LFE36-.LFB36
- 427 010b 01       		.uleb128 0x1
- 428 010c 9C       		.byte	0x9c
- 429 010d 0A       		.uleb128 0xa
- 430 010e 70000000 		.4byte	.LASF19
- 431 0112 01       		.byte	0x1
- 432 0113 43       		.byte	0x43
- 433 0114 00000000 		.4byte	.LFB37
- 434 0118 02000000 		.4byte	.LFE37-.LFB37
- 435 011c 01       		.uleb128 0x1
- 436 011d 9C       		.byte	0x9c
- 437 011e 0A       		.uleb128 0xa
- 438 011f 25020000 		.4byte	.LASF20
- 439 0123 01       		.byte	0x1
- 440 0124 51       		.byte	0x51
- 441 0125 00000000 		.4byte	.LFB38
- 442 0129 02000000 		.4byte	.LFE38-.LFB38
- 443 012d 01       		.uleb128 0x1
- 444 012e 9C       		.byte	0x9c
- 445 012f 0B       		.uleb128 0xb
- 446 0130 DC000000 		.4byte	.LASF42
- 447 0134 01       		.byte	0x1
- 448 0135 56       		.byte	0x56
- 449 0136 5D000000 		.4byte	0x5d
- 450 013a 00000000 		.4byte	.LFB39
- 451 013e A8000000 		.4byte	.LFE39-.LFB39
- 452 0142 01       		.uleb128 0x1
- 453 0143 9C       		.byte	0x9c
- 454 0144 F4010000 		.4byte	0x1f4
- 455 0148 0C       		.uleb128 0xc
- 456 0149 697800   		.ascii	"ix\000"
- 457 014c 01       		.byte	0x1
- 458 014d 5B       		.byte	0x5b
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccvlEja4.s 			page 13
+ 450 00dc 5D000000 		.4byte	0x5d
+ 451 00e0 01       		.uleb128 0x1
+ 452 00e1 50       		.byte	0x50
+ 453 00e2 09       		.uleb128 0x9
+ 454 00e3 646300   		.ascii	"dc\000"
+ 455 00e6 01       		.byte	0x1
+ 456 00e7 34       		.byte	0x34
+ 457 00e8 5D000000 		.4byte	0x5d
+ 458 00ec 01       		.uleb128 0x1
+ 459 00ed 51       		.byte	0x51
+ 460 00ee 08       		.uleb128 0x8
+ 461 00ef 31000000 		.4byte	.LASF17
+ 462 00f3 01       		.byte	0x1
+ 463 00f4 34       		.byte	0x34
+ 464 00f5 6B000000 		.4byte	0x6b
+ 465 00f9 01       		.uleb128 0x1
+ 466 00fa 52       		.byte	0x52
+ 467 00fb 00       		.byte	0
+ 468 00fc 0A       		.uleb128 0xa
+ 469 00fd 88000000 		.4byte	.LASF43
+ 470 0101 01       		.byte	0x1
+ 471 0102 3C       		.byte	0x3c
+ 472 0103 00000000 		.4byte	.LFB36
+ 473 0107 30000000 		.4byte	.LFE36-.LFB36
+ 474 010b 01       		.uleb128 0x1
+ 475 010c 9C       		.byte	0x9c
+ 476 010d 79010000 		.4byte	0x179
+ 477 0111 0B       		.uleb128 0xb
+ 478 0112 14000000 		.4byte	.LBB2
+ 479 0116 10000000 		.4byte	.LBE2-.LBB2
+ 480 011a 3C010000 		.4byte	0x13c
+ 481 011e 0C       		.uleb128 0xc
+ 482 011f 6900     		.ascii	"i\000"
+ 483 0121 01       		.byte	0x1
+ 484 0122 42       		.byte	0x42
+ 485 0123 5D000000 		.4byte	0x5d
+ 486 0127 00000000 		.4byte	.LLST0
+ 487 012b 0D       		.uleb128 0xd
+ 488 012c 1E000000 		.4byte	.LVL6
+ 489 0130 B2020000 		.4byte	0x2b2
+ 490 0134 0E       		.uleb128 0xe
+ 491 0135 01       		.uleb128 0x1
+ 492 0136 50       		.byte	0x50
+ 493 0137 02       		.uleb128 0x2
+ 494 0138 08       		.byte	0x8
+ 495 0139 64       		.byte	0x64
+ 496 013a 00       		.byte	0
+ 497 013b 00       		.byte	0
+ 498 013c 0F       		.uleb128 0xf
+ 499 013d 06000000 		.4byte	.LVL2
+ 500 0141 BD020000 		.4byte	0x2bd
+ 501 0145 10       		.uleb128 0x10
+ 502 0146 0E000000 		.4byte	.LVL3
+ 503 014a C9020000 		.4byte	0x2c9
+ 504 014e 5A010000 		.4byte	0x15a
+ 505 0152 0E       		.uleb128 0xe
+ 506 0153 01       		.uleb128 0x1
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc1FQUWL.s 			page 14
 
 
- 459 014e 5D000000 		.4byte	0x5d
- 460 0152 00000000 		.4byte	.LLST0
- 461 0156 0D       		.uleb128 0xd
- 462 0157 2C000000 		.4byte	.LASF22
- 463 015b 01       		.byte	0x1
- 464 015c 5B       		.byte	0x5b
- 465 015d 5D000000 		.4byte	0x5d
- 466 0161 2A000000 		.4byte	.LLST1
- 467 0165 0D       		.uleb128 0xd
- 468 0166 E1000000 		.4byte	.LASF23
- 469 016a 01       		.byte	0x1
- 470 016b 5B       		.byte	0x5b
- 471 016c 5D000000 		.4byte	0x5d
- 472 0170 49000000 		.4byte	.LLST2
- 473 0174 0D       		.uleb128 0xd
- 474 0175 4A000000 		.4byte	.LASF24
- 475 0179 01       		.byte	0x1
- 476 017a 5B       		.byte	0x5b
- 477 017b 5D000000 		.4byte	0x5d
- 478 017f 73000000 		.4byte	.LLST3
- 479 0183 0E       		.uleb128 0xe
- 480 0184 C6000000 		.4byte	.LASF25
- 481 0188 01       		.byte	0x1
- 482 0189 5C       		.byte	0x5c
- 483 018a F4010000 		.4byte	0x1f4
- 484 018e 02       		.uleb128 0x2
- 485 018f 7D       		.byte	0x7d
- 486 0190 00       		.sleb128 0
- 487 0191 0F       		.uleb128 0xf
- 488 0192 0A000000 		.4byte	.LVL3
- 489 0196 3D020000 		.4byte	0x23d
- 490 019a 0F       		.uleb128 0xf
- 491 019b 0E000000 		.4byte	.LVL4
- 492 019f 48020000 		.4byte	0x248
- 493 01a3 0F       		.uleb128 0xf
- 494 01a4 12000000 		.4byte	.LVL5
- 495 01a8 54020000 		.4byte	0x254
- 496 01ac 0F       		.uleb128 0xf
- 497 01ad 16000000 		.4byte	.LVL6
- 498 01b1 60020000 		.4byte	0x260
- 499 01b5 0F       		.uleb128 0xf
- 500 01b6 1A000000 		.4byte	.LVL7
- 501 01ba 6C020000 		.4byte	0x26c
- 502 01be 0F       		.uleb128 0xf
- 503 01bf 1E000000 		.4byte	.LVL8
- 504 01c3 78020000 		.4byte	0x278
- 505 01c7 0F       		.uleb128 0xf
- 506 01c8 22000000 		.4byte	.LVL9
- 507 01cc 84020000 		.4byte	0x284
- 508 01d0 0F       		.uleb128 0xf
- 509 01d1 26000000 		.4byte	.LVL10
- 510 01d5 90020000 		.4byte	0x290
- 511 01d9 0F       		.uleb128 0xf
- 512 01da 2A000000 		.4byte	.LVL11
- 513 01de 9A000000 		.4byte	0x9a
- 514 01e2 10       		.uleb128 0x10
- 515 01e3 96000000 		.4byte	.LVL22
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccvlEja4.s 			page 14
+ 507 0154 50       		.byte	0x50
+ 508 0155 03       		.uleb128 0x3
+ 509 0156 0A       		.byte	0xa
+ 510 0157 E803     		.2byte	0x3e8
+ 511 0159 00       		.byte	0
+ 512 015a 10       		.uleb128 0x10
+ 513 015b 14000000 		.4byte	.LVL4
+ 514 015f D5020000 		.4byte	0x2d5
+ 515 0163 6F010000 		.4byte	0x16f
+ 516 0167 0E       		.uleb128 0xe
+ 517 0168 01       		.uleb128 0x1
+ 518 0169 50       		.byte	0x50
+ 519 016a 03       		.uleb128 0x3
+ 520 016b 0A       		.byte	0xa
+ 521 016c 5902     		.2byte	0x259
+ 522 016e 00       		.byte	0
+ 523 016f 0F       		.uleb128 0xf
+ 524 0170 28000000 		.4byte	.LVL8
+ 525 0174 E1020000 		.4byte	0x2e1
+ 526 0178 00       		.byte	0
+ 527 0179 11       		.uleb128 0x11
+ 528 017a 93000000 		.4byte	.LASF19
+ 529 017e 01       		.byte	0x1
+ 530 017f 4A       		.byte	0x4a
+ 531 0180 00000000 		.4byte	.LFB37
+ 532 0184 02000000 		.4byte	.LFE37-.LFB37
+ 533 0188 01       		.uleb128 0x1
+ 534 0189 9C       		.byte	0x9c
+ 535 018a 11       		.uleb128 0x11
+ 536 018b 03020000 		.4byte	.LASF20
+ 537 018f 01       		.byte	0x1
+ 538 0190 58       		.byte	0x58
+ 539 0191 00000000 		.4byte	.LFB38
+ 540 0195 02000000 		.4byte	.LFE38-.LFB38
+ 541 0199 01       		.uleb128 0x1
+ 542 019a 9C       		.byte	0x9c
+ 543 019b 12       		.uleb128 0x12
+ 544 019c 0D010000 		.4byte	.LASF44
+ 545 01a0 01       		.byte	0x1
+ 546 01a1 5D       		.byte	0x5d
+ 547 01a2 5D000000 		.4byte	0x5d
+ 548 01a6 00000000 		.4byte	.LFB39
+ 549 01aa AC000000 		.4byte	.LFE39-.LFB39
+ 550 01ae 01       		.uleb128 0x1
+ 551 01af 9C       		.byte	0x9c
+ 552 01b0 69020000 		.4byte	0x269
+ 553 01b4 0C       		.uleb128 0xc
+ 554 01b5 697800   		.ascii	"ix\000"
+ 555 01b8 01       		.byte	0x1
+ 556 01b9 62       		.byte	0x62
+ 557 01ba 5D000000 		.4byte	0x5d
+ 558 01be 1F000000 		.4byte	.LLST1
+ 559 01c2 13       		.uleb128 0x13
+ 560 01c3 4F000000 		.4byte	.LASF21
+ 561 01c7 01       		.byte	0x1
+ 562 01c8 62       		.byte	0x62
+ 563 01c9 5D000000 		.4byte	0x5d
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc1FQUWL.s 			page 15
 
 
- 516 01e7 9B020000 		.4byte	0x29b
- 517 01eb 11       		.uleb128 0x11
- 518 01ec 01       		.uleb128 0x1
- 519 01ed 50       		.byte	0x50
- 520 01ee 03       		.uleb128 0x3
- 521 01ef 0A       		.byte	0xa
- 522 01f0 2003     		.2byte	0x320
- 523 01f2 00       		.byte	0
- 524 01f3 00       		.byte	0
- 525 01f4 12       		.uleb128 0x12
- 526 01f5 5D000000 		.4byte	0x5d
- 527 01f9 05020000 		.4byte	0x205
- 528 01fd 13       		.uleb128 0x13
- 529 01fe 93000000 		.4byte	0x93
- 530 0202 01       		.uleb128 0x1
- 531 0203 43       		.byte	0x43
- 532 0204 00       		.byte	0
- 533 0205 06       		.uleb128 0x6
- 534 0206 96020000 		.4byte	.LASF26
- 535 020a 01       		.byte	0x1
- 536 020b 0E       		.byte	0xe
- 537 020c 11020000 		.4byte	0x211
- 538 0210 14       		.byte	0x14
- 539 0211 14       		.uleb128 0x14
- 540 0212 5D000000 		.4byte	0x5d
- 541 0216 15       		.uleb128 0x15
- 542 0217 1D020000 		.4byte	.LASF27
- 543 021b 01       		.byte	0x1
- 544 021c 0F       		.byte	0xf
- 545 021d 27020000 		.4byte	0x227
- 546 0221 05       		.uleb128 0x5
- 547 0222 03       		.byte	0x3
- 548 0223 00000000 		.4byte	timeout
- 549 0227 16       		.uleb128 0x16
- 550 0228 5D000000 		.4byte	0x5d
- 551 022c 15       		.uleb128 0x15
- 552 022d 00000000 		.4byte	.LASF28
- 553 0231 01       		.byte	0x1
- 554 0232 0F       		.byte	0xf
- 555 0233 27020000 		.4byte	0x227
- 556 0237 05       		.uleb128 0x5
- 557 0238 03       		.byte	0x3
- 558 0239 00000000 		.4byte	pressed
- 559 023d 17       		.uleb128 0x17
- 560 023e 08000000 		.4byte	.LASF29
- 561 0242 08000000 		.4byte	.LASF29
- 562 0246 02       		.byte	0x2
- 563 0247 59       		.byte	0x59
- 564 0248 18       		.uleb128 0x18
- 565 0249 39020000 		.4byte	.LASF30
- 566 024d 39020000 		.4byte	.LASF30
- 567 0251 03       		.byte	0x3
- 568 0252 3201     		.2byte	0x132
- 569 0254 18       		.uleb128 0x18
- 570 0255 4B020000 		.4byte	.LASF31
- 571 0259 4B020000 		.4byte	.LASF31
- 572 025d 03       		.byte	0x3
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccvlEja4.s 			page 15
+ 564 01cd 49000000 		.4byte	.LLST2
+ 565 01d1 13       		.uleb128 0x13
+ 566 01d2 12010000 		.4byte	.LASF22
+ 567 01d6 01       		.byte	0x1
+ 568 01d7 62       		.byte	0x62
+ 569 01d8 5D000000 		.4byte	0x5d
+ 570 01dc 74000000 		.4byte	.LLST3
+ 571 01e0 13       		.uleb128 0x13
+ 572 01e1 6D000000 		.4byte	.LASF23
+ 573 01e5 01       		.byte	0x1
+ 574 01e6 62       		.byte	0x62
+ 575 01e7 5D000000 		.4byte	0x5d
+ 576 01eb AA000000 		.4byte	.LLST4
+ 577 01ef 14       		.uleb128 0x14
+ 578 01f0 F7000000 		.4byte	.LASF24
+ 579 01f4 01       		.byte	0x1
+ 580 01f5 63       		.byte	0x63
+ 581 01f6 69020000 		.4byte	0x269
+ 582 01fa 02       		.uleb128 0x2
+ 583 01fb 7D       		.byte	0x7d
+ 584 01fc 00       		.sleb128 0
+ 585 01fd 0F       		.uleb128 0xf
+ 586 01fe 0A000000 		.4byte	.LVL11
+ 587 0202 ED020000 		.4byte	0x2ed
+ 588 0206 0F       		.uleb128 0xf
+ 589 0207 0E000000 		.4byte	.LVL12
+ 590 020b BD020000 		.4byte	0x2bd
+ 591 020f 0F       		.uleb128 0xf
+ 592 0210 12000000 		.4byte	.LVL13
+ 593 0214 E1020000 		.4byte	0x2e1
+ 594 0218 0F       		.uleb128 0xf
+ 595 0219 16000000 		.4byte	.LVL14
+ 596 021d F8020000 		.4byte	0x2f8
+ 597 0221 0F       		.uleb128 0xf
+ 598 0222 1A000000 		.4byte	.LVL15
+ 599 0226 04030000 		.4byte	0x304
+ 600 022a 0F       		.uleb128 0xf
+ 601 022b 1E000000 		.4byte	.LVL16
+ 602 022f 10030000 		.4byte	0x310
+ 603 0233 0F       		.uleb128 0xf
+ 604 0234 22000000 		.4byte	.LVL17
+ 605 0238 1C030000 		.4byte	0x31c
+ 606 023c 0F       		.uleb128 0xf
+ 607 023d 26000000 		.4byte	.LVL18
+ 608 0241 28030000 		.4byte	0x328
+ 609 0245 0F       		.uleb128 0xf
+ 610 0246 2A000000 		.4byte	.LVL19
+ 611 024a 9A000000 		.4byte	0x9a
+ 612 024e 0F       		.uleb128 0xf
+ 613 024f 32000000 		.4byte	.LVL20
+ 614 0253 FC000000 		.4byte	0xfc
+ 615 0257 0D       		.uleb128 0xd
+ 616 0258 9A000000 		.4byte	.LVL31
+ 617 025c B2020000 		.4byte	0x2b2
+ 618 0260 0E       		.uleb128 0xe
+ 619 0261 01       		.uleb128 0x1
+ 620 0262 50       		.byte	0x50
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc1FQUWL.s 			page 16
 
 
- 573 025e 3301     		.2byte	0x133
- 574 0260 18       		.uleb128 0x18
- 575 0261 7A000000 		.4byte	.LASF32
- 576 0265 7A000000 		.4byte	.LASF32
- 577 0269 04       		.byte	0x4
- 578 026a 3201     		.2byte	0x132
- 579 026c 18       		.uleb128 0x18
- 580 026d 5C020000 		.4byte	.LASF33
- 581 0271 5C020000 		.4byte	.LASF33
- 582 0275 04       		.byte	0x4
- 583 0276 3301     		.2byte	0x133
- 584 0278 18       		.uleb128 0x18
- 585 0279 38000000 		.4byte	.LASF34
- 586 027d 38000000 		.4byte	.LASF34
- 587 0281 05       		.byte	0x5
- 588 0282 3201     		.2byte	0x132
- 589 0284 18       		.uleb128 0x18
- 590 0285 8F000000 		.4byte	.LASF35
- 591 0289 8F000000 		.4byte	.LASF35
- 592 028d 05       		.byte	0x5
- 593 028e 3301     		.2byte	0x133
- 594 0290 17       		.uleb128 0x17
- 595 0291 B0000000 		.4byte	.LASF36
- 596 0295 B0000000 		.4byte	.LASF36
- 597 0299 06       		.byte	0x6
- 598 029a 17       		.byte	0x17
- 599 029b 17       		.uleb128 0x17
- 600 029c A9020000 		.4byte	.LASF37
- 601 02a0 A9020000 		.4byte	.LASF37
- 602 02a4 07       		.byte	0x7
- 603 02a5 EC       		.byte	0xec
- 604 02a6 00       		.byte	0
- 605              		.section	.debug_abbrev,"",%progbits
- 606              	.Ldebug_abbrev0:
- 607 0000 01       		.uleb128 0x1
- 608 0001 11       		.uleb128 0x11
- 609 0002 01       		.byte	0x1
- 610 0003 25       		.uleb128 0x25
- 611 0004 0E       		.uleb128 0xe
- 612 0005 13       		.uleb128 0x13
- 613 0006 0B       		.uleb128 0xb
- 614 0007 03       		.uleb128 0x3
- 615 0008 0E       		.uleb128 0xe
- 616 0009 1B       		.uleb128 0x1b
- 617 000a 0E       		.uleb128 0xe
- 618 000b 55       		.uleb128 0x55
- 619 000c 17       		.uleb128 0x17
- 620 000d 11       		.uleb128 0x11
- 621 000e 01       		.uleb128 0x1
- 622 000f 10       		.uleb128 0x10
- 623 0010 17       		.uleb128 0x17
- 624 0011 00       		.byte	0
- 625 0012 00       		.byte	0
- 626 0013 02       		.uleb128 0x2
- 627 0014 24       		.uleb128 0x24
- 628 0015 00       		.byte	0
- 629 0016 0B       		.uleb128 0xb
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccvlEja4.s 			page 16
+ 621 0263 03       		.uleb128 0x3
+ 622 0264 0A       		.byte	0xa
+ 623 0265 2003     		.2byte	0x320
+ 624 0267 00       		.byte	0
+ 625 0268 00       		.byte	0
+ 626 0269 15       		.uleb128 0x15
+ 627 026a 5D000000 		.4byte	0x5d
+ 628 026e 7A020000 		.4byte	0x27a
+ 629 0272 16       		.uleb128 0x16
+ 630 0273 93000000 		.4byte	0x93
+ 631 0277 01       		.uleb128 0x1
+ 632 0278 43       		.byte	0x43
+ 633 0279 00       		.byte	0
+ 634 027a 06       		.uleb128 0x6
+ 635 027b CF020000 		.4byte	.LASF25
+ 636 027f 01       		.byte	0x1
+ 637 0280 0E       		.byte	0xe
+ 638 0281 86020000 		.4byte	0x286
+ 639 0285 14       		.byte	0x14
+ 640 0286 17       		.uleb128 0x17
+ 641 0287 5D000000 		.4byte	0x5d
+ 642 028b 18       		.uleb128 0x18
+ 643 028c FB010000 		.4byte	.LASF26
+ 644 0290 01       		.byte	0x1
+ 645 0291 0F       		.byte	0xf
+ 646 0292 9C020000 		.4byte	0x29c
+ 647 0296 05       		.uleb128 0x5
+ 648 0297 03       		.byte	0x3
+ 649 0298 00000000 		.4byte	timeout
+ 650 029c 19       		.uleb128 0x19
+ 651 029d 5D000000 		.4byte	0x5d
+ 652 02a1 18       		.uleb128 0x18
+ 653 02a2 00000000 		.4byte	.LASF27
+ 654 02a6 01       		.byte	0x1
+ 655 02a7 0F       		.byte	0xf
+ 656 02a8 9C020000 		.4byte	0x29c
+ 657 02ac 05       		.uleb128 0x5
+ 658 02ad 03       		.byte	0x3
+ 659 02ae 00000000 		.4byte	pressed
+ 660 02b2 1A       		.uleb128 0x1a
+ 661 02b3 E2020000 		.4byte	.LASF28
+ 662 02b7 E2020000 		.4byte	.LASF28
+ 663 02bb 02       		.byte	0x2
+ 664 02bc D9       		.byte	0xd9
+ 665 02bd 1B       		.uleb128 0x1b
+ 666 02be 72020000 		.4byte	.LASF29
+ 667 02c2 72020000 		.4byte	.LASF29
+ 668 02c6 03       		.byte	0x3
+ 669 02c7 3201     		.2byte	0x132
+ 670 02c9 1B       		.uleb128 0x1b
+ 671 02ca 37000000 		.4byte	.LASF30
+ 672 02ce 37000000 		.4byte	.LASF30
+ 673 02d2 03       		.byte	0x3
+ 674 02d3 5001     		.2byte	0x150
+ 675 02d5 1B       		.uleb128 0x1b
+ 676 02d6 08000000 		.4byte	.LASF31
+ 677 02da 08000000 		.4byte	.LASF31
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc1FQUWL.s 			page 17
 
 
- 630 0017 0B       		.uleb128 0xb
- 631 0018 3E       		.uleb128 0x3e
- 632 0019 0B       		.uleb128 0xb
- 633 001a 03       		.uleb128 0x3
- 634 001b 0E       		.uleb128 0xe
- 635 001c 00       		.byte	0
- 636 001d 00       		.byte	0
- 637 001e 03       		.uleb128 0x3
- 638 001f 24       		.uleb128 0x24
- 639 0020 00       		.byte	0
- 640 0021 0B       		.uleb128 0xb
- 641 0022 0B       		.uleb128 0xb
- 642 0023 3E       		.uleb128 0x3e
- 643 0024 0B       		.uleb128 0xb
- 644 0025 03       		.uleb128 0x3
- 645 0026 08       		.uleb128 0x8
- 646 0027 00       		.byte	0
- 647 0028 00       		.byte	0
- 648 0029 04       		.uleb128 0x4
- 649 002a 16       		.uleb128 0x16
- 650 002b 00       		.byte	0
- 651 002c 03       		.uleb128 0x3
- 652 002d 0E       		.uleb128 0xe
- 653 002e 3A       		.uleb128 0x3a
- 654 002f 0B       		.uleb128 0xb
- 655 0030 3B       		.uleb128 0x3b
- 656 0031 05       		.uleb128 0x5
- 657 0032 49       		.uleb128 0x49
- 658 0033 13       		.uleb128 0x13
- 659 0034 00       		.byte	0
- 660 0035 00       		.byte	0
- 661 0036 05       		.uleb128 0x5
- 662 0037 2E       		.uleb128 0x2e
- 663 0038 01       		.byte	0x1
- 664 0039 3F       		.uleb128 0x3f
- 665 003a 19       		.uleb128 0x19
- 666 003b 03       		.uleb128 0x3
- 667 003c 0E       		.uleb128 0xe
- 668 003d 3A       		.uleb128 0x3a
- 669 003e 0B       		.uleb128 0xb
- 670 003f 3B       		.uleb128 0x3b
- 671 0040 0B       		.uleb128 0xb
- 672 0041 49       		.uleb128 0x49
- 673 0042 13       		.uleb128 0x13
- 674 0043 11       		.uleb128 0x11
- 675 0044 01       		.uleb128 0x1
- 676 0045 12       		.uleb128 0x12
- 677 0046 06       		.uleb128 0x6
- 678 0047 40       		.uleb128 0x40
- 679 0048 18       		.uleb128 0x18
- 680 0049 9742     		.uleb128 0x2117
- 681 004b 19       		.uleb128 0x19
- 682 004c 01       		.uleb128 0x1
- 683 004d 13       		.uleb128 0x13
- 684 004e 00       		.byte	0
- 685 004f 00       		.byte	0
- 686 0050 06       		.uleb128 0x6
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccvlEja4.s 			page 17
+ 678 02de 03       		.byte	0x3
+ 679 02df 5501     		.2byte	0x155
+ 680 02e1 1B       		.uleb128 0x1b
+ 681 02e2 84020000 		.4byte	.LASF32
+ 682 02e6 84020000 		.4byte	.LASF32
+ 683 02ea 03       		.byte	0x3
+ 684 02eb 3301     		.2byte	0x133
+ 685 02ed 1A       		.uleb128 0x1a
+ 686 02ee 21000000 		.4byte	.LASF33
+ 687 02f2 21000000 		.4byte	.LASF33
+ 688 02f6 04       		.byte	0x4
+ 689 02f7 59       		.byte	0x59
+ 690 02f8 1B       		.uleb128 0x1b
+ 691 02f9 9D000000 		.4byte	.LASF34
+ 692 02fd 9D000000 		.4byte	.LASF34
+ 693 0301 05       		.byte	0x5
+ 694 0302 3201     		.2byte	0x132
+ 695 0304 1B       		.uleb128 0x1b
+ 696 0305 95020000 		.4byte	.LASF35
+ 697 0309 95020000 		.4byte	.LASF35
+ 698 030d 05       		.byte	0x5
+ 699 030e 3301     		.2byte	0x133
+ 700 0310 1B       		.uleb128 0x1b
+ 701 0311 5B000000 		.4byte	.LASF36
+ 702 0315 5B000000 		.4byte	.LASF36
+ 703 0319 06       		.byte	0x6
+ 704 031a 3201     		.2byte	0x132
+ 705 031c 1B       		.uleb128 0x1b
+ 706 031d C0000000 		.4byte	.LASF37
+ 707 0321 C0000000 		.4byte	.LASF37
+ 708 0325 06       		.byte	0x6
+ 709 0326 3301     		.2byte	0x133
+ 710 0328 1A       		.uleb128 0x1a
+ 711 0329 E1000000 		.4byte	.LASF38
+ 712 032d E1000000 		.4byte	.LASF38
+ 713 0331 07       		.byte	0x7
+ 714 0332 17       		.byte	0x17
+ 715 0333 00       		.byte	0
+ 716              		.section	.debug_abbrev,"",%progbits
+ 717              	.Ldebug_abbrev0:
+ 718 0000 01       		.uleb128 0x1
+ 719 0001 11       		.uleb128 0x11
+ 720 0002 01       		.byte	0x1
+ 721 0003 25       		.uleb128 0x25
+ 722 0004 0E       		.uleb128 0xe
+ 723 0005 13       		.uleb128 0x13
+ 724 0006 0B       		.uleb128 0xb
+ 725 0007 03       		.uleb128 0x3
+ 726 0008 0E       		.uleb128 0xe
+ 727 0009 1B       		.uleb128 0x1b
+ 728 000a 0E       		.uleb128 0xe
+ 729 000b 55       		.uleb128 0x55
+ 730 000c 17       		.uleb128 0x17
+ 731 000d 11       		.uleb128 0x11
+ 732 000e 01       		.uleb128 0x1
+ 733 000f 10       		.uleb128 0x10
+ 734 0010 17       		.uleb128 0x17
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc1FQUWL.s 			page 18
 
 
- 687 0051 34       		.uleb128 0x34
- 688 0052 00       		.byte	0
- 689 0053 03       		.uleb128 0x3
- 690 0054 0E       		.uleb128 0xe
- 691 0055 3A       		.uleb128 0x3a
- 692 0056 0B       		.uleb128 0xb
- 693 0057 3B       		.uleb128 0x3b
- 694 0058 0B       		.uleb128 0xb
- 695 0059 49       		.uleb128 0x49
- 696 005a 13       		.uleb128 0x13
- 697 005b 1C       		.uleb128 0x1c
- 698 005c 0B       		.uleb128 0xb
- 699 005d 00       		.byte	0
- 700 005e 00       		.byte	0
- 701 005f 07       		.uleb128 0x7
- 702 0060 2E       		.uleb128 0x2e
- 703 0061 01       		.byte	0x1
- 704 0062 3F       		.uleb128 0x3f
- 705 0063 19       		.uleb128 0x19
- 706 0064 03       		.uleb128 0x3
- 707 0065 0E       		.uleb128 0xe
- 708 0066 3A       		.uleb128 0x3a
- 709 0067 0B       		.uleb128 0xb
- 710 0068 3B       		.uleb128 0x3b
- 711 0069 0B       		.uleb128 0xb
- 712 006a 27       		.uleb128 0x27
- 713 006b 19       		.uleb128 0x19
- 714 006c 11       		.uleb128 0x11
- 715 006d 01       		.uleb128 0x1
- 716 006e 12       		.uleb128 0x12
- 717 006f 06       		.uleb128 0x6
- 718 0070 40       		.uleb128 0x40
- 719 0071 18       		.uleb128 0x18
- 720 0072 9742     		.uleb128 0x2117
- 721 0074 19       		.uleb128 0x19
- 722 0075 01       		.uleb128 0x1
- 723 0076 13       		.uleb128 0x13
- 724 0077 00       		.byte	0
- 725 0078 00       		.byte	0
- 726 0079 08       		.uleb128 0x8
- 727 007a 05       		.uleb128 0x5
- 728 007b 00       		.byte	0
- 729 007c 03       		.uleb128 0x3
- 730 007d 0E       		.uleb128 0xe
- 731 007e 3A       		.uleb128 0x3a
- 732 007f 0B       		.uleb128 0xb
- 733 0080 3B       		.uleb128 0x3b
- 734 0081 0B       		.uleb128 0xb
- 735 0082 49       		.uleb128 0x49
- 736 0083 13       		.uleb128 0x13
- 737 0084 02       		.uleb128 0x2
- 738 0085 18       		.uleb128 0x18
- 739 0086 00       		.byte	0
- 740 0087 00       		.byte	0
- 741 0088 09       		.uleb128 0x9
- 742 0089 05       		.uleb128 0x5
- 743 008a 00       		.byte	0
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccvlEja4.s 			page 18
+ 735 0011 00       		.byte	0
+ 736 0012 00       		.byte	0
+ 737 0013 02       		.uleb128 0x2
+ 738 0014 24       		.uleb128 0x24
+ 739 0015 00       		.byte	0
+ 740 0016 0B       		.uleb128 0xb
+ 741 0017 0B       		.uleb128 0xb
+ 742 0018 3E       		.uleb128 0x3e
+ 743 0019 0B       		.uleb128 0xb
+ 744 001a 03       		.uleb128 0x3
+ 745 001b 0E       		.uleb128 0xe
+ 746 001c 00       		.byte	0
+ 747 001d 00       		.byte	0
+ 748 001e 03       		.uleb128 0x3
+ 749 001f 24       		.uleb128 0x24
+ 750 0020 00       		.byte	0
+ 751 0021 0B       		.uleb128 0xb
+ 752 0022 0B       		.uleb128 0xb
+ 753 0023 3E       		.uleb128 0x3e
+ 754 0024 0B       		.uleb128 0xb
+ 755 0025 03       		.uleb128 0x3
+ 756 0026 08       		.uleb128 0x8
+ 757 0027 00       		.byte	0
+ 758 0028 00       		.byte	0
+ 759 0029 04       		.uleb128 0x4
+ 760 002a 16       		.uleb128 0x16
+ 761 002b 00       		.byte	0
+ 762 002c 03       		.uleb128 0x3
+ 763 002d 0E       		.uleb128 0xe
+ 764 002e 3A       		.uleb128 0x3a
+ 765 002f 0B       		.uleb128 0xb
+ 766 0030 3B       		.uleb128 0x3b
+ 767 0031 05       		.uleb128 0x5
+ 768 0032 49       		.uleb128 0x49
+ 769 0033 13       		.uleb128 0x13
+ 770 0034 00       		.byte	0
+ 771 0035 00       		.byte	0
+ 772 0036 05       		.uleb128 0x5
+ 773 0037 2E       		.uleb128 0x2e
+ 774 0038 01       		.byte	0x1
+ 775 0039 3F       		.uleb128 0x3f
+ 776 003a 19       		.uleb128 0x19
+ 777 003b 03       		.uleb128 0x3
+ 778 003c 0E       		.uleb128 0xe
+ 779 003d 3A       		.uleb128 0x3a
+ 780 003e 0B       		.uleb128 0xb
+ 781 003f 3B       		.uleb128 0x3b
+ 782 0040 0B       		.uleb128 0xb
+ 783 0041 49       		.uleb128 0x49
+ 784 0042 13       		.uleb128 0x13
+ 785 0043 11       		.uleb128 0x11
+ 786 0044 01       		.uleb128 0x1
+ 787 0045 12       		.uleb128 0x12
+ 788 0046 06       		.uleb128 0x6
+ 789 0047 40       		.uleb128 0x40
+ 790 0048 18       		.uleb128 0x18
+ 791 0049 9742     		.uleb128 0x2117
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc1FQUWL.s 			page 19
 
 
- 744 008b 03       		.uleb128 0x3
- 745 008c 08       		.uleb128 0x8
- 746 008d 3A       		.uleb128 0x3a
- 747 008e 0B       		.uleb128 0xb
- 748 008f 3B       		.uleb128 0x3b
- 749 0090 0B       		.uleb128 0xb
- 750 0091 49       		.uleb128 0x49
- 751 0092 13       		.uleb128 0x13
- 752 0093 02       		.uleb128 0x2
- 753 0094 18       		.uleb128 0x18
- 754 0095 00       		.byte	0
- 755 0096 00       		.byte	0
- 756 0097 0A       		.uleb128 0xa
- 757 0098 2E       		.uleb128 0x2e
- 758 0099 00       		.byte	0
- 759 009a 3F       		.uleb128 0x3f
- 760 009b 19       		.uleb128 0x19
- 761 009c 03       		.uleb128 0x3
- 762 009d 0E       		.uleb128 0xe
- 763 009e 3A       		.uleb128 0x3a
- 764 009f 0B       		.uleb128 0xb
- 765 00a0 3B       		.uleb128 0x3b
- 766 00a1 0B       		.uleb128 0xb
- 767 00a2 11       		.uleb128 0x11
- 768 00a3 01       		.uleb128 0x1
- 769 00a4 12       		.uleb128 0x12
- 770 00a5 06       		.uleb128 0x6
- 771 00a6 40       		.uleb128 0x40
- 772 00a7 18       		.uleb128 0x18
- 773 00a8 9742     		.uleb128 0x2117
- 774 00aa 19       		.uleb128 0x19
- 775 00ab 00       		.byte	0
- 776 00ac 00       		.byte	0
- 777 00ad 0B       		.uleb128 0xb
- 778 00ae 2E       		.uleb128 0x2e
- 779 00af 01       		.byte	0x1
- 780 00b0 3F       		.uleb128 0x3f
- 781 00b1 19       		.uleb128 0x19
- 782 00b2 03       		.uleb128 0x3
- 783 00b3 0E       		.uleb128 0xe
- 784 00b4 3A       		.uleb128 0x3a
- 785 00b5 0B       		.uleb128 0xb
- 786 00b6 3B       		.uleb128 0x3b
- 787 00b7 0B       		.uleb128 0xb
- 788 00b8 27       		.uleb128 0x27
- 789 00b9 19       		.uleb128 0x19
- 790 00ba 49       		.uleb128 0x49
- 791 00bb 13       		.uleb128 0x13
- 792 00bc 8701     		.uleb128 0x87
- 793 00be 19       		.uleb128 0x19
- 794 00bf 11       		.uleb128 0x11
- 795 00c0 01       		.uleb128 0x1
- 796 00c1 12       		.uleb128 0x12
- 797 00c2 06       		.uleb128 0x6
- 798 00c3 40       		.uleb128 0x40
- 799 00c4 18       		.uleb128 0x18
- 800 00c5 9742     		.uleb128 0x2117
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccvlEja4.s 			page 19
+ 792 004b 19       		.uleb128 0x19
+ 793 004c 01       		.uleb128 0x1
+ 794 004d 13       		.uleb128 0x13
+ 795 004e 00       		.byte	0
+ 796 004f 00       		.byte	0
+ 797 0050 06       		.uleb128 0x6
+ 798 0051 34       		.uleb128 0x34
+ 799 0052 00       		.byte	0
+ 800 0053 03       		.uleb128 0x3
+ 801 0054 0E       		.uleb128 0xe
+ 802 0055 3A       		.uleb128 0x3a
+ 803 0056 0B       		.uleb128 0xb
+ 804 0057 3B       		.uleb128 0x3b
+ 805 0058 0B       		.uleb128 0xb
+ 806 0059 49       		.uleb128 0x49
+ 807 005a 13       		.uleb128 0x13
+ 808 005b 1C       		.uleb128 0x1c
+ 809 005c 0B       		.uleb128 0xb
+ 810 005d 00       		.byte	0
+ 811 005e 00       		.byte	0
+ 812 005f 07       		.uleb128 0x7
+ 813 0060 2E       		.uleb128 0x2e
+ 814 0061 01       		.byte	0x1
+ 815 0062 3F       		.uleb128 0x3f
+ 816 0063 19       		.uleb128 0x19
+ 817 0064 03       		.uleb128 0x3
+ 818 0065 0E       		.uleb128 0xe
+ 819 0066 3A       		.uleb128 0x3a
+ 820 0067 0B       		.uleb128 0xb
+ 821 0068 3B       		.uleb128 0x3b
+ 822 0069 0B       		.uleb128 0xb
+ 823 006a 27       		.uleb128 0x27
+ 824 006b 19       		.uleb128 0x19
+ 825 006c 11       		.uleb128 0x11
+ 826 006d 01       		.uleb128 0x1
+ 827 006e 12       		.uleb128 0x12
+ 828 006f 06       		.uleb128 0x6
+ 829 0070 40       		.uleb128 0x40
+ 830 0071 18       		.uleb128 0x18
+ 831 0072 9742     		.uleb128 0x2117
+ 832 0074 19       		.uleb128 0x19
+ 833 0075 01       		.uleb128 0x1
+ 834 0076 13       		.uleb128 0x13
+ 835 0077 00       		.byte	0
+ 836 0078 00       		.byte	0
+ 837 0079 08       		.uleb128 0x8
+ 838 007a 05       		.uleb128 0x5
+ 839 007b 00       		.byte	0
+ 840 007c 03       		.uleb128 0x3
+ 841 007d 0E       		.uleb128 0xe
+ 842 007e 3A       		.uleb128 0x3a
+ 843 007f 0B       		.uleb128 0xb
+ 844 0080 3B       		.uleb128 0x3b
+ 845 0081 0B       		.uleb128 0xb
+ 846 0082 49       		.uleb128 0x49
+ 847 0083 13       		.uleb128 0x13
+ 848 0084 02       		.uleb128 0x2
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc1FQUWL.s 			page 20
 
 
- 801 00c7 19       		.uleb128 0x19
- 802 00c8 01       		.uleb128 0x1
- 803 00c9 13       		.uleb128 0x13
- 804 00ca 00       		.byte	0
- 805 00cb 00       		.byte	0
- 806 00cc 0C       		.uleb128 0xc
- 807 00cd 34       		.uleb128 0x34
- 808 00ce 00       		.byte	0
- 809 00cf 03       		.uleb128 0x3
- 810 00d0 08       		.uleb128 0x8
- 811 00d1 3A       		.uleb128 0x3a
- 812 00d2 0B       		.uleb128 0xb
- 813 00d3 3B       		.uleb128 0x3b
- 814 00d4 0B       		.uleb128 0xb
- 815 00d5 49       		.uleb128 0x49
- 816 00d6 13       		.uleb128 0x13
- 817 00d7 02       		.uleb128 0x2
- 818 00d8 17       		.uleb128 0x17
- 819 00d9 00       		.byte	0
- 820 00da 00       		.byte	0
- 821 00db 0D       		.uleb128 0xd
- 822 00dc 34       		.uleb128 0x34
- 823 00dd 00       		.byte	0
- 824 00de 03       		.uleb128 0x3
- 825 00df 0E       		.uleb128 0xe
- 826 00e0 3A       		.uleb128 0x3a
- 827 00e1 0B       		.uleb128 0xb
- 828 00e2 3B       		.uleb128 0x3b
- 829 00e3 0B       		.uleb128 0xb
- 830 00e4 49       		.uleb128 0x49
- 831 00e5 13       		.uleb128 0x13
- 832 00e6 02       		.uleb128 0x2
- 833 00e7 17       		.uleb128 0x17
- 834 00e8 00       		.byte	0
- 835 00e9 00       		.byte	0
- 836 00ea 0E       		.uleb128 0xe
- 837 00eb 34       		.uleb128 0x34
- 838 00ec 00       		.byte	0
- 839 00ed 03       		.uleb128 0x3
- 840 00ee 0E       		.uleb128 0xe
- 841 00ef 3A       		.uleb128 0x3a
- 842 00f0 0B       		.uleb128 0xb
- 843 00f1 3B       		.uleb128 0x3b
- 844 00f2 0B       		.uleb128 0xb
- 845 00f3 49       		.uleb128 0x49
- 846 00f4 13       		.uleb128 0x13
- 847 00f5 02       		.uleb128 0x2
- 848 00f6 18       		.uleb128 0x18
- 849 00f7 00       		.byte	0
- 850 00f8 00       		.byte	0
- 851 00f9 0F       		.uleb128 0xf
- 852 00fa 898201   		.uleb128 0x4109
- 853 00fd 00       		.byte	0
- 854 00fe 11       		.uleb128 0x11
- 855 00ff 01       		.uleb128 0x1
- 856 0100 31       		.uleb128 0x31
- 857 0101 13       		.uleb128 0x13
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccvlEja4.s 			page 20
+ 849 0085 18       		.uleb128 0x18
+ 850 0086 00       		.byte	0
+ 851 0087 00       		.byte	0
+ 852 0088 09       		.uleb128 0x9
+ 853 0089 05       		.uleb128 0x5
+ 854 008a 00       		.byte	0
+ 855 008b 03       		.uleb128 0x3
+ 856 008c 08       		.uleb128 0x8
+ 857 008d 3A       		.uleb128 0x3a
+ 858 008e 0B       		.uleb128 0xb
+ 859 008f 3B       		.uleb128 0x3b
+ 860 0090 0B       		.uleb128 0xb
+ 861 0091 49       		.uleb128 0x49
+ 862 0092 13       		.uleb128 0x13
+ 863 0093 02       		.uleb128 0x2
+ 864 0094 18       		.uleb128 0x18
+ 865 0095 00       		.byte	0
+ 866 0096 00       		.byte	0
+ 867 0097 0A       		.uleb128 0xa
+ 868 0098 2E       		.uleb128 0x2e
+ 869 0099 01       		.byte	0x1
+ 870 009a 3F       		.uleb128 0x3f
+ 871 009b 19       		.uleb128 0x19
+ 872 009c 03       		.uleb128 0x3
+ 873 009d 0E       		.uleb128 0xe
+ 874 009e 3A       		.uleb128 0x3a
+ 875 009f 0B       		.uleb128 0xb
+ 876 00a0 3B       		.uleb128 0x3b
+ 877 00a1 0B       		.uleb128 0xb
+ 878 00a2 11       		.uleb128 0x11
+ 879 00a3 01       		.uleb128 0x1
+ 880 00a4 12       		.uleb128 0x12
+ 881 00a5 06       		.uleb128 0x6
+ 882 00a6 40       		.uleb128 0x40
+ 883 00a7 18       		.uleb128 0x18
+ 884 00a8 9742     		.uleb128 0x2117
+ 885 00aa 19       		.uleb128 0x19
+ 886 00ab 01       		.uleb128 0x1
+ 887 00ac 13       		.uleb128 0x13
+ 888 00ad 00       		.byte	0
+ 889 00ae 00       		.byte	0
+ 890 00af 0B       		.uleb128 0xb
+ 891 00b0 0B       		.uleb128 0xb
+ 892 00b1 01       		.byte	0x1
+ 893 00b2 11       		.uleb128 0x11
+ 894 00b3 01       		.uleb128 0x1
+ 895 00b4 12       		.uleb128 0x12
+ 896 00b5 06       		.uleb128 0x6
+ 897 00b6 01       		.uleb128 0x1
+ 898 00b7 13       		.uleb128 0x13
+ 899 00b8 00       		.byte	0
+ 900 00b9 00       		.byte	0
+ 901 00ba 0C       		.uleb128 0xc
+ 902 00bb 34       		.uleb128 0x34
+ 903 00bc 00       		.byte	0
+ 904 00bd 03       		.uleb128 0x3
+ 905 00be 08       		.uleb128 0x8
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc1FQUWL.s 			page 21
 
 
- 858 0102 00       		.byte	0
- 859 0103 00       		.byte	0
- 860 0104 10       		.uleb128 0x10
- 861 0105 898201   		.uleb128 0x4109
- 862 0108 01       		.byte	0x1
- 863 0109 11       		.uleb128 0x11
- 864 010a 01       		.uleb128 0x1
- 865 010b 31       		.uleb128 0x31
- 866 010c 13       		.uleb128 0x13
- 867 010d 00       		.byte	0
- 868 010e 00       		.byte	0
- 869 010f 11       		.uleb128 0x11
- 870 0110 8A8201   		.uleb128 0x410a
- 871 0113 00       		.byte	0
- 872 0114 02       		.uleb128 0x2
- 873 0115 18       		.uleb128 0x18
- 874 0116 9142     		.uleb128 0x2111
- 875 0118 18       		.uleb128 0x18
- 876 0119 00       		.byte	0
- 877 011a 00       		.byte	0
- 878 011b 12       		.uleb128 0x12
- 879 011c 01       		.uleb128 0x1
- 880 011d 01       		.byte	0x1
- 881 011e 49       		.uleb128 0x49
- 882 011f 13       		.uleb128 0x13
- 883 0120 01       		.uleb128 0x1
- 884 0121 13       		.uleb128 0x13
- 885 0122 00       		.byte	0
- 886 0123 00       		.byte	0
- 887 0124 13       		.uleb128 0x13
- 888 0125 21       		.uleb128 0x21
- 889 0126 00       		.byte	0
- 890 0127 49       		.uleb128 0x49
- 891 0128 13       		.uleb128 0x13
- 892 0129 2F       		.uleb128 0x2f
- 893 012a 18       		.uleb128 0x18
- 894 012b 00       		.byte	0
- 895 012c 00       		.byte	0
- 896 012d 14       		.uleb128 0x14
- 897 012e 26       		.uleb128 0x26
- 898 012f 00       		.byte	0
- 899 0130 49       		.uleb128 0x49
- 900 0131 13       		.uleb128 0x13
- 901 0132 00       		.byte	0
- 902 0133 00       		.byte	0
- 903 0134 15       		.uleb128 0x15
- 904 0135 34       		.uleb128 0x34
- 905 0136 00       		.byte	0
- 906 0137 03       		.uleb128 0x3
- 907 0138 0E       		.uleb128 0xe
- 908 0139 3A       		.uleb128 0x3a
- 909 013a 0B       		.uleb128 0xb
- 910 013b 3B       		.uleb128 0x3b
- 911 013c 0B       		.uleb128 0xb
- 912 013d 49       		.uleb128 0x49
- 913 013e 13       		.uleb128 0x13
- 914 013f 3F       		.uleb128 0x3f
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccvlEja4.s 			page 21
+ 906 00bf 3A       		.uleb128 0x3a
+ 907 00c0 0B       		.uleb128 0xb
+ 908 00c1 3B       		.uleb128 0x3b
+ 909 00c2 0B       		.uleb128 0xb
+ 910 00c3 49       		.uleb128 0x49
+ 911 00c4 13       		.uleb128 0x13
+ 912 00c5 02       		.uleb128 0x2
+ 913 00c6 17       		.uleb128 0x17
+ 914 00c7 00       		.byte	0
+ 915 00c8 00       		.byte	0
+ 916 00c9 0D       		.uleb128 0xd
+ 917 00ca 898201   		.uleb128 0x4109
+ 918 00cd 01       		.byte	0x1
+ 919 00ce 11       		.uleb128 0x11
+ 920 00cf 01       		.uleb128 0x1
+ 921 00d0 31       		.uleb128 0x31
+ 922 00d1 13       		.uleb128 0x13
+ 923 00d2 00       		.byte	0
+ 924 00d3 00       		.byte	0
+ 925 00d4 0E       		.uleb128 0xe
+ 926 00d5 8A8201   		.uleb128 0x410a
+ 927 00d8 00       		.byte	0
+ 928 00d9 02       		.uleb128 0x2
+ 929 00da 18       		.uleb128 0x18
+ 930 00db 9142     		.uleb128 0x2111
+ 931 00dd 18       		.uleb128 0x18
+ 932 00de 00       		.byte	0
+ 933 00df 00       		.byte	0
+ 934 00e0 0F       		.uleb128 0xf
+ 935 00e1 898201   		.uleb128 0x4109
+ 936 00e4 00       		.byte	0
+ 937 00e5 11       		.uleb128 0x11
+ 938 00e6 01       		.uleb128 0x1
+ 939 00e7 31       		.uleb128 0x31
+ 940 00e8 13       		.uleb128 0x13
+ 941 00e9 00       		.byte	0
+ 942 00ea 00       		.byte	0
+ 943 00eb 10       		.uleb128 0x10
+ 944 00ec 898201   		.uleb128 0x4109
+ 945 00ef 01       		.byte	0x1
+ 946 00f0 11       		.uleb128 0x11
+ 947 00f1 01       		.uleb128 0x1
+ 948 00f2 31       		.uleb128 0x31
+ 949 00f3 13       		.uleb128 0x13
+ 950 00f4 01       		.uleb128 0x1
+ 951 00f5 13       		.uleb128 0x13
+ 952 00f6 00       		.byte	0
+ 953 00f7 00       		.byte	0
+ 954 00f8 11       		.uleb128 0x11
+ 955 00f9 2E       		.uleb128 0x2e
+ 956 00fa 00       		.byte	0
+ 957 00fb 3F       		.uleb128 0x3f
+ 958 00fc 19       		.uleb128 0x19
+ 959 00fd 03       		.uleb128 0x3
+ 960 00fe 0E       		.uleb128 0xe
+ 961 00ff 3A       		.uleb128 0x3a
+ 962 0100 0B       		.uleb128 0xb
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc1FQUWL.s 			page 22
 
 
- 915 0140 19       		.uleb128 0x19
- 916 0141 02       		.uleb128 0x2
- 917 0142 18       		.uleb128 0x18
- 918 0143 00       		.byte	0
- 919 0144 00       		.byte	0
- 920 0145 16       		.uleb128 0x16
- 921 0146 35       		.uleb128 0x35
- 922 0147 00       		.byte	0
- 923 0148 49       		.uleb128 0x49
- 924 0149 13       		.uleb128 0x13
- 925 014a 00       		.byte	0
- 926 014b 00       		.byte	0
- 927 014c 17       		.uleb128 0x17
- 928 014d 2E       		.uleb128 0x2e
- 929 014e 00       		.byte	0
- 930 014f 3F       		.uleb128 0x3f
- 931 0150 19       		.uleb128 0x19
- 932 0151 3C       		.uleb128 0x3c
- 933 0152 19       		.uleb128 0x19
- 934 0153 6E       		.uleb128 0x6e
- 935 0154 0E       		.uleb128 0xe
- 936 0155 03       		.uleb128 0x3
- 937 0156 0E       		.uleb128 0xe
- 938 0157 3A       		.uleb128 0x3a
- 939 0158 0B       		.uleb128 0xb
- 940 0159 3B       		.uleb128 0x3b
- 941 015a 0B       		.uleb128 0xb
- 942 015b 00       		.byte	0
- 943 015c 00       		.byte	0
- 944 015d 18       		.uleb128 0x18
- 945 015e 2E       		.uleb128 0x2e
- 946 015f 00       		.byte	0
- 947 0160 3F       		.uleb128 0x3f
- 948 0161 19       		.uleb128 0x19
- 949 0162 3C       		.uleb128 0x3c
- 950 0163 19       		.uleb128 0x19
- 951 0164 6E       		.uleb128 0x6e
- 952 0165 0E       		.uleb128 0xe
- 953 0166 03       		.uleb128 0x3
- 954 0167 0E       		.uleb128 0xe
- 955 0168 3A       		.uleb128 0x3a
- 956 0169 0B       		.uleb128 0xb
- 957 016a 3B       		.uleb128 0x3b
- 958 016b 05       		.uleb128 0x5
- 959 016c 00       		.byte	0
- 960 016d 00       		.byte	0
- 961 016e 00       		.byte	0
- 962              		.section	.debug_loc,"",%progbits
- 963              	.Ldebug_loc0:
- 964              	.LLST0:
- 965 0000 06000000 		.4byte	.LVL2
- 966 0004 26000000 		.4byte	.LVL10
- 967 0008 0200     		.2byte	0x2
- 968 000a 30       		.byte	0x30
- 969 000b 9F       		.byte	0x9f
- 970 000c 34000000 		.4byte	.LVL12
- 971 0010 38000000 		.4byte	.LVL14
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccvlEja4.s 			page 22
+ 963 0101 3B       		.uleb128 0x3b
+ 964 0102 0B       		.uleb128 0xb
+ 965 0103 11       		.uleb128 0x11
+ 966 0104 01       		.uleb128 0x1
+ 967 0105 12       		.uleb128 0x12
+ 968 0106 06       		.uleb128 0x6
+ 969 0107 40       		.uleb128 0x40
+ 970 0108 18       		.uleb128 0x18
+ 971 0109 9742     		.uleb128 0x2117
+ 972 010b 19       		.uleb128 0x19
+ 973 010c 00       		.byte	0
+ 974 010d 00       		.byte	0
+ 975 010e 12       		.uleb128 0x12
+ 976 010f 2E       		.uleb128 0x2e
+ 977 0110 01       		.byte	0x1
+ 978 0111 3F       		.uleb128 0x3f
+ 979 0112 19       		.uleb128 0x19
+ 980 0113 03       		.uleb128 0x3
+ 981 0114 0E       		.uleb128 0xe
+ 982 0115 3A       		.uleb128 0x3a
+ 983 0116 0B       		.uleb128 0xb
+ 984 0117 3B       		.uleb128 0x3b
+ 985 0118 0B       		.uleb128 0xb
+ 986 0119 27       		.uleb128 0x27
+ 987 011a 19       		.uleb128 0x19
+ 988 011b 49       		.uleb128 0x49
+ 989 011c 13       		.uleb128 0x13
+ 990 011d 8701     		.uleb128 0x87
+ 991 011f 19       		.uleb128 0x19
+ 992 0120 11       		.uleb128 0x11
+ 993 0121 01       		.uleb128 0x1
+ 994 0122 12       		.uleb128 0x12
+ 995 0123 06       		.uleb128 0x6
+ 996 0124 40       		.uleb128 0x40
+ 997 0125 18       		.uleb128 0x18
+ 998 0126 9742     		.uleb128 0x2117
+ 999 0128 19       		.uleb128 0x19
+ 1000 0129 01       		.uleb128 0x1
+ 1001 012a 13       		.uleb128 0x13
+ 1002 012b 00       		.byte	0
+ 1003 012c 00       		.byte	0
+ 1004 012d 13       		.uleb128 0x13
+ 1005 012e 34       		.uleb128 0x34
+ 1006 012f 00       		.byte	0
+ 1007 0130 03       		.uleb128 0x3
+ 1008 0131 0E       		.uleb128 0xe
+ 1009 0132 3A       		.uleb128 0x3a
+ 1010 0133 0B       		.uleb128 0xb
+ 1011 0134 3B       		.uleb128 0x3b
+ 1012 0135 0B       		.uleb128 0xb
+ 1013 0136 49       		.uleb128 0x49
+ 1014 0137 13       		.uleb128 0x13
+ 1015 0138 02       		.uleb128 0x2
+ 1016 0139 17       		.uleb128 0x17
+ 1017 013a 00       		.byte	0
+ 1018 013b 00       		.byte	0
+ 1019 013c 14       		.uleb128 0x14
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc1FQUWL.s 			page 23
 
 
- 972 0014 0100     		.2byte	0x1
- 973 0016 53       		.byte	0x53
- 974 0017 3A000000 		.4byte	.LVL15
- 975 001b 42000000 		.4byte	.LVL16
- 976 001f 0100     		.2byte	0x1
- 977 0021 53       		.byte	0x53
- 978 0022 00000000 		.4byte	0
- 979 0026 00000000 		.4byte	0
- 980              	.LLST1:
- 981 002a 06000000 		.4byte	.LVL2
- 982 002e 26000000 		.4byte	.LVL10
- 983 0032 0200     		.2byte	0x2
- 984 0034 30       		.byte	0x30
- 985 0035 9F       		.byte	0x9f
- 986 0036 42000000 		.4byte	.LVL16
- 987 003a 95000000 		.4byte	.LVL22-1
- 988 003e 0100     		.2byte	0x1
- 989 0040 52       		.byte	0x52
- 990 0041 00000000 		.4byte	0
- 991 0045 00000000 		.4byte	0
- 992              	.LLST2:
- 993 0049 06000000 		.4byte	.LVL2
- 994 004d 26000000 		.4byte	.LVL10
- 995 0051 0200     		.2byte	0x2
- 996 0053 30       		.byte	0x30
- 997 0054 9F       		.byte	0x9f
- 998 0055 34000000 		.4byte	.LVL12
- 999 0059 84000000 		.4byte	.LVL18
- 1000 005d 0100     		.2byte	0x1
- 1001 005f 56       		.byte	0x56
- 1002 0060 86000000 		.4byte	.LVL19
- 1003 0064 A8000000 		.4byte	.LFE39
- 1004 0068 0100     		.2byte	0x1
- 1005 006a 56       		.byte	0x56
- 1006 006b 00000000 		.4byte	0
- 1007 006f 00000000 		.4byte	0
- 1008              	.LLST3:
- 1009 0073 06000000 		.4byte	.LVL2
- 1010 0077 26000000 		.4byte	.LVL10
- 1011 007b 0200     		.2byte	0x2
- 1012 007d 30       		.byte	0x30
- 1013 007e 9F       		.byte	0x9f
- 1014 007f 34000000 		.4byte	.LVL12
- 1015 0083 A8000000 		.4byte	.LFE39
- 1016 0087 0100     		.2byte	0x1
- 1017 0089 55       		.byte	0x55
- 1018 008a 00000000 		.4byte	0
- 1019 008e 00000000 		.4byte	0
- 1020              		.section	.debug_aranges,"",%progbits
- 1021 0000 44000000 		.4byte	0x44
- 1022 0004 0200     		.2byte	0x2
- 1023 0006 00000000 		.4byte	.Ldebug_info0
- 1024 000a 04       		.byte	0x4
- 1025 000b 00       		.byte	0
- 1026 000c 0000     		.2byte	0
- 1027 000e 0000     		.2byte	0
- 1028 0010 00000000 		.4byte	.LFB34
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccvlEja4.s 			page 23
+ 1020 013d 34       		.uleb128 0x34
+ 1021 013e 00       		.byte	0
+ 1022 013f 03       		.uleb128 0x3
+ 1023 0140 0E       		.uleb128 0xe
+ 1024 0141 3A       		.uleb128 0x3a
+ 1025 0142 0B       		.uleb128 0xb
+ 1026 0143 3B       		.uleb128 0x3b
+ 1027 0144 0B       		.uleb128 0xb
+ 1028 0145 49       		.uleb128 0x49
+ 1029 0146 13       		.uleb128 0x13
+ 1030 0147 02       		.uleb128 0x2
+ 1031 0148 18       		.uleb128 0x18
+ 1032 0149 00       		.byte	0
+ 1033 014a 00       		.byte	0
+ 1034 014b 15       		.uleb128 0x15
+ 1035 014c 01       		.uleb128 0x1
+ 1036 014d 01       		.byte	0x1
+ 1037 014e 49       		.uleb128 0x49
+ 1038 014f 13       		.uleb128 0x13
+ 1039 0150 01       		.uleb128 0x1
+ 1040 0151 13       		.uleb128 0x13
+ 1041 0152 00       		.byte	0
+ 1042 0153 00       		.byte	0
+ 1043 0154 16       		.uleb128 0x16
+ 1044 0155 21       		.uleb128 0x21
+ 1045 0156 00       		.byte	0
+ 1046 0157 49       		.uleb128 0x49
+ 1047 0158 13       		.uleb128 0x13
+ 1048 0159 2F       		.uleb128 0x2f
+ 1049 015a 18       		.uleb128 0x18
+ 1050 015b 00       		.byte	0
+ 1051 015c 00       		.byte	0
+ 1052 015d 17       		.uleb128 0x17
+ 1053 015e 26       		.uleb128 0x26
+ 1054 015f 00       		.byte	0
+ 1055 0160 49       		.uleb128 0x49
+ 1056 0161 13       		.uleb128 0x13
+ 1057 0162 00       		.byte	0
+ 1058 0163 00       		.byte	0
+ 1059 0164 18       		.uleb128 0x18
+ 1060 0165 34       		.uleb128 0x34
+ 1061 0166 00       		.byte	0
+ 1062 0167 03       		.uleb128 0x3
+ 1063 0168 0E       		.uleb128 0xe
+ 1064 0169 3A       		.uleb128 0x3a
+ 1065 016a 0B       		.uleb128 0xb
+ 1066 016b 3B       		.uleb128 0x3b
+ 1067 016c 0B       		.uleb128 0xb
+ 1068 016d 49       		.uleb128 0x49
+ 1069 016e 13       		.uleb128 0x13
+ 1070 016f 3F       		.uleb128 0x3f
+ 1071 0170 19       		.uleb128 0x19
+ 1072 0171 02       		.uleb128 0x2
+ 1073 0172 18       		.uleb128 0x18
+ 1074 0173 00       		.byte	0
+ 1075 0174 00       		.byte	0
+ 1076 0175 19       		.uleb128 0x19
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc1FQUWL.s 			page 24
 
 
- 1029 0014 04000000 		.4byte	.LFE34-.LFB34
- 1030 0018 00000000 		.4byte	.LFB35
- 1031 001c 02000000 		.4byte	.LFE35-.LFB35
- 1032 0020 00000000 		.4byte	.LFB36
- 1033 0024 02000000 		.4byte	.LFE36-.LFB36
- 1034 0028 00000000 		.4byte	.LFB37
- 1035 002c 02000000 		.4byte	.LFE37-.LFB37
- 1036 0030 00000000 		.4byte	.LFB38
- 1037 0034 02000000 		.4byte	.LFE38-.LFB38
- 1038 0038 00000000 		.4byte	.LFB39
- 1039 003c A8000000 		.4byte	.LFE39-.LFB39
- 1040 0040 00000000 		.4byte	0
- 1041 0044 00000000 		.4byte	0
- 1042              		.section	.debug_ranges,"",%progbits
- 1043              	.Ldebug_ranges0:
- 1044 0000 00000000 		.4byte	.LFB34
- 1045 0004 04000000 		.4byte	.LFE34
- 1046 0008 00000000 		.4byte	.LFB35
- 1047 000c 02000000 		.4byte	.LFE35
- 1048 0010 00000000 		.4byte	.LFB36
- 1049 0014 02000000 		.4byte	.LFE36
- 1050 0018 00000000 		.4byte	.LFB37
- 1051 001c 02000000 		.4byte	.LFE37
- 1052 0020 00000000 		.4byte	.LFB38
- 1053 0024 02000000 		.4byte	.LFE38
- 1054 0028 00000000 		.4byte	.LFB39
- 1055 002c A8000000 		.4byte	.LFE39
- 1056 0030 00000000 		.4byte	0
- 1057 0034 00000000 		.4byte	0
- 1058              		.section	.debug_line,"",%progbits
- 1059              	.Ldebug_line0:
- 1060 0000 49010000 		.section	.debug_str,"MS",%progbits,1
- 1060      02009900 
- 1060      00000201 
- 1060      FB0E0D00 
- 1060      01010101 
- 1061              	.LASF28:
- 1062 0000 70726573 		.ascii	"pressed\000"
- 1062      73656400 
- 1063              	.LASF29:
- 1064 0008 5052535F 		.ascii	"PRS_Start\000"
- 1064      53746172 
- 1064      7400
- 1065              	.LASF9:
- 1066 0012 666C6F61 		.ascii	"float\000"
- 1066      7400
- 1067              	.LASF17:
- 1068 0018 64656C61 		.ascii	"delay\000"
- 1068      7900
- 1069              	.LASF1:
- 1070 001e 756E7369 		.ascii	"unsigned char\000"
- 1070      676E6564 
- 1070      20636861 
- 1070      7200
- 1071              	.LASF22:
- 1072 002c 6E756D5F 		.ascii	"num_correct\000"
- 1072      636F7272 
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccvlEja4.s 			page 24
+ 1077 0176 35       		.uleb128 0x35
+ 1078 0177 00       		.byte	0
+ 1079 0178 49       		.uleb128 0x49
+ 1080 0179 13       		.uleb128 0x13
+ 1081 017a 00       		.byte	0
+ 1082 017b 00       		.byte	0
+ 1083 017c 1A       		.uleb128 0x1a
+ 1084 017d 2E       		.uleb128 0x2e
+ 1085 017e 00       		.byte	0
+ 1086 017f 3F       		.uleb128 0x3f
+ 1087 0180 19       		.uleb128 0x19
+ 1088 0181 3C       		.uleb128 0x3c
+ 1089 0182 19       		.uleb128 0x19
+ 1090 0183 6E       		.uleb128 0x6e
+ 1091 0184 0E       		.uleb128 0xe
+ 1092 0185 03       		.uleb128 0x3
+ 1093 0186 0E       		.uleb128 0xe
+ 1094 0187 3A       		.uleb128 0x3a
+ 1095 0188 0B       		.uleb128 0xb
+ 1096 0189 3B       		.uleb128 0x3b
+ 1097 018a 0B       		.uleb128 0xb
+ 1098 018b 00       		.byte	0
+ 1099 018c 00       		.byte	0
+ 1100 018d 1B       		.uleb128 0x1b
+ 1101 018e 2E       		.uleb128 0x2e
+ 1102 018f 00       		.byte	0
+ 1103 0190 3F       		.uleb128 0x3f
+ 1104 0191 19       		.uleb128 0x19
+ 1105 0192 3C       		.uleb128 0x3c
+ 1106 0193 19       		.uleb128 0x19
+ 1107 0194 6E       		.uleb128 0x6e
+ 1108 0195 0E       		.uleb128 0xe
+ 1109 0196 03       		.uleb128 0x3
+ 1110 0197 0E       		.uleb128 0xe
+ 1111 0198 3A       		.uleb128 0x3a
+ 1112 0199 0B       		.uleb128 0xb
+ 1113 019a 3B       		.uleb128 0x3b
+ 1114 019b 05       		.uleb128 0x5
+ 1115 019c 00       		.byte	0
+ 1116 019d 00       		.byte	0
+ 1117 019e 00       		.byte	0
+ 1118              		.section	.debug_loc,"",%progbits
+ 1119              	.Ldebug_loc0:
+ 1120              	.LLST0:
+ 1121 0000 14000000 		.4byte	.LVL4
+ 1122 0004 18000000 		.4byte	.LVL5
+ 1123 0008 0200     		.2byte	0x2
+ 1124 000a 30       		.byte	0x30
+ 1125 000b 9F       		.byte	0x9f
+ 1126 000c 18000000 		.4byte	.LVL5
+ 1127 0010 28000000 		.4byte	.LVL9
+ 1128 0014 0100     		.2byte	0x1
+ 1129 0016 54       		.byte	0x54
+ 1130 0017 00000000 		.4byte	0
+ 1131 001b 00000000 		.4byte	0
+ 1132              	.LLST1:
+ 1133 001f 06000000 		.4byte	.LVL10
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc1FQUWL.s 			page 25
 
 
- 1072      65637400 
- 1073              	.LASF34:
- 1074 0038 494E5055 		.ascii	"INPUT_TIMER_Start\000"
- 1074      545F5449 
- 1074      4D45525F 
- 1074      53746172 
- 1074      7400
- 1075              	.LASF24:
- 1076 004a 7365715F 		.ascii	"seq_ctr\000"
- 1076      63747200 
- 1077              	.LASF3:
- 1078 0052 73686F72 		.ascii	"short unsigned int\000"
- 1078      7420756E 
- 1078      7369676E 
- 1078      65642069 
- 1078      6E7400
- 1079              	.LASF18:
- 1080 0065 706C6179 		.ascii	"play_start\000"
- 1080      5F737461 
- 1080      727400
- 1081              	.LASF19:
- 1082 0070 706C6179 		.ascii	"play_fail\000"
- 1082      5F666169 
- 1082      6C00
- 1083              	.LASF32:
- 1084 007a 4C45445F 		.ascii	"LED_PWM_Start\000"
- 1084      50574D5F 
- 1084      53746172 
- 1084      7400
- 1085              	.LASF10:
- 1086 0088 646F7562 		.ascii	"double\000"
- 1086      6C6500
- 1087              	.LASF35:
- 1088 008f 494E5055 		.ascii	"INPUT_TIMER_Stop\000"
- 1088      545F5449 
- 1088      4D45525F 
- 1088      53746F70 
- 1088      00
- 1089              	.LASF2:
- 1090 00a0 73686F72 		.ascii	"short int\000"
- 1090      7420696E 
- 1090      7400
- 1091              	.LASF16:
- 1092 00aa 636F6C6F 		.ascii	"color\000"
- 1092      7200
- 1093              	.LASF36:
- 1094 00b0 494E5055 		.ascii	"INPUT_TIMER_ISR_Start\000"
- 1094      545F5449 
- 1094      4D45525F 
- 1094      4953525F 
- 1094      53746172 
- 1095              	.LASF25:
- 1096 00c6 73696D6F 		.ascii	"simon_sequence\000"
- 1096      6E5F7365 
- 1096      7175656E 
- 1096      636500
- 1097              	.LASF41:
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccvlEja4.s 			page 25
+ 1134 0023 26000000 		.4byte	.LVL18
+ 1135 0027 0200     		.2byte	0x2
+ 1136 0029 30       		.byte	0x30
+ 1137 002a 9F       		.byte	0x9f
+ 1138 002b 38000000 		.4byte	.LVL21
+ 1139 002f 3C000000 		.4byte	.LVL23
+ 1140 0033 0100     		.2byte	0x1
+ 1141 0035 53       		.byte	0x53
+ 1142 0036 3E000000 		.4byte	.LVL24
+ 1143 003a 46000000 		.4byte	.LVL25
+ 1144 003e 0100     		.2byte	0x1
+ 1145 0040 53       		.byte	0x53
+ 1146 0041 00000000 		.4byte	0
+ 1147 0045 00000000 		.4byte	0
+ 1148              	.LLST2:
+ 1149 0049 06000000 		.4byte	.LVL10
+ 1150 004d 26000000 		.4byte	.LVL18
+ 1151 0051 0200     		.2byte	0x2
+ 1152 0053 30       		.byte	0x30
+ 1153 0054 9F       		.byte	0x9f
+ 1154 0055 32000000 		.4byte	.LVL20
+ 1155 0059 38000000 		.4byte	.LVL21
+ 1156 005d 0200     		.2byte	0x2
+ 1157 005f 30       		.byte	0x30
+ 1158 0060 9F       		.byte	0x9f
+ 1159 0061 46000000 		.4byte	.LVL25
+ 1160 0065 99000000 		.4byte	.LVL31-1
+ 1161 0069 0100     		.2byte	0x1
+ 1162 006b 52       		.byte	0x52
+ 1163 006c 00000000 		.4byte	0
+ 1164 0070 00000000 		.4byte	0
+ 1165              	.LLST3:
+ 1166 0074 06000000 		.4byte	.LVL10
+ 1167 0078 26000000 		.4byte	.LVL18
+ 1168 007c 0200     		.2byte	0x2
+ 1169 007e 30       		.byte	0x30
+ 1170 007f 9F       		.byte	0x9f
+ 1171 0080 32000000 		.4byte	.LVL20
+ 1172 0084 38000000 		.4byte	.LVL21
+ 1173 0088 0200     		.2byte	0x2
+ 1174 008a 30       		.byte	0x30
+ 1175 008b 9F       		.byte	0x9f
+ 1176 008c 38000000 		.4byte	.LVL21
+ 1177 0090 88000000 		.4byte	.LVL27
+ 1178 0094 0100     		.2byte	0x1
+ 1179 0096 56       		.byte	0x56
+ 1180 0097 8A000000 		.4byte	.LVL28
+ 1181 009b AC000000 		.4byte	.LFE39
+ 1182 009f 0100     		.2byte	0x1
+ 1183 00a1 56       		.byte	0x56
+ 1184 00a2 00000000 		.4byte	0
+ 1185 00a6 00000000 		.4byte	0
+ 1186              	.LLST4:
+ 1187 00aa 06000000 		.4byte	.LVL10
+ 1188 00ae 26000000 		.4byte	.LVL18
+ 1189 00b2 0200     		.2byte	0x2
+ 1190 00b4 30       		.byte	0x30
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc1FQUWL.s 			page 26
 
 
- 1098 00d5 75696E74 		.ascii	"uint32\000"
- 1098      333200
- 1099              	.LASF42:
- 1100 00dc 6D61696E 		.ascii	"main\000"
- 1100      00
- 1101              	.LASF23:
- 1102 00e1 6572726F 		.ascii	"errors\000"
- 1102      727300
- 1103              	.LASF8:
- 1104 00e8 756E7369 		.ascii	"unsigned int\000"
- 1104      676E6564 
- 1104      20696E74 
- 1104      00
- 1105              	.LASF7:
- 1106 00f5 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1106      206C6F6E 
- 1106      6720756E 
- 1106      7369676E 
- 1106      65642069 
- 1107              	.LASF5:
- 1108 010c 6C6F6E67 		.ascii	"long unsigned int\000"
- 1108      20756E73 
- 1108      69676E65 
- 1108      6420696E 
- 1108      7400
- 1109              	.LASF38:
- 1110 011e 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 1110      43313120 
- 1110      352E342E 
- 1110      31203230 
- 1110      31363036 
- 1111 0151 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
- 1111      20726576 
- 1111      6973696F 
- 1111      6E203233 
- 1111      37373135 
- 1112 0184 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 1112      66756E63 
- 1112      74696F6E 
- 1112      2D736563 
- 1112      74696F6E 
- 1113              	.LASF40:
- 1114 01ac 433A5C55 		.ascii	"C:\\Users\\tyork\\Documents\\PSoC Creator\\ECE381_S"
- 1114      73657273 
- 1114      5C74796F 
- 1114      726B5C44 
- 1114      6F63756D 
- 1115 01da 5032335F 		.ascii	"P23_Lab03_Simon_Clone\\Design01.cydsn\000"
- 1115      4C616230 
- 1115      335F5369 
- 1115      6D6F6E5F 
- 1115      436C6F6E 
- 1116              	.LASF13:
- 1117 01ff 73697A65 		.ascii	"sizetype\000"
- 1117      74797065 
- 1117      00
- 1118              	.LASF6:
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccvlEja4.s 			page 26
+ 1191 00b5 9F       		.byte	0x9f
+ 1192 00b6 32000000 		.4byte	.LVL20
+ 1193 00ba 38000000 		.4byte	.LVL21
+ 1194 00be 0200     		.2byte	0x2
+ 1195 00c0 31       		.byte	0x31
+ 1196 00c1 9F       		.byte	0x9f
+ 1197 00c2 38000000 		.4byte	.LVL21
+ 1198 00c6 AC000000 		.4byte	.LFE39
+ 1199 00ca 0100     		.2byte	0x1
+ 1200 00cc 55       		.byte	0x55
+ 1201 00cd 00000000 		.4byte	0
+ 1202 00d1 00000000 		.4byte	0
+ 1203              		.section	.debug_aranges,"",%progbits
+ 1204 0000 44000000 		.4byte	0x44
+ 1205 0004 0200     		.2byte	0x2
+ 1206 0006 00000000 		.4byte	.Ldebug_info0
+ 1207 000a 04       		.byte	0x4
+ 1208 000b 00       		.byte	0
+ 1209 000c 0000     		.2byte	0
+ 1210 000e 0000     		.2byte	0
+ 1211 0010 00000000 		.4byte	.LFB34
+ 1212 0014 04000000 		.4byte	.LFE34-.LFB34
+ 1213 0018 00000000 		.4byte	.LFB35
+ 1214 001c 02000000 		.4byte	.LFE35-.LFB35
+ 1215 0020 00000000 		.4byte	.LFB36
+ 1216 0024 30000000 		.4byte	.LFE36-.LFB36
+ 1217 0028 00000000 		.4byte	.LFB37
+ 1218 002c 02000000 		.4byte	.LFE37-.LFB37
+ 1219 0030 00000000 		.4byte	.LFB38
+ 1220 0034 02000000 		.4byte	.LFE38-.LFB38
+ 1221 0038 00000000 		.4byte	.LFB39
+ 1222 003c AC000000 		.4byte	.LFE39-.LFB39
+ 1223 0040 00000000 		.4byte	0
+ 1224 0044 00000000 		.4byte	0
+ 1225              		.section	.debug_ranges,"",%progbits
+ 1226              	.Ldebug_ranges0:
+ 1227 0000 00000000 		.4byte	.LFB34
+ 1228 0004 04000000 		.4byte	.LFE34
+ 1229 0008 00000000 		.4byte	.LFB35
+ 1230 000c 02000000 		.4byte	.LFE35
+ 1231 0010 00000000 		.4byte	.LFB36
+ 1232 0014 30000000 		.4byte	.LFE36
+ 1233 0018 00000000 		.4byte	.LFB37
+ 1234 001c 02000000 		.4byte	.LFE37
+ 1235 0020 00000000 		.4byte	.LFB38
+ 1236 0024 02000000 		.4byte	.LFE38
+ 1237 0028 00000000 		.4byte	.LFB39
+ 1238 002c AC000000 		.4byte	.LFE39
+ 1239 0030 00000000 		.4byte	0
+ 1240 0034 00000000 		.4byte	0
+ 1241              		.section	.debug_line,"",%progbits
+ 1242              	.Ldebug_line0:
+ 1243 0000 67010000 		.section	.debug_str,"MS",%progbits,1
+ 1243      02009900 
+ 1243      00000201 
+ 1243      FB0E0D00 
+ 1243      01010101 
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc1FQUWL.s 			page 27
 
 
- 1119 0208 6C6F6E67 		.ascii	"long long int\000"
- 1119      206C6F6E 
- 1119      6720696E 
- 1119      7400
- 1120              	.LASF39:
- 1121 0216 6D61696E 		.ascii	"main.c\000"
- 1121      2E6300
- 1122              	.LASF27:
- 1123 021d 74696D65 		.ascii	"timeout\000"
- 1123      6F757400 
- 1124              	.LASF20:
- 1125 0225 706C6179 		.ascii	"play_win\000"
- 1125      5F77696E 
- 1125      00
- 1126              	.LASF15:
- 1127 022e 706C6179 		.ascii	"play_color\000"
- 1127      5F636F6C 
- 1127      6F7200
- 1128              	.LASF30:
- 1129 0239 53504541 		.ascii	"SPEAKER_PWM_Start\000"
- 1129      4B45525F 
- 1129      50574D5F 
- 1129      53746172 
- 1129      7400
- 1130              	.LASF31:
- 1131 024b 53504541 		.ascii	"SPEAKER_PWM_Stop\000"
- 1131      4B45525F 
- 1131      50574D5F 
- 1131      53746F70 
- 1131      00
- 1132              	.LASF33:
- 1133 025c 4C45445F 		.ascii	"LED_PWM_Stop\000"
- 1133      50574D5F 
- 1133      53746F70 
- 1133      00
- 1134              	.LASF4:
- 1135 0269 6C6F6E67 		.ascii	"long int\000"
- 1135      20696E74 
- 1135      00
- 1136              	.LASF11:
- 1137 0272 63686172 		.ascii	"char\000"
- 1137      00
- 1138              	.LASF21:
- 1139 0277 62757474 		.ascii	"button\000"
- 1139      6F6E00
- 1140              	.LASF12:
- 1141 027e 6C6F6E67 		.ascii	"long double\000"
- 1141      20646F75 
- 1141      626C6500 
- 1142              	.LASF0:
- 1143 028a 7369676E 		.ascii	"signed char\000"
- 1143      65642063 
- 1143      68617200 
- 1144              	.LASF26:
- 1145 0296 524F554E 		.ascii	"ROUNDS\000"
- 1145      445300
- 1146              	.LASF14:
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccvlEja4.s 			page 27
+ 1244              	.LASF27:
+ 1245 0000 70726573 		.ascii	"pressed\000"
+ 1245      73656400 
+ 1246              	.LASF31:
+ 1247 0008 53504541 		.ascii	"SPEAKER_PWM_WriteCompare\000"
+ 1247      4B45525F 
+ 1247      50574D5F 
+ 1247      57726974 
+ 1247      65436F6D 
+ 1248              	.LASF33:
+ 1249 0021 5052535F 		.ascii	"PRS_Start\000"
+ 1249      53746172 
+ 1249      7400
+ 1250              	.LASF9:
+ 1251 002b 666C6F61 		.ascii	"float\000"
+ 1251      7400
+ 1252              	.LASF17:
+ 1253 0031 64656C61 		.ascii	"delay\000"
+ 1253      7900
+ 1254              	.LASF30:
+ 1255 0037 53504541 		.ascii	"SPEAKER_PWM_WritePeriod\000"
+ 1255      4B45525F 
+ 1255      50574D5F 
+ 1255      57726974 
+ 1255      65506572 
+ 1256              	.LASF21:
+ 1257 004f 6E756D5F 		.ascii	"num_correct\000"
+ 1257      636F7272 
+ 1257      65637400 
+ 1258              	.LASF36:
+ 1259 005b 494E5055 		.ascii	"INPUT_TIMER_Start\000"
+ 1259      545F5449 
+ 1259      4D45525F 
+ 1259      53746172 
+ 1259      7400
+ 1260              	.LASF23:
+ 1261 006d 7365715F 		.ascii	"seq_ctr\000"
+ 1261      63747200 
+ 1262              	.LASF3:
+ 1263 0075 73686F72 		.ascii	"short unsigned int\000"
+ 1263      7420756E 
+ 1263      7369676E 
+ 1263      65642069 
+ 1263      6E7400
+ 1264              	.LASF43:
+ 1265 0088 706C6179 		.ascii	"play_start\000"
+ 1265      5F737461 
+ 1265      727400
+ 1266              	.LASF19:
+ 1267 0093 706C6179 		.ascii	"play_fail\000"
+ 1267      5F666169 
+ 1267      6C00
+ 1268              	.LASF34:
+ 1269 009d 4C45445F 		.ascii	"LED_PWM_Start\000"
+ 1269      50574D5F 
+ 1269      53746172 
+ 1269      7400
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc1FQUWL.s 			page 28
 
 
- 1147 029d 706F6C6C 		.ascii	"poll_button\000"
- 1147      5F627574 
- 1147      746F6E00 
- 1148              	.LASF37:
- 1149 02a9 43794465 		.ascii	"CyDelay\000"
- 1149      6C617900 
- 1150              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 1270              	.LASF1:
+ 1271 00ab 756E7369 		.ascii	"unsigned char\000"
+ 1271      676E6564 
+ 1271      20636861 
+ 1271      7200
+ 1272              	.LASF10:
+ 1273 00b9 646F7562 		.ascii	"double\000"
+ 1273      6C6500
+ 1274              	.LASF37:
+ 1275 00c0 494E5055 		.ascii	"INPUT_TIMER_Stop\000"
+ 1275      545F5449 
+ 1275      4D45525F 
+ 1275      53746F70 
+ 1275      00
+ 1276              	.LASF2:
+ 1277 00d1 73686F72 		.ascii	"short int\000"
+ 1277      7420696E 
+ 1277      7400
+ 1278              	.LASF16:
+ 1279 00db 636F6C6F 		.ascii	"color\000"
+ 1279      7200
+ 1280              	.LASF38:
+ 1281 00e1 494E5055 		.ascii	"INPUT_TIMER_ISR_Start\000"
+ 1281      545F5449 
+ 1281      4D45525F 
+ 1281      4953525F 
+ 1281      53746172 
+ 1282              	.LASF24:
+ 1283 00f7 73696D6F 		.ascii	"simon_sequence\000"
+ 1283      6E5F7365 
+ 1283      7175656E 
+ 1283      636500
+ 1284              	.LASF42:
+ 1285 0106 75696E74 		.ascii	"uint32\000"
+ 1285      333200
+ 1286              	.LASF44:
+ 1287 010d 6D61696E 		.ascii	"main\000"
+ 1287      00
+ 1288              	.LASF22:
+ 1289 0112 6572726F 		.ascii	"errors\000"
+ 1289      727300
+ 1290              	.LASF8:
+ 1291 0119 756E7369 		.ascii	"unsigned int\000"
+ 1291      676E6564 
+ 1291      20696E74 
+ 1291      00
+ 1292              	.LASF7:
+ 1293 0126 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1293      206C6F6E 
+ 1293      6720756E 
+ 1293      7369676E 
+ 1293      65642069 
+ 1294              	.LASF5:
+ 1295 013d 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1295      20756E73 
+ 1295      69676E65 
+ 1295      6420696E 
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc1FQUWL.s 			page 29
+
+
+ 1295      7400
+ 1296              	.LASF39:
+ 1297 014f 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1297      43313120 
+ 1297      352E342E 
+ 1297      31203230 
+ 1297      31363036 
+ 1298 0182 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 1298      20726576 
+ 1298      6973696F 
+ 1298      6E203233 
+ 1298      37373135 
+ 1299 01b5 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1299      66756E63 
+ 1299      74696F6E 
+ 1299      2D736563 
+ 1299      74696F6E 
+ 1300              	.LASF13:
+ 1301 01dd 73697A65 		.ascii	"sizetype\000"
+ 1301      74797065 
+ 1301      00
+ 1302              	.LASF6:
+ 1303 01e6 6C6F6E67 		.ascii	"long long int\000"
+ 1303      206C6F6E 
+ 1303      6720696E 
+ 1303      7400
+ 1304              	.LASF40:
+ 1305 01f4 6D61696E 		.ascii	"main.c\000"
+ 1305      2E6300
+ 1306              	.LASF26:
+ 1307 01fb 74696D65 		.ascii	"timeout\000"
+ 1307      6F757400 
+ 1308              	.LASF20:
+ 1309 0203 706C6179 		.ascii	"play_win\000"
+ 1309      5F77696E 
+ 1309      00
+ 1310              	.LASF15:
+ 1311 020c 706C6179 		.ascii	"play_color\000"
+ 1311      5F636F6C 
+ 1311      6F7200
+ 1312              	.LASF41:
+ 1313 0217 433A5C55 		.ascii	"C:\\Users\\Hello Kitty\\Desktop\\MicrocontrollersLa"
+ 1313      73657273 
+ 1313      5C48656C 
+ 1313      6C6F204B 
+ 1313      69747479 
+ 1314 0246 625C4C61 		.ascii	"b\\Lab 3 - Simon Game\\Project\\Design01.cydsn\000"
+ 1314      62203320 
+ 1314      2D205369 
+ 1314      6D6F6E20 
+ 1314      47616D65 
+ 1315              	.LASF29:
+ 1316 0272 53504541 		.ascii	"SPEAKER_PWM_Start\000"
+ 1316      4B45525F 
+ 1316      50574D5F 
+ 1316      53746172 
+ 1316      7400
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc1FQUWL.s 			page 30
+
+
+ 1317              	.LASF32:
+ 1318 0284 53504541 		.ascii	"SPEAKER_PWM_Stop\000"
+ 1318      4B45525F 
+ 1318      50574D5F 
+ 1318      53746F70 
+ 1318      00
+ 1319              	.LASF35:
+ 1320 0295 4C45445F 		.ascii	"LED_PWM_Stop\000"
+ 1320      50574D5F 
+ 1320      53746F70 
+ 1320      00
+ 1321              	.LASF4:
+ 1322 02a2 6C6F6E67 		.ascii	"long int\000"
+ 1322      20696E74 
+ 1322      00
+ 1323              	.LASF11:
+ 1324 02ab 63686172 		.ascii	"char\000"
+ 1324      00
+ 1325              	.LASF18:
+ 1326 02b0 62757474 		.ascii	"button\000"
+ 1326      6F6E00
+ 1327              	.LASF12:
+ 1328 02b7 6C6F6E67 		.ascii	"long double\000"
+ 1328      20646F75 
+ 1328      626C6500 
+ 1329              	.LASF0:
+ 1330 02c3 7369676E 		.ascii	"signed char\000"
+ 1330      65642063 
+ 1330      68617200 
+ 1331              	.LASF25:
+ 1332 02cf 524F554E 		.ascii	"ROUNDS\000"
+ 1332      445300
+ 1333              	.LASF14:
+ 1334 02d6 706F6C6C 		.ascii	"poll_button\000"
+ 1334      5F627574 
+ 1334      746F6E00 
+ 1335              	.LASF28:
+ 1336 02e2 43794465 		.ascii	"CyDelay\000"
+ 1336      6C617900 
+ 1337              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
