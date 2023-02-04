@@ -47,6 +47,7 @@ void drawMovableBar(){
     // Draws bar based on encoder position, same as last
     LCD_DrawHorizontalBG(0,0,16,encoderPos);
 }
+
 int main(void)
 {
 
