@@ -25,6 +25,10 @@ int poll_button()
     
     // XXX: Polling loop for button goes here
     
+    while(BTN_Read() == 0){
+    }
+    button = 1;
+    
     return button;
 }
 
@@ -51,6 +55,35 @@ int poll_button()
 
 void play_color(int color, int dc, uint32 delay)
 {
+    int period = 0;
+ 
+    switch(color){
+    case 0:
+        period = 3225;
+        break;
+    case 1:
+        period = 3174;
+        break;
+    case 2:
+        period = 4784;
+        break;
+    case 3:
+        period = 3968;
+        break;
+     
+    
+    
+    }
+    
+    SPEAKER_PWM_WritePeriod(period);
+    SPEAKER_PWM_WriteCompare((int) (period/2));
+    LED_PWM_WritePeriod(1000);
+    LED_PWM_WriteCompare(dc * 10);
+    LED_PWM_Start();
+    SPEAKER_PWM_Start();
+    LED_SEL_Write(color);
+    CyDelay(delay);
+    SPEAKER_PWM_Stop(); 
     
 }
 
@@ -59,14 +92,48 @@ void play_color(int color, int dc, uint32 delay)
 // then turn them off for 500ms, then repeat 2 more times
 void play_start()
 {
-    SPEAKER_PWM_Start();
+   
     // 50% duty cycle, 600 Hz
-    SPEAKER_PWM_WritePeriod(1000);
-    SPEAKER_PWM_WriteCompare(601);
+    
+    /*
+    How to calculate Hz
+    Take clock rate (1MHz) and divide by frequency. (in microsec) - WritePeriod
+    Duty cycle : multiply %duty cycle to the period - WriteCompare
+    Period = (1000000/600) + 1
+    Compare = .5 * Period
+        
+    
+    
+    */
+    
+    SPEAKER_PWM_WritePeriod(1667);
+    SPEAKER_PWM_WriteCompare(833);
+    LED_PWM_WritePeriod(1000);
+    LED_PWM_WriteCompare(999);
     for (int i = 0; i < 3; i++){
-         CyDelay(100);
+        CyDelay(500);
+        SPEAKER_PWM_Start();
+        LED_PWM_Start();
+        for(int i = 0; i < 125; i++){
+            LED_SEL_Write(0);
+            CyDelay(1);
+            LED_SEL_Write(1);
+            CyDelay(1);
+            LED_SEL_Write(2);
+            CyDelay(1);
+            LED_SEL_Write(3);
+            CyDelay(1);
+        }
+        
+        
+        
+       // CyDelay(500);
+        SPEAKER_PWM_Stop();
+        LED_PWM_Stop();
+        
+        
     }
-    //SPEAKER_PWM_Stop();
+    SPEAKER_PWM_Stop();
 }
 
 // This should play the fail sequence, which is to turn on
@@ -97,6 +164,7 @@ int main(void)
     /* Variables */
     int ix = 0, num_correct = 0, errors = 0, seq_ctr = 0;
     int simon_sequence[ROUNDS];
+    
 
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
     PRS_Start();
@@ -107,6 +175,7 @@ int main(void)
     INPUT_TIMER_Start();
     INPUT_TIMER_Stop();
     INPUT_TIMER_ISR_Start();
+    
     for(;;)
     {
         /* Place your application code here. */
@@ -117,9 +186,16 @@ int main(void)
         // Play the start sequence
         play_start();
         
-        // XXX: Generate random sequnce of 20 rounds. Store it
+        // Generate random sequnce of 20 rounds. Store it
         // in simon_sequence
         
+        
+        for(int i = 0; i < ROUNDS; i++){
+            simon_sequence[i] = PRS_Read() % 4;
+            
+        }
+        
+       
         
         // Zero the sequence counter. We use this variable to keep
         // track of how far along we are in the game        
@@ -143,11 +219,11 @@ int main(void)
             // correct buttons pressed            
             num_correct = 0;
             
-            // XXX: Playback current sequence. The LED should get
+            // Playback current sequence. The LED should get
             // progressively dimmer for each color in the sequence
             for (ix = 0; ix < seq_ctr; ix++)
             {
-                
+                play_color(simon_sequence[ix], (100/ROUNDS)*(ROUNDS - seq_ctr + 1), 420); 
             }
             
             // Since seq_ctr keeps track of the current number we have
