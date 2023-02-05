@@ -27,7 +27,9 @@
 *  Place your includes, defines and code here 
 ********************************************************************************/
 /* `#START INPUT_TIMER_ISR_intc` */
+#include "INPUT_TIMER.h"
 
+extern volatile int timeout;
 /* `#END` */
 
 extern cyisraddress CyRamVectors[CYINT_IRQ_BASE + CY_NUM_INTERRUPTS];
@@ -164,7 +166,10 @@ CY_ISR(INPUT_TIMER_ISR_Interrupt)
 
     /*  Place your Interrupt code here. */
     /* `#START INPUT_TIMER_ISR_Interrupt` */
-
+INPUT_TIMER_ClearInterrupt(INPUT_TIMER_TC_INTERRUPT_MASK);
+timeout = 1;
+    
+    
     /* `#END` */
 }
 

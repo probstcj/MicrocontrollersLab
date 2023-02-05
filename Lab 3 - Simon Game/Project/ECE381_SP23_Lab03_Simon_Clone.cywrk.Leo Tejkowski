@@ -35,6 +35,7 @@
 <v>ECE381_SP23_Lab03_Simon_Clone\Design01\Generated_Source\PSoC4</v>
 <v>ECE381_SP23_Lab03_Simon_Clone\Design01\Generated_Source\PSoC4\BTN</v>
 <v>ECE381_SP23_Lab03_Simon_Clone\Design01\Generated_Source\PSoC4\INPUT_TIMER</v>
+<v>ECE381_SP23_Lab03_Simon_Clone\Design01\Generated_Source\PSoC4\INPUT_TIMER_ISR</v>
 <v>ECE381_SP23_Lab03_Simon_Clone\Design01\Generated_Source\PSoC4\SPEAKER_PWM</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
@@ -72,6 +73,8 @@
 <v>ECE381_SP23_Lab03_Simon_Clone\Design01\Generated_Source\PSoC4\INPUT_TIMER\INPUT_TIMER.h</v>
 <v>ECE381_SP23_Lab03_Simon_Clone\Design01\Generated_Source\PSoC4\INPUT_TIMER\INPUT_TIMER_PM.c</v>
 <v>ECE381_SP23_Lab03_Simon_Clone\Design01\Generated_Source\PSoC4\INPUT_TIMER_ISR</v>
+<v>ECE381_SP23_Lab03_Simon_Clone\Design01\Generated_Source\PSoC4\INPUT_TIMER_ISR\INPUT_TIMER_ISR.c</v>
+<v>ECE381_SP23_Lab03_Simon_Clone\Design01\Generated_Source\PSoC4\INPUT_TIMER_ISR\INPUT_TIMER_ISR.h</v>
 <v>ECE381_SP23_Lab03_Simon_Clone\Design01\Generated_Source\PSoC4\LED_PWM</v>
 <v>ECE381_SP23_Lab03_Simon_Clone\Design01\Generated_Source\PSoC4\LED_SEL</v>
 <v>ECE381_SP23_Lab03_Simon_Clone\Design01\Generated_Source\PSoC4\PRS</v>
@@ -82,12 +85,6 @@
 <v>ECE381_SP23_Lab03_Simon_Clone\Design01\Generated_Source\PSoC4\SPEAKER_PWM\SPEAKER_PWM.c</v>
 <v>ECE381_SP23_Lab03_Simon_Clone\Design01\Generated_Source\PSoC4\SPEAKER_PWM\SPEAKER_PWM.h</v>
 <v>ECE381_SP23_Lab03_Simon_Clone\Design01\Generated_Source\PSoC4\SPEAKER_PWM\SPEAKER_PWM_PM.c</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\Generated_Source\PSoC4\TIMER_CLK</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\Generated_Source\PSoC4\Y_LED</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\Generated_Source\PSoC4\cycodeshareexport.ld</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\Generated_Source\PSoC4\cycodeshareimport.ld</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\Generated_Source\PSoC4\cycodeshareimport.scat</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\Generated_Source\PSoC4\cydevice_trm.h</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -159,53 +156,6 @@
 <VisibleNodeIds>
 <v>ECE381_SP23_Lab03_Simon_Clone</v>
 <v>ECE381_SP23_Lab03_Simon_Clone\Design01</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\B_LED.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\B_LED_PM.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\BTN.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\BTN_PM.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\Cm0Start.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\CyDMA.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\CyLFClk.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\G_LED.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\G_LED_PM.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\INPUT_TIMER.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\INPUT_TIMER_ISR.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\INPUT_TIMER_PM.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\LED_PWM.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\LED_PWM_PM.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\LED_SEL.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\LED_SEL_PM.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\main.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\PRS.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\PRS_PM.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\PWM_CLK.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\R_LED.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\R_LED_PM.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\SPEAKER.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\SPEAKER_PM.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\SPEAKER_PWM.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\SPEAKER_PWM_PM.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\TIMER_CLK.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\Y_LED.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\Y_LED_PM.lst</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Design01.elf</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Design01.hex</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CortexM0\ARM_GCC_541\Debug\Design01.map</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\Design01.gpdsc</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\Design01.rpt</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\Design01_timing.html</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -263,7 +213,19 @@
 </userData>
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
-<OpenDocs />
+<OpenDocs>
+<name v=".\Design01.cydsn\main.c" />
+<name v=".\Design01.cydsn\Generated_Source\PSoC4\SPEAKER_PWM.c" />
+<name v=".\Design01.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\Design01.cydsn\Generated_Source\PSoC4\INPUT_TIMER.c" />
+</OpenDocs>
+<OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
+
+  Actipro Docking/MDI for WinForms
+  Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
+  http://www.actiprosoftware.com
+
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1174, 463" SelectedTabbedMdiWindow="5f4d21d9-00d4-47fc-9441-48cb358c7e81"><DocumentWindow Key="C:\Users\Leo Tejkowski\Desktop\ece381\Lab 3 - Simon Game\Project\Design01.cydsn\main.c" Guid="5f4d21d9-00d4-47fc-9441-48cb358c7e81" /><DocumentWindow Key="C:\Users\Leo Tejkowski\Desktop\ece381\Lab 3 - Simon Game\Project\Design01.cydsn\Generated_Source\PSoC4\SPEAKER_PWM.c" Guid="4e98d78c-5026-47c5-99f9-f61161b4b395" /><DocumentWindow Key="C:\Users\Leo Tejkowski\Desktop\ece381\Lab 3 - Simon Game\Project\Design01.cydsn\TopDesign\TopDesign.cysch" Guid="e0583f0a-9fb9-45ab-8c77-f37222090658" /><DocumentWindow Key="C:\Users\Leo Tejkowski\Desktop\ece381\Lab 3 - Simon Game\Project\Design01.cydsn\Generated_Source\PSoC4\INPUT_TIMER.c" Guid="b02813cb-b8f8-4f96-b115-15831736d351" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="e056d728-48d9-4b86-a8a4-ff12946a9491" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
