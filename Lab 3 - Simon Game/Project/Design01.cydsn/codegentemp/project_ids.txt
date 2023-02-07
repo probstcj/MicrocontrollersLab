@@ -1,6 +1,6 @@
-C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 3 - Simon Game\Project\Design01.cydsn\Design01.cyprj|c445009b-cf72-4a31-9b09-7b4ba12e822f
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|5ef8fa32-47b7-4620-9182-92a99a6bc780
-C:\Users\Hello Kitty\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|0de033dd-f113-4ab2-8ecb-86ba85dc5df9
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|8182b5af-b7f6-49b6-b42e-72fdecbba729
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|32374549-c82f-450c-bdb8-9fc73746f430
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|bd320f00-ae2a-4d13-9ffa-30c1cb80208a
+C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 3 - Simon Game\Project\Design01.cydsn\Design01.cyprj|42ea1ad5-0e4e-4efe-b9a5-52f6f3021aac
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|b589ccdb-bc0f-4ff5-bd76-0b3399324636
+C:\Users\Hello Kitty\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|9b34e864-afe0-4178-ac1e-f4216d154fc0
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|25eff902-8e2b-4bd2-8453-f701eee479bb
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|5334e230-b532-4a03-919f-9ec33c3e5df2
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|f3b9d854-eb94-4100-ae7d-8678731c6354

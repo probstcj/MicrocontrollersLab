@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 1
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 1
 
 
    1              		.syntax unified
@@ -57,2000 +57,2026 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 1
   27:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *  Place your includes, defines and code here 
   28:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** ********************************************************************************/
   29:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** /* `#START INPUT_TIMER_ISR_intc` */
-  30:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 2
+  30:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** #include "INPUT_TIMER.h"
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 2
 
 
-  31:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** /* `#END` */
-  32:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
-  33:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** extern cyisraddress CyRamVectors[CYINT_IRQ_BASE + CY_NUM_INTERRUPTS];
+  31:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+  32:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** extern volatile int timeout;
+  33:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** /* `#END` */
   34:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
-  35:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** /* Declared in startup, used to set unused interrupts to. */
-  36:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** CY_ISR_PROTO(IntDefaultHandler);
-  37:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
-  38:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
-  39:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** /*******************************************************************************
-  40:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Function Name: INPUT_TIMER_ISR_Start
-  41:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** ********************************************************************************
-  42:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
-  43:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Summary:
-  44:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *  Set up the interrupt and enable it. This function disables the interrupt, 
-  45:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *  sets the default interrupt vector, sets the priority from the value in the
-  46:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *  Design Wide Resources Interrupt Editor, then enables the interrupt to the 
-  47:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *  interrupt controller.
-  48:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
-  49:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Parameters:  
-  50:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
-  51:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
-  52:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Return:
-  53:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
-  54:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
-  55:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *******************************************************************************/
-  56:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** void INPUT_TIMER_ISR_Start(void)
-  57:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** {
-  58:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* For all we know the interrupt is active. */
-  59:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     INPUT_TIMER_ISR_Disable();
-  60:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
-  61:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* Set the ISR to point to the INPUT_TIMER_ISR Interrupt. */
-  62:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     INPUT_TIMER_ISR_SetVector(&INPUT_TIMER_ISR_Interrupt);
-  63:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
-  64:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* Set the priority. */
-  65:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     INPUT_TIMER_ISR_SetPriority((uint8)INPUT_TIMER_ISR_INTC_PRIOR_NUMBER);
-  66:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
-  67:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* Enable it. */
-  68:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     INPUT_TIMER_ISR_Enable();
-  69:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** }
-  70:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
-  71:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
-  72:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** /*******************************************************************************
-  73:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Function Name: INPUT_TIMER_ISR_StartEx
-  74:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** ********************************************************************************
-  75:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
-  76:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Summary:
-  77:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *  Sets up the interrupt and enables it. This function disables the interrupt,
-  78:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *  sets the interrupt vector based on the address passed in, sets the priority 
-  79:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *  from the value in the Design Wide Resources Interrupt Editor, then enables 
-  80:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *  the interrupt to the interrupt controller.
-  81:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *  
-  82:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *  When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
-  83:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *  used to provide consistent definition across compilers:
-  84:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *  
-  85:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *  Function definition example:
-  86:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   CY_ISR(MyISR)
-  87:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   {
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 3
+  35:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** extern cyisraddress CyRamVectors[CYINT_IRQ_BASE + CY_NUM_INTERRUPTS];
+  36:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+  37:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** /* Declared in startup, used to set unused interrupts to. */
+  38:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** CY_ISR_PROTO(IntDefaultHandler);
+  39:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+  40:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+  41:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** /*******************************************************************************
+  42:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Function Name: INPUT_TIMER_ISR_Start
+  43:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** ********************************************************************************
+  44:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+  45:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Summary:
+  46:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *  Set up the interrupt and enable it. This function disables the interrupt, 
+  47:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *  sets the default interrupt vector, sets the priority from the value in the
+  48:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *  Design Wide Resources Interrupt Editor, then enables the interrupt to the 
+  49:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *  interrupt controller.
+  50:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+  51:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Parameters:  
+  52:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
+  53:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+  54:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Return:
+  55:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
+  56:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+  57:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *******************************************************************************/
+  58:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** void INPUT_TIMER_ISR_Start(void)
+  59:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** {
+  60:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* For all we know the interrupt is active. */
+  61:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     INPUT_TIMER_ISR_Disable();
+  62:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+  63:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* Set the ISR to point to the INPUT_TIMER_ISR Interrupt. */
+  64:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     INPUT_TIMER_ISR_SetVector(&INPUT_TIMER_ISR_Interrupt);
+  65:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+  66:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* Set the priority. */
+  67:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     INPUT_TIMER_ISR_SetPriority((uint8)INPUT_TIMER_ISR_INTC_PRIOR_NUMBER);
+  68:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+  69:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* Enable it. */
+  70:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     INPUT_TIMER_ISR_Enable();
+  71:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** }
+  72:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+  73:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+  74:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** /*******************************************************************************
+  75:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Function Name: INPUT_TIMER_ISR_StartEx
+  76:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** ********************************************************************************
+  77:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+  78:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Summary:
+  79:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *  Sets up the interrupt and enables it. This function disables the interrupt,
+  80:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *  sets the interrupt vector based on the address passed in, sets the priority 
+  81:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *  from the value in the Design Wide Resources Interrupt Editor, then enables 
+  82:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *  the interrupt to the interrupt controller.
+  83:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *  
+  84:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *  When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
+  85:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *  used to provide consistent definition across compilers:
+  86:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *  
+  87:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *  Function definition example:
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 3
 
 
-  88:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   }
-  89:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Function prototype example:
-  90:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   CY_ISR_PROTO(MyISR);
-  91:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
-  92:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Parameters:  
-  93:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   address: Address of the ISR to set in the interrupt vector table.
-  94:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
-  95:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Return:
-  96:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
-  97:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
-  98:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *******************************************************************************/
-  99:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** void INPUT_TIMER_ISR_StartEx(cyisraddress address)
- 100:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** {
- 101:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* For all we know the interrupt is active. */
- 102:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     INPUT_TIMER_ISR_Disable();
- 103:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 104:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* Set the ISR to point to the INPUT_TIMER_ISR Interrupt. */
- 105:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     INPUT_TIMER_ISR_SetVector(address);
- 106:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 107:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* Set the priority. */
- 108:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     INPUT_TIMER_ISR_SetPriority((uint8)INPUT_TIMER_ISR_INTC_PRIOR_NUMBER);
- 109:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 110:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* Enable it. */
- 111:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     INPUT_TIMER_ISR_Enable();
- 112:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** }
- 113:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 114:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 115:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** /*******************************************************************************
- 116:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Function Name: INPUT_TIMER_ISR_Stop
- 117:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** ********************************************************************************
- 118:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 119:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Summary:
- 120:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Disables and removes the interrupt.
- 121:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 122:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Parameters:  
- 123:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
- 124:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 125:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Return:
- 126:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
- 127:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 128:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *******************************************************************************/
- 129:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** void INPUT_TIMER_ISR_Stop(void)
- 130:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** {
- 131:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* Disable this interrupt. */
- 132:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     INPUT_TIMER_ISR_Disable();
- 133:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 134:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* Set the ISR to point to the passive one. */
- 135:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     INPUT_TIMER_ISR_SetVector(&IntDefaultHandler);
- 136:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** }
- 137:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 138:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 139:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** /*******************************************************************************
- 140:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Function Name: INPUT_TIMER_ISR_Interrupt
- 141:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** ********************************************************************************
- 142:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 143:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Summary:
- 144:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   The default Interrupt Service Routine for INPUT_TIMER_ISR.
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 4
+  88:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   CY_ISR(MyISR)
+  89:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   {
+  90:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   }
+  91:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Function prototype example:
+  92:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   CY_ISR_PROTO(MyISR);
+  93:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+  94:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Parameters:  
+  95:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   address: Address of the ISR to set in the interrupt vector table.
+  96:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+  97:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Return:
+  98:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
+  99:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 100:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *******************************************************************************/
+ 101:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** void INPUT_TIMER_ISR_StartEx(cyisraddress address)
+ 102:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** {
+ 103:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* For all we know the interrupt is active. */
+ 104:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     INPUT_TIMER_ISR_Disable();
+ 105:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 106:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* Set the ISR to point to the INPUT_TIMER_ISR Interrupt. */
+ 107:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     INPUT_TIMER_ISR_SetVector(address);
+ 108:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 109:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* Set the priority. */
+ 110:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     INPUT_TIMER_ISR_SetPriority((uint8)INPUT_TIMER_ISR_INTC_PRIOR_NUMBER);
+ 111:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 112:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* Enable it. */
+ 113:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     INPUT_TIMER_ISR_Enable();
+ 114:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** }
+ 115:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 116:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 117:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** /*******************************************************************************
+ 118:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Function Name: INPUT_TIMER_ISR_Stop
+ 119:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** ********************************************************************************
+ 120:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 121:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Summary:
+ 122:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Disables and removes the interrupt.
+ 123:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 124:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Parameters:  
+ 125:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
+ 126:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 127:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Return:
+ 128:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
+ 129:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 130:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *******************************************************************************/
+ 131:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** void INPUT_TIMER_ISR_Stop(void)
+ 132:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** {
+ 133:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* Disable this interrupt. */
+ 134:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     INPUT_TIMER_ISR_Disable();
+ 135:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 136:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* Set the ISR to point to the passive one. */
+ 137:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     INPUT_TIMER_ISR_SetVector(&IntDefaultHandler);
+ 138:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** }
+ 139:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 140:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 141:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** /*******************************************************************************
+ 142:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Function Name: INPUT_TIMER_ISR_Interrupt
+ 143:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** ********************************************************************************
+ 144:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 4
 
 
- 145:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 146:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Add custom code between the START and END comments to keep the next version
- 147:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   of this file from over-writing your code.
- 148:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 149:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Note You may use either the default ISR by using this API, or you may define
- 150:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   your own separate ISR through ISR_StartEx().
- 151:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 152:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Parameters:  
- 153:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
- 154:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 155:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Return:
- 156:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
- 157:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 158:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *******************************************************************************/
- 159:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** CY_ISR(INPUT_TIMER_ISR_Interrupt)
- 160:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** {
-  28              		.loc 1 160 0
+ 145:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Summary:
+ 146:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   The default Interrupt Service Routine for INPUT_TIMER_ISR.
+ 147:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 148:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Add custom code between the START and END comments to keep the next version
+ 149:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   of this file from over-writing your code.
+ 150:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 151:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Note You may use either the default ISR by using this API, or you may define
+ 152:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   your own separate ISR through ISR_StartEx().
+ 153:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 154:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Parameters:  
+ 155:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
+ 156:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 157:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Return:
+ 158:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
+ 159:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 160:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *******************************************************************************/
+ 161:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** CY_ISR(INPUT_TIMER_ISR_Interrupt)
+ 162:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** {
+  28              		.loc 1 162 0
   29              		.cfi_startproc
   30              		@ args = 0, pretend = 0, frame = 0
   31              		@ frame_needed = 0, uses_anonymous_args = 0
-  32              		@ link register save eliminated.
- 161:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     #ifdef INPUT_TIMER_ISR_INTERRUPT_INTERRUPT_CALLBACK
- 162:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****         INPUT_TIMER_ISR_Interrupt_InterruptCallback();
- 163:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     #endif /* INPUT_TIMER_ISR_INTERRUPT_INTERRUPT_CALLBACK */ 
- 164:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 165:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /*  Place your Interrupt code here. */
- 166:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* `#START INPUT_TIMER_ISR_Interrupt` */
- 167:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 168:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* `#END` */
- 169:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** }
-  33              		.loc 1 169 0
-  34              		@ sp needed
-  35 0000 7047     		bx	lr
-  36              		.cfi_endproc
-  37              	.LFE4:
-  38              		.size	INPUT_TIMER_ISR_Interrupt, .-INPUT_TIMER_ISR_Interrupt
-  39 0002 C046     		.section	.text.INPUT_TIMER_ISR_SetVector,"ax",%progbits
-  40              		.align	2
-  41              		.global	INPUT_TIMER_ISR_SetVector
-  42              		.code	16
-  43              		.thumb_func
-  44              		.type	INPUT_TIMER_ISR_SetVector, %function
-  45              	INPUT_TIMER_ISR_SetVector:
-  46              	.LFB5:
- 170:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 171:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 172:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** /*******************************************************************************
- 173:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Function Name: INPUT_TIMER_ISR_SetVector
- 174:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** ********************************************************************************
- 175:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 176:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Summary:
- 177:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Change the ISR vector for the Interrupt. Note calling INPUT_TIMER_ISR_Start
- 178:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   will override any effect this method would have had. To set the vector 
- 179:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   before the component has been started use INPUT_TIMER_ISR_StartEx instead.
- 180:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * 
- 181:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
- 182:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   used to provide consistent definition across compilers:
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 5
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+ 163:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     #ifdef INPUT_TIMER_ISR_INTERRUPT_INTERRUPT_CALLBACK
+ 164:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****         INPUT_TIMER_ISR_Interrupt_InterruptCallback();
+ 165:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     #endif /* INPUT_TIMER_ISR_INTERRUPT_INTERRUPT_CALLBACK */ 
+ 166:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 167:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /*  Place your Interrupt code here. */
+ 168:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* `#START INPUT_TIMER_ISR_Interrupt` */
+ 169:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** INPUT_TIMER_ClearInterrupt(INPUT_TIMER_TC_INTERRUPT_MASK);
+  36              		.loc 1 169 0
+  37 0002 0120     		movs	r0, #1
+  38 0004 FFF7FEFF 		bl	INPUT_TIMER_ClearInterrupt
+  39              	.LVL0:
+ 170:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** timeout = 1;
+  40              		.loc 1 170 0
+  41 0008 0122     		movs	r2, #1
+  42 000a 014B     		ldr	r3, .L2
+  43 000c 1A60     		str	r2, [r3]
+ 171:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     
+ 172:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     
+ 173:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* `#END` */
+ 174:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** }
+  44              		.loc 1 174 0
+  45              		@ sp needed
+  46 000e 10BD     		pop	{r4, pc}
+  47              	.L3:
+  48              		.align	2
+  49              	.L2:
+  50 0010 00000000 		.word	timeout
+  51              		.cfi_endproc
+  52              	.LFE4:
+  53              		.size	INPUT_TIMER_ISR_Interrupt, .-INPUT_TIMER_ISR_Interrupt
+  54              		.section	.text.INPUT_TIMER_ISR_SetVector,"ax",%progbits
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 5
 
 
- 183:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 184:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Function definition example:
- 185:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   CY_ISR(MyISR)
- 186:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   {
- 187:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   }
+  55              		.align	2
+  56              		.global	INPUT_TIMER_ISR_SetVector
+  57              		.code	16
+  58              		.thumb_func
+  59              		.type	INPUT_TIMER_ISR_SetVector, %function
+  60              	INPUT_TIMER_ISR_SetVector:
+  61              	.LFB5:
+ 175:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 176:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 177:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** /*******************************************************************************
+ 178:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Function Name: INPUT_TIMER_ISR_SetVector
+ 179:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** ********************************************************************************
+ 180:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 181:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Summary:
+ 182:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Change the ISR vector for the Interrupt. Note calling INPUT_TIMER_ISR_Start
+ 183:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   will override any effect this method would have had. To set the vector 
+ 184:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   before the component has been started use INPUT_TIMER_ISR_StartEx instead.
+ 185:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * 
+ 186:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
+ 187:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   used to provide consistent definition across compilers:
  188:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 189:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Function prototype example:
- 190:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *     CY_ISR_PROTO(MyISR);
- 191:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 192:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Parameters:
- 193:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   address: Address of the ISR to set in the interrupt vector table.
- 194:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 195:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Return:
- 196:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
- 197:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 198:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *******************************************************************************/
- 199:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** void INPUT_TIMER_ISR_SetVector(cyisraddress address)
- 200:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** {
-  47              		.loc 1 200 0
-  48              		.cfi_startproc
-  49              		@ args = 0, pretend = 0, frame = 0
-  50              		@ frame_needed = 0, uses_anonymous_args = 0
-  51              		@ link register save eliminated.
-  52              	.LVL0:
- 201:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     CyRamVectors[CYINT_IRQ_BASE + INPUT_TIMER_ISR__INTC_NUMBER] = address;
-  53              		.loc 1 201 0
-  54 0000 9023     		movs	r3, #144
-  55 0002 014A     		ldr	r2, .L3
-  56 0004 D050     		str	r0, [r2, r3]
- 202:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** }
-  57              		.loc 1 202 0
-  58              		@ sp needed
-  59 0006 7047     		bx	lr
-  60              	.L4:
-  61              		.align	2
-  62              	.L3:
-  63 0008 00000000 		.word	CyRamVectors
-  64              		.cfi_endproc
-  65              	.LFE5:
-  66              		.size	INPUT_TIMER_ISR_SetVector, .-INPUT_TIMER_ISR_SetVector
-  67              		.section	.text.INPUT_TIMER_ISR_GetVector,"ax",%progbits
-  68              		.align	2
-  69              		.global	INPUT_TIMER_ISR_GetVector
-  70              		.code	16
-  71              		.thumb_func
-  72              		.type	INPUT_TIMER_ISR_GetVector, %function
-  73              	INPUT_TIMER_ISR_GetVector:
-  74              	.LFB6:
- 203:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 204:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 205:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** /*******************************************************************************
- 206:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Function Name: INPUT_TIMER_ISR_GetVector
- 207:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** ********************************************************************************
- 208:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 209:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Summary:
- 210:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Gets the "address" of the current ISR vector for the Interrupt.
- 211:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 6
+ 189:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Function definition example:
+ 190:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   CY_ISR(MyISR)
+ 191:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   {
+ 192:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   }
+ 193:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 194:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Function prototype example:
+ 195:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *     CY_ISR_PROTO(MyISR);
+ 196:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 197:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Parameters:
+ 198:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   address: Address of the ISR to set in the interrupt vector table.
+ 199:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 200:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Return:
+ 201:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
+ 202:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 203:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *******************************************************************************/
+ 204:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** void INPUT_TIMER_ISR_SetVector(cyisraddress address)
+ 205:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** {
+  62              		.loc 1 205 0
+  63              		.cfi_startproc
+  64              		@ args = 0, pretend = 0, frame = 0
+  65              		@ frame_needed = 0, uses_anonymous_args = 0
+  66              		@ link register save eliminated.
+  67              	.LVL1:
+ 206:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     CyRamVectors[CYINT_IRQ_BASE + INPUT_TIMER_ISR__INTC_NUMBER] = address;
+  68              		.loc 1 206 0
+  69 0000 9023     		movs	r3, #144
+  70 0002 014A     		ldr	r2, .L5
+  71 0004 D050     		str	r0, [r2, r3]
+ 207:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** }
+  72              		.loc 1 207 0
+  73              		@ sp needed
+  74 0006 7047     		bx	lr
+  75              	.L6:
+  76              		.align	2
+  77              	.L5:
+  78 0008 00000000 		.word	CyRamVectors
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 6
 
 
- 212:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Parameters:
- 213:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
- 214:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 215:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Return:
- 216:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Address of the ISR in the interrupt vector table.
- 217:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 218:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *******************************************************************************/
- 219:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** cyisraddress INPUT_TIMER_ISR_GetVector(void)
- 220:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** {
-  75              		.loc 1 220 0
-  76              		.cfi_startproc
-  77              		@ args = 0, pretend = 0, frame = 0
-  78              		@ frame_needed = 0, uses_anonymous_args = 0
-  79              		@ link register save eliminated.
- 221:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     return CyRamVectors[CYINT_IRQ_BASE + INPUT_TIMER_ISR__INTC_NUMBER];
-  80              		.loc 1 221 0
-  81 0000 9023     		movs	r3, #144
-  82 0002 014A     		ldr	r2, .L6
-  83 0004 D058     		ldr	r0, [r2, r3]
- 222:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** }
-  84              		.loc 1 222 0
-  85              		@ sp needed
-  86 0006 7047     		bx	lr
-  87              	.L7:
-  88              		.align	2
-  89              	.L6:
-  90 0008 00000000 		.word	CyRamVectors
-  91              		.cfi_endproc
-  92              	.LFE6:
-  93              		.size	INPUT_TIMER_ISR_GetVector, .-INPUT_TIMER_ISR_GetVector
-  94              		.section	.text.INPUT_TIMER_ISR_SetPriority,"ax",%progbits
-  95              		.align	2
-  96              		.global	INPUT_TIMER_ISR_SetPriority
-  97              		.code	16
-  98              		.thumb_func
-  99              		.type	INPUT_TIMER_ISR_SetPriority, %function
- 100              	INPUT_TIMER_ISR_SetPriority:
- 101              	.LFB7:
- 223:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 224:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 225:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** /*******************************************************************************
- 226:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Function Name: INPUT_TIMER_ISR_SetPriority
- 227:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** ********************************************************************************
- 228:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 229:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Summary:
- 230:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Sets the Priority of the Interrupt. 
- 231:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 232:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Note calling INPUT_TIMER_ISR_Start or INPUT_TIMER_ISR_StartEx will 
- 233:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   override any effect this API would have had. This API should only be called
- 234:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   after INPUT_TIMER_ISR_Start or INPUT_TIMER_ISR_StartEx has been called. 
- 235:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   To set the initial priority for the component, use the Design-Wide Resources
- 236:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Interrupt Editor.
- 237:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 238:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Note This API has no effect on Non-maskable interrupt NMI).
- 239:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 240:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Parameters:
- 241:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   priority: Priority of the interrupt, 0 being the highest priority
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 7
+  79              		.cfi_endproc
+  80              	.LFE5:
+  81              		.size	INPUT_TIMER_ISR_SetVector, .-INPUT_TIMER_ISR_SetVector
+  82              		.section	.text.INPUT_TIMER_ISR_GetVector,"ax",%progbits
+  83              		.align	2
+  84              		.global	INPUT_TIMER_ISR_GetVector
+  85              		.code	16
+  86              		.thumb_func
+  87              		.type	INPUT_TIMER_ISR_GetVector, %function
+  88              	INPUT_TIMER_ISR_GetVector:
+  89              	.LFB6:
+ 208:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 209:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 210:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** /*******************************************************************************
+ 211:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Function Name: INPUT_TIMER_ISR_GetVector
+ 212:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** ********************************************************************************
+ 213:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 214:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Summary:
+ 215:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Gets the "address" of the current ISR vector for the Interrupt.
+ 216:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 217:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Parameters:
+ 218:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
+ 219:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 220:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Return:
+ 221:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Address of the ISR in the interrupt vector table.
+ 222:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 223:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *******************************************************************************/
+ 224:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** cyisraddress INPUT_TIMER_ISR_GetVector(void)
+ 225:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** {
+  90              		.loc 1 225 0
+  91              		.cfi_startproc
+  92              		@ args = 0, pretend = 0, frame = 0
+  93              		@ frame_needed = 0, uses_anonymous_args = 0
+  94              		@ link register save eliminated.
+ 226:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     return CyRamVectors[CYINT_IRQ_BASE + INPUT_TIMER_ISR__INTC_NUMBER];
+  95              		.loc 1 226 0
+  96 0000 9023     		movs	r3, #144
+  97 0002 014A     		ldr	r2, .L8
+  98 0004 D058     		ldr	r0, [r2, r3]
+ 227:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** }
+  99              		.loc 1 227 0
+ 100              		@ sp needed
+ 101 0006 7047     		bx	lr
+ 102              	.L9:
+ 103              		.align	2
+ 104              	.L8:
+ 105 0008 00000000 		.word	CyRamVectors
+ 106              		.cfi_endproc
+ 107              	.LFE6:
+ 108              		.size	INPUT_TIMER_ISR_GetVector, .-INPUT_TIMER_ISR_GetVector
+ 109              		.section	.text.INPUT_TIMER_ISR_SetPriority,"ax",%progbits
+ 110              		.align	2
+ 111              		.global	INPUT_TIMER_ISR_SetPriority
+ 112              		.code	16
+ 113              		.thumb_func
+ 114              		.type	INPUT_TIMER_ISR_SetPriority, %function
+ 115              	INPUT_TIMER_ISR_SetPriority:
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 7
 
 
- 242:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *             PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
- 243:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *             PSoC 4: Priority is from 0 to 3.
+ 116              	.LFB7:
+ 228:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 229:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 230:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** /*******************************************************************************
+ 231:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Function Name: INPUT_TIMER_ISR_SetPriority
+ 232:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** ********************************************************************************
+ 233:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 234:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Summary:
+ 235:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Sets the Priority of the Interrupt. 
+ 236:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 237:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Note calling INPUT_TIMER_ISR_Start or INPUT_TIMER_ISR_StartEx will 
+ 238:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   override any effect this API would have had. This API should only be called
+ 239:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   after INPUT_TIMER_ISR_Start or INPUT_TIMER_ISR_StartEx has been called. 
+ 240:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   To set the initial priority for the component, use the Design-Wide Resources
+ 241:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Interrupt Editor.
+ 242:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 243:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Note This API has no effect on Non-maskable interrupt NMI).
  244:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 245:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Return:
- 246:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
- 247:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 248:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *******************************************************************************/
- 249:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** void INPUT_TIMER_ISR_SetPriority(uint8 priority)
- 250:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** {
- 102              		.loc 1 250 0
- 103              		.cfi_startproc
- 104              		@ args = 0, pretend = 0, frame = 0
- 105              		@ frame_needed = 0, uses_anonymous_args = 0
- 106              	.LVL1:
- 107 0000 10B5     		push	{r4, lr}
- 108              		.cfi_def_cfa_offset 8
- 109              		.cfi_offset 4, -8
- 110              		.cfi_offset 14, -4
- 111 0002 0400     		movs	r4, r0
- 112              	.LVL2:
- 251:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 	uint8 interruptState;
- 252:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     uint32 priorityOffset = ((INPUT_TIMER_ISR__INTC_NUMBER % 4u) * 8u) + 6u;
- 253:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     
- 254:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 	interruptState = CyEnterCriticalSection();
- 113              		.loc 1 254 0
- 114 0004 FFF7FEFF 		bl	CyEnterCriticalSection
- 115              	.LVL3:
- 255:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     *INPUT_TIMER_ISR_INTC_PRIOR = (*INPUT_TIMER_ISR_INTC_PRIOR & (uint32)(~(uint32)INPUT_TIMER_ISR_
- 116              		.loc 1 255 0
- 117 0008 044A     		ldr	r2, .L9
- 118 000a 1368     		ldr	r3, [r2]
- 119 000c C021     		movs	r1, #192
- 120 000e 8B43     		bics	r3, r1
- 256:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****                                     ((uint32)priority << priorityOffset);
- 121              		.loc 1 256 0
- 122 0010 A401     		lsls	r4, r4, #6
- 255:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     *INPUT_TIMER_ISR_INTC_PRIOR = (*INPUT_TIMER_ISR_INTC_PRIOR & (uint32)(~(uint32)INPUT_TIMER_ISR_
- 123              		.loc 1 255 0
- 124 0012 1C43     		orrs	r4, r3
- 125 0014 1460     		str	r4, [r2]
- 257:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 	CyExitCriticalSection(interruptState);
- 126              		.loc 1 257 0
- 127 0016 FFF7FEFF 		bl	CyExitCriticalSection
- 128              	.LVL4:
- 258:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** }
- 129              		.loc 1 258 0
- 130              		@ sp needed
- 131 001a 10BD     		pop	{r4, pc}
- 132              	.L10:
- 133              		.align	2
- 134              	.L9:
- 135 001c 14E400E0 		.word	-536812524
- 136              		.cfi_endproc
- 137              	.LFE7:
- 138              		.size	INPUT_TIMER_ISR_SetPriority, .-INPUT_TIMER_ISR_SetPriority
- 139              		.section	.text.INPUT_TIMER_ISR_GetPriority,"ax",%progbits
- 140              		.align	2
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 8
+ 245:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Parameters:
+ 246:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   priority: Priority of the interrupt, 0 being the highest priority
+ 247:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *             PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
+ 248:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *             PSoC 4: Priority is from 0 to 3.
+ 249:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 250:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Return:
+ 251:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
+ 252:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 253:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *******************************************************************************/
+ 254:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** void INPUT_TIMER_ISR_SetPriority(uint8 priority)
+ 255:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** {
+ 117              		.loc 1 255 0
+ 118              		.cfi_startproc
+ 119              		@ args = 0, pretend = 0, frame = 0
+ 120              		@ frame_needed = 0, uses_anonymous_args = 0
+ 121              	.LVL2:
+ 122 0000 10B5     		push	{r4, lr}
+ 123              		.cfi_def_cfa_offset 8
+ 124              		.cfi_offset 4, -8
+ 125              		.cfi_offset 14, -4
+ 126 0002 0400     		movs	r4, r0
+ 127              	.LVL3:
+ 256:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 	uint8 interruptState;
+ 257:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     uint32 priorityOffset = ((INPUT_TIMER_ISR__INTC_NUMBER % 4u) * 8u) + 6u;
+ 258:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     
+ 259:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 	interruptState = CyEnterCriticalSection();
+ 128              		.loc 1 259 0
+ 129 0004 FFF7FEFF 		bl	CyEnterCriticalSection
+ 130              	.LVL4:
+ 260:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     *INPUT_TIMER_ISR_INTC_PRIOR = (*INPUT_TIMER_ISR_INTC_PRIOR & (uint32)(~(uint32)INPUT_TIMER_ISR_
+ 131              		.loc 1 260 0
+ 132 0008 044A     		ldr	r2, .L11
+ 133 000a 1368     		ldr	r3, [r2]
+ 134 000c C021     		movs	r1, #192
+ 135 000e 8B43     		bics	r3, r1
+ 261:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****                                     ((uint32)priority << priorityOffset);
+ 136              		.loc 1 261 0
+ 137 0010 A401     		lsls	r4, r4, #6
+ 260:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     *INPUT_TIMER_ISR_INTC_PRIOR = (*INPUT_TIMER_ISR_INTC_PRIOR & (uint32)(~(uint32)INPUT_TIMER_ISR_
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 8
 
 
- 141              		.global	INPUT_TIMER_ISR_GetPriority
- 142              		.code	16
- 143              		.thumb_func
- 144              		.type	INPUT_TIMER_ISR_GetPriority, %function
- 145              	INPUT_TIMER_ISR_GetPriority:
- 146              	.LFB8:
- 259:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 260:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 261:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** /*******************************************************************************
- 262:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Function Name: INPUT_TIMER_ISR_GetPriority
- 263:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** ********************************************************************************
- 264:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 265:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Summary:
- 266:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Gets the Priority of the Interrupt.
- 267:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 268:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Parameters:
- 269:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
- 270:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 271:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Return:
- 272:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Priority of the interrupt, 0 being the highest priority
- 273:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *    PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
- 274:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *    PSoC 4: Priority is from 0 to 3.
+ 138              		.loc 1 260 0
+ 139 0012 1C43     		orrs	r4, r3
+ 140 0014 1460     		str	r4, [r2]
+ 262:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 	CyExitCriticalSection(interruptState);
+ 141              		.loc 1 262 0
+ 142 0016 FFF7FEFF 		bl	CyExitCriticalSection
+ 143              	.LVL5:
+ 263:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** }
+ 144              		.loc 1 263 0
+ 145              		@ sp needed
+ 146 001a 10BD     		pop	{r4, pc}
+ 147              	.L12:
+ 148              		.align	2
+ 149              	.L11:
+ 150 001c 14E400E0 		.word	-536812524
+ 151              		.cfi_endproc
+ 152              	.LFE7:
+ 153              		.size	INPUT_TIMER_ISR_SetPriority, .-INPUT_TIMER_ISR_SetPriority
+ 154              		.section	.text.INPUT_TIMER_ISR_GetPriority,"ax",%progbits
+ 155              		.align	2
+ 156              		.global	INPUT_TIMER_ISR_GetPriority
+ 157              		.code	16
+ 158              		.thumb_func
+ 159              		.type	INPUT_TIMER_ISR_GetPriority, %function
+ 160              	INPUT_TIMER_ISR_GetPriority:
+ 161              	.LFB8:
+ 264:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 265:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 266:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** /*******************************************************************************
+ 267:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Function Name: INPUT_TIMER_ISR_GetPriority
+ 268:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** ********************************************************************************
+ 269:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 270:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Summary:
+ 271:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Gets the Priority of the Interrupt.
+ 272:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 273:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Parameters:
+ 274:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
  275:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 276:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *******************************************************************************/
- 277:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** uint8 INPUT_TIMER_ISR_GetPriority(void)
- 278:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** {
- 147              		.loc 1 278 0
- 148              		.cfi_startproc
- 149              		@ args = 0, pretend = 0, frame = 0
- 150              		@ frame_needed = 0, uses_anonymous_args = 0
- 151              		@ link register save eliminated.
- 152              	.LVL5:
- 279:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     uint32 priority;
- 280:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 	uint32 priorityOffset = ((INPUT_TIMER_ISR__INTC_NUMBER % 4u) * 8u) + 6u;
- 281:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 282:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     priority = (*INPUT_TIMER_ISR_INTC_PRIOR & INPUT_TIMER_ISR__INTC_PRIOR_MASK) >> priorityOffset;
- 153              		.loc 1 282 0
- 154 0000 024B     		ldr	r3, .L12
- 155 0002 1868     		ldr	r0, [r3]
- 156 0004 8009     		lsrs	r0, r0, #6
- 157              	.LVL6:
- 283:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 284:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     return (uint8)priority;
- 158              		.loc 1 284 0
- 159 0006 0323     		movs	r3, #3
- 160 0008 1840     		ands	r0, r3
- 161              	.LVL7:
- 285:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** }
- 162              		.loc 1 285 0
- 163              		@ sp needed
- 164 000a 7047     		bx	lr
- 165              	.L13:
- 166              		.align	2
- 167              	.L12:
- 168 000c 14E400E0 		.word	-536812524
- 169              		.cfi_endproc
- 170              	.LFE8:
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 9
-
-
- 171              		.size	INPUT_TIMER_ISR_GetPriority, .-INPUT_TIMER_ISR_GetPriority
- 172              		.section	.text.INPUT_TIMER_ISR_Enable,"ax",%progbits
- 173              		.align	2
- 174              		.global	INPUT_TIMER_ISR_Enable
- 175              		.code	16
- 176              		.thumb_func
- 177              		.type	INPUT_TIMER_ISR_Enable, %function
- 178              	INPUT_TIMER_ISR_Enable:
- 179              	.LFB9:
+ 276:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Return:
+ 277:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Priority of the interrupt, 0 being the highest priority
+ 278:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *    PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
+ 279:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *    PSoC 4: Priority is from 0 to 3.
+ 280:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 281:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *******************************************************************************/
+ 282:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** uint8 INPUT_TIMER_ISR_GetPriority(void)
+ 283:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** {
+ 162              		.loc 1 283 0
+ 163              		.cfi_startproc
+ 164              		@ args = 0, pretend = 0, frame = 0
+ 165              		@ frame_needed = 0, uses_anonymous_args = 0
+ 166              		@ link register save eliminated.
+ 167              	.LVL6:
+ 284:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     uint32 priority;
+ 285:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 	uint32 priorityOffset = ((INPUT_TIMER_ISR__INTC_NUMBER % 4u) * 8u) + 6u;
  286:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 287:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 288:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** /*******************************************************************************
- 289:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Function Name: INPUT_TIMER_ISR_Enable
- 290:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** ********************************************************************************
- 291:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 292:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Summary:
- 293:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Enables the interrupt to the interrupt controller. Do not call this function
- 294:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   unless ISR_Start() has been called or the functionality of the ISR_Start() 
- 295:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   function, which sets the vector and the priority, has been called.
+ 287:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     priority = (*INPUT_TIMER_ISR_INTC_PRIOR & INPUT_TIMER_ISR__INTC_PRIOR_MASK) >> priorityOffset;
+ 168              		.loc 1 287 0
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 9
+
+
+ 169 0000 024B     		ldr	r3, .L14
+ 170 0002 1868     		ldr	r0, [r3]
+ 171 0004 8009     		lsrs	r0, r0, #6
+ 172              	.LVL7:
+ 288:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 289:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     return (uint8)priority;
+ 173              		.loc 1 289 0
+ 174 0006 0323     		movs	r3, #3
+ 175 0008 1840     		ands	r0, r3
+ 176              	.LVL8:
+ 290:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** }
+ 177              		.loc 1 290 0
+ 178              		@ sp needed
+ 179 000a 7047     		bx	lr
+ 180              	.L15:
+ 181              		.align	2
+ 182              	.L14:
+ 183 000c 14E400E0 		.word	-536812524
+ 184              		.cfi_endproc
+ 185              	.LFE8:
+ 186              		.size	INPUT_TIMER_ISR_GetPriority, .-INPUT_TIMER_ISR_GetPriority
+ 187              		.section	.text.INPUT_TIMER_ISR_Enable,"ax",%progbits
+ 188              		.align	2
+ 189              		.global	INPUT_TIMER_ISR_Enable
+ 190              		.code	16
+ 191              		.thumb_func
+ 192              		.type	INPUT_TIMER_ISR_Enable, %function
+ 193              	INPUT_TIMER_ISR_Enable:
+ 194              	.LFB9:
+ 291:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 292:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 293:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** /*******************************************************************************
+ 294:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Function Name: INPUT_TIMER_ISR_Enable
+ 295:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** ********************************************************************************
  296:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 297:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Parameters:
- 298:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
- 299:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 300:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Return:
- 301:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
- 302:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 303:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *******************************************************************************/
- 304:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** void INPUT_TIMER_ISR_Enable(void)
- 305:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** {
- 180              		.loc 1 305 0
- 181              		.cfi_startproc
- 182              		@ args = 0, pretend = 0, frame = 0
- 183              		@ frame_needed = 0, uses_anonymous_args = 0
- 184              		@ link register save eliminated.
- 306:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* Enable the general interrupt. */
- 307:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     *INPUT_TIMER_ISR_INTC_SET_EN = INPUT_TIMER_ISR__INTC_MASK;
- 185              		.loc 1 307 0
- 186 0000 8022     		movs	r2, #128
- 187 0002 5203     		lsls	r2, r2, #13
- 188 0004 014B     		ldr	r3, .L15
- 189 0006 1A60     		str	r2, [r3]
- 308:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** }
- 190              		.loc 1 308 0
- 191              		@ sp needed
- 192 0008 7047     		bx	lr
- 193              	.L16:
- 194 000a C046     		.align	2
- 195              	.L15:
- 196 000c 00E100E0 		.word	-536813312
- 197              		.cfi_endproc
- 198              	.LFE9:
- 199              		.size	INPUT_TIMER_ISR_Enable, .-INPUT_TIMER_ISR_Enable
- 200              		.section	.text.INPUT_TIMER_ISR_GetState,"ax",%progbits
- 201              		.align	2
- 202              		.global	INPUT_TIMER_ISR_GetState
- 203              		.code	16
- 204              		.thumb_func
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 10
+ 297:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Summary:
+ 298:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Enables the interrupt to the interrupt controller. Do not call this function
+ 299:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   unless ISR_Start() has been called or the functionality of the ISR_Start() 
+ 300:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   function, which sets the vector and the priority, has been called.
+ 301:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 302:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Parameters:
+ 303:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
+ 304:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 305:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Return:
+ 306:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
+ 307:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 308:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *******************************************************************************/
+ 309:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** void INPUT_TIMER_ISR_Enable(void)
+ 310:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** {
+ 195              		.loc 1 310 0
+ 196              		.cfi_startproc
+ 197              		@ args = 0, pretend = 0, frame = 0
+ 198              		@ frame_needed = 0, uses_anonymous_args = 0
+ 199              		@ link register save eliminated.
+ 311:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* Enable the general interrupt. */
+ 312:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     *INPUT_TIMER_ISR_INTC_SET_EN = INPUT_TIMER_ISR__INTC_MASK;
+ 200              		.loc 1 312 0
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 10
 
 
- 205              		.type	INPUT_TIMER_ISR_GetState, %function
- 206              	INPUT_TIMER_ISR_GetState:
- 207              	.LFB10:
- 309:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 310:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 311:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** /*******************************************************************************
- 312:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Function Name: INPUT_TIMER_ISR_GetState
- 313:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** ********************************************************************************
- 314:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 315:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Summary:
- 316:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Gets the state (enabled, disabled) of the Interrupt.
- 317:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 318:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Parameters:
- 319:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
- 320:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 321:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Return:
- 322:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   1 if enabled, 0 if disabled.
- 323:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 324:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *******************************************************************************/
- 325:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** uint8 INPUT_TIMER_ISR_GetState(void)
- 326:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** {
- 208              		.loc 1 326 0
- 209              		.cfi_startproc
- 210              		@ args = 0, pretend = 0, frame = 0
- 211              		@ frame_needed = 0, uses_anonymous_args = 0
- 212              		@ link register save eliminated.
- 327:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* Get the state of the general interrupt. */
- 328:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     return ((*INPUT_TIMER_ISR_INTC_SET_EN & (uint32)INPUT_TIMER_ISR__INTC_MASK) != 0u) ? 1u:0u;
- 213              		.loc 1 328 0
- 214 0000 034B     		ldr	r3, .L20
- 215 0002 1B68     		ldr	r3, [r3]
- 216 0004 DB02     		lsls	r3, r3, #11
- 217 0006 01D5     		bpl	.L19
- 218 0008 0120     		movs	r0, #1
- 219 000a 00E0     		b	.L18
- 220              	.L19:
- 221 000c 0020     		movs	r0, #0
- 222              	.L18:
- 329:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** }
- 223              		.loc 1 329 0 discriminator 4
- 224              		@ sp needed
- 225 000e 7047     		bx	lr
- 226              	.L21:
- 227              		.align	2
- 228              	.L20:
- 229 0010 00E100E0 		.word	-536813312
- 230              		.cfi_endproc
- 231              	.LFE10:
- 232              		.size	INPUT_TIMER_ISR_GetState, .-INPUT_TIMER_ISR_GetState
- 233              		.section	.text.INPUT_TIMER_ISR_Disable,"ax",%progbits
- 234              		.align	2
- 235              		.global	INPUT_TIMER_ISR_Disable
- 236              		.code	16
- 237              		.thumb_func
- 238              		.type	INPUT_TIMER_ISR_Disable, %function
- 239              	INPUT_TIMER_ISR_Disable:
- 240              	.LFB11:
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 11
+ 201 0000 8022     		movs	r2, #128
+ 202 0002 5203     		lsls	r2, r2, #13
+ 203 0004 014B     		ldr	r3, .L17
+ 204 0006 1A60     		str	r2, [r3]
+ 313:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** }
+ 205              		.loc 1 313 0
+ 206              		@ sp needed
+ 207 0008 7047     		bx	lr
+ 208              	.L18:
+ 209 000a C046     		.align	2
+ 210              	.L17:
+ 211 000c 00E100E0 		.word	-536813312
+ 212              		.cfi_endproc
+ 213              	.LFE9:
+ 214              		.size	INPUT_TIMER_ISR_Enable, .-INPUT_TIMER_ISR_Enable
+ 215              		.section	.text.INPUT_TIMER_ISR_GetState,"ax",%progbits
+ 216              		.align	2
+ 217              		.global	INPUT_TIMER_ISR_GetState
+ 218              		.code	16
+ 219              		.thumb_func
+ 220              		.type	INPUT_TIMER_ISR_GetState, %function
+ 221              	INPUT_TIMER_ISR_GetState:
+ 222              	.LFB10:
+ 314:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 315:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 316:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** /*******************************************************************************
+ 317:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Function Name: INPUT_TIMER_ISR_GetState
+ 318:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** ********************************************************************************
+ 319:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 320:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Summary:
+ 321:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Gets the state (enabled, disabled) of the Interrupt.
+ 322:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 323:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Parameters:
+ 324:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
+ 325:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 326:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Return:
+ 327:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   1 if enabled, 0 if disabled.
+ 328:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 329:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *******************************************************************************/
+ 330:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** uint8 INPUT_TIMER_ISR_GetState(void)
+ 331:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** {
+ 223              		.loc 1 331 0
+ 224              		.cfi_startproc
+ 225              		@ args = 0, pretend = 0, frame = 0
+ 226              		@ frame_needed = 0, uses_anonymous_args = 0
+ 227              		@ link register save eliminated.
+ 332:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* Get the state of the general interrupt. */
+ 333:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     return ((*INPUT_TIMER_ISR_INTC_SET_EN & (uint32)INPUT_TIMER_ISR__INTC_MASK) != 0u) ? 1u:0u;
+ 228              		.loc 1 333 0
+ 229 0000 034B     		ldr	r3, .L22
+ 230 0002 1B68     		ldr	r3, [r3]
+ 231 0004 DB02     		lsls	r3, r3, #11
+ 232 0006 01D5     		bpl	.L21
+ 233 0008 0120     		movs	r0, #1
+ 234 000a 00E0     		b	.L20
+ 235              	.L21:
+ 236 000c 0020     		movs	r0, #0
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 11
 
 
- 330:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 331:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 332:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** /*******************************************************************************
- 333:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Function Name: INPUT_TIMER_ISR_Disable
- 334:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** ********************************************************************************
- 335:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 336:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Summary:
- 337:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Disables the Interrupt in the interrupt controller.
- 338:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 339:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Parameters:
- 340:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
- 341:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 342:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Return:
- 343:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
- 344:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 345:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *******************************************************************************/
- 346:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** void INPUT_TIMER_ISR_Disable(void)
- 347:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** {
- 241              		.loc 1 347 0
- 242              		.cfi_startproc
- 243              		@ args = 0, pretend = 0, frame = 0
- 244              		@ frame_needed = 0, uses_anonymous_args = 0
- 245              		@ link register save eliminated.
- 348:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* Disable the general interrupt. */
- 349:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     *INPUT_TIMER_ISR_INTC_CLR_EN = INPUT_TIMER_ISR__INTC_MASK;
- 246              		.loc 1 349 0
- 247 0000 8022     		movs	r2, #128
- 248 0002 5203     		lsls	r2, r2, #13
- 249 0004 014B     		ldr	r3, .L23
- 250 0006 1A60     		str	r2, [r3]
- 350:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** }
- 251              		.loc 1 350 0
- 252              		@ sp needed
- 253 0008 7047     		bx	lr
- 254              	.L24:
- 255 000a C046     		.align	2
- 256              	.L23:
- 257 000c 80E100E0 		.word	-536813184
- 258              		.cfi_endproc
- 259              	.LFE11:
- 260              		.size	INPUT_TIMER_ISR_Disable, .-INPUT_TIMER_ISR_Disable
- 261              		.section	.text.INPUT_TIMER_ISR_Start,"ax",%progbits
- 262              		.align	2
- 263              		.global	INPUT_TIMER_ISR_Start
- 264              		.code	16
- 265              		.thumb_func
- 266              		.type	INPUT_TIMER_ISR_Start, %function
- 267              	INPUT_TIMER_ISR_Start:
- 268              	.LFB1:
-  57:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* For all we know the interrupt is active. */
- 269              		.loc 1 57 0
- 270              		.cfi_startproc
- 271              		@ args = 0, pretend = 0, frame = 0
- 272              		@ frame_needed = 0, uses_anonymous_args = 0
- 273 0000 10B5     		push	{r4, lr}
- 274              		.cfi_def_cfa_offset 8
- 275              		.cfi_offset 4, -8
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 12
+ 237              	.L20:
+ 334:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** }
+ 238              		.loc 1 334 0 discriminator 4
+ 239              		@ sp needed
+ 240 000e 7047     		bx	lr
+ 241              	.L23:
+ 242              		.align	2
+ 243              	.L22:
+ 244 0010 00E100E0 		.word	-536813312
+ 245              		.cfi_endproc
+ 246              	.LFE10:
+ 247              		.size	INPUT_TIMER_ISR_GetState, .-INPUT_TIMER_ISR_GetState
+ 248              		.section	.text.INPUT_TIMER_ISR_Disable,"ax",%progbits
+ 249              		.align	2
+ 250              		.global	INPUT_TIMER_ISR_Disable
+ 251              		.code	16
+ 252              		.thumb_func
+ 253              		.type	INPUT_TIMER_ISR_Disable, %function
+ 254              	INPUT_TIMER_ISR_Disable:
+ 255              	.LFB11:
+ 335:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 336:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 337:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** /*******************************************************************************
+ 338:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Function Name: INPUT_TIMER_ISR_Disable
+ 339:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** ********************************************************************************
+ 340:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 341:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Summary:
+ 342:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Disables the Interrupt in the interrupt controller.
+ 343:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 344:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Parameters:
+ 345:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
+ 346:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 347:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Return:
+ 348:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
+ 349:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 350:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *******************************************************************************/
+ 351:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** void INPUT_TIMER_ISR_Disable(void)
+ 352:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** {
+ 256              		.loc 1 352 0
+ 257              		.cfi_startproc
+ 258              		@ args = 0, pretend = 0, frame = 0
+ 259              		@ frame_needed = 0, uses_anonymous_args = 0
+ 260              		@ link register save eliminated.
+ 353:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* Disable the general interrupt. */
+ 354:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     *INPUT_TIMER_ISR_INTC_CLR_EN = INPUT_TIMER_ISR__INTC_MASK;
+ 261              		.loc 1 354 0
+ 262 0000 8022     		movs	r2, #128
+ 263 0002 5203     		lsls	r2, r2, #13
+ 264 0004 014B     		ldr	r3, .L25
+ 265 0006 1A60     		str	r2, [r3]
+ 355:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** }
+ 266              		.loc 1 355 0
+ 267              		@ sp needed
+ 268 0008 7047     		bx	lr
+ 269              	.L26:
+ 270 000a C046     		.align	2
+ 271              	.L25:
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 12
 
 
- 276              		.cfi_offset 14, -4
-  59:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 277              		.loc 1 59 0
- 278 0002 FFF7FEFF 		bl	INPUT_TIMER_ISR_Disable
- 279              	.LVL8:
-  62:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 280              		.loc 1 62 0
- 281 0006 0448     		ldr	r0, .L26
- 282 0008 FFF7FEFF 		bl	INPUT_TIMER_ISR_SetVector
- 283              	.LVL9:
-  65:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 284              		.loc 1 65 0
- 285 000c 0320     		movs	r0, #3
- 286 000e FFF7FEFF 		bl	INPUT_TIMER_ISR_SetPriority
- 287              	.LVL10:
-  68:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** }
- 288              		.loc 1 68 0
- 289 0012 FFF7FEFF 		bl	INPUT_TIMER_ISR_Enable
- 290              	.LVL11:
-  69:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 291              		.loc 1 69 0
- 292              		@ sp needed
- 293 0016 10BD     		pop	{r4, pc}
- 294              	.L27:
- 295              		.align	2
- 296              	.L26:
- 297 0018 00000000 		.word	INPUT_TIMER_ISR_Interrupt
- 298              		.cfi_endproc
- 299              	.LFE1:
- 300              		.size	INPUT_TIMER_ISR_Start, .-INPUT_TIMER_ISR_Start
- 301              		.section	.text.INPUT_TIMER_ISR_StartEx,"ax",%progbits
- 302              		.align	2
- 303              		.global	INPUT_TIMER_ISR_StartEx
- 304              		.code	16
- 305              		.thumb_func
- 306              		.type	INPUT_TIMER_ISR_StartEx, %function
- 307              	INPUT_TIMER_ISR_StartEx:
- 308              	.LFB2:
- 100:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* For all we know the interrupt is active. */
- 309              		.loc 1 100 0
- 310              		.cfi_startproc
- 311              		@ args = 0, pretend = 0, frame = 0
- 312              		@ frame_needed = 0, uses_anonymous_args = 0
- 313              	.LVL12:
- 314 0000 10B5     		push	{r4, lr}
- 315              		.cfi_def_cfa_offset 8
- 316              		.cfi_offset 4, -8
- 317              		.cfi_offset 14, -4
- 318 0002 0400     		movs	r4, r0
- 102:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 319              		.loc 1 102 0
- 320 0004 FFF7FEFF 		bl	INPUT_TIMER_ISR_Disable
- 321              	.LVL13:
- 105:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 322              		.loc 1 105 0
- 323 0008 2000     		movs	r0, r4
- 324 000a FFF7FEFF 		bl	INPUT_TIMER_ISR_SetVector
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 13
+ 272 000c 80E100E0 		.word	-536813184
+ 273              		.cfi_endproc
+ 274              	.LFE11:
+ 275              		.size	INPUT_TIMER_ISR_Disable, .-INPUT_TIMER_ISR_Disable
+ 276              		.section	.text.INPUT_TIMER_ISR_Start,"ax",%progbits
+ 277              		.align	2
+ 278              		.global	INPUT_TIMER_ISR_Start
+ 279              		.code	16
+ 280              		.thumb_func
+ 281              		.type	INPUT_TIMER_ISR_Start, %function
+ 282              	INPUT_TIMER_ISR_Start:
+ 283              	.LFB1:
+  59:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* For all we know the interrupt is active. */
+ 284              		.loc 1 59 0
+ 285              		.cfi_startproc
+ 286              		@ args = 0, pretend = 0, frame = 0
+ 287              		@ frame_needed = 0, uses_anonymous_args = 0
+ 288 0000 10B5     		push	{r4, lr}
+ 289              		.cfi_def_cfa_offset 8
+ 290              		.cfi_offset 4, -8
+ 291              		.cfi_offset 14, -4
+  61:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 292              		.loc 1 61 0
+ 293 0002 FFF7FEFF 		bl	INPUT_TIMER_ISR_Disable
+ 294              	.LVL9:
+  64:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 295              		.loc 1 64 0
+ 296 0006 0448     		ldr	r0, .L28
+ 297 0008 FFF7FEFF 		bl	INPUT_TIMER_ISR_SetVector
+ 298              	.LVL10:
+  67:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 299              		.loc 1 67 0
+ 300 000c 0320     		movs	r0, #3
+ 301 000e FFF7FEFF 		bl	INPUT_TIMER_ISR_SetPriority
+ 302              	.LVL11:
+  70:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** }
+ 303              		.loc 1 70 0
+ 304 0012 FFF7FEFF 		bl	INPUT_TIMER_ISR_Enable
+ 305              	.LVL12:
+  71:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 306              		.loc 1 71 0
+ 307              		@ sp needed
+ 308 0016 10BD     		pop	{r4, pc}
+ 309              	.L29:
+ 310              		.align	2
+ 311              	.L28:
+ 312 0018 00000000 		.word	INPUT_TIMER_ISR_Interrupt
+ 313              		.cfi_endproc
+ 314              	.LFE1:
+ 315              		.size	INPUT_TIMER_ISR_Start, .-INPUT_TIMER_ISR_Start
+ 316              		.section	.text.INPUT_TIMER_ISR_StartEx,"ax",%progbits
+ 317              		.align	2
+ 318              		.global	INPUT_TIMER_ISR_StartEx
+ 319              		.code	16
+ 320              		.thumb_func
+ 321              		.type	INPUT_TIMER_ISR_StartEx, %function
+ 322              	INPUT_TIMER_ISR_StartEx:
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 13
 
 
- 325              	.LVL14:
- 108:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 326              		.loc 1 108 0
- 327 000e 0320     		movs	r0, #3
- 328 0010 FFF7FEFF 		bl	INPUT_TIMER_ISR_SetPriority
- 329              	.LVL15:
- 111:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** }
- 330              		.loc 1 111 0
- 331 0014 FFF7FEFF 		bl	INPUT_TIMER_ISR_Enable
- 332              	.LVL16:
- 112:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 333              		.loc 1 112 0
- 334              		@ sp needed
- 335              	.LVL17:
- 336 0018 10BD     		pop	{r4, pc}
- 337              		.cfi_endproc
- 338              	.LFE2:
- 339              		.size	INPUT_TIMER_ISR_StartEx, .-INPUT_TIMER_ISR_StartEx
- 340 001a C046     		.section	.text.INPUT_TIMER_ISR_Stop,"ax",%progbits
- 341              		.align	2
- 342              		.global	INPUT_TIMER_ISR_Stop
- 343              		.code	16
- 344              		.thumb_func
- 345              		.type	INPUT_TIMER_ISR_Stop, %function
- 346              	INPUT_TIMER_ISR_Stop:
- 347              	.LFB3:
- 130:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* Disable this interrupt. */
- 348              		.loc 1 130 0
- 349              		.cfi_startproc
- 350              		@ args = 0, pretend = 0, frame = 0
- 351              		@ frame_needed = 0, uses_anonymous_args = 0
- 352 0000 10B5     		push	{r4, lr}
- 353              		.cfi_def_cfa_offset 8
- 354              		.cfi_offset 4, -8
- 355              		.cfi_offset 14, -4
- 132:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 356              		.loc 1 132 0
- 357 0002 FFF7FEFF 		bl	INPUT_TIMER_ISR_Disable
- 358              	.LVL18:
- 135:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** }
- 359              		.loc 1 135 0
- 360 0006 0248     		ldr	r0, .L30
- 361 0008 FFF7FEFF 		bl	INPUT_TIMER_ISR_SetVector
- 362              	.LVL19:
- 136:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 363              		.loc 1 136 0
- 364              		@ sp needed
- 365 000c 10BD     		pop	{r4, pc}
- 366              	.L31:
- 367 000e C046     		.align	2
- 368              	.L30:
- 369 0010 00000000 		.word	IntDefaultHandler
- 370              		.cfi_endproc
- 371              	.LFE3:
- 372              		.size	INPUT_TIMER_ISR_Stop, .-INPUT_TIMER_ISR_Stop
- 373              		.section	.text.INPUT_TIMER_ISR_SetPending,"ax",%progbits
- 374              		.align	2
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 14
+ 323              	.LFB2:
+ 102:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* For all we know the interrupt is active. */
+ 324              		.loc 1 102 0
+ 325              		.cfi_startproc
+ 326              		@ args = 0, pretend = 0, frame = 0
+ 327              		@ frame_needed = 0, uses_anonymous_args = 0
+ 328              	.LVL13:
+ 329 0000 10B5     		push	{r4, lr}
+ 330              		.cfi_def_cfa_offset 8
+ 331              		.cfi_offset 4, -8
+ 332              		.cfi_offset 14, -4
+ 333 0002 0400     		movs	r4, r0
+ 104:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 334              		.loc 1 104 0
+ 335 0004 FFF7FEFF 		bl	INPUT_TIMER_ISR_Disable
+ 336              	.LVL14:
+ 107:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 337              		.loc 1 107 0
+ 338 0008 2000     		movs	r0, r4
+ 339 000a FFF7FEFF 		bl	INPUT_TIMER_ISR_SetVector
+ 340              	.LVL15:
+ 110:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 341              		.loc 1 110 0
+ 342 000e 0320     		movs	r0, #3
+ 343 0010 FFF7FEFF 		bl	INPUT_TIMER_ISR_SetPriority
+ 344              	.LVL16:
+ 113:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** }
+ 345              		.loc 1 113 0
+ 346 0014 FFF7FEFF 		bl	INPUT_TIMER_ISR_Enable
+ 347              	.LVL17:
+ 114:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 348              		.loc 1 114 0
+ 349              		@ sp needed
+ 350              	.LVL18:
+ 351 0018 10BD     		pop	{r4, pc}
+ 352              		.cfi_endproc
+ 353              	.LFE2:
+ 354              		.size	INPUT_TIMER_ISR_StartEx, .-INPUT_TIMER_ISR_StartEx
+ 355 001a C046     		.section	.text.INPUT_TIMER_ISR_Stop,"ax",%progbits
+ 356              		.align	2
+ 357              		.global	INPUT_TIMER_ISR_Stop
+ 358              		.code	16
+ 359              		.thumb_func
+ 360              		.type	INPUT_TIMER_ISR_Stop, %function
+ 361              	INPUT_TIMER_ISR_Stop:
+ 362              	.LFB3:
+ 132:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     /* Disable this interrupt. */
+ 363              		.loc 1 132 0
+ 364              		.cfi_startproc
+ 365              		@ args = 0, pretend = 0, frame = 0
+ 366              		@ frame_needed = 0, uses_anonymous_args = 0
+ 367 0000 10B5     		push	{r4, lr}
+ 368              		.cfi_def_cfa_offset 8
+ 369              		.cfi_offset 4, -8
+ 370              		.cfi_offset 14, -4
+ 134:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 371              		.loc 1 134 0
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 14
 
 
- 375              		.global	INPUT_TIMER_ISR_SetPending
- 376              		.code	16
- 377              		.thumb_func
- 378              		.type	INPUT_TIMER_ISR_SetPending, %function
- 379              	INPUT_TIMER_ISR_SetPending:
- 380              	.LFB12:
- 351:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 352:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 353:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** /*******************************************************************************
- 354:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Function Name: INPUT_TIMER_ISR_SetPending
- 355:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** ********************************************************************************
- 356:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 357:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Summary:
- 358:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Causes the Interrupt to enter the pending state, a software method of
- 359:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   generating the interrupt.
- 360:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 361:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Parameters:
- 362:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
- 363:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 364:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Return:
- 365:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
- 366:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 367:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Side Effects:
- 368:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   If interrupts are enabled and the interrupt is set up properly, the ISR is
- 369:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   entered (depending on the priority of this interrupt and other pending 
- 370:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   interrupts).
+ 372 0002 FFF7FEFF 		bl	INPUT_TIMER_ISR_Disable
+ 373              	.LVL19:
+ 137:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** }
+ 374              		.loc 1 137 0
+ 375 0006 0248     		ldr	r0, .L32
+ 376 0008 FFF7FEFF 		bl	INPUT_TIMER_ISR_SetVector
+ 377              	.LVL20:
+ 138:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 378              		.loc 1 138 0
+ 379              		@ sp needed
+ 380 000c 10BD     		pop	{r4, pc}
+ 381              	.L33:
+ 382 000e C046     		.align	2
+ 383              	.L32:
+ 384 0010 00000000 		.word	IntDefaultHandler
+ 385              		.cfi_endproc
+ 386              	.LFE3:
+ 387              		.size	INPUT_TIMER_ISR_Stop, .-INPUT_TIMER_ISR_Stop
+ 388              		.section	.text.INPUT_TIMER_ISR_SetPending,"ax",%progbits
+ 389              		.align	2
+ 390              		.global	INPUT_TIMER_ISR_SetPending
+ 391              		.code	16
+ 392              		.thumb_func
+ 393              		.type	INPUT_TIMER_ISR_SetPending, %function
+ 394              	INPUT_TIMER_ISR_SetPending:
+ 395              	.LFB12:
+ 356:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 357:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 358:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** /*******************************************************************************
+ 359:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Function Name: INPUT_TIMER_ISR_SetPending
+ 360:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** ********************************************************************************
+ 361:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 362:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Summary:
+ 363:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Causes the Interrupt to enter the pending state, a software method of
+ 364:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   generating the interrupt.
+ 365:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 366:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Parameters:
+ 367:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
+ 368:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 369:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Return:
+ 370:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
  371:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 372:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *******************************************************************************/
- 373:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** void INPUT_TIMER_ISR_SetPending(void)
- 374:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** {
- 381              		.loc 1 374 0
- 382              		.cfi_startproc
- 383              		@ args = 0, pretend = 0, frame = 0
- 384              		@ frame_needed = 0, uses_anonymous_args = 0
- 385              		@ link register save eliminated.
- 375:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     *INPUT_TIMER_ISR_INTC_SET_PD = INPUT_TIMER_ISR__INTC_MASK;
- 386              		.loc 1 375 0
- 387 0000 8022     		movs	r2, #128
- 388 0002 5203     		lsls	r2, r2, #13
- 389 0004 014B     		ldr	r3, .L33
- 390 0006 1A60     		str	r2, [r3]
- 376:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** }
- 391              		.loc 1 376 0
- 392              		@ sp needed
- 393 0008 7047     		bx	lr
- 394              	.L34:
- 395 000a C046     		.align	2
- 396              	.L33:
- 397 000c 00E200E0 		.word	-536813056
- 398              		.cfi_endproc
- 399              	.LFE12:
- 400              		.size	INPUT_TIMER_ISR_SetPending, .-INPUT_TIMER_ISR_SetPending
- 401              		.section	.text.INPUT_TIMER_ISR_ClearPending,"ax",%progbits
- 402              		.align	2
- 403              		.global	INPUT_TIMER_ISR_ClearPending
- 404              		.code	16
- 405              		.thumb_func
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 15
+ 372:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Side Effects:
+ 373:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   If interrupts are enabled and the interrupt is set up properly, the ISR is
+ 374:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   entered (depending on the priority of this interrupt and other pending 
+ 375:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   interrupts).
+ 376:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 377:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *******************************************************************************/
+ 378:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** void INPUT_TIMER_ISR_SetPending(void)
+ 379:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** {
+ 396              		.loc 1 379 0
+ 397              		.cfi_startproc
+ 398              		@ args = 0, pretend = 0, frame = 0
+ 399              		@ frame_needed = 0, uses_anonymous_args = 0
+ 400              		@ link register save eliminated.
+ 380:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     *INPUT_TIMER_ISR_INTC_SET_PD = INPUT_TIMER_ISR__INTC_MASK;
+ 401              		.loc 1 380 0
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 15
 
 
- 406              		.type	INPUT_TIMER_ISR_ClearPending, %function
- 407              	INPUT_TIMER_ISR_ClearPending:
- 408              	.LFB13:
- 377:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 378:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
- 379:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** /*******************************************************************************
- 380:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Function Name: INPUT_TIMER_ISR_ClearPending
- 381:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** ********************************************************************************
- 382:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 383:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Summary:
- 384:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Clears a pending interrupt in the interrupt controller.
- 385:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 386:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Note Some interrupt sources are clear-on-read and require the block 
- 387:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   interrupt/status register to be read/cleared with the appropriate block API 
- 388:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   (GPIO, UART, and so on). Otherwise the ISR will continue to remain in 
- 389:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   pending state even though the interrupt itself is cleared using this API.
+ 402 0000 8022     		movs	r2, #128
+ 403 0002 5203     		lsls	r2, r2, #13
+ 404 0004 014B     		ldr	r3, .L35
+ 405 0006 1A60     		str	r2, [r3]
+ 381:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** }
+ 406              		.loc 1 381 0
+ 407              		@ sp needed
+ 408 0008 7047     		bx	lr
+ 409              	.L36:
+ 410 000a C046     		.align	2
+ 411              	.L35:
+ 412 000c 00E200E0 		.word	-536813056
+ 413              		.cfi_endproc
+ 414              	.LFE12:
+ 415              		.size	INPUT_TIMER_ISR_SetPending, .-INPUT_TIMER_ISR_SetPending
+ 416              		.section	.text.INPUT_TIMER_ISR_ClearPending,"ax",%progbits
+ 417              		.align	2
+ 418              		.global	INPUT_TIMER_ISR_ClearPending
+ 419              		.code	16
+ 420              		.thumb_func
+ 421              		.type	INPUT_TIMER_ISR_ClearPending, %function
+ 422              	INPUT_TIMER_ISR_ClearPending:
+ 423              	.LFB13:
+ 382:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 383:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** 
+ 384:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** /*******************************************************************************
+ 385:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Function Name: INPUT_TIMER_ISR_ClearPending
+ 386:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** ********************************************************************************
+ 387:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 388:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Summary:
+ 389:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Clears a pending interrupt in the interrupt controller.
  390:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 391:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Parameters:
- 392:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
- 393:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 394:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Return:
- 395:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
- 396:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
- 397:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *******************************************************************************/
- 398:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** void INPUT_TIMER_ISR_ClearPending(void)
- 399:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** {
- 409              		.loc 1 399 0
- 410              		.cfi_startproc
- 411              		@ args = 0, pretend = 0, frame = 0
- 412              		@ frame_needed = 0, uses_anonymous_args = 0
- 413              		@ link register save eliminated.
- 400:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     *INPUT_TIMER_ISR_INTC_CLR_PD = INPUT_TIMER_ISR__INTC_MASK;
- 414              		.loc 1 400 0
- 415 0000 8022     		movs	r2, #128
- 416 0002 5203     		lsls	r2, r2, #13
- 417 0004 014B     		ldr	r3, .L36
- 418 0006 1A60     		str	r2, [r3]
- 401:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** }
- 419              		.loc 1 401 0
- 420              		@ sp needed
- 421 0008 7047     		bx	lr
- 422              	.L37:
- 423 000a C046     		.align	2
- 424              	.L36:
- 425 000c 80E200E0 		.word	-536812928
- 426              		.cfi_endproc
- 427              	.LFE13:
- 428              		.size	INPUT_TIMER_ISR_ClearPending, .-INPUT_TIMER_ISR_ClearPending
- 429              		.text
- 430              	.Letext0:
- 431              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
- 432              		.file 3 "Generated_Source\\PSoC4/CyLib.h"
- 433              		.section	.debug_info,"",%progbits
- 434              	.Ldebug_info0:
- 435 0000 01030000 		.4byte	0x301
- 436 0004 0400     		.2byte	0x4
- 437 0006 00000000 		.4byte	.Ldebug_abbrev0
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 16
+ 391:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   Note Some interrupt sources are clear-on-read and require the block 
+ 392:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   interrupt/status register to be read/cleared with the appropriate block API 
+ 393:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   (GPIO, UART, and so on). Otherwise the ISR will continue to remain in 
+ 394:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   pending state even though the interrupt itself is cleared using this API.
+ 395:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 396:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Parameters:
+ 397:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
+ 398:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 399:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** * Return:
+ 400:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *   None
+ 401:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *
+ 402:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** *******************************************************************************/
+ 403:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** void INPUT_TIMER_ISR_ClearPending(void)
+ 404:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** {
+ 424              		.loc 1 404 0
+ 425              		.cfi_startproc
+ 426              		@ args = 0, pretend = 0, frame = 0
+ 427              		@ frame_needed = 0, uses_anonymous_args = 0
+ 428              		@ link register save eliminated.
+ 405:Generated_Source\PSoC4/INPUT_TIMER_ISR.c ****     *INPUT_TIMER_ISR_INTC_CLR_PD = INPUT_TIMER_ISR__INTC_MASK;
+ 429              		.loc 1 405 0
+ 430 0000 8022     		movs	r2, #128
+ 431 0002 5203     		lsls	r2, r2, #13
+ 432 0004 014B     		ldr	r3, .L38
+ 433 0006 1A60     		str	r2, [r3]
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 16
 
 
- 438 000a 04       		.byte	0x4
- 439 000b 01       		.uleb128 0x1
- 440 000c 1E020000 		.4byte	.LASF36
- 441 0010 0C       		.byte	0xc
- 442 0011 99000000 		.4byte	.LASF37
- 443 0015 C8020000 		.4byte	.LASF38
- 444 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 445 001d 00000000 		.4byte	0
- 446 0021 00000000 		.4byte	.Ldebug_line0
- 447 0025 02       		.uleb128 0x2
- 448 0026 01       		.byte	0x1
- 449 0027 06       		.byte	0x6
- 450 0028 68030000 		.4byte	.LASF0
- 451 002c 02       		.uleb128 0x2
- 452 002d 01       		.byte	0x1
- 453 002e 08       		.byte	0x8
- 454 002f F4000000 		.4byte	.LASF1
- 455 0033 02       		.uleb128 0x2
- 456 0034 02       		.byte	0x2
- 457 0035 05       		.byte	0x5
- 458 0036 23030000 		.4byte	.LASF2
- 459 003a 02       		.uleb128 0x2
- 460 003b 02       		.byte	0x2
- 461 003c 07       		.byte	0x7
- 462 003d 79000000 		.4byte	.LASF3
- 463 0041 02       		.uleb128 0x2
- 464 0042 04       		.byte	0x4
- 465 0043 05       		.byte	0x5
- 466 0044 53030000 		.4byte	.LASF4
- 467 0048 02       		.uleb128 0x2
- 468 0049 04       		.byte	0x4
- 469 004a 07       		.byte	0x7
- 470 004b C2010000 		.4byte	.LASF5
- 471 004f 02       		.uleb128 0x2
- 472 0050 08       		.byte	0x8
- 473 0051 05       		.byte	0x5
- 474 0052 B5020000 		.4byte	.LASF6
- 475 0056 02       		.uleb128 0x2
- 476 0057 08       		.byte	0x8
- 477 0058 07       		.byte	0x7
- 478 0059 DD000000 		.4byte	.LASF7
- 479 005d 03       		.uleb128 0x3
- 480 005e 04       		.byte	0x4
- 481 005f 05       		.byte	0x5
- 482 0060 696E7400 		.ascii	"int\000"
- 483 0064 02       		.uleb128 0x2
- 484 0065 04       		.byte	0x4
- 485 0066 07       		.byte	0x7
- 486 0067 D4010000 		.4byte	.LASF8
- 487 006b 04       		.uleb128 0x4
- 488 006c 42010000 		.4byte	.LASF9
- 489 0070 02       		.byte	0x2
- 490 0071 E701     		.2byte	0x1e7
- 491 0073 2C000000 		.4byte	0x2c
- 492 0077 04       		.uleb128 0x4
- 493 0078 A4010000 		.4byte	.LASF10
- 494 007c 02       		.byte	0x2
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 17
+ 406:Generated_Source\PSoC4/INPUT_TIMER_ISR.c **** }
+ 434              		.loc 1 406 0
+ 435              		@ sp needed
+ 436 0008 7047     		bx	lr
+ 437              	.L39:
+ 438 000a C046     		.align	2
+ 439              	.L38:
+ 440 000c 80E200E0 		.word	-536812928
+ 441              		.cfi_endproc
+ 442              	.LFE13:
+ 443              		.size	INPUT_TIMER_ISR_ClearPending, .-INPUT_TIMER_ISR_ClearPending
+ 444              		.text
+ 445              	.Letext0:
+ 446              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 447              		.file 3 "Generated_Source\\PSoC4\\INPUT_TIMER.h"
+ 448              		.file 4 "Generated_Source\\PSoC4/CyLib.h"
+ 449              		.section	.debug_info,"",%progbits
+ 450              	.Ldebug_info0:
+ 451 0000 33030000 		.4byte	0x333
+ 452 0004 0400     		.2byte	0x4
+ 453 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 454 000a 04       		.byte	0x4
+ 455 000b 01       		.uleb128 0x1
+ 456 000c 39020000 		.4byte	.LASF39
+ 457 0010 0C       		.byte	0xc
+ 458 0011 B4000000 		.4byte	.LASF40
+ 459 0015 E6020000 		.4byte	.LASF41
+ 460 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 461 001d 00000000 		.4byte	0
+ 462 0021 00000000 		.4byte	.Ldebug_line0
+ 463 0025 02       		.uleb128 0x2
+ 464 0026 01       		.byte	0x1
+ 465 0027 06       		.byte	0x6
+ 466 0028 8B030000 		.4byte	.LASF0
+ 467 002c 02       		.uleb128 0x2
+ 468 002d 01       		.byte	0x1
+ 469 002e 08       		.byte	0x8
+ 470 002f 0F010000 		.4byte	.LASF1
+ 471 0033 02       		.uleb128 0x2
+ 472 0034 02       		.byte	0x2
+ 473 0035 05       		.byte	0x5
+ 474 0036 41030000 		.4byte	.LASF2
+ 475 003a 02       		.uleb128 0x2
+ 476 003b 02       		.byte	0x2
+ 477 003c 07       		.byte	0x7
+ 478 003d 94000000 		.4byte	.LASF3
+ 479 0041 02       		.uleb128 0x2
+ 480 0042 04       		.byte	0x4
+ 481 0043 05       		.byte	0x5
+ 482 0044 71030000 		.4byte	.LASF4
+ 483 0048 02       		.uleb128 0x2
+ 484 0049 04       		.byte	0x4
+ 485 004a 07       		.byte	0x7
+ 486 004b DD010000 		.4byte	.LASF5
+ 487 004f 02       		.uleb128 0x2
+ 488 0050 08       		.byte	0x8
+ 489 0051 05       		.byte	0x5
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 17
 
 
- 495 007d E901     		.2byte	0x1e9
- 496 007f 48000000 		.4byte	0x48
- 497 0083 02       		.uleb128 0x2
- 498 0084 04       		.byte	0x4
- 499 0085 04       		.byte	0x4
- 500 0086 D7000000 		.4byte	.LASF11
- 501 008a 02       		.uleb128 0x2
- 502 008b 08       		.byte	0x8
- 503 008c 04       		.byte	0x4
- 504 008d 6D010000 		.4byte	.LASF12
- 505 0091 02       		.uleb128 0x2
- 506 0092 01       		.byte	0x1
- 507 0093 08       		.byte	0x8
- 508 0094 C3020000 		.4byte	.LASF13
- 509 0098 04       		.uleb128 0x4
- 510 0099 00000000 		.4byte	.LASF14
- 511 009d 02       		.byte	0x2
- 512 009e 9302     		.2byte	0x293
- 513 00a0 A4000000 		.4byte	0xa4
- 514 00a4 05       		.uleb128 0x5
- 515 00a5 77000000 		.4byte	0x77
- 516 00a9 04       		.uleb128 0x4
- 517 00aa 11020000 		.4byte	.LASF15
- 518 00ae 02       		.byte	0x2
- 519 00af A302     		.2byte	0x2a3
- 520 00b1 B5000000 		.4byte	0xb5
- 521 00b5 06       		.uleb128 0x6
- 522 00b6 04       		.byte	0x4
- 523 00b7 BB000000 		.4byte	0xbb
- 524 00bb 07       		.uleb128 0x7
- 525 00bc 02       		.uleb128 0x2
- 526 00bd 08       		.byte	0x8
- 527 00be 04       		.byte	0x4
- 528 00bf 5C030000 		.4byte	.LASF16
- 529 00c3 02       		.uleb128 0x2
- 530 00c4 04       		.byte	0x4
- 531 00c5 07       		.byte	0x7
- 532 00c6 AC020000 		.4byte	.LASF17
- 533 00ca 08       		.uleb128 0x8
- 534 00cb 74010000 		.4byte	.LASF24
- 535 00cf 01       		.byte	0x1
- 536 00d0 9F       		.byte	0x9f
- 537 00d1 00000000 		.4byte	.LFB4
- 538 00d5 02000000 		.4byte	.LFE4-.LFB4
- 539 00d9 01       		.uleb128 0x1
- 540 00da 9C       		.byte	0x9c
- 541 00db 09       		.uleb128 0x9
- 542 00dc 3B000000 		.4byte	.LASF18
- 543 00e0 01       		.byte	0x1
- 544 00e1 C7       		.byte	0xc7
- 545 00e2 00000000 		.4byte	.LFB5
- 546 00e6 0C000000 		.4byte	.LFE5-.LFB5
- 547 00ea 01       		.uleb128 0x1
- 548 00eb 9C       		.byte	0x9c
- 549 00ec FE000000 		.4byte	0xfe
- 550 00f0 0A       		.uleb128 0xa
- 551 00f1 55000000 		.4byte	.LASF20
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 18
+ 490 0052 D0020000 		.4byte	.LASF6
+ 491 0056 02       		.uleb128 0x2
+ 492 0057 08       		.byte	0x8
+ 493 0058 07       		.byte	0x7
+ 494 0059 F8000000 		.4byte	.LASF7
+ 495 005d 03       		.uleb128 0x3
+ 496 005e 04       		.byte	0x4
+ 497 005f 05       		.byte	0x5
+ 498 0060 696E7400 		.ascii	"int\000"
+ 499 0064 02       		.uleb128 0x2
+ 500 0065 04       		.byte	0x4
+ 501 0066 07       		.byte	0x7
+ 502 0067 EF010000 		.4byte	.LASF8
+ 503 006b 04       		.uleb128 0x4
+ 504 006c 5D010000 		.4byte	.LASF9
+ 505 0070 02       		.byte	0x2
+ 506 0071 E701     		.2byte	0x1e7
+ 507 0073 2C000000 		.4byte	0x2c
+ 508 0077 04       		.uleb128 0x4
+ 509 0078 BF010000 		.4byte	.LASF10
+ 510 007c 02       		.byte	0x2
+ 511 007d E901     		.2byte	0x1e9
+ 512 007f 48000000 		.4byte	0x48
+ 513 0083 02       		.uleb128 0x2
+ 514 0084 04       		.byte	0x4
+ 515 0085 04       		.byte	0x4
+ 516 0086 F2000000 		.4byte	.LASF11
+ 517 008a 02       		.uleb128 0x2
+ 518 008b 08       		.byte	0x8
+ 519 008c 04       		.byte	0x4
+ 520 008d 88010000 		.4byte	.LASF12
+ 521 0091 02       		.uleb128 0x2
+ 522 0092 01       		.byte	0x1
+ 523 0093 08       		.byte	0x8
+ 524 0094 7A030000 		.4byte	.LASF13
+ 525 0098 04       		.uleb128 0x4
+ 526 0099 00000000 		.4byte	.LASF14
+ 527 009d 02       		.byte	0x2
+ 528 009e 9302     		.2byte	0x293
+ 529 00a0 A4000000 		.4byte	0xa4
+ 530 00a4 05       		.uleb128 0x5
+ 531 00a5 77000000 		.4byte	0x77
+ 532 00a9 04       		.uleb128 0x4
+ 533 00aa 2C020000 		.4byte	.LASF15
+ 534 00ae 02       		.byte	0x2
+ 535 00af A302     		.2byte	0x2a3
+ 536 00b1 B5000000 		.4byte	0xb5
+ 537 00b5 06       		.uleb128 0x6
+ 538 00b6 04       		.byte	0x4
+ 539 00b7 BB000000 		.4byte	0xbb
+ 540 00bb 07       		.uleb128 0x7
+ 541 00bc 02       		.uleb128 0x2
+ 542 00bd 08       		.byte	0x8
+ 543 00be 04       		.byte	0x4
+ 544 00bf 7F030000 		.4byte	.LASF16
+ 545 00c3 02       		.uleb128 0x2
+ 546 00c4 04       		.byte	0x4
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 18
 
 
- 552 00f5 01       		.byte	0x1
- 553 00f6 C7       		.byte	0xc7
- 554 00f7 A9000000 		.4byte	0xa9
- 555 00fb 01       		.uleb128 0x1
- 556 00fc 50       		.byte	0x50
- 557 00fd 00       		.byte	0
- 558 00fe 0B       		.uleb128 0xb
- 559 00ff E1010000 		.4byte	.LASF26
- 560 0103 01       		.byte	0x1
- 561 0104 DB       		.byte	0xdb
- 562 0105 A9000000 		.4byte	0xa9
- 563 0109 00000000 		.4byte	.LFB6
- 564 010d 0C000000 		.4byte	.LFE6-.LFB6
- 565 0111 01       		.uleb128 0x1
- 566 0112 9C       		.byte	0x9c
- 567 0113 09       		.uleb128 0x9
- 568 0114 51010000 		.4byte	.LASF19
- 569 0118 01       		.byte	0x1
- 570 0119 F9       		.byte	0xf9
- 571 011a 00000000 		.4byte	.LFB7
- 572 011e 20000000 		.4byte	.LFE7-.LFB7
- 573 0122 01       		.uleb128 0x1
- 574 0123 9C       		.byte	0x9c
- 575 0124 65010000 		.4byte	0x165
- 576 0128 0C       		.uleb128 0xc
- 577 0129 48010000 		.4byte	.LASF21
- 578 012d 01       		.byte	0x1
- 579 012e F9       		.byte	0xf9
- 580 012f 6B000000 		.4byte	0x6b
- 581 0133 00000000 		.4byte	.LLST0
- 582 0137 0D       		.uleb128 0xd
- 583 0138 1B010000 		.4byte	.LASF22
- 584 013c 01       		.byte	0x1
- 585 013d FB       		.byte	0xfb
- 586 013e 6B000000 		.4byte	0x6b
- 587 0142 21000000 		.4byte	.LLST1
- 588 0146 0E       		.uleb128 0xe
- 589 0147 44030000 		.4byte	.LASF23
- 590 014b 01       		.byte	0x1
- 591 014c FC       		.byte	0xfc
- 592 014d 77000000 		.4byte	0x77
- 593 0151 06       		.byte	0x6
- 594 0152 0F       		.uleb128 0xf
- 595 0153 08000000 		.4byte	.LVL3
- 596 0157 EE020000 		.4byte	0x2ee
- 597 015b 0F       		.uleb128 0xf
- 598 015c 1A000000 		.4byte	.LVL4
- 599 0160 F9020000 		.4byte	0x2f9
- 600 0164 00       		.byte	0
- 601 0165 10       		.uleb128 0x10
- 602 0166 5D000000 		.4byte	.LASF39
- 603 016a 01       		.byte	0x1
- 604 016b 1501     		.2byte	0x115
- 605 016d 6B000000 		.4byte	0x6b
- 606 0171 00000000 		.4byte	.LFB8
- 607 0175 10000000 		.4byte	.LFE8-.LFB8
- 608 0179 01       		.uleb128 0x1
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 19
+ 547 00c5 07       		.byte	0x7
+ 548 00c6 C7020000 		.4byte	.LASF17
+ 549 00ca 08       		.uleb128 0x8
+ 550 00cb 8F010000 		.4byte	.LASF18
+ 551 00cf 01       		.byte	0x1
+ 552 00d0 A1       		.byte	0xa1
+ 553 00d1 00000000 		.4byte	.LFB4
+ 554 00d5 14000000 		.4byte	.LFE4-.LFB4
+ 555 00d9 01       		.uleb128 0x1
+ 556 00da 9C       		.byte	0x9c
+ 557 00db EF000000 		.4byte	0xef
+ 558 00df 09       		.uleb128 0x9
+ 559 00e0 08000000 		.4byte	.LVL0
+ 560 00e4 14030000 		.4byte	0x314
+ 561 00e8 0A       		.uleb128 0xa
+ 562 00e9 01       		.uleb128 0x1
+ 563 00ea 50       		.byte	0x50
+ 564 00eb 01       		.uleb128 0x1
+ 565 00ec 31       		.byte	0x31
+ 566 00ed 00       		.byte	0
+ 567 00ee 00       		.byte	0
+ 568 00ef 08       		.uleb128 0x8
+ 569 00f0 56000000 		.4byte	.LASF19
+ 570 00f4 01       		.byte	0x1
+ 571 00f5 CC       		.byte	0xcc
+ 572 00f6 00000000 		.4byte	.LFB5
+ 573 00fa 0C000000 		.4byte	.LFE5-.LFB5
+ 574 00fe 01       		.uleb128 0x1
+ 575 00ff 9C       		.byte	0x9c
+ 576 0100 12010000 		.4byte	0x112
+ 577 0104 0B       		.uleb128 0xb
+ 578 0105 70000000 		.4byte	.LASF21
+ 579 0109 01       		.byte	0x1
+ 580 010a CC       		.byte	0xcc
+ 581 010b A9000000 		.4byte	0xa9
+ 582 010f 01       		.uleb128 0x1
+ 583 0110 50       		.byte	0x50
+ 584 0111 00       		.byte	0
+ 585 0112 0C       		.uleb128 0xc
+ 586 0113 FC010000 		.4byte	.LASF25
+ 587 0117 01       		.byte	0x1
+ 588 0118 E0       		.byte	0xe0
+ 589 0119 A9000000 		.4byte	0xa9
+ 590 011d 00000000 		.4byte	.LFB6
+ 591 0121 0C000000 		.4byte	.LFE6-.LFB6
+ 592 0125 01       		.uleb128 0x1
+ 593 0126 9C       		.byte	0x9c
+ 594 0127 08       		.uleb128 0x8
+ 595 0128 6C010000 		.4byte	.LASF20
+ 596 012c 01       		.byte	0x1
+ 597 012d FE       		.byte	0xfe
+ 598 012e 00000000 		.4byte	.LFB7
+ 599 0132 20000000 		.4byte	.LFE7-.LFB7
+ 600 0136 01       		.uleb128 0x1
+ 601 0137 9C       		.byte	0x9c
+ 602 0138 7B010000 		.4byte	0x17b
+ 603 013c 0D       		.uleb128 0xd
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 19
 
 
- 609 017a 9C       		.byte	0x9c
- 610 017b 9D010000 		.4byte	0x19d
- 611 017f 11       		.uleb128 0x11
- 612 0180 48010000 		.4byte	.LASF21
- 613 0184 01       		.byte	0x1
- 614 0185 1701     		.2byte	0x117
- 615 0187 77000000 		.4byte	0x77
- 616 018b 34000000 		.4byte	.LLST2
- 617 018f 12       		.uleb128 0x12
- 618 0190 44030000 		.4byte	.LASF23
- 619 0194 01       		.byte	0x1
- 620 0195 1801     		.2byte	0x118
- 621 0197 77000000 		.4byte	0x77
- 622 019b 06       		.byte	0x6
- 623 019c 00       		.byte	0
- 624 019d 13       		.uleb128 0x13
- 625 019e 2D030000 		.4byte	.LASF25
- 626 01a2 01       		.byte	0x1
- 627 01a3 3001     		.2byte	0x130
- 628 01a5 00000000 		.4byte	.LFB9
- 629 01a9 10000000 		.4byte	.LFE9-.LFB9
- 630 01ad 01       		.uleb128 0x1
- 631 01ae 9C       		.byte	0x9c
- 632 01af 14       		.uleb128 0x14
- 633 01b0 02010000 		.4byte	.LASF27
- 634 01b4 01       		.byte	0x1
- 635 01b5 4501     		.2byte	0x145
- 636 01b7 6B000000 		.4byte	0x6b
- 637 01bb 00000000 		.4byte	.LFB10
- 638 01bf 14000000 		.4byte	.LFE10-.LFB10
- 639 01c3 01       		.uleb128 0x1
- 640 01c4 9C       		.byte	0x9c
- 641 01c5 13       		.uleb128 0x13
- 642 01c6 2A010000 		.4byte	.LASF28
- 643 01ca 01       		.byte	0x1
- 644 01cb 5A01     		.2byte	0x15a
- 645 01cd 00000000 		.4byte	.LFB11
- 646 01d1 10000000 		.4byte	.LFE11-.LFB11
- 647 01d5 01       		.uleb128 0x1
- 648 01d6 9C       		.byte	0x9c
- 649 01d7 09       		.uleb128 0x9
- 650 01d8 8E010000 		.4byte	.LASF29
- 651 01dc 01       		.byte	0x1
- 652 01dd 38       		.byte	0x38
- 653 01de 00000000 		.4byte	.LFB1
- 654 01e2 1C000000 		.4byte	.LFE1-.LFB1
- 655 01e6 01       		.uleb128 0x1
- 656 01e7 9C       		.byte	0x9c
- 657 01e8 29020000 		.4byte	0x229
- 658 01ec 0F       		.uleb128 0xf
- 659 01ed 06000000 		.4byte	.LVL8
- 660 01f1 C5010000 		.4byte	0x1c5
- 661 01f5 15       		.uleb128 0x15
- 662 01f6 0C000000 		.4byte	.LVL9
- 663 01fa DB000000 		.4byte	0xdb
- 664 01fe 0C020000 		.4byte	0x20c
- 665 0202 16       		.uleb128 0x16
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 20
+ 604 013d 63010000 		.4byte	.LASF22
+ 605 0141 01       		.byte	0x1
+ 606 0142 FE       		.byte	0xfe
+ 607 0143 6B000000 		.4byte	0x6b
+ 608 0147 00000000 		.4byte	.LLST0
+ 609 014b 0E       		.uleb128 0xe
+ 610 014c 36010000 		.4byte	.LASF23
+ 611 0150 01       		.byte	0x1
+ 612 0151 0001     		.2byte	0x100
+ 613 0153 6B000000 		.4byte	0x6b
+ 614 0157 21000000 		.4byte	.LLST1
+ 615 015b 0F       		.uleb128 0xf
+ 616 015c 62030000 		.4byte	.LASF24
+ 617 0160 01       		.byte	0x1
+ 618 0161 0101     		.2byte	0x101
+ 619 0163 77000000 		.4byte	0x77
+ 620 0167 06       		.byte	0x6
+ 621 0168 10       		.uleb128 0x10
+ 622 0169 08000000 		.4byte	.LVL4
+ 623 016d 20030000 		.4byte	0x320
+ 624 0171 10       		.uleb128 0x10
+ 625 0172 1A000000 		.4byte	.LVL5
+ 626 0176 2B030000 		.4byte	0x32b
+ 627 017a 00       		.byte	0
+ 628 017b 11       		.uleb128 0x11
+ 629 017c 78000000 		.4byte	.LASF42
+ 630 0180 01       		.byte	0x1
+ 631 0181 1A01     		.2byte	0x11a
+ 632 0183 6B000000 		.4byte	0x6b
+ 633 0187 00000000 		.4byte	.LFB8
+ 634 018b 10000000 		.4byte	.LFE8-.LFB8
+ 635 018f 01       		.uleb128 0x1
+ 636 0190 9C       		.byte	0x9c
+ 637 0191 B3010000 		.4byte	0x1b3
+ 638 0195 0E       		.uleb128 0xe
+ 639 0196 63010000 		.4byte	.LASF22
+ 640 019a 01       		.byte	0x1
+ 641 019b 1C01     		.2byte	0x11c
+ 642 019d 77000000 		.4byte	0x77
+ 643 01a1 34000000 		.4byte	.LLST2
+ 644 01a5 0F       		.uleb128 0xf
+ 645 01a6 62030000 		.4byte	.LASF24
+ 646 01aa 01       		.byte	0x1
+ 647 01ab 1D01     		.2byte	0x11d
+ 648 01ad 77000000 		.4byte	0x77
+ 649 01b1 06       		.byte	0x6
+ 650 01b2 00       		.byte	0
+ 651 01b3 12       		.uleb128 0x12
+ 652 01b4 4B030000 		.4byte	.LASF27
+ 653 01b8 01       		.byte	0x1
+ 654 01b9 3501     		.2byte	0x135
+ 655 01bb 00000000 		.4byte	.LFB9
+ 656 01bf 10000000 		.4byte	.LFE9-.LFB9
+ 657 01c3 01       		.uleb128 0x1
+ 658 01c4 9C       		.byte	0x9c
+ 659 01c5 13       		.uleb128 0x13
+ 660 01c6 1D010000 		.4byte	.LASF26
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 20
 
 
- 666 0203 01       		.uleb128 0x1
- 667 0204 50       		.byte	0x50
- 668 0205 05       		.uleb128 0x5
- 669 0206 03       		.byte	0x3
- 670 0207 00000000 		.4byte	INPUT_TIMER_ISR_Interrupt
- 671 020b 00       		.byte	0
- 672 020c 15       		.uleb128 0x15
- 673 020d 12000000 		.4byte	.LVL10
- 674 0211 13010000 		.4byte	0x113
- 675 0215 1F020000 		.4byte	0x21f
- 676 0219 16       		.uleb128 0x16
- 677 021a 01       		.uleb128 0x1
- 678 021b 50       		.byte	0x50
- 679 021c 01       		.uleb128 0x1
- 680 021d 33       		.byte	0x33
- 681 021e 00       		.byte	0
- 682 021f 0F       		.uleb128 0xf
- 683 0220 16000000 		.4byte	.LVL11
- 684 0224 9D010000 		.4byte	0x19d
- 685 0228 00       		.byte	0
- 686 0229 09       		.uleb128 0x9
- 687 022a 06000000 		.4byte	.LASF30
- 688 022e 01       		.byte	0x1
- 689 022f 63       		.byte	0x63
- 690 0230 00000000 		.4byte	.LFB2
- 691 0234 1A000000 		.4byte	.LFE2-.LFB2
- 692 0238 01       		.uleb128 0x1
- 693 0239 9C       		.byte	0x9c
- 694 023a 87020000 		.4byte	0x287
- 695 023e 0C       		.uleb128 0xc
- 696 023f 55000000 		.4byte	.LASF20
- 697 0243 01       		.byte	0x1
- 698 0244 63       		.byte	0x63
- 699 0245 A9000000 		.4byte	0xa9
- 700 0249 56000000 		.4byte	.LLST3
- 701 024d 0F       		.uleb128 0xf
- 702 024e 08000000 		.4byte	.LVL13
- 703 0252 C5010000 		.4byte	0x1c5
- 704 0256 15       		.uleb128 0x15
- 705 0257 0E000000 		.4byte	.LVL14
- 706 025b DB000000 		.4byte	0xdb
- 707 025f 6A020000 		.4byte	0x26a
- 708 0263 16       		.uleb128 0x16
- 709 0264 01       		.uleb128 0x1
- 710 0265 50       		.byte	0x50
- 711 0266 02       		.uleb128 0x2
- 712 0267 74       		.byte	0x74
- 713 0268 00       		.sleb128 0
- 714 0269 00       		.byte	0
- 715 026a 15       		.uleb128 0x15
- 716 026b 14000000 		.4byte	.LVL15
- 717 026f 13010000 		.4byte	0x113
- 718 0273 7D020000 		.4byte	0x27d
- 719 0277 16       		.uleb128 0x16
- 720 0278 01       		.uleb128 0x1
- 721 0279 50       		.byte	0x50
- 722 027a 01       		.uleb128 0x1
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 21
+ 661 01ca 01       		.byte	0x1
+ 662 01cb 4A01     		.2byte	0x14a
+ 663 01cd 6B000000 		.4byte	0x6b
+ 664 01d1 00000000 		.4byte	.LFB10
+ 665 01d5 14000000 		.4byte	.LFE10-.LFB10
+ 666 01d9 01       		.uleb128 0x1
+ 667 01da 9C       		.byte	0x9c
+ 668 01db 12       		.uleb128 0x12
+ 669 01dc 45010000 		.4byte	.LASF28
+ 670 01e0 01       		.byte	0x1
+ 671 01e1 5F01     		.2byte	0x15f
+ 672 01e3 00000000 		.4byte	.LFB11
+ 673 01e7 10000000 		.4byte	.LFE11-.LFB11
+ 674 01eb 01       		.uleb128 0x1
+ 675 01ec 9C       		.byte	0x9c
+ 676 01ed 08       		.uleb128 0x8
+ 677 01ee A9010000 		.4byte	.LASF29
+ 678 01f2 01       		.byte	0x1
+ 679 01f3 3A       		.byte	0x3a
+ 680 01f4 00000000 		.4byte	.LFB1
+ 681 01f8 1C000000 		.4byte	.LFE1-.LFB1
+ 682 01fc 01       		.uleb128 0x1
+ 683 01fd 9C       		.byte	0x9c
+ 684 01fe 3F020000 		.4byte	0x23f
+ 685 0202 10       		.uleb128 0x10
+ 686 0203 06000000 		.4byte	.LVL9
+ 687 0207 DB010000 		.4byte	0x1db
+ 688 020b 14       		.uleb128 0x14
+ 689 020c 0C000000 		.4byte	.LVL10
+ 690 0210 EF000000 		.4byte	0xef
+ 691 0214 22020000 		.4byte	0x222
+ 692 0218 0A       		.uleb128 0xa
+ 693 0219 01       		.uleb128 0x1
+ 694 021a 50       		.byte	0x50
+ 695 021b 05       		.uleb128 0x5
+ 696 021c 03       		.byte	0x3
+ 697 021d 00000000 		.4byte	INPUT_TIMER_ISR_Interrupt
+ 698 0221 00       		.byte	0
+ 699 0222 14       		.uleb128 0x14
+ 700 0223 12000000 		.4byte	.LVL11
+ 701 0227 27010000 		.4byte	0x127
+ 702 022b 35020000 		.4byte	0x235
+ 703 022f 0A       		.uleb128 0xa
+ 704 0230 01       		.uleb128 0x1
+ 705 0231 50       		.byte	0x50
+ 706 0232 01       		.uleb128 0x1
+ 707 0233 33       		.byte	0x33
+ 708 0234 00       		.byte	0
+ 709 0235 10       		.uleb128 0x10
+ 710 0236 16000000 		.4byte	.LVL12
+ 711 023a B3010000 		.4byte	0x1b3
+ 712 023e 00       		.byte	0
+ 713 023f 08       		.uleb128 0x8
+ 714 0240 21000000 		.4byte	.LASF30
+ 715 0244 01       		.byte	0x1
+ 716 0245 65       		.byte	0x65
+ 717 0246 00000000 		.4byte	.LFB2
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 21
 
 
- 723 027b 33       		.byte	0x33
- 724 027c 00       		.byte	0
- 725 027d 0F       		.uleb128 0xf
- 726 027e 18000000 		.4byte	.LVL16
- 727 0282 9D010000 		.4byte	0x19d
- 728 0286 00       		.byte	0
- 729 0287 09       		.uleb128 0x9
- 730 0288 C2000000 		.4byte	.LASF31
- 731 028c 01       		.byte	0x1
- 732 028d 81       		.byte	0x81
- 733 028e 00000000 		.4byte	.LFB3
- 734 0292 14000000 		.4byte	.LFE3-.LFB3
- 735 0296 01       		.uleb128 0x1
- 736 0297 9C       		.byte	0x9c
- 737 0298 AF020000 		.4byte	0x2af
- 738 029c 0F       		.uleb128 0xf
- 739 029d 06000000 		.4byte	.LVL18
- 740 02a1 C5010000 		.4byte	0x1c5
- 741 02a5 0F       		.uleb128 0xf
- 742 02a6 0C000000 		.4byte	.LVL19
- 743 02aa DB000000 		.4byte	0xdb
- 744 02ae 00       		.byte	0
- 745 02af 13       		.uleb128 0x13
- 746 02b0 74030000 		.4byte	.LASF32
- 747 02b4 01       		.byte	0x1
- 748 02b5 7501     		.2byte	0x175
- 749 02b7 00000000 		.4byte	.LFB12
- 750 02bb 10000000 		.4byte	.LFE12-.LFB12
- 751 02bf 01       		.uleb128 0x1
- 752 02c0 9C       		.byte	0x9c
- 753 02c1 13       		.uleb128 0x13
- 754 02c2 1E000000 		.4byte	.LASF33
- 755 02c6 01       		.byte	0x1
- 756 02c7 8E01     		.2byte	0x18e
- 757 02c9 00000000 		.4byte	.LFB13
- 758 02cd 10000000 		.4byte	.LFE13-.LFB13
- 759 02d1 01       		.uleb128 0x1
- 760 02d2 9C       		.byte	0x9c
- 761 02d3 17       		.uleb128 0x17
- 762 02d4 A9000000 		.4byte	0xa9
- 763 02d8 E3020000 		.4byte	0x2e3
- 764 02dc 18       		.uleb128 0x18
- 765 02dd C3000000 		.4byte	0xc3
- 766 02e1 2F       		.byte	0x2f
- 767 02e2 00       		.byte	0
- 768 02e3 19       		.uleb128 0x19
- 769 02e4 8C000000 		.4byte	.LASF40
- 770 02e8 01       		.byte	0x1
- 771 02e9 21       		.byte	0x21
- 772 02ea D3020000 		.4byte	0x2d3
- 773 02ee 1A       		.uleb128 0x1a
- 774 02ef AB010000 		.4byte	.LASF34
- 775 02f3 AB010000 		.4byte	.LASF34
- 776 02f7 03       		.byte	0x3
- 777 02f8 E5       		.byte	0xe5
- 778 02f9 1A       		.uleb128 0x1a
- 779 02fa FB010000 		.4byte	.LASF35
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 22
+ 718 024a 1A000000 		.4byte	.LFE2-.LFB2
+ 719 024e 01       		.uleb128 0x1
+ 720 024f 9C       		.byte	0x9c
+ 721 0250 9D020000 		.4byte	0x29d
+ 722 0254 0D       		.uleb128 0xd
+ 723 0255 70000000 		.4byte	.LASF21
+ 724 0259 01       		.byte	0x1
+ 725 025a 65       		.byte	0x65
+ 726 025b A9000000 		.4byte	0xa9
+ 727 025f 56000000 		.4byte	.LLST3
+ 728 0263 10       		.uleb128 0x10
+ 729 0264 08000000 		.4byte	.LVL14
+ 730 0268 DB010000 		.4byte	0x1db
+ 731 026c 14       		.uleb128 0x14
+ 732 026d 0E000000 		.4byte	.LVL15
+ 733 0271 EF000000 		.4byte	0xef
+ 734 0275 80020000 		.4byte	0x280
+ 735 0279 0A       		.uleb128 0xa
+ 736 027a 01       		.uleb128 0x1
+ 737 027b 50       		.byte	0x50
+ 738 027c 02       		.uleb128 0x2
+ 739 027d 74       		.byte	0x74
+ 740 027e 00       		.sleb128 0
+ 741 027f 00       		.byte	0
+ 742 0280 14       		.uleb128 0x14
+ 743 0281 14000000 		.4byte	.LVL16
+ 744 0285 27010000 		.4byte	0x127
+ 745 0289 93020000 		.4byte	0x293
+ 746 028d 0A       		.uleb128 0xa
+ 747 028e 01       		.uleb128 0x1
+ 748 028f 50       		.byte	0x50
+ 749 0290 01       		.uleb128 0x1
+ 750 0291 33       		.byte	0x33
+ 751 0292 00       		.byte	0
+ 752 0293 10       		.uleb128 0x10
+ 753 0294 18000000 		.4byte	.LVL17
+ 754 0298 B3010000 		.4byte	0x1b3
+ 755 029c 00       		.byte	0
+ 756 029d 08       		.uleb128 0x8
+ 757 029e DD000000 		.4byte	.LASF31
+ 758 02a2 01       		.byte	0x1
+ 759 02a3 83       		.byte	0x83
+ 760 02a4 00000000 		.4byte	.LFB3
+ 761 02a8 14000000 		.4byte	.LFE3-.LFB3
+ 762 02ac 01       		.uleb128 0x1
+ 763 02ad 9C       		.byte	0x9c
+ 764 02ae C5020000 		.4byte	0x2c5
+ 765 02b2 10       		.uleb128 0x10
+ 766 02b3 06000000 		.4byte	.LVL19
+ 767 02b7 DB010000 		.4byte	0x1db
+ 768 02bb 10       		.uleb128 0x10
+ 769 02bc 0C000000 		.4byte	.LVL20
+ 770 02c0 EF000000 		.4byte	0xef
+ 771 02c4 00       		.byte	0
+ 772 02c5 12       		.uleb128 0x12
+ 773 02c6 97030000 		.4byte	.LASF32
+ 774 02ca 01       		.byte	0x1
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 22
 
 
- 780 02fe FB010000 		.4byte	.LASF35
- 781 0302 03       		.byte	0x3
- 782 0303 E6       		.byte	0xe6
- 783 0304 00       		.byte	0
- 784              		.section	.debug_abbrev,"",%progbits
- 785              	.Ldebug_abbrev0:
- 786 0000 01       		.uleb128 0x1
- 787 0001 11       		.uleb128 0x11
- 788 0002 01       		.byte	0x1
- 789 0003 25       		.uleb128 0x25
- 790 0004 0E       		.uleb128 0xe
- 791 0005 13       		.uleb128 0x13
- 792 0006 0B       		.uleb128 0xb
- 793 0007 03       		.uleb128 0x3
- 794 0008 0E       		.uleb128 0xe
- 795 0009 1B       		.uleb128 0x1b
- 796 000a 0E       		.uleb128 0xe
- 797 000b 55       		.uleb128 0x55
- 798 000c 17       		.uleb128 0x17
- 799 000d 11       		.uleb128 0x11
- 800 000e 01       		.uleb128 0x1
- 801 000f 10       		.uleb128 0x10
- 802 0010 17       		.uleb128 0x17
- 803 0011 00       		.byte	0
- 804 0012 00       		.byte	0
- 805 0013 02       		.uleb128 0x2
- 806 0014 24       		.uleb128 0x24
- 807 0015 00       		.byte	0
- 808 0016 0B       		.uleb128 0xb
- 809 0017 0B       		.uleb128 0xb
- 810 0018 3E       		.uleb128 0x3e
- 811 0019 0B       		.uleb128 0xb
- 812 001a 03       		.uleb128 0x3
- 813 001b 0E       		.uleb128 0xe
- 814 001c 00       		.byte	0
- 815 001d 00       		.byte	0
- 816 001e 03       		.uleb128 0x3
- 817 001f 24       		.uleb128 0x24
- 818 0020 00       		.byte	0
- 819 0021 0B       		.uleb128 0xb
- 820 0022 0B       		.uleb128 0xb
- 821 0023 3E       		.uleb128 0x3e
- 822 0024 0B       		.uleb128 0xb
- 823 0025 03       		.uleb128 0x3
- 824 0026 08       		.uleb128 0x8
- 825 0027 00       		.byte	0
- 826 0028 00       		.byte	0
- 827 0029 04       		.uleb128 0x4
- 828 002a 16       		.uleb128 0x16
- 829 002b 00       		.byte	0
- 830 002c 03       		.uleb128 0x3
- 831 002d 0E       		.uleb128 0xe
- 832 002e 3A       		.uleb128 0x3a
- 833 002f 0B       		.uleb128 0xb
- 834 0030 3B       		.uleb128 0x3b
- 835 0031 05       		.uleb128 0x5
- 836 0032 49       		.uleb128 0x49
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 23
+ 775 02cb 7A01     		.2byte	0x17a
+ 776 02cd 00000000 		.4byte	.LFB12
+ 777 02d1 10000000 		.4byte	.LFE12-.LFB12
+ 778 02d5 01       		.uleb128 0x1
+ 779 02d6 9C       		.byte	0x9c
+ 780 02d7 12       		.uleb128 0x12
+ 781 02d8 39000000 		.4byte	.LASF33
+ 782 02dc 01       		.byte	0x1
+ 783 02dd 9301     		.2byte	0x193
+ 784 02df 00000000 		.4byte	.LFB13
+ 785 02e3 10000000 		.4byte	.LFE13-.LFB13
+ 786 02e7 01       		.uleb128 0x1
+ 787 02e8 9C       		.byte	0x9c
+ 788 02e9 15       		.uleb128 0x15
+ 789 02ea DE020000 		.4byte	.LASF34
+ 790 02ee 01       		.byte	0x1
+ 791 02ef 20       		.byte	0x20
+ 792 02f0 F4020000 		.4byte	0x2f4
+ 793 02f4 05       		.uleb128 0x5
+ 794 02f5 5D000000 		.4byte	0x5d
+ 795 02f9 16       		.uleb128 0x16
+ 796 02fa A9000000 		.4byte	0xa9
+ 797 02fe 09030000 		.4byte	0x309
+ 798 0302 17       		.uleb128 0x17
+ 799 0303 C3000000 		.4byte	0xc3
+ 800 0307 2F       		.byte	0x2f
+ 801 0308 00       		.byte	0
+ 802 0309 15       		.uleb128 0x15
+ 803 030a A7000000 		.4byte	.LASF35
+ 804 030e 01       		.byte	0x1
+ 805 030f 23       		.byte	0x23
+ 806 0310 F9020000 		.4byte	0x2f9
+ 807 0314 18       		.uleb128 0x18
+ 808 0315 06000000 		.4byte	.LASF36
+ 809 0319 06000000 		.4byte	.LASF36
+ 810 031d 03       		.byte	0x3
+ 811 031e 4701     		.2byte	0x147
+ 812 0320 19       		.uleb128 0x19
+ 813 0321 C6010000 		.4byte	.LASF37
+ 814 0325 C6010000 		.4byte	.LASF37
+ 815 0329 04       		.byte	0x4
+ 816 032a E5       		.byte	0xe5
+ 817 032b 19       		.uleb128 0x19
+ 818 032c 16020000 		.4byte	.LASF38
+ 819 0330 16020000 		.4byte	.LASF38
+ 820 0334 04       		.byte	0x4
+ 821 0335 E6       		.byte	0xe6
+ 822 0336 00       		.byte	0
+ 823              		.section	.debug_abbrev,"",%progbits
+ 824              	.Ldebug_abbrev0:
+ 825 0000 01       		.uleb128 0x1
+ 826 0001 11       		.uleb128 0x11
+ 827 0002 01       		.byte	0x1
+ 828 0003 25       		.uleb128 0x25
+ 829 0004 0E       		.uleb128 0xe
+ 830 0005 13       		.uleb128 0x13
+ 831 0006 0B       		.uleb128 0xb
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 23
 
 
- 837 0033 13       		.uleb128 0x13
- 838 0034 00       		.byte	0
- 839 0035 00       		.byte	0
- 840 0036 05       		.uleb128 0x5
- 841 0037 35       		.uleb128 0x35
- 842 0038 00       		.byte	0
- 843 0039 49       		.uleb128 0x49
- 844 003a 13       		.uleb128 0x13
- 845 003b 00       		.byte	0
- 846 003c 00       		.byte	0
- 847 003d 06       		.uleb128 0x6
- 848 003e 0F       		.uleb128 0xf
- 849 003f 00       		.byte	0
- 850 0040 0B       		.uleb128 0xb
- 851 0041 0B       		.uleb128 0xb
- 852 0042 49       		.uleb128 0x49
- 853 0043 13       		.uleb128 0x13
- 854 0044 00       		.byte	0
- 855 0045 00       		.byte	0
- 856 0046 07       		.uleb128 0x7
- 857 0047 15       		.uleb128 0x15
- 858 0048 00       		.byte	0
- 859 0049 27       		.uleb128 0x27
- 860 004a 19       		.uleb128 0x19
- 861 004b 00       		.byte	0
- 862 004c 00       		.byte	0
- 863 004d 08       		.uleb128 0x8
- 864 004e 2E       		.uleb128 0x2e
- 865 004f 00       		.byte	0
- 866 0050 3F       		.uleb128 0x3f
- 867 0051 19       		.uleb128 0x19
- 868 0052 03       		.uleb128 0x3
- 869 0053 0E       		.uleb128 0xe
- 870 0054 3A       		.uleb128 0x3a
- 871 0055 0B       		.uleb128 0xb
- 872 0056 3B       		.uleb128 0x3b
- 873 0057 0B       		.uleb128 0xb
- 874 0058 27       		.uleb128 0x27
- 875 0059 19       		.uleb128 0x19
- 876 005a 11       		.uleb128 0x11
- 877 005b 01       		.uleb128 0x1
- 878 005c 12       		.uleb128 0x12
- 879 005d 06       		.uleb128 0x6
- 880 005e 40       		.uleb128 0x40
- 881 005f 18       		.uleb128 0x18
- 882 0060 9742     		.uleb128 0x2117
- 883 0062 19       		.uleb128 0x19
- 884 0063 00       		.byte	0
- 885 0064 00       		.byte	0
- 886 0065 09       		.uleb128 0x9
- 887 0066 2E       		.uleb128 0x2e
- 888 0067 01       		.byte	0x1
- 889 0068 3F       		.uleb128 0x3f
- 890 0069 19       		.uleb128 0x19
- 891 006a 03       		.uleb128 0x3
- 892 006b 0E       		.uleb128 0xe
- 893 006c 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 24
+ 832 0007 03       		.uleb128 0x3
+ 833 0008 0E       		.uleb128 0xe
+ 834 0009 1B       		.uleb128 0x1b
+ 835 000a 0E       		.uleb128 0xe
+ 836 000b 55       		.uleb128 0x55
+ 837 000c 17       		.uleb128 0x17
+ 838 000d 11       		.uleb128 0x11
+ 839 000e 01       		.uleb128 0x1
+ 840 000f 10       		.uleb128 0x10
+ 841 0010 17       		.uleb128 0x17
+ 842 0011 00       		.byte	0
+ 843 0012 00       		.byte	0
+ 844 0013 02       		.uleb128 0x2
+ 845 0014 24       		.uleb128 0x24
+ 846 0015 00       		.byte	0
+ 847 0016 0B       		.uleb128 0xb
+ 848 0017 0B       		.uleb128 0xb
+ 849 0018 3E       		.uleb128 0x3e
+ 850 0019 0B       		.uleb128 0xb
+ 851 001a 03       		.uleb128 0x3
+ 852 001b 0E       		.uleb128 0xe
+ 853 001c 00       		.byte	0
+ 854 001d 00       		.byte	0
+ 855 001e 03       		.uleb128 0x3
+ 856 001f 24       		.uleb128 0x24
+ 857 0020 00       		.byte	0
+ 858 0021 0B       		.uleb128 0xb
+ 859 0022 0B       		.uleb128 0xb
+ 860 0023 3E       		.uleb128 0x3e
+ 861 0024 0B       		.uleb128 0xb
+ 862 0025 03       		.uleb128 0x3
+ 863 0026 08       		.uleb128 0x8
+ 864 0027 00       		.byte	0
+ 865 0028 00       		.byte	0
+ 866 0029 04       		.uleb128 0x4
+ 867 002a 16       		.uleb128 0x16
+ 868 002b 00       		.byte	0
+ 869 002c 03       		.uleb128 0x3
+ 870 002d 0E       		.uleb128 0xe
+ 871 002e 3A       		.uleb128 0x3a
+ 872 002f 0B       		.uleb128 0xb
+ 873 0030 3B       		.uleb128 0x3b
+ 874 0031 05       		.uleb128 0x5
+ 875 0032 49       		.uleb128 0x49
+ 876 0033 13       		.uleb128 0x13
+ 877 0034 00       		.byte	0
+ 878 0035 00       		.byte	0
+ 879 0036 05       		.uleb128 0x5
+ 880 0037 35       		.uleb128 0x35
+ 881 0038 00       		.byte	0
+ 882 0039 49       		.uleb128 0x49
+ 883 003a 13       		.uleb128 0x13
+ 884 003b 00       		.byte	0
+ 885 003c 00       		.byte	0
+ 886 003d 06       		.uleb128 0x6
+ 887 003e 0F       		.uleb128 0xf
+ 888 003f 00       		.byte	0
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 24
 
 
- 894 006d 0B       		.uleb128 0xb
- 895 006e 3B       		.uleb128 0x3b
- 896 006f 0B       		.uleb128 0xb
- 897 0070 27       		.uleb128 0x27
- 898 0071 19       		.uleb128 0x19
- 899 0072 11       		.uleb128 0x11
- 900 0073 01       		.uleb128 0x1
- 901 0074 12       		.uleb128 0x12
- 902 0075 06       		.uleb128 0x6
- 903 0076 40       		.uleb128 0x40
- 904 0077 18       		.uleb128 0x18
- 905 0078 9742     		.uleb128 0x2117
- 906 007a 19       		.uleb128 0x19
- 907 007b 01       		.uleb128 0x1
- 908 007c 13       		.uleb128 0x13
- 909 007d 00       		.byte	0
- 910 007e 00       		.byte	0
- 911 007f 0A       		.uleb128 0xa
- 912 0080 05       		.uleb128 0x5
- 913 0081 00       		.byte	0
- 914 0082 03       		.uleb128 0x3
- 915 0083 0E       		.uleb128 0xe
- 916 0084 3A       		.uleb128 0x3a
- 917 0085 0B       		.uleb128 0xb
- 918 0086 3B       		.uleb128 0x3b
- 919 0087 0B       		.uleb128 0xb
- 920 0088 49       		.uleb128 0x49
- 921 0089 13       		.uleb128 0x13
- 922 008a 02       		.uleb128 0x2
- 923 008b 18       		.uleb128 0x18
- 924 008c 00       		.byte	0
- 925 008d 00       		.byte	0
- 926 008e 0B       		.uleb128 0xb
- 927 008f 2E       		.uleb128 0x2e
- 928 0090 00       		.byte	0
- 929 0091 3F       		.uleb128 0x3f
- 930 0092 19       		.uleb128 0x19
- 931 0093 03       		.uleb128 0x3
- 932 0094 0E       		.uleb128 0xe
- 933 0095 3A       		.uleb128 0x3a
- 934 0096 0B       		.uleb128 0xb
- 935 0097 3B       		.uleb128 0x3b
- 936 0098 0B       		.uleb128 0xb
- 937 0099 27       		.uleb128 0x27
- 938 009a 19       		.uleb128 0x19
- 939 009b 49       		.uleb128 0x49
- 940 009c 13       		.uleb128 0x13
- 941 009d 11       		.uleb128 0x11
- 942 009e 01       		.uleb128 0x1
- 943 009f 12       		.uleb128 0x12
- 944 00a0 06       		.uleb128 0x6
- 945 00a1 40       		.uleb128 0x40
- 946 00a2 18       		.uleb128 0x18
- 947 00a3 9742     		.uleb128 0x2117
- 948 00a5 19       		.uleb128 0x19
- 949 00a6 00       		.byte	0
- 950 00a7 00       		.byte	0
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 25
+ 889 0040 0B       		.uleb128 0xb
+ 890 0041 0B       		.uleb128 0xb
+ 891 0042 49       		.uleb128 0x49
+ 892 0043 13       		.uleb128 0x13
+ 893 0044 00       		.byte	0
+ 894 0045 00       		.byte	0
+ 895 0046 07       		.uleb128 0x7
+ 896 0047 15       		.uleb128 0x15
+ 897 0048 00       		.byte	0
+ 898 0049 27       		.uleb128 0x27
+ 899 004a 19       		.uleb128 0x19
+ 900 004b 00       		.byte	0
+ 901 004c 00       		.byte	0
+ 902 004d 08       		.uleb128 0x8
+ 903 004e 2E       		.uleb128 0x2e
+ 904 004f 01       		.byte	0x1
+ 905 0050 3F       		.uleb128 0x3f
+ 906 0051 19       		.uleb128 0x19
+ 907 0052 03       		.uleb128 0x3
+ 908 0053 0E       		.uleb128 0xe
+ 909 0054 3A       		.uleb128 0x3a
+ 910 0055 0B       		.uleb128 0xb
+ 911 0056 3B       		.uleb128 0x3b
+ 912 0057 0B       		.uleb128 0xb
+ 913 0058 27       		.uleb128 0x27
+ 914 0059 19       		.uleb128 0x19
+ 915 005a 11       		.uleb128 0x11
+ 916 005b 01       		.uleb128 0x1
+ 917 005c 12       		.uleb128 0x12
+ 918 005d 06       		.uleb128 0x6
+ 919 005e 40       		.uleb128 0x40
+ 920 005f 18       		.uleb128 0x18
+ 921 0060 9742     		.uleb128 0x2117
+ 922 0062 19       		.uleb128 0x19
+ 923 0063 01       		.uleb128 0x1
+ 924 0064 13       		.uleb128 0x13
+ 925 0065 00       		.byte	0
+ 926 0066 00       		.byte	0
+ 927 0067 09       		.uleb128 0x9
+ 928 0068 898201   		.uleb128 0x4109
+ 929 006b 01       		.byte	0x1
+ 930 006c 11       		.uleb128 0x11
+ 931 006d 01       		.uleb128 0x1
+ 932 006e 31       		.uleb128 0x31
+ 933 006f 13       		.uleb128 0x13
+ 934 0070 00       		.byte	0
+ 935 0071 00       		.byte	0
+ 936 0072 0A       		.uleb128 0xa
+ 937 0073 8A8201   		.uleb128 0x410a
+ 938 0076 00       		.byte	0
+ 939 0077 02       		.uleb128 0x2
+ 940 0078 18       		.uleb128 0x18
+ 941 0079 9142     		.uleb128 0x2111
+ 942 007b 18       		.uleb128 0x18
+ 943 007c 00       		.byte	0
+ 944 007d 00       		.byte	0
+ 945 007e 0B       		.uleb128 0xb
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 25
 
 
- 951 00a8 0C       		.uleb128 0xc
- 952 00a9 05       		.uleb128 0x5
- 953 00aa 00       		.byte	0
- 954 00ab 03       		.uleb128 0x3
- 955 00ac 0E       		.uleb128 0xe
- 956 00ad 3A       		.uleb128 0x3a
- 957 00ae 0B       		.uleb128 0xb
- 958 00af 3B       		.uleb128 0x3b
- 959 00b0 0B       		.uleb128 0xb
- 960 00b1 49       		.uleb128 0x49
- 961 00b2 13       		.uleb128 0x13
- 962 00b3 02       		.uleb128 0x2
- 963 00b4 17       		.uleb128 0x17
- 964 00b5 00       		.byte	0
- 965 00b6 00       		.byte	0
- 966 00b7 0D       		.uleb128 0xd
- 967 00b8 34       		.uleb128 0x34
- 968 00b9 00       		.byte	0
- 969 00ba 03       		.uleb128 0x3
- 970 00bb 0E       		.uleb128 0xe
- 971 00bc 3A       		.uleb128 0x3a
- 972 00bd 0B       		.uleb128 0xb
- 973 00be 3B       		.uleb128 0x3b
- 974 00bf 0B       		.uleb128 0xb
- 975 00c0 49       		.uleb128 0x49
- 976 00c1 13       		.uleb128 0x13
- 977 00c2 02       		.uleb128 0x2
- 978 00c3 17       		.uleb128 0x17
- 979 00c4 00       		.byte	0
- 980 00c5 00       		.byte	0
- 981 00c6 0E       		.uleb128 0xe
- 982 00c7 34       		.uleb128 0x34
- 983 00c8 00       		.byte	0
- 984 00c9 03       		.uleb128 0x3
- 985 00ca 0E       		.uleb128 0xe
- 986 00cb 3A       		.uleb128 0x3a
- 987 00cc 0B       		.uleb128 0xb
- 988 00cd 3B       		.uleb128 0x3b
- 989 00ce 0B       		.uleb128 0xb
- 990 00cf 49       		.uleb128 0x49
- 991 00d0 13       		.uleb128 0x13
- 992 00d1 1C       		.uleb128 0x1c
- 993 00d2 0B       		.uleb128 0xb
- 994 00d3 00       		.byte	0
- 995 00d4 00       		.byte	0
- 996 00d5 0F       		.uleb128 0xf
- 997 00d6 898201   		.uleb128 0x4109
- 998 00d9 00       		.byte	0
- 999 00da 11       		.uleb128 0x11
- 1000 00db 01       		.uleb128 0x1
- 1001 00dc 31       		.uleb128 0x31
- 1002 00dd 13       		.uleb128 0x13
- 1003 00de 00       		.byte	0
- 1004 00df 00       		.byte	0
- 1005 00e0 10       		.uleb128 0x10
- 1006 00e1 2E       		.uleb128 0x2e
- 1007 00e2 01       		.byte	0x1
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 26
+ 946 007f 05       		.uleb128 0x5
+ 947 0080 00       		.byte	0
+ 948 0081 03       		.uleb128 0x3
+ 949 0082 0E       		.uleb128 0xe
+ 950 0083 3A       		.uleb128 0x3a
+ 951 0084 0B       		.uleb128 0xb
+ 952 0085 3B       		.uleb128 0x3b
+ 953 0086 0B       		.uleb128 0xb
+ 954 0087 49       		.uleb128 0x49
+ 955 0088 13       		.uleb128 0x13
+ 956 0089 02       		.uleb128 0x2
+ 957 008a 18       		.uleb128 0x18
+ 958 008b 00       		.byte	0
+ 959 008c 00       		.byte	0
+ 960 008d 0C       		.uleb128 0xc
+ 961 008e 2E       		.uleb128 0x2e
+ 962 008f 00       		.byte	0
+ 963 0090 3F       		.uleb128 0x3f
+ 964 0091 19       		.uleb128 0x19
+ 965 0092 03       		.uleb128 0x3
+ 966 0093 0E       		.uleb128 0xe
+ 967 0094 3A       		.uleb128 0x3a
+ 968 0095 0B       		.uleb128 0xb
+ 969 0096 3B       		.uleb128 0x3b
+ 970 0097 0B       		.uleb128 0xb
+ 971 0098 27       		.uleb128 0x27
+ 972 0099 19       		.uleb128 0x19
+ 973 009a 49       		.uleb128 0x49
+ 974 009b 13       		.uleb128 0x13
+ 975 009c 11       		.uleb128 0x11
+ 976 009d 01       		.uleb128 0x1
+ 977 009e 12       		.uleb128 0x12
+ 978 009f 06       		.uleb128 0x6
+ 979 00a0 40       		.uleb128 0x40
+ 980 00a1 18       		.uleb128 0x18
+ 981 00a2 9742     		.uleb128 0x2117
+ 982 00a4 19       		.uleb128 0x19
+ 983 00a5 00       		.byte	0
+ 984 00a6 00       		.byte	0
+ 985 00a7 0D       		.uleb128 0xd
+ 986 00a8 05       		.uleb128 0x5
+ 987 00a9 00       		.byte	0
+ 988 00aa 03       		.uleb128 0x3
+ 989 00ab 0E       		.uleb128 0xe
+ 990 00ac 3A       		.uleb128 0x3a
+ 991 00ad 0B       		.uleb128 0xb
+ 992 00ae 3B       		.uleb128 0x3b
+ 993 00af 0B       		.uleb128 0xb
+ 994 00b0 49       		.uleb128 0x49
+ 995 00b1 13       		.uleb128 0x13
+ 996 00b2 02       		.uleb128 0x2
+ 997 00b3 17       		.uleb128 0x17
+ 998 00b4 00       		.byte	0
+ 999 00b5 00       		.byte	0
+ 1000 00b6 0E       		.uleb128 0xe
+ 1001 00b7 34       		.uleb128 0x34
+ 1002 00b8 00       		.byte	0
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 26
 
 
- 1008 00e3 3F       		.uleb128 0x3f
- 1009 00e4 19       		.uleb128 0x19
- 1010 00e5 03       		.uleb128 0x3
- 1011 00e6 0E       		.uleb128 0xe
- 1012 00e7 3A       		.uleb128 0x3a
- 1013 00e8 0B       		.uleb128 0xb
- 1014 00e9 3B       		.uleb128 0x3b
- 1015 00ea 05       		.uleb128 0x5
- 1016 00eb 27       		.uleb128 0x27
- 1017 00ec 19       		.uleb128 0x19
- 1018 00ed 49       		.uleb128 0x49
- 1019 00ee 13       		.uleb128 0x13
- 1020 00ef 11       		.uleb128 0x11
- 1021 00f0 01       		.uleb128 0x1
- 1022 00f1 12       		.uleb128 0x12
- 1023 00f2 06       		.uleb128 0x6
- 1024 00f3 40       		.uleb128 0x40
- 1025 00f4 18       		.uleb128 0x18
- 1026 00f5 9742     		.uleb128 0x2117
- 1027 00f7 19       		.uleb128 0x19
- 1028 00f8 01       		.uleb128 0x1
- 1029 00f9 13       		.uleb128 0x13
- 1030 00fa 00       		.byte	0
- 1031 00fb 00       		.byte	0
- 1032 00fc 11       		.uleb128 0x11
- 1033 00fd 34       		.uleb128 0x34
- 1034 00fe 00       		.byte	0
- 1035 00ff 03       		.uleb128 0x3
- 1036 0100 0E       		.uleb128 0xe
- 1037 0101 3A       		.uleb128 0x3a
- 1038 0102 0B       		.uleb128 0xb
- 1039 0103 3B       		.uleb128 0x3b
- 1040 0104 05       		.uleb128 0x5
- 1041 0105 49       		.uleb128 0x49
- 1042 0106 13       		.uleb128 0x13
- 1043 0107 02       		.uleb128 0x2
- 1044 0108 17       		.uleb128 0x17
- 1045 0109 00       		.byte	0
- 1046 010a 00       		.byte	0
- 1047 010b 12       		.uleb128 0x12
- 1048 010c 34       		.uleb128 0x34
- 1049 010d 00       		.byte	0
- 1050 010e 03       		.uleb128 0x3
- 1051 010f 0E       		.uleb128 0xe
- 1052 0110 3A       		.uleb128 0x3a
- 1053 0111 0B       		.uleb128 0xb
- 1054 0112 3B       		.uleb128 0x3b
- 1055 0113 05       		.uleb128 0x5
- 1056 0114 49       		.uleb128 0x49
- 1057 0115 13       		.uleb128 0x13
- 1058 0116 1C       		.uleb128 0x1c
- 1059 0117 0B       		.uleb128 0xb
- 1060 0118 00       		.byte	0
- 1061 0119 00       		.byte	0
- 1062 011a 13       		.uleb128 0x13
- 1063 011b 2E       		.uleb128 0x2e
- 1064 011c 00       		.byte	0
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 27
+ 1003 00b9 03       		.uleb128 0x3
+ 1004 00ba 0E       		.uleb128 0xe
+ 1005 00bb 3A       		.uleb128 0x3a
+ 1006 00bc 0B       		.uleb128 0xb
+ 1007 00bd 3B       		.uleb128 0x3b
+ 1008 00be 05       		.uleb128 0x5
+ 1009 00bf 49       		.uleb128 0x49
+ 1010 00c0 13       		.uleb128 0x13
+ 1011 00c1 02       		.uleb128 0x2
+ 1012 00c2 17       		.uleb128 0x17
+ 1013 00c3 00       		.byte	0
+ 1014 00c4 00       		.byte	0
+ 1015 00c5 0F       		.uleb128 0xf
+ 1016 00c6 34       		.uleb128 0x34
+ 1017 00c7 00       		.byte	0
+ 1018 00c8 03       		.uleb128 0x3
+ 1019 00c9 0E       		.uleb128 0xe
+ 1020 00ca 3A       		.uleb128 0x3a
+ 1021 00cb 0B       		.uleb128 0xb
+ 1022 00cc 3B       		.uleb128 0x3b
+ 1023 00cd 05       		.uleb128 0x5
+ 1024 00ce 49       		.uleb128 0x49
+ 1025 00cf 13       		.uleb128 0x13
+ 1026 00d0 1C       		.uleb128 0x1c
+ 1027 00d1 0B       		.uleb128 0xb
+ 1028 00d2 00       		.byte	0
+ 1029 00d3 00       		.byte	0
+ 1030 00d4 10       		.uleb128 0x10
+ 1031 00d5 898201   		.uleb128 0x4109
+ 1032 00d8 00       		.byte	0
+ 1033 00d9 11       		.uleb128 0x11
+ 1034 00da 01       		.uleb128 0x1
+ 1035 00db 31       		.uleb128 0x31
+ 1036 00dc 13       		.uleb128 0x13
+ 1037 00dd 00       		.byte	0
+ 1038 00de 00       		.byte	0
+ 1039 00df 11       		.uleb128 0x11
+ 1040 00e0 2E       		.uleb128 0x2e
+ 1041 00e1 01       		.byte	0x1
+ 1042 00e2 3F       		.uleb128 0x3f
+ 1043 00e3 19       		.uleb128 0x19
+ 1044 00e4 03       		.uleb128 0x3
+ 1045 00e5 0E       		.uleb128 0xe
+ 1046 00e6 3A       		.uleb128 0x3a
+ 1047 00e7 0B       		.uleb128 0xb
+ 1048 00e8 3B       		.uleb128 0x3b
+ 1049 00e9 05       		.uleb128 0x5
+ 1050 00ea 27       		.uleb128 0x27
+ 1051 00eb 19       		.uleb128 0x19
+ 1052 00ec 49       		.uleb128 0x49
+ 1053 00ed 13       		.uleb128 0x13
+ 1054 00ee 11       		.uleb128 0x11
+ 1055 00ef 01       		.uleb128 0x1
+ 1056 00f0 12       		.uleb128 0x12
+ 1057 00f1 06       		.uleb128 0x6
+ 1058 00f2 40       		.uleb128 0x40
+ 1059 00f3 18       		.uleb128 0x18
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 27
 
 
- 1065 011d 3F       		.uleb128 0x3f
- 1066 011e 19       		.uleb128 0x19
- 1067 011f 03       		.uleb128 0x3
- 1068 0120 0E       		.uleb128 0xe
- 1069 0121 3A       		.uleb128 0x3a
- 1070 0122 0B       		.uleb128 0xb
- 1071 0123 3B       		.uleb128 0x3b
- 1072 0124 05       		.uleb128 0x5
- 1073 0125 27       		.uleb128 0x27
- 1074 0126 19       		.uleb128 0x19
- 1075 0127 11       		.uleb128 0x11
- 1076 0128 01       		.uleb128 0x1
- 1077 0129 12       		.uleb128 0x12
- 1078 012a 06       		.uleb128 0x6
- 1079 012b 40       		.uleb128 0x40
- 1080 012c 18       		.uleb128 0x18
- 1081 012d 9742     		.uleb128 0x2117
- 1082 012f 19       		.uleb128 0x19
- 1083 0130 00       		.byte	0
- 1084 0131 00       		.byte	0
- 1085 0132 14       		.uleb128 0x14
- 1086 0133 2E       		.uleb128 0x2e
- 1087 0134 00       		.byte	0
- 1088 0135 3F       		.uleb128 0x3f
- 1089 0136 19       		.uleb128 0x19
- 1090 0137 03       		.uleb128 0x3
- 1091 0138 0E       		.uleb128 0xe
- 1092 0139 3A       		.uleb128 0x3a
- 1093 013a 0B       		.uleb128 0xb
- 1094 013b 3B       		.uleb128 0x3b
- 1095 013c 05       		.uleb128 0x5
- 1096 013d 27       		.uleb128 0x27
- 1097 013e 19       		.uleb128 0x19
- 1098 013f 49       		.uleb128 0x49
- 1099 0140 13       		.uleb128 0x13
- 1100 0141 11       		.uleb128 0x11
- 1101 0142 01       		.uleb128 0x1
- 1102 0143 12       		.uleb128 0x12
- 1103 0144 06       		.uleb128 0x6
- 1104 0145 40       		.uleb128 0x40
- 1105 0146 18       		.uleb128 0x18
- 1106 0147 9742     		.uleb128 0x2117
- 1107 0149 19       		.uleb128 0x19
- 1108 014a 00       		.byte	0
- 1109 014b 00       		.byte	0
- 1110 014c 15       		.uleb128 0x15
- 1111 014d 898201   		.uleb128 0x4109
- 1112 0150 01       		.byte	0x1
- 1113 0151 11       		.uleb128 0x11
- 1114 0152 01       		.uleb128 0x1
- 1115 0153 31       		.uleb128 0x31
- 1116 0154 13       		.uleb128 0x13
- 1117 0155 01       		.uleb128 0x1
- 1118 0156 13       		.uleb128 0x13
- 1119 0157 00       		.byte	0
- 1120 0158 00       		.byte	0
- 1121 0159 16       		.uleb128 0x16
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 28
+ 1060 00f4 9742     		.uleb128 0x2117
+ 1061 00f6 19       		.uleb128 0x19
+ 1062 00f7 01       		.uleb128 0x1
+ 1063 00f8 13       		.uleb128 0x13
+ 1064 00f9 00       		.byte	0
+ 1065 00fa 00       		.byte	0
+ 1066 00fb 12       		.uleb128 0x12
+ 1067 00fc 2E       		.uleb128 0x2e
+ 1068 00fd 00       		.byte	0
+ 1069 00fe 3F       		.uleb128 0x3f
+ 1070 00ff 19       		.uleb128 0x19
+ 1071 0100 03       		.uleb128 0x3
+ 1072 0101 0E       		.uleb128 0xe
+ 1073 0102 3A       		.uleb128 0x3a
+ 1074 0103 0B       		.uleb128 0xb
+ 1075 0104 3B       		.uleb128 0x3b
+ 1076 0105 05       		.uleb128 0x5
+ 1077 0106 27       		.uleb128 0x27
+ 1078 0107 19       		.uleb128 0x19
+ 1079 0108 11       		.uleb128 0x11
+ 1080 0109 01       		.uleb128 0x1
+ 1081 010a 12       		.uleb128 0x12
+ 1082 010b 06       		.uleb128 0x6
+ 1083 010c 40       		.uleb128 0x40
+ 1084 010d 18       		.uleb128 0x18
+ 1085 010e 9742     		.uleb128 0x2117
+ 1086 0110 19       		.uleb128 0x19
+ 1087 0111 00       		.byte	0
+ 1088 0112 00       		.byte	0
+ 1089 0113 13       		.uleb128 0x13
+ 1090 0114 2E       		.uleb128 0x2e
+ 1091 0115 00       		.byte	0
+ 1092 0116 3F       		.uleb128 0x3f
+ 1093 0117 19       		.uleb128 0x19
+ 1094 0118 03       		.uleb128 0x3
+ 1095 0119 0E       		.uleb128 0xe
+ 1096 011a 3A       		.uleb128 0x3a
+ 1097 011b 0B       		.uleb128 0xb
+ 1098 011c 3B       		.uleb128 0x3b
+ 1099 011d 05       		.uleb128 0x5
+ 1100 011e 27       		.uleb128 0x27
+ 1101 011f 19       		.uleb128 0x19
+ 1102 0120 49       		.uleb128 0x49
+ 1103 0121 13       		.uleb128 0x13
+ 1104 0122 11       		.uleb128 0x11
+ 1105 0123 01       		.uleb128 0x1
+ 1106 0124 12       		.uleb128 0x12
+ 1107 0125 06       		.uleb128 0x6
+ 1108 0126 40       		.uleb128 0x40
+ 1109 0127 18       		.uleb128 0x18
+ 1110 0128 9742     		.uleb128 0x2117
+ 1111 012a 19       		.uleb128 0x19
+ 1112 012b 00       		.byte	0
+ 1113 012c 00       		.byte	0
+ 1114 012d 14       		.uleb128 0x14
+ 1115 012e 898201   		.uleb128 0x4109
+ 1116 0131 01       		.byte	0x1
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 28
 
 
- 1122 015a 8A8201   		.uleb128 0x410a
- 1123 015d 00       		.byte	0
- 1124 015e 02       		.uleb128 0x2
- 1125 015f 18       		.uleb128 0x18
- 1126 0160 9142     		.uleb128 0x2111
- 1127 0162 18       		.uleb128 0x18
- 1128 0163 00       		.byte	0
- 1129 0164 00       		.byte	0
- 1130 0165 17       		.uleb128 0x17
- 1131 0166 01       		.uleb128 0x1
- 1132 0167 01       		.byte	0x1
- 1133 0168 49       		.uleb128 0x49
- 1134 0169 13       		.uleb128 0x13
- 1135 016a 01       		.uleb128 0x1
- 1136 016b 13       		.uleb128 0x13
- 1137 016c 00       		.byte	0
- 1138 016d 00       		.byte	0
- 1139 016e 18       		.uleb128 0x18
- 1140 016f 21       		.uleb128 0x21
- 1141 0170 00       		.byte	0
- 1142 0171 49       		.uleb128 0x49
- 1143 0172 13       		.uleb128 0x13
- 1144 0173 2F       		.uleb128 0x2f
- 1145 0174 0B       		.uleb128 0xb
- 1146 0175 00       		.byte	0
- 1147 0176 00       		.byte	0
- 1148 0177 19       		.uleb128 0x19
- 1149 0178 34       		.uleb128 0x34
- 1150 0179 00       		.byte	0
- 1151 017a 03       		.uleb128 0x3
- 1152 017b 0E       		.uleb128 0xe
- 1153 017c 3A       		.uleb128 0x3a
- 1154 017d 0B       		.uleb128 0xb
- 1155 017e 3B       		.uleb128 0x3b
- 1156 017f 0B       		.uleb128 0xb
- 1157 0180 49       		.uleb128 0x49
- 1158 0181 13       		.uleb128 0x13
- 1159 0182 3F       		.uleb128 0x3f
- 1160 0183 19       		.uleb128 0x19
- 1161 0184 3C       		.uleb128 0x3c
- 1162 0185 19       		.uleb128 0x19
- 1163 0186 00       		.byte	0
- 1164 0187 00       		.byte	0
- 1165 0188 1A       		.uleb128 0x1a
- 1166 0189 2E       		.uleb128 0x2e
- 1167 018a 00       		.byte	0
- 1168 018b 3F       		.uleb128 0x3f
- 1169 018c 19       		.uleb128 0x19
- 1170 018d 3C       		.uleb128 0x3c
- 1171 018e 19       		.uleb128 0x19
- 1172 018f 6E       		.uleb128 0x6e
- 1173 0190 0E       		.uleb128 0xe
- 1174 0191 03       		.uleb128 0x3
- 1175 0192 0E       		.uleb128 0xe
- 1176 0193 3A       		.uleb128 0x3a
- 1177 0194 0B       		.uleb128 0xb
- 1178 0195 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 29
+ 1117 0132 11       		.uleb128 0x11
+ 1118 0133 01       		.uleb128 0x1
+ 1119 0134 31       		.uleb128 0x31
+ 1120 0135 13       		.uleb128 0x13
+ 1121 0136 01       		.uleb128 0x1
+ 1122 0137 13       		.uleb128 0x13
+ 1123 0138 00       		.byte	0
+ 1124 0139 00       		.byte	0
+ 1125 013a 15       		.uleb128 0x15
+ 1126 013b 34       		.uleb128 0x34
+ 1127 013c 00       		.byte	0
+ 1128 013d 03       		.uleb128 0x3
+ 1129 013e 0E       		.uleb128 0xe
+ 1130 013f 3A       		.uleb128 0x3a
+ 1131 0140 0B       		.uleb128 0xb
+ 1132 0141 3B       		.uleb128 0x3b
+ 1133 0142 0B       		.uleb128 0xb
+ 1134 0143 49       		.uleb128 0x49
+ 1135 0144 13       		.uleb128 0x13
+ 1136 0145 3F       		.uleb128 0x3f
+ 1137 0146 19       		.uleb128 0x19
+ 1138 0147 3C       		.uleb128 0x3c
+ 1139 0148 19       		.uleb128 0x19
+ 1140 0149 00       		.byte	0
+ 1141 014a 00       		.byte	0
+ 1142 014b 16       		.uleb128 0x16
+ 1143 014c 01       		.uleb128 0x1
+ 1144 014d 01       		.byte	0x1
+ 1145 014e 49       		.uleb128 0x49
+ 1146 014f 13       		.uleb128 0x13
+ 1147 0150 01       		.uleb128 0x1
+ 1148 0151 13       		.uleb128 0x13
+ 1149 0152 00       		.byte	0
+ 1150 0153 00       		.byte	0
+ 1151 0154 17       		.uleb128 0x17
+ 1152 0155 21       		.uleb128 0x21
+ 1153 0156 00       		.byte	0
+ 1154 0157 49       		.uleb128 0x49
+ 1155 0158 13       		.uleb128 0x13
+ 1156 0159 2F       		.uleb128 0x2f
+ 1157 015a 0B       		.uleb128 0xb
+ 1158 015b 00       		.byte	0
+ 1159 015c 00       		.byte	0
+ 1160 015d 18       		.uleb128 0x18
+ 1161 015e 2E       		.uleb128 0x2e
+ 1162 015f 00       		.byte	0
+ 1163 0160 3F       		.uleb128 0x3f
+ 1164 0161 19       		.uleb128 0x19
+ 1165 0162 3C       		.uleb128 0x3c
+ 1166 0163 19       		.uleb128 0x19
+ 1167 0164 6E       		.uleb128 0x6e
+ 1168 0165 0E       		.uleb128 0xe
+ 1169 0166 03       		.uleb128 0x3
+ 1170 0167 0E       		.uleb128 0xe
+ 1171 0168 3A       		.uleb128 0x3a
+ 1172 0169 0B       		.uleb128 0xb
+ 1173 016a 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 29
 
 
- 1179 0196 0B       		.uleb128 0xb
- 1180 0197 00       		.byte	0
- 1181 0198 00       		.byte	0
- 1182 0199 00       		.byte	0
- 1183              		.section	.debug_loc,"",%progbits
- 1184              	.Ldebug_loc0:
- 1185              	.LLST0:
- 1186 0000 00000000 		.4byte	.LVL1
- 1187 0004 07000000 		.4byte	.LVL3-1
- 1188 0008 0100     		.2byte	0x1
- 1189 000a 50       		.byte	0x50
- 1190 000b 07000000 		.4byte	.LVL3-1
- 1191 000f 20000000 		.4byte	.LFE7
- 1192 0013 0400     		.2byte	0x4
- 1193 0015 F3       		.byte	0xf3
- 1194 0016 01       		.uleb128 0x1
- 1195 0017 50       		.byte	0x50
- 1196 0018 9F       		.byte	0x9f
- 1197 0019 00000000 		.4byte	0
- 1198 001d 00000000 		.4byte	0
- 1199              	.LLST1:
- 1200 0021 08000000 		.4byte	.LVL3
- 1201 0025 19000000 		.4byte	.LVL4-1
- 1202 0029 0100     		.2byte	0x1
- 1203 002b 50       		.byte	0x50
- 1204 002c 00000000 		.4byte	0
- 1205 0030 00000000 		.4byte	0
- 1206              	.LLST2:
- 1207 0034 06000000 		.4byte	.LVL6
- 1208 0038 0A000000 		.4byte	.LVL7
- 1209 003c 0500     		.2byte	0x5
- 1210 003e 70       		.byte	0x70
- 1211 003f 00       		.sleb128 0
- 1212 0040 33       		.byte	0x33
- 1213 0041 1A       		.byte	0x1a
- 1214 0042 9F       		.byte	0x9f
- 1215 0043 0A000000 		.4byte	.LVL7
- 1216 0047 10000000 		.4byte	.LFE8
- 1217 004b 0100     		.2byte	0x1
- 1218 004d 50       		.byte	0x50
- 1219 004e 00000000 		.4byte	0
- 1220 0052 00000000 		.4byte	0
- 1221              	.LLST3:
- 1222 0056 00000000 		.4byte	.LVL12
- 1223 005a 07000000 		.4byte	.LVL13-1
- 1224 005e 0100     		.2byte	0x1
- 1225 0060 50       		.byte	0x50
- 1226 0061 07000000 		.4byte	.LVL13-1
- 1227 0065 18000000 		.4byte	.LVL17
- 1228 0069 0100     		.2byte	0x1
- 1229 006b 54       		.byte	0x54
- 1230 006c 18000000 		.4byte	.LVL17
- 1231 0070 1A000000 		.4byte	.LFE2
- 1232 0074 0400     		.2byte	0x4
- 1233 0076 F3       		.byte	0xf3
- 1234 0077 01       		.uleb128 0x1
- 1235 0078 50       		.byte	0x50
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 30
+ 1174 016b 05       		.uleb128 0x5
+ 1175 016c 00       		.byte	0
+ 1176 016d 00       		.byte	0
+ 1177 016e 19       		.uleb128 0x19
+ 1178 016f 2E       		.uleb128 0x2e
+ 1179 0170 00       		.byte	0
+ 1180 0171 3F       		.uleb128 0x3f
+ 1181 0172 19       		.uleb128 0x19
+ 1182 0173 3C       		.uleb128 0x3c
+ 1183 0174 19       		.uleb128 0x19
+ 1184 0175 6E       		.uleb128 0x6e
+ 1185 0176 0E       		.uleb128 0xe
+ 1186 0177 03       		.uleb128 0x3
+ 1187 0178 0E       		.uleb128 0xe
+ 1188 0179 3A       		.uleb128 0x3a
+ 1189 017a 0B       		.uleb128 0xb
+ 1190 017b 3B       		.uleb128 0x3b
+ 1191 017c 0B       		.uleb128 0xb
+ 1192 017d 00       		.byte	0
+ 1193 017e 00       		.byte	0
+ 1194 017f 00       		.byte	0
+ 1195              		.section	.debug_loc,"",%progbits
+ 1196              	.Ldebug_loc0:
+ 1197              	.LLST0:
+ 1198 0000 00000000 		.4byte	.LVL2
+ 1199 0004 07000000 		.4byte	.LVL4-1
+ 1200 0008 0100     		.2byte	0x1
+ 1201 000a 50       		.byte	0x50
+ 1202 000b 07000000 		.4byte	.LVL4-1
+ 1203 000f 20000000 		.4byte	.LFE7
+ 1204 0013 0400     		.2byte	0x4
+ 1205 0015 F3       		.byte	0xf3
+ 1206 0016 01       		.uleb128 0x1
+ 1207 0017 50       		.byte	0x50
+ 1208 0018 9F       		.byte	0x9f
+ 1209 0019 00000000 		.4byte	0
+ 1210 001d 00000000 		.4byte	0
+ 1211              	.LLST1:
+ 1212 0021 08000000 		.4byte	.LVL4
+ 1213 0025 19000000 		.4byte	.LVL5-1
+ 1214 0029 0100     		.2byte	0x1
+ 1215 002b 50       		.byte	0x50
+ 1216 002c 00000000 		.4byte	0
+ 1217 0030 00000000 		.4byte	0
+ 1218              	.LLST2:
+ 1219 0034 06000000 		.4byte	.LVL7
+ 1220 0038 0A000000 		.4byte	.LVL8
+ 1221 003c 0500     		.2byte	0x5
+ 1222 003e 70       		.byte	0x70
+ 1223 003f 00       		.sleb128 0
+ 1224 0040 33       		.byte	0x33
+ 1225 0041 1A       		.byte	0x1a
+ 1226 0042 9F       		.byte	0x9f
+ 1227 0043 0A000000 		.4byte	.LVL8
+ 1228 0047 10000000 		.4byte	.LFE8
+ 1229 004b 0100     		.2byte	0x1
+ 1230 004d 50       		.byte	0x50
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 30
 
 
- 1236 0079 9F       		.byte	0x9f
- 1237 007a 00000000 		.4byte	0
- 1238 007e 00000000 		.4byte	0
- 1239              		.section	.debug_aranges,"",%progbits
- 1240 0000 7C000000 		.4byte	0x7c
- 1241 0004 0200     		.2byte	0x2
- 1242 0006 00000000 		.4byte	.Ldebug_info0
- 1243 000a 04       		.byte	0x4
- 1244 000b 00       		.byte	0
- 1245 000c 0000     		.2byte	0
- 1246 000e 0000     		.2byte	0
- 1247 0010 00000000 		.4byte	.LFB4
- 1248 0014 02000000 		.4byte	.LFE4-.LFB4
- 1249 0018 00000000 		.4byte	.LFB5
- 1250 001c 0C000000 		.4byte	.LFE5-.LFB5
- 1251 0020 00000000 		.4byte	.LFB6
- 1252 0024 0C000000 		.4byte	.LFE6-.LFB6
- 1253 0028 00000000 		.4byte	.LFB7
- 1254 002c 20000000 		.4byte	.LFE7-.LFB7
- 1255 0030 00000000 		.4byte	.LFB8
- 1256 0034 10000000 		.4byte	.LFE8-.LFB8
- 1257 0038 00000000 		.4byte	.LFB9
- 1258 003c 10000000 		.4byte	.LFE9-.LFB9
- 1259 0040 00000000 		.4byte	.LFB10
- 1260 0044 14000000 		.4byte	.LFE10-.LFB10
- 1261 0048 00000000 		.4byte	.LFB11
- 1262 004c 10000000 		.4byte	.LFE11-.LFB11
- 1263 0050 00000000 		.4byte	.LFB1
- 1264 0054 1C000000 		.4byte	.LFE1-.LFB1
- 1265 0058 00000000 		.4byte	.LFB2
- 1266 005c 1A000000 		.4byte	.LFE2-.LFB2
- 1267 0060 00000000 		.4byte	.LFB3
- 1268 0064 14000000 		.4byte	.LFE3-.LFB3
- 1269 0068 00000000 		.4byte	.LFB12
- 1270 006c 10000000 		.4byte	.LFE12-.LFB12
- 1271 0070 00000000 		.4byte	.LFB13
- 1272 0074 10000000 		.4byte	.LFE13-.LFB13
- 1273 0078 00000000 		.4byte	0
- 1274 007c 00000000 		.4byte	0
- 1275              		.section	.debug_ranges,"",%progbits
- 1276              	.Ldebug_ranges0:
- 1277 0000 00000000 		.4byte	.LFB4
- 1278 0004 02000000 		.4byte	.LFE4
- 1279 0008 00000000 		.4byte	.LFB5
- 1280 000c 0C000000 		.4byte	.LFE5
- 1281 0010 00000000 		.4byte	.LFB6
- 1282 0014 0C000000 		.4byte	.LFE6
- 1283 0018 00000000 		.4byte	.LFB7
- 1284 001c 20000000 		.4byte	.LFE7
- 1285 0020 00000000 		.4byte	.LFB8
- 1286 0024 10000000 		.4byte	.LFE8
- 1287 0028 00000000 		.4byte	.LFB9
- 1288 002c 10000000 		.4byte	.LFE9
- 1289 0030 00000000 		.4byte	.LFB10
- 1290 0034 14000000 		.4byte	.LFE10
- 1291 0038 00000000 		.4byte	.LFB11
- 1292 003c 10000000 		.4byte	.LFE11
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 31
+ 1231 004e 00000000 		.4byte	0
+ 1232 0052 00000000 		.4byte	0
+ 1233              	.LLST3:
+ 1234 0056 00000000 		.4byte	.LVL13
+ 1235 005a 07000000 		.4byte	.LVL14-1
+ 1236 005e 0100     		.2byte	0x1
+ 1237 0060 50       		.byte	0x50
+ 1238 0061 07000000 		.4byte	.LVL14-1
+ 1239 0065 18000000 		.4byte	.LVL18
+ 1240 0069 0100     		.2byte	0x1
+ 1241 006b 54       		.byte	0x54
+ 1242 006c 18000000 		.4byte	.LVL18
+ 1243 0070 1A000000 		.4byte	.LFE2
+ 1244 0074 0400     		.2byte	0x4
+ 1245 0076 F3       		.byte	0xf3
+ 1246 0077 01       		.uleb128 0x1
+ 1247 0078 50       		.byte	0x50
+ 1248 0079 9F       		.byte	0x9f
+ 1249 007a 00000000 		.4byte	0
+ 1250 007e 00000000 		.4byte	0
+ 1251              		.section	.debug_aranges,"",%progbits
+ 1252 0000 7C000000 		.4byte	0x7c
+ 1253 0004 0200     		.2byte	0x2
+ 1254 0006 00000000 		.4byte	.Ldebug_info0
+ 1255 000a 04       		.byte	0x4
+ 1256 000b 00       		.byte	0
+ 1257 000c 0000     		.2byte	0
+ 1258 000e 0000     		.2byte	0
+ 1259 0010 00000000 		.4byte	.LFB4
+ 1260 0014 14000000 		.4byte	.LFE4-.LFB4
+ 1261 0018 00000000 		.4byte	.LFB5
+ 1262 001c 0C000000 		.4byte	.LFE5-.LFB5
+ 1263 0020 00000000 		.4byte	.LFB6
+ 1264 0024 0C000000 		.4byte	.LFE6-.LFB6
+ 1265 0028 00000000 		.4byte	.LFB7
+ 1266 002c 20000000 		.4byte	.LFE7-.LFB7
+ 1267 0030 00000000 		.4byte	.LFB8
+ 1268 0034 10000000 		.4byte	.LFE8-.LFB8
+ 1269 0038 00000000 		.4byte	.LFB9
+ 1270 003c 10000000 		.4byte	.LFE9-.LFB9
+ 1271 0040 00000000 		.4byte	.LFB10
+ 1272 0044 14000000 		.4byte	.LFE10-.LFB10
+ 1273 0048 00000000 		.4byte	.LFB11
+ 1274 004c 10000000 		.4byte	.LFE11-.LFB11
+ 1275 0050 00000000 		.4byte	.LFB1
+ 1276 0054 1C000000 		.4byte	.LFE1-.LFB1
+ 1277 0058 00000000 		.4byte	.LFB2
+ 1278 005c 1A000000 		.4byte	.LFE2-.LFB2
+ 1279 0060 00000000 		.4byte	.LFB3
+ 1280 0064 14000000 		.4byte	.LFE3-.LFB3
+ 1281 0068 00000000 		.4byte	.LFB12
+ 1282 006c 10000000 		.4byte	.LFE12-.LFB12
+ 1283 0070 00000000 		.4byte	.LFB13
+ 1284 0074 10000000 		.4byte	.LFE13-.LFB13
+ 1285 0078 00000000 		.4byte	0
+ 1286 007c 00000000 		.4byte	0
+ 1287              		.section	.debug_ranges,"",%progbits
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 31
 
 
- 1293 0040 00000000 		.4byte	.LFB1
- 1294 0044 1C000000 		.4byte	.LFE1
- 1295 0048 00000000 		.4byte	.LFB2
- 1296 004c 1A000000 		.4byte	.LFE2
- 1297 0050 00000000 		.4byte	.LFB3
- 1298 0054 14000000 		.4byte	.LFE3
- 1299 0058 00000000 		.4byte	.LFB12
- 1300 005c 10000000 		.4byte	.LFE12
- 1301 0060 00000000 		.4byte	.LFB13
- 1302 0064 10000000 		.4byte	.LFE13
- 1303 0068 00000000 		.4byte	0
- 1304 006c 00000000 		.4byte	0
- 1305              		.section	.debug_line,"",%progbits
- 1306              	.Ldebug_line0:
- 1307 0000 57010000 		.section	.debug_str,"MS",%progbits,1
- 1307      02005700 
- 1307      00000201 
- 1307      FB0E0D00 
- 1307      01010101 
- 1308              	.LASF14:
- 1309 0000 72656733 		.ascii	"reg32\000"
- 1309      3200
- 1310              	.LASF30:
- 1311 0006 494E5055 		.ascii	"INPUT_TIMER_ISR_StartEx\000"
- 1311      545F5449 
- 1311      4D45525F 
- 1311      4953525F 
- 1311      53746172 
- 1312              	.LASF33:
- 1313 001e 494E5055 		.ascii	"INPUT_TIMER_ISR_ClearPending\000"
- 1313      545F5449 
- 1313      4D45525F 
- 1313      4953525F 
- 1313      436C6561 
- 1314              	.LASF18:
- 1315 003b 494E5055 		.ascii	"INPUT_TIMER_ISR_SetVector\000"
- 1315      545F5449 
- 1315      4D45525F 
- 1315      4953525F 
- 1315      53657456 
- 1316              	.LASF20:
- 1317 0055 61646472 		.ascii	"address\000"
- 1317      65737300 
- 1318              	.LASF39:
- 1319 005d 494E5055 		.ascii	"INPUT_TIMER_ISR_GetPriority\000"
- 1319      545F5449 
- 1319      4D45525F 
- 1319      4953525F 
- 1319      47657450 
- 1320              	.LASF3:
- 1321 0079 73686F72 		.ascii	"short unsigned int\000"
- 1321      7420756E 
- 1321      7369676E 
- 1321      65642069 
- 1321      6E7400
- 1322              	.LASF40:
- 1323 008c 43795261 		.ascii	"CyRamVectors\000"
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 32
-
-
- 1323      6D566563 
- 1323      746F7273 
- 1323      00
- 1324              	.LASF37:
- 1325 0099 47656E65 		.ascii	"Generated_Source\\PSoC4\\INPUT_TIMER_ISR.c\000"
- 1325      72617465 
- 1325      645F536F 
- 1325      75726365 
- 1325      5C50536F 
- 1326              	.LASF31:
- 1327 00c2 494E5055 		.ascii	"INPUT_TIMER_ISR_Stop\000"
+ 1288              	.Ldebug_ranges0:
+ 1289 0000 00000000 		.4byte	.LFB4
+ 1290 0004 14000000 		.4byte	.LFE4
+ 1291 0008 00000000 		.4byte	.LFB5
+ 1292 000c 0C000000 		.4byte	.LFE5
+ 1293 0010 00000000 		.4byte	.LFB6
+ 1294 0014 0C000000 		.4byte	.LFE6
+ 1295 0018 00000000 		.4byte	.LFB7
+ 1296 001c 20000000 		.4byte	.LFE7
+ 1297 0020 00000000 		.4byte	.LFB8
+ 1298 0024 10000000 		.4byte	.LFE8
+ 1299 0028 00000000 		.4byte	.LFB9
+ 1300 002c 10000000 		.4byte	.LFE9
+ 1301 0030 00000000 		.4byte	.LFB10
+ 1302 0034 14000000 		.4byte	.LFE10
+ 1303 0038 00000000 		.4byte	.LFB11
+ 1304 003c 10000000 		.4byte	.LFE11
+ 1305 0040 00000000 		.4byte	.LFB1
+ 1306 0044 1C000000 		.4byte	.LFE1
+ 1307 0048 00000000 		.4byte	.LFB2
+ 1308 004c 1A000000 		.4byte	.LFE2
+ 1309 0050 00000000 		.4byte	.LFB3
+ 1310 0054 14000000 		.4byte	.LFE3
+ 1311 0058 00000000 		.4byte	.LFB12
+ 1312 005c 10000000 		.4byte	.LFE12
+ 1313 0060 00000000 		.4byte	.LFB13
+ 1314 0064 10000000 		.4byte	.LFE13
+ 1315 0068 00000000 		.4byte	0
+ 1316 006c 00000000 		.4byte	0
+ 1317              		.section	.debug_line,"",%progbits
+ 1318              	.Ldebug_line0:
+ 1319 0000 68010000 		.section	.debug_str,"MS",%progbits,1
+ 1319      02006800 
+ 1319      00000201 
+ 1319      FB0E0D00 
+ 1319      01010101 
+ 1320              	.LASF14:
+ 1321 0000 72656733 		.ascii	"reg32\000"
+ 1321      3200
+ 1322              	.LASF36:
+ 1323 0006 494E5055 		.ascii	"INPUT_TIMER_ClearInterrupt\000"
+ 1323      545F5449 
+ 1323      4D45525F 
+ 1323      436C6561 
+ 1323      72496E74 
+ 1324              	.LASF30:
+ 1325 0021 494E5055 		.ascii	"INPUT_TIMER_ISR_StartEx\000"
+ 1325      545F5449 
+ 1325      4D45525F 
+ 1325      4953525F 
+ 1325      53746172 
+ 1326              	.LASF33:
+ 1327 0039 494E5055 		.ascii	"INPUT_TIMER_ISR_ClearPending\000"
  1327      545F5449 
  1327      4D45525F 
  1327      4953525F 
- 1327      53746F70 
- 1328              	.LASF11:
- 1329 00d7 666C6F61 		.ascii	"float\000"
- 1329      7400
- 1330              	.LASF7:
- 1331 00dd 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1331      206C6F6E 
- 1331      6720756E 
- 1331      7369676E 
- 1331      65642069 
- 1332              	.LASF1:
- 1333 00f4 756E7369 		.ascii	"unsigned char\000"
- 1333      676E6564 
- 1333      20636861 
- 1333      7200
- 1334              	.LASF27:
- 1335 0102 494E5055 		.ascii	"INPUT_TIMER_ISR_GetState\000"
- 1335      545F5449 
- 1335      4D45525F 
- 1335      4953525F 
- 1335      47657453 
- 1336              	.LASF22:
- 1337 011b 696E7465 		.ascii	"interruptState\000"
- 1337      72727570 
- 1337      74537461 
- 1337      746500
- 1338              	.LASF28:
- 1339 012a 494E5055 		.ascii	"INPUT_TIMER_ISR_Disable\000"
- 1339      545F5449 
- 1339      4D45525F 
- 1339      4953525F 
- 1339      44697361 
- 1340              	.LASF9:
- 1341 0142 75696E74 		.ascii	"uint8\000"
- 1341      3800
- 1342              	.LASF21:
- 1343 0148 7072696F 		.ascii	"priority\000"
- 1343      72697479 
- 1343      00
- 1344              	.LASF19:
- 1345 0151 494E5055 		.ascii	"INPUT_TIMER_ISR_SetPriority\000"
- 1345      545F5449 
- 1345      4D45525F 
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 33
+ 1327      436C6561 
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 32
 
 
- 1345      4953525F 
- 1345      53657450 
- 1346              	.LASF12:
- 1347 016d 646F7562 		.ascii	"double\000"
- 1347      6C6500
- 1348              	.LASF24:
- 1349 0174 494E5055 		.ascii	"INPUT_TIMER_ISR_Interrupt\000"
+ 1328              	.LASF19:
+ 1329 0056 494E5055 		.ascii	"INPUT_TIMER_ISR_SetVector\000"
+ 1329      545F5449 
+ 1329      4D45525F 
+ 1329      4953525F 
+ 1329      53657456 
+ 1330              	.LASF21:
+ 1331 0070 61646472 		.ascii	"address\000"
+ 1331      65737300 
+ 1332              	.LASF42:
+ 1333 0078 494E5055 		.ascii	"INPUT_TIMER_ISR_GetPriority\000"
+ 1333      545F5449 
+ 1333      4D45525F 
+ 1333      4953525F 
+ 1333      47657450 
+ 1334              	.LASF3:
+ 1335 0094 73686F72 		.ascii	"short unsigned int\000"
+ 1335      7420756E 
+ 1335      7369676E 
+ 1335      65642069 
+ 1335      6E7400
+ 1336              	.LASF35:
+ 1337 00a7 43795261 		.ascii	"CyRamVectors\000"
+ 1337      6D566563 
+ 1337      746F7273 
+ 1337      00
+ 1338              	.LASF40:
+ 1339 00b4 47656E65 		.ascii	"Generated_Source\\PSoC4\\INPUT_TIMER_ISR.c\000"
+ 1339      72617465 
+ 1339      645F536F 
+ 1339      75726365 
+ 1339      5C50536F 
+ 1340              	.LASF31:
+ 1341 00dd 494E5055 		.ascii	"INPUT_TIMER_ISR_Stop\000"
+ 1341      545F5449 
+ 1341      4D45525F 
+ 1341      4953525F 
+ 1341      53746F70 
+ 1342              	.LASF11:
+ 1343 00f2 666C6F61 		.ascii	"float\000"
+ 1343      7400
+ 1344              	.LASF7:
+ 1345 00f8 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1345      206C6F6E 
+ 1345      6720756E 
+ 1345      7369676E 
+ 1345      65642069 
+ 1346              	.LASF1:
+ 1347 010f 756E7369 		.ascii	"unsigned char\000"
+ 1347      676E6564 
+ 1347      20636861 
+ 1347      7200
+ 1348              	.LASF26:
+ 1349 011d 494E5055 		.ascii	"INPUT_TIMER_ISR_GetState\000"
  1349      545F5449 
  1349      4D45525F 
  1349      4953525F 
- 1349      496E7465 
- 1350              	.LASF29:
- 1351 018e 494E5055 		.ascii	"INPUT_TIMER_ISR_Start\000"
- 1351      545F5449 
- 1351      4D45525F 
- 1351      4953525F 
- 1351      53746172 
- 1352              	.LASF10:
- 1353 01a4 75696E74 		.ascii	"uint32\000"
- 1353      333200
- 1354              	.LASF34:
- 1355 01ab 4379456E 		.ascii	"CyEnterCriticalSection\000"
- 1355      74657243 
- 1355      72697469 
- 1355      63616C53 
- 1355      65637469 
- 1356              	.LASF5:
- 1357 01c2 6C6F6E67 		.ascii	"long unsigned int\000"
- 1357      20756E73 
- 1357      69676E65 
- 1357      6420696E 
- 1357      7400
- 1358              	.LASF8:
- 1359 01d4 756E7369 		.ascii	"unsigned int\000"
- 1359      676E6564 
- 1359      20696E74 
- 1359      00
- 1360              	.LASF26:
- 1361 01e1 494E5055 		.ascii	"INPUT_TIMER_ISR_GetVector\000"
- 1361      545F5449 
- 1361      4D45525F 
- 1361      4953525F 
- 1361      47657456 
- 1362              	.LASF35:
- 1363 01fb 43794578 		.ascii	"CyExitCriticalSection\000"
- 1363      69744372 
- 1363      69746963 
- 1363      616C5365 
- 1363      6374696F 
- 1364              	.LASF15:
- 1365 0211 63796973 		.ascii	"cyisraddress\000"
- 1365      72616464 
- 1365      72657373 
- 1365      00
- 1366              	.LASF36:
- 1367 021e 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 1367      43313120 
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 34
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 33
 
 
- 1367      352E342E 
- 1367      31203230 
- 1367      31363036 
- 1368 0251 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
- 1368      20726576 
- 1368      6973696F 
- 1368      6E203233 
- 1368      37373135 
- 1369 0284 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 1369      66756E63 
- 1369      74696F6E 
- 1369      2D736563 
- 1369      74696F6E 
- 1370              	.LASF17:
- 1371 02ac 73697A65 		.ascii	"sizetype\000"
- 1371      74797065 
- 1371      00
- 1372              	.LASF6:
- 1373 02b5 6C6F6E67 		.ascii	"long long int\000"
- 1373      206C6F6E 
- 1373      6720696E 
- 1373      7400
- 1374              	.LASF13:
- 1375 02c3 63686172 		.ascii	"char\000"
- 1375      00
+ 1349      47657453 
+ 1350              	.LASF23:
+ 1351 0136 696E7465 		.ascii	"interruptState\000"
+ 1351      72727570 
+ 1351      74537461 
+ 1351      746500
+ 1352              	.LASF28:
+ 1353 0145 494E5055 		.ascii	"INPUT_TIMER_ISR_Disable\000"
+ 1353      545F5449 
+ 1353      4D45525F 
+ 1353      4953525F 
+ 1353      44697361 
+ 1354              	.LASF9:
+ 1355 015d 75696E74 		.ascii	"uint8\000"
+ 1355      3800
+ 1356              	.LASF22:
+ 1357 0163 7072696F 		.ascii	"priority\000"
+ 1357      72697479 
+ 1357      00
+ 1358              	.LASF20:
+ 1359 016c 494E5055 		.ascii	"INPUT_TIMER_ISR_SetPriority\000"
+ 1359      545F5449 
+ 1359      4D45525F 
+ 1359      4953525F 
+ 1359      53657450 
+ 1360              	.LASF12:
+ 1361 0188 646F7562 		.ascii	"double\000"
+ 1361      6C6500
+ 1362              	.LASF18:
+ 1363 018f 494E5055 		.ascii	"INPUT_TIMER_ISR_Interrupt\000"
+ 1363      545F5449 
+ 1363      4D45525F 
+ 1363      4953525F 
+ 1363      496E7465 
+ 1364              	.LASF29:
+ 1365 01a9 494E5055 		.ascii	"INPUT_TIMER_ISR_Start\000"
+ 1365      545F5449 
+ 1365      4D45525F 
+ 1365      4953525F 
+ 1365      53746172 
+ 1366              	.LASF10:
+ 1367 01bf 75696E74 		.ascii	"uint32\000"
+ 1367      333200
+ 1368              	.LASF37:
+ 1369 01c6 4379456E 		.ascii	"CyEnterCriticalSection\000"
+ 1369      74657243 
+ 1369      72697469 
+ 1369      63616C53 
+ 1369      65637469 
+ 1370              	.LASF5:
+ 1371 01dd 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1371      20756E73 
+ 1371      69676E65 
+ 1371      6420696E 
+ 1371      7400
+ 1372              	.LASF8:
+ 1373 01ef 756E7369 		.ascii	"unsigned int\000"
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 34
+
+
+ 1373      676E6564 
+ 1373      20696E74 
+ 1373      00
+ 1374              	.LASF25:
+ 1375 01fc 494E5055 		.ascii	"INPUT_TIMER_ISR_GetVector\000"
+ 1375      545F5449 
+ 1375      4D45525F 
+ 1375      4953525F 
+ 1375      47657456 
  1376              	.LASF38:
- 1377 02c8 433A5C55 		.ascii	"C:\\Users\\Hello Kitty\\Desktop\\MicrocontrollersLa"
- 1377      73657273 
- 1377      5C48656C 
- 1377      6C6F204B 
- 1377      69747479 
- 1378 02f7 625C4C61 		.ascii	"b\\Lab 3 - Simon Game\\Project\\Design01.cydsn\000"
- 1378      62203320 
- 1378      2D205369 
- 1378      6D6F6E20 
- 1378      47616D65 
- 1379              	.LASF2:
- 1380 0323 73686F72 		.ascii	"short int\000"
- 1380      7420696E 
- 1380      7400
- 1381              	.LASF25:
- 1382 032d 494E5055 		.ascii	"INPUT_TIMER_ISR_Enable\000"
- 1382      545F5449 
- 1382      4D45525F 
- 1382      4953525F 
- 1382      456E6162 
- 1383              	.LASF23:
- 1384 0344 7072696F 		.ascii	"priorityOffset\000"
- 1384      72697479 
- 1384      4F666673 
- 1384      657400
- 1385              	.LASF4:
- 1386 0353 6C6F6E67 		.ascii	"long int\000"
- 1386      20696E74 
- 1386      00
- 1387              	.LASF16:
- 1388 035c 6C6F6E67 		.ascii	"long double\000"
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cch2WNni.s 			page 35
+ 1377 0216 43794578 		.ascii	"CyExitCriticalSection\000"
+ 1377      69744372 
+ 1377      69746963 
+ 1377      616C5365 
+ 1377      6374696F 
+ 1378              	.LASF15:
+ 1379 022c 63796973 		.ascii	"cyisraddress\000"
+ 1379      72616464 
+ 1379      72657373 
+ 1379      00
+ 1380              	.LASF39:
+ 1381 0239 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1381      43313120 
+ 1381      352E342E 
+ 1381      31203230 
+ 1381      31363036 
+ 1382 026c 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 1382      20726576 
+ 1382      6973696F 
+ 1382      6E203233 
+ 1382      37373135 
+ 1383 029f 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1383      66756E63 
+ 1383      74696F6E 
+ 1383      2D736563 
+ 1383      74696F6E 
+ 1384              	.LASF17:
+ 1385 02c7 73697A65 		.ascii	"sizetype\000"
+ 1385      74797065 
+ 1385      00
+ 1386              	.LASF6:
+ 1387 02d0 6C6F6E67 		.ascii	"long long int\000"
+ 1387      206C6F6E 
+ 1387      6720696E 
+ 1387      7400
+ 1388              	.LASF34:
+ 1389 02de 74696D65 		.ascii	"timeout\000"
+ 1389      6F757400 
+ 1390              	.LASF41:
+ 1391 02e6 433A5C55 		.ascii	"C:\\Users\\Hello Kitty\\Desktop\\MicrocontrollersLa"
+ 1391      73657273 
+ 1391      5C48656C 
+ 1391      6C6F204B 
+ 1391      69747479 
+ 1392 0315 625C4C61 		.ascii	"b\\Lab 3 - Simon Game\\Project\\Design01.cydsn\000"
+ 1392      62203320 
+ 1392      2D205369 
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccZ7dM8d.s 			page 35
 
 
- 1388      20646F75 
- 1388      626C6500 
- 1389              	.LASF0:
- 1390 0368 7369676E 		.ascii	"signed char\000"
- 1390      65642063 
- 1390      68617200 
- 1391              	.LASF32:
- 1392 0374 494E5055 		.ascii	"INPUT_TIMER_ISR_SetPending\000"
- 1392      545F5449 
- 1392      4D45525F 
- 1392      4953525F 
- 1392      53657450 
- 1393              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 1392      6D6F6E20 
+ 1392      47616D65 
+ 1393              	.LASF2:
+ 1394 0341 73686F72 		.ascii	"short int\000"
+ 1394      7420696E 
+ 1394      7400
+ 1395              	.LASF27:
+ 1396 034b 494E5055 		.ascii	"INPUT_TIMER_ISR_Enable\000"
+ 1396      545F5449 
+ 1396      4D45525F 
+ 1396      4953525F 
+ 1396      456E6162 
+ 1397              	.LASF24:
+ 1398 0362 7072696F 		.ascii	"priorityOffset\000"
+ 1398      72697479 
+ 1398      4F666673 
+ 1398      657400
+ 1399              	.LASF4:
+ 1400 0371 6C6F6E67 		.ascii	"long int\000"
+ 1400      20696E74 
+ 1400      00
+ 1401              	.LASF13:
+ 1402 037a 63686172 		.ascii	"char\000"
+ 1402      00
+ 1403              	.LASF16:
+ 1404 037f 6C6F6E67 		.ascii	"long double\000"
+ 1404      20646F75 
+ 1404      626C6500 
+ 1405              	.LASF0:
+ 1406 038b 7369676E 		.ascii	"signed char\000"
+ 1406      65642063 
+ 1406      68617200 
+ 1407              	.LASF32:
+ 1408 0397 494E5055 		.ascii	"INPUT_TIMER_ISR_SetPending\000"
+ 1408      545F5449 
+ 1408      4D45525F 
+ 1408      4953525F 
+ 1408      53657450 
+ 1409              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
