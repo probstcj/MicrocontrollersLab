@@ -620,191 +620,190 @@ END GROUP
  .text.play_win
                 0x000003dc       0x9c .\CortexM0\ARM_GCC_541\Debug\main.o
                 0x000003dc                play_win
- .text.main     0x00000478      0x13c .\CortexM0\ARM_GCC_541\Debug\main.o
+ .text.main     0x00000478      0x140 .\CortexM0\ARM_GCC_541\Debug\main.o
                 0x00000478                main
  .text.cfg_write_bytes32
-                0x000005b4       0x34 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x000005b8       0x34 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.AnalogSetDefault
-                0x000005e8       0x20 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x000005ec       0x20 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.CYMEMZERO
-                0x00000608        0xc .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x0000060c        0xc .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.IntDefaultHandler
-                0x00000614       0x10 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
-                0x00000614                IntDefaultHandler
- .text.Start_c  0x00000624       0x48 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
-                0x00000624                Start_c
+                0x00000618       0x10 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+                0x00000618                IntDefaultHandler
+ .text.Start_c  0x00000628       0x48 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+                0x00000628                Start_c
  .text.initialize_psoc
-                0x0000066c       0x4c .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
-                0x0000066c                initialize_psoc
+                0x00000670       0x4c .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+                0x00000670                initialize_psoc
  .text.LED_PWM_Stop
-                0x000006b8       0x1c .\CortexM0\ARM_GCC_541\Debug\Design01.a(LED_PWM.o)
-                0x000006b8                LED_PWM_Stop
+                0x000006bc       0x1c .\CortexM0\ARM_GCC_541\Debug\Design01.a(LED_PWM.o)
+                0x000006bc                LED_PWM_Stop
  .text.LED_PWM_WriteCounter
-                0x000006d4       0x10 .\CortexM0\ARM_GCC_541\Debug\Design01.a(LED_PWM.o)
-                0x000006d4                LED_PWM_WriteCounter
+                0x000006d8       0x10 .\CortexM0\ARM_GCC_541\Debug\Design01.a(LED_PWM.o)
+                0x000006d8                LED_PWM_WriteCounter
  .text.LED_PWM_WritePeriod
-                0x000006e4       0x10 .\CortexM0\ARM_GCC_541\Debug\Design01.a(LED_PWM.o)
-                0x000006e4                LED_PWM_WritePeriod
+                0x000006e8       0x10 .\CortexM0\ARM_GCC_541\Debug\Design01.a(LED_PWM.o)
+                0x000006e8                LED_PWM_WritePeriod
  .text.LED_PWM_WriteCompare
-                0x000006f4       0x10 .\CortexM0\ARM_GCC_541\Debug\Design01.a(LED_PWM.o)
-                0x000006f4                LED_PWM_WriteCompare
+                0x000006f8       0x10 .\CortexM0\ARM_GCC_541\Debug\Design01.a(LED_PWM.o)
+                0x000006f8                LED_PWM_WriteCompare
  .text.LED_PWM_TriggerCommand
-                0x00000704       0x1c .\CortexM0\ARM_GCC_541\Debug\Design01.a(LED_PWM.o)
-                0x00000704                LED_PWM_TriggerCommand
+                0x00000708       0x1c .\CortexM0\ARM_GCC_541\Debug\Design01.a(LED_PWM.o)
+                0x00000708                LED_PWM_TriggerCommand
  .text.LED_PWM_Enable
-                0x00000720       0x24 .\CortexM0\ARM_GCC_541\Debug\Design01.a(LED_PWM.o)
-                0x00000720                LED_PWM_Enable
+                0x00000724       0x24 .\CortexM0\ARM_GCC_541\Debug\Design01.a(LED_PWM.o)
+                0x00000724                LED_PWM_Enable
  .text.LED_PWM_SetInterruptMode
-                0x00000744        0xc .\CortexM0\ARM_GCC_541\Debug\Design01.a(LED_PWM.o)
-                0x00000744                LED_PWM_SetInterruptMode
+                0x00000748        0xc .\CortexM0\ARM_GCC_541\Debug\Design01.a(LED_PWM.o)
+                0x00000748                LED_PWM_SetInterruptMode
  .text.LED_PWM_Init
-                0x00000750       0x4c .\CortexM0\ARM_GCC_541\Debug\Design01.a(LED_PWM.o)
-                0x00000750                LED_PWM_Init
+                0x00000754       0x4c .\CortexM0\ARM_GCC_541\Debug\Design01.a(LED_PWM.o)
+                0x00000754                LED_PWM_Init
  .text.LED_PWM_Start
-                0x0000079c       0x20 .\CortexM0\ARM_GCC_541\Debug\Design01.a(LED_PWM.o)
-                0x0000079c                LED_PWM_Start
+                0x000007a0       0x20 .\CortexM0\ARM_GCC_541\Debug\Design01.a(LED_PWM.o)
+                0x000007a0                LED_PWM_Start
  .text.LED_SEL_Write
-                0x000007bc        0xc .\CortexM0\ARM_GCC_541\Debug\Design01.a(LED_SEL.o)
-                0x000007bc                LED_SEL_Write
+                0x000007c0        0xc .\CortexM0\ARM_GCC_541\Debug\Design01.a(LED_SEL.o)
+                0x000007c0                LED_SEL_Write
  .text.SPEAKER_PWM_Stop
-                0x000007c8       0x1c .\CortexM0\ARM_GCC_541\Debug\Design01.a(SPEAKER_PWM.o)
-                0x000007c8                SPEAKER_PWM_Stop
+                0x000007cc       0x1c .\CortexM0\ARM_GCC_541\Debug\Design01.a(SPEAKER_PWM.o)
+                0x000007cc                SPEAKER_PWM_Stop
  .text.SPEAKER_PWM_WriteCounter
-                0x000007e4       0x10 .\CortexM0\ARM_GCC_541\Debug\Design01.a(SPEAKER_PWM.o)
-                0x000007e4                SPEAKER_PWM_WriteCounter
+                0x000007e8       0x10 .\CortexM0\ARM_GCC_541\Debug\Design01.a(SPEAKER_PWM.o)
+                0x000007e8                SPEAKER_PWM_WriteCounter
  .text.SPEAKER_PWM_WritePeriod
-                0x000007f4       0x10 .\CortexM0\ARM_GCC_541\Debug\Design01.a(SPEAKER_PWM.o)
-                0x000007f4                SPEAKER_PWM_WritePeriod
+                0x000007f8       0x10 .\CortexM0\ARM_GCC_541\Debug\Design01.a(SPEAKER_PWM.o)
+                0x000007f8                SPEAKER_PWM_WritePeriod
  .text.SPEAKER_PWM_WriteCompare
-                0x00000804       0x10 .\CortexM0\ARM_GCC_541\Debug\Design01.a(SPEAKER_PWM.o)
-                0x00000804                SPEAKER_PWM_WriteCompare
+                0x00000808       0x10 .\CortexM0\ARM_GCC_541\Debug\Design01.a(SPEAKER_PWM.o)
+                0x00000808                SPEAKER_PWM_WriteCompare
  .text.SPEAKER_PWM_TriggerCommand
-                0x00000814       0x1c .\CortexM0\ARM_GCC_541\Debug\Design01.a(SPEAKER_PWM.o)
-                0x00000814                SPEAKER_PWM_TriggerCommand
+                0x00000818       0x1c .\CortexM0\ARM_GCC_541\Debug\Design01.a(SPEAKER_PWM.o)
+                0x00000818                SPEAKER_PWM_TriggerCommand
  .text.SPEAKER_PWM_Enable
-                0x00000830       0x24 .\CortexM0\ARM_GCC_541\Debug\Design01.a(SPEAKER_PWM.o)
-                0x00000830                SPEAKER_PWM_Enable
+                0x00000834       0x24 .\CortexM0\ARM_GCC_541\Debug\Design01.a(SPEAKER_PWM.o)
+                0x00000834                SPEAKER_PWM_Enable
  .text.SPEAKER_PWM_SetInterruptMode
-                0x00000854        0xc .\CortexM0\ARM_GCC_541\Debug\Design01.a(SPEAKER_PWM.o)
-                0x00000854                SPEAKER_PWM_SetInterruptMode
+                0x00000858        0xc .\CortexM0\ARM_GCC_541\Debug\Design01.a(SPEAKER_PWM.o)
+                0x00000858                SPEAKER_PWM_SetInterruptMode
  .text.SPEAKER_PWM_Init
-                0x00000860       0x4c .\CortexM0\ARM_GCC_541\Debug\Design01.a(SPEAKER_PWM.o)
-                0x00000860                SPEAKER_PWM_Init
+                0x00000864       0x4c .\CortexM0\ARM_GCC_541\Debug\Design01.a(SPEAKER_PWM.o)
+                0x00000864                SPEAKER_PWM_Init
  .text.SPEAKER_PWM_Start
-                0x000008ac       0x20 .\CortexM0\ARM_GCC_541\Debug\Design01.a(SPEAKER_PWM.o)
-                0x000008ac                SPEAKER_PWM_Start
+                0x000008b0       0x20 .\CortexM0\ARM_GCC_541\Debug\Design01.a(SPEAKER_PWM.o)
+                0x000008b0                SPEAKER_PWM_Start
  .text.BTN_Read
-                0x000008cc       0x10 .\CortexM0\ARM_GCC_541\Debug\Design01.a(BTN.o)
-                0x000008cc                BTN_Read
+                0x000008d0       0x10 .\CortexM0\ARM_GCC_541\Debug\Design01.a(BTN.o)
+                0x000008d0                BTN_Read
  .text.INPUT_TIMER_Stop
-                0x000008dc       0x1c .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER.o)
-                0x000008dc                INPUT_TIMER_Stop
+                0x000008e0       0x1c .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER.o)
+                0x000008e0                INPUT_TIMER_Stop
  .text.INPUT_TIMER_WriteCounter
-                0x000008f8       0x10 .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER.o)
-                0x000008f8                INPUT_TIMER_WriteCounter
+                0x000008fc       0x10 .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER.o)
+                0x000008fc                INPUT_TIMER_WriteCounter
  .text.INPUT_TIMER_WritePeriod
-                0x00000908       0x10 .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER.o)
-                0x00000908                INPUT_TIMER_WritePeriod
+                0x0000090c       0x10 .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER.o)
+                0x0000090c                INPUT_TIMER_WritePeriod
  .text.INPUT_TIMER_TriggerCommand
-                0x00000918       0x1c .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER.o)
-                0x00000918                INPUT_TIMER_TriggerCommand
+                0x0000091c       0x1c .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER.o)
+                0x0000091c                INPUT_TIMER_TriggerCommand
  .text.INPUT_TIMER_Enable
-                0x00000934       0x24 .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER.o)
-                0x00000934                INPUT_TIMER_Enable
+                0x00000938       0x24 .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER.o)
+                0x00000938                INPUT_TIMER_Enable
  .text.INPUT_TIMER_SetInterruptMode
-                0x00000958        0xc .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER.o)
-                0x00000958                INPUT_TIMER_SetInterruptMode
+                0x0000095c        0xc .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER.o)
+                0x0000095c                INPUT_TIMER_SetInterruptMode
  .text.INPUT_TIMER_Init
-                0x00000964       0x30 .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER.o)
-                0x00000964                INPUT_TIMER_Init
+                0x00000968       0x30 .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER.o)
+                0x00000968                INPUT_TIMER_Init
  .text.INPUT_TIMER_Start
-                0x00000994       0x20 .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER.o)
-                0x00000994                INPUT_TIMER_Start
+                0x00000998       0x20 .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER.o)
+                0x00000998                INPUT_TIMER_Start
  .text.INPUT_TIMER_ClearInterrupt
-                0x000009b4        0xc .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER.o)
-                0x000009b4                INPUT_TIMER_ClearInterrupt
+                0x000009b8        0xc .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER.o)
+                0x000009b8                INPUT_TIMER_ClearInterrupt
  .text.PRS_Enable
-                0x000009c0       0x14 .\CortexM0\ARM_GCC_541\Debug\Design01.a(PRS.o)
-                0x000009c0                PRS_Enable
+                0x000009c4       0x14 .\CortexM0\ARM_GCC_541\Debug\Design01.a(PRS.o)
+                0x000009c4                PRS_Enable
  .text.PRS_ResetSeedInit
-                0x000009d4       0x50 .\CortexM0\ARM_GCC_541\Debug\Design01.a(PRS.o)
-                0x000009d4                PRS_ResetSeedInit
+                0x000009d8       0x50 .\CortexM0\ARM_GCC_541\Debug\Design01.a(PRS.o)
+                0x000009d8                PRS_ResetSeedInit
  .text.PRS_Read
-                0x00000a24        0xc .\CortexM0\ARM_GCC_541\Debug\Design01.a(PRS.o)
-                0x00000a24                PRS_Read
+                0x00000a28        0xc .\CortexM0\ARM_GCC_541\Debug\Design01.a(PRS.o)
+                0x00000a28                PRS_Read
  .text.PRS_WriteSeed
-                0x00000a30        0xc .\CortexM0\ARM_GCC_541\Debug\Design01.a(PRS.o)
-                0x00000a30                PRS_WriteSeed
+                0x00000a34        0xc .\CortexM0\ARM_GCC_541\Debug\Design01.a(PRS.o)
+                0x00000a34                PRS_WriteSeed
  .text.PRS_WritePolynomial
-                0x00000a3c        0xc .\CortexM0\ARM_GCC_541\Debug\Design01.a(PRS.o)
-                0x00000a3c                PRS_WritePolynomial
+                0x00000a40        0xc .\CortexM0\ARM_GCC_541\Debug\Design01.a(PRS.o)
+                0x00000a40                PRS_WritePolynomial
  .text.PRS_Init
-                0x00000a48       0x20 .\CortexM0\ARM_GCC_541\Debug\Design01.a(PRS.o)
-                0x00000a48                PRS_Init
+                0x00000a4c       0x20 .\CortexM0\ARM_GCC_541\Debug\Design01.a(PRS.o)
+                0x00000a4c                PRS_Init
  .text.PRS_Start
-                0x00000a68       0x20 .\CortexM0\ARM_GCC_541\Debug\Design01.a(PRS.o)
-                0x00000a68                PRS_Start
+                0x00000a6c       0x20 .\CortexM0\ARM_GCC_541\Debug\Design01.a(PRS.o)
+                0x00000a6c                PRS_Start
  .text.INPUT_TIMER_ISR_Interrupt
-                0x00000a88       0x14 .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER_ISR.o)
-                0x00000a88                INPUT_TIMER_ISR_Interrupt
+                0x00000a8c       0x14 .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER_ISR.o)
+                0x00000a8c                INPUT_TIMER_ISR_Interrupt
  .text.INPUT_TIMER_ISR_SetVector
-                0x00000a9c        0xc .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER_ISR.o)
-                0x00000a9c                INPUT_TIMER_ISR_SetVector
+                0x00000aa0        0xc .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER_ISR.o)
+                0x00000aa0                INPUT_TIMER_ISR_SetVector
  .text.INPUT_TIMER_ISR_SetPriority
-                0x00000aa8       0x20 .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER_ISR.o)
-                0x00000aa8                INPUT_TIMER_ISR_SetPriority
+                0x00000aac       0x20 .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER_ISR.o)
+                0x00000aac                INPUT_TIMER_ISR_SetPriority
  .text.INPUT_TIMER_ISR_Enable
-                0x00000ac8       0x10 .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER_ISR.o)
-                0x00000ac8                INPUT_TIMER_ISR_Enable
+                0x00000acc       0x10 .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER_ISR.o)
+                0x00000acc                INPUT_TIMER_ISR_Enable
  .text.INPUT_TIMER_ISR_Disable
-                0x00000ad8       0x10 .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER_ISR.o)
-                0x00000ad8                INPUT_TIMER_ISR_Disable
+                0x00000adc       0x10 .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER_ISR.o)
+                0x00000adc                INPUT_TIMER_ISR_Disable
  .text.INPUT_TIMER_ISR_Start
-                0x00000ae8       0x1c .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER_ISR.o)
-                0x00000ae8                INPUT_TIMER_ISR_Start
+                0x00000aec       0x1c .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER_ISR.o)
+                0x00000aec                INPUT_TIMER_ISR_Start
  .text.INPUT_TIMER_ISR_Stop
-                0x00000b04       0x14 .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER_ISR.o)
-                0x00000b04                INPUT_TIMER_ISR_Stop
+                0x00000b08       0x14 .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER_ISR.o)
+                0x00000b08                INPUT_TIMER_ISR_Stop
  .text.CySysClkImoDisableWcoLock
-                0x00000b18       0x54 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLib.o)
-                0x00000b18                CySysClkImoDisableWcoLock
+                0x00000b1c       0x54 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLib.o)
+                0x00000b1c                CySysClkImoDisableWcoLock
  .text.CySysClkImoGetWcoLock
-                0x00000b6c       0x14 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLib.o)
-                0x00000b6c                CySysClkImoGetWcoLock
+                0x00000b70       0x14 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLib.o)
+                0x00000b70                CySysClkImoGetWcoLock
  .text.CyIntEnable
-                0x00000b80       0x14 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLib.o)
-                0x00000b80                CyIntEnable
- .text.CyHalt   0x00000b94        0x4 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLib.o)
-                0x00000b94                CyHalt
+                0x00000b84       0x14 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLib.o)
+                0x00000b84                CyIntEnable
+ .text.CyHalt   0x00000b98        0x4 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLib.o)
+                0x00000b98                CyHalt
  .text.CyIntSetVector
-                0x00000b98       0x24 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLib.o)
-                0x00000b98                CyIntSetVector
- .text.CyDelay  0x00000bbc       0x30 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLib.o)
-                0x00000bbc                CyDelay
+                0x00000b9c       0x24 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLib.o)
+                0x00000b9c                CyIntSetVector
+ .text.CyDelay  0x00000bc0       0x30 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLib.o)
+                0x00000bc0                CyDelay
  .text.CySysClkImoEnableWcoLock
-                0x00000bec       0xf4 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLib.o)
-                0x00000bec                CySysClkImoEnableWcoLock
+                0x00000bf0       0xf4 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLib.o)
+                0x00000bf0                CySysClkImoEnableWcoLock
  .text.CySysClkWriteImoFreq
-                0x00000ce0       0x80 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLib.o)
-                0x00000ce0                CySysClkWriteImoFreq
+                0x00000ce4       0x80 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLib.o)
+                0x00000ce4                CySysClkWriteImoFreq
  .text.CySysWdtLocked
-                0x00000d60       0x14 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLFClk.o)
+                0x00000d64       0x14 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLFClk.o)
  .text.CySysClkWcoEnabled
-                0x00000d74       0x14 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLFClk.o)
-                0x00000d74                CySysClkWcoEnabled
+                0x00000d78       0x14 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLFClk.o)
+                0x00000d78                CySysClkWcoEnabled
  .text.CySysWdtLock
-                0x00000d88       0x1c .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLFClk.o)
-                0x00000d88                CySysWdtLock
+                0x00000d8c       0x1c .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLFClk.o)
+                0x00000d8c                CySysWdtLock
  .text.CySysWdtUnlock
-                0x00000da4       0x30 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLFClk.o)
-                0x00000da4                CySysWdtUnlock
+                0x00000da8       0x30 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLFClk.o)
+                0x00000da8                CySysWdtUnlock
  .text.CySysWdtClearInterrupt
-                0x00000dd4       0x4c .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLFClk.o)
-                0x00000dd4                CySysWdtClearInterrupt
+                0x00000dd8       0x4c .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLFClk.o)
+                0x00000dd8                CySysWdtClearInterrupt
  .text.CySysWdtIsr
-                0x00000e20       0xa4 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLFClk.o)
-                0x00000e20                CySysWdtIsr
- *fill*         0x00000ec4        0x4 
+                0x00000e24       0xa4 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLFClk.o)
+                0x00000e24                CySysWdtIsr
  .text          0x00000ec8       0x20 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyBootAsmGnu.o)
                 0x00000ec8                CyDelayCycles
                 0x00000eda                CyEnterCriticalSection
@@ -1072,23 +1071,23 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x5633
+.debug_info     0x00000000     0x5642
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000      0x90c .\CortexM0\ARM_GCC_541\Debug\main.o
- .debug_info    0x0000090c      0x3bc .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_info    0x00000cc8       0xf8 .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
- .debug_info    0x00000dc0      0x3a2 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
- .debug_info    0x00001162      0x909 .\CortexM0\ARM_GCC_541\Debug\Design01.a(LED_PWM.o)
- .debug_info    0x00001a6b       0xd6 .\CortexM0\ARM_GCC_541\Debug\Design01.a(LED_SEL.o)
- .debug_info    0x00001b41      0x909 .\CortexM0\ARM_GCC_541\Debug\Design01.a(SPEAKER_PWM.o)
- .debug_info    0x0000244a      0x19b .\CortexM0\ARM_GCC_541\Debug\Design01.a(BTN.o)
- .debug_info    0x000025e5      0x8f6 .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER.o)
- .debug_info    0x00002edb      0x291 .\CortexM0\ARM_GCC_541\Debug\Design01.a(PRS.o)
- .debug_info    0x0000316c      0x337 .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER_ISR.o)
- .debug_info    0x000034a3      0xd3f .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLib.o)
- .debug_info    0x000041e2     0x1058 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLFClk.o)
- .debug_info    0x0000523a       0xa9 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyBootAsmGnu.o)
- .debug_info    0x000052e3      0x350 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyFlash.o)
+ .debug_info    0x00000000      0x91b .\CortexM0\ARM_GCC_541\Debug\main.o
+ .debug_info    0x0000091b      0x3bc .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_info    0x00000cd7       0xf8 .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
+ .debug_info    0x00000dcf      0x3a2 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+ .debug_info    0x00001171      0x909 .\CortexM0\ARM_GCC_541\Debug\Design01.a(LED_PWM.o)
+ .debug_info    0x00001a7a       0xd6 .\CortexM0\ARM_GCC_541\Debug\Design01.a(LED_SEL.o)
+ .debug_info    0x00001b50      0x909 .\CortexM0\ARM_GCC_541\Debug\Design01.a(SPEAKER_PWM.o)
+ .debug_info    0x00002459      0x19b .\CortexM0\ARM_GCC_541\Debug\Design01.a(BTN.o)
+ .debug_info    0x000025f4      0x8f6 .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER.o)
+ .debug_info    0x00002eea      0x291 .\CortexM0\ARM_GCC_541\Debug\Design01.a(PRS.o)
+ .debug_info    0x0000317b      0x337 .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER_ISR.o)
+ .debug_info    0x000034b2      0xd3f .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLib.o)
+ .debug_info    0x000041f1     0x1058 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLFClk.o)
+ .debug_info    0x00005249       0xa9 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyBootAsmGnu.o)
+ .debug_info    0x000052f2      0x350 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyFlash.o)
 
 .debug_abbrev   0x00000000     0x12cc
  *(.debug_abbrev)
@@ -1108,23 +1107,23 @@ END GROUP
  .debug_abbrev  0x00001136       0x14 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyBootAsmGnu.o)
  .debug_abbrev  0x0000114a      0x182 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyFlash.o)
 
-.debug_line     0x00000000     0x232b
+.debug_line     0x00000000     0x2330
  *(.debug_line)
- .debug_line    0x00000000      0x2f5 .\CortexM0\ARM_GCC_541\Debug\main.o
- .debug_line    0x000002f5      0x17d .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_line    0x00000472      0x141 .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
- .debug_line    0x000005b3      0x236 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
- .debug_line    0x000007e9      0x380 .\CortexM0\ARM_GCC_541\Debug\Design01.a(LED_PWM.o)
- .debug_line    0x00000b69       0x70 .\CortexM0\ARM_GCC_541\Debug\Design01.a(LED_SEL.o)
- .debug_line    0x00000bd9      0x384 .\CortexM0\ARM_GCC_541\Debug\Design01.a(SPEAKER_PWM.o)
- .debug_line    0x00000f5d       0xbd .\CortexM0\ARM_GCC_541\Debug\Design01.a(BTN.o)
- .debug_line    0x0000101a      0x37f .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER.o)
- .debug_line    0x00001399      0x117 .\CortexM0\ARM_GCC_541\Debug\Design01.a(PRS.o)
- .debug_line    0x000014b0      0x16c .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER_ISR.o)
- .debug_line    0x0000161c      0x563 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLib.o)
- .debug_line    0x00001b7f      0x5d1 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLFClk.o)
- .debug_line    0x00002150       0x68 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyBootAsmGnu.o)
- .debug_line    0x000021b8      0x173 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyFlash.o)
+ .debug_line    0x00000000      0x2fa .\CortexM0\ARM_GCC_541\Debug\main.o
+ .debug_line    0x000002fa      0x17d .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_line    0x00000477      0x141 .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
+ .debug_line    0x000005b8      0x236 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+ .debug_line    0x000007ee      0x380 .\CortexM0\ARM_GCC_541\Debug\Design01.a(LED_PWM.o)
+ .debug_line    0x00000b6e       0x70 .\CortexM0\ARM_GCC_541\Debug\Design01.a(LED_SEL.o)
+ .debug_line    0x00000bde      0x384 .\CortexM0\ARM_GCC_541\Debug\Design01.a(SPEAKER_PWM.o)
+ .debug_line    0x00000f62       0xbd .\CortexM0\ARM_GCC_541\Debug\Design01.a(BTN.o)
+ .debug_line    0x0000101f      0x37f .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER.o)
+ .debug_line    0x0000139e      0x117 .\CortexM0\ARM_GCC_541\Debug\Design01.a(PRS.o)
+ .debug_line    0x000014b5      0x16c .\CortexM0\ARM_GCC_541\Debug\Design01.a(INPUT_TIMER_ISR.o)
+ .debug_line    0x00001621      0x563 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLib.o)
+ .debug_line    0x00001b84      0x5d1 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLFClk.o)
+ .debug_line    0x00002155       0x68 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyBootAsmGnu.o)
+ .debug_line    0x000021bd      0x173 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyFlash.o)
 
 .debug_frame    0x00000000     0x1a4c
  *(.debug_frame)

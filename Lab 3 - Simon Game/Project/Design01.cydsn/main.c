@@ -257,7 +257,7 @@ int main(void)
         
         for(int i = 0; i < ROUNDS; i++){
             simon_sequence[i] = PRS_Read() % 4;
-            
+            CyDelay(1);
         }
         
        
@@ -272,7 +272,7 @@ int main(void)
 
         // Start the counter at 1 (Why not zero? Due to the nature of
         // for loops bounds checking! See below)
-        seq_ctr = 1;        
+        seq_ctr = 19;        
         
         
         // The main game begins here. As long as there are no errors,
