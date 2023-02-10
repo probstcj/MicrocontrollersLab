@@ -1,0 +1,34 @@
+Automatic pet feeder
+
+1. Figure out parts
+    4x20 LCD
+    Speaker
+    LEDs
+    RTC (Real time clock) I2C interface
+    Mechanical Encoder (for how much food)
+    UART (either through computer terminal or web app) - setting time
+    Motors - Note: figure out which motors to use
+    Power supply
+    Barrel jack connectors
+    Step-down converter
+2. Get mechanical parts done, 3d modeling, 3d printing
+    Wheel
+    Door (might not need motor)
+    Hinge
+    Enclosure for wiring
+    Below wiring enclosure, have enclosure for weights or mounting
+    Enclosure for motors and other stuff
+    Enclosure for LCD and encoder
+    Top for food insertion - threaded
+    Container for food insertion - threaded
+    Rubber feet for bottom
+3. Figure out circuitry
+    12V to 5V conversion
+    Get LCD to print what we need it to, along with encoder
+    Get motors working for door (might not be needed)
+    Get motors working for wheel
+    Get I2C for RTC working
+    Get UART working properly, store values
+    Get LED's and Speaker working
+4. Put everything together
+5. Get web app working??
