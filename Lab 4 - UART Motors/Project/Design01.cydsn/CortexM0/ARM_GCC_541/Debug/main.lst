@@ -1,0 +1,2095 @@
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.MVCCW,"ax",%progbits
+  20              		.align	2
+  21              		.global	MVCCW
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	MVCCW, %function
+  25              	MVCCW:
+  26              	.LFB34:
+  27              		.file 1 "main.c"
+   1:main.c        **** /* ========================================
+   2:main.c        ****  *
+   3:main.c        ****  * Copyright YOUR COMPANY, THE YEAR
+   4:main.c        ****  * All Rights Reserved
+   5:main.c        ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:main.c        ****  *
+   7:main.c        ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:main.c        ****  * WHICH IS THE PROPERTY OF your company.
+   9:main.c        ****  *
+  10:main.c        ****  * ========================================
+  11:main.c        **** */
+  12:main.c        **** #include "project.h"
+  13:main.c        **** #include <string.h>
+  14:main.c        **** struct MTR{
+  15:main.c        ****         unsigned int position : 4;
+  16:main.c        **** };
+  17:main.c        **** int MVCCW(struct MTR motor){
+  28              		.loc 1 17 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              	.LVL0:
+  33 0000 10B5     		push	{r4, lr}
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 4, -8
+  36              		.cfi_offset 14, -4
+  18:main.c        ****     if(motor.position >= 4){
+  37              		.loc 1 18 0
+  38 0002 0307     		lsls	r3, r0, #28
+  39 0004 1B0F     		lsrs	r3, r3, #28
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 2
+
+
+  40 0006 032B     		cmp	r3, #3
+  41 0008 04DD     		ble	.L2
+  19:main.c        ****         motor.position = 1;
+  42              		.loc 1 19 0
+  43 000a 0F23     		movs	r3, #15
+  44 000c 9843     		bics	r0, r3
+  45              	.LVL1:
+  46 000e 0E3B     		subs	r3, r3, #14
+  47 0010 1843     		orrs	r0, r3
+  48 0012 04E0     		b	.L3
+  49              	.LVL2:
+  50              	.L2:
+  20:main.c        ****     }
+  21:main.c        ****     else{
+  22:main.c        ****         motor.position += 1;
+  51              		.loc 1 22 0
+  52 0014 0133     		adds	r3, r3, #1
+  53 0016 0F22     		movs	r2, #15
+  54 0018 1340     		ands	r3, r2
+  55 001a 9043     		bics	r0, r2
+  56              	.LVL3:
+  57 001c 1843     		orrs	r0, r3
+  58              	.L3:
+  59              	.LVL4:
+  23:main.c        ****     }
+  24:main.c        ****     switch(motor.position){
+  60              		.loc 1 24 0
+  61 001e 0007     		lsls	r0, r0, #28
+  62              	.LVL5:
+  63 0020 040F     		lsrs	r4, r0, #28
+  64 0022 022C     		cmp	r4, #2
+  65 0024 0CD0     		beq	.L5
+  66 0026 02D8     		bhi	.L6
+  67 0028 012C     		cmp	r4, #1
+  68 002a 05D0     		beq	.L7
+  69 002c 13E0     		b	.L4
+  70              	.L6:
+  71 002e 032C     		cmp	r4, #3
+  72 0030 0AD0     		beq	.L8
+  73 0032 042C     		cmp	r4, #4
+  74 0034 0CD0     		beq	.L9
+  75 0036 0EE0     		b	.L4
+  76              	.L7:
+  25:main.c        ****         case 1:
+  26:main.c        ****             // 0011 -> 1001
+  27:main.c        ****             Motor_Write(0x9);
+  77              		.loc 1 27 0
+  78 0038 0920     		movs	r0, #9
+  79 003a FFF7FEFF 		bl	Motor_Write
+  80              	.LVL6:
+  28:main.c        ****             break;
+  81              		.loc 1 28 0
+  82 003e 0AE0     		b	.L4
+  83              	.L5:
+  29:main.c        ****         case 2:
+  30:main.c        ****             // 1001 -> 1100
+  31:main.c        ****             Motor_Write(0xC);
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 3
+
+
+  84              		.loc 1 31 0
+  85 0040 0C20     		movs	r0, #12
+  86 0042 FFF7FEFF 		bl	Motor_Write
+  87              	.LVL7:
+  32:main.c        ****             break;
+  88              		.loc 1 32 0
+  89 0046 06E0     		b	.L4
+  90              	.L8:
+  33:main.c        ****         case 3:
+  34:main.c        ****             // 1100 -> 0110
+  35:main.c        ****             Motor_Write(0x6);
+  91              		.loc 1 35 0
+  92 0048 0620     		movs	r0, #6
+  93 004a FFF7FEFF 		bl	Motor_Write
+  94              	.LVL8:
+  36:main.c        ****             break;
+  95              		.loc 1 36 0
+  96 004e 02E0     		b	.L4
+  97              	.L9:
+  37:main.c        ****         case 4:
+  38:main.c        ****             // 0110 -> 0011
+  39:main.c        ****             Motor_Write(0x3);
+  98              		.loc 1 39 0
+  99 0050 0320     		movs	r0, #3
+ 100 0052 FFF7FEFF 		bl	Motor_Write
+ 101              	.LVL9:
+ 102              	.L4:
+  40:main.c        ****             break;
+  41:main.c        ****     }
+  42:main.c        ****     CyDelayUs(3000);
+ 103              		.loc 1 42 0
+ 104 0056 0448     		ldr	r0, .L10
+ 105 0058 FFF7FEFF 		bl	CyDelayUs
+ 106              	.LVL10:
+  43:main.c        ****     Motor_Write(0b0000);
+ 107              		.loc 1 43 0
+ 108 005c 0020     		movs	r0, #0
+ 109 005e FFF7FEFF 		bl	Motor_Write
+ 110              	.LVL11:
+  44:main.c        ****     return motor.position;
+  45:main.c        **** }
+ 111              		.loc 1 45 0
+ 112 0062 2000     		movs	r0, r4
+ 113              		@ sp needed
+ 114 0064 10BD     		pop	{r4, pc}
+ 115              	.L11:
+ 116 0066 C046     		.align	2
+ 117              	.L10:
+ 118 0068 B80B0000 		.word	3000
+ 119              		.cfi_endproc
+ 120              	.LFE34:
+ 121              		.size	MVCCW, .-MVCCW
+ 122              		.section	.text.MVCW,"ax",%progbits
+ 123              		.align	2
+ 124              		.global	MVCW
+ 125              		.code	16
+ 126              		.thumb_func
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 4
+
+
+ 127              		.type	MVCW, %function
+ 128              	MVCW:
+ 129              	.LFB35:
+  46:main.c        **** int MVCW(struct MTR motor){
+ 130              		.loc 1 46 0
+ 131              		.cfi_startproc
+ 132              		@ args = 0, pretend = 0, frame = 0
+ 133              		@ frame_needed = 0, uses_anonymous_args = 0
+ 134              	.LVL12:
+ 135 0000 10B5     		push	{r4, lr}
+ 136              		.cfi_def_cfa_offset 8
+ 137              		.cfi_offset 4, -8
+ 138              		.cfi_offset 14, -4
+  47:main.c        ****     if(motor.position <= 1){
+ 139              		.loc 1 47 0
+ 140 0002 0307     		lsls	r3, r0, #28
+ 141 0004 1B0F     		lsrs	r3, r3, #28
+ 142 0006 012B     		cmp	r3, #1
+ 143 0008 04DC     		bgt	.L13
+  48:main.c        ****         motor.position = 4;
+ 144              		.loc 1 48 0
+ 145 000a 0F23     		movs	r3, #15
+ 146 000c 9843     		bics	r0, r3
+ 147              	.LVL13:
+ 148 000e 0B3B     		subs	r3, r3, #11
+ 149 0010 1843     		orrs	r0, r3
+ 150 0012 04E0     		b	.L14
+ 151              	.LVL14:
+ 152              	.L13:
+  49:main.c        ****     }
+  50:main.c        ****     else{
+  51:main.c        ****         motor.position -= 1;
+ 153              		.loc 1 51 0
+ 154 0014 013B     		subs	r3, r3, #1
+ 155 0016 0F22     		movs	r2, #15
+ 156 0018 1340     		ands	r3, r2
+ 157 001a 9043     		bics	r0, r2
+ 158              	.LVL15:
+ 159 001c 1843     		orrs	r0, r3
+ 160              	.L14:
+ 161              	.LVL16:
+  52:main.c        ****     }
+  53:main.c        ****     switch(motor.position){
+ 162              		.loc 1 53 0
+ 163 001e 0007     		lsls	r0, r0, #28
+ 164              	.LVL17:
+ 165 0020 040F     		lsrs	r4, r0, #28
+ 166 0022 022C     		cmp	r4, #2
+ 167 0024 0FD0     		beq	.L16
+ 168 0026 02D8     		bhi	.L17
+ 169 0028 012C     		cmp	r4, #1
+ 170 002a 10D0     		beq	.L18
+ 171 002c 12E0     		b	.L15
+ 172              	.L17:
+ 173 002e 032C     		cmp	r4, #3
+ 174 0030 05D0     		beq	.L19
+ 175 0032 042C     		cmp	r4, #4
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 5
+
+
+ 176 0034 0ED1     		bne	.L15
+  54:main.c        ****         case 4:
+  55:main.c        ****             // 1100 -> 1001
+  56:main.c        ****             Motor_Write(0x9);
+ 177              		.loc 1 56 0
+ 178 0036 0920     		movs	r0, #9
+ 179 0038 FFF7FEFF 		bl	Motor_Write
+ 180              	.LVL18:
+  57:main.c        ****             break;
+ 181              		.loc 1 57 0
+ 182 003c 0AE0     		b	.L15
+ 183              	.L19:
+  58:main.c        ****         case 3:
+  59:main.c        ****             // 1001 -> 0011
+  60:main.c        ****             Motor_Write(0x3);
+ 184              		.loc 1 60 0
+ 185 003e 0320     		movs	r0, #3
+ 186 0040 FFF7FEFF 		bl	Motor_Write
+ 187              	.LVL19:
+  61:main.c        ****             break;
+ 188              		.loc 1 61 0
+ 189 0044 06E0     		b	.L15
+ 190              	.L16:
+  62:main.c        ****         case 2:
+  63:main.c        ****             // 0011 -> 0110
+  64:main.c        ****             Motor_Write(0x6);
+ 191              		.loc 1 64 0
+ 192 0046 0620     		movs	r0, #6
+ 193 0048 FFF7FEFF 		bl	Motor_Write
+ 194              	.LVL20:
+  65:main.c        ****             break;
+ 195              		.loc 1 65 0
+ 196 004c 02E0     		b	.L15
+ 197              	.L18:
+  66:main.c        ****         case 1:
+  67:main.c        ****             // 0110 -> 1100
+  68:main.c        ****             Motor_Write(0xC);
+ 198              		.loc 1 68 0
+ 199 004e 0C20     		movs	r0, #12
+ 200 0050 FFF7FEFF 		bl	Motor_Write
+ 201              	.LVL21:
+ 202              	.L15:
+  69:main.c        ****             break;
+  70:main.c        ****     }
+  71:main.c        ****     CyDelayUs(3000);
+ 203              		.loc 1 71 0
+ 204 0054 0348     		ldr	r0, .L21
+ 205 0056 FFF7FEFF 		bl	CyDelayUs
+ 206              	.LVL22:
+  72:main.c        ****     Motor_Write(0b0000);
+ 207              		.loc 1 72 0
+ 208 005a 0020     		movs	r0, #0
+ 209 005c FFF7FEFF 		bl	Motor_Write
+ 210              	.LVL23:
+  73:main.c        ****     return motor.position;
+  74:main.c        **** }
+ 211              		.loc 1 74 0
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 6
+
+
+ 212 0060 2000     		movs	r0, r4
+ 213              		@ sp needed
+ 214 0062 10BD     		pop	{r4, pc}
+ 215              	.L22:
+ 216              		.align	2
+ 217              	.L21:
+ 218 0064 B80B0000 		.word	3000
+ 219              		.cfi_endproc
+ 220              	.LFE35:
+ 221              		.size	MVCW, .-MVCW
+ 222              		.section	.text.runCommand,"ax",%progbits
+ 223              		.align	2
+ 224              		.global	runCommand
+ 225              		.code	16
+ 226              		.thumb_func
+ 227              		.type	runCommand, %function
+ 228              	runCommand:
+ 229              	.LFB36:
+  75:main.c        **** void runCommand(char* command){
+ 230              		.loc 1 75 0
+ 231              		.cfi_startproc
+ 232              		@ args = 0, pretend = 0, frame = 16
+ 233              		@ frame_needed = 0, uses_anonymous_args = 0
+ 234              	.LVL24:
+ 235 0000 30B5     		push	{r4, r5, lr}
+ 236              		.cfi_def_cfa_offset 12
+ 237              		.cfi_offset 4, -12
+ 238              		.cfi_offset 5, -8
+ 239              		.cfi_offset 14, -4
+ 240 0002 85B0     		sub	sp, sp, #20
+ 241              		.cfi_def_cfa_offset 32
+ 242 0004 0500     		movs	r5, r0
+ 243              	.LVL25:
+ 244              	.LBB2:
+  76:main.c        ****     
+  77:main.c        ****     for(int i = 0; i < 16; i++){
+ 245              		.loc 1 77 0
+ 246 0006 0024     		movs	r4, #0
+ 247 0008 14E0     		b	.L24
+ 248              	.LVL26:
+ 249              	.L29:
+  78:main.c        ****         if(*(command+i) == 's' || *(command+i) == 'S'){
+ 250              		.loc 1 78 0
+ 251 000a 2B5D     		ldrb	r3, [r5, r4]
+ 252 000c 732B     		cmp	r3, #115
+ 253 000e 01D0     		beq	.L25
+ 254              		.loc 1 78 0 is_stmt 0 discriminator 1
+ 255 0010 532B     		cmp	r3, #83
+ 256 0012 0ED1     		bne	.L26
+ 257              	.L25:
+ 258              	.LBB3:
+  79:main.c        ****             i +=2;
+ 259              		.loc 1 79 0 is_stmt 1
+ 260 0014 A31C     		adds	r3, r4, #2
+ 261              	.LVL27:
+  80:main.c        ****             char value[16];
+  81:main.c        ****             value[15] = '\0';
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 7
+
+
+ 262              		.loc 1 81 0
+ 263 0016 0022     		movs	r2, #0
+ 264 0018 6946     		mov	r1, sp
+ 265 001a CA73     		strb	r2, [r1, #15]
+ 266              	.LVL28:
+  79:main.c        ****             i +=2;
+ 267              		.loc 1 79 0
+ 268 001c 1C00     		movs	r4, r3
+ 269              	.LBB4:
+  82:main.c        ****             for(int j = i; j < 16;i++){
+ 270              		.loc 1 82 0
+ 271 001e 03E0     		b	.L27
+ 272              	.LVL29:
+ 273              	.L28:
+  83:main.c        ****                 value[j] = *(command + j);
+ 274              		.loc 1 83 0 discriminator 3
+ 275 0020 EA5C     		ldrb	r2, [r5, r3]
+ 276 0022 6946     		mov	r1, sp
+ 277 0024 CA54     		strb	r2, [r1, r3]
+  82:main.c        ****             for(int j = i; j < 16;i++){
+ 278              		.loc 1 82 0 discriminator 3
+ 279 0026 0134     		adds	r4, r4, #1
+ 280              	.LVL30:
+ 281              	.L27:
+  82:main.c        ****             for(int j = i; j < 16;i++){
+ 282              		.loc 1 82 0 is_stmt 0 discriminator 1
+ 283 0028 0F2B     		cmp	r3, #15
+ 284 002a F9DD     		ble	.L28
+ 285              	.LBE4:
+  84:main.c        ****             }
+  85:main.c        ****             double floatvalue = atof(value);
+ 286              		.loc 1 85 0 is_stmt 1
+ 287 002c 6846     		mov	r0, sp
+ 288 002e FFF7FEFF 		bl	atof
+ 289              	.LVL31:
+ 290              	.L26:
+ 291              	.LBE3:
+  77:main.c        ****         if(*(command+i) == 's' || *(command+i) == 'S'){
+ 292              		.loc 1 77 0 discriminator 2
+ 293 0032 0134     		adds	r4, r4, #1
+ 294              	.LVL32:
+ 295              	.L24:
+  77:main.c        ****         if(*(command+i) == 's' || *(command+i) == 'S'){
+ 296              		.loc 1 77 0 is_stmt 0 discriminator 1
+ 297 0034 0F2C     		cmp	r4, #15
+ 298 0036 E8DD     		ble	.L29
+ 299              	.LBE2:
+  86:main.c        ****         }
+  87:main.c        ****     }
+  88:main.c        ****     
+  89:main.c        ****     
+  90:main.c        **** }
+ 300              		.loc 1 90 0 is_stmt 1
+ 301 0038 05B0     		add	sp, sp, #20
+ 302              		@ sp needed
+ 303              	.LVL33:
+ 304              	.LVL34:
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 8
+
+
+ 305 003a 30BD     		pop	{r4, r5, pc}
+ 306              		.cfi_endproc
+ 307              	.LFE36:
+ 308              		.size	runCommand, .-runCommand
+ 309              		.section	.text.main,"ax",%progbits
+ 310              		.align	2
+ 311              		.global	main
+ 312              		.code	16
+ 313              		.thumb_func
+ 314              		.type	main, %function
+ 315              	main:
+ 316              	.LFB37:
+  91:main.c        **** int main(void)
+  92:main.c        **** {
+ 317              		.loc 1 92 0
+ 318              		.cfi_startproc
+ 319              		@ args = 0, pretend = 0, frame = 24
+ 320              		@ frame_needed = 0, uses_anonymous_args = 0
+ 321 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 322              		.cfi_def_cfa_offset 20
+ 323              		.cfi_offset 4, -20
+ 324              		.cfi_offset 5, -16
+ 325              		.cfi_offset 6, -12
+ 326              		.cfi_offset 7, -8
+ 327              		.cfi_offset 14, -4
+ 328 0002 87B0     		sub	sp, sp, #28
+ 329              		.cfi_def_cfa_offset 48
+  93:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
+ 330              		.loc 1 93 0
+ 331              		.syntax divided
+ 332              	@ 93 "main.c" 1
+ 333 0004 62B6     		CPSIE   i
+ 334              	@ 0 "" 2
+  94:main.c        **** 
+  95:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  96:main.c        ****     
+  97:main.c        ****     struct MTR motor = {1};
+ 335              		.loc 1 97 0
+ 336              		.thumb
+ 337              		.syntax unified
+ 338 0006 0124     		movs	r4, #1
+ 339              	.LVL35:
+  98:main.c        ****     UART_Start();
+ 340              		.loc 1 98 0
+ 341 0008 FFF7FEFF 		bl	UART_Start
+ 342              	.LVL36:
+  99:main.c        ****     UART_UartPutString("Type a command please.\r\n");
+ 343              		.loc 1 99 0
+ 344 000c 2948     		ldr	r0, .L40
+ 345 000e FFF7FEFF 		bl	UART_UartPutString
+ 346              	.LVL37:
+ 100:main.c        ****     char command[17];
+ 101:main.c        ****     command[16] = '\0';
+ 347              		.loc 1 101 0
+ 348 0012 0022     		movs	r2, #0
+ 349 0014 01AB     		add	r3, sp, #4
+ 350 0016 1A74     		strb	r2, [r3, #16]
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 9
+
+
+ 351              	.LVL38:
+ 102:main.c        ****     unsigned int index = 0;
+ 352              		.loc 1 102 0
+ 353 0018 0027     		movs	r7, #0
+ 354              	.LVL39:
+ 355              	.L32:
+ 356              	.LBB5:
+ 103:main.c        ****     for(;;)
+ 104:main.c        ****     {
+ 105:main.c        ****         /* Place your application code here. */
+ 106:main.c        ****         char input = 0;
+ 107:main.c        ****         do{
+ 108:main.c        ****             input = UART_UartGetChar();
+ 357              		.loc 1 108 0 discriminator 1
+ 358 001a FFF7FEFF 		bl	UART_UartGetChar
+ 359              	.LVL40:
+ 360 001e 0500     		movs	r5, r0
+ 361 0020 C6B2     		uxtb	r6, r0
+ 362              	.LVL41:
+ 109:main.c        ****             
+ 110:main.c        ****         CyDelay(5);
+ 363              		.loc 1 110 0 discriminator 1
+ 364 0022 0520     		movs	r0, #5
+ 365 0024 FFF7FEFF 		bl	CyDelay
+ 366              	.LVL42:
+ 111:main.c        ****         motor.position = MVCW(motor);
+ 367              		.loc 1 111 0 discriminator 1
+ 368 0028 2000     		movs	r0, r4
+ 369 002a FFF7FEFF 		bl	MVCW
+ 370              	.LVL43:
+ 371 002e 0F23     		movs	r3, #15
+ 372 0030 1840     		ands	r0, r3
+ 373 0032 9C43     		bics	r4, r3
+ 374              	.LVL44:
+ 375 0034 0443     		orrs	r4, r0
+ 112:main.c        ****         }
+ 113:main.c        ****         while(input == 0);
+ 376              		.loc 1 113 0 discriminator 1
+ 377 0036 002E     		cmp	r6, #0
+ 378 0038 EFD0     		beq	.L32
+ 114:main.c        ****         if(input == 0x7f){
+ 379              		.loc 1 114 0
+ 380 003a 7F2E     		cmp	r6, #127
+ 381 003c 16D1     		bne	.L33
+ 115:main.c        ****             if (index == 0){
+ 382              		.loc 1 115 0
+ 383 003e 002F     		cmp	r7, #0
+ 384 0040 03D1     		bne	.L34
+ 116:main.c        ****                 UART_UartPutChar(0x07);
+ 385              		.loc 1 116 0
+ 386 0042 0720     		movs	r0, #7
+ 387 0044 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 388              	.LVL45:
+ 389 0048 E7E7     		b	.L32
+ 390              	.L34:
+ 117:main.c        ****             }
+ 118:main.c        ****             else{
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 10
+
+
+ 119:main.c        ****                 UART_UartPutChar('\b');
+ 391              		.loc 1 119 0
+ 392 004a 0820     		movs	r0, #8
+ 393 004c FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 394              	.LVL46:
+ 120:main.c        ****                 UART_UartPutChar(' ');
+ 395              		.loc 1 120 0
+ 396 0050 2020     		movs	r0, #32
+ 397 0052 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 398              	.LVL47:
+ 121:main.c        ****                 UART_UartPutChar('\b');
+ 399              		.loc 1 121 0
+ 400 0056 0820     		movs	r0, #8
+ 401 0058 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 402              	.LVL48:
+ 122:main.c        ****                 if(index != 0){
+ 403              		.loc 1 122 0
+ 404 005c 002F     		cmp	r7, #0
+ 405 005e DCD0     		beq	.L32
+ 123:main.c        ****                     command[index] = '\0';
+ 406              		.loc 1 123 0
+ 407 0060 01AB     		add	r3, sp, #4
+ 408 0062 0022     		movs	r2, #0
+ 409 0064 DA55     		strb	r2, [r3, r7]
+ 124:main.c        ****                     command[index-1] = '\0';
+ 410              		.loc 1 124 0
+ 411 0066 013F     		subs	r7, r7, #1
+ 412 0068 DA55     		strb	r2, [r3, r7]
+ 413              	.LVL49:
+ 414 006a D6E7     		b	.L32
+ 415              	.LVL50:
+ 416              	.L33:
+ 125:main.c        ****                     index--;
+ 126:main.c        ****                 }
+ 127:main.c        ****             }
+ 128:main.c        ****         }
+ 129:main.c        ****         else if(input == 0x0D){
+ 417              		.loc 1 129 0
+ 418 006c 0D2E     		cmp	r6, #13
+ 419 006e 12D1     		bne	.L36
+ 420              	.LBB6:
+ 130:main.c        ****             UART_UartPutString("\r\n");
+ 421              		.loc 1 130 0
+ 422 0070 1148     		ldr	r0, .L40+4
+ 423 0072 FFF7FEFF 		bl	UART_UartPutString
+ 424              	.LVL51:
+ 131:main.c        ****             char* pointer = command;
+ 132:main.c        ****             runCommand(pointer);
+ 425              		.loc 1 132 0
+ 426 0076 01A8     		add	r0, sp, #4
+ 427              	.LVL52:
+ 428 0078 FFF7FEFF 		bl	runCommand
+ 429              	.LVL53:
+ 430              	.LBB7:
+ 133:main.c        ****             for(int i = 0; i < 16; i++){
+ 431              		.loc 1 133 0
+ 432 007c 0023     		movs	r3, #0
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 11
+
+
+ 433 007e 03E0     		b	.L37
+ 434              	.LVL54:
+ 435              	.L38:
+ 134:main.c        ****                 command[i] = '\0';
+ 436              		.loc 1 134 0 discriminator 3
+ 437 0080 0021     		movs	r1, #0
+ 438 0082 01AA     		add	r2, sp, #4
+ 439              	.LVL55:
+ 440 0084 D154     		strb	r1, [r2, r3]
+ 133:main.c        ****             for(int i = 0; i < 16; i++){
+ 441              		.loc 1 133 0 discriminator 3
+ 442 0086 0133     		adds	r3, r3, #1
+ 443              	.LVL56:
+ 444              	.L37:
+ 133:main.c        ****             for(int i = 0; i < 16; i++){
+ 445              		.loc 1 133 0 is_stmt 0 discriminator 1
+ 446 0088 0F2B     		cmp	r3, #15
+ 447 008a F9DD     		ble	.L38
+ 448              	.LBE7:
+ 135:main.c        ****             }
+ 136:main.c        ****             command[16] = '\0';
+ 449              		.loc 1 136 0 is_stmt 1
+ 450 008c 0022     		movs	r2, #0
+ 451 008e 01AB     		add	r3, sp, #4
+ 452              	.LVL57:
+ 453 0090 1A74     		strb	r2, [r3, #16]
+ 454              	.LVL58:
+ 137:main.c        ****             index = 0;
+ 455              		.loc 1 137 0
+ 456 0092 0027     		movs	r7, #0
+ 457              	.LBE6:
+ 458 0094 C1E7     		b	.L32
+ 459              	.LVL59:
+ 460              	.L36:
+ 138:main.c        ****         }
+ 139:main.c        ****         else{
+ 140:main.c        ****             if(index == 16){
+ 461              		.loc 1 140 0
+ 462 0096 102F     		cmp	r7, #16
+ 463 0098 03D1     		bne	.L39
+ 141:main.c        ****                 UART_UartPutChar(0x07);
+ 464              		.loc 1 141 0
+ 465 009a 0720     		movs	r0, #7
+ 466 009c FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 467              	.LVL60:
+ 468 00a0 BBE7     		b	.L32
+ 469              	.L39:
+ 142:main.c        ****             }
+ 143:main.c        ****             else{
+ 144:main.c        ****                 UART_UartPutChar(input);
+ 470              		.loc 1 144 0
+ 471 00a2 FF20     		movs	r0, #255
+ 472 00a4 2840     		ands	r0, r5
+ 473 00a6 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 474              	.LVL61:
+ 145:main.c        ****                 command[index++] = input;
+ 475              		.loc 1 145 0
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 12
+
+
+ 476 00aa 01AB     		add	r3, sp, #4
+ 477 00ac DE55     		strb	r6, [r3, r7]
+ 478 00ae 0137     		adds	r7, r7, #1
+ 479              	.LVL62:
+ 480 00b0 B3E7     		b	.L32
+ 481              	.L41:
+ 482 00b2 C046     		.align	2
+ 483              	.L40:
+ 484 00b4 00000000 		.word	.LC0
+ 485 00b8 1C000000 		.word	.LC2
+ 486              	.LBE5:
+ 487              		.cfi_endproc
+ 488              	.LFE37:
+ 489              		.size	main, .-main
+ 490              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 491              		.align	2
+ 492              	.LC0:
+ 493 0000 54797065 		.ascii	"Type a command please.\015\012\000"
+ 493      20612063 
+ 493      6F6D6D61 
+ 493      6E642070 
+ 493      6C656173 
+ 494 0019 000000   		.space	3
+ 495              	.LC2:
+ 496 001c 0D0A00   		.ascii	"\015\012\000"
+ 497              		.text
+ 498              	.Letext0:
+ 499              		.file 2 "Generated_Source\\PSoC4/Motor.h"
+ 500              		.file 3 "Generated_Source\\PSoC4/CyLib.h"
+ 501              		.file 4 "Generated_Source\\PSoC4/UART_SPI_UART.h"
+ 502              		.file 5 "Generated_Source\\PSoC4/UART.h"
+ 503              		.file 6 "Generated_Source\\PSoC4/cytypes.h"
+ 504              		.section	.debug_info,"",%progbits
+ 505              	.Ldebug_info0:
+ 506 0000 82040000 		.4byte	0x482
+ 507 0004 0400     		.2byte	0x4
+ 508 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 509 000a 04       		.byte	0x4
+ 510 000b 01       		.uleb128 0x1
+ 511 000c 62010000 		.4byte	.LASF30
+ 512 0010 0C       		.byte	0xc
+ 513 0011 FF010000 		.4byte	.LASF31
+ 514 0015 1F000000 		.4byte	.LASF32
+ 515 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 516 001d 00000000 		.4byte	0
+ 517 0021 00000000 		.4byte	.Ldebug_line0
+ 518 0025 02       		.uleb128 0x2
+ 519 0026 01       		.byte	0x1
+ 520 0027 06       		.byte	0x6
+ 521 0028 47020000 		.4byte	.LASF0
+ 522 002c 02       		.uleb128 0x2
+ 523 002d 01       		.byte	0x1
+ 524 002e 08       		.byte	0x8
+ 525 002f F8000000 		.4byte	.LASF1
+ 526 0033 02       		.uleb128 0x2
+ 527 0034 02       		.byte	0x2
+ 528 0035 05       		.byte	0x5
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 13
+
+
+ 529 0036 11020000 		.4byte	.LASF2
+ 530 003a 02       		.uleb128 0x2
+ 531 003b 02       		.byte	0x2
+ 532 003c 07       		.byte	0x7
+ 533 003d DA000000 		.4byte	.LASF3
+ 534 0041 02       		.uleb128 0x2
+ 535 0042 04       		.byte	0x4
+ 536 0043 05       		.byte	0x5
+ 537 0044 26020000 		.4byte	.LASF4
+ 538 0048 02       		.uleb128 0x2
+ 539 0049 04       		.byte	0x4
+ 540 004a 07       		.byte	0x7
+ 541 004b C8000000 		.4byte	.LASF5
+ 542 004f 02       		.uleb128 0x2
+ 543 0050 08       		.byte	0x8
+ 544 0051 05       		.byte	0x5
+ 545 0052 00000000 		.4byte	.LASF6
+ 546 0056 02       		.uleb128 0x2
+ 547 0057 08       		.byte	0x8
+ 548 0058 07       		.byte	0x7
+ 549 0059 41010000 		.4byte	.LASF7
+ 550 005d 03       		.uleb128 0x3
+ 551 005e 04       		.byte	0x4
+ 552 005f 05       		.byte	0x5
+ 553 0060 696E7400 		.ascii	"int\000"
+ 554 0064 02       		.uleb128 0x2
+ 555 0065 04       		.byte	0x4
+ 556 0066 07       		.byte	0x7
+ 557 0067 34010000 		.4byte	.LASF8
+ 558 006b 04       		.uleb128 0x4
+ 559 006c 2D010000 		.4byte	.LASF33
+ 560 0070 06       		.byte	0x6
+ 561 0071 FD01     		.2byte	0x1fd
+ 562 0073 48000000 		.4byte	0x48
+ 563 0077 02       		.uleb128 0x2
+ 564 0078 04       		.byte	0x4
+ 565 0079 04       		.byte	0x4
+ 566 007a AB000000 		.4byte	.LASF9
+ 567 007e 02       		.uleb128 0x2
+ 568 007f 08       		.byte	0x8
+ 569 0080 04       		.byte	0x4
+ 570 0081 0E010000 		.4byte	.LASF10
+ 571 0085 02       		.uleb128 0x2
+ 572 0086 01       		.byte	0x1
+ 573 0087 08       		.byte	0x8
+ 574 0088 06020000 		.4byte	.LASF11
+ 575 008c 02       		.uleb128 0x2
+ 576 008d 08       		.byte	0x8
+ 577 008e 04       		.byte	0x4
+ 578 008f 3B020000 		.4byte	.LASF12
+ 579 0093 02       		.uleb128 0x2
+ 580 0094 04       		.byte	0x4
+ 581 0095 07       		.byte	0x7
+ 582 0096 F0010000 		.4byte	.LASF13
+ 583 009a 05       		.uleb128 0x5
+ 584 009b 04       		.byte	0x4
+ 585 009c 85000000 		.4byte	0x85
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 14
+
+
+ 586 00a0 06       		.uleb128 0x6
+ 587 00a1 4D545200 		.ascii	"MTR\000"
+ 588 00a5 04       		.byte	0x4
+ 589 00a6 01       		.byte	0x1
+ 590 00a7 0E       		.byte	0xe
+ 591 00a8 BC000000 		.4byte	0xbc
+ 592 00ac 07       		.uleb128 0x7
+ 593 00ad 24010000 		.4byte	.LASF34
+ 594 00b1 01       		.byte	0x1
+ 595 00b2 0F       		.byte	0xf
+ 596 00b3 64000000 		.4byte	0x64
+ 597 00b7 04       		.byte	0x4
+ 598 00b8 04       		.byte	0x4
+ 599 00b9 1C       		.byte	0x1c
+ 600 00ba 00       		.byte	0
+ 601 00bb 00       		.byte	0
+ 602 00bc 08       		.uleb128 0x8
+ 603 00bd 92000000 		.4byte	.LASF14
+ 604 00c1 01       		.byte	0x1
+ 605 00c2 11       		.byte	0x11
+ 606 00c3 5D000000 		.4byte	0x5d
+ 607 00c7 00000000 		.4byte	.LFB34
+ 608 00cb 6C000000 		.4byte	.LFE34-.LFB34
+ 609 00cf 01       		.uleb128 0x1
+ 610 00d0 9C       		.byte	0x9c
+ 611 00d1 55010000 		.4byte	0x155
+ 612 00d5 09       		.uleb128 0x9
+ 613 00d6 F9010000 		.4byte	.LASF16
+ 614 00da 01       		.byte	0x1
+ 615 00db 11       		.byte	0x11
+ 616 00dc A0000000 		.4byte	0xa0
+ 617 00e0 00000000 		.4byte	.LLST0
+ 618 00e4 0A       		.uleb128 0xa
+ 619 00e5 3E000000 		.4byte	.LVL6
+ 620 00e9 2A040000 		.4byte	0x42a
+ 621 00ed F7000000 		.4byte	0xf7
+ 622 00f1 0B       		.uleb128 0xb
+ 623 00f2 01       		.uleb128 0x1
+ 624 00f3 50       		.byte	0x50
+ 625 00f4 01       		.uleb128 0x1
+ 626 00f5 39       		.byte	0x39
+ 627 00f6 00       		.byte	0
+ 628 00f7 0A       		.uleb128 0xa
+ 629 00f8 46000000 		.4byte	.LVL7
+ 630 00fc 2A040000 		.4byte	0x42a
+ 631 0100 0A010000 		.4byte	0x10a
+ 632 0104 0B       		.uleb128 0xb
+ 633 0105 01       		.uleb128 0x1
+ 634 0106 50       		.byte	0x50
+ 635 0107 01       		.uleb128 0x1
+ 636 0108 3C       		.byte	0x3c
+ 637 0109 00       		.byte	0
+ 638 010a 0A       		.uleb128 0xa
+ 639 010b 4E000000 		.4byte	.LVL8
+ 640 010f 2A040000 		.4byte	0x42a
+ 641 0113 1D010000 		.4byte	0x11d
+ 642 0117 0B       		.uleb128 0xb
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 15
+
+
+ 643 0118 01       		.uleb128 0x1
+ 644 0119 50       		.byte	0x50
+ 645 011a 01       		.uleb128 0x1
+ 646 011b 36       		.byte	0x36
+ 647 011c 00       		.byte	0
+ 648 011d 0A       		.uleb128 0xa
+ 649 011e 56000000 		.4byte	.LVL9
+ 650 0122 2A040000 		.4byte	0x42a
+ 651 0126 30010000 		.4byte	0x130
+ 652 012a 0B       		.uleb128 0xb
+ 653 012b 01       		.uleb128 0x1
+ 654 012c 50       		.byte	0x50
+ 655 012d 01       		.uleb128 0x1
+ 656 012e 33       		.byte	0x33
+ 657 012f 00       		.byte	0
+ 658 0130 0A       		.uleb128 0xa
+ 659 0131 5C000000 		.4byte	.LVL10
+ 660 0135 35040000 		.4byte	0x435
+ 661 0139 45010000 		.4byte	0x145
+ 662 013d 0B       		.uleb128 0xb
+ 663 013e 01       		.uleb128 0x1
+ 664 013f 50       		.byte	0x50
+ 665 0140 03       		.uleb128 0x3
+ 666 0141 0A       		.byte	0xa
+ 667 0142 B80B     		.2byte	0xbb8
+ 668 0144 00       		.byte	0
+ 669 0145 0C       		.uleb128 0xc
+ 670 0146 62000000 		.4byte	.LVL11
+ 671 014a 2A040000 		.4byte	0x42a
+ 672 014e 0B       		.uleb128 0xb
+ 673 014f 01       		.uleb128 0x1
+ 674 0150 50       		.byte	0x50
+ 675 0151 01       		.uleb128 0x1
+ 676 0152 30       		.byte	0x30
+ 677 0153 00       		.byte	0
+ 678 0154 00       		.byte	0
+ 679 0155 08       		.uleb128 0x8
+ 680 0156 5D010000 		.4byte	.LASF15
+ 681 015a 01       		.byte	0x1
+ 682 015b 2E       		.byte	0x2e
+ 683 015c 5D000000 		.4byte	0x5d
+ 684 0160 00000000 		.4byte	.LFB35
+ 685 0164 68000000 		.4byte	.LFE35-.LFB35
+ 686 0168 01       		.uleb128 0x1
+ 687 0169 9C       		.byte	0x9c
+ 688 016a EE010000 		.4byte	0x1ee
+ 689 016e 09       		.uleb128 0x9
+ 690 016f F9010000 		.4byte	.LASF16
+ 691 0173 01       		.byte	0x1
+ 692 0174 2E       		.byte	0x2e
+ 693 0175 A0000000 		.4byte	0xa0
+ 694 0179 29000000 		.4byte	.LLST1
+ 695 017d 0A       		.uleb128 0xa
+ 696 017e 3C000000 		.4byte	.LVL18
+ 697 0182 2A040000 		.4byte	0x42a
+ 698 0186 90010000 		.4byte	0x190
+ 699 018a 0B       		.uleb128 0xb
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 16
+
+
+ 700 018b 01       		.uleb128 0x1
+ 701 018c 50       		.byte	0x50
+ 702 018d 01       		.uleb128 0x1
+ 703 018e 39       		.byte	0x39
+ 704 018f 00       		.byte	0
+ 705 0190 0A       		.uleb128 0xa
+ 706 0191 44000000 		.4byte	.LVL19
+ 707 0195 2A040000 		.4byte	0x42a
+ 708 0199 A3010000 		.4byte	0x1a3
+ 709 019d 0B       		.uleb128 0xb
+ 710 019e 01       		.uleb128 0x1
+ 711 019f 50       		.byte	0x50
+ 712 01a0 01       		.uleb128 0x1
+ 713 01a1 33       		.byte	0x33
+ 714 01a2 00       		.byte	0
+ 715 01a3 0A       		.uleb128 0xa
+ 716 01a4 4C000000 		.4byte	.LVL20
+ 717 01a8 2A040000 		.4byte	0x42a
+ 718 01ac B6010000 		.4byte	0x1b6
+ 719 01b0 0B       		.uleb128 0xb
+ 720 01b1 01       		.uleb128 0x1
+ 721 01b2 50       		.byte	0x50
+ 722 01b3 01       		.uleb128 0x1
+ 723 01b4 36       		.byte	0x36
+ 724 01b5 00       		.byte	0
+ 725 01b6 0A       		.uleb128 0xa
+ 726 01b7 54000000 		.4byte	.LVL21
+ 727 01bb 2A040000 		.4byte	0x42a
+ 728 01bf C9010000 		.4byte	0x1c9
+ 729 01c3 0B       		.uleb128 0xb
+ 730 01c4 01       		.uleb128 0x1
+ 731 01c5 50       		.byte	0x50
+ 732 01c6 01       		.uleb128 0x1
+ 733 01c7 3C       		.byte	0x3c
+ 734 01c8 00       		.byte	0
+ 735 01c9 0A       		.uleb128 0xa
+ 736 01ca 5A000000 		.4byte	.LVL22
+ 737 01ce 35040000 		.4byte	0x435
+ 738 01d2 DE010000 		.4byte	0x1de
+ 739 01d6 0B       		.uleb128 0xb
+ 740 01d7 01       		.uleb128 0x1
+ 741 01d8 50       		.byte	0x50
+ 742 01d9 03       		.uleb128 0x3
+ 743 01da 0A       		.byte	0xa
+ 744 01db B80B     		.2byte	0xbb8
+ 745 01dd 00       		.byte	0
+ 746 01de 0C       		.uleb128 0xc
+ 747 01df 60000000 		.4byte	.LVL23
+ 748 01e3 2A040000 		.4byte	0x42a
+ 749 01e7 0B       		.uleb128 0xb
+ 750 01e8 01       		.uleb128 0x1
+ 751 01e9 50       		.byte	0x50
+ 752 01ea 01       		.uleb128 0x1
+ 753 01eb 30       		.byte	0x30
+ 754 01ec 00       		.byte	0
+ 755 01ed 00       		.byte	0
+ 756 01ee 0D       		.uleb128 0xd
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 17
+
+
+ 757 01ef 0E000000 		.4byte	.LASF35
+ 758 01f3 01       		.byte	0x1
+ 759 01f4 4B       		.byte	0x4b
+ 760 01f5 00000000 		.4byte	.LFB36
+ 761 01f9 3C000000 		.4byte	.LFE36-.LFB36
+ 762 01fd 01       		.uleb128 0x1
+ 763 01fe 9C       		.byte	0x9c
+ 764 01ff 89020000 		.4byte	0x289
+ 765 0203 09       		.uleb128 0x9
+ 766 0204 8A000000 		.4byte	.LASF17
+ 767 0208 01       		.byte	0x1
+ 768 0209 4B       		.byte	0x4b
+ 769 020a 9A000000 		.4byte	0x9a
+ 770 020e 52000000 		.4byte	.LLST2
+ 771 0212 0E       		.uleb128 0xe
+ 772 0213 06000000 		.4byte	.LBB2
+ 773 0217 32000000 		.4byte	.LBE2-.LBB2
+ 774 021b 0F       		.uleb128 0xf
+ 775 021c 6900     		.ascii	"i\000"
+ 776 021e 01       		.byte	0x1
+ 777 021f 4D       		.byte	0x4d
+ 778 0220 5D000000 		.4byte	0x5d
+ 779 0224 7E000000 		.4byte	.LLST3
+ 780 0228 0E       		.uleb128 0xe
+ 781 0229 14000000 		.4byte	.LBB3
+ 782 022d 1E000000 		.4byte	.LBE3-.LBB3
+ 783 0231 10       		.uleb128 0x10
+ 784 0232 19000000 		.4byte	.LASF18
+ 785 0236 01       		.byte	0x1
+ 786 0237 50       		.byte	0x50
+ 787 0238 89020000 		.4byte	0x289
+ 788 023c 02       		.uleb128 0x2
+ 789 023d 91       		.byte	0x91
+ 790 023e 60       		.sleb128 -32
+ 791 023f 11       		.uleb128 0x11
+ 792 0240 1B020000 		.4byte	.LASF36
+ 793 0244 01       		.byte	0x1
+ 794 0245 55       		.byte	0x55
+ 795 0246 7E000000 		.4byte	0x7e
+ 796 024a 12       		.uleb128 0x12
+ 797 024b 58010000 		.4byte	.LASF24
+ 798 024f 01       		.byte	0x1
+ 799 0250 55       		.byte	0x55
+ 800 0251 5D000000 		.4byte	0x5d
+ 801 0255 5B020000 		.4byte	0x25b
+ 802 0259 13       		.uleb128 0x13
+ 803 025a 00       		.byte	0
+ 804 025b 14       		.uleb128 0x14
+ 805 025c 1E000000 		.4byte	.LBB4
+ 806 0260 0E000000 		.4byte	.LBE4-.LBB4
+ 807 0264 76020000 		.4byte	0x276
+ 808 0268 0F       		.uleb128 0xf
+ 809 0269 6A00     		.ascii	"j\000"
+ 810 026b 01       		.byte	0x1
+ 811 026c 52       		.byte	0x52
+ 812 026d 5D000000 		.4byte	0x5d
+ 813 0271 B3000000 		.4byte	.LLST4
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 18
+
+
+ 814 0275 00       		.byte	0
+ 815 0276 0C       		.uleb128 0xc
+ 816 0277 32000000 		.4byte	.LVL31
+ 817 027b 40040000 		.4byte	0x440
+ 818 027f 0B       		.uleb128 0xb
+ 819 0280 01       		.uleb128 0x1
+ 820 0281 50       		.byte	0x50
+ 821 0282 02       		.uleb128 0x2
+ 822 0283 7D       		.byte	0x7d
+ 823 0284 00       		.sleb128 0
+ 824 0285 00       		.byte	0
+ 825 0286 00       		.byte	0
+ 826 0287 00       		.byte	0
+ 827 0288 00       		.byte	0
+ 828 0289 15       		.uleb128 0x15
+ 829 028a 85000000 		.4byte	0x85
+ 830 028e 99020000 		.4byte	0x299
+ 831 0292 16       		.uleb128 0x16
+ 832 0293 93000000 		.4byte	0x93
+ 833 0297 0F       		.byte	0xf
+ 834 0298 00       		.byte	0
+ 835 0299 17       		.uleb128 0x17
+ 836 029a 15010000 		.4byte	.LASF37
+ 837 029e 01       		.byte	0x1
+ 838 029f 5B       		.byte	0x5b
+ 839 02a0 5D000000 		.4byte	0x5d
+ 840 02a4 00000000 		.4byte	.LFB37
+ 841 02a8 BC000000 		.4byte	.LFE37-.LFB37
+ 842 02ac 01       		.uleb128 0x1
+ 843 02ad 9C       		.byte	0x9c
+ 844 02ae 1A040000 		.4byte	0x41a
+ 845 02b2 18       		.uleb128 0x18
+ 846 02b3 F9010000 		.4byte	.LASF16
+ 847 02b7 01       		.byte	0x1
+ 848 02b8 61       		.byte	0x61
+ 849 02b9 A0000000 		.4byte	0xa0
+ 850 02bd C6000000 		.4byte	.LLST5
+ 851 02c1 10       		.uleb128 0x10
+ 852 02c2 8A000000 		.4byte	.LASF17
+ 853 02c6 01       		.byte	0x1
+ 854 02c7 64       		.byte	0x64
+ 855 02c8 1A040000 		.4byte	0x41a
+ 856 02cc 02       		.uleb128 0x2
+ 857 02cd 91       		.byte	0x91
+ 858 02ce 54       		.sleb128 -44
+ 859 02cf 18       		.uleb128 0x18
+ 860 02d0 0B020000 		.4byte	.LASF19
+ 861 02d4 01       		.byte	0x1
+ 862 02d5 66       		.byte	0x66
+ 863 02d6 64000000 		.4byte	0x64
+ 864 02da D9000000 		.4byte	.LLST6
+ 865 02de 14       		.uleb128 0x14
+ 866 02df 1A000000 		.4byte	.LBB5
+ 867 02e3 A2000000 		.4byte	.LBE5-.LBB5
+ 868 02e7 FD030000 		.4byte	0x3fd
+ 869 02eb 18       		.uleb128 0x18
+ 870 02ec C2000000 		.4byte	.LASF20
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 19
+
+
+ 871 02f0 01       		.byte	0x1
+ 872 02f1 6A       		.byte	0x6a
+ 873 02f2 85000000 		.4byte	0x85
+ 874 02f6 1C010000 		.4byte	.LLST7
+ 875 02fa 14       		.uleb128 0x14
+ 876 02fb 70000000 		.4byte	.LBB6
+ 877 02ff 24000000 		.4byte	.LBE6-.LBB6
+ 878 0303 59030000 		.4byte	0x359
+ 879 0307 18       		.uleb128 0x18
+ 880 0308 06010000 		.4byte	.LASF21
+ 881 030c 01       		.byte	0x1
+ 882 030d 83       		.byte	0x83
+ 883 030e 9A000000 		.4byte	0x9a
+ 884 0312 3B010000 		.4byte	.LLST8
+ 885 0316 14       		.uleb128 0x14
+ 886 0317 7C000000 		.4byte	.LBB7
+ 887 031b 10000000 		.4byte	.LBE7-.LBB7
+ 888 031f 31030000 		.4byte	0x331
+ 889 0323 0F       		.uleb128 0xf
+ 890 0324 6900     		.ascii	"i\000"
+ 891 0326 01       		.byte	0x1
+ 892 0327 85       		.byte	0x85
+ 893 0328 5D000000 		.4byte	0x5d
+ 894 032c 8B010000 		.4byte	.LLST9
+ 895 0330 00       		.byte	0
+ 896 0331 0A       		.uleb128 0xa
+ 897 0332 76000000 		.4byte	.LVL51
+ 898 0336 4B040000 		.4byte	0x44b
+ 899 033a 48030000 		.4byte	0x348
+ 900 033e 0B       		.uleb128 0xb
+ 901 033f 01       		.uleb128 0x1
+ 902 0340 50       		.byte	0x50
+ 903 0341 05       		.uleb128 0x5
+ 904 0342 03       		.byte	0x3
+ 905 0343 1C000000 		.4byte	.LC2
+ 906 0347 00       		.byte	0
+ 907 0348 0C       		.uleb128 0xc
+ 908 0349 7C000000 		.4byte	.LVL53
+ 909 034d EE010000 		.4byte	0x1ee
+ 910 0351 0B       		.uleb128 0xb
+ 911 0352 01       		.uleb128 0x1
+ 912 0353 50       		.byte	0x50
+ 913 0354 02       		.uleb128 0x2
+ 914 0355 91       		.byte	0x91
+ 915 0356 54       		.sleb128 -44
+ 916 0357 00       		.byte	0
+ 917 0358 00       		.byte	0
+ 918 0359 19       		.uleb128 0x19
+ 919 035a 1E000000 		.4byte	.LVL40
+ 920 035e 57040000 		.4byte	0x457
+ 921 0362 0A       		.uleb128 0xa
+ 922 0363 28000000 		.4byte	.LVL42
+ 923 0367 63040000 		.4byte	0x463
+ 924 036b 75030000 		.4byte	0x375
+ 925 036f 0B       		.uleb128 0xb
+ 926 0370 01       		.uleb128 0x1
+ 927 0371 50       		.byte	0x50
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 20
+
+
+ 928 0372 01       		.uleb128 0x1
+ 929 0373 35       		.byte	0x35
+ 930 0374 00       		.byte	0
+ 931 0375 0A       		.uleb128 0xa
+ 932 0376 2E000000 		.4byte	.LVL43
+ 933 037a 55010000 		.4byte	0x155
+ 934 037e 89030000 		.4byte	0x389
+ 935 0382 0B       		.uleb128 0xb
+ 936 0383 01       		.uleb128 0x1
+ 937 0384 50       		.byte	0x50
+ 938 0385 02       		.uleb128 0x2
+ 939 0386 74       		.byte	0x74
+ 940 0387 00       		.sleb128 0
+ 941 0388 00       		.byte	0
+ 942 0389 0A       		.uleb128 0xa
+ 943 038a 48000000 		.4byte	.LVL45
+ 944 038e 6E040000 		.4byte	0x46e
+ 945 0392 9C030000 		.4byte	0x39c
+ 946 0396 0B       		.uleb128 0xb
+ 947 0397 01       		.uleb128 0x1
+ 948 0398 50       		.byte	0x50
+ 949 0399 01       		.uleb128 0x1
+ 950 039a 37       		.byte	0x37
+ 951 039b 00       		.byte	0
+ 952 039c 0A       		.uleb128 0xa
+ 953 039d 50000000 		.4byte	.LVL46
+ 954 03a1 6E040000 		.4byte	0x46e
+ 955 03a5 AF030000 		.4byte	0x3af
+ 956 03a9 0B       		.uleb128 0xb
+ 957 03aa 01       		.uleb128 0x1
+ 958 03ab 50       		.byte	0x50
+ 959 03ac 01       		.uleb128 0x1
+ 960 03ad 38       		.byte	0x38
+ 961 03ae 00       		.byte	0
+ 962 03af 0A       		.uleb128 0xa
+ 963 03b0 56000000 		.4byte	.LVL47
+ 964 03b4 6E040000 		.4byte	0x46e
+ 965 03b8 C3030000 		.4byte	0x3c3
+ 966 03bc 0B       		.uleb128 0xb
+ 967 03bd 01       		.uleb128 0x1
+ 968 03be 50       		.byte	0x50
+ 969 03bf 02       		.uleb128 0x2
+ 970 03c0 08       		.byte	0x8
+ 971 03c1 20       		.byte	0x20
+ 972 03c2 00       		.byte	0
+ 973 03c3 0A       		.uleb128 0xa
+ 974 03c4 5C000000 		.4byte	.LVL48
+ 975 03c8 6E040000 		.4byte	0x46e
+ 976 03cc D6030000 		.4byte	0x3d6
+ 977 03d0 0B       		.uleb128 0xb
+ 978 03d1 01       		.uleb128 0x1
+ 979 03d2 50       		.byte	0x50
+ 980 03d3 01       		.uleb128 0x1
+ 981 03d4 38       		.byte	0x38
+ 982 03d5 00       		.byte	0
+ 983 03d6 0A       		.uleb128 0xa
+ 984 03d7 A0000000 		.4byte	.LVL60
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 21
+
+
+ 985 03db 6E040000 		.4byte	0x46e
+ 986 03df E9030000 		.4byte	0x3e9
+ 987 03e3 0B       		.uleb128 0xb
+ 988 03e4 01       		.uleb128 0x1
+ 989 03e5 50       		.byte	0x50
+ 990 03e6 01       		.uleb128 0x1
+ 991 03e7 37       		.byte	0x37
+ 992 03e8 00       		.byte	0
+ 993 03e9 0C       		.uleb128 0xc
+ 994 03ea AA000000 		.4byte	.LVL61
+ 995 03ee 6E040000 		.4byte	0x46e
+ 996 03f2 0B       		.uleb128 0xb
+ 997 03f3 01       		.uleb128 0x1
+ 998 03f4 50       		.byte	0x50
+ 999 03f5 05       		.uleb128 0x5
+ 1000 03f6 75       		.byte	0x75
+ 1001 03f7 00       		.sleb128 0
+ 1002 03f8 08       		.byte	0x8
+ 1003 03f9 FF       		.byte	0xff
+ 1004 03fa 1A       		.byte	0x1a
+ 1005 03fb 00       		.byte	0
+ 1006 03fc 00       		.byte	0
+ 1007 03fd 19       		.uleb128 0x19
+ 1008 03fe 0C000000 		.4byte	.LVL36
+ 1009 0402 7A040000 		.4byte	0x47a
+ 1010 0406 0C       		.uleb128 0xc
+ 1011 0407 12000000 		.4byte	.LVL37
+ 1012 040b 4B040000 		.4byte	0x44b
+ 1013 040f 0B       		.uleb128 0xb
+ 1014 0410 01       		.uleb128 0x1
+ 1015 0411 50       		.byte	0x50
+ 1016 0412 05       		.uleb128 0x5
+ 1017 0413 03       		.byte	0x3
+ 1018 0414 00000000 		.4byte	.LC0
+ 1019 0418 00       		.byte	0
+ 1020 0419 00       		.byte	0
+ 1021 041a 15       		.uleb128 0x15
+ 1022 041b 85000000 		.4byte	0x85
+ 1023 041f 2A040000 		.4byte	0x42a
+ 1024 0423 16       		.uleb128 0x16
+ 1025 0424 93000000 		.4byte	0x93
+ 1026 0428 10       		.byte	0x10
+ 1027 0429 00       		.byte	0
+ 1028 042a 1A       		.uleb128 0x1a
+ 1029 042b 2F020000 		.4byte	.LASF22
+ 1030 042f 2F020000 		.4byte	.LASF22
+ 1031 0433 02       		.byte	0x2
+ 1032 0434 2F       		.byte	0x2f
+ 1033 0435 1A       		.uleb128 0x1a
+ 1034 0436 1A010000 		.4byte	.LASF23
+ 1035 043a 1A010000 		.4byte	.LASF23
+ 1036 043e 03       		.byte	0x3
+ 1037 043f ED       		.byte	0xed
+ 1038 0440 1A       		.uleb128 0x1a
+ 1039 0441 58010000 		.4byte	.LASF24
+ 1040 0445 58010000 		.4byte	.LASF24
+ 1041 0449 01       		.byte	0x1
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 22
+
+
+ 1042 044a 55       		.byte	0x55
+ 1043 044b 1B       		.uleb128 0x1b
+ 1044 044c 98000000 		.4byte	.LASF25
+ 1045 0450 98000000 		.4byte	.LASF25
+ 1046 0454 04       		.byte	0x4
+ 1047 0455 2A03     		.2byte	0x32a
+ 1048 0457 1B       		.uleb128 0x1b
+ 1049 0458 B1000000 		.4byte	.LASF26
+ 1050 045c B1000000 		.4byte	.LASF26
+ 1051 0460 04       		.byte	0x4
+ 1052 0461 0F03     		.2byte	0x30f
+ 1053 0463 1A       		.uleb128 0x1a
+ 1054 0464 53020000 		.4byte	.LASF27
+ 1055 0468 53020000 		.4byte	.LASF27
+ 1056 046c 03       		.byte	0x3
+ 1057 046d EC       		.byte	0xec
+ 1058 046e 1B       		.uleb128 0x1b
+ 1059 046f 72000000 		.4byte	.LASF28
+ 1060 0473 72000000 		.4byte	.LASF28
+ 1061 0477 04       		.byte	0x4
+ 1062 0478 4403     		.2byte	0x344
+ 1063 047a 1A       		.uleb128 0x1a
+ 1064 047b ED000000 		.4byte	.LASF29
+ 1065 047f ED000000 		.4byte	.LASF29
+ 1066 0483 05       		.byte	0x5
+ 1067 0484 72       		.byte	0x72
+ 1068 0485 00       		.byte	0
+ 1069              		.section	.debug_abbrev,"",%progbits
+ 1070              	.Ldebug_abbrev0:
+ 1071 0000 01       		.uleb128 0x1
+ 1072 0001 11       		.uleb128 0x11
+ 1073 0002 01       		.byte	0x1
+ 1074 0003 25       		.uleb128 0x25
+ 1075 0004 0E       		.uleb128 0xe
+ 1076 0005 13       		.uleb128 0x13
+ 1077 0006 0B       		.uleb128 0xb
+ 1078 0007 03       		.uleb128 0x3
+ 1079 0008 0E       		.uleb128 0xe
+ 1080 0009 1B       		.uleb128 0x1b
+ 1081 000a 0E       		.uleb128 0xe
+ 1082 000b 55       		.uleb128 0x55
+ 1083 000c 17       		.uleb128 0x17
+ 1084 000d 11       		.uleb128 0x11
+ 1085 000e 01       		.uleb128 0x1
+ 1086 000f 10       		.uleb128 0x10
+ 1087 0010 17       		.uleb128 0x17
+ 1088 0011 00       		.byte	0
+ 1089 0012 00       		.byte	0
+ 1090 0013 02       		.uleb128 0x2
+ 1091 0014 24       		.uleb128 0x24
+ 1092 0015 00       		.byte	0
+ 1093 0016 0B       		.uleb128 0xb
+ 1094 0017 0B       		.uleb128 0xb
+ 1095 0018 3E       		.uleb128 0x3e
+ 1096 0019 0B       		.uleb128 0xb
+ 1097 001a 03       		.uleb128 0x3
+ 1098 001b 0E       		.uleb128 0xe
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 23
+
+
+ 1099 001c 00       		.byte	0
+ 1100 001d 00       		.byte	0
+ 1101 001e 03       		.uleb128 0x3
+ 1102 001f 24       		.uleb128 0x24
+ 1103 0020 00       		.byte	0
+ 1104 0021 0B       		.uleb128 0xb
+ 1105 0022 0B       		.uleb128 0xb
+ 1106 0023 3E       		.uleb128 0x3e
+ 1107 0024 0B       		.uleb128 0xb
+ 1108 0025 03       		.uleb128 0x3
+ 1109 0026 08       		.uleb128 0x8
+ 1110 0027 00       		.byte	0
+ 1111 0028 00       		.byte	0
+ 1112 0029 04       		.uleb128 0x4
+ 1113 002a 16       		.uleb128 0x16
+ 1114 002b 00       		.byte	0
+ 1115 002c 03       		.uleb128 0x3
+ 1116 002d 0E       		.uleb128 0xe
+ 1117 002e 3A       		.uleb128 0x3a
+ 1118 002f 0B       		.uleb128 0xb
+ 1119 0030 3B       		.uleb128 0x3b
+ 1120 0031 05       		.uleb128 0x5
+ 1121 0032 49       		.uleb128 0x49
+ 1122 0033 13       		.uleb128 0x13
+ 1123 0034 00       		.byte	0
+ 1124 0035 00       		.byte	0
+ 1125 0036 05       		.uleb128 0x5
+ 1126 0037 0F       		.uleb128 0xf
+ 1127 0038 00       		.byte	0
+ 1128 0039 0B       		.uleb128 0xb
+ 1129 003a 0B       		.uleb128 0xb
+ 1130 003b 49       		.uleb128 0x49
+ 1131 003c 13       		.uleb128 0x13
+ 1132 003d 00       		.byte	0
+ 1133 003e 00       		.byte	0
+ 1134 003f 06       		.uleb128 0x6
+ 1135 0040 13       		.uleb128 0x13
+ 1136 0041 01       		.byte	0x1
+ 1137 0042 03       		.uleb128 0x3
+ 1138 0043 08       		.uleb128 0x8
+ 1139 0044 0B       		.uleb128 0xb
+ 1140 0045 0B       		.uleb128 0xb
+ 1141 0046 3A       		.uleb128 0x3a
+ 1142 0047 0B       		.uleb128 0xb
+ 1143 0048 3B       		.uleb128 0x3b
+ 1144 0049 0B       		.uleb128 0xb
+ 1145 004a 01       		.uleb128 0x1
+ 1146 004b 13       		.uleb128 0x13
+ 1147 004c 00       		.byte	0
+ 1148 004d 00       		.byte	0
+ 1149 004e 07       		.uleb128 0x7
+ 1150 004f 0D       		.uleb128 0xd
+ 1151 0050 00       		.byte	0
+ 1152 0051 03       		.uleb128 0x3
+ 1153 0052 0E       		.uleb128 0xe
+ 1154 0053 3A       		.uleb128 0x3a
+ 1155 0054 0B       		.uleb128 0xb
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 24
+
+
+ 1156 0055 3B       		.uleb128 0x3b
+ 1157 0056 0B       		.uleb128 0xb
+ 1158 0057 49       		.uleb128 0x49
+ 1159 0058 13       		.uleb128 0x13
+ 1160 0059 0B       		.uleb128 0xb
+ 1161 005a 0B       		.uleb128 0xb
+ 1162 005b 0D       		.uleb128 0xd
+ 1163 005c 0B       		.uleb128 0xb
+ 1164 005d 0C       		.uleb128 0xc
+ 1165 005e 0B       		.uleb128 0xb
+ 1166 005f 38       		.uleb128 0x38
+ 1167 0060 0B       		.uleb128 0xb
+ 1168 0061 00       		.byte	0
+ 1169 0062 00       		.byte	0
+ 1170 0063 08       		.uleb128 0x8
+ 1171 0064 2E       		.uleb128 0x2e
+ 1172 0065 01       		.byte	0x1
+ 1173 0066 3F       		.uleb128 0x3f
+ 1174 0067 19       		.uleb128 0x19
+ 1175 0068 03       		.uleb128 0x3
+ 1176 0069 0E       		.uleb128 0xe
+ 1177 006a 3A       		.uleb128 0x3a
+ 1178 006b 0B       		.uleb128 0xb
+ 1179 006c 3B       		.uleb128 0x3b
+ 1180 006d 0B       		.uleb128 0xb
+ 1181 006e 27       		.uleb128 0x27
+ 1182 006f 19       		.uleb128 0x19
+ 1183 0070 49       		.uleb128 0x49
+ 1184 0071 13       		.uleb128 0x13
+ 1185 0072 11       		.uleb128 0x11
+ 1186 0073 01       		.uleb128 0x1
+ 1187 0074 12       		.uleb128 0x12
+ 1188 0075 06       		.uleb128 0x6
+ 1189 0076 40       		.uleb128 0x40
+ 1190 0077 18       		.uleb128 0x18
+ 1191 0078 9742     		.uleb128 0x2117
+ 1192 007a 19       		.uleb128 0x19
+ 1193 007b 01       		.uleb128 0x1
+ 1194 007c 13       		.uleb128 0x13
+ 1195 007d 00       		.byte	0
+ 1196 007e 00       		.byte	0
+ 1197 007f 09       		.uleb128 0x9
+ 1198 0080 05       		.uleb128 0x5
+ 1199 0081 00       		.byte	0
+ 1200 0082 03       		.uleb128 0x3
+ 1201 0083 0E       		.uleb128 0xe
+ 1202 0084 3A       		.uleb128 0x3a
+ 1203 0085 0B       		.uleb128 0xb
+ 1204 0086 3B       		.uleb128 0x3b
+ 1205 0087 0B       		.uleb128 0xb
+ 1206 0088 49       		.uleb128 0x49
+ 1207 0089 13       		.uleb128 0x13
+ 1208 008a 02       		.uleb128 0x2
+ 1209 008b 17       		.uleb128 0x17
+ 1210 008c 00       		.byte	0
+ 1211 008d 00       		.byte	0
+ 1212 008e 0A       		.uleb128 0xa
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 25
+
+
+ 1213 008f 898201   		.uleb128 0x4109
+ 1214 0092 01       		.byte	0x1
+ 1215 0093 11       		.uleb128 0x11
+ 1216 0094 01       		.uleb128 0x1
+ 1217 0095 31       		.uleb128 0x31
+ 1218 0096 13       		.uleb128 0x13
+ 1219 0097 01       		.uleb128 0x1
+ 1220 0098 13       		.uleb128 0x13
+ 1221 0099 00       		.byte	0
+ 1222 009a 00       		.byte	0
+ 1223 009b 0B       		.uleb128 0xb
+ 1224 009c 8A8201   		.uleb128 0x410a
+ 1225 009f 00       		.byte	0
+ 1226 00a0 02       		.uleb128 0x2
+ 1227 00a1 18       		.uleb128 0x18
+ 1228 00a2 9142     		.uleb128 0x2111
+ 1229 00a4 18       		.uleb128 0x18
+ 1230 00a5 00       		.byte	0
+ 1231 00a6 00       		.byte	0
+ 1232 00a7 0C       		.uleb128 0xc
+ 1233 00a8 898201   		.uleb128 0x4109
+ 1234 00ab 01       		.byte	0x1
+ 1235 00ac 11       		.uleb128 0x11
+ 1236 00ad 01       		.uleb128 0x1
+ 1237 00ae 31       		.uleb128 0x31
+ 1238 00af 13       		.uleb128 0x13
+ 1239 00b0 00       		.byte	0
+ 1240 00b1 00       		.byte	0
+ 1241 00b2 0D       		.uleb128 0xd
+ 1242 00b3 2E       		.uleb128 0x2e
+ 1243 00b4 01       		.byte	0x1
+ 1244 00b5 3F       		.uleb128 0x3f
+ 1245 00b6 19       		.uleb128 0x19
+ 1246 00b7 03       		.uleb128 0x3
+ 1247 00b8 0E       		.uleb128 0xe
+ 1248 00b9 3A       		.uleb128 0x3a
+ 1249 00ba 0B       		.uleb128 0xb
+ 1250 00bb 3B       		.uleb128 0x3b
+ 1251 00bc 0B       		.uleb128 0xb
+ 1252 00bd 27       		.uleb128 0x27
+ 1253 00be 19       		.uleb128 0x19
+ 1254 00bf 11       		.uleb128 0x11
+ 1255 00c0 01       		.uleb128 0x1
+ 1256 00c1 12       		.uleb128 0x12
+ 1257 00c2 06       		.uleb128 0x6
+ 1258 00c3 40       		.uleb128 0x40
+ 1259 00c4 18       		.uleb128 0x18
+ 1260 00c5 9742     		.uleb128 0x2117
+ 1261 00c7 19       		.uleb128 0x19
+ 1262 00c8 01       		.uleb128 0x1
+ 1263 00c9 13       		.uleb128 0x13
+ 1264 00ca 00       		.byte	0
+ 1265 00cb 00       		.byte	0
+ 1266 00cc 0E       		.uleb128 0xe
+ 1267 00cd 0B       		.uleb128 0xb
+ 1268 00ce 01       		.byte	0x1
+ 1269 00cf 11       		.uleb128 0x11
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 26
+
+
+ 1270 00d0 01       		.uleb128 0x1
+ 1271 00d1 12       		.uleb128 0x12
+ 1272 00d2 06       		.uleb128 0x6
+ 1273 00d3 00       		.byte	0
+ 1274 00d4 00       		.byte	0
+ 1275 00d5 0F       		.uleb128 0xf
+ 1276 00d6 34       		.uleb128 0x34
+ 1277 00d7 00       		.byte	0
+ 1278 00d8 03       		.uleb128 0x3
+ 1279 00d9 08       		.uleb128 0x8
+ 1280 00da 3A       		.uleb128 0x3a
+ 1281 00db 0B       		.uleb128 0xb
+ 1282 00dc 3B       		.uleb128 0x3b
+ 1283 00dd 0B       		.uleb128 0xb
+ 1284 00de 49       		.uleb128 0x49
+ 1285 00df 13       		.uleb128 0x13
+ 1286 00e0 02       		.uleb128 0x2
+ 1287 00e1 17       		.uleb128 0x17
+ 1288 00e2 00       		.byte	0
+ 1289 00e3 00       		.byte	0
+ 1290 00e4 10       		.uleb128 0x10
+ 1291 00e5 34       		.uleb128 0x34
+ 1292 00e6 00       		.byte	0
+ 1293 00e7 03       		.uleb128 0x3
+ 1294 00e8 0E       		.uleb128 0xe
+ 1295 00e9 3A       		.uleb128 0x3a
+ 1296 00ea 0B       		.uleb128 0xb
+ 1297 00eb 3B       		.uleb128 0x3b
+ 1298 00ec 0B       		.uleb128 0xb
+ 1299 00ed 49       		.uleb128 0x49
+ 1300 00ee 13       		.uleb128 0x13
+ 1301 00ef 02       		.uleb128 0x2
+ 1302 00f0 18       		.uleb128 0x18
+ 1303 00f1 00       		.byte	0
+ 1304 00f2 00       		.byte	0
+ 1305 00f3 11       		.uleb128 0x11
+ 1306 00f4 34       		.uleb128 0x34
+ 1307 00f5 00       		.byte	0
+ 1308 00f6 03       		.uleb128 0x3
+ 1309 00f7 0E       		.uleb128 0xe
+ 1310 00f8 3A       		.uleb128 0x3a
+ 1311 00f9 0B       		.uleb128 0xb
+ 1312 00fa 3B       		.uleb128 0x3b
+ 1313 00fb 0B       		.uleb128 0xb
+ 1314 00fc 49       		.uleb128 0x49
+ 1315 00fd 13       		.uleb128 0x13
+ 1316 00fe 00       		.byte	0
+ 1317 00ff 00       		.byte	0
+ 1318 0100 12       		.uleb128 0x12
+ 1319 0101 2E       		.uleb128 0x2e
+ 1320 0102 01       		.byte	0x1
+ 1321 0103 3F       		.uleb128 0x3f
+ 1322 0104 19       		.uleb128 0x19
+ 1323 0105 03       		.uleb128 0x3
+ 1324 0106 0E       		.uleb128 0xe
+ 1325 0107 3A       		.uleb128 0x3a
+ 1326 0108 0B       		.uleb128 0xb
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 27
+
+
+ 1327 0109 3B       		.uleb128 0x3b
+ 1328 010a 0B       		.uleb128 0xb
+ 1329 010b 49       		.uleb128 0x49
+ 1330 010c 13       		.uleb128 0x13
+ 1331 010d 3C       		.uleb128 0x3c
+ 1332 010e 19       		.uleb128 0x19
+ 1333 010f 01       		.uleb128 0x1
+ 1334 0110 13       		.uleb128 0x13
+ 1335 0111 00       		.byte	0
+ 1336 0112 00       		.byte	0
+ 1337 0113 13       		.uleb128 0x13
+ 1338 0114 18       		.uleb128 0x18
+ 1339 0115 00       		.byte	0
+ 1340 0116 00       		.byte	0
+ 1341 0117 00       		.byte	0
+ 1342 0118 14       		.uleb128 0x14
+ 1343 0119 0B       		.uleb128 0xb
+ 1344 011a 01       		.byte	0x1
+ 1345 011b 11       		.uleb128 0x11
+ 1346 011c 01       		.uleb128 0x1
+ 1347 011d 12       		.uleb128 0x12
+ 1348 011e 06       		.uleb128 0x6
+ 1349 011f 01       		.uleb128 0x1
+ 1350 0120 13       		.uleb128 0x13
+ 1351 0121 00       		.byte	0
+ 1352 0122 00       		.byte	0
+ 1353 0123 15       		.uleb128 0x15
+ 1354 0124 01       		.uleb128 0x1
+ 1355 0125 01       		.byte	0x1
+ 1356 0126 49       		.uleb128 0x49
+ 1357 0127 13       		.uleb128 0x13
+ 1358 0128 01       		.uleb128 0x1
+ 1359 0129 13       		.uleb128 0x13
+ 1360 012a 00       		.byte	0
+ 1361 012b 00       		.byte	0
+ 1362 012c 16       		.uleb128 0x16
+ 1363 012d 21       		.uleb128 0x21
+ 1364 012e 00       		.byte	0
+ 1365 012f 49       		.uleb128 0x49
+ 1366 0130 13       		.uleb128 0x13
+ 1367 0131 2F       		.uleb128 0x2f
+ 1368 0132 0B       		.uleb128 0xb
+ 1369 0133 00       		.byte	0
+ 1370 0134 00       		.byte	0
+ 1371 0135 17       		.uleb128 0x17
+ 1372 0136 2E       		.uleb128 0x2e
+ 1373 0137 01       		.byte	0x1
+ 1374 0138 3F       		.uleb128 0x3f
+ 1375 0139 19       		.uleb128 0x19
+ 1376 013a 03       		.uleb128 0x3
+ 1377 013b 0E       		.uleb128 0xe
+ 1378 013c 3A       		.uleb128 0x3a
+ 1379 013d 0B       		.uleb128 0xb
+ 1380 013e 3B       		.uleb128 0x3b
+ 1381 013f 0B       		.uleb128 0xb
+ 1382 0140 27       		.uleb128 0x27
+ 1383 0141 19       		.uleb128 0x19
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 28
+
+
+ 1384 0142 49       		.uleb128 0x49
+ 1385 0143 13       		.uleb128 0x13
+ 1386 0144 8701     		.uleb128 0x87
+ 1387 0146 19       		.uleb128 0x19
+ 1388 0147 11       		.uleb128 0x11
+ 1389 0148 01       		.uleb128 0x1
+ 1390 0149 12       		.uleb128 0x12
+ 1391 014a 06       		.uleb128 0x6
+ 1392 014b 40       		.uleb128 0x40
+ 1393 014c 18       		.uleb128 0x18
+ 1394 014d 9742     		.uleb128 0x2117
+ 1395 014f 19       		.uleb128 0x19
+ 1396 0150 01       		.uleb128 0x1
+ 1397 0151 13       		.uleb128 0x13
+ 1398 0152 00       		.byte	0
+ 1399 0153 00       		.byte	0
+ 1400 0154 18       		.uleb128 0x18
+ 1401 0155 34       		.uleb128 0x34
+ 1402 0156 00       		.byte	0
+ 1403 0157 03       		.uleb128 0x3
+ 1404 0158 0E       		.uleb128 0xe
+ 1405 0159 3A       		.uleb128 0x3a
+ 1406 015a 0B       		.uleb128 0xb
+ 1407 015b 3B       		.uleb128 0x3b
+ 1408 015c 0B       		.uleb128 0xb
+ 1409 015d 49       		.uleb128 0x49
+ 1410 015e 13       		.uleb128 0x13
+ 1411 015f 02       		.uleb128 0x2
+ 1412 0160 17       		.uleb128 0x17
+ 1413 0161 00       		.byte	0
+ 1414 0162 00       		.byte	0
+ 1415 0163 19       		.uleb128 0x19
+ 1416 0164 898201   		.uleb128 0x4109
+ 1417 0167 00       		.byte	0
+ 1418 0168 11       		.uleb128 0x11
+ 1419 0169 01       		.uleb128 0x1
+ 1420 016a 31       		.uleb128 0x31
+ 1421 016b 13       		.uleb128 0x13
+ 1422 016c 00       		.byte	0
+ 1423 016d 00       		.byte	0
+ 1424 016e 1A       		.uleb128 0x1a
+ 1425 016f 2E       		.uleb128 0x2e
+ 1426 0170 00       		.byte	0
+ 1427 0171 3F       		.uleb128 0x3f
+ 1428 0172 19       		.uleb128 0x19
+ 1429 0173 3C       		.uleb128 0x3c
+ 1430 0174 19       		.uleb128 0x19
+ 1431 0175 6E       		.uleb128 0x6e
+ 1432 0176 0E       		.uleb128 0xe
+ 1433 0177 03       		.uleb128 0x3
+ 1434 0178 0E       		.uleb128 0xe
+ 1435 0179 3A       		.uleb128 0x3a
+ 1436 017a 0B       		.uleb128 0xb
+ 1437 017b 3B       		.uleb128 0x3b
+ 1438 017c 0B       		.uleb128 0xb
+ 1439 017d 00       		.byte	0
+ 1440 017e 00       		.byte	0
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 29
+
+
+ 1441 017f 1B       		.uleb128 0x1b
+ 1442 0180 2E       		.uleb128 0x2e
+ 1443 0181 00       		.byte	0
+ 1444 0182 3F       		.uleb128 0x3f
+ 1445 0183 19       		.uleb128 0x19
+ 1446 0184 3C       		.uleb128 0x3c
+ 1447 0185 19       		.uleb128 0x19
+ 1448 0186 6E       		.uleb128 0x6e
+ 1449 0187 0E       		.uleb128 0xe
+ 1450 0188 03       		.uleb128 0x3
+ 1451 0189 0E       		.uleb128 0xe
+ 1452 018a 3A       		.uleb128 0x3a
+ 1453 018b 0B       		.uleb128 0xb
+ 1454 018c 3B       		.uleb128 0x3b
+ 1455 018d 05       		.uleb128 0x5
+ 1456 018e 00       		.byte	0
+ 1457 018f 00       		.byte	0
+ 1458 0190 00       		.byte	0
+ 1459              		.section	.debug_loc,"",%progbits
+ 1460              	.Ldebug_loc0:
+ 1461              	.LLST0:
+ 1462 0000 00000000 		.4byte	.LVL0
+ 1463 0004 0E000000 		.4byte	.LVL1
+ 1464 0008 0100     		.2byte	0x1
+ 1465 000a 50       		.byte	0x50
+ 1466 000b 14000000 		.4byte	.LVL2
+ 1467 000f 1C000000 		.4byte	.LVL3
+ 1468 0013 0100     		.2byte	0x1
+ 1469 0015 50       		.byte	0x50
+ 1470 0016 1E000000 		.4byte	.LVL4
+ 1471 001a 20000000 		.4byte	.LVL5
+ 1472 001e 0100     		.2byte	0x1
+ 1473 0020 50       		.byte	0x50
+ 1474 0021 00000000 		.4byte	0
+ 1475 0025 00000000 		.4byte	0
+ 1476              	.LLST1:
+ 1477 0029 00000000 		.4byte	.LVL12
+ 1478 002d 0E000000 		.4byte	.LVL13
+ 1479 0031 0100     		.2byte	0x1
+ 1480 0033 50       		.byte	0x50
+ 1481 0034 14000000 		.4byte	.LVL14
+ 1482 0038 1C000000 		.4byte	.LVL15
+ 1483 003c 0100     		.2byte	0x1
+ 1484 003e 50       		.byte	0x50
+ 1485 003f 1E000000 		.4byte	.LVL16
+ 1486 0043 20000000 		.4byte	.LVL17
+ 1487 0047 0100     		.2byte	0x1
+ 1488 0049 50       		.byte	0x50
+ 1489 004a 00000000 		.4byte	0
+ 1490 004e 00000000 		.4byte	0
+ 1491              	.LLST2:
+ 1492 0052 00000000 		.4byte	.LVL24
+ 1493 0056 0A000000 		.4byte	.LVL26
+ 1494 005a 0100     		.2byte	0x1
+ 1495 005c 50       		.byte	0x50
+ 1496 005d 0A000000 		.4byte	.LVL26
+ 1497 0061 3A000000 		.4byte	.LVL34
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 30
+
+
+ 1498 0065 0100     		.2byte	0x1
+ 1499 0067 55       		.byte	0x55
+ 1500 0068 3A000000 		.4byte	.LVL34
+ 1501 006c 3C000000 		.4byte	.LFE36
+ 1502 0070 0400     		.2byte	0x4
+ 1503 0072 F3       		.byte	0xf3
+ 1504 0073 01       		.uleb128 0x1
+ 1505 0074 50       		.byte	0x50
+ 1506 0075 9F       		.byte	0x9f
+ 1507 0076 00000000 		.4byte	0
+ 1508 007a 00000000 		.4byte	0
+ 1509              	.LLST3:
+ 1510 007e 06000000 		.4byte	.LVL25
+ 1511 0082 0A000000 		.4byte	.LVL26
+ 1512 0086 0200     		.2byte	0x2
+ 1513 0088 30       		.byte	0x30
+ 1514 0089 9F       		.byte	0x9f
+ 1515 008a 0A000000 		.4byte	.LVL26
+ 1516 008e 16000000 		.4byte	.LVL27
+ 1517 0092 0100     		.2byte	0x1
+ 1518 0094 54       		.byte	0x54
+ 1519 0095 16000000 		.4byte	.LVL27
+ 1520 0099 20000000 		.4byte	.LVL29
+ 1521 009d 0100     		.2byte	0x1
+ 1522 009f 53       		.byte	0x53
+ 1523 00a0 20000000 		.4byte	.LVL29
+ 1524 00a4 3A000000 		.4byte	.LVL33
+ 1525 00a8 0100     		.2byte	0x1
+ 1526 00aa 54       		.byte	0x54
+ 1527 00ab 00000000 		.4byte	0
+ 1528 00af 00000000 		.4byte	0
+ 1529              	.LLST4:
+ 1530 00b3 1C000000 		.4byte	.LVL28
+ 1531 00b7 31000000 		.4byte	.LVL31-1
+ 1532 00bb 0100     		.2byte	0x1
+ 1533 00bd 53       		.byte	0x53
+ 1534 00be 00000000 		.4byte	0
+ 1535 00c2 00000000 		.4byte	0
+ 1536              	.LLST5:
+ 1537 00c6 28000000 		.4byte	.LVL42
+ 1538 00ca 34000000 		.4byte	.LVL44
+ 1539 00ce 0100     		.2byte	0x1
+ 1540 00d0 54       		.byte	0x54
+ 1541 00d1 00000000 		.4byte	0
+ 1542 00d5 00000000 		.4byte	0
+ 1543              	.LLST6:
+ 1544 00d9 18000000 		.4byte	.LVL38
+ 1545 00dd 1A000000 		.4byte	.LVL39
+ 1546 00e1 0200     		.2byte	0x2
+ 1547 00e3 30       		.byte	0x30
+ 1548 00e4 9F       		.byte	0x9f
+ 1549 00e5 6A000000 		.4byte	.LVL49
+ 1550 00e9 6C000000 		.4byte	.LVL50
+ 1551 00ed 0100     		.2byte	0x1
+ 1552 00ef 57       		.byte	0x57
+ 1553 00f0 92000000 		.4byte	.LVL58
+ 1554 00f4 96000000 		.4byte	.LVL59
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 31
+
+
+ 1555 00f8 0200     		.2byte	0x2
+ 1556 00fa 30       		.byte	0x30
+ 1557 00fb 9F       		.byte	0x9f
+ 1558 00fc AA000000 		.4byte	.LVL61
+ 1559 0100 B0000000 		.4byte	.LVL62
+ 1560 0104 0300     		.2byte	0x3
+ 1561 0106 77       		.byte	0x77
+ 1562 0107 01       		.sleb128 1
+ 1563 0108 9F       		.byte	0x9f
+ 1564 0109 B0000000 		.4byte	.LVL62
+ 1565 010d BC000000 		.4byte	.LFE37
+ 1566 0111 0100     		.2byte	0x1
+ 1567 0113 57       		.byte	0x57
+ 1568 0114 00000000 		.4byte	0
+ 1569 0118 00000000 		.4byte	0
+ 1570              	.LLST7:
+ 1571 011c 22000000 		.4byte	.LVL41
+ 1572 0120 B0000000 		.4byte	.LVL62
+ 1573 0124 0100     		.2byte	0x1
+ 1574 0126 56       		.byte	0x56
+ 1575 0127 B0000000 		.4byte	.LVL62
+ 1576 012b BC000000 		.4byte	.LFE37
+ 1577 012f 0200     		.2byte	0x2
+ 1578 0131 30       		.byte	0x30
+ 1579 0132 9F       		.byte	0x9f
+ 1580 0133 00000000 		.4byte	0
+ 1581 0137 00000000 		.4byte	0
+ 1582              	.LLST8:
+ 1583 013b 76000000 		.4byte	.LVL51
+ 1584 013f 78000000 		.4byte	.LVL52
+ 1585 0143 0300     		.2byte	0x3
+ 1586 0145 91       		.byte	0x91
+ 1587 0146 54       		.sleb128 -44
+ 1588 0147 9F       		.byte	0x9f
+ 1589 0148 78000000 		.4byte	.LVL52
+ 1590 014c 7B000000 		.4byte	.LVL53-1
+ 1591 0150 0100     		.2byte	0x1
+ 1592 0152 50       		.byte	0x50
+ 1593 0153 7B000000 		.4byte	.LVL53-1
+ 1594 0157 84000000 		.4byte	.LVL55
+ 1595 015b 0300     		.2byte	0x3
+ 1596 015d 91       		.byte	0x91
+ 1597 015e 54       		.sleb128 -44
+ 1598 015f 9F       		.byte	0x9f
+ 1599 0160 84000000 		.4byte	.LVL55
+ 1600 0164 88000000 		.4byte	.LVL56
+ 1601 0168 0100     		.2byte	0x1
+ 1602 016a 52       		.byte	0x52
+ 1603 016b 88000000 		.4byte	.LVL56
+ 1604 016f 90000000 		.4byte	.LVL57
+ 1605 0173 0300     		.2byte	0x3
+ 1606 0175 91       		.byte	0x91
+ 1607 0176 54       		.sleb128 -44
+ 1608 0177 9F       		.byte	0x9f
+ 1609 0178 90000000 		.4byte	.LVL57
+ 1610 017c 96000000 		.4byte	.LVL59
+ 1611 0180 0100     		.2byte	0x1
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 32
+
+
+ 1612 0182 53       		.byte	0x53
+ 1613 0183 00000000 		.4byte	0
+ 1614 0187 00000000 		.4byte	0
+ 1615              	.LLST9:
+ 1616 018b 7C000000 		.4byte	.LVL53
+ 1617 018f 80000000 		.4byte	.LVL54
+ 1618 0193 0200     		.2byte	0x2
+ 1619 0195 30       		.byte	0x30
+ 1620 0196 9F       		.byte	0x9f
+ 1621 0197 80000000 		.4byte	.LVL54
+ 1622 019b 90000000 		.4byte	.LVL57
+ 1623 019f 0100     		.2byte	0x1
+ 1624 01a1 53       		.byte	0x53
+ 1625 01a2 00000000 		.4byte	0
+ 1626 01a6 00000000 		.4byte	0
+ 1627              		.section	.debug_aranges,"",%progbits
+ 1628 0000 34000000 		.4byte	0x34
+ 1629 0004 0200     		.2byte	0x2
+ 1630 0006 00000000 		.4byte	.Ldebug_info0
+ 1631 000a 04       		.byte	0x4
+ 1632 000b 00       		.byte	0
+ 1633 000c 0000     		.2byte	0
+ 1634 000e 0000     		.2byte	0
+ 1635 0010 00000000 		.4byte	.LFB34
+ 1636 0014 6C000000 		.4byte	.LFE34-.LFB34
+ 1637 0018 00000000 		.4byte	.LFB35
+ 1638 001c 68000000 		.4byte	.LFE35-.LFB35
+ 1639 0020 00000000 		.4byte	.LFB36
+ 1640 0024 3C000000 		.4byte	.LFE36-.LFB36
+ 1641 0028 00000000 		.4byte	.LFB37
+ 1642 002c BC000000 		.4byte	.LFE37-.LFB37
+ 1643 0030 00000000 		.4byte	0
+ 1644 0034 00000000 		.4byte	0
+ 1645              		.section	.debug_ranges,"",%progbits
+ 1646              	.Ldebug_ranges0:
+ 1647 0000 00000000 		.4byte	.LFB34
+ 1648 0004 6C000000 		.4byte	.LFE34
+ 1649 0008 00000000 		.4byte	.LFB35
+ 1650 000c 68000000 		.4byte	.LFE35
+ 1651 0010 00000000 		.4byte	.LFB36
+ 1652 0014 3C000000 		.4byte	.LFE36
+ 1653 0018 00000000 		.4byte	.LFB37
+ 1654 001c BC000000 		.4byte	.LFE37
+ 1655 0020 00000000 		.4byte	0
+ 1656 0024 00000000 		.4byte	0
+ 1657              		.section	.debug_line,"",%progbits
+ 1658              	.Ldebug_line0:
+ 1659 0000 42010000 		.section	.debug_str,"MS",%progbits,1
+ 1659      02007400 
+ 1659      00000201 
+ 1659      FB0E0D00 
+ 1659      01010101 
+ 1660              	.LASF6:
+ 1661 0000 6C6F6E67 		.ascii	"long long int\000"
+ 1661      206C6F6E 
+ 1661      6720696E 
+ 1661      7400
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 33
+
+
+ 1662              	.LASF35:
+ 1663 000e 72756E43 		.ascii	"runCommand\000"
+ 1663      6F6D6D61 
+ 1663      6E6400
+ 1664              	.LASF18:
+ 1665 0019 76616C75 		.ascii	"value\000"
+ 1665      6500
+ 1666              	.LASF32:
+ 1667 001f 433A5C55 		.ascii	"C:\\Users\\hElLo KiTtY 2.1\\Desktop\\ECE381\\Lab 4 "
+ 1667      73657273 
+ 1667      5C68456C 
+ 1667      4C6F204B 
+ 1667      69547459 
+ 1668 004d 2D205541 		.ascii	"- UART Motors\\Project\\Design01.cydsn\000"
+ 1668      5254204D 
+ 1668      6F746F72 
+ 1668      735C5072 
+ 1668      6F6A6563 
+ 1669              	.LASF28:
+ 1670 0072 55415254 		.ascii	"UART_SpiUartWriteTxData\000"
+ 1670      5F537069 
+ 1670      55617274 
+ 1670      57726974 
+ 1670      65547844 
+ 1671              	.LASF17:
+ 1672 008a 636F6D6D 		.ascii	"command\000"
+ 1672      616E6400 
+ 1673              	.LASF14:
+ 1674 0092 4D564343 		.ascii	"MVCCW\000"
+ 1674      5700
+ 1675              	.LASF25:
+ 1676 0098 55415254 		.ascii	"UART_UartPutString\000"
+ 1676      5F556172 
+ 1676      74507574 
+ 1676      53747269 
+ 1676      6E6700
+ 1677              	.LASF9:
+ 1678 00ab 666C6F61 		.ascii	"float\000"
+ 1678      7400
+ 1679              	.LASF26:
+ 1680 00b1 55415254 		.ascii	"UART_UartGetChar\000"
+ 1680      5F556172 
+ 1680      74476574 
+ 1680      43686172 
+ 1680      00
+ 1681              	.LASF20:
+ 1682 00c2 696E7075 		.ascii	"input\000"
+ 1682      7400
+ 1683              	.LASF5:
+ 1684 00c8 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1684      20756E73 
+ 1684      69676E65 
+ 1684      6420696E 
+ 1684      7400
+ 1685              	.LASF3:
+ 1686 00da 73686F72 		.ascii	"short unsigned int\000"
+ 1686      7420756E 
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 34
+
+
+ 1686      7369676E 
+ 1686      65642069 
+ 1686      6E7400
+ 1687              	.LASF29:
+ 1688 00ed 55415254 		.ascii	"UART_Start\000"
+ 1688      5F537461 
+ 1688      727400
+ 1689              	.LASF1:
+ 1690 00f8 756E7369 		.ascii	"unsigned char\000"
+ 1690      676E6564 
+ 1690      20636861 
+ 1690      7200
+ 1691              	.LASF21:
+ 1692 0106 706F696E 		.ascii	"pointer\000"
+ 1692      74657200 
+ 1693              	.LASF10:
+ 1694 010e 646F7562 		.ascii	"double\000"
+ 1694      6C6500
+ 1695              	.LASF37:
+ 1696 0115 6D61696E 		.ascii	"main\000"
+ 1696      00
+ 1697              	.LASF23:
+ 1698 011a 43794465 		.ascii	"CyDelayUs\000"
+ 1698      6C617955 
+ 1698      7300
+ 1699              	.LASF34:
+ 1700 0124 706F7369 		.ascii	"position\000"
+ 1700      74696F6E 
+ 1700      00
+ 1701              	.LASF33:
+ 1702 012d 75696E74 		.ascii	"uint32\000"
+ 1702      333200
+ 1703              	.LASF8:
+ 1704 0134 756E7369 		.ascii	"unsigned int\000"
+ 1704      676E6564 
+ 1704      20696E74 
+ 1704      00
+ 1705              	.LASF7:
+ 1706 0141 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1706      206C6F6E 
+ 1706      6720756E 
+ 1706      7369676E 
+ 1706      65642069 
+ 1707              	.LASF24:
+ 1708 0158 61746F66 		.ascii	"atof\000"
+ 1708      00
+ 1709              	.LASF15:
+ 1710 015d 4D564357 		.ascii	"MVCW\000"
+ 1710      00
+ 1711              	.LASF30:
+ 1712 0162 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1712      43313120 
+ 1712      352E342E 
+ 1712      31203230 
+ 1712      31363036 
+ 1713 0195 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 1713      20726576 
+ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\cc17Mr4p.s 			page 35
+
+
+ 1713      6973696F 
+ 1713      6E203233 
+ 1713      37373135 
+ 1714 01c8 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1714      66756E63 
+ 1714      74696F6E 
+ 1714      2D736563 
+ 1714      74696F6E 
+ 1715              	.LASF13:
+ 1716 01f0 73697A65 		.ascii	"sizetype\000"
+ 1716      74797065 
+ 1716      00
+ 1717              	.LASF16:
+ 1718 01f9 6D6F746F 		.ascii	"motor\000"
+ 1718      7200
+ 1719              	.LASF31:
+ 1720 01ff 6D61696E 		.ascii	"main.c\000"
+ 1720      2E6300
+ 1721              	.LASF11:
+ 1722 0206 63686172 		.ascii	"char\000"
+ 1722      00
+ 1723              	.LASF19:
+ 1724 020b 696E6465 		.ascii	"index\000"
+ 1724      7800
+ 1725              	.LASF2:
+ 1726 0211 73686F72 		.ascii	"short int\000"
+ 1726      7420696E 
+ 1726      7400
+ 1727              	.LASF36:
+ 1728 021b 666C6F61 		.ascii	"floatvalue\000"
+ 1728      7476616C 
+ 1728      756500
+ 1729              	.LASF4:
+ 1730 0226 6C6F6E67 		.ascii	"long int\000"
+ 1730      20696E74 
+ 1730      00
+ 1731              	.LASF22:
+ 1732 022f 4D6F746F 		.ascii	"Motor_Write\000"
+ 1732      725F5772 
+ 1732      69746500 
+ 1733              	.LASF12:
+ 1734 023b 6C6F6E67 		.ascii	"long double\000"
+ 1734      20646F75 
+ 1734      626C6500 
+ 1735              	.LASF0:
+ 1736 0247 7369676E 		.ascii	"signed char\000"
+ 1736      65642063 
+ 1736      68617200 
+ 1737              	.LASF27:
+ 1738 0253 43794465 		.ascii	"CyDelay\000"
+ 1738      6C617900 
+ 1739              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

@@ -1,0 +1,6 @@
+C:\Users\hElLo KiTtY 2.1\Desktop\ECE381\Lab 4 - UART Motors\Project\Design01.cydsn\Design01.cyprj|35dac515-f7fc-43c8-b9db-f7230af92eec
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|c17a28cf-1750-403f-acf8-9003d1da64aa
+C:\Users\hElLo KiTtY 2.1\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|c2c38041-70fe-4ea1-8ee2-ea01afa5f240
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|f2baae6f-a8e6-4240-902d-c71f04004e95
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|39aee244-4fbe-4e6f-b8a1-ca911b81b8a4
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|bb0e3781-9bb8-44fa-9637-a8b3fe0b799c
