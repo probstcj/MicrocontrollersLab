@@ -14,6 +14,8 @@
 struct MTR{
         unsigned int position : 4;
 };
+struct MTR motor = {1};
+int motorDelay = 3000;
 int MVCCW(struct MTR motor){
     if(motor.position >= 4){
         motor.position = 1;
@@ -39,7 +41,7 @@ int MVCCW(struct MTR motor){
             Motor_Write(0x3);
             break;
     }
-    CyDelayUs(3000);
+    CyDelayUs(motorDelay);
     Motor_Write(0b0000);
     return motor.position;
 }
@@ -68,7 +70,7 @@ int MVCW(struct MTR motor){
             Motor_Write(0xC);
             break;
     }
-    CyDelayUs(3000);
+    CyDelayUs(motorDelay);
     Motor_Write(0b0000);
     return motor.position;
 }
@@ -77,12 +79,122 @@ void runCommand(char* command){
     for(int i = 0; i < 16; i++){
         if(*(command+i) == 's' || *(command+i) == 'S'){
             i +=2;
-            char value[16];
-            value[15] = '\0';
-            for(int j = i; j < 16;i++){
-                value[j] = *(command + j);
+            long value = 0;
+            int periodIndex = -1;
+            for(int j = i; j < 16;j++){
+                // s 19216.8123
+                int charVal = (int)(*(command+j)-0x30);
+                if(charVal == -0x02){
+                    periodIndex = j-i;
+                }
+                else if(charVal < 0 || charVal > 10){
+                    break;
+                }
+                else{
+                    value += charVal;
+                    value *= 10;
+                }
             }
-            double floatvalue = atof(value);
+            value /= 10;
+            float floatValue = 0.0;
+            if(periodIndex == -1){
+                floatValue = (float)value;
+            }
+            else{
+                floatValue = 0.0;
+                int pow10 = 10;
+                while(value%(int)pow10 != value){
+                    pow10*=10;
+                }
+                floatValue = value/((float)pow10);
+            }
+            // 2048 steps/rev
+            // rev/min -> rev/us
+            // rev/us -> us/step
+            // (1/2048)*(1/rpm)*(6*10^7)
+            int delay = (int)((1/((float)2048))*(1/floatValue)*(6*10000000));
+            if(delay < 3000){
+                motorDelay = 3000;
+            }
+            else{
+                motorDelay = delay;
+            }
+        }
+        else if(*(command+i) == 'F' || *(command+i) == 'f'){
+            i +=2;
+            long value = 0;
+            for(int j = i; j < 16;j++){
+                // s 19216.8123
+                int charVal = (int)(*(command+j)-0x30);
+                if(charVal < 0 || charVal > 10){
+                    break;
+                }
+                else{
+                    value += charVal;
+                    value *= 10;
+                }
+            }
+            value /= 10;
+            for (int i = 0; i < value; i++){
+                 motor.position = MVCW(motor);
+            }
+            char output[26] = {
+                'N', 'u', 'm', ' ', 'f', 'w', 'd',':',' '
+            };
+            int pow10 = 10;
+            while(value%(int)pow10 != value){
+                pow10*=10;
+            }
+            int startIndex = 9;
+            while(pow10/10 != 0){
+                pow10/=10;
+                output[startIndex++] = (value/(pow10))+0x30;
+                //UART_UartPutChar(value/(pow10)+0x30);
+                value -= value/(pow10)*pow10;
+            }
+            output[startIndex] = '\r';
+            output[startIndex+1] = '\n';
+            output[startIndex+2] = '\0';
+            UART_UartPutString(output);
+            
+        }
+        else if(*(command+i) == 'B' || *(command+i) == 'b'){
+            i +=2;
+            long value = 0;
+            for(int j = i; j < 16;j++){
+                // s 19216.8123
+                int charVal = (int)(*(command+j)-0x30);
+                if(charVal < 0 || charVal > 10){
+                    break;
+                }
+                else{
+                    value += charVal;
+                    value *= 10;
+                }
+            }
+            value /= 10;
+            for (int i = 0; i < value; i++){
+                 motor.position = MVCCW(motor);
+            }
+            char output[27] = {
+                'N', 'u', 'm', ' ', 'b', 'k', 'w', 'd',':',' '
+            };
+            int pow10 = 10;
+            while(value%(int)pow10 != value){
+                pow10*=10;
+            }
+            int startIndex = 10;
+            while(pow10/10 != 0){
+                pow10/=10;
+                output[startIndex++] = (value/(pow10))+0x30;
+                //UART_UartPutChar(value/(pow10)+0x30);
+                value -= value/(pow10)*pow10;
+            }
+            output[startIndex] = '\r';
+            output[startIndex+1] = '\n';
+            output[startIndex+2] = '\0';
+            UART_UartPutString(output);
+            
         }
     }
     
@@ -94,7 +206,6 @@ int main(void)
 
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
     
-    struct MTR motor = {1};
     UART_Start();
     UART_UartPutString("Type a command please.\r\n");
     char command[17];
@@ -107,8 +218,6 @@ int main(void)
         do{
             input = UART_UartGetChar();
             
-        CyDelay(5);
-        motor.position = MVCW(motor);
         }
         while(input == 0);
         if(input == 0x7f){
