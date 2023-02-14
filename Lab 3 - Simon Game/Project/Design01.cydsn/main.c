@@ -11,7 +11,7 @@
 */
 #include "project.h"
 
-static const int ROUNDS = 20;
+static const int ROUNDS = 3;
 volatile int timeout, pressed;
 
 // This function implements a non-blocking polling loop.
@@ -24,21 +24,28 @@ int poll_button()
     int button = 0;
     
     // XXX: Polling loop for button goes here
-  
-   switch(BTN_Read()){
-    case 1: button = 1;
-    break;
-    case 2: button = 2;
-    break;
-    case 4: button = 3;
-    break;
-    case 8: button = 4;
-    break;
-    default: button = 0;
-    break;
-}
-    
-   return button;
+
+    // For each iteration of polling loop, check value of BTN. If bit change (0,1,2,4,8)
+    // Are on, change the button value based on this value
+    switch(BTN_Read()){
+    case 1: 
+        button = 1;
+        break;
+    case 2: 
+        button = 2;
+        break;
+    case 4: 
+        button = 3;
+        break;
+    case 8: 
+        button = 4;
+        break;
+    default: 
+        button = 0;
+        break;
+    }
+
+    return button;
 }
 
 // The play color function illuminates an led
@@ -64,36 +71,50 @@ int poll_button()
 
 void play_color(int color, int dc, uint32 delay)
 {
+    // Set period to initial value of 0
     int period = 0;
  
     switch(color){
     case 0:
+        // Period = 3225 for Red
+        // 1000000 / 310 = 3225
         period = 3225;
         break;
     case 1:
+        // Period = 3174 for Green
+        // 1000000 / 415 = 3174
         period = 3174;
         break;
     case 2:
+        // Period = 4784 for Blue
+        // 1000000 / 209 = 4784       
         period = 4784;
         break;
     case 3:
+        // Period = 3968 for Yellow
+        // 1000000 / 252 = 3968
         period = 3968;
         break;
-     
-    
-    
     }
-    
+    // Write speaker frequency from switch statement
     SPEAKER_PWM_WritePeriod(period);
+    // 50% duty cycle, period/2
     SPEAKER_PWM_WriteCompare((int) (period/2));
+    // Write LED period to 1000 for easy math
     LED_PWM_WritePeriod(1000);
+    // Compare is duty cycle% * 10
     LED_PWM_WriteCompare(dc * 10);
+    // Start PWM's'
     LED_PWM_Start();
     SPEAKER_PWM_Start();
+    // Select color
     LED_SEL_Write(color);
+    // Delay the amount desired
     CyDelay(delay);
+    // Stop PWM's'
     SPEAKER_PWM_Stop(); 
     LED_PWM_Stop();
+    // Small delay
     CyDelay(100);
     
 }
@@ -116,16 +137,22 @@ void play_start()
     
     
     */
-    
+    // Write period of 1667 for frequency of 600Hz (math above)
     SPEAKER_PWM_WritePeriod(1667);
+    // 50% duty cycle
     SPEAKER_PWM_WriteCompare(833);
+    // Basically DC voltage
     LED_PWM_WritePeriod(1000);
     LED_PWM_WriteCompare(999);
     for (int i = 0; i < 3; i++){
+        // Half a second delay
         CyDelay(500);
+        // Start PWM modules
         SPEAKER_PWM_Start();
         LED_PWM_Start();
+        // 1 ms * 4 * 125 = 500 ms (time that LEDs are on)
         for(int i = 0; i < 125; i++){
+            // Switch between LEDs and delay
             LED_SEL_Write(0);
             CyDelay(1);
             LED_SEL_Write(1);
@@ -135,15 +162,11 @@ void play_start()
             LED_SEL_Write(3);
             CyDelay(1);
         }
-        
-        
-        
-       // CyDelay(500);
+        // Stop PWM modules
         SPEAKER_PWM_Stop();
         LED_PWM_Stop();
-        
-        
     }
+    // Not needed, but stopping Speaker PWM module again.
     SPEAKER_PWM_Stop();
 }
 
@@ -151,13 +174,21 @@ void play_start()
 // all 4 LEDs and play a 42Hz tone for 1.5 seconds
 void play_fail()
 {
+    // Set speaker frequency to 42 Hz
+    // 1000000 / 42 = 23810
     SPEAKER_PWM_WritePeriod(23810);
+    // 50% duty cycle
     SPEAKER_PWM_WriteCompare(11904);
+    // Basically DC voltage
     LED_PWM_WritePeriod(1000);
     LED_PWM_WriteCompare(999);
+    // Non needed for loop, only runs once, but is copied from play_start
     for (int i = 0; i < 1; i++){
+        // Start PWM modules
         SPEAKER_PWM_Start();
         LED_PWM_Start();
+        // Play LEDs for 1.5 seconds
+        // 1ms * 4 * 375 = 1500 ms
         for(int i = 0; i < 375; i++){
             LED_SEL_Write(0);
             CyDelay(1);
@@ -168,15 +199,11 @@ void play_fail()
             LED_SEL_Write(3);
             CyDelay(1);
         }
-        
-        
-        
-       // CyDelay(500);
+        // Stop PWM modules'
         SPEAKER_PWM_Stop();
         LED_PWM_Stop();
-        
-        
     }
+    // Not needed, copied from the last.
     SPEAKER_PWM_Stop();  
 }
 
@@ -191,35 +218,37 @@ void play_fail()
 // you don't feel like doing the original one.
 void play_win()
 {
-  
+    // Basically DC voltage
     LED_PWM_WritePeriod(1000);
     LED_PWM_WriteCompare(999);
-  for(int i = 0; i < 3; i++){
-    for(int j = 0; j < 4; j++){
-        LED_SEL_Write(j);
-        for(int k = 0; k < 3; k++){
-            SPEAKER_PWM_WritePeriod(1667);
-            SPEAKER_PWM_WriteCompare(833);
-            LED_PWM_Start();
+    // Repeat this sequence 3 times
+    for(int i = 0; i < 3; i++){
+        // Repeat this inner sequence 4 times (per color)
+        for(int j = 0; j < 4; j++){
+            // Write the correct LED
+            LED_SEL_Write(j);
+            // Blink LED and play speaker at 600Hz with 100ms delay between blinks
+            for(int k = 0; k < 3; k++){
+                SPEAKER_PWM_WritePeriod(1667);
+                SPEAKER_PWM_WriteCompare(833);
+                LED_PWM_Start();
+                SPEAKER_PWM_Start();
+                CyDelay(100);
+                LED_PWM_Stop();
+                SPEAKER_PWM_Stop();
+                CyDelay(100);
+            }
+            // Blink LED and play speaker at 540Hz with 100ms delay
+            SPEAKER_PWM_WritePeriod(1852);
+            SPEAKER_PWM_WriteCompare(926);
             SPEAKER_PWM_Start();
+            LED_PWM_Start();
             CyDelay(100);
-            LED_PWM_Stop();
             SPEAKER_PWM_Stop();
+            LED_PWM_Stop();
             CyDelay(100);
+        }
     }
-        SPEAKER_PWM_WritePeriod(1852);
-        SPEAKER_PWM_WriteCompare(926);
-        SPEAKER_PWM_Start();
-        LED_PWM_Start();
-        CyDelay(100);
-        SPEAKER_PWM_Stop();
-        LED_PWM_Stop();
-        CyDelay(100);
-       
-    }
-    
-}
-
 }
 
 int main(void)
@@ -254,9 +283,11 @@ int main(void)
         // Generate random sequnce of 20 rounds. Store it
         // in simon_sequence
         
-        
+        // Use the PRS module to generate random numbers.
+        // % 4 will create numbers 0 - 3
         for(int i = 0; i < ROUNDS; i++){
             simon_sequence[i] = PRS_Read() % 4;
+            // Delay for PRS module
             CyDelay(1);
         }
         
@@ -272,7 +303,7 @@ int main(void)
 
         // Start the counter at 1 (Why not zero? Due to the nature of
         // for loops bounds checking! See below)
-        seq_ctr = 19;        
+        seq_ctr = 1;        
         
         
         // The main game begins here. As long as there are no errors,
@@ -309,20 +340,23 @@ int main(void)
                 // If timeout gets set to 1, that means 3s have elapsed
                 // without a button press
                 
+                // Before button poll *initialize* the Timer (restarts the timer)
                 INPUT_TIMER_Init();
                 INPUT_TIMER_Start();
+                // Start ISR for timeout
                 INPUT_TIMER_ISR_Start();
+                // 3 second timer
                 INPUT_TIMER_WritePeriod(3000);
-                
-               
-                
+                // Poll button
                 while(pressed == 0 && timeout == 0)
                 {
                     pressed = poll_button();
-                }                
+                }         
+                // Wait for button release       
                 while(BTN_Read()!=0 && timeout==0);
-                
+                // Stop timer and ISR
                 INPUT_TIMER_Stop();
+                // Not needed, but here anyway
                 INPUT_TIMER_WritePeriod(3000);
                 INPUT_TIMER_ISR_Stop();
                 
@@ -393,3 +427,4 @@ int main(void)
 }
 
 /* [] END OF FILE */
+
