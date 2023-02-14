@@ -1,6 +1,6 @@
-C:\Users\hElLo KiTtY 2.1\Desktop\ECE381\Lab 4 - UART Motors\Project\Design01.cydsn\Design01.cyprj|35dac515-f7fc-43c8-b9db-f7230af92eec
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|c17a28cf-1750-403f-acf8-9003d1da64aa
-C:\Users\hElLo KiTtY 2.1\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|c2c38041-70fe-4ea1-8ee2-ea01afa5f240
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|f2baae6f-a8e6-4240-902d-c71f04004e95
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|39aee244-4fbe-4e6f-b8a1-ca911b81b8a4
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|bb0e3781-9bb8-44fa-9637-a8b3fe0b799c
+C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 4 - UART Motors\Project\Design01.cydsn\Design01.cyprj|20d72497-3766-4402-8940-7a69d3888a1e
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|07d029ff-8ceb-4e08-8b0f-65b990aea4f2
+C:\Users\Hello Kitty\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|2c7050e2-6867-401d-a11b-1a3fcac2d56e
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|aa16eade-154a-4be0-aa02-de0d8acf6e2a
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|fec13c4c-9962-4c0f-ae39-c853ca2bd23d
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|deba66ad-63ac-464c-a3c0-7f089af6898c
