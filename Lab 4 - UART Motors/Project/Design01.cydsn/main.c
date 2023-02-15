@@ -28,19 +28,22 @@ int MVCCW(struct MTR motor){
     switch(motor.position){
         case 1:
             // 0011 -> 1001
-            Motor_Write(0x9);
+            //Motor_Write(0x9);
+            Motor_Write((0xF0)^(uint8_t)(~(uint8_t)(~Motor_Read() << 4) >> 5)) ;
             break;
         case 2:
             // 1001 -> 1100
-            Motor_Write(0xC);
+            //Motor_Write(0xC);
+            Motor_Write(((Motor_Read() >> 1) << 1)+(1 << 2));
             break;
         case 3:
             // 1100 -> 0110
-            Motor_Write(0x6);
-            break;
+            //Motor_Write(0x6);
+            //break;
         case 4:
             // 0110 -> 0011
-            Motor_Write(0x3);
+            //Motor_Write(0x3);
+            Motor_Write(Motor_Read() >> 1);
             break;
     }
     CyDelayUs(motorDelay);
@@ -57,19 +60,22 @@ int MVCW(struct MTR motor){
     switch(motor.position){
         case 4:
             // 1100 -> 1001
-            Motor_Write(0x9);
+            //Motor_Write(0x9);
+            Motor_Write((0xF0)^(uint8_t)(~(Motor_Read()>>1)));
             break;
         case 3:
             // 1001 -> 0011
-            Motor_Write(0x3);
+            //Motor_Write(0x3);
+            Motor_Write((Motor_Read() >> 2) + 1);
             break;
         case 2:
             // 0011 -> 0110
-            Motor_Write(0x6);
-            break;
+            //Motor_Write(0x6);
+            //break;
         case 1:
             // 0110 -> 1100
             Motor_Write(0xC);
+            Motor_Write(Motor_Read() << 1);
             break;
     }
     CyDelayUs(motorDelay);
