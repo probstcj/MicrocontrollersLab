@@ -11,8 +11,6 @@
 */
 #include "project.h"
 #include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
 struct MTR{
         unsigned int position : 4;
 };
@@ -28,22 +26,19 @@ int MVCCW(struct MTR motor){
     switch(motor.position){
         case 1:
             // 0011 -> 1001
-            //Motor_Write(0x9);
-            Motor_Write((0xF0)^(uint8_t)(~(uint8_t)(~Motor_Read() << 4) >> 5)) ;
+            Motor_Write(0x9);
             break;
         case 2:
             // 1001 -> 1100
-            //Motor_Write(0xC);
-            Motor_Write(((Motor_Read() >> 1) << 1)+(1 << 2));
+            Motor_Write(0xC);
             break;
         case 3:
             // 1100 -> 0110
-            //Motor_Write(0x6);
-            //break;
+            Motor_Write(0x6);
+            break;
         case 4:
             // 0110 -> 0011
-            //Motor_Write(0x3);
-            Motor_Write(Motor_Read() >> 1);
+            Motor_Write(0x3);
             break;
     }
     CyDelayUs(motorDelay);
@@ -60,22 +55,19 @@ int MVCW(struct MTR motor){
     switch(motor.position){
         case 4:
             // 1100 -> 1001
-            //Motor_Write(0x9);
-            Motor_Write((0xF0)^(uint8_t)(~(Motor_Read()>>1)));
+            Motor_Write(0x9);
             break;
         case 3:
             // 1001 -> 0011
-            //Motor_Write(0x3);
-            Motor_Write((Motor_Read() >> 2) + 1);
+            Motor_Write(0x3);
             break;
         case 2:
             // 0011 -> 0110
-            //Motor_Write(0x6);
-            //break;
+            Motor_Write(0x6);
+            break;
         case 1:
             // 0110 -> 1100
             Motor_Write(0xC);
-            Motor_Write(Motor_Read() << 1);
             break;
     }
     CyDelayUs(motorDelay);
@@ -86,62 +78,47 @@ void runCommand(char* command){
     
     for(int i = 0; i < 16; i++){
         if(*(command+i) == 's' || *(command+i) == 'S'){
-            char value[14] = {};
-            int lastIndex;
-            for(int j = 2; j < 16; j++){
-                if(*(command+j) == '\0'){
-                    lastIndex = j+2;
-                    
+            i +=2;
+            long value = 0;
+            int periodIndex = -1;
+            for(int j = i; j < 16;j++){
+                // s 19216.8123
+                int charVal = (int)(*(command+j)-0x30);
+                if(charVal == -0x02){
+                    periodIndex = j-i;
+                }
+                else if(charVal < 0 || charVal > 10){
                     break;
                 }
-                value[j-2] = *(command + j);
+                else{
+                    value += charVal;
+                    value *= 10;
+                }
             }
-            float floatValue = atof(value);
-            char out[16];
-            snprintf(out, sizeof(out),"%.3f",floatValue);
+            value /= 10;
+            float floatValue = 0.0;
+            if(periodIndex == -1){
+                floatValue = (float)value;
+            }
+            else{
+                floatValue = 0.0;
+                int pow10 = 10;
+                while(value%(int)pow10 != value){
+                    pow10*=10;
+                }
+                floatValue = value/((float)pow10);
+            }
             // 2048 steps/rev
             // rev/min -> rev/us
             // rev/us -> us/step
             // (1/2048)*(1/rpm)*(6*10^7)
             int delay = (int)((1/((float)2048))*(1/floatValue)*(6*10000000));
-            motorDelay = delay;
-            char output[56]={'R','P','M',':',' '};
-            for(int j = 0; j < lastIndex+1; j++){
-                if(out[j] == '\0'){
-                    lastIndex = j+5;
-                    break;
-                }
-                else{
-                    output[j+5] = out[j];
-                }
+            if(delay < 3000){
+                motorDelay = 3000;
             }
-            output[lastIndex++] = ' ';
-            output[lastIndex++] = 'D';
-            output[lastIndex++] = 'e';
-            output[lastIndex++] = 'l';
-            output[lastIndex++] = 'a';
-            output[lastIndex++] = 'y';
-            output[lastIndex++] = ':';
-            output[lastIndex++] = ' ';
-            char out2[16];
-            snprintf(out2, sizeof(out2),"%d",motorDelay);
-            int lastIndex2;
-            for(int j = 0; j < 16; j++){
-                if(out2[j] == '\0'){
-                    lastIndex2 = j+lastIndex;
-                    break;
-                }
-                else{
-                    output[j+lastIndex] = out2[j];
-                }
+            else{
+                motorDelay = delay;
             }
-            output[lastIndex2++] = ' ';
-            output[lastIndex2++] = 'u';
-            output[lastIndex2++] = 's';
-            output[lastIndex2++] = '\r';
-            output[lastIndex2++] = '\n';
-            output[lastIndex2++] = '\0';
-            UART_UartPutString(output);
         }
         else if(*(command+i) == 'F' || *(command+i) == 'f'){
             i +=2;
