@@ -11,7 +11,7 @@
 */
 #include "project.h"
 
-static const int ROUNDS = 3;
+static const int ROUNDS = 20;
 volatile int timeout, pressed;
 
 // This function implements a non-blocking polling loop.
