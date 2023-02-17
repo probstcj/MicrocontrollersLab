@@ -11,6 +11,10 @@
 */
 #include "project.h"
 
+<<<<<<< HEAD
+=======
+// Start initial variables. Number of rounds can be changed if need to debug
+>>>>>>> 8a164d63cbb9cd9dfaf3a8af55bd4376027bb355
 static const int ROUNDS = 20;
 volatile int timeout, pressed;
 
@@ -21,6 +25,7 @@ volatile int timeout, pressed;
 // should match the color used in the sequence
 int poll_button()
 {
+    // Create variable for button
     int button = 0;
     
     // XXX: Polling loop for button goes here
