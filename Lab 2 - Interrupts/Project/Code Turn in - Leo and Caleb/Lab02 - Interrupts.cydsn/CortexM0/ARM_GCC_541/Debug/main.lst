@@ -1,3 +1,4 @@
+<<<<<<< HEAD:Lab 2 - Interrupts/Project/Code Turn in - Leo and Caleb/Lab02 - Interrupts.cydsn/CortexM0/ARM_GCC_541/Debug/main.lst
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cckl5LyS.s 			page 1
 
 
@@ -1463,3 +1464,1499 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cckl5LyS.s 			page 1
  1155 02b8 43794465 		.ascii	"CyDelay\000"
  1155      6C617900 
  1156              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccerryEC.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.drawMovingBar,"ax",%progbits
+  20              		.align	2
+  21              		.global	drawMovingBar
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	drawMovingBar, %function
+  25              	drawMovingBar:
+  26              	.LFB34:
+  27              		.file 1 "main.c"
+   1:main.c        **** /* ========================================
+   2:main.c        ****  *
+   3:main.c        ****  * Copyright YOUR COMPANY, THE YEAR
+   4:main.c        ****  * All Rights Reserved
+   5:main.c        ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:main.c        ****  *
+   7:main.c        ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:main.c        ****  * WHICH IS THE PROPERTY OF your company.
+   9:main.c        ****  *
+  10:main.c        ****  * ========================================
+  11:main.c        **** */
+  12:main.c        **** #include "project.h"
+  13:main.c        **** 
+  14:main.c        **** // Interrupt flags and other variables needed
+  15:main.c        **** volatile int barSync;
+  16:main.c        **** volatile int buttonAsync;
+  17:main.c        **** volatile int encoderAsync;
+  18:main.c        **** volatile int encoderPos;
+  19:main.c        **** int movingDirection;
+  20:main.c        **** 
+  21:main.c        **** 
+  22:main.c        **** int drawMovingBar(int position){
+  28              		.loc 1 22 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              	.LVL0:
+  33 0000 10B5     		push	{r4, lr}
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 4, -8
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccerryEC.s 			page 2
+
+
+  36              		.cfi_offset 14, -4
+  23:main.c        ****     // This will draw the moving bar that is based on the synchronous timer
+  24:main.c        ****     // Checks which direction it is moving in 0 = right, 1 = left
+  25:main.c        ****     if(movingDirection == 0){
+  37              		.loc 1 25 0
+  38 0002 0F4B     		ldr	r3, .L7
+  39 0004 1B68     		ldr	r3, [r3]
+  40 0006 002B     		cmp	r3, #0
+  41 0008 01D1     		bne	.L2
+  26:main.c        ****         position++;
+  42              		.loc 1 26 0
+  43 000a 441C     		adds	r4, r0, #1
+  44              	.LVL1:
+  45 000c 00E0     		b	.L3
+  46              	.LVL2:
+  47              	.L2:
+  27:main.c        ****     }
+  28:main.c        ****     else{
+  29:main.c        ****         position--;
+  48              		.loc 1 29 0
+  49 000e 441E     		subs	r4, r0, #1
+  50              	.LVL3:
+  51              	.L3:
+  30:main.c        ****     }
+  31:main.c        ****     // Draw bar
+  32:main.c        ****     LCD_DrawHorizontalBG(1,0,16,position);
+  52              		.loc 1 32 0
+  53 0010 E3B2     		uxtb	r3, r4
+  54 0012 1022     		movs	r2, #16
+  55 0014 0021     		movs	r1, #0
+  56 0016 0120     		movs	r0, #1
+  57 0018 FFF7FEFF 		bl	LCD_DrawHorizontalBG
+  58              	.LVL4:
+  33:main.c        ****     // Checks position of bar, changes moving direction if needed
+  34:main.c        ****     if(position == 80 || position == 0){
+  59              		.loc 1 34 0
+  60 001c 502C     		cmp	r4, #80
+  61 001e 01D0     		beq	.L4
+  62              		.loc 1 34 0 is_stmt 0 discriminator 1
+  63 0020 002C     		cmp	r4, #0
+  64 0022 0AD1     		bne	.L5
+  65              	.L4:
+  35:main.c        ****         if(movingDirection == 0){
+  66              		.loc 1 35 0 is_stmt 1
+  67 0024 064B     		ldr	r3, .L7
+  68 0026 1B68     		ldr	r3, [r3]
+  69 0028 002B     		cmp	r3, #0
+  70 002a 03D1     		bne	.L6
+  36:main.c        ****             movingDirection = 1;
+  71              		.loc 1 36 0
+  72 002c 0122     		movs	r2, #1
+  73 002e 044B     		ldr	r3, .L7
+  74 0030 1A60     		str	r2, [r3]
+  75 0032 02E0     		b	.L5
+  76              	.L6:
+  37:main.c        ****         }
+  38:main.c        ****         else{
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccerryEC.s 			page 3
+
+
+  39:main.c        ****             movingDirection = 0;
+  77              		.loc 1 39 0
+  78 0034 0022     		movs	r2, #0
+  79 0036 024B     		ldr	r3, .L7
+  80 0038 1A60     		str	r2, [r3]
+  81              	.L5:
+  40:main.c        ****         }
+  41:main.c        ****     }
+  42:main.c        ****     // Returns position to update in main
+  43:main.c        ****     return position;
+  44:main.c        **** }
+  82              		.loc 1 44 0
+  83 003a 2000     		movs	r0, r4
+  84              		@ sp needed
+  85              	.LVL5:
+  86 003c 10BD     		pop	{r4, pc}
+  87              	.L8:
+  88 003e C046     		.align	2
+  89              	.L7:
+  90 0040 00000000 		.word	movingDirection
+  91              		.cfi_endproc
+  92              	.LFE34:
+  93              		.size	drawMovingBar, .-drawMovingBar
+  94              		.section	.text.drawMovableBar,"ax",%progbits
+  95              		.align	2
+  96              		.global	drawMovableBar
+  97              		.code	16
+  98              		.thumb_func
+  99              		.type	drawMovableBar, %function
+ 100              	drawMovableBar:
+ 101              	.LFB35:
+  45:main.c        **** 
+  46:main.c        **** void drawMovableBar(){
+ 102              		.loc 1 46 0
+ 103              		.cfi_startproc
+ 104              		@ args = 0, pretend = 0, frame = 0
+ 105              		@ frame_needed = 0, uses_anonymous_args = 0
+ 106 0000 10B5     		push	{r4, lr}
+ 107              		.cfi_def_cfa_offset 8
+ 108              		.cfi_offset 4, -8
+ 109              		.cfi_offset 14, -4
+  47:main.c        ****     // Draws bar based on encoder position, same as last
+  48:main.c        ****     LCD_DrawHorizontalBG(0,0,16,encoderPos);
+ 110              		.loc 1 48 0
+ 111 0002 044B     		ldr	r3, .L10
+ 112 0004 1B68     		ldr	r3, [r3]
+ 113 0006 DBB2     		uxtb	r3, r3
+ 114 0008 1022     		movs	r2, #16
+ 115 000a 0021     		movs	r1, #0
+ 116 000c 0020     		movs	r0, #0
+ 117 000e FFF7FEFF 		bl	LCD_DrawHorizontalBG
+ 118              	.LVL6:
+  49:main.c        **** }
+ 119              		.loc 1 49 0
+ 120              		@ sp needed
+ 121 0012 10BD     		pop	{r4, pc}
+ 122              	.L11:
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccerryEC.s 			page 4
+
+
+ 123              		.align	2
+ 124              	.L10:
+ 125 0014 00000000 		.word	encoderPos
+ 126              		.cfi_endproc
+ 127              	.LFE35:
+ 128              		.size	drawMovableBar, .-drawMovableBar
+ 129              		.section	.text.main,"ax",%progbits
+ 130              		.align	2
+ 131              		.global	main
+ 132              		.code	16
+ 133              		.thumb_func
+ 134              		.type	main, %function
+ 135              	main:
+ 136              	.LFB36:
+  50:main.c        **** 
+  51:main.c        **** int main(void)
+  52:main.c        **** {
+ 137              		.loc 1 52 0
+ 138              		.cfi_startproc
+ 139              		@ args = 0, pretend = 0, frame = 0
+ 140              		@ frame_needed = 0, uses_anonymous_args = 0
+ 141 0000 70B5     		push	{r4, r5, r6, lr}
+ 142              		.cfi_def_cfa_offset 16
+ 143              		.cfi_offset 4, -16
+ 144              		.cfi_offset 5, -12
+ 145              		.cfi_offset 6, -8
+ 146              		.cfi_offset 14, -4
+  53:main.c        **** 
+  54:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  55:main.c        ****     // Start modules and timers
+  56:main.c        ****     LCD_Start();
+ 147              		.loc 1 56 0
+ 148 0002 FFF7FEFF 		bl	LCD_Start
+ 149              	.LVL7:
+  57:main.c        ****     ENC_ISR_Start();
+ 150              		.loc 1 57 0
+ 151 0006 FFF7FEFF 		bl	ENC_ISR_Start
+ 152              	.LVL8:
+  58:main.c        ****     BTN_ISR_Start();
+ 153              		.loc 1 58 0
+ 154 000a FFF7FEFF 		bl	BTN_ISR_Start
+ 155              	.LVL9:
+  59:main.c        ****     LCD_Timer_Start();
+ 156              		.loc 1 59 0
+ 157 000e FFF7FEFF 		bl	LCD_Timer_Start
+ 158              	.LVL10:
+  60:main.c        ****     LCD_Timer_ISR_Start();
+ 159              		.loc 1 60 0
+ 160 0012 FFF7FEFF 		bl	LCD_Timer_ISR_Start
+ 161              	.LVL11:
+  61:main.c        ****     /*
+  62:main.c        ****     Write period of timer, we picked 12 because our timer frequency was
+  63:main.c        ****     1 KHz, so this would make the bar move one position every 12ms.
+  64:main.c        ****     The reason we wanted 12 ms, was because it goes 80 positions
+  65:main.c        ****     which is approximately 1 second to get to one side of the LCD.
+  66:main.c        ****     */
+  67:main.c        ****     LCD_Timer_WritePeriod(12);
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccerryEC.s 			page 5
+
+
+ 162              		.loc 1 67 0
+ 163 0016 0C20     		movs	r0, #12
+ 164 0018 FFF7FEFF 		bl	LCD_Timer_WritePeriod
+ 165              	.LVL12:
+  68:main.c        ****     // Setting global variables to initial positions
+  69:main.c        ****     barSync = 0;
+ 166              		.loc 1 69 0
+ 167 001c 0023     		movs	r3, #0
+ 168 001e 2A4A     		ldr	r2, .L21
+ 169 0020 1360     		str	r3, [r2]
+  70:main.c        ****     buttonAsync = 0;
+ 170              		.loc 1 70 0
+ 171 0022 2A4A     		ldr	r2, .L21+4
+ 172 0024 1360     		str	r3, [r2]
+  71:main.c        ****     movingDirection = 0;
+ 173              		.loc 1 71 0
+ 174 0026 2A4A     		ldr	r2, .L21+8
+ 175 0028 1360     		str	r3, [r2]
+  72:main.c        ****     encoderAsync = 0;
+ 176              		.loc 1 72 0
+ 177 002a 2A4A     		ldr	r2, .L21+12
+ 178 002c 1360     		str	r3, [r2]
+  73:main.c        ****     encoderPos = 0;
+ 179              		.loc 1 73 0
+ 180 002e 2A4A     		ldr	r2, .L21+16
+ 181 0030 1360     		str	r3, [r2]
+ 182              	.LVL13:
+  74:main.c        ****     // Set local variables for main
+  75:main.c        ****     int barPos = 0;
+  76:main.c        ****     int barMove = 1;
+  77:main.c        ****     // Enable interrupts
+  78:main.c        ****     CyGlobalIntEnable;
+ 183              		.loc 1 78 0
+ 184              		.syntax divided
+ 185              	@ 78 "main.c" 1
+ 186 0032 62B6     		CPSIE   i
+ 187              	@ 0 "" 2
+  79:main.c        ****     // Print initial message on LCD (40x2 LCD)
+  80:main.c        ****     LCD_PrintString("Turn the dial,                          press button");
+ 188              		.loc 1 80 0
+ 189              		.thumb
+ 190              		.syntax unified
+ 191 0034 2948     		ldr	r0, .L21+20
+ 192 0036 FFF7FEFF 		bl	LCD_PrintString
+ 193              	.LVL14:
+  76:main.c        ****     // Enable interrupts
+ 194              		.loc 1 76 0
+ 195 003a 0125     		movs	r5, #1
+  75:main.c        ****     int barMove = 1;
+ 196              		.loc 1 75 0
+ 197 003c 0024     		movs	r4, #0
+ 198              	.LVL15:
+ 199              	.L13:
+  81:main.c        ****     for(;;)
+  82:main.c        ****     {
+  83:main.c        ****         /* Place your application code here. */
+  84:main.c        ****         // Synchronous timer for moving bar
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccerryEC.s 			page 6
+
+
+  85:main.c        ****         if(barSync == 1){
+ 200              		.loc 1 85 0
+ 201 003e 224B     		ldr	r3, .L21
+ 202 0040 1B68     		ldr	r3, [r3]
+ 203 0042 012B     		cmp	r3, #1
+ 204 0044 08D1     		bne	.L14
+  86:main.c        ****             // Reset flag
+  87:main.c        ****             barSync = 0;
+ 205              		.loc 1 87 0
+ 206 0046 0022     		movs	r2, #0
+ 207 0048 1F4B     		ldr	r3, .L21
+ 208 004a 1A60     		str	r2, [r3]
+  88:main.c        ****             // Move bar forward if bar is supposed to be moving
+  89:main.c        ****             if(barMove != 1){
+ 209              		.loc 1 89 0
+ 210 004c 012D     		cmp	r5, #1
+ 211 004e 03D0     		beq	.L14
+  90:main.c        ****                 barPos = drawMovingBar(barPos);
+ 212              		.loc 1 90 0
+ 213 0050 2000     		movs	r0, r4
+ 214 0052 FFF7FEFF 		bl	drawMovingBar
+ 215              	.LVL16:
+ 216 0056 0400     		movs	r4, r0
+ 217              	.LVL17:
+ 218              	.L14:
+  91:main.c        ****             }
+  92:main.c        ****         }
+  93:main.c        ****         // Asynchronous button interrupt for stopping bar
+  94:main.c        ****         if(buttonAsync == 1){
+ 219              		.loc 1 94 0
+ 220 0058 1C4B     		ldr	r3, .L21+4
+ 221 005a 1B68     		ldr	r3, [r3]
+ 222 005c 012B     		cmp	r3, #1
+ 223 005e 29D1     		bne	.L15
+  95:main.c        ****             // Reset flag
+  96:main.c        ****             buttonAsync = 0;
+ 224              		.loc 1 96 0
+ 225 0060 0022     		movs	r2, #0
+ 226 0062 1A4B     		ldr	r3, .L21+4
+ 227 0064 1A60     		str	r2, [r3]
+  97:main.c        ****             // If bar is supposed to be moving, stop bar and decide
+  98:main.c        ****             if(barMove == 0){
+ 228              		.loc 1 98 0
+ 229 0066 002D     		cmp	r5, #0
+ 230 0068 1FD1     		bne	.L20
+ 231              	.LVL18:
+  99:main.c        ****                 // Stop bar
+ 100:main.c        ****                 barMove = 1;
+ 101:main.c        ****                 // Clear display and print both bars
+ 102:main.c        ****                 LCD_ClearDisplay();
+ 232              		.loc 1 102 0
+ 233 006a 0120     		movs	r0, #1
+ 234 006c FFF7FEFF 		bl	LCD_WriteControl
+ 235              	.LVL19:
+ 103:main.c        ****                 barPos = drawMovingBar(barPos);
+ 236              		.loc 1 103 0
+ 237 0070 2000     		movs	r0, r4
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccerryEC.s 			page 7
+
+
+ 238 0072 FFF7FEFF 		bl	drawMovingBar
+ 239              	.LVL20:
+ 240 0076 0400     		movs	r4, r0
+ 241              	.LVL21:
+ 104:main.c        ****                 drawMovableBar();
+ 242              		.loc 1 104 0
+ 243 0078 FFF7FEFF 		bl	drawMovableBar
+ 244              	.LVL22:
+ 105:main.c        ****                 // Half second delay in between bar print and string print
+ 106:main.c        ****                 CyDelay(500);
+ 245              		.loc 1 106 0
+ 246 007c FA20     		movs	r0, #250
+ 247 007e 4000     		lsls	r0, r0, #1
+ 248 0080 FFF7FEFF 		bl	CyDelay
+ 249              	.LVL23:
+ 107:main.c        ****                 // Clear display and print top bar and string
+ 108:main.c        ****                 LCD_ClearDisplay();
+ 250              		.loc 1 108 0
+ 251 0084 0120     		movs	r0, #1
+ 252 0086 FFF7FEFF 		bl	LCD_WriteControl
+ 253              	.LVL24:
+ 109:main.c        ****                 drawMovableBar();
+ 254              		.loc 1 109 0
+ 255 008a FFF7FEFF 		bl	drawMovableBar
+ 256              	.LVL25:
+ 110:main.c        ****                 // Decide if win or not
+ 111:main.c        ****                 if(barPos == encoderPos){
+ 257              		.loc 1 111 0
+ 258 008e 124B     		ldr	r3, .L21+16
+ 259 0090 1B68     		ldr	r3, [r3]
+ 260 0092 9C42     		cmp	r4, r3
+ 261 0094 04D1     		bne	.L17
+ 112:main.c        ****                     // Win
+ 113:main.c        ****                     LCD_PrintString("                        Congratulations!");
+ 262              		.loc 1 113 0
+ 263 0096 1248     		ldr	r0, .L21+24
+ 264 0098 FFF7FEFF 		bl	LCD_PrintString
+ 265              	.LVL26:
+ 100:main.c        ****                 // Clear display and print both bars
+ 266              		.loc 1 100 0
+ 267 009c 0135     		adds	r5, r5, #1
+ 268 009e 05E0     		b	.L18
+ 269              	.L17:
+ 114:main.c        ****                 }
+ 115:main.c        ****                 else{
+ 116:main.c        ****                     // Lose
+ 117:main.c        ****                     LCD_PrintString("                        You suck!!!!!!!!");
+ 270              		.loc 1 117 0
+ 271 00a0 1048     		ldr	r0, .L21+28
+ 272 00a2 FFF7FEFF 		bl	LCD_PrintString
+ 273              	.LVL27:
+ 100:main.c        ****                 // Clear display and print both bars
+ 274              		.loc 1 100 0
+ 275 00a6 0125     		movs	r5, #1
+ 276 00a8 00E0     		b	.L18
+ 277              	.LVL28:
+ 278              	.L20:
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccerryEC.s 			page 8
+
+
+ 118:main.c        ****                 }
+ 119:main.c        ****             }
+ 120:main.c        ****             else{
+ 121:main.c        ****                 // If bar is not moving, start bar moving
+ 122:main.c        ****                 barMove = 0;
+ 279              		.loc 1 122 0
+ 280 00aa 0025     		movs	r5, #0
+ 281              	.LVL29:
+ 282              	.L18:
+ 123:main.c        ****             }
+ 124:main.c        ****             // Debounce button
+ 125:main.c        ****             while(BTN_Read() != 0);
+ 283              		.loc 1 125 0 discriminator 1
+ 284 00ac FFF7FEFF 		bl	BTN_Read
+ 285              	.LVL30:
+ 286 00b0 0028     		cmp	r0, #0
+ 287 00b2 FBD1     		bne	.L18
+ 288              	.L15:
+ 126:main.c        ****         }
+ 127:main.c        ****         // Asynchronous encoder interrupt
+ 128:main.c        ****         if(encoderAsync == 1){
+ 289              		.loc 1 128 0
+ 290 00b4 074B     		ldr	r3, .L21+12
+ 291 00b6 1B68     		ldr	r3, [r3]
+ 292 00b8 012B     		cmp	r3, #1
+ 293 00ba C0D1     		bne	.L13
+ 129:main.c        ****             // Reset flag            
+ 130:main.c        ****             encoderAsync = 0;
+ 294              		.loc 1 130 0
+ 295 00bc 0022     		movs	r2, #0
+ 296 00be 054B     		ldr	r3, .L21+12
+ 297 00c0 1A60     		str	r2, [r3]
+ 131:main.c        ****             // Draw bar
+ 132:main.c        ****             drawMovableBar();
+ 298              		.loc 1 132 0
+ 299 00c2 FFF7FEFF 		bl	drawMovableBar
+ 300              	.LVL31:
+ 301 00c6 BAE7     		b	.L13
+ 302              	.L22:
+ 303              		.align	2
+ 304              	.L21:
+ 305 00c8 00000000 		.word	barSync
+ 306 00cc 00000000 		.word	buttonAsync
+ 307 00d0 00000000 		.word	movingDirection
+ 308 00d4 00000000 		.word	encoderAsync
+ 309 00d8 00000000 		.word	encoderPos
+ 310 00dc 00000000 		.word	.LC7
+ 311 00e0 38000000 		.word	.LC9
+ 312 00e4 64000000 		.word	.LC11
+ 313              		.cfi_endproc
+ 314              	.LFE36:
+ 315              		.size	main, .-main
+ 316              		.comm	movingDirection,4,4
+ 317              		.comm	encoderPos,4,4
+ 318              		.comm	encoderAsync,4,4
+ 319              		.comm	buttonAsync,4,4
+ 320              		.comm	barSync,4,4
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccerryEC.s 			page 9
+
+
+ 321              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 322              		.align	2
+ 323              	.LC7:
+ 324 0000 5475726E 		.ascii	"Turn the dial,                          press butto"
+ 324      20746865 
+ 324      20646961 
+ 324      6C2C2020 
+ 324      20202020 
+ 325 0033 6E00     		.ascii	"n\000"
+ 326 0035 000000   		.space	3
+ 327              	.LC9:
+ 328 0038 20202020 		.ascii	"                        Congratulations!\000"
+ 328      20202020 
+ 328      20202020 
+ 328      20202020 
+ 328      20202020 
+ 329 0061 000000   		.space	3
+ 330              	.LC11:
+ 331 0064 20202020 		.ascii	"                        You suck!!!!!!!!\000"
+ 331      20202020 
+ 331      20202020 
+ 331      20202020 
+ 331      20202020 
+ 332              		.text
+ 333              	.Letext0:
+ 334              		.file 2 "Generated_Source\\PSoC4/LCD.h"
+ 335              		.file 3 "Generated_Source\\PSoC4/ENC_ISR.h"
+ 336              		.file 4 "Generated_Source\\PSoC4/BTN_ISR.h"
+ 337              		.file 5 "Generated_Source\\PSoC4/LCD_Timer.h"
+ 338              		.file 6 "Generated_Source\\PSoC4/LCD_Timer_ISR.h"
+ 339              		.file 7 "Generated_Source\\PSoC4/CyLib.h"
+ 340              		.file 8 "Generated_Source\\PSoC4/BTN.h"
+ 341              		.section	.debug_info,"",%progbits
+ 342              	.Ldebug_info0:
+ 343 0000 1B030000 		.4byte	0x31b
+ 344 0004 0400     		.2byte	0x4
+ 345 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 346 000a 04       		.byte	0x4
+ 347 000b 01       		.uleb128 0x1
+ 348 000c 52010000 		.4byte	.LASF32
+ 349 0010 0C       		.byte	0xc
+ 350 0011 73020000 		.4byte	.LASF33
+ 351 0015 E0010000 		.4byte	.LASF34
+ 352 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 353 001d 00000000 		.4byte	0
+ 354 0021 00000000 		.4byte	.Ldebug_line0
+ 355 0025 02       		.uleb128 0x2
+ 356 0026 01       		.byte	0x1
+ 357 0027 06       		.byte	0x6
+ 358 0028 9E020000 		.4byte	.LASF0
+ 359 002c 02       		.uleb128 0x2
+ 360 002d 01       		.byte	0x1
+ 361 002e 08       		.byte	0x8
+ 362 002f 6A000000 		.4byte	.LASF1
+ 363 0033 02       		.uleb128 0x2
+ 364 0034 02       		.byte	0x2
+ 365 0035 05       		.byte	0x5
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccerryEC.s 			page 10
+
+
+ 366 0036 7F020000 		.4byte	.LASF2
+ 367 003a 02       		.uleb128 0x2
+ 368 003b 02       		.byte	0x2
+ 369 003c 07       		.byte	0x7
+ 370 003d 96000000 		.4byte	.LASF3
+ 371 0041 02       		.uleb128 0x2
+ 372 0042 04       		.byte	0x4
+ 373 0043 05       		.byte	0x5
+ 374 0044 89020000 		.4byte	.LASF4
+ 375 0048 02       		.uleb128 0x2
+ 376 0049 04       		.byte	0x4
+ 377 004a 07       		.byte	0x7
+ 378 004b 84000000 		.4byte	.LASF5
+ 379 004f 02       		.uleb128 0x2
+ 380 0050 08       		.byte	0x8
+ 381 0051 05       		.byte	0x5
+ 382 0052 57020000 		.4byte	.LASF6
+ 383 0056 02       		.uleb128 0x2
+ 384 0057 08       		.byte	0x8
+ 385 0058 07       		.byte	0x7
+ 386 0059 33010000 		.4byte	.LASF7
+ 387 005d 03       		.uleb128 0x3
+ 388 005e 04       		.byte	0x4
+ 389 005f 05       		.byte	0x5
+ 390 0060 696E7400 		.ascii	"int\000"
+ 391 0064 02       		.uleb128 0x2
+ 392 0065 04       		.byte	0x4
+ 393 0066 07       		.byte	0x7
+ 394 0067 26010000 		.4byte	.LASF8
+ 395 006b 02       		.uleb128 0x2
+ 396 006c 04       		.byte	0x4
+ 397 006d 04       		.byte	0x4
+ 398 006e 5A000000 		.4byte	.LASF9
+ 399 0072 02       		.uleb128 0x2
+ 400 0073 08       		.byte	0x8
+ 401 0074 04       		.byte	0x4
+ 402 0075 D6000000 		.4byte	.LASF10
+ 403 0079 02       		.uleb128 0x2
+ 404 007a 01       		.byte	0x1
+ 405 007b 08       		.byte	0x8
+ 406 007c 7A020000 		.4byte	.LASF11
+ 407 0080 02       		.uleb128 0x2
+ 408 0081 08       		.byte	0x8
+ 409 0082 04       		.byte	0x4
+ 410 0083 92020000 		.4byte	.LASF12
+ 411 0087 02       		.uleb128 0x2
+ 412 0088 04       		.byte	0x4
+ 413 0089 07       		.byte	0x7
+ 414 008a 45020000 		.4byte	.LASF13
+ 415 008e 04       		.uleb128 0x4
+ 416 008f 18010000 		.4byte	.LASF35
+ 417 0093 01       		.byte	0x1
+ 418 0094 16       		.byte	0x16
+ 419 0095 5D000000 		.4byte	0x5d
+ 420 0099 00000000 		.4byte	.LFB34
+ 421 009d 44000000 		.4byte	.LFE34-.LFB34
+ 422 00a1 01       		.uleb128 0x1
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccerryEC.s 			page 11
+
+
+ 423 00a2 9C       		.byte	0x9c
+ 424 00a3 D6000000 		.4byte	0xd6
+ 425 00a7 05       		.uleb128 0x5
+ 426 00a8 0F010000 		.4byte	.LASF36
+ 427 00ac 01       		.byte	0x1
+ 428 00ad 16       		.byte	0x16
+ 429 00ae 5D000000 		.4byte	0x5d
+ 430 00b2 00000000 		.4byte	.LLST0
+ 431 00b6 06       		.uleb128 0x6
+ 432 00b7 1C000000 		.4byte	.LVL4
+ 433 00bb A3020000 		.4byte	0x2a3
+ 434 00bf 07       		.uleb128 0x7
+ 435 00c0 01       		.uleb128 0x1
+ 436 00c1 50       		.byte	0x50
+ 437 00c2 01       		.uleb128 0x1
+ 438 00c3 31       		.byte	0x31
+ 439 00c4 07       		.uleb128 0x7
+ 440 00c5 01       		.uleb128 0x1
+ 441 00c6 51       		.byte	0x51
+ 442 00c7 01       		.uleb128 0x1
+ 443 00c8 30       		.byte	0x30
+ 444 00c9 07       		.uleb128 0x7
+ 445 00ca 01       		.uleb128 0x1
+ 446 00cb 52       		.byte	0x52
+ 447 00cc 01       		.uleb128 0x1
+ 448 00cd 40       		.byte	0x40
+ 449 00ce 07       		.uleb128 0x7
+ 450 00cf 01       		.uleb128 0x1
+ 451 00d0 53       		.byte	0x53
+ 452 00d1 02       		.uleb128 0x2
+ 453 00d2 74       		.byte	0x74
+ 454 00d3 00       		.sleb128 0
+ 455 00d4 00       		.byte	0
+ 456 00d5 00       		.byte	0
+ 457 00d6 08       		.uleb128 0x8
+ 458 00d7 DD000000 		.4byte	.LASF37
+ 459 00db 01       		.byte	0x1
+ 460 00dc 2E       		.byte	0x2e
+ 461 00dd 00000000 		.4byte	.LFB35
+ 462 00e1 18000000 		.4byte	.LFE35-.LFB35
+ 463 00e5 01       		.uleb128 0x1
+ 464 00e6 9C       		.byte	0x9c
+ 465 00e7 05010000 		.4byte	0x105
+ 466 00eb 06       		.uleb128 0x6
+ 467 00ec 12000000 		.4byte	.LVL6
+ 468 00f0 A3020000 		.4byte	0x2a3
+ 469 00f4 07       		.uleb128 0x7
+ 470 00f5 01       		.uleb128 0x1
+ 471 00f6 50       		.byte	0x50
+ 472 00f7 01       		.uleb128 0x1
+ 473 00f8 30       		.byte	0x30
+ 474 00f9 07       		.uleb128 0x7
+ 475 00fa 01       		.uleb128 0x1
+ 476 00fb 51       		.byte	0x51
+ 477 00fc 01       		.uleb128 0x1
+ 478 00fd 30       		.byte	0x30
+ 479 00fe 07       		.uleb128 0x7
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccerryEC.s 			page 12
+
+
+ 480 00ff 01       		.uleb128 0x1
+ 481 0100 52       		.byte	0x52
+ 482 0101 01       		.uleb128 0x1
+ 483 0102 40       		.byte	0x40
+ 484 0103 00       		.byte	0
+ 485 0104 00       		.byte	0
+ 486 0105 09       		.uleb128 0x9
+ 487 0106 EC000000 		.4byte	.LASF38
+ 488 010a 01       		.byte	0x1
+ 489 010b 33       		.byte	0x33
+ 490 010c 5D000000 		.4byte	0x5d
+ 491 0110 00000000 		.4byte	.LFB36
+ 492 0114 E8000000 		.4byte	.LFE36-.LFB36
+ 493 0118 01       		.uleb128 0x1
+ 494 0119 9C       		.byte	0x9c
+ 495 011a 49020000 		.4byte	0x249
+ 496 011e 0A       		.uleb128 0xa
+ 497 011f 3F000000 		.4byte	.LASF14
+ 498 0123 01       		.byte	0x1
+ 499 0124 4B       		.byte	0x4b
+ 500 0125 5D000000 		.4byte	0x5d
+ 501 0129 3F000000 		.4byte	.LLST1
+ 502 012d 0A       		.uleb128 0xa
+ 503 012e 27000000 		.4byte	.LASF15
+ 504 0132 01       		.byte	0x1
+ 505 0133 4C       		.byte	0x4c
+ 506 0134 5D000000 		.4byte	0x5d
+ 507 0138 74000000 		.4byte	.LLST2
+ 508 013c 0B       		.uleb128 0xb
+ 509 013d 06000000 		.4byte	.LVL7
+ 510 0141 AE020000 		.4byte	0x2ae
+ 511 0145 0B       		.uleb128 0xb
+ 512 0146 0A000000 		.4byte	.LVL8
+ 513 014a B9020000 		.4byte	0x2b9
+ 514 014e 0B       		.uleb128 0xb
+ 515 014f 0E000000 		.4byte	.LVL9
+ 516 0153 C4020000 		.4byte	0x2c4
+ 517 0157 0B       		.uleb128 0xb
+ 518 0158 12000000 		.4byte	.LVL10
+ 519 015c CF020000 		.4byte	0x2cf
+ 520 0160 0B       		.uleb128 0xb
+ 521 0161 16000000 		.4byte	.LVL11
+ 522 0165 DB020000 		.4byte	0x2db
+ 523 0169 0C       		.uleb128 0xc
+ 524 016a 1C000000 		.4byte	.LVL12
+ 525 016e E6020000 		.4byte	0x2e6
+ 526 0172 7C010000 		.4byte	0x17c
+ 527 0176 07       		.uleb128 0x7
+ 528 0177 01       		.uleb128 0x1
+ 529 0178 50       		.byte	0x50
+ 530 0179 01       		.uleb128 0x1
+ 531 017a 3C       		.byte	0x3c
+ 532 017b 00       		.byte	0
+ 533 017c 0C       		.uleb128 0xc
+ 534 017d 3A000000 		.4byte	.LVL14
+ 535 0181 F2020000 		.4byte	0x2f2
+ 536 0185 93010000 		.4byte	0x193
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccerryEC.s 			page 13
+
+
+ 537 0189 07       		.uleb128 0x7
+ 538 018a 01       		.uleb128 0x1
+ 539 018b 50       		.byte	0x50
+ 540 018c 05       		.uleb128 0x5
+ 541 018d 03       		.byte	0x3
+ 542 018e 00000000 		.4byte	.LC7
+ 543 0192 00       		.byte	0
+ 544 0193 0C       		.uleb128 0xc
+ 545 0194 56000000 		.4byte	.LVL16
+ 546 0198 8E000000 		.4byte	0x8e
+ 547 019c A7010000 		.4byte	0x1a7
+ 548 01a0 07       		.uleb128 0x7
+ 549 01a1 01       		.uleb128 0x1
+ 550 01a2 50       		.byte	0x50
+ 551 01a3 02       		.uleb128 0x2
+ 552 01a4 74       		.byte	0x74
+ 553 01a5 00       		.sleb128 0
+ 554 01a6 00       		.byte	0
+ 555 01a7 0C       		.uleb128 0xc
+ 556 01a8 70000000 		.4byte	.LVL19
+ 557 01ac FD020000 		.4byte	0x2fd
+ 558 01b0 BA010000 		.4byte	0x1ba
+ 559 01b4 07       		.uleb128 0x7
+ 560 01b5 01       		.uleb128 0x1
+ 561 01b6 50       		.byte	0x50
+ 562 01b7 01       		.uleb128 0x1
+ 563 01b8 31       		.byte	0x31
+ 564 01b9 00       		.byte	0
+ 565 01ba 0C       		.uleb128 0xc
+ 566 01bb 76000000 		.4byte	.LVL20
+ 567 01bf 8E000000 		.4byte	0x8e
+ 568 01c3 CE010000 		.4byte	0x1ce
+ 569 01c7 07       		.uleb128 0x7
+ 570 01c8 01       		.uleb128 0x1
+ 571 01c9 50       		.byte	0x50
+ 572 01ca 02       		.uleb128 0x2
+ 573 01cb 74       		.byte	0x74
+ 574 01cc 00       		.sleb128 0
+ 575 01cd 00       		.byte	0
+ 576 01ce 0B       		.uleb128 0xb
+ 577 01cf 7C000000 		.4byte	.LVL22
+ 578 01d3 D6000000 		.4byte	0xd6
+ 579 01d7 0C       		.uleb128 0xc
+ 580 01d8 84000000 		.4byte	.LVL23
+ 581 01dc 08030000 		.4byte	0x308
+ 582 01e0 EC010000 		.4byte	0x1ec
+ 583 01e4 07       		.uleb128 0x7
+ 584 01e5 01       		.uleb128 0x1
+ 585 01e6 50       		.byte	0x50
+ 586 01e7 03       		.uleb128 0x3
+ 587 01e8 0A       		.byte	0xa
+ 588 01e9 F401     		.2byte	0x1f4
+ 589 01eb 00       		.byte	0
+ 590 01ec 0C       		.uleb128 0xc
+ 591 01ed 8A000000 		.4byte	.LVL24
+ 592 01f1 FD020000 		.4byte	0x2fd
+ 593 01f5 FF010000 		.4byte	0x1ff
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccerryEC.s 			page 14
+
+
+ 594 01f9 07       		.uleb128 0x7
+ 595 01fa 01       		.uleb128 0x1
+ 596 01fb 50       		.byte	0x50
+ 597 01fc 01       		.uleb128 0x1
+ 598 01fd 31       		.byte	0x31
+ 599 01fe 00       		.byte	0
+ 600 01ff 0B       		.uleb128 0xb
+ 601 0200 8E000000 		.4byte	.LVL25
+ 602 0204 D6000000 		.4byte	0xd6
+ 603 0208 0C       		.uleb128 0xc
+ 604 0209 9C000000 		.4byte	.LVL26
+ 605 020d F2020000 		.4byte	0x2f2
+ 606 0211 1F020000 		.4byte	0x21f
+ 607 0215 07       		.uleb128 0x7
+ 608 0216 01       		.uleb128 0x1
+ 609 0217 50       		.byte	0x50
+ 610 0218 05       		.uleb128 0x5
+ 611 0219 03       		.byte	0x3
+ 612 021a 38000000 		.4byte	.LC9
+ 613 021e 00       		.byte	0
+ 614 021f 0C       		.uleb128 0xc
+ 615 0220 A6000000 		.4byte	.LVL27
+ 616 0224 F2020000 		.4byte	0x2f2
+ 617 0228 36020000 		.4byte	0x236
+ 618 022c 07       		.uleb128 0x7
+ 619 022d 01       		.uleb128 0x1
+ 620 022e 50       		.byte	0x50
+ 621 022f 05       		.uleb128 0x5
+ 622 0230 03       		.byte	0x3
+ 623 0231 64000000 		.4byte	.LC11
+ 624 0235 00       		.byte	0
+ 625 0236 0B       		.uleb128 0xb
+ 626 0237 B0000000 		.4byte	.LVL30
+ 627 023b 13030000 		.4byte	0x313
+ 628 023f 0B       		.uleb128 0xb
+ 629 0240 C6000000 		.4byte	.LVL31
+ 630 0244 D6000000 		.4byte	0xd6
+ 631 0248 00       		.byte	0
+ 632 0249 0D       		.uleb128 0xd
+ 633 024a 4A010000 		.4byte	.LASF16
+ 634 024e 01       		.byte	0x1
+ 635 024f 0F       		.byte	0xf
+ 636 0250 5A020000 		.4byte	0x25a
+ 637 0254 05       		.uleb128 0x5
+ 638 0255 03       		.byte	0x3
+ 639 0256 00000000 		.4byte	barSync
+ 640 025a 0E       		.uleb128 0xe
+ 641 025b 5D000000 		.4byte	0x5d
+ 642 025f 0D       		.uleb128 0xd
+ 643 0260 78000000 		.4byte	.LASF17
+ 644 0264 01       		.byte	0x1
+ 645 0265 10       		.byte	0x10
+ 646 0266 5A020000 		.4byte	0x25a
+ 647 026a 05       		.uleb128 0x5
+ 648 026b 03       		.byte	0x3
+ 649 026c 00000000 		.4byte	buttonAsync
+ 650 0270 0D       		.uleb128 0xd
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccerryEC.s 			page 15
+
+
+ 651 0271 A9000000 		.4byte	.LASF18
+ 652 0275 01       		.byte	0x1
+ 653 0276 11       		.byte	0x11
+ 654 0277 5A020000 		.4byte	0x25a
+ 655 027b 05       		.uleb128 0x5
+ 656 027c 03       		.byte	0x3
+ 657 027d 00000000 		.4byte	encoderAsync
+ 658 0281 0D       		.uleb128 0xd
+ 659 0282 CB000000 		.4byte	.LASF19
+ 660 0286 01       		.byte	0x1
+ 661 0287 12       		.byte	0x12
+ 662 0288 5A020000 		.4byte	0x25a
+ 663 028c 05       		.uleb128 0x5
+ 664 028d 03       		.byte	0x3
+ 665 028e 00000000 		.4byte	encoderPos
+ 666 0292 0D       		.uleb128 0xd
+ 667 0293 AA020000 		.4byte	.LASF20
+ 668 0297 01       		.byte	0x1
+ 669 0298 13       		.byte	0x13
+ 670 0299 5D000000 		.4byte	0x5d
+ 671 029d 05       		.uleb128 0x5
+ 672 029e 03       		.byte	0x3
+ 673 029f 00000000 		.4byte	movingDirection
+ 674 02a3 0F       		.uleb128 0xf
+ 675 02a4 B6000000 		.4byte	.LASF21
+ 676 02a8 B6000000 		.4byte	.LASF21
+ 677 02ac 02       		.byte	0x2
+ 678 02ad 4B       		.byte	0x4b
+ 679 02ae 0F       		.uleb128 0xf
+ 680 02af 60000000 		.4byte	.LASF22
+ 681 02b3 60000000 		.4byte	.LASF22
+ 682 02b7 02       		.byte	0x2
+ 683 02b8 38       		.byte	0x38
+ 684 02b9 0F       		.uleb128 0xf
+ 685 02ba 01010000 		.4byte	.LASF23
+ 686 02be 01010000 		.4byte	.LASF23
+ 687 02c2 03       		.byte	0x3
+ 688 02c3 17       		.byte	0x17
+ 689 02c4 0F       		.uleb128 0xf
+ 690 02c5 65020000 		.4byte	.LASF24
+ 691 02c9 65020000 		.4byte	.LASF24
+ 692 02cd 04       		.byte	0x4
+ 693 02ce 17       		.byte	0x17
+ 694 02cf 10       		.uleb128 0x10
+ 695 02d0 2F000000 		.4byte	.LASF25
+ 696 02d4 2F000000 		.4byte	.LASF25
+ 697 02d8 05       		.byte	0x5
+ 698 02d9 3201     		.2byte	0x132
+ 699 02db 0F       		.uleb128 0xf
+ 700 02dc 46000000 		.4byte	.LASF26
+ 701 02e0 46000000 		.4byte	.LASF26
+ 702 02e4 06       		.byte	0x6
+ 703 02e5 17       		.byte	0x17
+ 704 02e6 10       		.uleb128 0x10
+ 705 02e7 11000000 		.4byte	.LASF27
+ 706 02eb 11000000 		.4byte	.LASF27
+ 707 02ef 05       		.byte	0x5
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccerryEC.s 			page 16
+
+
+ 708 02f0 5001     		.2byte	0x150
+ 709 02f2 0F       		.uleb128 0xf
+ 710 02f3 F1000000 		.4byte	.LASF28
+ 711 02f7 F1000000 		.4byte	.LASF28
+ 712 02fb 02       		.byte	0x2
+ 713 02fc 3C       		.byte	0x3c
+ 714 02fd 0F       		.uleb128 0xf
+ 715 02fe 00000000 		.4byte	.LASF29
+ 716 0302 00000000 		.4byte	.LASF29
+ 717 0306 02       		.byte	0x2
+ 718 0307 3A       		.byte	0x3a
+ 719 0308 0F       		.uleb128 0xf
+ 720 0309 BA020000 		.4byte	.LASF30
+ 721 030d BA020000 		.4byte	.LASF30
+ 722 0311 07       		.byte	0x7
+ 723 0312 D9       		.byte	0xd9
+ 724 0313 0F       		.uleb128 0xf
+ 725 0314 4E020000 		.4byte	.LASF31
+ 726 0318 4E020000 		.4byte	.LASF31
+ 727 031c 08       		.byte	0x8
+ 728 031d 32       		.byte	0x32
+ 729 031e 00       		.byte	0
+ 730              		.section	.debug_abbrev,"",%progbits
+ 731              	.Ldebug_abbrev0:
+ 732 0000 01       		.uleb128 0x1
+ 733 0001 11       		.uleb128 0x11
+ 734 0002 01       		.byte	0x1
+ 735 0003 25       		.uleb128 0x25
+ 736 0004 0E       		.uleb128 0xe
+ 737 0005 13       		.uleb128 0x13
+ 738 0006 0B       		.uleb128 0xb
+ 739 0007 03       		.uleb128 0x3
+ 740 0008 0E       		.uleb128 0xe
+ 741 0009 1B       		.uleb128 0x1b
+ 742 000a 0E       		.uleb128 0xe
+ 743 000b 55       		.uleb128 0x55
+ 744 000c 17       		.uleb128 0x17
+ 745 000d 11       		.uleb128 0x11
+ 746 000e 01       		.uleb128 0x1
+ 747 000f 10       		.uleb128 0x10
+ 748 0010 17       		.uleb128 0x17
+ 749 0011 00       		.byte	0
+ 750 0012 00       		.byte	0
+ 751 0013 02       		.uleb128 0x2
+ 752 0014 24       		.uleb128 0x24
+ 753 0015 00       		.byte	0
+ 754 0016 0B       		.uleb128 0xb
+ 755 0017 0B       		.uleb128 0xb
+ 756 0018 3E       		.uleb128 0x3e
+ 757 0019 0B       		.uleb128 0xb
+ 758 001a 03       		.uleb128 0x3
+ 759 001b 0E       		.uleb128 0xe
+ 760 001c 00       		.byte	0
+ 761 001d 00       		.byte	0
+ 762 001e 03       		.uleb128 0x3
+ 763 001f 24       		.uleb128 0x24
+ 764 0020 00       		.byte	0
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccerryEC.s 			page 17
+
+
+ 765 0021 0B       		.uleb128 0xb
+ 766 0022 0B       		.uleb128 0xb
+ 767 0023 3E       		.uleb128 0x3e
+ 768 0024 0B       		.uleb128 0xb
+ 769 0025 03       		.uleb128 0x3
+ 770 0026 08       		.uleb128 0x8
+ 771 0027 00       		.byte	0
+ 772 0028 00       		.byte	0
+ 773 0029 04       		.uleb128 0x4
+ 774 002a 2E       		.uleb128 0x2e
+ 775 002b 01       		.byte	0x1
+ 776 002c 3F       		.uleb128 0x3f
+ 777 002d 19       		.uleb128 0x19
+ 778 002e 03       		.uleb128 0x3
+ 779 002f 0E       		.uleb128 0xe
+ 780 0030 3A       		.uleb128 0x3a
+ 781 0031 0B       		.uleb128 0xb
+ 782 0032 3B       		.uleb128 0x3b
+ 783 0033 0B       		.uleb128 0xb
+ 784 0034 27       		.uleb128 0x27
+ 785 0035 19       		.uleb128 0x19
+ 786 0036 49       		.uleb128 0x49
+ 787 0037 13       		.uleb128 0x13
+ 788 0038 11       		.uleb128 0x11
+ 789 0039 01       		.uleb128 0x1
+ 790 003a 12       		.uleb128 0x12
+ 791 003b 06       		.uleb128 0x6
+ 792 003c 40       		.uleb128 0x40
+ 793 003d 18       		.uleb128 0x18
+ 794 003e 9742     		.uleb128 0x2117
+ 795 0040 19       		.uleb128 0x19
+ 796 0041 01       		.uleb128 0x1
+ 797 0042 13       		.uleb128 0x13
+ 798 0043 00       		.byte	0
+ 799 0044 00       		.byte	0
+ 800 0045 05       		.uleb128 0x5
+ 801 0046 05       		.uleb128 0x5
+ 802 0047 00       		.byte	0
+ 803 0048 03       		.uleb128 0x3
+ 804 0049 0E       		.uleb128 0xe
+ 805 004a 3A       		.uleb128 0x3a
+ 806 004b 0B       		.uleb128 0xb
+ 807 004c 3B       		.uleb128 0x3b
+ 808 004d 0B       		.uleb128 0xb
+ 809 004e 49       		.uleb128 0x49
+ 810 004f 13       		.uleb128 0x13
+ 811 0050 02       		.uleb128 0x2
+ 812 0051 17       		.uleb128 0x17
+ 813 0052 00       		.byte	0
+ 814 0053 00       		.byte	0
+ 815 0054 06       		.uleb128 0x6
+ 816 0055 898201   		.uleb128 0x4109
+ 817 0058 01       		.byte	0x1
+ 818 0059 11       		.uleb128 0x11
+ 819 005a 01       		.uleb128 0x1
+ 820 005b 31       		.uleb128 0x31
+ 821 005c 13       		.uleb128 0x13
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccerryEC.s 			page 18
+
+
+ 822 005d 00       		.byte	0
+ 823 005e 00       		.byte	0
+ 824 005f 07       		.uleb128 0x7
+ 825 0060 8A8201   		.uleb128 0x410a
+ 826 0063 00       		.byte	0
+ 827 0064 02       		.uleb128 0x2
+ 828 0065 18       		.uleb128 0x18
+ 829 0066 9142     		.uleb128 0x2111
+ 830 0068 18       		.uleb128 0x18
+ 831 0069 00       		.byte	0
+ 832 006a 00       		.byte	0
+ 833 006b 08       		.uleb128 0x8
+ 834 006c 2E       		.uleb128 0x2e
+ 835 006d 01       		.byte	0x1
+ 836 006e 3F       		.uleb128 0x3f
+ 837 006f 19       		.uleb128 0x19
+ 838 0070 03       		.uleb128 0x3
+ 839 0071 0E       		.uleb128 0xe
+ 840 0072 3A       		.uleb128 0x3a
+ 841 0073 0B       		.uleb128 0xb
+ 842 0074 3B       		.uleb128 0x3b
+ 843 0075 0B       		.uleb128 0xb
+ 844 0076 11       		.uleb128 0x11
+ 845 0077 01       		.uleb128 0x1
+ 846 0078 12       		.uleb128 0x12
+ 847 0079 06       		.uleb128 0x6
+ 848 007a 40       		.uleb128 0x40
+ 849 007b 18       		.uleb128 0x18
+ 850 007c 9742     		.uleb128 0x2117
+ 851 007e 19       		.uleb128 0x19
+ 852 007f 01       		.uleb128 0x1
+ 853 0080 13       		.uleb128 0x13
+ 854 0081 00       		.byte	0
+ 855 0082 00       		.byte	0
+ 856 0083 09       		.uleb128 0x9
+ 857 0084 2E       		.uleb128 0x2e
+ 858 0085 01       		.byte	0x1
+ 859 0086 3F       		.uleb128 0x3f
+ 860 0087 19       		.uleb128 0x19
+ 861 0088 03       		.uleb128 0x3
+ 862 0089 0E       		.uleb128 0xe
+ 863 008a 3A       		.uleb128 0x3a
+ 864 008b 0B       		.uleb128 0xb
+ 865 008c 3B       		.uleb128 0x3b
+ 866 008d 0B       		.uleb128 0xb
+ 867 008e 27       		.uleb128 0x27
+ 868 008f 19       		.uleb128 0x19
+ 869 0090 49       		.uleb128 0x49
+ 870 0091 13       		.uleb128 0x13
+ 871 0092 8701     		.uleb128 0x87
+ 872 0094 19       		.uleb128 0x19
+ 873 0095 11       		.uleb128 0x11
+ 874 0096 01       		.uleb128 0x1
+ 875 0097 12       		.uleb128 0x12
+ 876 0098 06       		.uleb128 0x6
+ 877 0099 40       		.uleb128 0x40
+ 878 009a 18       		.uleb128 0x18
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccerryEC.s 			page 19
+
+
+ 879 009b 9742     		.uleb128 0x2117
+ 880 009d 19       		.uleb128 0x19
+ 881 009e 01       		.uleb128 0x1
+ 882 009f 13       		.uleb128 0x13
+ 883 00a0 00       		.byte	0
+ 884 00a1 00       		.byte	0
+ 885 00a2 0A       		.uleb128 0xa
+ 886 00a3 34       		.uleb128 0x34
+ 887 00a4 00       		.byte	0
+ 888 00a5 03       		.uleb128 0x3
+ 889 00a6 0E       		.uleb128 0xe
+ 890 00a7 3A       		.uleb128 0x3a
+ 891 00a8 0B       		.uleb128 0xb
+ 892 00a9 3B       		.uleb128 0x3b
+ 893 00aa 0B       		.uleb128 0xb
+ 894 00ab 49       		.uleb128 0x49
+ 895 00ac 13       		.uleb128 0x13
+ 896 00ad 02       		.uleb128 0x2
+ 897 00ae 17       		.uleb128 0x17
+ 898 00af 00       		.byte	0
+ 899 00b0 00       		.byte	0
+ 900 00b1 0B       		.uleb128 0xb
+ 901 00b2 898201   		.uleb128 0x4109
+ 902 00b5 00       		.byte	0
+ 903 00b6 11       		.uleb128 0x11
+ 904 00b7 01       		.uleb128 0x1
+ 905 00b8 31       		.uleb128 0x31
+ 906 00b9 13       		.uleb128 0x13
+ 907 00ba 00       		.byte	0
+ 908 00bb 00       		.byte	0
+ 909 00bc 0C       		.uleb128 0xc
+ 910 00bd 898201   		.uleb128 0x4109
+ 911 00c0 01       		.byte	0x1
+ 912 00c1 11       		.uleb128 0x11
+ 913 00c2 01       		.uleb128 0x1
+ 914 00c3 31       		.uleb128 0x31
+ 915 00c4 13       		.uleb128 0x13
+ 916 00c5 01       		.uleb128 0x1
+ 917 00c6 13       		.uleb128 0x13
+ 918 00c7 00       		.byte	0
+ 919 00c8 00       		.byte	0
+ 920 00c9 0D       		.uleb128 0xd
+ 921 00ca 34       		.uleb128 0x34
+ 922 00cb 00       		.byte	0
+ 923 00cc 03       		.uleb128 0x3
+ 924 00cd 0E       		.uleb128 0xe
+ 925 00ce 3A       		.uleb128 0x3a
+ 926 00cf 0B       		.uleb128 0xb
+ 927 00d0 3B       		.uleb128 0x3b
+ 928 00d1 0B       		.uleb128 0xb
+ 929 00d2 49       		.uleb128 0x49
+ 930 00d3 13       		.uleb128 0x13
+ 931 00d4 3F       		.uleb128 0x3f
+ 932 00d5 19       		.uleb128 0x19
+ 933 00d6 02       		.uleb128 0x2
+ 934 00d7 18       		.uleb128 0x18
+ 935 00d8 00       		.byte	0
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccerryEC.s 			page 20
+
+
+ 936 00d9 00       		.byte	0
+ 937 00da 0E       		.uleb128 0xe
+ 938 00db 35       		.uleb128 0x35
+ 939 00dc 00       		.byte	0
+ 940 00dd 49       		.uleb128 0x49
+ 941 00de 13       		.uleb128 0x13
+ 942 00df 00       		.byte	0
+ 943 00e0 00       		.byte	0
+ 944 00e1 0F       		.uleb128 0xf
+ 945 00e2 2E       		.uleb128 0x2e
+ 946 00e3 00       		.byte	0
+ 947 00e4 3F       		.uleb128 0x3f
+ 948 00e5 19       		.uleb128 0x19
+ 949 00e6 3C       		.uleb128 0x3c
+ 950 00e7 19       		.uleb128 0x19
+ 951 00e8 6E       		.uleb128 0x6e
+ 952 00e9 0E       		.uleb128 0xe
+ 953 00ea 03       		.uleb128 0x3
+ 954 00eb 0E       		.uleb128 0xe
+ 955 00ec 3A       		.uleb128 0x3a
+ 956 00ed 0B       		.uleb128 0xb
+ 957 00ee 3B       		.uleb128 0x3b
+ 958 00ef 0B       		.uleb128 0xb
+ 959 00f0 00       		.byte	0
+ 960 00f1 00       		.byte	0
+ 961 00f2 10       		.uleb128 0x10
+ 962 00f3 2E       		.uleb128 0x2e
+ 963 00f4 00       		.byte	0
+ 964 00f5 3F       		.uleb128 0x3f
+ 965 00f6 19       		.uleb128 0x19
+ 966 00f7 3C       		.uleb128 0x3c
+ 967 00f8 19       		.uleb128 0x19
+ 968 00f9 6E       		.uleb128 0x6e
+ 969 00fa 0E       		.uleb128 0xe
+ 970 00fb 03       		.uleb128 0x3
+ 971 00fc 0E       		.uleb128 0xe
+ 972 00fd 3A       		.uleb128 0x3a
+ 973 00fe 0B       		.uleb128 0xb
+ 974 00ff 3B       		.uleb128 0x3b
+ 975 0100 05       		.uleb128 0x5
+ 976 0101 00       		.byte	0
+ 977 0102 00       		.byte	0
+ 978 0103 00       		.byte	0
+ 979              		.section	.debug_loc,"",%progbits
+ 980              	.Ldebug_loc0:
+ 981              	.LLST0:
+ 982 0000 00000000 		.4byte	.LVL0
+ 983 0004 0C000000 		.4byte	.LVL1
+ 984 0008 0100     		.2byte	0x1
+ 985 000a 50       		.byte	0x50
+ 986 000b 0C000000 		.4byte	.LVL1
+ 987 000f 0E000000 		.4byte	.LVL2
+ 988 0013 0100     		.2byte	0x1
+ 989 0015 54       		.byte	0x54
+ 990 0016 0E000000 		.4byte	.LVL2
+ 991 001a 10000000 		.4byte	.LVL3
+ 992 001e 0100     		.2byte	0x1
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccerryEC.s 			page 21
+
+
+ 993 0020 50       		.byte	0x50
+ 994 0021 10000000 		.4byte	.LVL3
+ 995 0025 3C000000 		.4byte	.LVL5
+ 996 0029 0100     		.2byte	0x1
+ 997 002b 54       		.byte	0x54
+ 998 002c 3C000000 		.4byte	.LVL5
+ 999 0030 44000000 		.4byte	.LFE34
+ 1000 0034 0100     		.2byte	0x1
+ 1001 0036 50       		.byte	0x50
+ 1002 0037 00000000 		.4byte	0
+ 1003 003b 00000000 		.4byte	0
+ 1004              	.LLST1:
+ 1005 003f 32000000 		.4byte	.LVL13
+ 1006 0043 3E000000 		.4byte	.LVL15
+ 1007 0047 0200     		.2byte	0x2
+ 1008 0049 30       		.byte	0x30
+ 1009 004a 9F       		.byte	0x9f
+ 1010 004b 3E000000 		.4byte	.LVL15
+ 1011 004f 78000000 		.4byte	.LVL21
+ 1012 0053 0100     		.2byte	0x1
+ 1013 0055 54       		.byte	0x54
+ 1014 0056 78000000 		.4byte	.LVL21
+ 1015 005a 7B000000 		.4byte	.LVL22-1
+ 1016 005e 0100     		.2byte	0x1
+ 1017 0060 50       		.byte	0x50
+ 1018 0061 7B000000 		.4byte	.LVL22-1
+ 1019 0065 E8000000 		.4byte	.LFE36
+ 1020 0069 0100     		.2byte	0x1
+ 1021 006b 54       		.byte	0x54
+ 1022 006c 00000000 		.4byte	0
+ 1023 0070 00000000 		.4byte	0
+ 1024              	.LLST2:
+ 1025 0074 32000000 		.4byte	.LVL13
+ 1026 0078 3E000000 		.4byte	.LVL15
+ 1027 007c 0200     		.2byte	0x2
+ 1028 007e 31       		.byte	0x31
+ 1029 007f 9F       		.byte	0x9f
+ 1030 0080 3E000000 		.4byte	.LVL15
+ 1031 0084 6A000000 		.4byte	.LVL18
+ 1032 0088 0100     		.2byte	0x1
+ 1033 008a 55       		.byte	0x55
+ 1034 008b 6A000000 		.4byte	.LVL18
+ 1035 008f AA000000 		.4byte	.LVL28
+ 1036 0093 0200     		.2byte	0x2
+ 1037 0095 31       		.byte	0x31
+ 1038 0096 9F       		.byte	0x9f
+ 1039 0097 AA000000 		.4byte	.LVL28
+ 1040 009b E8000000 		.4byte	.LFE36
+ 1041 009f 0100     		.2byte	0x1
+ 1042 00a1 55       		.byte	0x55
+ 1043 00a2 00000000 		.4byte	0
+ 1044 00a6 00000000 		.4byte	0
+ 1045              		.section	.debug_aranges,"",%progbits
+ 1046 0000 2C000000 		.4byte	0x2c
+ 1047 0004 0200     		.2byte	0x2
+ 1048 0006 00000000 		.4byte	.Ldebug_info0
+ 1049 000a 04       		.byte	0x4
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccerryEC.s 			page 22
+
+
+ 1050 000b 00       		.byte	0
+ 1051 000c 0000     		.2byte	0
+ 1052 000e 0000     		.2byte	0
+ 1053 0010 00000000 		.4byte	.LFB34
+ 1054 0014 44000000 		.4byte	.LFE34-.LFB34
+ 1055 0018 00000000 		.4byte	.LFB35
+ 1056 001c 18000000 		.4byte	.LFE35-.LFB35
+ 1057 0020 00000000 		.4byte	.LFB36
+ 1058 0024 E8000000 		.4byte	.LFE36-.LFB36
+ 1059 0028 00000000 		.4byte	0
+ 1060 002c 00000000 		.4byte	0
+ 1061              		.section	.debug_ranges,"",%progbits
+ 1062              	.Ldebug_ranges0:
+ 1063 0000 00000000 		.4byte	.LFB34
+ 1064 0004 44000000 		.4byte	.LFE34
+ 1065 0008 00000000 		.4byte	.LFB35
+ 1066 000c 18000000 		.4byte	.LFE35
+ 1067 0010 00000000 		.4byte	.LFB36
+ 1068 0014 E8000000 		.4byte	.LFE36
+ 1069 0018 00000000 		.4byte	0
+ 1070 001c 00000000 		.4byte	0
+ 1071              		.section	.debug_line,"",%progbits
+ 1072              	.Ldebug_line0:
+ 1073 0000 06010000 		.section	.debug_str,"MS",%progbits,1
+ 1073      02008D00 
+ 1073      00000201 
+ 1073      FB0E0D00 
+ 1073      01010101 
+ 1074              	.LASF29:
+ 1075 0000 4C43445F 		.ascii	"LCD_WriteControl\000"
+ 1075      57726974 
+ 1075      65436F6E 
+ 1075      74726F6C 
+ 1075      00
+ 1076              	.LASF27:
+ 1077 0011 4C43445F 		.ascii	"LCD_Timer_WritePeriod\000"
+ 1077      54696D65 
+ 1077      725F5772 
+ 1077      69746550 
+ 1077      6572696F 
+ 1078              	.LASF15:
+ 1079 0027 6261724D 		.ascii	"barMove\000"
+ 1079      6F766500 
+ 1080              	.LASF25:
+ 1081 002f 4C43445F 		.ascii	"LCD_Timer_Start\000"
+ 1081      54696D65 
+ 1081      725F5374 
+ 1081      61727400 
+ 1082              	.LASF14:
+ 1083 003f 62617250 		.ascii	"barPos\000"
+ 1083      6F7300
+ 1084              	.LASF26:
+ 1085 0046 4C43445F 		.ascii	"LCD_Timer_ISR_Start\000"
+ 1085      54696D65 
+ 1085      725F4953 
+ 1085      525F5374 
+ 1085      61727400 
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccerryEC.s 			page 23
+
+
+ 1086              	.LASF9:
+ 1087 005a 666C6F61 		.ascii	"float\000"
+ 1087      7400
+ 1088              	.LASF22:
+ 1089 0060 4C43445F 		.ascii	"LCD_Start\000"
+ 1089      53746172 
+ 1089      7400
+ 1090              	.LASF1:
+ 1091 006a 756E7369 		.ascii	"unsigned char\000"
+ 1091      676E6564 
+ 1091      20636861 
+ 1091      7200
+ 1092              	.LASF17:
+ 1093 0078 62757474 		.ascii	"buttonAsync\000"
+ 1093      6F6E4173 
+ 1093      796E6300 
+ 1094              	.LASF5:
+ 1095 0084 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1095      20756E73 
+ 1095      69676E65 
+ 1095      6420696E 
+ 1095      7400
+ 1096              	.LASF3:
+ 1097 0096 73686F72 		.ascii	"short unsigned int\000"
+ 1097      7420756E 
+ 1097      7369676E 
+ 1097      65642069 
+ 1097      6E7400
+ 1098              	.LASF18:
+ 1099 00a9 656E636F 		.ascii	"encoderAsync\000"
+ 1099      64657241 
+ 1099      73796E63 
+ 1099      00
+ 1100              	.LASF21:
+ 1101 00b6 4C43445F 		.ascii	"LCD_DrawHorizontalBG\000"
+ 1101      44726177 
+ 1101      486F7269 
+ 1101      7A6F6E74 
+ 1101      616C4247 
+ 1102              	.LASF19:
+ 1103 00cb 656E636F 		.ascii	"encoderPos\000"
+ 1103      64657250 
+ 1103      6F7300
+ 1104              	.LASF10:
+ 1105 00d6 646F7562 		.ascii	"double\000"
+ 1105      6C6500
+ 1106              	.LASF37:
+ 1107 00dd 64726177 		.ascii	"drawMovableBar\000"
+ 1107      4D6F7661 
+ 1107      626C6542 
+ 1107      617200
+ 1108              	.LASF38:
+ 1109 00ec 6D61696E 		.ascii	"main\000"
+ 1109      00
+ 1110              	.LASF28:
+ 1111 00f1 4C43445F 		.ascii	"LCD_PrintString\000"
+ 1111      5072696E 
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccerryEC.s 			page 24
+
+
+ 1111      74537472 
+ 1111      696E6700 
+ 1112              	.LASF23:
+ 1113 0101 454E435F 		.ascii	"ENC_ISR_Start\000"
+ 1113      4953525F 
+ 1113      53746172 
+ 1113      7400
+ 1114              	.LASF36:
+ 1115 010f 706F7369 		.ascii	"position\000"
+ 1115      74696F6E 
+ 1115      00
+ 1116              	.LASF35:
+ 1117 0118 64726177 		.ascii	"drawMovingBar\000"
+ 1117      4D6F7669 
+ 1117      6E674261 
+ 1117      7200
+ 1118              	.LASF8:
+ 1119 0126 756E7369 		.ascii	"unsigned int\000"
+ 1119      676E6564 
+ 1119      20696E74 
+ 1119      00
+ 1120              	.LASF7:
+ 1121 0133 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1121      206C6F6E 
+ 1121      6720756E 
+ 1121      7369676E 
+ 1121      65642069 
+ 1122              	.LASF16:
+ 1123 014a 62617253 		.ascii	"barSync\000"
+ 1123      796E6300 
+ 1124              	.LASF32:
+ 1125 0152 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1125      43313120 
+ 1125      352E342E 
+ 1125      31203230 
+ 1125      31363036 
+ 1126 0185 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 1126      20726576 
+ 1126      6973696F 
+ 1126      6E203233 
+ 1126      37373135 
+ 1127 01b8 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1127      66756E63 
+ 1127      74696F6E 
+ 1127      2D736563 
+ 1127      74696F6E 
+ 1128              	.LASF34:
+ 1129 01e0 433A5C55 		.ascii	"C:\\Users\\Hello Kitty\\Desktop\\MicrocontrollersLa"
+ 1129      73657273 
+ 1129      5C48656C 
+ 1129      6C6F204B 
+ 1129      69747479 
+ 1130 020f 625C4C61 		.ascii	"b\\Lab 2 - Interrupts\\Project\\Lab02 - Interrupts."
+ 1130      62203220 
+ 1130      2D20496E 
+ 1130      74657272 
+ 1130      75707473 
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccerryEC.s 			page 25
+
+
+ 1131 023f 63796473 		.ascii	"cydsn\000"
+ 1131      6E00
+ 1132              	.LASF13:
+ 1133 0245 73697A65 		.ascii	"sizetype\000"
+ 1133      74797065 
+ 1133      00
+ 1134              	.LASF31:
+ 1135 024e 42544E5F 		.ascii	"BTN_Read\000"
+ 1135      52656164 
+ 1135      00
+ 1136              	.LASF6:
+ 1137 0257 6C6F6E67 		.ascii	"long long int\000"
+ 1137      206C6F6E 
+ 1137      6720696E 
+ 1137      7400
+ 1138              	.LASF24:
+ 1139 0265 42544E5F 		.ascii	"BTN_ISR_Start\000"
+ 1139      4953525F 
+ 1139      53746172 
+ 1139      7400
+ 1140              	.LASF33:
+ 1141 0273 6D61696E 		.ascii	"main.c\000"
+ 1141      2E6300
+ 1142              	.LASF11:
+ 1143 027a 63686172 		.ascii	"char\000"
+ 1143      00
+ 1144              	.LASF2:
+ 1145 027f 73686F72 		.ascii	"short int\000"
+ 1145      7420696E 
+ 1145      7400
+ 1146              	.LASF4:
+ 1147 0289 6C6F6E67 		.ascii	"long int\000"
+ 1147      20696E74 
+ 1147      00
+ 1148              	.LASF12:
+ 1149 0292 6C6F6E67 		.ascii	"long double\000"
+ 1149      20646F75 
+ 1149      626C6500 
+ 1150              	.LASF0:
+ 1151 029e 7369676E 		.ascii	"signed char\000"
+ 1151      65642063 
+ 1151      68617200 
+ 1152              	.LASF20:
+ 1153 02aa 6D6F7669 		.ascii	"movingDirection\000"
+ 1153      6E674469 
+ 1153      72656374 
+ 1153      696F6E00 
+ 1154              	.LASF30:
+ 1155 02ba 43794465 		.ascii	"CyDelay\000"
+ 1155      6C617900 
+ 1156              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+>>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534:Lab 2 - Interrupts/Project/Lab02 - Interrupts.cydsn/CortexM0/ARM_GCC_541/Debug/main.lst
