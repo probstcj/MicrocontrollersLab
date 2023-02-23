@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 --------------- Build Started: 02/16/2023 14:09:08 Project: Design01, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
 The code generation step is up to date.
 arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_541\Debug/main.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c main.c -o .\CortexM0\ARM_GCC_541\Debug\main.o
@@ -36,3 +37,5 @@ SRAM used: 3040 of 16384 bytes (18.6%). Stack: 2048 bytes. Heap: 512 bytes.
 =======
 --------------- Build Succeeded: 02/23/2023 12:19:10 ---------------
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
+=======
+>>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e

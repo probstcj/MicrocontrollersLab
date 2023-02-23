@@ -16,7 +16,7 @@
 </dataGuid>
 <dataGuid v="597c5b74-0c46-4204-8b7f-96f3570671dc">
 <CyGuid_597c5b74-0c46-4204-8b7f-96f3570671dc type_name="CyDesigner.Common.ProjMgmt.DeviceSelector.CyDeviceSelectorState" version="1">
-<name_val_pair name="Filter Options" v="Series:PSoC 4200L;" />
+<name_val_pair name="Filter Options" v="Series:PSoC 4200M;" />
 </CyGuid_597c5b74-0c46-4204-8b7f-96f3570671dc>
 </dataGuid>
 </userData>

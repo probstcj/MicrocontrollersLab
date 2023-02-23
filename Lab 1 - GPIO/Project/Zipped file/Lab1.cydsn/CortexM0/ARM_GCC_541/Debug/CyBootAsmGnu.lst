@@ -1,3 +1,4 @@
+<<<<<<<< HEAD:Lab 1 - GPIO/Project/Zipped file/Lab1.cydsn/CortexM0/ARM_GCC_541/Debug/CyBootAsmGnu.lst
 ARM GAS  Generated_Source\PSoC4\CyBootAsmGnu.s 			page 1
 
 
@@ -10969,3 +10970,5 @@ ARM GAS  Generated_Source\PSoC4\CyBootAsmGnu.s 			page 1
  135              	.endfunc
  136              	
  137              	.end
+========
+>>>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e:Lab 2 - Interrupts/Project/Lab02 - Interrupts.cydsn/CortexM0/ARM_GCC_541/Debug/CyBootAsmGnu.lst

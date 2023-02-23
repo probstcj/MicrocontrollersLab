@@ -3132,27 +3132,6 @@
         <Data key="src_clk_name" value="LFClk" />
         <Data key="start_on_reset" value="False" />
       </Group>
-      <Group key="3CF048D2-8DE2-48ce-836E-C46FE3B10287">
-        <Data key="check_tolerance" value="False" />
-        <Data key="derive_type" value="BUILTIN" />
-        <Data key="desired_freq" value="24" />
-        <Data key="desired_unit" value="6" />
-        <Data key="divider" value="0" />
-        <Data key="enabled" value="False" />
-        <Data key="MANUAL" value="False" />
-        <Data key="minus_tolerance" value="0" />
-        <Data key="name" value="PLL1" />
-        <Data key="netlist_name" value="PLL1" />
-        <Data key="P" value="0" />
-        <Data key="plus_tolerance" value="0" />
-        <Data key="Q" value="0" />
-        <Data key="scope" value="BUILTIN" />
-        <Data key="sourceClk_minus_acuracy_name" value="0" />
-        <Data key="sourceClk_plus_acuracy_name" value="0" />
-        <Data key="src_clk_id" value="BA1FF31D-570B-4ee4-8086-5A1087FF2AD2" />
-        <Data key="src_clk_name" value="PLL1_Sel" />
-        <Data key="start_on_reset" value="False" />
-      </Group>
       <Group key="3E3A6273-3DC0-49b9-A765-A81596A23306">
         <Data key="check_tolerance" value="False" />
         <Data key="derive_type" value="BUILTIN" />
@@ -3170,27 +3149,6 @@
         <Data key="src_clk_id" value="13A80296-70D5-4f89-B0D3-510602484A50" />
         <Data key="src_clk_name" value="Direct_Sel" />
         <Data key="start_on_reset" value="True" />
-      </Group>
-      <Group key="4A9DE5A6-9EF0-42af-BC8C-37DA5E390898">
-        <Data key="check_tolerance" value="False" />
-        <Data key="derive_type" value="BUILTIN" />
-        <Data key="desired_freq" value="24" />
-        <Data key="desired_unit" value="6" />
-        <Data key="divider" value="0" />
-        <Data key="enabled" value="False" />
-        <Data key="MANUAL" value="False" />
-        <Data key="minus_tolerance" value="0" />
-        <Data key="name" value="PLL0" />
-        <Data key="netlist_name" value="PLL0" />
-        <Data key="P" value="0" />
-        <Data key="plus_tolerance" value="0" />
-        <Data key="Q" value="0" />
-        <Data key="scope" value="BUILTIN" />
-        <Data key="sourceClk_minus_acuracy_name" value="0" />
-        <Data key="sourceClk_plus_acuracy_name" value="0" />
-        <Data key="src_clk_id" value="25052E45-97E1-4618-A621-47712D88CDFB" />
-        <Data key="src_clk_name" value="PLL0_Sel" />
-        <Data key="start_on_reset" value="False" />
       </Group>
       <Group key="5A84F528-323D-4eda-8141-58D504D70A4B">
         <Data key="check_tolerance" value="False" />
@@ -3454,28 +3412,6 @@
         <Data key="start_on_reset" value="True" />
         <Data key="trim_with" value="NONE" />
       </Group>
-      <Group key="AE29FF0C-09F4-4f1f-90F6-BE0C5AFEF171">
-        <Data key="accuracy_display_unit" value="0" />
-        <Data key="c_load" value="18" />
-        <Data key="check_tolerance" value="False" />
-        <Data key="derive_type" value="BUILTIN" />
-        <Data key="desired_freq" value="24" />
-        <Data key="desired_unit" value="6" />
-        <Data key="divider" value="0" />
-        <Data key="drive_level" value="100" />
-        <Data key="enabled" value="False" />
-        <Data key="esr" value="50" />
-        <Data key="minus_tolerance" value="0" />
-        <Data key="name" value="ECO" />
-        <Data key="netlist_name" value="ECO" />
-        <Data key="plus_tolerance" value="0" />
-        <Data key="scope" value="BUILTIN" />
-        <Data key="sourceClk_minus_acuracy_name" value="0" />
-        <Data key="sourceClk_plus_acuracy_name" value="0" />
-        <Data key="src_clk_id" value="" />
-        <Data key="src_clk_name" value="" />
-        <Data key="start_on_reset" value="False" />
-      </Group>
       <Group key="BA1FF31D-570B-4ee4-8086-5A1087FF2AD2">
         <Data key="check_tolerance" value="False" />
         <Data key="derive_type" value="BUILTIN" />
@@ -3637,7 +3573,6 @@
     <Data key="CYDEV_TEMPERATURE" value="-40C - 85C" />
     <Data key="CYDEV_USE_BUNDLED_CMSIS" value="True" />
     <Data key="CYDEV_VARIABLE_VDDA" value="True" />
-    <Data key="CYDEV_VBUS" value="5.0" />
     <Data key="CYDEV_VDDA" value="3.3" />
     <Data key="CYDEV_VDDD" value="3.3" />
     <Data key="CYDEV_VDDIO" value="3.3" />

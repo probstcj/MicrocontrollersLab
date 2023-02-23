@@ -1,4 +1,1052 @@
+<<<<<<< HEAD
 <<<<<<< HEAD:Lab 3 - Simon Game/Project/Backup/ECE381_SP23_Lab03_Simon_Clone.4.4/Project/Design01.cydsn/CortexM0/ARM_GCC_541/Debug/PRS_PM.lst
+=======
+<<<<<<< HEAD:Lab 3 - Simon Game/Project/Design01.cydsn/CortexM0/ARM_GCC_541/Debug/PRS_PM.lst
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cccOqpfa.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"PRS_PM.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.PRS_SaveConfig,"ax",%progbits
+  20              		.align	2
+  21              		.global	PRS_SaveConfig
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	PRS_SaveConfig, %function
+  25              	PRS_SaveConfig:
+  26              	.LFB1:
+  27              		.file 1 "Generated_Source\\PSoC4\\PRS_PM.c"
+   1:Generated_Source\PSoC4/PRS_PM.c **** /*******************************************************************************
+   2:Generated_Source\PSoC4/PRS_PM.c **** * File Name: PRS_PM.c
+   3:Generated_Source\PSoC4/PRS_PM.c **** * Version 2.40
+   4:Generated_Source\PSoC4/PRS_PM.c **** *
+   5:Generated_Source\PSoC4/PRS_PM.c **** * Description:
+   6:Generated_Source\PSoC4/PRS_PM.c **** *  This file provides Sleep APIs for PRS component.
+   7:Generated_Source\PSoC4/PRS_PM.c **** *
+   8:Generated_Source\PSoC4/PRS_PM.c **** * Note:
+   9:Generated_Source\PSoC4/PRS_PM.c **** *  None
+  10:Generated_Source\PSoC4/PRS_PM.c **** *
+  11:Generated_Source\PSoC4/PRS_PM.c **** ********************************************************************************
+  12:Generated_Source\PSoC4/PRS_PM.c **** * Copyright 2008-2013, Cypress Semiconductor Corporation.  All rights reserved.
+  13:Generated_Source\PSoC4/PRS_PM.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  14:Generated_Source\PSoC4/PRS_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  15:Generated_Source\PSoC4/PRS_PM.c **** * the software package with which this file was provided.
+  16:Generated_Source\PSoC4/PRS_PM.c **** *******************************************************************************/
+  17:Generated_Source\PSoC4/PRS_PM.c **** 
+  18:Generated_Source\PSoC4/PRS_PM.c **** #include "PRS.h"
+  19:Generated_Source\PSoC4/PRS_PM.c **** 
+  20:Generated_Source\PSoC4/PRS_PM.c **** #if ((PRS_TIME_MULTIPLEXING_ENABLE) && (PRS_WAKEUP_BEHAVIOUR == PRS__RESUMEWORK))
+  21:Generated_Source\PSoC4/PRS_PM.c ****     uint8 PRS_sleepState = PRS_NORMAL_SEQUENCE;    
+  22:Generated_Source\PSoC4/PRS_PM.c **** #endif  /* End ((PRS_TIME_MULTIPLEXING_ENABLE) && 
+  23:Generated_Source\PSoC4/PRS_PM.c ****           (PRS_WAKEUP_BEHAVIOUR == PRS__RESUMEWORK)) */
+  24:Generated_Source\PSoC4/PRS_PM.c **** 
+  25:Generated_Source\PSoC4/PRS_PM.c **** 
+  26:Generated_Source\PSoC4/PRS_PM.c **** /*******************************************************************************
+  27:Generated_Source\PSoC4/PRS_PM.c **** * Function Name: PRS_SaveConfig
+  28:Generated_Source\PSoC4/PRS_PM.c **** ********************************************************************************
+  29:Generated_Source\PSoC4/PRS_PM.c **** *
+  30:Generated_Source\PSoC4/PRS_PM.c **** * Summary:
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cccOqpfa.s 			page 2
+
+
+  31:Generated_Source\PSoC4/PRS_PM.c **** *  Saves seed and polynomial registers.
+  32:Generated_Source\PSoC4/PRS_PM.c **** *
+  33:Generated_Source\PSoC4/PRS_PM.c **** * Parameters:
+  34:Generated_Source\PSoC4/PRS_PM.c **** *  void
+  35:Generated_Source\PSoC4/PRS_PM.c **** *
+  36:Generated_Source\PSoC4/PRS_PM.c **** * Return:
+  37:Generated_Source\PSoC4/PRS_PM.c **** *  void
+  38:Generated_Source\PSoC4/PRS_PM.c **** *
+  39:Generated_Source\PSoC4/PRS_PM.c **** * Global Variables:
+  40:Generated_Source\PSoC4/PRS_PM.c **** *  PRS_backup - modified when non-retention registers are saved.
+  41:Generated_Source\PSoC4/PRS_PM.c **** *
+  42:Generated_Source\PSoC4/PRS_PM.c **** *******************************************************************************/
+  43:Generated_Source\PSoC4/PRS_PM.c **** void PRS_SaveConfig(void) 
+  44:Generated_Source\PSoC4/PRS_PM.c **** {    
+  28              		.loc 1 44 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+  45:Generated_Source\PSoC4/PRS_PM.c ****     #if (PRS_WAKEUP_BEHAVIOUR == PRS__RESUMEWORK)
+  46:Generated_Source\PSoC4/PRS_PM.c ****         /* Save dff register for time mult */
+  47:Generated_Source\PSoC4/PRS_PM.c ****         #if (PRS_TIME_MULTIPLEXING_ENABLE)
+  48:Generated_Source\PSoC4/PRS_PM.c ****             PRS_backup.dffStatus = PRS_STATUS;
+  49:Generated_Source\PSoC4/PRS_PM.c ****             /* Clear normal dff sequence set */
+  50:Generated_Source\PSoC4/PRS_PM.c ****             PRS_sleepState &= ((uint8)~PRS_NORMAL_SEQUENCE);
+  51:Generated_Source\PSoC4/PRS_PM.c ****         #endif  /* End PRS_TIME_MULTIPLEXING_ENABLE */
+  52:Generated_Source\PSoC4/PRS_PM.c ****         
+  53:Generated_Source\PSoC4/PRS_PM.c ****         /* Save A0 and A1 registers */
+  54:Generated_Source\PSoC4/PRS_PM.c ****         #if (PRS_PRS_SIZE <= 32u)
+  55:Generated_Source\PSoC4/PRS_PM.c ****             PRS_backup.seed = PRS_Read();
+  36              		.loc 1 55 0
+  37 0002 FFF7FEFF 		bl	PRS_Read
+  38              	.LVL0:
+  39 0006 014B     		ldr	r3, .L2
+  40 0008 5860     		str	r0, [r3, #4]
+  56:Generated_Source\PSoC4/PRS_PM.c ****             
+  57:Generated_Source\PSoC4/PRS_PM.c ****         #else
+  58:Generated_Source\PSoC4/PRS_PM.c ****             PRS_backup.seedUpper = PRS_ReadUpper();
+  59:Generated_Source\PSoC4/PRS_PM.c ****             PRS_backup.seedLower = PRS_ReadLower();
+  60:Generated_Source\PSoC4/PRS_PM.c ****             
+  61:Generated_Source\PSoC4/PRS_PM.c ****         #endif     /* End (PRS_PRS_SIZE <= 32u) */
+  62:Generated_Source\PSoC4/PRS_PM.c ****         
+  63:Generated_Source\PSoC4/PRS_PM.c ****     #endif  /* End (PRS_WAKEUP_BEHAVIOUR == PRS__RESUMEWORK) */
+  64:Generated_Source\PSoC4/PRS_PM.c **** }
+  41              		.loc 1 64 0
+  42              		@ sp needed
+  43 000a 10BD     		pop	{r4, pc}
+  44              	.L3:
+  45              		.align	2
+  46              	.L2:
+  47 000c 00000000 		.word	PRS_backup
+  48              		.cfi_endproc
+  49              	.LFE1:
+  50              		.size	PRS_SaveConfig, .-PRS_SaveConfig
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cccOqpfa.s 			page 3
+
+
+  51              		.section	.text.PRS_Sleep,"ax",%progbits
+  52              		.align	2
+  53              		.global	PRS_Sleep
+  54              		.code	16
+  55              		.thumb_func
+  56              		.type	PRS_Sleep, %function
+  57              	PRS_Sleep:
+  58              	.LFB2:
+  65:Generated_Source\PSoC4/PRS_PM.c **** 
+  66:Generated_Source\PSoC4/PRS_PM.c **** 
+  67:Generated_Source\PSoC4/PRS_PM.c **** /*******************************************************************************
+  68:Generated_Source\PSoC4/PRS_PM.c **** * Function Name: PRS_Sleep
+  69:Generated_Source\PSoC4/PRS_PM.c **** ********************************************************************************
+  70:Generated_Source\PSoC4/PRS_PM.c **** *
+  71:Generated_Source\PSoC4/PRS_PM.c **** * Summary:
+  72:Generated_Source\PSoC4/PRS_PM.c **** *  Stops PRS computation and saves PRS configuration.
+  73:Generated_Source\PSoC4/PRS_PM.c **** *
+  74:Generated_Source\PSoC4/PRS_PM.c **** * Parameters:
+  75:Generated_Source\PSoC4/PRS_PM.c **** *  void
+  76:Generated_Source\PSoC4/PRS_PM.c **** *
+  77:Generated_Source\PSoC4/PRS_PM.c **** * Return:
+  78:Generated_Source\PSoC4/PRS_PM.c **** *  void
+  79:Generated_Source\PSoC4/PRS_PM.c **** *
+  80:Generated_Source\PSoC4/PRS_PM.c **** * Global Variables:
+  81:Generated_Source\PSoC4/PRS_PM.c **** *  PRS_backup - modified when non-retention registers are saved.
+  82:Generated_Source\PSoC4/PRS_PM.c **** *
+  83:Generated_Source\PSoC4/PRS_PM.c **** *******************************************************************************/
+  84:Generated_Source\PSoC4/PRS_PM.c **** void PRS_Sleep(void) 
+  85:Generated_Source\PSoC4/PRS_PM.c **** {
+  59              		.loc 1 85 0
+  60              		.cfi_startproc
+  61              		@ args = 0, pretend = 0, frame = 0
+  62              		@ frame_needed = 0, uses_anonymous_args = 0
+  63 0000 10B5     		push	{r4, lr}
+  64              		.cfi_def_cfa_offset 8
+  65              		.cfi_offset 4, -8
+  66              		.cfi_offset 14, -4
+  86:Generated_Source\PSoC4/PRS_PM.c ****     /* Store PRS enable state */
+  87:Generated_Source\PSoC4/PRS_PM.c ****     if(PRS_IS_PRS_ENABLE(PRS_CONTROL_REG))
+  67              		.loc 1 87 0
+  68 0002 084B     		ldr	r3, .L7
+  69 0004 1B78     		ldrb	r3, [r3]
+  70 0006 DB07     		lsls	r3, r3, #31
+  71 0008 05D5     		bpl	.L5
+  88:Generated_Source\PSoC4/PRS_PM.c ****     {
+  89:Generated_Source\PSoC4/PRS_PM.c ****         PRS_backup.enableState = 1u;
+  72              		.loc 1 89 0
+  73 000a 0122     		movs	r2, #1
+  74 000c 064B     		ldr	r3, .L7+4
+  75 000e 1A70     		strb	r2, [r3]
+  90:Generated_Source\PSoC4/PRS_PM.c ****         PRS_Stop();
+  76              		.loc 1 90 0
+  77 0010 FFF7FEFF 		bl	PRS_Stop
+  78              	.LVL1:
+  79 0014 02E0     		b	.L6
+  80              	.L5:
+  91:Generated_Source\PSoC4/PRS_PM.c ****     }
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cccOqpfa.s 			page 4
+
+
+  92:Generated_Source\PSoC4/PRS_PM.c ****     else
+  93:Generated_Source\PSoC4/PRS_PM.c ****     {
+  94:Generated_Source\PSoC4/PRS_PM.c ****         PRS_backup.enableState = 0u;
+  81              		.loc 1 94 0
+  82 0016 0022     		movs	r2, #0
+  83 0018 034B     		ldr	r3, .L7+4
+  84 001a 1A70     		strb	r2, [r3]
+  85              	.L6:
+  95:Generated_Source\PSoC4/PRS_PM.c ****     }
+  96:Generated_Source\PSoC4/PRS_PM.c ****     
+  97:Generated_Source\PSoC4/PRS_PM.c ****     PRS_SaveConfig();
+  86              		.loc 1 97 0
+  87 001c FFF7FEFF 		bl	PRS_SaveConfig
+  88              	.LVL2:
+  98:Generated_Source\PSoC4/PRS_PM.c **** }
+  89              		.loc 1 98 0
+  90              		@ sp needed
+  91 0020 10BD     		pop	{r4, pc}
+  92              	.L8:
+  93 0022 C046     		.align	2
+  94              	.L7:
+  95 0024 70000F40 		.word	1074724976
+  96 0028 00000000 		.word	PRS_backup
+  97              		.cfi_endproc
+  98              	.LFE2:
+  99              		.size	PRS_Sleep, .-PRS_Sleep
+ 100              		.section	.text.PRS_RestoreConfig,"ax",%progbits
+ 101              		.align	2
+ 102              		.global	PRS_RestoreConfig
+ 103              		.code	16
+ 104              		.thumb_func
+ 105              		.type	PRS_RestoreConfig, %function
+ 106              	PRS_RestoreConfig:
+ 107              	.LFB3:
+  99:Generated_Source\PSoC4/PRS_PM.c **** 
+ 100:Generated_Source\PSoC4/PRS_PM.c **** 
+ 101:Generated_Source\PSoC4/PRS_PM.c **** /*******************************************************************************
+ 102:Generated_Source\PSoC4/PRS_PM.c **** * Function Name: PRS_RestoreConfig
+ 103:Generated_Source\PSoC4/PRS_PM.c **** ********************************************************************************
+ 104:Generated_Source\PSoC4/PRS_PM.c **** *
+ 105:Generated_Source\PSoC4/PRS_PM.c **** * Summary:
+ 106:Generated_Source\PSoC4/PRS_PM.c **** *  Restores seed and polynomial registers.
+ 107:Generated_Source\PSoC4/PRS_PM.c **** *
+ 108:Generated_Source\PSoC4/PRS_PM.c **** * Parameters:
+ 109:Generated_Source\PSoC4/PRS_PM.c **** *  void
+ 110:Generated_Source\PSoC4/PRS_PM.c **** *
+ 111:Generated_Source\PSoC4/PRS_PM.c **** * Return:
+ 112:Generated_Source\PSoC4/PRS_PM.c **** *  void
+ 113:Generated_Source\PSoC4/PRS_PM.c **** *
+ 114:Generated_Source\PSoC4/PRS_PM.c **** *******************************************************************************/
+ 115:Generated_Source\PSoC4/PRS_PM.c **** #if (PRS_WAKEUP_BEHAVIOUR == PRS__RESUMEWORK)
+ 116:Generated_Source\PSoC4/PRS_PM.c ****     #if (PRS_TIME_MULTIPLEXING_ENABLE)
+ 117:Generated_Source\PSoC4/PRS_PM.c ****         void PRS_RestoreConfig(void) 
+ 118:Generated_Source\PSoC4/PRS_PM.c ****         {   
+ 119:Generated_Source\PSoC4/PRS_PM.c ****             /* Restore A0 and A1 registers */
+ 120:Generated_Source\PSoC4/PRS_PM.c ****             #if (PRS_PRS_SIZE <= 32u)
+ 121:Generated_Source\PSoC4/PRS_PM.c ****                 PRS_WriteSeed(PRS_backup.seed);
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cccOqpfa.s 			page 5
+
+
+ 122:Generated_Source\PSoC4/PRS_PM.c ****             #else
+ 123:Generated_Source\PSoC4/PRS_PM.c ****                 PRS_WriteSeedUpper(PRS_backup.seedUpper);
+ 124:Generated_Source\PSoC4/PRS_PM.c ****                 PRS_WriteSeedLower(PRS_backup.seedLower);
+ 125:Generated_Source\PSoC4/PRS_PM.c ****             #endif  /* End (PRS_PRS_SIZE <= 32u) */
+ 126:Generated_Source\PSoC4/PRS_PM.c ****             
+ 127:Generated_Source\PSoC4/PRS_PM.c ****             #if (PRS_RUN_MODE == PRS__CLOCKED)
+ 128:Generated_Source\PSoC4/PRS_PM.c ****                 #if (PRS_PRS_SIZE <= 32u)
+ 129:Generated_Source\PSoC4/PRS_PM.c ****                     PRS_ResetSeedInit(PRS_DEFAULT_SEED);                        
+ 130:Generated_Source\PSoC4/PRS_PM.c ****                 #else
+ 131:Generated_Source\PSoC4/PRS_PM.c ****                     PRS_ResetSeedInitUpper(PRS_DEFAULT_SEED_UPPER);
+ 132:Generated_Source\PSoC4/PRS_PM.c ****                     PRS_ResetSeedInitLower(PRS_DEFAULT_SEED_LOWER); 
+ 133:Generated_Source\PSoC4/PRS_PM.c ****                 #endif  /* End (PRS_PRS_SIZE <= 32u) */ 
+ 134:Generated_Source\PSoC4/PRS_PM.c ****             #endif  /* End (PRS_RUN_MODE == PRS__CLOCKED) */
+ 135:Generated_Source\PSoC4/PRS_PM.c ****             
+ 136:Generated_Source\PSoC4/PRS_PM.c ****             /* Restore dff state for time mult: use async set/reest */
+ 137:Generated_Source\PSoC4/PRS_PM.c ****             /* Set CI, SI, SO, STATE0, STATE1 */
+ 138:Generated_Source\PSoC4/PRS_PM.c ****             PRS_CONTROL_REG = PRS_backup.dffStatus;
+ 139:Generated_Source\PSoC4/PRS_PM.c ****             
+ 140:Generated_Source\PSoC4/PRS_PM.c ****             /* Make pulse, to set trigger to defined state */
+ 141:Generated_Source\PSoC4/PRS_PM.c ****             PRS_EXECUTE_DFF_SET;
+ 142:Generated_Source\PSoC4/PRS_PM.c ****             
+ 143:Generated_Source\PSoC4/PRS_PM.c ****             /* Set normal dff sequence set */
+ 144:Generated_Source\PSoC4/PRS_PM.c ****             PRS_sleepState |= PRS_NORMAL_SEQUENCE;
+ 145:Generated_Source\PSoC4/PRS_PM.c ****         }
+ 146:Generated_Source\PSoC4/PRS_PM.c ****         
+ 147:Generated_Source\PSoC4/PRS_PM.c ****     #else
+ 148:Generated_Source\PSoC4/PRS_PM.c ****         void PRS_RestoreConfig(void) 
+ 149:Generated_Source\PSoC4/PRS_PM.c ****         {   
+ 108              		.loc 1 149 0
+ 109              		.cfi_startproc
+ 110              		@ args = 0, pretend = 0, frame = 0
+ 111              		@ frame_needed = 0, uses_anonymous_args = 0
+ 112 0000 10B5     		push	{r4, lr}
+ 113              		.cfi_def_cfa_offset 8
+ 114              		.cfi_offset 4, -8
+ 115              		.cfi_offset 14, -4
+ 150:Generated_Source\PSoC4/PRS_PM.c ****             /* Restore A0 and A1 registers */
+ 151:Generated_Source\PSoC4/PRS_PM.c ****             #if (PRS_PRS_SIZE <= 32u)
+ 152:Generated_Source\PSoC4/PRS_PM.c ****                 PRS_WriteSeed(PRS_backup.seed);
+ 116              		.loc 1 152 0
+ 117 0002 044B     		ldr	r3, .L10
+ 118 0004 5868     		ldr	r0, [r3, #4]
+ 119 0006 FFF7FEFF 		bl	PRS_WriteSeed
+ 120              	.LVL3:
+ 153:Generated_Source\PSoC4/PRS_PM.c ****             #else
+ 154:Generated_Source\PSoC4/PRS_PM.c ****                 PRS_WriteSeedUpper(PRS_backup.seedUpper);
+ 155:Generated_Source\PSoC4/PRS_PM.c ****                 PRS_WriteSeedLower(PRS_backup.seedLower);
+ 156:Generated_Source\PSoC4/PRS_PM.c ****             #endif  /* End (PRS_PRS_SIZE <= 32u) */
+ 157:Generated_Source\PSoC4/PRS_PM.c ****             
+ 158:Generated_Source\PSoC4/PRS_PM.c ****             #if (PRS_RUN_MODE == PRS__CLOCKED)
+ 159:Generated_Source\PSoC4/PRS_PM.c ****                 #if (PRS_PRS_SIZE <= 32u)
+ 160:Generated_Source\PSoC4/PRS_PM.c ****                     PRS_ResetSeedInit(PRS_DEFAULT_SEED);                        
+ 121              		.loc 1 160 0
+ 122 000a 0120     		movs	r0, #1
+ 123 000c 4042     		rsbs	r0, r0, #0
+ 124 000e FFF7FEFF 		bl	PRS_ResetSeedInit
+ 125              	.LVL4:
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cccOqpfa.s 			page 6
+
+
+ 161:Generated_Source\PSoC4/PRS_PM.c ****                 #else
+ 162:Generated_Source\PSoC4/PRS_PM.c ****                     PRS_ResetSeedInitUpper(PRS_DEFAULT_SEED_UPPER);
+ 163:Generated_Source\PSoC4/PRS_PM.c ****                     PRS_ResetSeedInitLower(PRS_DEFAULT_SEED_LOWER); 
+ 164:Generated_Source\PSoC4/PRS_PM.c ****                 #endif  /* End (PRS_PRS_SIZE <= 32u) */ 
+ 165:Generated_Source\PSoC4/PRS_PM.c ****             #endif  /* End (PRS_RUN_MODE == PRS__CLOCKED) */
+ 166:Generated_Source\PSoC4/PRS_PM.c ****         }
+ 126              		.loc 1 166 0
+ 127              		@ sp needed
+ 128 0012 10BD     		pop	{r4, pc}
+ 129              	.L11:
+ 130              		.align	2
+ 131              	.L10:
+ 132 0014 00000000 		.word	PRS_backup
+ 133              		.cfi_endproc
+ 134              	.LFE3:
+ 135              		.size	PRS_RestoreConfig, .-PRS_RestoreConfig
+ 136              		.section	.text.PRS_Wakeup,"ax",%progbits
+ 137              		.align	2
+ 138              		.global	PRS_Wakeup
+ 139              		.code	16
+ 140              		.thumb_func
+ 141              		.type	PRS_Wakeup, %function
+ 142              	PRS_Wakeup:
+ 143              	.LFB4:
+ 167:Generated_Source\PSoC4/PRS_PM.c ****         
+ 168:Generated_Source\PSoC4/PRS_PM.c ****     #endif  /* End (PRS_TIME_MULTIPLEXING_ENABLE) */
+ 169:Generated_Source\PSoC4/PRS_PM.c ****     
+ 170:Generated_Source\PSoC4/PRS_PM.c **** #else
+ 171:Generated_Source\PSoC4/PRS_PM.c ****     void PRS_RestoreConfig(void) 
+ 172:Generated_Source\PSoC4/PRS_PM.c ****     {
+ 173:Generated_Source\PSoC4/PRS_PM.c ****         PRS_Init();
+ 174:Generated_Source\PSoC4/PRS_PM.c ****     }
+ 175:Generated_Source\PSoC4/PRS_PM.c ****     
+ 176:Generated_Source\PSoC4/PRS_PM.c **** #endif  /* End (PRS_WAKEUP_BEHAVIOUR == PRS__RESUMEWORK) */
+ 177:Generated_Source\PSoC4/PRS_PM.c **** 
+ 178:Generated_Source\PSoC4/PRS_PM.c **** 
+ 179:Generated_Source\PSoC4/PRS_PM.c **** /*******************************************************************************
+ 180:Generated_Source\PSoC4/PRS_PM.c **** * Function Name: PRS_Wakeup
+ 181:Generated_Source\PSoC4/PRS_PM.c **** ********************************************************************************
+ 182:Generated_Source\PSoC4/PRS_PM.c **** *
+ 183:Generated_Source\PSoC4/PRS_PM.c **** * Summary:
+ 184:Generated_Source\PSoC4/PRS_PM.c **** *  Restores PRS configuration and starts PRS computation. 
+ 185:Generated_Source\PSoC4/PRS_PM.c **** *
+ 186:Generated_Source\PSoC4/PRS_PM.c **** * Parameters:
+ 187:Generated_Source\PSoC4/PRS_PM.c **** *  void
+ 188:Generated_Source\PSoC4/PRS_PM.c **** *
+ 189:Generated_Source\PSoC4/PRS_PM.c **** * Return:
+ 190:Generated_Source\PSoC4/PRS_PM.c **** *  void
+ 191:Generated_Source\PSoC4/PRS_PM.c **** *
+ 192:Generated_Source\PSoC4/PRS_PM.c **** *******************************************************************************/
+ 193:Generated_Source\PSoC4/PRS_PM.c **** #if ((PRS_WAKEUP_BEHAVIOUR == PRS__RESUMEWORK) && (PRS_TIME_MULTIPLEXING_ENABLE))
+ 194:Generated_Source\PSoC4/PRS_PM.c ****     void PRS_Wakeup(void) 
+ 195:Generated_Source\PSoC4/PRS_PM.c **** #else
+ 196:Generated_Source\PSoC4/PRS_PM.c ****     void PRS_Wakeup(void) 
+ 197:Generated_Source\PSoC4/PRS_PM.c **** #endif  /* End ((PRS_WAKEUP_BEHAVIOUR == PRS__RESUMEWORK) && 
+ 198:Generated_Source\PSoC4/PRS_PM.c ****                 (PRS_TIME_MULTIPLEXING_ENABLE)) */
+ 199:Generated_Source\PSoC4/PRS_PM.c **** {
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cccOqpfa.s 			page 7
+
+
+ 144              		.loc 1 199 0
+ 145              		.cfi_startproc
+ 146              		@ args = 0, pretend = 0, frame = 0
+ 147              		@ frame_needed = 0, uses_anonymous_args = 0
+ 148 0000 10B5     		push	{r4, lr}
+ 149              		.cfi_def_cfa_offset 8
+ 150              		.cfi_offset 4, -8
+ 151              		.cfi_offset 14, -4
+ 200:Generated_Source\PSoC4/PRS_PM.c ****     PRS_RestoreConfig();
+ 152              		.loc 1 200 0
+ 153 0002 FFF7FEFF 		bl	PRS_RestoreConfig
+ 154              	.LVL5:
+ 201:Generated_Source\PSoC4/PRS_PM.c ****     
+ 202:Generated_Source\PSoC4/PRS_PM.c ****     /* Restore PRS enable state */
+ 203:Generated_Source\PSoC4/PRS_PM.c ****     if (PRS_backup.enableState != 0u)
+ 155              		.loc 1 203 0
+ 156 0006 034B     		ldr	r3, .L14
+ 157 0008 1B78     		ldrb	r3, [r3]
+ 158 000a 002B     		cmp	r3, #0
+ 159 000c 01D0     		beq	.L12
+ 204:Generated_Source\PSoC4/PRS_PM.c ****     {
+ 205:Generated_Source\PSoC4/PRS_PM.c ****         PRS_Enable();
+ 160              		.loc 1 205 0
+ 161 000e FFF7FEFF 		bl	PRS_Enable
+ 162              	.LVL6:
+ 163              	.L12:
+ 206:Generated_Source\PSoC4/PRS_PM.c ****     }
+ 207:Generated_Source\PSoC4/PRS_PM.c **** }
+ 164              		.loc 1 207 0
+ 165              		@ sp needed
+ 166 0012 10BD     		pop	{r4, pc}
+ 167              	.L15:
+ 168              		.align	2
+ 169              	.L14:
+ 170 0014 00000000 		.word	PRS_backup
+ 171              		.cfi_endproc
+ 172              	.LFE4:
+ 173              		.size	PRS_Wakeup, .-PRS_Wakeup
+ 174              		.text
+ 175              	.Letext0:
+ 176              		.file 2 "Generated_Source\\PSoC4\\cytypes.h"
+ 177              		.file 3 "Generated_Source\\PSoC4\\PRS.h"
+ 178              		.section	.debug_info,"",%progbits
+ 179              	.Ldebug_info0:
+ 180 0000 C0010000 		.4byte	0x1c0
+ 181 0004 0400     		.2byte	0x4
+ 182 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 183 000a 04       		.byte	0x4
+ 184 000b 01       		.uleb128 0x1
+ 185 000c DA000000 		.4byte	.LASF29
+ 186 0010 0C       		.byte	0xc
+ 187 0011 BA000000 		.4byte	.LASF30
+ 188 0015 AC010000 		.4byte	.LASF31
+ 189 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 190 001d 00000000 		.4byte	0
+ 191 0021 00000000 		.4byte	.Ldebug_line0
+ 192 0025 02       		.uleb128 0x2
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cccOqpfa.s 			page 8
+
+
+ 193 0026 01       		.byte	0x1
+ 194 0027 06       		.byte	0x6
+ 195 0028 49020000 		.4byte	.LASF0
+ 196 002c 02       		.uleb128 0x2
+ 197 002d 01       		.byte	0x1
+ 198 002e 08       		.byte	0x8
+ 199 002f 40000000 		.4byte	.LASF1
+ 200 0033 02       		.uleb128 0x2
+ 201 0034 02       		.byte	0x2
+ 202 0035 05       		.byte	0x5
+ 203 0036 07020000 		.4byte	.LASF2
+ 204 003a 02       		.uleb128 0x2
+ 205 003b 02       		.byte	0x2
+ 206 003c 07       		.byte	0x7
+ 207 003d 12000000 		.4byte	.LASF3
+ 208 0041 02       		.uleb128 0x2
+ 209 0042 04       		.byte	0x4
+ 210 0043 05       		.byte	0x5
+ 211 0044 16020000 		.4byte	.LASF4
+ 212 0048 02       		.uleb128 0x2
+ 213 0049 04       		.byte	0x4
+ 214 004a 07       		.byte	0x7
+ 215 004b 53000000 		.4byte	.LASF5
+ 216 004f 02       		.uleb128 0x2
+ 217 0050 08       		.byte	0x8
+ 218 0051 05       		.byte	0x5
+ 219 0052 7C010000 		.4byte	.LASF6
+ 220 0056 02       		.uleb128 0x2
+ 221 0057 08       		.byte	0x8
+ 222 0058 07       		.byte	0x7
+ 223 0059 A3000000 		.4byte	.LASF7
+ 224 005d 03       		.uleb128 0x3
+ 225 005e 04       		.byte	0x4
+ 226 005f 05       		.byte	0x5
+ 227 0060 696E7400 		.ascii	"int\000"
+ 228 0064 02       		.uleb128 0x2
+ 229 0065 04       		.byte	0x4
+ 230 0066 07       		.byte	0x7
+ 231 0067 96000000 		.4byte	.LASF8
+ 232 006b 04       		.uleb128 0x4
+ 233 006c 65000000 		.4byte	.LASF9
+ 234 0070 02       		.byte	0x2
+ 235 0071 E701     		.2byte	0x1e7
+ 236 0073 2C000000 		.4byte	0x2c
+ 237 0077 04       		.uleb128 0x4
+ 238 0078 8F000000 		.4byte	.LASF10
+ 239 007c 02       		.byte	0x2
+ 240 007d E901     		.2byte	0x1e9
+ 241 007f 48000000 		.4byte	0x48
+ 242 0083 02       		.uleb128 0x2
+ 243 0084 04       		.byte	0x4
+ 244 0085 04       		.byte	0x4
+ 245 0086 3A000000 		.4byte	.LASF11
+ 246 008a 02       		.uleb128 0x2
+ 247 008b 08       		.byte	0x8
+ 248 008c 04       		.byte	0x4
+ 249 008d 7F000000 		.4byte	.LASF12
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cccOqpfa.s 			page 9
+
+
+ 250 0091 02       		.uleb128 0x2
+ 251 0092 01       		.byte	0x1
+ 252 0093 08       		.byte	0x8
+ 253 0094 98010000 		.4byte	.LASF13
+ 254 0098 04       		.uleb128 0x4
+ 255 0099 4E000000 		.4byte	.LASF14
+ 256 009d 02       		.byte	0x2
+ 257 009e 9102     		.2byte	0x291
+ 258 00a0 A4000000 		.4byte	0xa4
+ 259 00a4 05       		.uleb128 0x5
+ 260 00a5 6B000000 		.4byte	0x6b
+ 261 00a9 02       		.uleb128 0x2
+ 262 00aa 08       		.byte	0x8
+ 263 00ab 04       		.byte	0x4
+ 264 00ac 3D020000 		.4byte	.LASF15
+ 265 00b0 02       		.uleb128 0x2
+ 266 00b1 04       		.byte	0x4
+ 267 00b2 07       		.byte	0x7
+ 268 00b3 68010000 		.4byte	.LASF16
+ 269 00b7 06       		.uleb128 0x6
+ 270 00b8 08       		.byte	0x8
+ 271 00b9 03       		.byte	0x3
+ 272 00ba 31       		.byte	0x31
+ 273 00bb D8000000 		.4byte	0xd8
+ 274 00bf 07       		.uleb128 0x7
+ 275 00c0 1F020000 		.4byte	.LASF17
+ 276 00c4 03       		.byte	0x3
+ 277 00c5 33       		.byte	0x33
+ 278 00c6 6B000000 		.4byte	0x6b
+ 279 00ca 00       		.byte	0
+ 280 00cb 07       		.uleb128 0x7
+ 281 00cc 11020000 		.4byte	.LASF18
+ 282 00d0 03       		.byte	0x3
+ 283 00d1 3D       		.byte	0x3d
+ 284 00d2 77000000 		.4byte	0x77
+ 285 00d6 04       		.byte	0x4
+ 286 00d7 00       		.byte	0
+ 287 00d8 08       		.uleb128 0x8
+ 288 00d9 2B020000 		.4byte	.LASF19
+ 289 00dd 03       		.byte	0x3
+ 290 00de 47       		.byte	0x47
+ 291 00df B7000000 		.4byte	0xb7
+ 292 00e3 09       		.uleb128 0x9
+ 293 00e4 9D010000 		.4byte	.LASF20
+ 294 00e8 01       		.byte	0x1
+ 295 00e9 2B       		.byte	0x2b
+ 296 00ea 00000000 		.4byte	.LFB1
+ 297 00ee 10000000 		.4byte	.LFE1-.LFB1
+ 298 00f2 01       		.uleb128 0x1
+ 299 00f3 9C       		.byte	0x9c
+ 300 00f4 02010000 		.4byte	0x102
+ 301 00f8 0A       		.uleb128 0xa
+ 302 00f9 06000000 		.4byte	.LVL0
+ 303 00fd 8C010000 		.4byte	0x18c
+ 304 0101 00       		.byte	0
+ 305 0102 09       		.uleb128 0x9
+ 306 0103 30000000 		.4byte	.LASF21
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cccOqpfa.s 			page 10
+
+
+ 307 0107 01       		.byte	0x1
+ 308 0108 54       		.byte	0x54
+ 309 0109 00000000 		.4byte	.LFB2
+ 310 010d 2C000000 		.4byte	.LFE2-.LFB2
+ 311 0111 01       		.uleb128 0x1
+ 312 0112 9C       		.byte	0x9c
+ 313 0113 2A010000 		.4byte	0x12a
+ 314 0117 0A       		.uleb128 0xa
+ 315 0118 14000000 		.4byte	.LVL1
+ 316 011c 97010000 		.4byte	0x197
+ 317 0120 0A       		.uleb128 0xa
+ 318 0121 20000000 		.4byte	.LVL2
+ 319 0125 E3000000 		.4byte	0xe3
+ 320 0129 00       		.byte	0
+ 321 012a 09       		.uleb128 0x9
+ 322 012b 00000000 		.4byte	.LASF22
+ 323 012f 01       		.byte	0x1
+ 324 0130 94       		.byte	0x94
+ 325 0131 00000000 		.4byte	.LFB3
+ 326 0135 18000000 		.4byte	.LFE3-.LFB3
+ 327 0139 01       		.uleb128 0x1
+ 328 013a 9C       		.byte	0x9c
+ 329 013b 59010000 		.4byte	0x159
+ 330 013f 0A       		.uleb128 0xa
+ 331 0140 0A000000 		.4byte	.LVL3
+ 332 0144 A2010000 		.4byte	0x1a2
+ 333 0148 0B       		.uleb128 0xb
+ 334 0149 12000000 		.4byte	.LVL4
+ 335 014d AD010000 		.4byte	0x1ad
+ 336 0151 0C       		.uleb128 0xc
+ 337 0152 01       		.uleb128 0x1
+ 338 0153 50       		.byte	0x50
+ 339 0154 02       		.uleb128 0x2
+ 340 0155 09       		.byte	0x9
+ 341 0156 FF       		.byte	0xff
+ 342 0157 00       		.byte	0
+ 343 0158 00       		.byte	0
+ 344 0159 09       		.uleb128 0x9
+ 345 015a 74000000 		.4byte	.LASF23
+ 346 015e 01       		.byte	0x1
+ 347 015f C4       		.byte	0xc4
+ 348 0160 00000000 		.4byte	.LFB4
+ 349 0164 18000000 		.4byte	.LFE4-.LFB4
+ 350 0168 01       		.uleb128 0x1
+ 351 0169 9C       		.byte	0x9c
+ 352 016a 81010000 		.4byte	0x181
+ 353 016e 0A       		.uleb128 0xa
+ 354 016f 06000000 		.4byte	.LVL5
+ 355 0173 2A010000 		.4byte	0x12a
+ 356 0177 0A       		.uleb128 0xa
+ 357 0178 12000000 		.4byte	.LVL6
+ 358 017c B8010000 		.4byte	0x1b8
+ 359 0180 00       		.byte	0
+ 360 0181 0D       		.uleb128 0xd
+ 361 0182 25000000 		.4byte	.LASF32
+ 362 0186 03       		.byte	0x3
+ 363 0187 4B       		.byte	0x4b
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cccOqpfa.s 			page 11
+
+
+ 364 0188 D8000000 		.4byte	0xd8
+ 365 018c 0E       		.uleb128 0xe
+ 366 018d 86000000 		.4byte	.LASF24
+ 367 0191 86000000 		.4byte	.LASF24
+ 368 0195 03       		.byte	0x3
+ 369 0196 6D       		.byte	0x6d
+ 370 0197 0E       		.uleb128 0xe
+ 371 0198 6B000000 		.4byte	.LASF25
+ 372 019c 6B000000 		.4byte	.LASF25
+ 373 01a0 03       		.byte	0x3
+ 374 01a1 5A       		.byte	0x5a
+ 375 01a2 0E       		.uleb128 0xe
+ 376 01a3 8A010000 		.4byte	.LASF26
+ 377 01a7 8A010000 		.4byte	.LASF26
+ 378 01ab 03       		.byte	0x3
+ 379 01ac 6E       		.byte	0x6e
+ 380 01ad 0E       		.uleb128 0xe
+ 381 01ae 55020000 		.4byte	.LASF27
+ 382 01b2 55020000 		.4byte	.LASF27
+ 383 01b6 03       		.byte	0x3
+ 384 01b7 84       		.byte	0x84
+ 385 01b8 0E       		.uleb128 0xe
+ 386 01b9 71010000 		.4byte	.LASF28
+ 387 01bd 71010000 		.4byte	.LASF28
+ 388 01c1 03       		.byte	0x3
+ 389 01c2 58       		.byte	0x58
+ 390 01c3 00       		.byte	0
+ 391              		.section	.debug_abbrev,"",%progbits
+ 392              	.Ldebug_abbrev0:
+ 393 0000 01       		.uleb128 0x1
+ 394 0001 11       		.uleb128 0x11
+ 395 0002 01       		.byte	0x1
+ 396 0003 25       		.uleb128 0x25
+ 397 0004 0E       		.uleb128 0xe
+ 398 0005 13       		.uleb128 0x13
+ 399 0006 0B       		.uleb128 0xb
+ 400 0007 03       		.uleb128 0x3
+ 401 0008 0E       		.uleb128 0xe
+ 402 0009 1B       		.uleb128 0x1b
+ 403 000a 0E       		.uleb128 0xe
+ 404 000b 55       		.uleb128 0x55
+ 405 000c 17       		.uleb128 0x17
+ 406 000d 11       		.uleb128 0x11
+ 407 000e 01       		.uleb128 0x1
+ 408 000f 10       		.uleb128 0x10
+ 409 0010 17       		.uleb128 0x17
+ 410 0011 00       		.byte	0
+ 411 0012 00       		.byte	0
+ 412 0013 02       		.uleb128 0x2
+ 413 0014 24       		.uleb128 0x24
+ 414 0015 00       		.byte	0
+ 415 0016 0B       		.uleb128 0xb
+ 416 0017 0B       		.uleb128 0xb
+ 417 0018 3E       		.uleb128 0x3e
+ 418 0019 0B       		.uleb128 0xb
+ 419 001a 03       		.uleb128 0x3
+ 420 001b 0E       		.uleb128 0xe
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cccOqpfa.s 			page 12
+
+
+ 421 001c 00       		.byte	0
+ 422 001d 00       		.byte	0
+ 423 001e 03       		.uleb128 0x3
+ 424 001f 24       		.uleb128 0x24
+ 425 0020 00       		.byte	0
+ 426 0021 0B       		.uleb128 0xb
+ 427 0022 0B       		.uleb128 0xb
+ 428 0023 3E       		.uleb128 0x3e
+ 429 0024 0B       		.uleb128 0xb
+ 430 0025 03       		.uleb128 0x3
+ 431 0026 08       		.uleb128 0x8
+ 432 0027 00       		.byte	0
+ 433 0028 00       		.byte	0
+ 434 0029 04       		.uleb128 0x4
+ 435 002a 16       		.uleb128 0x16
+ 436 002b 00       		.byte	0
+ 437 002c 03       		.uleb128 0x3
+ 438 002d 0E       		.uleb128 0xe
+ 439 002e 3A       		.uleb128 0x3a
+ 440 002f 0B       		.uleb128 0xb
+ 441 0030 3B       		.uleb128 0x3b
+ 442 0031 05       		.uleb128 0x5
+ 443 0032 49       		.uleb128 0x49
+ 444 0033 13       		.uleb128 0x13
+ 445 0034 00       		.byte	0
+ 446 0035 00       		.byte	0
+ 447 0036 05       		.uleb128 0x5
+ 448 0037 35       		.uleb128 0x35
+ 449 0038 00       		.byte	0
+ 450 0039 49       		.uleb128 0x49
+ 451 003a 13       		.uleb128 0x13
+ 452 003b 00       		.byte	0
+ 453 003c 00       		.byte	0
+ 454 003d 06       		.uleb128 0x6
+ 455 003e 13       		.uleb128 0x13
+ 456 003f 01       		.byte	0x1
+ 457 0040 0B       		.uleb128 0xb
+ 458 0041 0B       		.uleb128 0xb
+ 459 0042 3A       		.uleb128 0x3a
+ 460 0043 0B       		.uleb128 0xb
+ 461 0044 3B       		.uleb128 0x3b
+ 462 0045 0B       		.uleb128 0xb
+ 463 0046 01       		.uleb128 0x1
+ 464 0047 13       		.uleb128 0x13
+ 465 0048 00       		.byte	0
+ 466 0049 00       		.byte	0
+ 467 004a 07       		.uleb128 0x7
+ 468 004b 0D       		.uleb128 0xd
+ 469 004c 00       		.byte	0
+ 470 004d 03       		.uleb128 0x3
+ 471 004e 0E       		.uleb128 0xe
+ 472 004f 3A       		.uleb128 0x3a
+ 473 0050 0B       		.uleb128 0xb
+ 474 0051 3B       		.uleb128 0x3b
+ 475 0052 0B       		.uleb128 0xb
+ 476 0053 49       		.uleb128 0x49
+ 477 0054 13       		.uleb128 0x13
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cccOqpfa.s 			page 13
+
+
+ 478 0055 38       		.uleb128 0x38
+ 479 0056 0B       		.uleb128 0xb
+ 480 0057 00       		.byte	0
+ 481 0058 00       		.byte	0
+ 482 0059 08       		.uleb128 0x8
+ 483 005a 16       		.uleb128 0x16
+ 484 005b 00       		.byte	0
+ 485 005c 03       		.uleb128 0x3
+ 486 005d 0E       		.uleb128 0xe
+ 487 005e 3A       		.uleb128 0x3a
+ 488 005f 0B       		.uleb128 0xb
+ 489 0060 3B       		.uleb128 0x3b
+ 490 0061 0B       		.uleb128 0xb
+ 491 0062 49       		.uleb128 0x49
+ 492 0063 13       		.uleb128 0x13
+ 493 0064 00       		.byte	0
+ 494 0065 00       		.byte	0
+ 495 0066 09       		.uleb128 0x9
+ 496 0067 2E       		.uleb128 0x2e
+ 497 0068 01       		.byte	0x1
+ 498 0069 3F       		.uleb128 0x3f
+ 499 006a 19       		.uleb128 0x19
+ 500 006b 03       		.uleb128 0x3
+ 501 006c 0E       		.uleb128 0xe
+ 502 006d 3A       		.uleb128 0x3a
+ 503 006e 0B       		.uleb128 0xb
+ 504 006f 3B       		.uleb128 0x3b
+ 505 0070 0B       		.uleb128 0xb
+ 506 0071 27       		.uleb128 0x27
+ 507 0072 19       		.uleb128 0x19
+ 508 0073 11       		.uleb128 0x11
+ 509 0074 01       		.uleb128 0x1
+ 510 0075 12       		.uleb128 0x12
+ 511 0076 06       		.uleb128 0x6
+ 512 0077 40       		.uleb128 0x40
+ 513 0078 18       		.uleb128 0x18
+ 514 0079 9742     		.uleb128 0x2117
+ 515 007b 19       		.uleb128 0x19
+ 516 007c 01       		.uleb128 0x1
+ 517 007d 13       		.uleb128 0x13
+ 518 007e 00       		.byte	0
+ 519 007f 00       		.byte	0
+ 520 0080 0A       		.uleb128 0xa
+ 521 0081 898201   		.uleb128 0x4109
+ 522 0084 00       		.byte	0
+ 523 0085 11       		.uleb128 0x11
+ 524 0086 01       		.uleb128 0x1
+ 525 0087 31       		.uleb128 0x31
+ 526 0088 13       		.uleb128 0x13
+ 527 0089 00       		.byte	0
+ 528 008a 00       		.byte	0
+ 529 008b 0B       		.uleb128 0xb
+ 530 008c 898201   		.uleb128 0x4109
+ 531 008f 01       		.byte	0x1
+ 532 0090 11       		.uleb128 0x11
+ 533 0091 01       		.uleb128 0x1
+ 534 0092 31       		.uleb128 0x31
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cccOqpfa.s 			page 14
+
+
+ 535 0093 13       		.uleb128 0x13
+ 536 0094 00       		.byte	0
+ 537 0095 00       		.byte	0
+ 538 0096 0C       		.uleb128 0xc
+ 539 0097 8A8201   		.uleb128 0x410a
+ 540 009a 00       		.byte	0
+ 541 009b 02       		.uleb128 0x2
+ 542 009c 18       		.uleb128 0x18
+ 543 009d 9142     		.uleb128 0x2111
+ 544 009f 18       		.uleb128 0x18
+ 545 00a0 00       		.byte	0
+ 546 00a1 00       		.byte	0
+ 547 00a2 0D       		.uleb128 0xd
+ 548 00a3 34       		.uleb128 0x34
+ 549 00a4 00       		.byte	0
+ 550 00a5 03       		.uleb128 0x3
+ 551 00a6 0E       		.uleb128 0xe
+ 552 00a7 3A       		.uleb128 0x3a
+ 553 00a8 0B       		.uleb128 0xb
+ 554 00a9 3B       		.uleb128 0x3b
+ 555 00aa 0B       		.uleb128 0xb
+ 556 00ab 49       		.uleb128 0x49
+ 557 00ac 13       		.uleb128 0x13
+ 558 00ad 3F       		.uleb128 0x3f
+ 559 00ae 19       		.uleb128 0x19
+ 560 00af 3C       		.uleb128 0x3c
+ 561 00b0 19       		.uleb128 0x19
+ 562 00b1 00       		.byte	0
+ 563 00b2 00       		.byte	0
+ 564 00b3 0E       		.uleb128 0xe
+ 565 00b4 2E       		.uleb128 0x2e
+ 566 00b5 00       		.byte	0
+ 567 00b6 3F       		.uleb128 0x3f
+ 568 00b7 19       		.uleb128 0x19
+ 569 00b8 3C       		.uleb128 0x3c
+ 570 00b9 19       		.uleb128 0x19
+ 571 00ba 6E       		.uleb128 0x6e
+ 572 00bb 0E       		.uleb128 0xe
+ 573 00bc 03       		.uleb128 0x3
+ 574 00bd 0E       		.uleb128 0xe
+ 575 00be 3A       		.uleb128 0x3a
+ 576 00bf 0B       		.uleb128 0xb
+ 577 00c0 3B       		.uleb128 0x3b
+ 578 00c1 0B       		.uleb128 0xb
+ 579 00c2 00       		.byte	0
+ 580 00c3 00       		.byte	0
+ 581 00c4 00       		.byte	0
+ 582              		.section	.debug_aranges,"",%progbits
+ 583 0000 34000000 		.4byte	0x34
+ 584 0004 0200     		.2byte	0x2
+ 585 0006 00000000 		.4byte	.Ldebug_info0
+ 586 000a 04       		.byte	0x4
+ 587 000b 00       		.byte	0
+ 588 000c 0000     		.2byte	0
+ 589 000e 0000     		.2byte	0
+ 590 0010 00000000 		.4byte	.LFB1
+ 591 0014 10000000 		.4byte	.LFE1-.LFB1
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cccOqpfa.s 			page 15
+
+
+ 592 0018 00000000 		.4byte	.LFB2
+ 593 001c 2C000000 		.4byte	.LFE2-.LFB2
+ 594 0020 00000000 		.4byte	.LFB3
+ 595 0024 18000000 		.4byte	.LFE3-.LFB3
+ 596 0028 00000000 		.4byte	.LFB4
+ 597 002c 18000000 		.4byte	.LFE4-.LFB4
+ 598 0030 00000000 		.4byte	0
+ 599 0034 00000000 		.4byte	0
+ 600              		.section	.debug_ranges,"",%progbits
+ 601              	.Ldebug_ranges0:
+ 602 0000 00000000 		.4byte	.LFB1
+ 603 0004 10000000 		.4byte	.LFE1
+ 604 0008 00000000 		.4byte	.LFB2
+ 605 000c 2C000000 		.4byte	.LFE2
+ 606 0010 00000000 		.4byte	.LFB3
+ 607 0014 18000000 		.4byte	.LFE3
+ 608 0018 00000000 		.4byte	.LFB4
+ 609 001c 18000000 		.4byte	.LFE4
+ 610 0020 00000000 		.4byte	0
+ 611 0024 00000000 		.4byte	0
+ 612              		.section	.debug_line,"",%progbits
+ 613              	.Ldebug_line0:
+ 614 0000 A4000000 		.section	.debug_str,"MS",%progbits,1
+ 614      02004C00 
+ 614      00000201 
+ 614      FB0E0D00 
+ 614      01010101 
+ 615              	.LASF22:
+ 616 0000 5052535F 		.ascii	"PRS_RestoreConfig\000"
+ 616      52657374 
+ 616      6F726543 
+ 616      6F6E6669 
+ 616      6700
+ 617              	.LASF3:
+ 618 0012 73686F72 		.ascii	"short unsigned int\000"
+ 618      7420756E 
+ 618      7369676E 
+ 618      65642069 
+ 618      6E7400
+ 619              	.LASF32:
+ 620 0025 5052535F 		.ascii	"PRS_backup\000"
+ 620      6261636B 
+ 620      757000
+ 621              	.LASF21:
+ 622 0030 5052535F 		.ascii	"PRS_Sleep\000"
+ 622      536C6565 
+ 622      7000
+ 623              	.LASF11:
+ 624 003a 666C6F61 		.ascii	"float\000"
+ 624      7400
+ 625              	.LASF1:
+ 626 0040 756E7369 		.ascii	"unsigned char\000"
+ 626      676E6564 
+ 626      20636861 
+ 626      7200
+ 627              	.LASF14:
+ 628 004e 72656738 		.ascii	"reg8\000"
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cccOqpfa.s 			page 16
+
+
+ 628      00
+ 629              	.LASF5:
+ 630 0053 6C6F6E67 		.ascii	"long unsigned int\000"
+ 630      20756E73 
+ 630      69676E65 
+ 630      6420696E 
+ 630      7400
+ 631              	.LASF9:
+ 632 0065 75696E74 		.ascii	"uint8\000"
+ 632      3800
+ 633              	.LASF25:
+ 634 006b 5052535F 		.ascii	"PRS_Stop\000"
+ 634      53746F70 
+ 634      00
+ 635              	.LASF23:
+ 636 0074 5052535F 		.ascii	"PRS_Wakeup\000"
+ 636      57616B65 
+ 636      757000
+ 637              	.LASF12:
+ 638 007f 646F7562 		.ascii	"double\000"
+ 638      6C6500
+ 639              	.LASF24:
+ 640 0086 5052535F 		.ascii	"PRS_Read\000"
+ 640      52656164 
+ 640      00
+ 641              	.LASF10:
+ 642 008f 75696E74 		.ascii	"uint32\000"
+ 642      333200
+ 643              	.LASF8:
+ 644 0096 756E7369 		.ascii	"unsigned int\000"
+ 644      676E6564 
+ 644      20696E74 
+ 644      00
+ 645              	.LASF7:
+ 646 00a3 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 646      206C6F6E 
+ 646      6720756E 
+ 646      7369676E 
+ 646      65642069 
+ 647              	.LASF30:
+ 648 00ba 47656E65 		.ascii	"Generated_Source\\PSoC4\\PRS_PM.c\000"
+ 648      72617465 
+ 648      645F536F 
+ 648      75726365 
+ 648      5C50536F 
+ 649              	.LASF29:
+ 650 00da 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 650      43313120 
+ 650      352E342E 
+ 650      31203230 
+ 650      31363036 
+ 651 010d 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 651      20726576 
+ 651      6973696F 
+ 651      6E203233 
+ 651      37373135 
+ 652 0140 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cccOqpfa.s 			page 17
+
+
+ 652      66756E63 
+ 652      74696F6E 
+ 652      2D736563 
+ 652      74696F6E 
+ 653              	.LASF16:
+ 654 0168 73697A65 		.ascii	"sizetype\000"
+ 654      74797065 
+ 654      00
+ 655              	.LASF28:
+ 656 0171 5052535F 		.ascii	"PRS_Enable\000"
+ 656      456E6162 
+ 656      6C6500
+ 657              	.LASF6:
+ 658 017c 6C6F6E67 		.ascii	"long long int\000"
+ 658      206C6F6E 
+ 658      6720696E 
+ 658      7400
+ 659              	.LASF26:
+ 660 018a 5052535F 		.ascii	"PRS_WriteSeed\000"
+ 660      57726974 
+ 660      65536565 
+ 660      6400
+ 661              	.LASF13:
+ 662 0198 63686172 		.ascii	"char\000"
+ 662      00
+ 663              	.LASF20:
+ 664 019d 5052535F 		.ascii	"PRS_SaveConfig\000"
+ 664      53617665 
+ 664      436F6E66 
+ 664      696700
+ 665              	.LASF31:
+ 666 01ac 433A5C55 		.ascii	"C:\\Users\\Hello Kitty\\Desktop\\MicrocontrollersLa"
+ 666      73657273 
+ 666      5C48656C 
+ 666      6C6F204B 
+ 666      69747479 
+ 667 01db 625C4C61 		.ascii	"b\\Lab 3 - Simon Game\\Project\\Design01.cydsn\000"
+ 667      62203320 
+ 667      2D205369 
+ 667      6D6F6E20 
+ 667      47616D65 
+ 668              	.LASF2:
+ 669 0207 73686F72 		.ascii	"short int\000"
+ 669      7420696E 
+ 669      7400
+ 670              	.LASF18:
+ 671 0211 73656564 		.ascii	"seed\000"
+ 671      00
+ 672              	.LASF4:
+ 673 0216 6C6F6E67 		.ascii	"long int\000"
+ 673      20696E74 
+ 673      00
+ 674              	.LASF17:
+ 675 021f 656E6162 		.ascii	"enableState\000"
+ 675      6C655374 
+ 675      61746500 
+ 676              	.LASF19:
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cccOqpfa.s 			page 18
+
+
+ 677 022b 5052535F 		.ascii	"PRS_BACKUP_STRUCT\000"
+ 677      4241434B 
+ 677      55505F53 
+ 677      54525543 
+ 677      5400
+ 678              	.LASF15:
+ 679 023d 6C6F6E67 		.ascii	"long double\000"
+ 679      20646F75 
+ 679      626C6500 
+ 680              	.LASF0:
+ 681 0249 7369676E 		.ascii	"signed char\000"
+ 681      65642063 
+ 681      68617200 
+ 682              	.LASF27:
+ 683 0255 5052535F 		.ascii	"PRS_ResetSeedInit\000"
+ 683      52657365 
+ 683      74536565 
+ 683      64496E69 
+ 683      7400
+ 684              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+=======
+>>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccsy3nWj.s 			page 1
 
 
@@ -1047,6 +2095,7 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccsy3nWj.s 			page 1
  684      64496E69 
  684      7400
  685              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+<<<<<<< HEAD
 =======
 ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cccOqpfa.s 			page 1
 
@@ -2092,3 +3141,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cccOqpfa.s 			page 1
  683      7400
  684              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534:Lab 3 - Simon Game/Project/Design01.cydsn/CortexM0/ARM_GCC_541/Debug/PRS_PM.lst
+=======
+>>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8:Lab 3 - Simon Game/Project/Backup/ECE381_SP23_Lab03_Simon_Clone.4.4/Project/Design01.cydsn/CortexM0/ARM_GCC_541/Debug/PRS_PM.lst
+>>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e

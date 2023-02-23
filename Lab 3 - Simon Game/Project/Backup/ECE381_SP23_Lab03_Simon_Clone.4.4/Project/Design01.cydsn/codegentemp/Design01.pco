@@ -1,4 +1,41 @@
+<<<<<<< HEAD
 <<<<<<< HEAD:Lab 3 - Simon Game/Project/Backup/ECE381_SP23_Lab03_Simon_Clone.4.4/Project/Design01.cydsn/codegentemp/Design01.pco
+=======
+<<<<<<< HEAD:Lab 3 - Simon Game/Project/Design01.cydsn/codegentemp/Design01.pco
+# Design01
+# 2023-02-23 18:16:51Z
+
+# IO_2@[IOP=(3)][IoId=(2)] is reserved: SWDDebugEnabled
+dont_use_io iocell 3 2
+# IO_3@[IOP=(3)][IoId=(3)] is reserved: SWDDebugEnabled
+dont_use_io iocell 3 3
+set_location "ClockGenBlock" m0s8clockgenblockcell -1 -1 0
+set_location "ClockBlock" m0s8clockblockcell -1 -1 0
+set_io "R_LED(0)" iocell 3 0
+set_io "G_LED(0)" iocell 3 1
+set_io "B_LED(0)" iocell 0 2
+set_io "Y_LED(0)" iocell 0 3
+set_io "SPEAKER(0)" iocell 3 4
+set_io "BTN(0)" iocell 1 0
+set_io "BTN(1)" iocell 1 1
+set_io "BTN(2)" iocell 1 2
+set_io "BTN(3)" iocell 1 3
+set_location "Net_13" 0 0 0 1
+set_location "Net_14" 0 0 0 0
+set_location "Net_15" 0 0 0 2
+set_location "Net_16" 0 0 0 3
+set_location "\LED_PWM:cy_m0s8_tcpwm_1\" m0s8tcpwmcell -1 -1 0
+set_location "\LED_SEL:Sync:ctrl_reg\" 0 0 6
+set_location "\SPEAKER_PWM:cy_m0s8_tcpwm_1\" m0s8tcpwmcell -1 -1 2
+set_location "\INPUT_TIMER:cy_m0s8_tcpwm_1\" m0s8tcpwmcell -1 -1 1
+set_location "\PRS:ClkSp:CtrlReg\" 0 1 6
+set_location "\PRS:sC32:PRSdp:u0\" 0 1 2
+set_location "\PRS:sC32:PRSdp:u1\" 1 1 2
+set_location "\PRS:sC32:PRSdp:u2\" 1 0 2
+set_location "\PRS:sC32:PRSdp:u3\" 0 0 2
+set_location "INPUT_TIMER_ISR" interrupt -1 -1 20
+=======
+>>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
 # Design01
 # 2023-02-16 03:59:56Z
 
@@ -31,6 +68,7 @@ set_location "\PRS:sC32:PRSdp:u1\" 1 1 2
 set_location "\PRS:sC32:PRSdp:u2\" 1 0 2
 set_location "\PRS:sC32:PRSdp:u3\" 0 0 2
 set_location "INPUT_TIMER_ISR" interrupt -1 -1 20
+<<<<<<< HEAD
 =======
 # Design01
 # 2023-02-23 18:16:51Z
@@ -65,3 +103,6 @@ set_location "\PRS:sC32:PRSdp:u2\" 1 0 2
 set_location "\PRS:sC32:PRSdp:u3\" 0 0 2
 set_location "INPUT_TIMER_ISR" interrupt -1 -1 20
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534:Lab 3 - Simon Game/Project/Design01.cydsn/codegentemp/Design01.pco
+=======
+>>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8:Lab 3 - Simon Game/Project/Backup/ECE381_SP23_Lab03_Simon_Clone.4.4/Project/Design01.cydsn/codegentemp/Design01.pco
+>>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
