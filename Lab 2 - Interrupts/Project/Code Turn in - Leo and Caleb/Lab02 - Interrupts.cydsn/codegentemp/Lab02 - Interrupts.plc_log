@@ -1,4 +1,17 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD:Lab 2 - Interrupts/Project/Code Turn in - Leo and Caleb/Lab02 - Interrupts.cydsn/codegentemp/Lab02 - Interrupts.plc_log
+I2659: No Constrained paths were found. The placer will run in non-timing driven mode.
+I2076: Total run-time: 1.4 sec.
+
+=======
+I2659: No Constrained paths were found. The placer will run in non-timing driven mode.
+I2076: Total run-time: 0.3 sec.
+
+>>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534:Lab 2 - Interrupts/Project/Lab02 - Interrupts.cydsn/codegentemp/Lab02 - Interrupts.plc_log
+=======
+>>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 <<<<<<< HEAD:Lab 2 - Interrupts/Project/Lab02 - Interrupts.cydsn/codegentemp/Lab02 - Interrupts.plc_log
 I2659: No Constrained paths were found. The placer will run in non-timing driven mode.
 I2076: Total run-time: 0.3 sec.
@@ -8,6 +21,7 @@ I2659: No Constrained paths were found. The placer will run in non-timing driven
 I2076: Total run-time: 1.4 sec.
 
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8:Lab 2 - Interrupts/Project/Code Turn in - Leo and Caleb/Lab02 - Interrupts.cydsn/codegentemp/Lab02 - Interrupts.plc_log
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD:Lab 2 - Interrupts/Project/Code Turn in - Leo and Caleb/Lab02 - Interrupts.cydsn/codegentemp/Lab02 - Interrupts.plc_log
 I2659: No Constrained paths were found. The placer will run in non-timing driven mode.
@@ -19,3 +33,6 @@ I2076: Total run-time: 0.3 sec.
 
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534:Lab 2 - Interrupts/Project/Lab02 - Interrupts.cydsn/codegentemp/Lab02 - Interrupts.plc_log
 >>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
+=======
+>>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
+>>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc

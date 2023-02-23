@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+<<<<<<<< HEAD:Lab 3 - Simon Game/Project/Backup/ECE381_SP23_Lab03_Simon_Clone.4.4/Project/Design01.cydsn/CortexM0/ARM_GCC_541/Debug/CyLFClk.lst
+>>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc1sPBW6.s 			page 1
 
 
@@ -12764,3 +12768,8 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc1sPBW6.s 			page 1
  7442      5F494E54 
  7442      45525255 
  7443              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+<<<<<<< HEAD
+=======
+========
+>>>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e:Lab 2 - Interrupts/Project/Lab02 - Interrupts.cydsn/CortexM0/ARM_GCC_541/Debug/CyLFClk.lst
+>>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
