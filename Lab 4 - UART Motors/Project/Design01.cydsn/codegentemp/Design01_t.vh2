@@ -1,6 +1,6 @@
--- Project:   C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 4 - UART Motors\Project\Design01.cydsn\Design01.cyprj
--- Generated: 02/14/2023 14:43:21
--- PSoC Creator  4.2
+-- Project:   C:\Users\Leo Tejkowski\Desktop\ece381\Lab 4 - UART Motors\Project\Design01.cydsn\Design01.cyprj
+-- Generated: 02/14/2023 19:51:25
+-- PSoC Creator  4.4
 
 ENTITY Design01 IS
     PORT(
