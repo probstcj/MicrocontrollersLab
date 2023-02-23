@@ -1,0 +1,19 @@
+<<<<<<< HEAD:Lab 2 - Interrupts/Project/Lab02 - Interrupts.cydsn/CortexM0/ARM_GCC_541/Debug/.deps/SOURCE_ASM__ARM_GCC_GENERIC.P
+C:/Users/Hello\ Kitty/Desktop/MicrocontrollersLab/Lab\ 2\ -\ Interrupts/Project/Lab02\ -\ Interrupts.cydsn/CortexM0/ARM_GCC_541/Debug/CyBootAsmGnu.o : C:/Users/Hello\ Kitty/Desktop/MicrocontrollersLab/Lab\ 2\ -\ Interrupts/Project/Lab02\ -\ Interrupts.cydsn/Generated_Source/PSoC4/CyBootAsmGnu.s C:/Users/Hello\ Kitty/Desktop/MicrocontrollersLab/Lab\ 2\ -\ Interrupts/Project/Lab02\ -\ Interrupts.cydsn/Generated_Source/PSoC4/cydevicegnu_trm.inc C:/Users/Hello\ Kitty/Desktop/MicrocontrollersLab/Lab\ 2\ -\ Interrupts/Project/Lab02\ -\ Interrupts.cydsn/Generated_Source/PSoC4/cyfittergnu.inc 
+
+C:/Users/Hello\ Kitty/Desktop/MicrocontrollersLab/Lab\ 2\ -\ Interrupts/Project/Lab02\ -\ Interrupts.cydsn/Generated_Source/PSoC4/CyBootAsmGnu.s : 
+
+C:/Users/Hello\ Kitty/Desktop/MicrocontrollersLab/Lab\ 2\ -\ Interrupts/Project/Lab02\ -\ Interrupts.cydsn/Generated_Source/PSoC4/cydevicegnu_trm.inc : 
+
+C:/Users/Hello\ Kitty/Desktop/MicrocontrollersLab/Lab\ 2\ -\ Interrupts/Project/Lab02\ -\ Interrupts.cydsn/Generated_Source/PSoC4/cyfittergnu.inc : 
+
+=======
+C:/Users/Leo\ Tejkowski/Desktop/ece381/Lab\ 2\ -\ Interrupts/Project/Zip\ File/Lab02\ -\ Interrupts.cydsn/CortexM0/ARM_GCC_541/Debug/CyBootAsmGnu.o : C:/Users/Leo\ Tejkowski/Desktop/ece381/Lab\ 2\ -\ Interrupts/Project/Zip\ File/Lab02\ -\ Interrupts.cydsn/Generated_Source/PSoC4/CyBootAsmGnu.s C:/Users/Leo\ Tejkowski/Desktop/ece381/Lab\ 2\ -\ Interrupts/Project/Zip\ File/Lab02\ -\ Interrupts.cydsn/Generated_Source/PSoC4/cydevicegnu_trm.inc C:/Users/Leo\ Tejkowski/Desktop/ece381/Lab\ 2\ -\ Interrupts/Project/Zip\ File/Lab02\ -\ Interrupts.cydsn/Generated_Source/PSoC4/cyfittergnu.inc 
+
+C:/Users/Leo\ Tejkowski/Desktop/ece381/Lab\ 2\ -\ Interrupts/Project/Zip\ File/Lab02\ -\ Interrupts.cydsn/Generated_Source/PSoC4/CyBootAsmGnu.s : 
+
+C:/Users/Leo\ Tejkowski/Desktop/ece381/Lab\ 2\ -\ Interrupts/Project/Zip\ File/Lab02\ -\ Interrupts.cydsn/Generated_Source/PSoC4/cydevicegnu_trm.inc : 
+
+C:/Users/Leo\ Tejkowski/Desktop/ece381/Lab\ 2\ -\ Interrupts/Project/Zip\ File/Lab02\ -\ Interrupts.cydsn/Generated_Source/PSoC4/cyfittergnu.inc : 
+
+>>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8:Lab 2 - Interrupts/Project/Code Turn in - Leo and Caleb/Lab02 - Interrupts.cydsn/CortexM0/ARM_GCC_541/Debug/.deps/SOURCE_ASM__ARM_GCC_GENERIC.P
