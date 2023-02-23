@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 1
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cca3FkhP.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 1
   28:Generated_Source\PSoC4/INPUT_TIMER_PM.c **** * Summary:
   29:Generated_Source\PSoC4/INPUT_TIMER_PM.c **** *  All configuration registers are retention. Nothing to save here.
   30:Generated_Source\PSoC4/INPUT_TIMER_PM.c **** *
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 2
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cca3FkhP.s 			page 2
 
 
   31:Generated_Source\PSoC4/INPUT_TIMER_PM.c **** * Parameters:
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 1
   53              		.cfi_offset 4, -8
   54              		.cfi_offset 14, -4
   60:Generated_Source\PSoC4/INPUT_TIMER_PM.c ****     if(0u != (INPUT_TIMER_BLOCK_CONTROL_REG & INPUT_TIMER_MASK))
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 3
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cca3FkhP.s 			page 3
 
 
   55              		.loc 1 60 0
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 1
   77:Generated_Source\PSoC4/INPUT_TIMER_PM.c **** *
   78:Generated_Source\PSoC4/INPUT_TIMER_PM.c **** * Summary:
   79:Generated_Source\PSoC4/INPUT_TIMER_PM.c **** *  All configuration registers are retention. Nothing to restore here.
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 4
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cca3FkhP.s 			page 4
 
 
   80:Generated_Source\PSoC4/INPUT_TIMER_PM.c **** *
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 1
  117              		.cfi_def_cfa_offset 8
  118              		.cfi_offset 4, -8
  119              		.cfi_offset 14, -4
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 5
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cca3FkhP.s 			page 5
 
 
  110:Generated_Source\PSoC4/INPUT_TIMER_PM.c ****     INPUT_TIMER_RestoreConfig();
@@ -285,9 +285,9 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 1
  154 0006 00000000 		.4byte	.Ldebug_abbrev0
  155 000a 04       		.byte	0x4
  156 000b 01       		.uleb128 0x1
- 157 000c 46010000 		.4byte	.LASF24
+ 157 000c 51010000 		.4byte	.LASF24
  158 0010 0C       		.byte	0xc
- 159 0011 FF010000 		.4byte	.LASF25
+ 159 0011 0A020000 		.4byte	.LASF25
  160 0015 B3000000 		.4byte	.LASF26
  161 0019 00000000 		.4byte	.Ldebug_ranges0+0
  162 001d 00000000 		.4byte	0
@@ -295,10 +295,10 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 1
  164 0025 02       		.uleb128 0x2
  165 0026 01       		.byte	0x1
  166 0027 06       		.byte	0x6
- 167 0028 E7010000 		.4byte	.LASF0
+ 167 0028 F2010000 		.4byte	.LASF0
  168 002c 02       		.uleb128 0x2
  169 002d 01       		.byte	0x1
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 6
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cca3FkhP.s 			page 6
 
 
  170 002e 08       		.byte	0x8
@@ -306,15 +306,15 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 1
  172 0033 02       		.uleb128 0x2
  173 0034 02       		.byte	0x2
  174 0035 05       		.byte	0x5
- 175 0036 47020000 		.4byte	.LASF2
+ 175 0036 52020000 		.4byte	.LASF2
  176 003a 02       		.uleb128 0x2
  177 003b 02       		.byte	0x2
  178 003c 07       		.byte	0x7
- 179 003d D4010000 		.4byte	.LASF3
+ 179 003d DF010000 		.4byte	.LASF3
  180 0041 02       		.uleb128 0x2
  181 0042 04       		.byte	0x4
  182 0043 05       		.byte	0x5
- 183 0044 37010000 		.4byte	.LASF4
+ 183 0044 0E010000 		.4byte	.LASF4
  184 0048 02       		.uleb128 0x2
  185 0049 04       		.byte	0x4
  186 004a 07       		.byte	0x7
@@ -338,12 +338,12 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 1
  204 006b 04       		.uleb128 0x4
  205 006c 40000000 		.4byte	.LASF9
  206 0070 02       		.byte	0x2
- 207 0071 FC01     		.2byte	0x1fc
+ 207 0071 E701     		.2byte	0x1e7
  208 0073 2C000000 		.4byte	0x2c
  209 0077 04       		.uleb128 0x4
  210 0078 0E000000 		.4byte	.LASF10
  211 007c 02       		.byte	0x2
- 212 007d FE01     		.2byte	0x1fe
+ 212 007d E901     		.2byte	0x1e9
  213 007f 48000000 		.4byte	0x48
  214 0083 02       		.uleb128 0x2
  215 0084 04       		.byte	0x4
@@ -352,29 +352,29 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 1
  218 008a 02       		.uleb128 0x2
  219 008b 08       		.byte	0x8
  220 008c 04       		.byte	0x4
- 221 008d 30010000 		.4byte	.LASF12
+ 221 008d 44010000 		.4byte	.LASF12
  222 0091 02       		.uleb128 0x2
  223 0092 01       		.byte	0x1
  224 0093 08       		.byte	0x8
  225 0094 AE000000 		.4byte	.LASF13
  226 0098 04       		.uleb128 0x4
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 7
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cca3FkhP.s 			page 7
 
 
- 227 0099 40010000 		.4byte	.LASF14
+ 227 0099 4B010000 		.4byte	.LASF14
  228 009d 02       		.byte	0x2
- 229 009e A802     		.2byte	0x2a8
+ 229 009e 9302     		.2byte	0x293
  230 00a0 A4000000 		.4byte	0xa4
  231 00a4 05       		.uleb128 0x5
  232 00a5 77000000 		.4byte	0x77
  233 00a9 02       		.uleb128 0x2
  234 00aa 08       		.byte	0x8
  235 00ab 04       		.byte	0x4
- 236 00ac F3010000 		.4byte	.LASF15
+ 236 00ac FE010000 		.4byte	.LASF15
  237 00b0 02       		.uleb128 0x2
  238 00b1 04       		.byte	0x4
  239 00b2 07       		.byte	0x7
- 240 00b3 27020000 		.4byte	.LASF16
+ 240 00b3 32020000 		.4byte	.LASF16
  241 00b7 06       		.uleb128 0x6
  242 00b8 01       		.byte	0x1
  243 00b9 03       		.byte	0x3
@@ -393,7 +393,7 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 1
  256 00d2 24       		.byte	0x24
  257 00d3 B7000000 		.4byte	0xb7
  258 00d7 09       		.uleb128 0x9
- 259 00d8 30020000 		.4byte	.LASF18
+ 259 00d8 3B020000 		.4byte	.LASF18
  260 00dc 01       		.byte	0x1
  261 00dd 26       		.byte	0x26
  262 00de 00000000 		.4byte	.LFB1
@@ -414,18 +414,18 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 1
  277 0102 48010000 		.4byte	0x148
  278 0106 00       		.byte	0
  279 0107 09       		.uleb128 0x9
- 280 0108 03010000 		.4byte	.LASF19
+ 280 0108 17010000 		.4byte	.LASF19
  281 010c 01       		.byte	0x1
  282 010d 58       		.byte	0x58
  283 010e 00000000 		.4byte	.LFB3
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 8
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cca3FkhP.s 			page 8
 
 
  284 0112 02000000 		.4byte	.LFE3-.LFB3
  285 0116 01       		.uleb128 0x1
  286 0117 9C       		.byte	0x9c
  287 0118 0A       		.uleb128 0xa
- 288 0119 51020000 		.4byte	.LASF21
+ 288 0119 5C020000 		.4byte	.LASF21
  289 011d 01       		.byte	0x1
  290 011e 6C       		.byte	0x6c
  291 011f 00000000 		.4byte	.LFB4
@@ -438,7 +438,7 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 1
  298 0132 54010000 		.4byte	0x154
  299 0136 00       		.byte	0
  300 0137 0C       		.uleb128 0xc
- 301 0138 1D010000 		.4byte	.LASF28
+ 301 0138 31010000 		.4byte	.LASF28
  302 013c 01       		.byte	0x1
  303 013d 15       		.byte	0x15
  304 013e CC000000 		.4byte	0xcc
@@ -451,8 +451,8 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 1
  311 0151 03       		.byte	0x3
  312 0152 3301     		.2byte	0x133
  313 0154 0D       		.uleb128 0xd
- 314 0155 64020000 		.4byte	.LASF23
- 315 0159 64020000 		.4byte	.LASF23
+ 314 0155 6F020000 		.4byte	.LASF23
+ 315 0159 6F020000 		.4byte	.LASF23
  316 015d 03       		.byte	0x3
  317 015e 3101     		.2byte	0x131
  318 0160 00       		.byte	0
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 1
  338 0011 00       		.byte	0
  339 0012 00       		.byte	0
  340 0013 02       		.uleb128 0x2
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 9
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cca3FkhP.s 			page 9
 
 
  341 0014 24       		.uleb128 0x24
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 1
  395 004a 07       		.uleb128 0x7
  396 004b 0D       		.uleb128 0xd
  397 004c 00       		.byte	0
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 10
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cca3FkhP.s 			page 10
 
 
  398 004d 03       		.uleb128 0x3
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 1
  452 0084 0E       		.uleb128 0xe
  453 0085 3A       		.uleb128 0x3a
  454 0086 0B       		.uleb128 0xb
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 11
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cca3FkhP.s 			page 11
 
 
  455 0087 3B       		.uleb128 0x3b
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 1
  509 00c0 05       		.uleb128 0x5
  510 00c1 00       		.byte	0
  511 00c2 00       		.byte	0
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 12
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cca3FkhP.s 			page 12
 
 
  512 00c3 00       		.byte	0
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 1
  553      00
  554              	.LASF20:
  555 002e 494E5055 		.ascii	"INPUT_TIMER_Sleep\000"
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 13
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cca3FkhP.s 			page 13
 
 
  555      545F5449 
@@ -764,102 +764,102 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 1
  571 00ae 63686172 		.ascii	"char\000"
  571      00
  572              	.LASF26:
- 573 00b3 433A5C55 		.ascii	"C:\\Users\\Leo Tejkowski\\Desktop\\ece381\\Lab 3 - "
+ 573 00b3 433A5C55 		.ascii	"C:\\Users\\Hello Kitty\\Desktop\\MicrocontrollersLa"
  573      73657273 
- 573      5C4C656F 
- 573      2054656A 
- 573      6B6F7773 
- 574 00e1 53696D6F 		.ascii	"Simon Game\\Project\\Design01.cydsn\000"
- 574      6E204761 
- 574      6D655C50 
- 574      726F6A65 
- 574      63745C44 
- 575              	.LASF19:
- 576 0103 494E5055 		.ascii	"INPUT_TIMER_RestoreConfig\000"
- 576      545F5449 
- 576      4D45525F 
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 14
+ 573      5C48656C 
+ 573      6C6F204B 
+ 573      69747479 
+ 574 00e2 625C4C61 		.ascii	"b\\Lab 3 - Simon Game\\Project\\Design01.cydsn\000"
+ 574      62203320 
+ 574      2D205369 
+ 574      6D6F6E20 
+ 574      47616D65 
+ 575              	.LASF4:
+ 576 010e 6C6F6E67 		.ascii	"long int\000"
+ 576      20696E74 
+ 576      00
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cca3FkhP.s 			page 14
 
 
- 576      52657374 
- 576      6F726543 
- 577              	.LASF28:
- 578 011d 494E5055 		.ascii	"INPUT_TIMER_backup\000"
+ 577              	.LASF19:
+ 578 0117 494E5055 		.ascii	"INPUT_TIMER_RestoreConfig\000"
  578      545F5449 
  578      4D45525F 
- 578      6261636B 
- 578      757000
- 579              	.LASF12:
- 580 0130 646F7562 		.ascii	"double\000"
- 580      6C6500
- 581              	.LASF4:
- 582 0137 6C6F6E67 		.ascii	"long int\000"
- 582      20696E74 
- 582      00
+ 578      52657374 
+ 578      6F726543 
+ 579              	.LASF28:
+ 580 0131 494E5055 		.ascii	"INPUT_TIMER_backup\000"
+ 580      545F5449 
+ 580      4D45525F 
+ 580      6261636B 
+ 580      757000
+ 581              	.LASF12:
+ 582 0144 646F7562 		.ascii	"double\000"
+ 582      6C6500
  583              	.LASF14:
- 584 0140 72656733 		.ascii	"reg32\000"
+ 584 014b 72656733 		.ascii	"reg32\000"
  584      3200
  585              	.LASF24:
- 586 0146 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 586 0151 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
  586      43313120 
  586      352E342E 
  586      31203230 
  586      31363036 
- 587 0179 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 587 0184 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
  587      20726576 
  587      6973696F 
  587      6E203233 
  587      37373135 
- 588 01ac 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 588 01b7 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
  588      66756E63 
  588      74696F6E 
  588      2D736563 
  588      74696F6E 
  589              	.LASF3:
- 590 01d4 73686F72 		.ascii	"short unsigned int\000"
+ 590 01df 73686F72 		.ascii	"short unsigned int\000"
  590      7420756E 
  590      7369676E 
  590      65642069 
  590      6E7400
  591              	.LASF0:
- 592 01e7 7369676E 		.ascii	"signed char\000"
+ 592 01f2 7369676E 		.ascii	"signed char\000"
  592      65642063 
  592      68617200 
  593              	.LASF15:
- 594 01f3 6C6F6E67 		.ascii	"long double\000"
+ 594 01fe 6C6F6E67 		.ascii	"long double\000"
  594      20646F75 
  594      626C6500 
  595              	.LASF25:
- 596 01ff 47656E65 		.ascii	"Generated_Source\\PSoC4\\INPUT_TIMER_PM.c\000"
+ 596 020a 47656E65 		.ascii	"Generated_Source\\PSoC4\\INPUT_TIMER_PM.c\000"
  596      72617465 
  596      645F536F 
  596      75726365 
  596      5C50536F 
  597              	.LASF16:
- 598 0227 73697A65 		.ascii	"sizetype\000"
+ 598 0232 73697A65 		.ascii	"sizetype\000"
  598      74797065 
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccq2ynQb.s 			page 15
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cca3FkhP.s 			page 15
 
 
  598      00
  599              	.LASF18:
- 600 0230 494E5055 		.ascii	"INPUT_TIMER_SaveConfig\000"
+ 600 023b 494E5055 		.ascii	"INPUT_TIMER_SaveConfig\000"
  600      545F5449 
  600      4D45525F 
  600      53617665 
  600      436F6E66 
  601              	.LASF2:
- 602 0247 73686F72 		.ascii	"short int\000"
+ 602 0252 73686F72 		.ascii	"short int\000"
  602      7420696E 
  602      7400
  603              	.LASF21:
- 604 0251 494E5055 		.ascii	"INPUT_TIMER_Wakeup\000"
+ 604 025c 494E5055 		.ascii	"INPUT_TIMER_Wakeup\000"
  604      545F5449 
  604      4D45525F 
  604      57616B65 
  604      757000
  605              	.LASF23:
- 606 0264 494E5055 		.ascii	"INPUT_TIMER_Enable\000"
+ 606 026f 494E5055 		.ascii	"INPUT_TIMER_Enable\000"
  606      545F5449 
  606      4D45525F 
  606      456E6162 

@@ -1,6 +1,6 @@
 -- Project:   Lab02 - Interrupts
--- Generated: 01/29/2023 17:31:03
--- PSoC Creator  4.4
+-- Generated: 02/23/2023 12:12:29
+-- PSoC Creator  4.2
 
 ENTITY \Lab02 - Interrupts\ IS
     PORT(

@@ -1271,50 +1271,50 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x3a25
+.debug_info     0x00000000     0x3a2d
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000      0x759 .\CortexM0\ARM_GCC_541\Debug\main.o
- .debug_info    0x00000759      0x3bc .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_info    0x00000b15       0xf8 .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
- .debug_info    0x00000c0d      0x3a2 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
- .debug_info    0x00000faf      0x23a .\CortexM0\ARM_GCC_541\Debug\Design01.a(UART.o)
- .debug_info    0x000011e9      0x220 .\CortexM0\ARM_GCC_541\Debug\Design01.a(UART_SPI_UART.o)
- .debug_info    0x00001409      0x3b5 .\CortexM0\ARM_GCC_541\Debug\Design01.a(UART_UART.o)
- .debug_info    0x000017be       0xd6 .\CortexM0\ARM_GCC_541\Debug\Design01.a(Motor.o)
- .debug_info    0x00001894      0xd3f .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLib.o)
- .debug_info    0x000025d3     0x1058 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLFClk.o)
- .debug_info    0x0000362b       0xaa .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyBootAsmGnu.o)
- .debug_info    0x000036d5      0x350 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyFlash.o)
+ .debug_info    0x00000000      0x761 .\CortexM0\ARM_GCC_541\Debug\main.o
+ .debug_info    0x00000761      0x3bc .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_info    0x00000b1d       0xf8 .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
+ .debug_info    0x00000c15      0x3a2 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+ .debug_info    0x00000fb7      0x23a .\CortexM0\ARM_GCC_541\Debug\Design01.a(UART.o)
+ .debug_info    0x000011f1      0x220 .\CortexM0\ARM_GCC_541\Debug\Design01.a(UART_SPI_UART.o)
+ .debug_info    0x00001411      0x3b5 .\CortexM0\ARM_GCC_541\Debug\Design01.a(UART_UART.o)
+ .debug_info    0x000017c6       0xd6 .\CortexM0\ARM_GCC_541\Debug\Design01.a(Motor.o)
+ .debug_info    0x0000189c      0xd3f .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLib.o)
+ .debug_info    0x000025db     0x1058 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLFClk.o)
+ .debug_info    0x00003633       0xaa .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyBootAsmGnu.o)
+ .debug_info    0x000036dd      0x350 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyFlash.o)
 
-.debug_abbrev   0x00000000      0xf70
+.debug_abbrev   0x00000000      0xf7f
  *(.debug_abbrev)
- .debug_abbrev  0x00000000      0x1c0 .\CortexM0\ARM_GCC_541\Debug\main.o
- .debug_abbrev  0x000001c0      0x1af .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_abbrev  0x0000036f       0x5d .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
- .debug_abbrev  0x000003cc      0x1d7 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
- .debug_abbrev  0x000005a3       0xd5 .\CortexM0\ARM_GCC_541\Debug\Design01.a(UART.o)
- .debug_abbrev  0x00000678      0x14f .\CortexM0\ARM_GCC_541\Debug\Design01.a(UART_SPI_UART.o)
- .debug_abbrev  0x000007c7      0x132 .\CortexM0\ARM_GCC_541\Debug\Design01.a(UART_UART.o)
- .debug_abbrev  0x000008f9       0x81 .\CortexM0\ARM_GCC_541\Debug\Design01.a(Motor.o)
- .debug_abbrev  0x0000097a      0x218 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLib.o)
- .debug_abbrev  0x00000b92      0x248 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLFClk.o)
- .debug_abbrev  0x00000dda       0x14 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyBootAsmGnu.o)
- .debug_abbrev  0x00000dee      0x182 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyFlash.o)
+ .debug_abbrev  0x00000000      0x1cf .\CortexM0\ARM_GCC_541\Debug\main.o
+ .debug_abbrev  0x000001cf      0x1af .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_abbrev  0x0000037e       0x5d .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
+ .debug_abbrev  0x000003db      0x1d7 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+ .debug_abbrev  0x000005b2       0xd5 .\CortexM0\ARM_GCC_541\Debug\Design01.a(UART.o)
+ .debug_abbrev  0x00000687      0x14f .\CortexM0\ARM_GCC_541\Debug\Design01.a(UART_SPI_UART.o)
+ .debug_abbrev  0x000007d6      0x132 .\CortexM0\ARM_GCC_541\Debug\Design01.a(UART_UART.o)
+ .debug_abbrev  0x00000908       0x81 .\CortexM0\ARM_GCC_541\Debug\Design01.a(Motor.o)
+ .debug_abbrev  0x00000989      0x218 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLib.o)
+ .debug_abbrev  0x00000ba1      0x248 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLFClk.o)
+ .debug_abbrev  0x00000de9       0x14 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyBootAsmGnu.o)
+ .debug_abbrev  0x00000dfd      0x182 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyFlash.o)
 
-.debug_line     0x00000000     0x1900
+.debug_line     0x00000000     0x1908
  *(.debug_line)
- .debug_line    0x00000000      0x2a3 .\CortexM0\ARM_GCC_541\Debug\main.o
- .debug_line    0x000002a3      0x178 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_line    0x0000041b      0x141 .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
- .debug_line    0x0000055c      0x236 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
- .debug_line    0x00000792      0x108 .\CortexM0\ARM_GCC_541\Debug\Design01.a(UART.o)
- .debug_line    0x0000089a      0x11a .\CortexM0\ARM_GCC_541\Debug\Design01.a(UART_SPI_UART.o)
- .debug_line    0x000009b4      0x1cf .\CortexM0\ARM_GCC_541\Debug\Design01.a(UART_UART.o)
- .debug_line    0x00000b83       0x6e .\CortexM0\ARM_GCC_541\Debug\Design01.a(Motor.o)
- .debug_line    0x00000bf1      0x563 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLib.o)
- .debug_line    0x00001154      0x5d1 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLFClk.o)
- .debug_line    0x00001725       0x68 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyBootAsmGnu.o)
- .debug_line    0x0000178d      0x173 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyFlash.o)
+ .debug_line    0x00000000      0x2ab .\CortexM0\ARM_GCC_541\Debug\main.o
+ .debug_line    0x000002ab      0x178 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_line    0x00000423      0x141 .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
+ .debug_line    0x00000564      0x236 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+ .debug_line    0x0000079a      0x108 .\CortexM0\ARM_GCC_541\Debug\Design01.a(UART.o)
+ .debug_line    0x000008a2      0x11a .\CortexM0\ARM_GCC_541\Debug\Design01.a(UART_SPI_UART.o)
+ .debug_line    0x000009bc      0x1cf .\CortexM0\ARM_GCC_541\Debug\Design01.a(UART_UART.o)
+ .debug_line    0x00000b8b       0x6e .\CortexM0\ARM_GCC_541\Debug\Design01.a(Motor.o)
+ .debug_line    0x00000bf9      0x563 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLib.o)
+ .debug_line    0x0000115c      0x5d1 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyLFClk.o)
+ .debug_line    0x0000172d       0x68 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyBootAsmGnu.o)
+ .debug_line    0x00001795      0x173 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyFlash.o)
 
 .debug_frame    0x00000000     0x1ba4
  *(.debug_frame)

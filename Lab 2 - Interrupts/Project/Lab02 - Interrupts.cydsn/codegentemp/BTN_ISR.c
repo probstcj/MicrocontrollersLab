@@ -28,6 +28,7 @@
 ********************************************************************************/
 /* `#START BTN_ISR_intc` */
 #include "BTN.h"
+// Take global variable from main.c
 extern volatile int buttonAsync;
 /* `#END` */
 
@@ -165,19 +166,17 @@ CY_ISR(BTN_ISR_Interrupt)
 
     /*  Place your Interrupt code here. */
     /* `#START BTN_ISR_Interrupt` */
+    // Small delay for debouncing
     CyDelay(20);
-    
-//    while(BTN_Read() == 0);
+    // Clear interrupt
     BTN_ClearInterrupt();
     
-    
+    // If button is still 1 after delay, set flag, if not, don't
     if(BTN_Read() == 1){
         buttonAsync = 1;
     } else {
         buttonAsync = 0;
     }
-
-    
     /* `#END` */
 }
 

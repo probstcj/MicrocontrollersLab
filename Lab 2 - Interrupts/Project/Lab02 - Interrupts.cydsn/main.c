@@ -18,7 +18,7 @@ volatile int encoderAsync;
 volatile int encoderPos;
 int movingDirection;
 
-
+ENC_1;
 int drawMovingBar(int position){
     // This will draw the moving bar that is based on the synchronous timer
     // Checks which direction it is moving in 0 = right, 1 = left
