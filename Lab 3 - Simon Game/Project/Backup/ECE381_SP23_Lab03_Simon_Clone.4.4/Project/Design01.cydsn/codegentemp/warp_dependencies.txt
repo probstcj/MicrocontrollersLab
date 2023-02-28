@@ -1,3 +1,4 @@
+<<<<<<< HEAD:Lab 3 - Simon Game/Project/Backup/ECE381_SP23_Lab03_Simon_Clone.4.4/Project/Design01.cydsn/codegentemp/warp_dependencies.txt
 C:/Program\ Files\ (x86)/Cypress/PSoC\ Creator/4.4/PSoC\ Creator/warp/lib/ieee/work/stdlogic.vif : 
 
 C:/Program\ Files\ (x86)/Cypress/PSoC\ Creator/4.4/PSoC\ Creator/warp/lib/common/stdlogic/mod_genv.vif : 
@@ -10,3 +11,17 @@ C:/Program\ Files\ (x86)/Cypress/PSoC\ Creator/4.4/PSoC\ Creator/warp/lib/common
 
 C:/Program\ Files\ (x86)/Cypress/PSoC\ Creator/4.4/PSoC\ Creator/warp/lib/common/stdlogic/cy_psoc3.vif : 
 
+=======
+C:/Program\ Files\ (x86)/Cypress/PSoC\ Creator/4.2/PSoC\ Creator/warp/lib/ieee/work/stdlogic.vif : 
+
+C:/Program\ Files\ (x86)/Cypress/PSoC\ Creator/4.2/PSoC\ Creator/warp/lib/common/stdlogic/mod_genv.vif : 
+
+C:/Program\ Files\ (x86)/Cypress/PSoC\ Creator/4.2/PSoC\ Creator/warp/lib/common/cypress.v : 
+
+C:/Program\ Files\ (x86)/Cypress/PSoC\ Creator/4.2/PSoC\ Creator/warp/lib/common/cy_psoc3_inc.v : 
+
+C:/Program\ Files\ (x86)/Cypress/PSoC\ Creator/4.2/PSoC\ Creator/warp/lib/common/stdlogic/rtlpkg.vif : 
+
+C:/Program\ Files\ (x86)/Cypress/PSoC\ Creator/4.2/PSoC\ Creator/warp/lib/common/stdlogic/cy_psoc3.vif : 
+
+>>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534:Lab 3 - Simon Game/Project/Design01.cydsn/codegentemp/warp_dependencies.txt

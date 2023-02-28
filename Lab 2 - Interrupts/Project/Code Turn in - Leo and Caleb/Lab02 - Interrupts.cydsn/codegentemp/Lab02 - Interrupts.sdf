@@ -1,10 +1,18 @@
 (DELAYFILE
  (SDFVERSION "IEEE 1497 4.0")
+<<<<<<< HEAD:Lab 2 - Interrupts/Project/Code Turn in - Leo and Caleb/Lab02 - Interrupts.cydsn/codegentemp/Lab02 - Interrupts.sdf
  (DATE "2023-01-29T23:31:12Z")
  (DESIGN "Lab02 - Interrupts")
  (VENDOR "Cypress Semiconductor")
  (PROGRAM "PSoC Creator")
  (VERSION " 4.4")
+=======
+ (DATE "2023-02-23T18:12:31Z")
+ (DESIGN "Lab02 - Interrupts")
+ (VENDOR "Cypress Semiconductor")
+ (PROGRAM "PSoC Creator")
+ (VERSION " 4.2")
+>>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534:Lab 2 - Interrupts/Project/Lab02 - Interrupts.cydsn/codegentemp/Lab02 - Interrupts.sdf
  (DIVIDER .)
  (TIMESCALE 1 ns)
  (CELL
