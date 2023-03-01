@@ -1,18 +1,10 @@
 /***************************************************************************//**
 * \file cyPm.c
-<<<<<<< HEAD
-<<<<<<<< HEAD:Lab 2 - Interrupts/Project/Code Turn in - Leo and Caleb/Lab02 - Interrupts.cydsn/Generated_Source/PSoC4/cyPm.c
-* \version 5.70
-========
-* \version 6.0
->>>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2:Lab 4 - UART Motors/Project/Backup/Lab04 - UART.4.4/Project/Design01.cydsn/Generated_Source/PSoC4/cyPm.c
-=======
 <<<<<<<< HEAD:Lab 4 - UART Motors/Project/Backup/Lab04 - UART.4.4/Project/Design01.cydsn/Generated_Source/PSoC4/cyPm.c
 * \version 6.0
 ========
 * \version 5.70
 >>>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e:Lab 2 - Interrupts/Project/Code Turn in - Leo and Caleb/Lab02 - Interrupts.cydsn/Generated_Source/PSoC4/cyPm.c
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 *
 * \brief Provides an API for the power management.
 *
@@ -83,22 +75,13 @@ void CySysPmDeepSleep(void)
     #if(CY_IP_ECO_SRSSLT)
         volatile uint32 pllResoreFlag = 0u;
     #endif /* (CY_IP_ECO_SRSSLT) */
-<<<<<<< HEAD
-<<<<<<<< HEAD:Lab 2 - Interrupts/Project/Code Turn in - Leo and Caleb/Lab02 - Interrupts.cydsn/Generated_Source/PSoC4/cyPm.c
-========
-=======
 <<<<<<<< HEAD:Lab 4 - UART Motors/Project/Backup/Lab04 - UART.4.4/Project/Design01.cydsn/Generated_Source/PSoC4/cyPm.c
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 
     #if (CY_IP_IMO_TRIMMABLE_BY_WCO)
         uint32 regTmp = 0u;
     #endif /* (CY_IP_IMO_TRIMMABLE_BY_WCO) */
-<<<<<<< HEAD
->>>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2:Lab 4 - UART Motors/Project/Backup/Lab04 - UART.4.4/Project/Design01.cydsn/Generated_Source/PSoC4/cyPm.c
-=======
 ========
 >>>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e:Lab 2 - Interrupts/Project/Code Turn in - Leo and Caleb/Lab02 - Interrupts.cydsn/Generated_Source/PSoC4/cyPm.c
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
     
     interruptState = CyEnterCriticalSection();
 
@@ -120,12 +103,7 @@ void CySysPmDeepSleep(void)
     #if (CY_IP_CPUSS && CY_IP_SRSSV2)
         CY_PM_CPUSS_CONFIG_REG |= CY_PM_CPUSS_CONFIG_FLSH_ACC_BYPASS;
     #endif /* (CY_IP_CPUSS && CY_IP_SRSSV2) */
-<<<<<<< HEAD
-<<<<<<<< HEAD:Lab 2 - Interrupts/Project/Code Turn in - Leo and Caleb/Lab02 - Interrupts.cydsn/Generated_Source/PSoC4/cyPm.c
-========
-=======
 <<<<<<<< HEAD:Lab 4 - UART Motors/Project/Backup/Lab04 - UART.4.4/Project/Design01.cydsn/Generated_Source/PSoC4/cyPm.c
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
     
     #if (CY_IP_IMO_TRIMMABLE_BY_WCO)
         if (0u != (CY_SYS_CLK_WCO_CONFIG_REG & CY_SYS_CLK_WCO_CONFIG_DPLL_ENABLE))
@@ -136,12 +114,8 @@ void CySysPmDeepSleep(void)
                                                  CY_SYS_CLK_WCO_CONFIG_DPLL_LF_LIMIT_SHIFT));
         }
     #endif /* (CY_IP_IMO_TRIMMABLE_BY_WCO) */
-<<<<<<< HEAD
->>>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2:Lab 4 - UART Motors/Project/Backup/Lab04 - UART.4.4/Project/Design01.cydsn/Generated_Source/PSoC4/cyPm.c
-=======
 ========
 >>>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e:Lab 2 - Interrupts/Project/Code Turn in - Leo and Caleb/Lab02 - Interrupts.cydsn/Generated_Source/PSoC4/cyPm.c
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 
     /* Adjust delay to wait for references to settle on wakeup from Deep Sleep */
     CY_PM_PWR_KEY_DELAY_REG = CY_SFLASH_DPSLP_KEY_DELAY_REG;
@@ -164,12 +138,7 @@ void CySysPmDeepSleep(void)
         /* Restore system clock configuration */
         CY_SYS_CLK_SELECT_REG = clkSelectReg;
     #endif /* (CY_IP_SRSSV2) */
-<<<<<<< HEAD
-<<<<<<<< HEAD:Lab 2 - Interrupts/Project/Code Turn in - Leo and Caleb/Lab02 - Interrupts.cydsn/Generated_Source/PSoC4/cyPm.c
-========
-=======
 <<<<<<<< HEAD:Lab 4 - UART Motors/Project/Backup/Lab04 - UART.4.4/Project/Design01.cydsn/Generated_Source/PSoC4/cyPm.c
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 
     #if (CY_IP_IMO_TRIMMABLE_BY_WCO)
         if (0u != (CY_SYS_CLK_WCO_CONFIG_REG & CY_SYS_CLK_WCO_CONFIG_DPLL_ENABLE))
@@ -180,12 +149,8 @@ void CySysPmDeepSleep(void)
                                                  CY_SYS_CLK_WCO_CONFIG_DPLL_LF_LIMIT_SHIFT));
         }
     #endif /* (CY_IP_IMO_TRIMMABLE_BY_WCO) */    
-<<<<<<< HEAD
->>>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2:Lab 4 - UART Motors/Project/Backup/Lab04 - UART.4.4/Project/Design01.cydsn/Generated_Source/PSoC4/cyPm.c
-=======
 ========
 >>>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e:Lab 2 - Interrupts/Project/Code Turn in - Leo and Caleb/Lab02 - Interrupts.cydsn/Generated_Source/PSoC4/cyPm.c
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
     
     #if (CY_IP_CPUSS && CY_IP_SRSSV2)
         CY_PM_CPUSS_CONFIG_REG &= (uint32) (~CY_PM_CPUSS_CONFIG_FLSH_ACC_BYPASS);

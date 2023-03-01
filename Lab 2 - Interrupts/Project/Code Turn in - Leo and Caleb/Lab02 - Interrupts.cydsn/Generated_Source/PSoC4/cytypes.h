@@ -1,10 +1,6 @@
 /***************************************************************************//**
 * \file cytypes.h
-<<<<<<<< HEAD:Lab 2 - Interrupts/Project/Code Turn in - Leo and Caleb/Lab02 - Interrupts.cydsn/Generated_Source/PSoC4/cytypes.h
 * \version 5.70
-========
-* \version 6.0
->>>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2:Lab 4 - UART Motors/Project/Backup/Lab04 - UART.4.4/Project/Design01.cydsn/Generated_Source/PSoC4/cytypes.h
 *
 * \brief CyTypes provides register access macros and approved types for use in
 * firmware.
@@ -20,11 +16,7 @@
 *
 ********************************************************************************
 * \copyright
-<<<<<<<< HEAD:Lab 2 - Interrupts/Project/Code Turn in - Leo and Caleb/Lab02 - Interrupts.cydsn/Generated_Source/PSoC4/cytypes.h
 * Copyright 2008-2018, Cypress Semiconductor Corporation.  All rights reserved.
-========
-* Copyright 2008-2020, Cypress Semiconductor Corporation.  All rights reserved.
->>>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2:Lab 4 - UART Motors/Project/Backup/Lab04 - UART.4.4/Project/Design01.cydsn/Generated_Source/PSoC4/cytypes.h
 * You may use this file only in accordance with the license, terms, conditions,
 * disclaimers, and limitations in the end user license agreement accompanying
 * the software package with which this file was provided.
@@ -175,15 +167,6 @@
     #define CY_PSOC4_4100MS (0u != 0u)
 #endif  /* CYDEV_CHIP_MEMBER_4V */
 
-<<<<<<<< HEAD:Lab 2 - Interrupts/Project/Code Turn in - Leo and Caleb/Lab02 - Interrupts.cydsn/Generated_Source/PSoC4/cytypes.h
-========
-#ifdef CYDEV_CHIP_MEMBER_4AB
-    #define CY_PSOC4_4500 (CYDEV_CHIP_MEMBER_USED == CYDEV_CHIP_MEMBER_4AB)
-#else
-    #define CY_PSOC4_4500 (0u != 0u)
-#endif  /* CYDEV_CHIP_MEMBER_4AB */
-
->>>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2:Lab 4 - UART Motors/Project/Backup/Lab04 - UART.4.4/Project/Design01.cydsn/Generated_Source/PSoC4/cytypes.h
 #define CY_IP_HOBTO_DEVICE      (!(0 == 1))
 
 
@@ -328,11 +311,7 @@
             #define CY_IP_WCO_SRSSV2        (0 != 0)
             #if (CY_IP_BLESSV3)
                 #define CY_IP_WCO_WCOV2     (0 == 0)
-<<<<<<<< HEAD:Lab 2 - Interrupts/Project/Code Turn in - Leo and Caleb/Lab02 - Interrupts.cydsn/Generated_Source/PSoC4/cytypes.h
                 #define CY_IP_WCO_BLESS     (0 != 0)                
-========
-                #define CY_IP_WCO_BLESS     (0 != 0)
->>>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2:Lab 4 - UART Motors/Project/Backup/Lab04 - UART.4.4/Project/Design01.cydsn/Generated_Source/PSoC4/cytypes.h
             #else
                 #define CY_IP_WCO_WCOV2     (0 != 0)
                 #define CY_IP_WCO_BLESS     (0 == 0)
@@ -354,28 +333,10 @@
 
     /* External Crystal Oscillator is present (high frequency) */
     #if (CY_IP_HOBTO_DEVICE)
-<<<<<<<< HEAD:Lab 2 - Interrupts/Project/Code Turn in - Leo and Caleb/Lab02 - Interrupts.cydsn/Generated_Source/PSoC4/cytypes.h
         #if (CY_IP_BLESS)
             #define CY_IP_ECO_SRSSV2        (0 != 0)
             #define CY_IP_ECO_SRSSLT        (0 != 0)
             
-========
-        #if defined (CYIPBLOCK_m0s8exco_VERSION)
-            #if (CYIPBLOCK_m0s8exco_VERSION == 2)
-                #define CY_IP_EXCO_IP_V2    (0 == 0)
-            #else
-                #define CY_IP_EXCO_IP_V2    (0 != 0)
-            #endif
-        #else
-            #define CY_IP_EXCO_IP_V2    (0 != 0)
-        #endif  /* CYIPBLOCK_m0s8exco_VERSION */
-
-        #if (CY_IP_BLESS)
-            #define CY_IP_ECO_SRSSV2        (0 != 0)
-            #define CY_IP_ECO_SRSSLT        (0 != 0)
-            #define CY_IP_ECOV2_SRSSLT      (0 != 0)
-
->>>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2:Lab 4 - UART Motors/Project/Backup/Lab04 - UART.4.4/Project/Design01.cydsn/Generated_Source/PSoC4/cytypes.h
             #if (CY_IP_BLESSV3)
                 #define CY_IP_ECO_BLESS     (0 != 0)
                 #define CY_IP_ECO_BLESSV3   (0 == 0)
@@ -388,44 +349,25 @@
             #define CY_IP_ECO_BLESSV3       (0 != 0)
             #define CY_IP_ECO_SRSSV2        (0 == 1)
             #define CY_IP_ECO_SRSSLT        ((0 != 0) && (0 != 0))
-<<<<<<<< HEAD:Lab 2 - Interrupts/Project/Code Turn in - Leo and Caleb/Lab02 - Interrupts.cydsn/Generated_Source/PSoC4/cytypes.h
-========
-            #define CY_IP_ECOV2_SRSSLT      (CY_IP_ECO_SRSSLT && CY_IP_EXCO_IP_V2)
->>>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2:Lab 4 - UART Motors/Project/Backup/Lab04 - UART.4.4/Project/Design01.cydsn/Generated_Source/PSoC4/cytypes.h
         #endif  /* (CY_IP_BLESS) */
     #else
         #define CY_IP_ECO_BLESS             (0 != 0)
         #define CY_IP_ECO_BLESSV3           (0 != 0)
         #define CY_IP_ECO_SRSSV2            (0 != 0)
         #define CY_IP_ECO_SRSSLT            (0 != 0)
-<<<<<<<< HEAD:Lab 2 - Interrupts/Project/Code Turn in - Leo and Caleb/Lab02 - Interrupts.cydsn/Generated_Source/PSoC4/cytypes.h
     #endif  /* (CY_IP_HOBTO_DEVICE) */
 
     #define CY_IP_ECO   (CY_IP_ECO_BLESS || CY_IP_ECO_SRSSV2 || CY_IP_ECO_BLESSV3 || CY_IP_ECO_SRSSLT)
-========
-        #define CY_IP_ECOV2_SRSSLT          (0 != 0)
-    #endif  /* (CY_IP_HOBTO_DEVICE) */
-
-    #define CY_IP_ECO   (CY_IP_ECO_BLESS || CY_IP_ECO_SRSSV2 || CY_IP_ECO_BLESSV3 || CY_IP_ECO_SRSSLT || CY_IP_ECOV2_SRSSLT)
->>>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2:Lab 4 - UART Motors/Project/Backup/Lab04 - UART.4.4/Project/Design01.cydsn/Generated_Source/PSoC4/cytypes.h
 
     /* PLL is present */
     #if (CY_IP_HOBTO_DEVICE)
         #if(CY_IP_SRSSV2)
             #define CY_IP_PLL           ((0 != 0) || \
-<<<<<<<< HEAD:Lab 2 - Interrupts/Project/Code Turn in - Leo and Caleb/Lab02 - Interrupts.cydsn/Generated_Source/PSoC4/cytypes.h
                                           (0 != 0)) 
 
             #define CY_IP_PLL_NR        (0u + \
                                           0u)
         
-========
-                                          (0 != 0))
-
-            #define CY_IP_PLL_NR        (0u + \
-                                          0u)
-
->>>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2:Lab 4 - UART Motors/Project/Backup/Lab04 - UART.4.4/Project/Design01.cydsn/Generated_Source/PSoC4/cytypes.h
         #elif (CY_IP_SRSSLT)
             #define CY_IP_PLL           (-1 == 1)
 
@@ -490,11 +432,7 @@
     #endif  /* (CY_IP_HOBTO_DEVICE) */
 
     #if (CY_IP_HOBTO_DEVICE)
-<<<<<<<< HEAD:Lab 2 - Interrupts/Project/Code Turn in - Leo and Caleb/Lab02 - Interrupts.cydsn/Generated_Source/PSoC4/cytypes.h
         #define CY_IP_PASS                  (0 == 1)
-========
-        #define CY_IP_PASS                  (0 >= 1)
->>>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2:Lab 4 - UART Motors/Project/Backup/Lab04 - UART.4.4/Project/Design01.cydsn/Generated_Source/PSoC4/cytypes.h
     #else
         #define CY_IP_PASS                  (0 != 0)
     #endif  /* (CY_IP_HOBTO_DEVICE) */
@@ -537,15 +475,7 @@
 #define CY_BOOT_5_50            (550u)
 #define CY_BOOT_5_60            (560u)
 #define CY_BOOT_5_70            (570u)
-<<<<<<<< HEAD:Lab 2 - Interrupts/Project/Code Turn in - Leo and Caleb/Lab02 - Interrupts.cydsn/Generated_Source/PSoC4/cytypes.h
 #define CY_BOOT_VERSION         (CY_BOOT_5_70)
-========
-#define CY_BOOT_5_80            (580u)
-#define CY_BOOT_5_81            (581u)
-#define CY_BOOT_5_90            (590u)
-#define CY_BOOT_6_0             (600u)
-#define CY_BOOT_VERSION         (CY_BOOT_6_0)
->>>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2:Lab 4 - UART Motors/Project/Backup/Lab04 - UART.4.4/Project/Design01.cydsn/Generated_Source/PSoC4/cytypes.h
 
 
 /*******************************************************************************

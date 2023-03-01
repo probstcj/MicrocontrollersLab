@@ -1273,10 +1273,6 @@ END GROUP
 
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 .debug_info     0x00000000     0x3a1b
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x759 .\CortexM0\ARM_GCC_541\Debug\main.o
@@ -1307,12 +1303,8 @@ END GROUP
  .debug_abbrev  0x00000dcd       0x14 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyBootAsmGnu.o)
  .debug_abbrev  0x00000de1      0x182 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyFlash.o)
 =======
-<<<<<<< HEAD
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 =======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 .debug_info     0x00000000     0x3a2d
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x761 .\CortexM0\ARM_GCC_541\Debug\main.o
@@ -1343,11 +1335,8 @@ END GROUP
  .debug_abbrev  0x00000de9       0x14 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyBootAsmGnu.o)
  .debug_abbrev  0x00000dfd      0x182 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyFlash.o)
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 =======
 .debug_info     0x00000000     0x3a1b
  *(.debug_info .gnu.linkonce.wi.*)
@@ -1379,13 +1368,7 @@ END GROUP
  .debug_abbrev  0x00000dcd       0x14 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyBootAsmGnu.o)
  .debug_abbrev  0x00000de1      0x182 .\CortexM0\ARM_GCC_541\Debug\Design01.a(CyFlash.o)
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 
 .debug_line     0x00000000     0x1908
  *(.debug_line)

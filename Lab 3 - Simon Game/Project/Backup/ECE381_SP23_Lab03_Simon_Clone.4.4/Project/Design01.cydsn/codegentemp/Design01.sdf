@@ -1,31 +1,18 @@
 (DELAYFILE
  (SDFVERSION "IEEE 1497 4.0")
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 <<<<<<< HEAD:Lab 3 - Simon Game/Project/Backup/ECE381_SP23_Lab03_Simon_Clone.4.4/Project/Design01.cydsn/codegentemp/Design01.sdf
  (DATE "2023-02-16T03:59:57Z")
 =======
  (DATE "2023-02-23T18:16:52Z")
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534:Lab 3 - Simon Game/Project/Design01.cydsn/codegentemp/Design01.sdf
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 <<<<<<< HEAD:Lab 3 - Simon Game/Project/Design01.cydsn/codegentemp/Design01.sdf
  (DATE "2023-02-23T18:16:52Z")
 =======
  (DATE "2023-02-16T03:59:57Z")
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8:Lab 3 - Simon Game/Project/Backup/ECE381_SP23_Lab03_Simon_Clone.4.4/Project/Design01.cydsn/codegentemp/Design01.sdf
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD:Lab 3 - Simon Game/Project/Backup/ECE381_SP23_Lab03_Simon_Clone.4.4/Project/Design01.cydsn/codegentemp/Design01.sdf
- (DATE "2023-02-16T03:59:57Z")
-=======
- (DATE "2023-02-23T18:16:52Z")
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534:Lab 3 - Simon Game/Project/Design01.cydsn/codegentemp/Design01.sdf
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  (DESIGN "Design01")
  (VENDOR "Cypress Semiconductor")
  (PROGRAM "PSoC Creator")

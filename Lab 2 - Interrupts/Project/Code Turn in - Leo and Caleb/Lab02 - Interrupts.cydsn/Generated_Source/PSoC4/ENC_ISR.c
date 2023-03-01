@@ -1,10 +1,7 @@
-<<<<<<< HEAD
-=======
 <<<<<<<< HEAD:Lab 2 - Interrupts/Project/Code Turn in - Leo and Caleb/Lab02 - Interrupts.cydsn/Generated_Source/PSoC4/ENC_ISR.c
 ========
 <<<<<<< HEAD:Lab 2 - Interrupts/Project/Lab02 - Interrupts.cydsn/codegentemp/ENC_ISR.c
 >>>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e:Lab 2 - Interrupts/Project/Code Turn in - Leo and Caleb/Lab02 - Interrupts.cydsn/codegentemp/ENC_ISR.c
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 /*******************************************************************************
 * File Name: ENC_ISR.c  
 * Version 1.70
@@ -447,8 +444,6 @@ void ENC_ISR_ClearPending(void)
 
 
 /* [] END OF FILE */
-<<<<<<< HEAD
-=======
 <<<<<<<< HEAD:Lab 2 - Interrupts/Project/Code Turn in - Leo and Caleb/Lab02 - Interrupts.cydsn/Generated_Source/PSoC4/ENC_ISR.c
 ========
 =======
@@ -901,4 +896,3 @@ void ENC_ISR_ClearPending(void)
 /* [] END OF FILE */
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8:Lab 2 - Interrupts/Project/Code Turn in - Leo and Caleb/Lab02 - Interrupts.cydsn/codegentemp/ENC_ISR.c
 >>>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e:Lab 2 - Interrupts/Project/Code Turn in - Leo and Caleb/Lab02 - Interrupts.cydsn/codegentemp/ENC_ISR.c
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc

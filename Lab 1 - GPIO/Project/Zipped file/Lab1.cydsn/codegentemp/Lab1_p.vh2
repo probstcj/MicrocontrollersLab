@@ -4,11 +4,7 @@
 ========
 -- Project:   C:\Users\Leo Tejkowski\Documents\PSoC Creator\Lab1\Lab1.cydsn\Lab1.cyprj
 -- Generated: 01/17/2023 23:16:55
-<<<<<<< HEAD
->>>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2:Lab 1 - GPIO/Project/Zipped file/Lab1.cydsn/codegentemp/Lab1_t.vh2
-=======
 >>>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e:Lab 1 - GPIO/Project/Zipped file/Lab1.cydsn/codegentemp/Lab1_t.vh2
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 -- PSoC Creator  4.4
 
 ENTITY Lab1 IS
@@ -77,11 +73,7 @@ ARCHITECTURE __DEFAULT__ OF Lab1 IS
 <<<<<<<< HEAD:Lab 1 - GPIO/Project/Zipped file/Lab1.cydsn/codegentemp/Lab1_p.vh2
 ========
     ATTRIBUTE Location OF ClockBlock : LABEL IS "F(Clock,0)";
-<<<<<<< HEAD
->>>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2:Lab 1 - GPIO/Project/Zipped file/Lab1.cydsn/codegentemp/Lab1_t.vh2
-=======
 >>>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e:Lab 1 - GPIO/Project/Zipped file/Lab1.cydsn/codegentemp/Lab1_t.vh2
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
     ATTRIBUTE lib_model OF R0(0) : LABEL IS "iocell1";
     ATTRIBUTE Location OF R0(0) : LABEL IS "P3[0]";
     ATTRIBUTE lib_model OF R1(0) : LABEL IS "iocell2";

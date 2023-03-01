@@ -1,27 +1,15 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 1
 =======
 ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
 =======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 1
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 1
-=======
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 
 
    1              		.syntax unified
@@ -91,8 +79,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
   36              		.cfi_offset 14, -4
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 2
 
 
@@ -104,7 +90,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
   37              		.loc 1 28 0
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
   27:main.c        ****     // If motor position is at edge, reset, otherwise increment
   28:main.c        ****     if(motor.position >= 4){
   37              		.loc 1 28 0
@@ -115,22 +100,7 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
   22:main.c        ****     if(motor.position >= 4){
   37              		.loc 1 22 0
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 2
-
-
-  22:main.c        ****     if(motor.position >= 4){
-  37              		.loc 1 22 0
-=======
-  27:main.c        ****     // If motor position is at edge, reset, otherwise increment
-  28:main.c        ****     if(motor.position >= 4){
-  37              		.loc 1 28 0
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
   38 0002 0307     		lsls	r3, r0, #28
   39 0004 1B0F     		lsrs	r3, r3, #28
   40 0006 032B     		cmp	r3, #3
@@ -192,31 +162,18 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
   82 003e 0AE0     		b	.L4
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 3
 
 
 =======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 =======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 3
 
 
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 3
-
-
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
   83              	.L5:
   40:main.c        ****         case 2:
   41:main.c        ****             // 1001 -> 1100
@@ -283,31 +240,18 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  122              		.size	MVCCW, .-MVCCW
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 4
 
 
 =======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 =======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 4
 
 
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 4
-
-
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  123              		.section	.text.MVCW,"ax",%progbits
  124              		.align	2
  125              		.global	MVCW
@@ -373,31 +317,18 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  171 002a 10D0     		beq	.L18
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 5
 
 
 =======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 =======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 5
 
 
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 5
-
-
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  172 002c 12E0     		b	.L15
  173              	.L17:
  174 002e 032C     		cmp	r4, #3
@@ -459,8 +390,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  208              	.LVL22:
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
   76:main.c        ****     Motor_Write(0b0000);
  209              		.loc 1 76 0
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 6
@@ -472,7 +401,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  209              		.loc 1 92 0
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
   91:main.c        ****     // Ground so motor doesn't get hot
   92:main.c        ****     Motor_Write(0b0000);
  209              		.loc 1 92 0
@@ -483,22 +411,7 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
 
 
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-  76:main.c        ****     Motor_Write(0b0000);
- 209              		.loc 1 76 0
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 6
-
-
-=======
-  91:main.c        ****     // Ground so motor doesn't get hot
-  92:main.c        ****     Motor_Write(0b0000);
- 209              		.loc 1 92 0
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  210 005c 0020     		movs	r0, #0
  211 005e FFF7FEFF 		bl	Motor_Write
  212              	.LVL23:
@@ -563,31 +476,18 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  263 000e 0700     		movs	r7, r0
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 7
 
 
 =======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 =======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 7
 
 
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 7
-
-
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  264              	.LVL25:
  265              	.LBB2:
   98:main.c        ****     // Run through the character array
@@ -655,31 +555,18 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  308 003c 991E     		subs	r1, r3, #2
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 8
 
 
 =======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 =======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 8
 
 
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 8
-
-
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  309 003e 02A8     		add	r0, sp, #8
  310 0040 4254     		strb	r2, [r0, r1]
  107:main.c        ****                 // If null terminator, break and increment index by 2
@@ -745,8 +632,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  354              	.LVL41:
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 9
 
 
@@ -758,7 +643,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  355              		.loc 1 128 0
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  127:main.c        ****             // Store global variable
  128:main.c        ****             motorDelay = delay;
  355              		.loc 1 128 0
@@ -769,22 +653,7 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  101:main.c        ****             motorDelay = delay;
  355              		.loc 1 101 0
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 9
-
-
- 101:main.c        ****             motorDelay = delay;
- 355              		.loc 1 101 0
-=======
- 127:main.c        ****             // Store global variable
- 128:main.c        ****             motorDelay = delay;
- 355              		.loc 1 128 0
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  356 0084 BB4B     		ldr	r3, .L62+8
  357 0086 1860     		str	r0, [r3]
  129:main.c        ****             // Output "RPM: " to UART
@@ -849,31 +718,18 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  401              	.LVL48:
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 10
 
 
 =======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 =======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 10
 
 
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 10
-
-
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  402              	.L31:
  132:main.c        ****                 // If end of string, add 5 to last index and break
  403              		.loc 1 132 0 is_stmt 0 discriminator 1
@@ -935,8 +791,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  446              	.LVL57:
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
  119:main.c        ****             output[lastIndex++] = ' ';
  447              		.loc 1 119 0
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 11
@@ -947,7 +801,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  447              		.loc 1 151 0
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  151:main.c        ****             output[lastIndex++] = ' ';
  447              		.loc 1 151 0
 =======
@@ -957,21 +810,7 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
 
 
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
- 119:main.c        ****             output[lastIndex++] = ' ';
- 447              		.loc 1 119 0
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 11
-
-
-=======
- 151:main.c        ****             output[lastIndex++] = ' ';
- 447              		.loc 1 151 0
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  448 00f2 9954     		strb	r1, [r3, r2]
  449 00f4 0836     		adds	r6, r6, #8
  450              	.LVL58:
@@ -1037,10 +876,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  489              	.LBE6:
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  130:main.c        ****                 }
  131:main.c        ****             }
  132:main.c        ****             output[lastIndex2++] = ' ';
@@ -1049,23 +884,16 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
 
  490              		.loc 1 132 0 is_stmt 1
 =======
-<<<<<<< HEAD
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 =======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  168:main.c        ****                 }
  169:main.c        ****             }
  170:main.c        ****             // Add units to the end and the carriage return
  171:main.c        ****             output[lastIndex2++] = ' ';
  490              		.loc 1 171 0 is_stmt 1
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 =======
  130:main.c        ****                 }
  131:main.c        ****             }
@@ -1075,13 +903,7 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
 
  490              		.loc 1 132 0 is_stmt 1
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  491 0120 4B46     		mov	r3, r9
  492              	.LVL64:
  493 0122 0133     		adds	r3, r3, #1
@@ -1143,10 +965,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  538              	.L26:
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  139:main.c        ****         }
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 13
 
@@ -1154,22 +972,15 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  140:main.c        ****         else if(*(command+i) == 'F' || *(command+i) == 'f'){
  539              		.loc 1 140 0
 =======
-<<<<<<< HEAD
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 =======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  179:main.c        ****         }
  180:main.c        ****         // Forward steps
  181:main.c        ****         else if(*(command+i) == 'F' || *(command+i) == 'f'){
  539              		.loc 1 181 0
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 =======
  139:main.c        ****         }
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 13
@@ -1178,13 +989,7 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  140:main.c        ****         else if(*(command+i) == 'F' || *(command+i) == 'f'){
  539              		.loc 1 140 0
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  540 015c 462B     		cmp	r3, #70
  541 015e 01D0     		beq	.L40
  542              		.loc 1 181 0 is_stmt 0 discriminator 1
@@ -1249,8 +1054,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  581              	.LBE9:
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
  143:main.c        ****                 // s 19216.8123
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 14
 
@@ -1261,7 +1064,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  582              		.loc 1 187 0 discriminator 2
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  187:main.c        ****                 // Store value as the current char value - 0x30 (takes numbers 0-9)
  582              		.loc 1 187 0 discriminator 2
 =======
@@ -1271,21 +1073,7 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
 
  582              		.loc 1 143 0 discriminator 2
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
- 143:main.c        ****                 // s 19216.8123
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 14
-
-
- 582              		.loc 1 143 0 discriminator 2
-=======
- 187:main.c        ****                 // Store value as the current char value - 0x30 (takes numbers 0-9)
- 582              		.loc 1 187 0 discriminator 2
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  583 0182 0131     		adds	r1, r1, #1
  584              	.LVL80:
  585              	.L42:
@@ -1350,31 +1138,18 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  628 01b6 0EAC     		add	r4, sp, #56
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 15
 
 
 =======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 =======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 15
 
 
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 15
-
-
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  629 01b8 1A22     		movs	r2, #26
  630 01ba 0021     		movs	r1, #0
  631 01bc 2000     		movs	r0, r4
@@ -1439,19 +1214,11 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  678              	.L50:
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
- 164:main.c        ****             }
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 16
-=======
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
  164:main.c        ****             }
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 16
 =======
 =======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  216:main.c        ****             }
  217:main.c        ****             // Start index of output array
  218:main.c        ****             int startIndex = 9;
@@ -1460,22 +1227,13 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  221:main.c        ****                 // Decrement power of 10
 ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 17
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 =======
  164:main.c        ****             }
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 16
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 
 
  222:main.c        ****                 pow10/=10;
@@ -1537,28 +1295,16 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  724 0242 0A22     		movs	r2, #10
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 17
 =======
 ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 18
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 18
 =======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 17
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 17
-=======
-ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 18
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 
 
  725 0244 C254     		strb	r2, [r0, r3]
@@ -1625,8 +1371,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  768              	.LVL107:
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
  184:main.c        ****                 if(charVal < 0 || charVal > 10){
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 18
 
@@ -1638,7 +1382,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  769              		.loc 1 245 0
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  244:main.c        ****                 // If any other character other than a number, break
  245:main.c        ****                 if(charVal < 0 || charVal > 10){
  769              		.loc 1 245 0
@@ -1649,22 +1392,7 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
 
  769              		.loc 1 184 0
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
- 184:main.c        ****                 if(charVal < 0 || charVal > 10){
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 18
-
-
- 769              		.loc 1 184 0
-=======
- 244:main.c        ****                 // If any other character other than a number, break
- 245:main.c        ****                 if(charVal < 0 || charVal > 10){
- 769              		.loc 1 245 0
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  770 026e 0A2B     		cmp	r3, #10
  771 0270 06D8     		bhi	.L53
  246:main.c        ****                     break;
@@ -1729,31 +1457,18 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  813 029c 0F22     		movs	r2, #15
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 19
 
 
 =======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 =======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 19
 
 
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 19
-
-
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  814 029e 9343     		bics	r3, r2
  815 02a0 1843     		orrs	r0, r3
  816 02a2 2071     		strb	r0, [r4, #4]
@@ -1817,31 +1532,18 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  861 02e4 A300     		lsls	r3, r4, #2
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 20
 
 
 =======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 =======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 20
 
 
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 20
-
-
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  862 02e6 1C19     		adds	r4, r3, r4
  863              	.LVL121:
  864 02e8 6300     		lsls	r3, r4, #1
@@ -1906,8 +1608,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  908              	.LVL132:
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
  206:main.c        ****                 output[startIndex++] = (value/(pow10))+0x30;
  909              		.loc 1 206 0
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 21
@@ -1918,7 +1618,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  909              		.loc 1 275 0
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  275:main.c        ****                 // Subtract that number
  909              		.loc 1 275 0
 =======
@@ -1928,21 +1627,7 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
 
 
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
- 206:main.c        ****                 output[startIndex++] = (value/(pow10))+0x30;
- 909              		.loc 1 206 0
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 21
-
-
-=======
- 275:main.c        ****                 // Subtract that number
- 909              		.loc 1 275 0
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  910 0328 DA46     		mov	r10, fp
  911              	.LVL133:
  912              	.L59:
@@ -2007,31 +1692,18 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  952 035c 1DB0     		add	sp, sp, #116
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 22
 
 
 =======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 =======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 22
 
 
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 22
-
-
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  953              		@ sp needed
  954              	.LVL136:
  955              	.LVL137:
@@ -2094,8 +1766,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  1002              	.LVL140:
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 23
 
 
@@ -2107,7 +1777,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  1003              		.loc 1 299 0
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  298:main.c        ****     // Initialize UART
  299:main.c        ****     UART_UartPutString("Type a command please.\r\n");
  1003              		.loc 1 299 0
@@ -2118,22 +1787,7 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  227:main.c        ****     UART_UartPutString("Type a command please.\r\n");
  1003              		.loc 1 227 0
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 23
-
-
- 227:main.c        ****     UART_UartPutString("Type a command please.\r\n");
- 1003              		.loc 1 227 0
-=======
- 298:main.c        ****     // Initialize UART
- 299:main.c        ****     UART_UartPutString("Type a command please.\r\n");
- 1003              		.loc 1 299 0
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  1004 000a 2448     		ldr	r0, .L74
  1005 000c FFF7FEFF 		bl	UART_UartPutString
  1006              	.LVL141:
@@ -2201,8 +1855,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  1040              	.LVL147:
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 24
 
 
@@ -2213,7 +1865,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  1041              		.loc 1 325 0
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  325:main.c        ****                 UART_UartPutChar(' ');
  1041              		.loc 1 325 0
 =======
@@ -2223,21 +1874,7 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  246:main.c        ****                 UART_UartPutChar(' ');
  1041              		.loc 1 246 0
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 24
-
-
- 246:main.c        ****                 UART_UartPutChar(' ');
- 1041              		.loc 1 246 0
-=======
- 325:main.c        ****                 UART_UartPutChar(' ');
- 1041              		.loc 1 325 0
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  1042 0038 2020     		movs	r0, #32
  1043 003a FFF7FEFF 		bl	UART_SpiUartWriteTxData
  1044              	.LVL148:
@@ -2304,8 +1941,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  1081              	.L72:
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
  260:main.c        ****                 command[i] = '\0';
  1082              		.loc 1 260 0 discriminator 3
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 25
@@ -2316,7 +1951,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  1082              		.loc 1 347 0 discriminator 3
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  347:main.c        ****                 command[i] = '\0';
  1082              		.loc 1 347 0 discriminator 3
 =======
@@ -2326,21 +1960,7 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
 
 
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
- 260:main.c        ****                 command[i] = '\0';
- 1082              		.loc 1 260 0 discriminator 3
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 25
-
-
-=======
- 347:main.c        ****                 command[i] = '\0';
- 1082              		.loc 1 347 0 discriminator 3
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  1083 0068 0021     		movs	r1, #0
  1084 006a 01AA     		add	r2, sp, #4
  1085              	.LVL156:
@@ -2407,31 +2027,18 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  1126 0098 BEE7     		b	.L66
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 26
 
 
 =======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 =======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 26
 
 
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 26
-
-
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  1127              	.L75:
  1128 009a C046     		.align	2
  1129              	.L74:
@@ -2494,8 +2101,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  1178 000b 01       		.uleb128 0x1
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 27
 
 
@@ -2504,7 +2109,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  1179 000c A9010000 		.4byte	.LASF40
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  1179 000c A9010000 		.4byte	.LASF40
 =======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 27
@@ -2512,19 +2116,7 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
 
  1179 000c 9E010000 		.4byte	.LASF40
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 27
-
-
- 1179 000c 9E010000 		.4byte	.LASF40
-=======
- 1179 000c A9010000 		.4byte	.LASF40
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  1180 0010 0C       		.byte	0xc
  1181 0011 3B020000 		.4byte	.LASF41
  1182 0015 A3000000 		.4byte	.LASF42
@@ -2548,37 +2140,21 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  1200 003c 07       		.byte	0x7
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
- 1201 003d F4000000 		.4byte	.LASF3
-=======
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
  1201 003d F4000000 		.4byte	.LASF3
 =======
 =======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  1201 003d FF000000 		.4byte	.LASF3
 ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 29
 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
- 1201 003d F4000000 		.4byte	.LASF3
->>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
 =======
  1201 003d F4000000 		.4byte	.LASF3
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  1202 0041 02       		.uleb128 0x2
  1203 0042 04       		.byte	0x4
  1204 0043 05       		.byte	0x5
@@ -2615,31 +2191,18 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  1235 007e 02       		.uleb128 0x2
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 28
 
 
 =======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 =======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 28
 
 
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 28
-
-
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  1236 007f 08       		.byte	0x8
  1237 0080 04       		.byte	0x4
  1238 0081 3A010000 		.4byte	.LASF10
@@ -2702,31 +2265,18 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  1292 00f0 00000000 		.4byte	.LLST0
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 29
 
 
 =======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 =======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 29
 
 
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 29
-
-
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  1293 00f4 0C       		.uleb128 0xc
  1294 00f5 3E000000 		.4byte	.LVL6
  1295 00f9 FC060000 		.4byte	0x6fc
@@ -2788,8 +2338,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  1348 015e 01       		.byte	0x1
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
  1349 015f 32       		.byte	0x32
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 30
 
@@ -2798,7 +2346,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  1349 015f 3E       		.byte	0x3e
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  1349 015f 3E       		.byte	0x3e
 =======
  1349 015f 32       		.byte	0x32
@@ -2806,19 +2353,7 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
 
 
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
- 1349 015f 32       		.byte	0x32
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 30
-
-
-=======
- 1349 015f 3E       		.byte	0x3e
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  1350 0160 5D000000 		.4byte	0x5d
  1351 0164 00000000 		.4byte	.LFB36
  1352 0168 6C000000 		.4byte	.LFE36-.LFB36
@@ -2881,8 +2416,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  1406 01d7 62000000 		.4byte	.LVL23
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 31
 
 
@@ -2891,7 +2424,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  1407 01db FC060000 		.4byte	0x6fc
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  1407 01db FC060000 		.4byte	0x6fc
 =======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 31
@@ -2899,19 +2431,7 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
 
  1407 01db F4060000 		.4byte	0x6f4
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 31
-
-
- 1407 01db F4060000 		.4byte	0x6f4
-=======
- 1407 01db FC060000 		.4byte	0x6fc
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  1408 01df 0D       		.uleb128 0xd
  1409 01e0 01       		.uleb128 0x1
  1410 01e1 50       		.byte	0x50
@@ -2973,31 +2493,18 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  1463 025a 16       		.uleb128 0x16
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 32
 
 
 =======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 =======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 32
 
 
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 32
-
-
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  1464 025b 6F757400 		.ascii	"out\000"
  1465 025f 01       		.byte	0x1
  1466 0260 76       		.byte	0x76
@@ -3022,37 +2529,21 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  1485 0287 14       		.uleb128 0x14
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
- 1486 0288 4A000000 		.4byte	.LASF23
-=======
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
  1486 0288 4A000000 		.4byte	.LASF23
 =======
 =======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  1486 0288 A6000000 		.4byte	.LASF23
 ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 34
 
 
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
- 1486 0288 4A000000 		.4byte	.LASF23
->>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
 =======
  1486 0288 4A000000 		.4byte	.LASF23
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  1487 028c 01       		.byte	0x1
  1488 028d 99       		.byte	0x99
  1489 028e 53050000 		.4byte	0x553
@@ -3089,31 +2580,18 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  1520 02da 00       		.byte	0
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 33
 
 
 =======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 =======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 33
 
 
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 33
-
-
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  1521 02db 13       		.uleb128 0x13
  1522 02dc 02010000 		.4byte	.LBB6
  1523 02e0 1E000000 		.4byte	.LBE6-.LBB6
@@ -3176,31 +2654,18 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  1577 0341 01       		.uleb128 0x1
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 34
 
 
 =======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 =======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 34
 
 
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 34
-
-
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  1578 0342 40       		.byte	0x40
  1579 0343 0D       		.uleb128 0xd
  1580 0344 01       		.uleb128 0x1
@@ -3263,31 +2728,18 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  1634 0393 00       		.sleb128 0
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 35
 
 
 =======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 =======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 35
 
 
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 35
-
-
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  1635 0394 00       		.byte	0
  1636 0395 0F       		.uleb128 0xf
  1637 0396 5A010000 		.4byte	.LVL72
@@ -3313,37 +2765,21 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  1657 03c3 14       		.uleb128 0x14
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
- 1658 03c4 57020000 		.4byte	.LASF22
-=======
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
  1658 03c4 57020000 		.4byte	.LASF22
 =======
 =======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 37
 
 
  1658 03c4 62020000 		.4byte	.LASF22
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
- 1658 03c4 57020000 		.4byte	.LASF22
->>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
 =======
  1658 03c4 57020000 		.4byte	.LASF22
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  1659 03c8 01       		.byte	0x1
  1660 03c9 CF       		.byte	0xcf
  1661 03ca A0000000 		.4byte	0xa0
@@ -3379,8 +2815,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  1691 0414 01       		.byte	0x1
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 36
 
 
@@ -3389,7 +2823,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  1692 0415 BD       		.byte	0xbd
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  1692 0415 BD       		.byte	0xbd
 =======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 36
@@ -3397,19 +2830,7 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
 
  1692 0415 91       		.byte	0x91
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 36
-
-
- 1692 0415 91       		.byte	0x91
-=======
- 1692 0415 BD       		.byte	0xbd
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  1693 0416 5D000000 		.4byte	0x5d
  1694 041a 2F030000 		.4byte	.LLST15
  1695 041e 00       		.byte	0
@@ -3471,10 +2892,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  1748 0482 01       		.byte	0x1
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 37
 
 
@@ -3829,12 +3246,8 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  2082 0757 72       		.byte	0x72
  2083 0758 00       		.byte	0
 =======
-<<<<<<< HEAD
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 =======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  1749 0483 F0       		.byte	0xf0
  1750 0484 41000000 		.4byte	0x41
  1751 0488 6E030000 		.4byte	.LLST17
@@ -4189,11 +3602,8 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  2082 075f 72       		.byte	0x72
  2083 0760 00       		.byte	0
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 =======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 37
 
@@ -4549,13 +3959,7 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  2082 0757 72       		.byte	0x72
  2083 0758 00       		.byte	0
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  2084              		.section	.debug_abbrev,"",%progbits
  2085              	.Ldebug_abbrev0:
  2086 0000 01       		.uleb128 0x1
@@ -4565,31 +3969,18 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  2090 0004 0E       		.uleb128 0xe
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 43
 
 
 =======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 =======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 43
 
 
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 43
-
-
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  2091 0005 13       		.uleb128 0x13
  2092 0006 0B       		.uleb128 0xb
  2093 0007 03       		.uleb128 0x3
@@ -4652,31 +4043,18 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  2147 003d 00       		.byte	0
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 44
 
 
 =======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 =======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 44
 
 
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 44
-
-
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  2148 003e 00       		.byte	0
  2149 003f 06       		.uleb128 0x6
  2150 0040 01       		.uleb128 0x1
@@ -4739,31 +4117,18 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  2204 0076 2E       		.uleb128 0x2e
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 45
 
 
 =======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 =======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 45
 
 
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 45
-
-
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  2205 0077 01       		.byte	0x1
  2206 0078 3F       		.uleb128 0x3f
  2207 0079 19       		.uleb128 0x19
@@ -4826,31 +4191,18 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  2261 00b4 9142     		.uleb128 0x2111
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 46
 
 
 =======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 =======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 46
 
 
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 46
-
-
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  2262 00b6 18       		.uleb128 0x18
  2263 00b7 00       		.byte	0
  2264 00b8 00       		.byte	0
@@ -4913,31 +4265,18 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  2318 00f3 34       		.uleb128 0x34
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 47
 
 
 =======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 =======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 47
 
 
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 47
-
-
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  2319 00f4 00       		.byte	0
  2320 00f5 03       		.uleb128 0x3
  2321 00f6 08       		.uleb128 0x8
@@ -5000,31 +4339,18 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  2375 012c 00       		.byte	0
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 48
 
 
 =======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 =======
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 48
 
 
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 48
-
-
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  2376 012d 03       		.uleb128 0x3
  2377 012e 08       		.uleb128 0x8
  2378 012f 3A       		.uleb128 0x3a
@@ -5049,10 +4375,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  2397 0142 18       		.uleb128 0x18
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  2398 0143 2E       		.uleb128 0x2e
  2399 0144 01       		.byte	0x1
  2400 0145 3F       		.uleb128 0x3f
@@ -5150,12 +4472,8 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  2489 01a0 00       		.byte	0
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 50
 =======
-<<<<<<< HEAD
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 =======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  2398 0143 34       		.uleb128 0x34
 ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 50
 
@@ -5219,11 +4537,8 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  2455 017c 49       		.uleb128 0x49
 ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 51
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 =======
  2398 0143 2E       		.uleb128 0x2e
  2399 0144 01       		.byte	0x1
@@ -5322,13 +4637,7 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  2489 01a0 00       		.byte	0
 ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cczX9cW1.s 			page 50
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 
 
  2456 017d 13       		.uleb128 0x13
@@ -5401,10 +4710,6 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  2520 01bf 00       		.byte	0
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  2521              		.section	.debug_loc,"",%progbits
  2522              	.Ldebug_loc0:
  2523              	.LLST0:
@@ -6239,12 +5544,8 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  3200      68617200 
  3201              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
 =======
-<<<<<<< HEAD
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 =======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
  2521 01c0 3F       		.uleb128 0x3f
  2522 01c1 19       		.uleb128 0x19
  2523 01c2 3C       		.uleb128 0x3c
@@ -7094,11 +6395,8 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  3215      68617200 
  3216              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
 =======
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
 =======
  2521              		.section	.debug_loc,"",%progbits
  2522              	.Ldebug_loc0:
@@ -7934,10 +7232,4 @@ ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc4QlrO3.s 			page 1
  3200      68617200 
  3201              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
 >>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8
-<<<<<<< HEAD
-=======
->>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534
->>>>>>> 6306daa794c58f4c1cf0d730fde6cee6858903a2
-=======
 >>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
->>>>>>> b6af373156fbbfd3c8de315656f7bc6d715107fc
