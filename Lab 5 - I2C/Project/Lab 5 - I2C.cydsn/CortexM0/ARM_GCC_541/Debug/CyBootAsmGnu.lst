@@ -10557,7 +10557,7 @@ ARM GAS  Generated_Source\PSoC4\CyBootAsmGnu.s 			page 1
  635              	.set CYDEV_DFT_SELECT_CLK0, 10
  636              	.set CYDEV_DFT_SELECT_CLK1, 11
  637              	.set CYDEV_DMA_CHANNELS_AVAILABLE, 8
- 638              	.set CYDEV_HEAP_SIZE, 0x80
+ 638              	.set CYDEV_HEAP_SIZE, 0x200
 ARM GAS  Generated_Source\PSoC4\CyBootAsmGnu.s 			page 177
 
 

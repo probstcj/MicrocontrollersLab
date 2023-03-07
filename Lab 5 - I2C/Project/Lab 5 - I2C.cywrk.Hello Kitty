@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Lab 5 - I2C\Lab 5 - I2C\Source Files\main.c">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Lab 5 - I2C\Lab 5 - I2C\Generated_Source\PSoC4\ACCEL_ISR\ACCEL_ISR.c">
 <ExpandedNodeIds>
 <v>Lab 5 - I2C</v>
 <v>Lab 5 - I2C\Lab 5 - I2C</v>
@@ -33,6 +33,7 @@
 <v>Lab 5 - I2C\Lab 5 - I2C\Source Files\main.c</v>
 <v>Lab 5 - I2C\Lab 5 - I2C\Generated_Source</v>
 <v>Lab 5 - I2C\Lab 5 - I2C\Generated_Source\PSoC4</v>
+<v>Lab 5 - I2C\Lab 5 - I2C\Generated_Source\PSoC4\ACCEL_ISR</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
 <v>Lab 5 - I2C</v>
@@ -55,6 +56,8 @@
 <v>Lab 5 - I2C\Lab 5 - I2C\Generated_Source\PSoC4</v>
 <v>Lab 5 - I2C\Lab 5 - I2C\Generated_Source\PSoC4\ACCEL_INT</v>
 <v>Lab 5 - I2C\Lab 5 - I2C\Generated_Source\PSoC4\ACCEL_ISR</v>
+<v>Lab 5 - I2C\Lab 5 - I2C\Generated_Source\PSoC4\ACCEL_ISR\ACCEL_ISR.c</v>
+<v>Lab 5 - I2C\Lab 5 - I2C\Generated_Source\PSoC4\ACCEL_ISR\ACCEL_ISR.h</v>
 <v>Lab 5 - I2C\Lab 5 - I2C\Generated_Source\PSoC4\cy_boot</v>
 <v>Lab 5 - I2C\Lab 5 - I2C\Generated_Source\PSoC4\cy_dmac</v>
 <v>Lab 5 - I2C\Lab 5 - I2C\Generated_Source\PSoC4\cy_lfclk</v>
@@ -83,8 +86,6 @@
 <v>Lab 5 - I2C\Lab 5 - I2C\Generated_Source\PSoC4\cyfittergnu.inc</v>
 <v>Lab 5 - I2C\Lab 5 - I2C\Generated_Source\PSoC4\cyfitteriar.inc</v>
 <v>Lab 5 - I2C\Lab 5 - I2C\Generated_Source\PSoC4\cyfitterrv.inc</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\Generated_Source\PSoC4\cymetadata.c</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\Generated_Source\PSoC4\project.h</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -156,51 +157,6 @@
 <VisibleNodeIds>
 <v>Lab 5 - I2C</v>
 <v>Lab 5 - I2C\Lab 5 - I2C</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\ACCEL_INT.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\ACCEL_INT_PM.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\ACCEL_ISR.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\Cm0Start.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\CyDMA.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\CyLFClk.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\I2C.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\I2C_BOOT.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\I2C_I2C.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\I2C_I2C_BOOT.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\I2C_I2C_INT.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\I2C_I2C_MASTER.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\I2C_PM.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\I2C_SCB_IRQ.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\I2C_SCBCLK.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\I2C_scl.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\I2C_scl_PM.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\I2C_sda.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\I2C_sda_PM.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\LED_B.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\LED_B_PM.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\LED_G.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\LED_G_PM.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\LED_R.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\LED_R_PM.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\main.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\TEST.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\TEST_ISR.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Listing Files\TEST_PM.lst</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Lab 5 - I2C.elf</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Lab 5 - I2C.hex</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\CortexM0\ARM_GCC_541\Debug\Lab 5 - I2C.map</v>
-<v>Lab 5 - I2C\Lab 5 - I2C\Lab 5 - I2C.gpdsc</v>
 <v>Lab 5 - I2C\Lab 5 - I2C\Lab 5 - I2C.rpt</v>
 <v>Lab 5 - I2C\Lab 5 - I2C\Lab 5 - I2C_timing.html</v>
 </VisibleNodeIds>
@@ -252,6 +208,7 @@
 <name v=".\Lab 5 - I2C.cydsn\TopDesign\TopDesign.cysch" />
 <name v=".\Lab 5 - I2C.cydsn\Lab 5 - I2C.cydwr" />
 <name v=".\Lab 5 - I2C.cydsn\main.c" />
+<name v=".\Lab 5 - I2C.cydsn\Generated_Source\PSoC4\ACCEL_ISR.c" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -259,7 +216,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1829, 770" SelectedTabbedMdiWindow="db09fcda-435f-436a-bf8d-0b0f970cef1a"><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 5 - I2C\Project\Lab 5 - I2C.cydsn\TopDesign\TopDesign.cysch" Guid="d877f3c1-e696-4b5a-8d6e-3b7df6470ef1" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 5 - I2C\Project\Lab 5 - I2C.cydsn\Lab 5 - I2C.cydwr" Guid="52ea1480-3785-42fd-988e-3d6bd8bba742" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 5 - I2C\Project\Lab 5 - I2C.cydsn\main.c" Guid="db09fcda-435f-436a-bf8d-0b0f970cef1a" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="ead43ad5-701e-41ee-acd3-176a27ede259" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="924, 351" SelectedTabbedMdiWindow="db09fcda-435f-436a-bf8d-0b0f970cef1a"><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 5 - I2C\Project\Lab 5 - I2C.cydsn\TopDesign\TopDesign.cysch" Guid="d877f3c1-e696-4b5a-8d6e-3b7df6470ef1" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 5 - I2C\Project\Lab 5 - I2C.cydsn\Lab 5 - I2C.cydwr" Guid="52ea1480-3785-42fd-988e-3d6bd8bba742" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 5 - I2C\Project\Lab 5 - I2C.cydsn\main.c" Guid="db09fcda-435f-436a-bf8d-0b0f970cef1a" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 5 - I2C\Project\Lab 5 - I2C.cydsn\Generated_Source\PSoC4\ACCEL_ISR.c" Guid="cd3ad0b8-9535-4cc0-9194-8961e7c74099" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="ead43ad5-701e-41ee-acd3-176a27ede259" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Lab04 - UART\Design01\Source Files\main.c">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Lab04 - UART\Design01">
 <ExpandedNodeIds>
 <v>Lab04 - UART</v>
 <v>Lab04 - UART\Design01</v>
@@ -208,6 +208,7 @@
 <v>Lab04 - UART\Design01\PSoC 4 Architecture TRM</v>
 <v>Lab04 - UART\Design01\PSoC 4200M Family Datasheet</v>
 <v>Lab04 - UART\Design01\System Reference Guides</v>
+<v>Lab04 - UART\Design01\System Reference Guides\cy_boot_v5_82</v>
 <v>Lab04 - UART\Design01\System Reference Guides\cy_dmac_v1_10</v>
 <v>Lab04 - UART\Design01\System Reference Guides\cy_lfclk_v1_20</v>
 <v>Lab04 - UART\Design01\cy_pins_v2_20</v>
@@ -221,6 +222,7 @@
 <v>Lab04 - UART\Design01\PSoC 4 Architecture TRM</v>
 <v>Lab04 - UART\Design01\PSoC 4200M Family Datasheet</v>
 <v>Lab04 - UART\Design01\System Reference Guides</v>
+<v>Lab04 - UART\Design01\System Reference Guides\cy_boot_v5_82</v>
 <v>Lab04 - UART\Design01\System Reference Guides\cy_dmac_v1_10</v>
 <v>Lab04 - UART\Design01\System Reference Guides\cy_lfclk_v1_20</v>
 <v>Lab04 - UART\Design01\cy_pins_v2_20</v>
@@ -246,7 +248,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1831, 883" SelectedTabbedMdiWindow="0d7ca169-e985-42db-bb5d-ab227ead5400"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="ead43ad5-701e-41ee-acd3-176a27ede259" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 4 - UART Motors\Project\Design01.cydsn\main.c" Guid="0d7ca169-e985-42db-bb5d-ab227ead5400" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 4 - UART Motors\Project\Design01.cydsn\Design01.cydwr" Guid="d2a6f13c-2e0e-48e4-b80b-17f8dae01dee" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 4 - UART Motors\Project\Design01.cydsn\TopDesign\TopDesign.cysch" Guid="769abe0c-71bd-4f27-8213-1931e57e21c1" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1829, 770" SelectedTabbedMdiWindow="0d7ca169-e985-42db-bb5d-ab227ead5400"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="ead43ad5-701e-41ee-acd3-176a27ede259" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 4 - UART Motors\Project\Design01.cydsn\main.c" Guid="0d7ca169-e985-42db-bb5d-ab227ead5400" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 4 - UART Motors\Project\Design01.cydsn\Design01.cydwr" Guid="d2a6f13c-2e0e-48e4-b80b-17f8dae01dee" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 4 - UART Motors\Project\Design01.cydsn\TopDesign\TopDesign.cysch" Guid="769abe0c-71bd-4f27-8213-1931e57e21c1" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

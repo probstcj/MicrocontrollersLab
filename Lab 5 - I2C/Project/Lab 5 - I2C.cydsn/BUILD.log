@@ -1,21 +1,24 @@
---------------- Build Started: 02/28/2023 16:27:03 Project: Lab 5 - I2C, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+--------------- Build Started: 03/02/2023 15:52:11 Project: Lab 5 - I2C, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
 The code generation step is up to date.
 main.c: In function 'main':
-main.c:93:20: warning: unused variable 'test' [-Wunused-variable]
-     volatile uint8 test = rdBuf[0];
-                    ^
-main.c:73:17: warning: unused variable 'ram' [-Wunused-variable]
+arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_541\Debug/main.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c main.c -o .\CortexM0\ARM_GCC_541\Debug\main.o
+main.c:146:26: warning: unused variable 'thing' [-Wunused-variable]
+             volatile int thing = 20;
+                          ^
+main.c:143:22: warning: unused variable 'thing2' [-Wunused-variable]
+         volatile int thing2 = 20;
+                      ^
+main.c:101:17: warning: unused variable 'ram' [-Wunused-variable]
      struct FRAM ram = {
                  ^
-arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_541\Debug/main.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c main.c -o .\CortexM0\ARM_GCC_541\Debug\main.o
-arm-none-eabi-ar.exe: creating .\CortexM0\ARM_GCC_541\Debug\Lab 5 - I2C.a
 arm-none-eabi-ar.exe -rs ".\CortexM0\ARM_GCC_541\Debug\Lab 5 - I2C.a" .\CortexM0\ARM_GCC_541\Debug\I2C.o .\CortexM0\ARM_GCC_541\Debug\I2C_I2C_INT.o .\CortexM0\ARM_GCC_541\Debug\I2C_I2C.o .\CortexM0\ARM_GCC_541\Debug\I2C_I2C_BOOT.o .\CortexM0\ARM_GCC_541\Debug\I2C_I2C_MASTER.o .\CortexM0\ARM_GCC_541\Debug\I2C_PM.o .\CortexM0\ARM_GCC_541\Debug\I2C_BOOT.o .\CortexM0\ARM_GCC_541\Debug\LED_R.o .\CortexM0\ARM_GCC_541\Debug\LED_R_PM.o .\CortexM0\ARM_GCC_541\Debug\LED_B.o .\CortexM0\ARM_GCC_541\Debug\LED_B_PM.o .\CortexM0\ARM_GCC_541\Debug\LED_G.o .\CortexM0\ARM_GCC_541\Debug\LED_G_PM.o .\CortexM0\ARM_GCC_541\Debug\ACCEL_INT.o .\CortexM0\ARM_GCC_541\Debug\ACCEL_INT_PM.o .\CortexM0\ARM_GCC_541\Debug\TEST.o .\CortexM0\ARM_GCC_541\Debug\TEST_PM.o .\CortexM0\ARM_GCC_541\Debug\ACCEL_ISR.o .\CortexM0\ARM_GCC_541\Debug\TEST_ISR.o .\CortexM0\ARM_GCC_541\Debug\I2C_SCBCLK.o .\CortexM0\ARM_GCC_541\Debug\I2C_sda.o .\CortexM0\ARM_GCC_541\Debug\I2C_sda_PM.o .\CortexM0\ARM_GCC_541\Debug\I2C_scl.o .\CortexM0\ARM_GCC_541\Debug\I2C_scl_PM.o .\CortexM0\ARM_GCC_541\Debug\I2C_SCB_IRQ.o .\CortexM0\ARM_GCC_541\Debug\cy_em_eeprom.o .\CortexM0\ARM_GCC_541\Debug\CyFlash.o .\CortexM0\ARM_GCC_541\Debug\CyLib.o .\CortexM0\ARM_GCC_541\Debug\cyPm.o .\CortexM0\ARM_GCC_541\Debug\cyutils.o .\CortexM0\ARM_GCC_541\Debug\CyDMA.o .\CortexM0\ARM_GCC_541\Debug\CyLFClk.o .\CortexM0\ARM_GCC_541\Debug\CyBootAsmGnu.o
-arm-none-eabi-gcc.exe -Wl,--start-group -o "C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 5 - I2C\Project\Lab 5 - I2C.cydsn\CortexM0\ARM_GCC_541\Debug\Lab 5 - I2C.elf" .\CortexM0\ARM_GCC_541\Debug\main.o .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o .\CortexM0\ARM_GCC_541\Debug\cymetadata.o .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o ".\CortexM0\ARM_GCC_541\Debug\Lab 5 - I2C.a" -mcpu=cortex-m0 -mthumb -L Generated_Source\PSoC4 "-Wl,-Map,.\CortexM0\ARM_GCC_541\Debug/Lab 5 - I2C.map" -T Generated_Source\PSoC4\cm0gcc.ld -specs=nano.specs -Wl,--gc-sections -g -ffunction-sections -Og -ffat-lto-objects -Wl,--end-group
+arm-none-eabi-ar.exe: creating .\CortexM0\ARM_GCC_541\Debug\Lab 5 - I2C.a
+arm-none-eabi-gcc.exe -Wl,--start-group -o "C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 5 - I2C\Project\Lab 5 - I2C.cydsn\CortexM0\ARM_GCC_541\Debug\Lab 5 - I2C.elf" .\CortexM0\ARM_GCC_541\Debug\main.o .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o .\CortexM0\ARM_GCC_541\Debug\cymetadata.o .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o ".\CortexM0\ARM_GCC_541\Debug\Lab 5 - I2C.a" -mcpu=cortex-m0 -mthumb -L Generated_Source\PSoC4 "-Wl,-Map,.\CortexM0\ARM_GCC_541\Debug/Lab 5 - I2C.map" -T Generated_Source\PSoC4\cm0gcc.ld -specs=nano.specs -u _printf_float -Wl,--gc-sections -g -ffunction-sections -Og -ffat-lto-objects -Wl,--end-group
 cyelftool.exe -C "C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 5 - I2C\Project\Lab 5 - I2C.cydsn\CortexM0\ARM_GCC_541\Debug\Lab 5 - I2C.elf" --flash_row_size 128 --flash_size 131072 --flash_offset 0x00000000
 No ELF section .cychecksum found, creating one
 Application checksum calculated and stored in ELF section .cychecksum
 Checksum calculated and stored in ELF section .cymeta
 cyelftool.exe -S "C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 5 - I2C\Project\Lab 5 - I2C.cydsn\CortexM0\ARM_GCC_541\Debug\Lab 5 - I2C.elf"
-Flash used: 4152 of 131072 bytes (3.2%).
-SRAM used: 2624 of 16384 bytes (16.0%). Stack: 2048 bytes. Heap: 128 bytes.
---------------- Build Succeeded: 02/28/2023 16:27:05 ---------------
+Flash used: 19804 of 131072 bytes (15.1%).
+SRAM used: 3080 of 16384 bytes (18.8%). Stack: 2048 bytes. Heap: 512 bytes.
+--------------- Build Succeeded: 03/02/2023 15:52:13 ---------------
