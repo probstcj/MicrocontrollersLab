@@ -1,6 +1,6 @@
 -- Project:   Lab 5 - I2C
--- Generated: 02/27/2023 18:48:39
--- PSoC Creator  4.2
+-- Generated: 03/07/2023 12:13:51
+-- PSoC Creator  4.4
 
 ENTITY \Lab 5 - I2C\ IS
     PORT(
