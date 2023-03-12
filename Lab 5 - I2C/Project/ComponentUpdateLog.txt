@@ -1,6 +1,0 @@
-Last Modified Date & Time: 03/07/2023 11:14:14
-
-Lab 5 - I2C: Lab 5 - I2C.cydwr
-	cy_boot [v5.82] to [v6.10]
-
-

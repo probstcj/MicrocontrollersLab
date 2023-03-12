@@ -1,6 +1,0 @@
-C:\Users\hElLo KiTtY 2.1\Desktop\ECE381\Lab 5 - I2C\Project\Lab 5 - I2C.cydsn\Lab 5 - I2C.cyprj|ca5d4c6f-cd77-4f3d-8d9b-a61b7c788cc8
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|ce449bce-125b-405e-88ec-c8d10166036a
-C:\Users\hElLo KiTtY 2.1\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|610c6ba4-7917-40a6-86e0-b49df69b03e2
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|9c94196e-ba8e-409e-a81c-d9ff86512ff8
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|8e3591de-b8f4-4356-b28c-f5e63a0777cd
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|6751cfe7-313a-48e5-8fcf-275a5cb393d3
