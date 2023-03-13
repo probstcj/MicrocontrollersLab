@@ -2,7 +2,7 @@
 --	Conversion of Design01.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Wed Mar 01 22:06:21 2023
+--	Tue Feb 14 19:51:20 2023
 --
 
 USE cypress.cypress.all;
@@ -51,16 +51,16 @@ SIGNAL Net_20 : bit;
 SIGNAL Net_21 : bit;
 SIGNAL Net_12 : bit;
 SIGNAL \UART:Net_1028\ : bit;
-SIGNAL Net_11 : bit;
 SIGNAL Net_5 : bit;
 SIGNAL Net_6 : bit;
 SIGNAL Net_7 : bit;
 SIGNAL Net_8 : bit;
 SIGNAL Net_9 : bit;
 SIGNAL Net_10 : bit;
+SIGNAL Net_11 : bit;
+SIGNAL Net_14 : bit;
 SIGNAL Net_15 : bit;
 SIGNAL Net_22 : bit;
-SIGNAL Net_14 : bit;
 SIGNAL \Motor:clk\ : bit;
 SIGNAL \Motor:rst\ : bit;
 SIGNAL Net_26 : bit;

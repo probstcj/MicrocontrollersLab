@@ -27,7 +27,8 @@
 *  Place your includes, defines and code here 
 ********************************************************************************/
 /* `#START ACCEL_ISR_intc` */
-
+extern int accelFlag;
+#include <ACCEL_INT.h>
 /* `#END` */
 
 extern cyisraddress CyRamVectors[CYINT_IRQ_BASE + CY_NUM_INTERRUPTS];
@@ -164,7 +165,8 @@ CY_ISR(ACCEL_ISR_Interrupt)
 
     /*  Place your Interrupt code here. */
     /* `#START ACCEL_ISR_Interrupt` */
-
+    accelFlag = 1;
+    ACCEL_INT_ClearInterrupt();
     /* `#END` */
 }
 
