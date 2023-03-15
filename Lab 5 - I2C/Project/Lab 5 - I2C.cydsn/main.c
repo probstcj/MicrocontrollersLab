@@ -15,6 +15,7 @@ static const uint32 accelAddr = 0x0F;
 static const uint32 ramLowerAddr = 0x50;
 static const uint32 ramUpperAddr = 0x51;
 volatile int accelFlag = 0;
+volatile int buttonFlag = 0;
 
 struct accelerometer{
     uint32 XOUT_L;
@@ -35,12 +36,9 @@ struct accelerometer{
     uint32 Test;
 };
 struct FRAM{
-    uint32 XPOS;
-    uint32 XNEG;
-    uint32 YPOS;
-    uint32 YNEG;
-    uint32 ZPOS;
-    uint32 ZNEG;
+    uint32 Xint;
+    uint32 Yint;
+    uint32 Zint;
 };
 
 void readFromAddr(uint8* readBuf, int readBytes, uint32 devAddr, uint32 memAddr){
@@ -82,48 +80,70 @@ void writeToRam(uint8* writeBuf, int writeBytes, uint32 devAddr, uint32 memAddr1
     I2C_I2CMasterClearStatus();
 }
 void clearRam(){
-    uint8 wrBuf[8] = {0x12, 0x34};
-    for(int i = 2; i > 8; i++){
-        wrBuf[i] = 0x00; 
+    uint8 wrBuf[3] = {0x00,0x00,0x00};
+    
+    I2C_I2CMasterWriteBuf(ramLowerAddr, wrBuf, 3, I2C_I2C_MODE_NO_STOP);
+    
+    for (int i = 3; i < 65537; i++){
+        CyDelayUs(100);
+        if(i%10000 == 0){
+            LED_B_Write(1);
+            LED_G_Write(1);
+            LED_R_Write(0);
+        }
+        else if(i%10000 == 1000){
+            LED_R_Write(1);
+            LED_B_Write(1);
+            LED_G_Write(0);
+        }
+        else if(i%10000 == 100){
+            LED_G_Write(1);
+            LED_R_Write(1);
+            LED_B_Write(0);
+        }
+        uint8 wrBuf[1] = {0x00};
+         I2C_I2CMasterWriteBuf(ramLowerAddr, wrBuf, 1, I2C_I2C_MODE_NO_STOP);
     }
-    I2C_I2CMasterWriteBuf(ramLowerAddr, wrBuf, 8, I2C_I2C_MODE_COMPLETE_XFER);
+    LED_R_Write(1);
+    LED_G_Write(1);
+    LED_B_Write(1);
+    uint8 wrBuf2[1] = {0x00};
+    I2C_I2CMasterWriteBuf(ramLowerAddr, wrBuf2, 1, I2C_I2C_MODE_REPEAT_START);
     while(!(I2C_I2CMasterStatus() & I2C_I2C_MSTAT_WR_CMPLT));
     I2C_I2CMasterClearStatus();
+    for(int i = 0; i < 6; i++){
+        if(i%2 == 0){
+            LED_R_Write(0);
+            LED_G_Write(0);
+            LED_B_Write(0);
+        }
+        else{
+            LED_R_Write(1);
+            LED_G_Write(1);
+            LED_B_Write(1);
+        }
+        CyDelay(1000);
+    }
 }
 
-void readAccel(float* accelValues, struct accelerometer accel){
-        uint8 rdBuf[4];
-        readFromAddr(rdBuf, 1, accelAddr, accel.ZOUT_H);
-        int8 z_hi = (int8)rdBuf[0];
-        readFromAddr(rdBuf, 1, accelAddr, accel.ZOUT_L);
-        int8 z_lo = (int8)rdBuf[0];
-        accelValues[2] = (float)((float)8/((float)2048))*((z_hi*16) + (z_lo / 16));
-        readFromAddr(rdBuf, 1, accelAddr, accel.XOUT_H);
-        int8 x_hi = (int8)rdBuf[0];
-        readFromAddr(rdBuf, 1, accelAddr, accel.XOUT_L);
-        int8 x_lo = (int8)rdBuf[0];
-        accelValues[0] = (float)((float)8/((float)2048))*((x_hi*16) + (x_lo / 16));
-        readFromAddr(rdBuf, 1, accelAddr, accel.YOUT_H);
-        int8 y_hi = (int8)rdBuf[0];
-        readFromAddr(rdBuf, 1, accelAddr, accel.YOUT_L);
-        int8 y_lo = (int8)rdBuf[0];
-        accelValues[1] = (float)((float)8/((float)2048))*((y_hi*16) + (y_lo / 16));
-}
-void readAccelFram(uint8* read, struct FRAM ram){
-    uint8 rdBuf[1];
-    readFromRam(rdBuf, 1, ramLowerAddr, 0x12, ram.XNEG);
-    read[0] = rdBuf[0];
-    readFromRam(rdBuf, 1, ramLowerAddr, 0x12, ram.XPOS);
-    read[1] = rdBuf[0];
-    readFromRam(rdBuf, 1, ramLowerAddr, 0x12, ram.YNEG);
-    read[2] = rdBuf[0];
-    readFromRam(rdBuf, 1, ramLowerAddr, 0x12, ram.YPOS);
-    read[3] = rdBuf[0];
-    readFromRam(rdBuf, 1, ramLowerAddr, 0x12, ram.ZNEG);
-    read[4] = rdBuf[0];
-    readFromRam(rdBuf, 1, ramLowerAddr, 0x12, ram.ZPOS);
-    read[5] = rdBuf[0];
-}
+//void readAccel(float* accelValues, struct accelerometer accel){
+//        uint8 rdBuf[4];
+//        readFromAddr(rdBuf, 1, accelAddr, accel.ZOUT_H);
+//        int8 z_hi = (int8)rdBuf[0];
+//        readFromAddr(rdBuf, 1, accelAddr, accel.ZOUT_L);
+//        int8 z_lo = (int8)rdBuf[0];
+//        accelValues[2] = (float)((float)8/((float)2048))*((z_hi*16) + (z_lo / 16));
+//        readFromAddr(rdBuf, 1, accelAddr, accel.XOUT_H);
+//        int8 x_hi = (int8)rdBuf[0];
+//        readFromAddr(rdBuf, 1, accelAddr, accel.XOUT_L);
+//        int8 x_lo = (int8)rdBuf[0];
+//        accelValues[0] = (float)((float)8/((float)2048))*((x_hi*16) + (x_lo / 16));
+//        readFromAddr(rdBuf, 1, accelAddr, accel.YOUT_H);
+//        int8 y_hi = (int8)rdBuf[0];
+//        readFromAddr(rdBuf, 1, accelAddr, accel.YOUT_L);
+//        int8 y_lo = (int8)rdBuf[0];
+//        accelValues[1] = (float)((float)8/((float)2048))*((y_hi*16) + (y_lo / 16));
+//}
 int main(void)
 {
     struct accelerometer accel = {
@@ -146,16 +166,16 @@ int main(void)
     };
     struct FRAM ram = {
         0x34,
-        0x35,
         0x36,
-        0x37,
-        0x38,
-        0x39
+        0x38
     };
     
     CyGlobalIntEnable; /* Enable global interrupts. */
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
     I2C_Start();
+    LED_R_Write(1);
+    LED_B_Write(1);
+    LED_G_Write(1);
 //    // Turning on accel and setting settings
     uint8 wrBuf[2];
     wrBuf[1] = 0x00 | (0x00 | 0x40 | 0x20 | 0x10 | 0x00 | 0x02);
@@ -165,68 +185,100 @@ int main(void)
     wrBuf[1] = count;
     writeToAddr(wrBuf, 2, accelAddr, accel.WakeupTimer);
 //    // Set threshold
-    uint8 threshold = 4;
+    uint8 threshold = 3;
     wrBuf[1] = threshold*16;
     writeToAddr(wrBuf, 2, accelAddr, accel.WakeupThreshold);
     wrBuf[1] = 0x00 | (0x04);
     writeToAddr(wrBuf, 2, accelAddr, accel.CtrlReg2);
     wrBuf[1] = 0x00 | (0x20 | 0x10 | 0x08 | 0x04 | 0x02 | 0x01);
     writeToAddr(wrBuf, 2, accelAddr, accel.IntCtrlReg2);
-    wrBuf[1] = 0x00 | (0x20);
+    wrBuf[1] = 0x00 | (0x20 | 0x10);
     writeToAddr(wrBuf, 2, accelAddr, accel.IntCtrlReg1);
     
-    wrBuf[1] = 0x00 | (0x80 | 0x00 | 0x20 | 0x10 | 0x00 | 0x02);
+    wrBuf[1] = 0x00 | (0x80 | 0x00 | 0x00 | 0x10 | 0x00 | 0x02);
     writeToAddr(wrBuf, 2, accelAddr, accel.CtrlReg1);
     wrBuf[1] = 0x00 | (0x01);
     writeToAddr(wrBuf, 2, accelAddr, accel.DataCtrlReg);
-    
-    volatile uint8 reg[6];
     uint8 rdBuf[1];
-    readFromAddr(rdBuf, 1, accelAddr, accel.WakeupTimer);
-    reg[0] = rdBuf[0];
-    readFromAddr(rdBuf, 1, accelAddr, accel.CtrlReg1);
-    reg[1] = rdBuf[0];
-    readFromAddr(rdBuf, 1, accelAddr, accel.WakeupThreshold);
-    reg[2] = rdBuf[0];
-    readFromAddr(rdBuf, 1, accelAddr, accel.CtrlReg2);
-    reg[3] = rdBuf[0];
-    readFromAddr(rdBuf, 1, accelAddr, accel.DataCtrlReg);
-    reg[4] = rdBuf[0];
-    readFromAddr(rdBuf, 1, accelAddr, accel.IntCtrlReg1);
-    reg[5] = rdBuf[0];
     
     CyDelay(12);
     readFromAddr(rdBuf, 1, accelAddr, accel.IntRel);
     CyDelay(12);
     
-    // FRAM
-    volatile uint8 read[6];
-    uint8 wrBuf2[3];
-    readAccelFram(read, ram);
-    wrBuf2[2] = 0x90;
-    writeToRam(wrBuf2, 3, ramLowerAddr, 0x12, ram.XNEG);
-    //clearRam();
-    readAccelFram(read, ram);
-    
     ACCEL_ISR_Start();
+    TEST_ISR_Start();
+    TEST_ISR_Enable();
+    
     for(;;)
     {
         /* Place your application code here. */
-        float accelVals[3];
-        readAccel(accelVals, accel);
-        volatile float x = accelVals[0];
-        volatile float y = accelVals[1];
-        volatile float z = accelVals[2];
-        volatile int thing2 = 20;
-        //CySysPmDeepSleep();
+        
+        CySysPmDeepSleep();
         if(accelFlag){
             accelFlag = 0;
-            readAccel(accelVals, accel);
-            volatile float x = accelVals[0];
-            volatile float y = accelVals[1];
-            volatile float z = accelVals[2];
+            uint8 rdBuf[1];
+            readFromAddr(rdBuf, 1, accelAddr, accel.IntSrc2);
+            uint8 reg = rdBuf[0];
+            // Check for x
+            if(reg&(0x10) || reg&(0x20)){
+                uint8 wrBuf[3];
+                wrBuf[2] = 0xFF;
+                writeToRam(wrBuf,3, ramLowerAddr, 0x12, ram.Xint);
+            }
+            // Check for y
+            if(reg&(0x08) || reg&(0x04)){
+                uint8 wrBuf[3];
+                wrBuf[2] = 0xFF;
+                writeToRam(wrBuf,3, ramLowerAddr, 0x12, ram.Yint);
+            }
+            // Check for z
+            if(reg&(0x02) || reg&(0x01)){
+                uint8 wrBuf[3];
+                wrBuf[2] = 0xFF;
+                writeToRam(wrBuf,3, ramLowerAddr, 0x12, ram.Zint);
+            }
+            // Clear reg
+            readFromAddr(rdBuf, 1, accelAddr, accel.IntRel);
         }
-        readFromAddr(rdBuf, 1, accelAddr, accel.IntRel);
+        if(buttonFlag == 2){
+            LED_R_Write(0);
+            LED_G_Write(0);
+            LED_B_Write(0);
+            while(TEST_Read() == 0);
+            LED_R_Write(1);
+            LED_G_Write(1);
+            LED_B_Write(1);
+            buttonFlag = 0;
+            clearRam();
+        }
+        if(buttonFlag == 1){
+            buttonFlag = 0;
+            uint8 rdBuf[1];
+            readFromRam(rdBuf, 1, ramLowerAddr, 0x12, ram.Xint);
+            uint8 xint = rdBuf[0];
+            readFromRam(rdBuf, 1, ramLowerAddr, 0x12, ram.Yint);
+            uint8 yint = rdBuf[0];
+            readFromRam(rdBuf, 1, ramLowerAddr, 0x12, ram.Zint);
+            uint8 zint = rdBuf[0];
+            if(xint == 0xFF){
+                LED_R_Write(0);
+                CyDelay(1000);
+                LED_R_Write(1);
+            }
+            if(yint == 0xFF){
+                LED_G_Write(0);
+                CyDelay(1000);
+                LED_G_Write(1);
+            }
+            if(zint == 0xFF){
+                LED_B_Write(0);
+                CyDelay(1000);
+                LED_B_Write(1);
+            }
+            xint = 0;
+            yint = 0;
+            zint = 0;
+        }
     }
 }
 

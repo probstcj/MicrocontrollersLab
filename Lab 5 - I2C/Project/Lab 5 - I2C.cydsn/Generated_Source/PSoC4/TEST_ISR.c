@@ -27,7 +27,8 @@
 *  Place your includes, defines and code here 
 ********************************************************************************/
 /* `#START TEST_ISR_intc` */
-
+extern volatile int buttonFlag;
+#include "TEST.h"
 /* `#END` */
 
 extern cyisraddress CyRamVectors[CYINT_IRQ_BASE + CY_NUM_INTERRUPTS];
@@ -164,7 +165,26 @@ CY_ISR(TEST_ISR_Interrupt)
 
     /*  Place your Interrupt code here. */
     /* `#START TEST_ISR_Interrupt` */
-
+    CyDelay(20);
+    // Clear interrupt
+    TEST_ClearInterrupt();
+    
+    // If button is still 1 after delay, set flag, if not, don't
+    if(TEST_Read() == 0){
+        buttonFlag = 1;
+    } else {
+        buttonFlag = 0;
+    }
+    
+    int counter = 0;
+    while(TEST_Read() != 1){
+        CyDelayUs(1000);
+        counter++;
+        if(counter > 5000){
+            buttonFlag = 2;
+            break;
+        }
+    };
     /* `#END` */
 }
 

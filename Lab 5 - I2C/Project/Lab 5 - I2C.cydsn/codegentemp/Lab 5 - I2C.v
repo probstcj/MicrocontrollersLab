@@ -1,6 +1,6 @@
 // ======================================================================
 // Lab 5 - I2C.v generated from TopDesign.cysch
-// 03/07/2023 at 12:13
+// 03/14/2023 at 20:54
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -836,7 +836,7 @@ module top ;
 		#(.id("9c6ea0e3-d439-4ed7-984b-9a05d57a716b"),
 		  .drive_mode(3'b011),
 		  .ibuf_enabled(1'b1),
-		  .init_dr_st(1'b0),
+		  .init_dr_st(1'b1),
 		  .input_clk_en(0),
 		  .input_sync(1'b0),
 		  .input_sync_mode(1'b0),

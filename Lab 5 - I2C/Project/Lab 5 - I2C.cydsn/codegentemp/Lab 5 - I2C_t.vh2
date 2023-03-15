@@ -1,5 +1,5 @@
 -- Project:   C:\Users\hElLo KiTtY 2.1\Desktop\ECE381\Lab 5 - I2C\Project\Lab 5 - I2C.cydsn\Lab 5 - I2C.cyprj
--- Generated: 03/07/2023 12:13:51
+-- Generated: 03/14/2023 20:54:30
 -- PSoC Creator  4.4
 
 ENTITY \Lab 5 - I2C\ IS
@@ -837,7 +837,7 @@ BEGIN
             drive_mode => "011",
             ibuf_enabled => "1",
             id => "9c6ea0e3-d439-4ed7-984b-9a05d57a716b",
-            init_dr_st => "0",
+            init_dr_st => "1",
             input_buffer_sel => "00",
             input_clk_en => 0,
             input_sync => "0",
