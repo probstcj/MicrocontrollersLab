@@ -1,6 +1,6 @@
 -- Project:   Lab 5 - I2C
--- Generated: 03/07/2023 12:13:51
--- PSoC Creator  4.4
+-- Generated: 03/14/2023 16:35:45
+-- PSoC Creator  4.2
 
 ENTITY \Lab 5 - I2C\ IS
     PORT(
@@ -842,7 +842,7 @@ BEGIN
             input_clk_en => 0,
             input_sync => "0",
             input_sync_mode => "0",
-            intr_mode => "10",
+            intr_mode => "11",
             invert_in_clock => 0,
             invert_in_clock_en => 0,
             invert_in_reset => 0,

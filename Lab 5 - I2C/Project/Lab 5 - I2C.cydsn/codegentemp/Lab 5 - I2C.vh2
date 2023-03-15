@@ -2,7 +2,7 @@
 --	Conversion of Lab 5 - I2C.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Tue Mar 07 12:13:50 2023
+--	Tue Mar 14 16:35:44 2023
 --
 
 USE cypress.cypress.all;
@@ -49,16 +49,16 @@ SIGNAL \I2C:miso_s_wire\ : bit;
 SIGNAL Net_6 : bit;
 SIGNAL Net_5 : bit;
 SIGNAL \I2C:Net_1028\ : bit;
+SIGNAL Net_2 : bit;
 SIGNAL Net_11 : bit;
 SIGNAL Net_12 : bit;
 SIGNAL Net_13 : bit;
 SIGNAL Net_14 : bit;
 SIGNAL Net_15 : bit;
 SIGNAL Net_16 : bit;
-SIGNAL Net_2 : bit;
-SIGNAL Net_22 : bit;
 SIGNAL Net_17 : bit;
 SIGNAL Net_19 : bit;
+SIGNAL Net_22 : bit;
 SIGNAL tmpOE__LED_R_net_0 : bit;
 SIGNAL tmpFB_0__LED_R_net_0 : bit;
 SIGNAL tmpIO_0__LED_R_net_0 : bit;
@@ -553,7 +553,7 @@ TEST:cy_psoc3_pins_v1_10
 		input_sync=>"0",
 		input_clk_en=>'0',
 		input_sync_mode=>"0",
-		intr_mode=>"10",
+		intr_mode=>"11",
 		invert_in_clock=>'0',
 		invert_in_clock_en=>'0',
 		invert_in_reset=>'0',
