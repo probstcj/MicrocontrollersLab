@@ -1,15 +1,6 @@
-<<<<<<< HEAD
 C:/Program\ Files\ (x86)/Cypress/PSoC\ Creator/4.4/PSoC\ Creator/warp/lib/ieee/work/stdlogic.vif : 
 
 C:/Program\ Files\ (x86)/Cypress/PSoC\ Creator/4.4/PSoC\ Creator/warp/lib/common/stdlogic/mod_genv.vif : 
 
 C:/Program\ Files\ (x86)/Cypress/PSoC\ Creator/4.4/PSoC\ Creator/warp/lib/common/stdlogic/rtlpkg.vif : 
 
-=======
-C:/Program\ Files\ (x86)/Cypress/PSoC\ Creator/4.2/PSoC\ Creator/warp/lib/ieee/work/stdlogic.vif : 
-
-C:/Program\ Files\ (x86)/Cypress/PSoC\ Creator/4.2/PSoC\ Creator/warp/lib/common/stdlogic/mod_genv.vif : 
-
-C:/Program\ Files\ (x86)/Cypress/PSoC\ Creator/4.2/PSoC\ Creator/warp/lib/common/stdlogic/rtlpkg.vif : 
-
->>>>>>> 1708681267ad12d2822a02d27e7d6de5c6fc75d0
