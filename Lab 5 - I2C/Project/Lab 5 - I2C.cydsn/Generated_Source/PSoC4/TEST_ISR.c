@@ -27,6 +27,8 @@
 *  Place your includes, defines and code here 
 ********************************************************************************/
 /* `#START TEST_ISR_intc` */
+
+// Get flag and file
 extern volatile int buttonFlag;
 #include "TEST.h"
 /* `#END` */
@@ -165,6 +167,8 @@ CY_ISR(TEST_ISR_Interrupt)
 
     /*  Place your Interrupt code here. */
     /* `#START TEST_ISR_Interrupt` */
+
+    // Delay of 20ms for debounce
     CyDelay(20);
     // Clear interrupt
     TEST_ClearInterrupt();
@@ -177,10 +181,12 @@ CY_ISR(TEST_ISR_Interrupt)
     }
     
     int counter = 0;
+    // Debounce
     while(TEST_Read() != 1){
         CyDelayUs(1000);
         counter++;
         if(counter > 5000){
+            // If held for more than 5 seconds, set flag as new value and break
             buttonFlag = 2;
             break;
         }
