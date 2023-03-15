@@ -1,6 +1,17 @@
+<<<<<<< HEAD
 C:\Users\hElLo KiTtY 2.1\Desktop\ECE381\Lab 5 - I2C\Project\Lab 5 - I2C.cydsn\Lab 5 - I2C.cyprj|bc5534d2-2793-4b80-bd73-84ad2518aa0f
 C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|4068327c-6ee7-434b-a68b-6dba333ff35a
 C:\Users\hElLo KiTtY 2.1\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|fa4816b9-8898-42a1-b9f0-e33e06126337
 C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|e887f212-423a-4bb8-9da7-26e1591f24c4
 C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|fc180ed1-1c9e-4321-84ae-a07c086ce112
 C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|16b62024-c58d-4d14-8414-9385c266da57
+=======
+C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 5 - I2C\Project\Lab 5 - I2C.cydsn\Lab 5 - I2C.cyprj|dfa9cc97-5b02-44cb-ba77-b3e526987b6f
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|e28ef64a-b1ee-4279-b5a9-97d4e0430e9e
+C:\Users\Hello Kitty\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|1938d345-cf0e-42a6-a4ff-5a37f4bbb9d5
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|b48dfab9-6d92-41f3-8d5a-efeff0d53d1c
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|206e10de-2ba7-4d2e-8d09-951c30d98e3c
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|b78c6891-457c-4f68-8974-8e35a32dcc87
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\dev\psoc4\PSoC4AnalogDevice\psoc4arch.cydsn\psoc4arch.cyprj|5f907b9e-425a-405f-8d1b-5580c3fe03f6
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|792a7566-69ff-4c66-80cc-6d04bec8ba79
+>>>>>>> 1708681267ad12d2822a02d27e7d6de5c6fc75d0

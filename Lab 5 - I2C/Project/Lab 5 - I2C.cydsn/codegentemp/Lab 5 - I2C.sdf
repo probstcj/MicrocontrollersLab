@@ -1,10 +1,14 @@
 (DELAYFILE
  (SDFVERSION "IEEE 1497 4.0")
+<<<<<<< HEAD
  (DATE "2023-03-15T01:54:30Z")
+=======
+ (DATE "2023-03-14T21:35:46Z")
+>>>>>>> 1708681267ad12d2822a02d27e7d6de5c6fc75d0
  (DESIGN "Lab 5 - I2C")
  (VENDOR "Cypress Semiconductor")
  (PROGRAM "PSoC Creator")
- (VERSION " 4.4")
+ (VERSION " 4.2")
  (DIVIDER .)
  (TIMESCALE 1 ns)
  (CELL
