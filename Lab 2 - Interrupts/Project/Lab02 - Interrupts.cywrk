@@ -3,11 +3,12 @@
 <!--This file is machine generated and read. It is not intended to be edited by hand.-->
 <!--Due to this, there is no schema for this file.-->
 <CyGuid_2867d519-54d2-4c01-9830-c51cb08bc3dd type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWorkspaceSerialize" version="5" xml_contents_version="3" name="Lab02 - Interrupts" persistent="Lab02 - Interrupts.cywrk" platform="NOT_USED">
-<current_project name=".\Lab02 - Interrupts.cydsn\Lab02 - Interrupts.cyprj" />
+<current_project name="..\..\..\4200L Labs\Lab 01 - GPIO.cydsn\Lab 01 - GPIO.cyprj" />
 <wrkspc_folders />
 <files />
 <projects>
 <v>.\Lab02 - Interrupts.cydsn\Lab02 - Interrupts.cyprj</v>
+<v>..\..\..\4200L Labs\Lab 01 - GPIO.cydsn\Lab 01 - GPIO.cyprj</v>
 </projects>
 <workspace_id v="4c1d8fde-824d-433b-917d-5645cfe7cf4d" />
 <WriteAppVersionLastSavedWith v="4.2.0.641" />
