@@ -1,6 +1,6 @@
--- Project:   C:\Users\hElLo KiTtY 2.1\Desktop\ECE381\Lab 5 - I2C\Project\Lab 5 - I2C.cydsn\Lab 5 - I2C.cyprj
--- Generated: 03/14/2023 20:54:30
--- PSoC Creator  4.4
+-- Project:   C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 5 - I2C\Project\Lab 5 - I2C.cydsn\Lab 5 - I2C.cyprj
+-- Generated: 03/15/2023 09:54:28
+-- PSoC Creator  4.2
 
 ENTITY \Lab 5 - I2C\ IS
     PORT(

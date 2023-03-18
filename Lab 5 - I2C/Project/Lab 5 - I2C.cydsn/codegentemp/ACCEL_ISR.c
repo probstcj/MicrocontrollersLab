@@ -27,6 +27,7 @@
 *  Place your includes, defines and code here 
 ********************************************************************************/
 /* `#START ACCEL_ISR_intc` */
+// Get all variables and necessary files
 extern int accelFlag;
 #include <ACCEL_INT.h>
 /* `#END` */
@@ -165,8 +166,13 @@ CY_ISR(ACCEL_ISR_Interrupt)
 
     /*  Place your Interrupt code here. */
     /* `#START ACCEL_ISR_Interrupt` */
+
+    // Set flag
     accelFlag = 1;
+
+    // Clear interrupt
     ACCEL_INT_ClearInterrupt();
+
     /* `#END` */
 }
 
