@@ -1,0 +1,6 @@
+Last Modified Date & Time: 03/21/2023 14:10:28
+
+ECE381_SP23_Lab06_Wirless_Light_Controller: ECE381_SP23_Lab06_Wirless_Light_Controller.cydwr
+	cy_boot [v6.10] to [v5.82]
+
+

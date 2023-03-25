@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CyXmlSerializer>
+<!--This file is machine generated and read. It is not intended to be edited by hand.-->
+<!--Due to this, there is no schema for this file.-->
+<CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspcCustomData" version="4">
+<CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997 type_name="CyDesigner.Common.Base.CyCustomData" version="2">
+<userData>
+<dataGuid v="1b906a0f-a7b6-4e4d-a428-82f98b53cb35">
+<CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35 type_name="CyDesigner.Common.ProjMgmt.GUI.CyExplorerWindow+CyExplorerWindowState" version="3" SelectedTab="Source">
+<TreeKeys>
+<v>Source</v>
+<v>Components</v>
+<v>Output</v>
+</TreeKeys>
+<TreeStates>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\BTN_ISR\BTN_ISR.c">
+<ExpandedNodeIds>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\TopDesign</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.cydwr</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.cydwr\Pins</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.cydwr\Analog</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.cydwr\DMA</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.cydwr\Clocks</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.cydwr\Interrupts</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.cydwr\System</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.cydwr\Directives</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.cydwr\Flash Security</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Header Files</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Header Files\cyapicallbacks.h</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Source Files</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Source Files\main.c</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\BTN_ISR</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\TopDesign</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.cydwr</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.cydwr\Pins</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.cydwr\Analog</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.cydwr\DMA</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.cydwr\Clocks</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.cydwr\Interrupts</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.cydwr\System</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.cydwr\Directives</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.cydwr\Flash Security</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Header Files</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Header Files\cyapicallbacks.h</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Source Files</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Source Files\main.c</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\B_LED</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\BTN</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\BTN_ISR</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\BTN_ISR\BTN_ISR.c</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\BTN_ISR\BTN_ISR.h</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\cy_boot</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\cy_dmac</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\cy_lfclk</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\Em_EEPROM_Dynamic</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\ENC</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\ENC_ISR</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\G_LED</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\LCD</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\LCD_LCDPort</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\NRF24_CE</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\NRF24_IRQ</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\PWM</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\PWM_CLK</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\PWM_SEL</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\R_LED</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\SPI</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\SPI_miso_m</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\SPI_mosi_m</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\SPI_SCB_IRQ</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\SPI_SCBCLK</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\SPI_sclk_m</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\SPI_ss0_m</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\Y_LED</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\cycodeshareexport.ld</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\cycodeshareimport.ld</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\cycodeshareimport.scat</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\cydevice_trm.h</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\TopDesign</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\TopDesign\TopDesign.cysch</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\TopDesign</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\TopDesign\TopDesign.cysch</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\B_LED.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\B_LED_PM.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\BTN.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\BTN_ISR.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\BTN_PM.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\Cm0Start.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\CyDMA.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\CyLFClk.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\ENC.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\ENC_ISR.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\ENC_PM.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\G_LED.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\G_LED_PM.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\LCD.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\LCD_LCDPort.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\LCD_LCDPort_PM.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\LCD_PM.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\NRF24_CE.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\NRF24_CE_PM.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\NRF24_IRQ.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\NRF24_IRQ_PM.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\PWM.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\PWM_CLK.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\PWM_PM.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\PWM_SEL.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\PWM_SEL_PM.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\R_LED.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\R_LED_PM.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\SPI.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\SPI_BOOT.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\SPI_miso_m.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\SPI_miso_m_PM.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\SPI_mosi_m.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\SPI_mosi_m_PM.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\SPI_PM.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\SPI_SCB_IRQ.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\SPI_SCBCLK.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\SPI_sclk_m.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\SPI_sclk_m_PM.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\SPI_SPI.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\SPI_SPI_BOOT.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\SPI_SPI_UART.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\SPI_SPI_UART_INT.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\SPI_ss0_m.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\SPI_ss0_m_PM.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\Y_LED.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\Listing Files\Y_LED_PM.lst</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.elf</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.hex</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.map</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.gpdsc</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.rpt</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller_timing.html</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStates>
+<TreeKeysV2>
+<v>Datasheet</v>
+</TreeKeysV2>
+<TreeStatesV2>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\PSoC 4 Architecture TRM</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\PSoC 4200M Family Datasheet</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\System Reference Guides</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\System Reference Guides\cy_boot_v6_10</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\System Reference Guides\cy_dmac_v1_10</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\System Reference Guides\cy_lfclk_v1_20</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CharLCD_v2_20.pdf</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\cy_clock_v2_20.pdf</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\cy_isr_v1_71</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\cy_isr_v1_71\cy_isr_v1_71.pdf</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\cy_pins_v2_20</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CyControlReg_v1_80.pdf</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\demux_v1_10.pdf</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\SCB_P4_v4_0.pdf</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\TCPWM_P4_v2_10.pdf</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\PSoC 4 Architecture TRM</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\PSoC 4200M Family Datasheet</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\System Reference Guides</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\System Reference Guides\cy_boot_v6_10</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\System Reference Guides\cy_dmac_v1_10</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\System Reference Guides\cy_lfclk_v1_20</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CharLCD_v2_20.pdf</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\cy_clock_v2_20.pdf</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\cy_isr_v1_71</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\cy_isr_v1_71\cy_isr_v1_71.pdf</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\cy_pins_v2_20</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\CyControlReg_v1_80.pdf</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\demux_v1_10.pdf</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\SCB_P4_v4_0.pdf</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\TCPWM_P4_v2_10.pdf</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStatesV2>
+</CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
+</dataGuid>
+</userData>
+</CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
+<Unloaded />
+<OpenDocs>
+<name v=".\ECE381_SP23_Lab06_Wirless_Light_Controller.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\ECE381_SP23_Lab06_Wirless_Light_Controller.cydsn\ECE381_SP23_Lab06_Wirless_Light_Controller.cydwr" />
+<name v=".\ECE381_SP23_Lab06_Wirless_Light_Controller.cydsn\main.c" />
+<name v=".\ECE381_SP23_Lab06_Wirless_Light_Controller.cydsn\Generated_Source\PSoC4\BTN_ISR.c" />
+</OpenDocs>
+<OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
+
+  Actipro Docking/MDI for WinForms
+  Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
+  http://www.actiprosoftware.com
+
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1341, 690" SelectedTabbedMdiWindow="38ec1543-15ad-40ff-85dd-699fd6e317ec"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="2f621f04-aa40-4f75-ae92-a5691918bbd6" /><DocumentWindow Key="C:\Users\tyork\Documents\PSoC Creator\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.cydsn\TopDesign\TopDesign.cysch" Guid="f4a9c607-afe5-4446-8dfb-6e91029e15c5" /><DocumentWindow Key="C:\Users\tyork\Documents\PSoC Creator\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.cydsn\ECE381_SP23_Lab06_Wirless_Light_Controller.cydwr" Guid="9854f081-0175-4a7a-9d4a-a97a6f519cf1" /><DocumentWindow Key="C:\Users\tyork\Documents\PSoC Creator\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.cydsn\main.c" Guid="38ec1543-15ad-40ff-85dd-699fd6e317ec" /><DocumentWindow Key="C:\Users\tyork\Documents\PSoC Creator\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.cydsn\Generated_Source\PSoC4\BTN_ISR.c" Guid="f2039c2c-1c85-4878-a84c-85d5b1e62344" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+<config v="" />
+<AutoUpdate v="true" />
+</CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
+</CyXmlSerializer>

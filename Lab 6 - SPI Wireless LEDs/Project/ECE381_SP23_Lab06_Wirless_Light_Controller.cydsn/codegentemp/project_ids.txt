@@ -1,0 +1,6 @@
+C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 6 - SPI Wireless LEDs\Project\ECE381_SP23_Lab06_Wirless_Light_Controller.cydsn\ECE381_SP23_Lab06_Wirless_Light_Controller.cyprj|8ab38f5d-7e83-416c-9493-723ab9d2ca58
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|4efd2640-8153-4869-a389-4ef59696417e
+C:\Users\Hello Kitty\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|616ebf5d-e7f6-4455-af67-04d8822dae7d
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|373e4a07-6f4b-44ac-9c63-3e6b6b7ff53f
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|6e56339d-7cda-4bb7-be88-2fa42191e2d5
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|4f8990c2-ab7e-4517-aa82-4a9a90d64d52
