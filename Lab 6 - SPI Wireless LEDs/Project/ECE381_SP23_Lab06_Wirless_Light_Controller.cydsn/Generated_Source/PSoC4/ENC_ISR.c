@@ -27,7 +27,9 @@
 *  Place your includes, defines and code here 
 ********************************************************************************/
 /* `#START ENC_ISR_intc` */
-
+#include "ENC.h"
+extern volatile int enc_flag;
+extern volatile int encPos;
 /* `#END` */
 
 extern cyisraddress CyRamVectors[CYINT_IRQ_BASE + CY_NUM_INTERRUPTS];
@@ -164,7 +166,42 @@ CY_ISR(ENC_ISR_Interrupt)
 
     /*  Place your Interrupt code here. */
     /* `#START ENC_ISR_Interrupt` */
-
+    // Read the first variable, then wait for it to change
+    volatile int a  = ENC_Read();
+    int count = 0;
+    while(a == ENC_Read() && count < 100000){
+        count++;
+    }
+    count = 0;
+    // Read next variable, then wait for it to change
+    volatile int b  = ENC_Read();
+    while(b == ENC_Read() && count < 100000){
+        count++;
+    }
+    count = 0;
+    // Read next variable, then wait for it to change
+    volatile int c  = ENC_Read();
+    while(c == ENC_Read() && count < 100000){
+        count++;
+    }
+    count = 0;
+    // Based on the following variables, decide whether it is CW or CCW
+    if(a == 1 && c == 2){
+        // Clockwise (increase bar)
+        // Set flag
+        enc_flag = 1;
+        // Set limit of 80 on the right side
+        encPos = 1;
+    }
+    else if(a == 2 && c==1){
+        // Counter-Clockwise (decrease bar)
+        // Set flag
+        enc_flag = 1;
+        // Set limit of 0 on the left side
+        encPos = 2;
+    }
+    // Clear interrupt
+    ENC_ClearInterrupt();
     /* `#END` */
 }
 

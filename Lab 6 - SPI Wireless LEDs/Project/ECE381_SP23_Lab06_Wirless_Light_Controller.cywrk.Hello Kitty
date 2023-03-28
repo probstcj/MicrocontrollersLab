@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\BTN_ISR\BTN_ISR.c">
 <ExpandedNodeIds>
 <v>ECE381_SP23_Lab06_Wirless_Light_Controller</v>
 <v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller</v>
@@ -34,21 +34,10 @@
 <v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source</v>
 <v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4</v>
 <v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\BTN_ISR</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\ENC_ISR</v>
 <v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\NRF24_IRQ</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
-<v>ECE381_SP23_Lab06_Wirless_Light_Controller</v>
-<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller</v>
-<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\TopDesign</v>
-<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.cydwr</v>
-<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.cydwr\Pins</v>
-<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.cydwr\Analog</v>
-<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.cydwr\DMA</v>
-<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.cydwr\Clocks</v>
-<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.cydwr\Interrupts</v>
-<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.cydwr\System</v>
-<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.cydwr\Directives</v>
-<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller.cydwr\Flash Security</v>
 <v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Header Files</v>
 <v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Header Files\cyapicallbacks.h</v>
 <v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Source Files</v>
@@ -64,6 +53,18 @@
 <v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\cy_dmac</v>
 <v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\cy_lfclk</v>
 <v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\Em_EEPROM_Dynamic</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\ENC</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\ENC_ISR</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\ENC_ISR\ENC_ISR.c</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\ENC_ISR\ENC_ISR.h</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\G_LED</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\LCD</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\LCD_LCDPort</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\NRF24_CE</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\NRF24_IRQ</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\NRF24_IRQ\NRF24_IRQ.c</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\NRF24_IRQ\NRF24_IRQ.h</v>
+<v>ECE381_SP23_Lab06_Wirless_Light_Controller\ECE381_SP23_Lab06_Wirless_Light_Controller\Generated_Source\PSoC4\NRF24_IRQ\NRF24_IRQ_aliases.h</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">

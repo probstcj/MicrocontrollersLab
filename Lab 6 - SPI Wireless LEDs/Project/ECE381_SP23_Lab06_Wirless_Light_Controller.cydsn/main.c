@@ -10,9 +10,13 @@
  * ========================================
 */
 #include "project.h"
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 volatile int enc_flag = 0;
 volatile int btn_flag = 0;
+volatile int encPos = 0;
 
 struct radioAddr{
     uint8 CONFIG;
@@ -119,9 +123,18 @@ void processMessage(){
     SPI_SpiUartClearRxBuffer();
     writeBuf[1] = 0x00 | (0x00 | 0x40 | 0x00);
     writeToSpi(writeBuf, 2, radio.Status);
+    SPI_SpiUartClearRxBuffer();
     switch(readArray[1]){
         case 'R': 
-            if(readArray[5] == 0x00000000){
+            if (readArray[4] == 0x00000000){
+                volatile uint32 bright = (readArray[3]-0x30);
+                PWM_WriteCompare(bright);
+                //PWM_WriteCompare();
+                PWM_Start();
+                PWM_SEL_Write(0);
+                volatile int b = 0;
+            }
+            else if(readArray[5] == 0x00000000){
                 volatile uint32 bright = (readArray[3]-0x30)*10 + (readArray[4]-0x30);
                 PWM_WriteCompare(bright-1);
                 //PWM_WriteCompare();
@@ -136,7 +149,15 @@ void processMessage(){
             }
             break;
         case 'G': 
-            if(readArray[5] == 0x00000000){
+            if (readArray[4] == 0x00000000){
+                volatile uint32 bright = (readArray[3]-0x30);
+                PWM_WriteCompare(bright);
+                //PWM_WriteCompare();
+                PWM_Start();
+                PWM_SEL_Write(1);
+                volatile int b = 0;
+            }
+            else if(readArray[5] == 0x00000000){
                 volatile uint32 bright = (readArray[3]-0x30)*10 + (readArray[4]-0x30);
                 PWM_WriteCompare(bright-1);
                 //PWM_WriteCompare();
@@ -151,7 +172,15 @@ void processMessage(){
             }
             break;
         case 'B': 
-            if(readArray[5] == 0x00000000){
+            if (readArray[4] == 0x00000000){
+                volatile uint32 bright = (readArray[3]-0x30);
+                PWM_WriteCompare(bright);
+                //PWM_WriteCompare();
+                PWM_Start();
+                PWM_SEL_Write(2);
+                volatile int b = 0;
+            }
+            else if(readArray[5] == 0x00000000){
                 volatile uint32 bright = (readArray[3]-0x30)*10 + (readArray[4]-0x30);
                 PWM_WriteCompare(bright-1);
                 //PWM_WriteCompare();
@@ -166,7 +195,15 @@ void processMessage(){
             }
             break;
         case 'Y': 
-            if(readArray[5] == 0x00000000){
+            if (readArray[4] == 0x00000000){
+                volatile uint32 bright = (readArray[3]-0x30);
+                PWM_WriteCompare(bright);
+                //PWM_WriteCompare();
+                PWM_Start();
+                PWM_SEL_Write(3);
+                volatile int b = 0;
+            }
+            else if(readArray[5] == 0x00000000){
                 volatile uint32 bright = (readArray[3]-0x30)*10 + (readArray[4]-0x30);
                 PWM_WriteCompare(bright-1);
                 //PWM_WriteCompare();
@@ -181,7 +218,6 @@ void processMessage(){
             }
             break;
     }
-    volatile uint8 a = 0;
 }
 /*****************************************************************************
 
@@ -209,7 +245,57 @@ Outputs:
 
 *****************************************************************************/
 void Transmitter(int group){
+    uint8 spiWrBuf[32], spiRdBuf[32];
+// - Set 15 retransmissions with a 4000 us delay between each
+    spiWrBuf[1] = 0x00 | (0xF0 | 0x0F);
+    writeToSpi(spiWrBuf, 2, radio.SetupRetransmission);
+// - Set the data rate to 250 kbps at maximum power level
+    spiWrBuf[1] = 0x00 | (0x00 | 0x00 | 0x20 | 0x00 | 0x03);
+    writeToSpi(spiWrBuf, 2, radio.RFSetup);
+// - Set the payload size to be fixed at 16 bytes
+    spiWrBuf[1] = 16;
+    writeToSpi(spiWrBuf, 2, radio.RXPayload0);
+    spiWrBuf[1] = 16;
+    writeToSpi(spiWrBuf, 2, radio.RXPayload1);
+// - Ensure auto-acknowledge is turned on for P0 & P1
+    spiWrBuf[1] = 0x00 | (0x00 | 0x00 | 0x00 | 0x00 | 0x00 | 0x02 | 0x01);
+    writeToSpi(spiWrBuf, 2, radio.EnhancedShockburst);
+// - Ensure 2-byte CRCs for the auto-acknowledges
+    spiWrBuf[1] = 0x00 | (0x00 | 0x00 | 0x00 | 0x00 | 0x08 | 0x04 | 0x00 | 0x00);
+    writeToSpi(spiWrBuf, 2, radio.CONFIG);
+// - Ensure the data pipes are on
+    spiWrBuf[1] = 0x00 | (0x00 | 0x00 | 0x00 | 0x00 | 0x00 | 0x02 | 0x01);
+    writeToSpi(spiWrBuf, 2, radio.EnabledRxAddr);
+// - Ensure the NRF24 is in TX mode and powered up
+    spiWrBuf[1] = 0x00 | (0x00 | 0x00 | 0x00 | 0x00 | 0x08 | 0x04 | 0x02 | 0x00);
+    writeToSpi(spiWrBuf, 2, radio.CONFIG);
+// - Set the correct RF channel based on the input group
+    if(group < 0 || group > 12){}
+    else{
+        spiWrBuf[1] = group_channel[group];
+        writeToSpi(spiWrBuf, 2, radio.RFChannel);
+    }
+// - Set the correct TX_ADDR, RX_ADDR_P0, for the target group
+    for(int i = 0; i < 5; i++){
+        spiWrBuf[i+1] = group_address[group][i];
+    }
+    writeToSpi(spiWrBuf, 6, radio.RXAddr0);
     
+    for(int i = 0; i < 5; i++){
+        spiWrBuf[i+1] = group_address[7][i];
+    }
+    writeToSpi(spiWrBuf, 6, radio.RXAddr1);
+    
+    for(int i = 0; i < 5; i++){
+        spiWrBuf[i+1] = group_address[group][i];
+    }
+    writeToSpi(spiWrBuf, 6, radio.TXAddr);
+    //- Clear the NRF24 status register
+    spiWrBuf[1] = 0x00 | (0x00 | 0x40 | 0x20 | 0x10);
+    writeToSpi(spiWrBuf, 2, radio.Status);
+// - Clear the NRF24 status register
+    spiWrBuf[1] = 0x00 | (0x00 | 0x40 | 0x20 | 0x10);
+    writeToSpi(spiWrBuf, 2, radio.Status);
 }
 
 /*****************************************************************************
@@ -244,7 +330,7 @@ void Receiver(void){
     spiWrBuf[1] = 0x00 | (0x00 | 0x00 | 0x20 | 0x00 | 0x03);
     writeToSpi(spiWrBuf, 2, radio.RFSetup);
     //- Set the payload size to be fixed at 16 bytes
-   spiWrBuf[1] = 16;
+    spiWrBuf[1] = 16;
     writeToSpi(spiWrBuf, 2, radio.RXPayload0);
     spiWrBuf[1] = 16;
     writeToSpi(spiWrBuf, 2, radio.RXPayload1);
@@ -309,7 +395,49 @@ int SendMessage(uint8 * message, int group){
     Transmitter(group);
     
     //XXX: TODO Send payload and check result
+    uint8 spiWrBuf[32];
+    uint8 writeBuf[32];
     
+    volatile uint32 readArray[6];
+    
+    writeBuf[0] = 0b10100000 /*W_TX_PAYLOAD*/;
+    uint8 count = 0;
+    while(count <= 16 && *(message+count) != '\v'){
+        writeBuf[1+count] = *(message+count);
+        count++;
+    }
+    SPI_SpiUartClearRxBuffer();
+    SPI_SpiUartPutArray(writeBuf, 17);
+    while(SPI_SpiIsBusBusy() == 0);
+    while(SPI_SpiIsBusBusy() == 1);
+    CyDelay(100);
+    
+    writeBuf[0] = 0b000 |  /*Read from reg*/ radio.Status;
+    SPI_SpiUartClearRxBuffer();
+    SPI_SpiUartPutArray(writeBuf, 1);
+    while(SPI_SpiIsBusBusy() == 0);
+    while(SPI_SpiIsBusBusy() == 1);
+    for(int i = 0; i < 1; i++){
+        readArray[i] = SPI_SpiUartReadRxData();
+    }
+    SPI_SpiUartClearRxBuffer();
+    uint8 TX_DS = readArray[0] & 0b00100000;
+    uint8 MAX_RT = readArray[0] & 0b00010000;
+    // Clear status reg
+    spiWrBuf[1] = 0x00 | (0x00 | 0x40 | 0x20 | 0x10);
+    writeToSpi(spiWrBuf, 2, radio.Status);
+    if(TX_DS == 0){
+        error = 1;
+    }
+    if (MAX_RT == 0){
+        error = 2;
+    }
+    if(TX_DS == 0 && MAX_RT == 0){
+        error = 3;
+    }
+//    else{
+//        error = 0;
+//    }
     // Put the NRF24 in receiver mode again
     Receiver();
     
@@ -342,51 +470,173 @@ int main(void){
     Receiver();
     NRF24_CE_Write(1);
     
+    volatile int error = 0;
+    uint8 mess[16];
+    mess[0] = 'B';
+    mess[1] = ' ';
+    mess[2] = '1';
+    mess[3] = '0';
+    mess[4] = '0';
+    mess[5] = '\0';
+    error = SendMessage(mess,12);    
     for(;;){
         /********************************************************************* 
         This block of code selects the target group.
              The encoder is used to cycle through the
              13 possible groups until the button is pressed
         *********************************************************************/
-        
         target = 0; //Initialize target group to 0
-        
+        char out1[11];
+        out1[10] = '\0';
+        LCD_PrintString("Target: 0");
+        snprintf(out1,sizeof(out1),"Target: %d",target);
         // Here we wait for the button to be pressed
         while (btn_flag == 0){
             if (NRF24_IRQ_Read() == 0){
                 // There's a message for us!
                 // XXX:TODO Get the message and set the right LED with
                 //          the correct duty cycle
-                volatile int a = 1;
                 processMessage();
             }
             
             //XXX: TODO Get encoder direction and update LCD with
             //     group number
             
-            
+             if(enc_flag){
+                    if(encPos == 1){
+                        if(target != 12){
+                            target++;
+                        }
+                        else{
+                            target = 0;
+                        }
+                    }
+                    if(encPos == 2){
+                        if(target != 0){
+                            target--;
+                        }
+                        else{
+                            target = 12;
+                        }
+                    }
+                    encPos = 0;
+                    enc_flag = 0;
+                    snprintf(out1,sizeof(out1),"Target: %d",target);
+                    LCD_ClearDisplay();
+                    LCD_PrintString(out1);
+            }
         }
         btn_flag = 0;
+        char out2[41];
+        out2[40] = '\0';
+        for(uint i = 0; i < 40; i++){
+            if(out1[i] == '\0'){
+                out2[i] = ' ';
+            }
+            else if(i > sizeof(out1)){
+                out2[i] = ' ';
+            }
+            else{
+                out2[i] = out1[i];
+            }
+        }
         
-        
+        LCD_ClearDisplay();
+        LCD_PrintString(out2);
+        char out3[6];
+        out3[5] = '\0';
+        LCD_PrintString("R");
         /********************************************************************* 
              This block of code selects the target LED color.
              The encoder is used to cycle through the
              R, G, B, or Y until the button is pressed
         *********************************************************************/        
         color_sel = 0;
+        LCD_ClearDisplay();
+        switch(color_sel){
+            case 0: 
+                LCD_PrintString(out2);
+                LCD_PrintString("R");
+                break;
+            case 1:
+                LCD_PrintString(out2);
+                LCD_PrintString("G");
+                break;
+            case 2:
+                LCD_PrintString(out2);
+                LCD_PrintString("B");
+                break;
+            case 3:
+                LCD_PrintString(out2);
+                LCD_PrintString("Y");
+                break;
+        }
         while(btn_flag == 0){
             if (NRF24_IRQ_Read() == 0){
                 // There's a message for us!
                 // XXX:TODO Get the message and set the right LED with
                 //          the correct duty cycle
+                processMessage();
             }
             
             //XXX: TODO Get encoder direction and update LCD with
-            //     correct color            
+            //     correct color   
+            
+            if(enc_flag){
+                    if(encPos == 1){
+                        if(color_sel != 3){
+                            color_sel++;
+                        }
+                        else{
+                            color_sel = 0;
+                        }
+                    }
+                    if(encPos == 2){
+                        if(color_sel != 0){
+                            color_sel--;
+                        }
+                        else{
+                            color_sel = 3;
+                        }
+                    }
+                    encPos = 0;
+                    enc_flag = 0;
+                    LCD_ClearDisplay();
+                    switch(color_sel){
+                        case 0: 
+                            LCD_PrintString(out2);
+                            LCD_PrintString("R");
+                            break;
+                        case 1:
+                            LCD_PrintString(out2);
+                            LCD_PrintString("G");
+                            break;
+                        case 2:
+                            LCD_PrintString(out2);
+                            LCD_PrintString("B");
+                            break;
+                        case 3:
+                            LCD_PrintString(out2);
+                            LCD_PrintString("Y");
+                            break;
+                    }
+            }
         }
         btn_flag = 0;
-        
+        switch(color_sel){
+            case 0: 
+                command[0] = 'R';
+                break;
+            case 1:
+                command[0] = 'G';
+                break;
+            case 2:
+                command[0] = 'B';
+                break;
+            case 3:
+                command[0] = 'Y';
+                break;
+        }
         /********************************************************************* 
         This block of code selects the target LED brigthness/PWM duty cycle.
              The encoder is used to cycle down to 0 and up to 100,
@@ -394,6 +644,12 @@ int main(void){
              button is pressed.
         *********************************************************************/              
         brightness = 50;
+        LCD_ClearDisplay();
+        LCD_PrintString(out2);
+        char out4[6];
+        out4[5] = '\0';
+        snprintf(out4, 6, "%c %d",command[0], brightness);
+        LCD_PrintString(out4);
         while(btn_flag == 0){
             if (NRF24_IRQ_Read() == 0){
                 // There's a message for us!
@@ -403,10 +659,35 @@ int main(void){
             }
             
             //XXX: TODO Get encoder direction and update LCD with
-            //     correct brightness value                
+            //     correct brightness value   
+            
+            if(enc_flag){
+                    if(encPos == 1){
+                        if(brightness == 100){
+                        }
+                        else{
+                            brightness++;
+                        }
+                    }
+                    if(encPos == 2){
+                        if(brightness == 0){
+                        }
+                        else{
+                            brightness--;
+                        }
+                    }
+                    encPos = 0;
+                    enc_flag = 0;
+                    LCD_ClearDisplay();
+                    
+                    LCD_PrintString(out2);
+                    snprintf(out4, 6, "%c %d",command[0], brightness);
+                    LCD_PrintString(out4);
+            }
         }
         btn_flag = 0;
-        
+        snprintf(command, 6, "%c %d", command[0],brightness);
+        command[5] = '\0';
         // Now that we have valid input, send it to the target group.
         SendMessage(command, target);
         
