@@ -173,20 +173,6 @@
 <v>ECE381_SP23_Lab03_Simon_Clone\Design01\PSoC 4 Architecture TRM</v>
 <v>ECE381_SP23_Lab03_Simon_Clone\Design01\PSoC 4200M Family Datasheet</v>
 <v>ECE381_SP23_Lab03_Simon_Clone\Design01\System Reference Guides</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\System Reference Guides\cy_boot_v5_82</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\System Reference Guides\cy_dmac_v1_10</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\System Reference Guides\cy_lfclk_v1_20</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\cy_clock_v2_20</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\cy_constant_v1_0.pdf</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\cy_isr_v1_71.pdf</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\cy_pins_v2_20</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CyControlReg_v1_80.pdf</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\demux_v1_10.pdf</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\PRS_v2_40.pdf</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\TCPWM_P4_v2_10</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\TCPWM_P4_v2_10\TCPWM_P4_v2_10.pdf</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
 <v>ECE381_SP23_Lab03_Simon_Clone</v>
@@ -194,20 +180,6 @@
 <v>ECE381_SP23_Lab03_Simon_Clone\Design01\PSoC 4 Architecture TRM</v>
 <v>ECE381_SP23_Lab03_Simon_Clone\Design01\PSoC 4200M Family Datasheet</v>
 <v>ECE381_SP23_Lab03_Simon_Clone\Design01\System Reference Guides</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\System Reference Guides\cy_boot_v5_82</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\System Reference Guides\cy_dmac_v1_10</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\System Reference Guides\cy_lfclk_v1_20</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\cy_clock_v2_20</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\cy_constant_v1_0.pdf</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\cy_isr_v1_71.pdf</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\cy_pins_v2_20</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\CyControlReg_v1_80.pdf</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\demux_v1_10.pdf</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\PRS_v2_40.pdf</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\TCPWM_P4_v2_10</v>
-<v>ECE381_SP23_Lab03_Simon_Clone\Design01\TCPWM_P4_v2_10\TCPWM_P4_v2_10.pdf</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStatesV2>
@@ -228,7 +200,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="732, 351" SelectedTabbedMdiWindow="b288573b-6e4c-4db4-a210-37480e48f2f9"><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 3 - Simon Game\Project\Design01.cydsn\TopDesign\TopDesign.cysch" Guid="b288573b-6e4c-4db4-a210-37480e48f2f9" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 3 - Simon Game\Project\Design01.cydsn\Design01.cydwr" Guid="de6cdb5c-9a0d-4453-96ad-035660532848" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 3 - Simon Game\Project\Design01.cydsn\main.c" Guid="72aace5f-c2b3-4adf-bd3e-7c5dc65e8e2f" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="ead43ad5-701e-41ee-acd3-176a27ede259" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 3 - Simon Game\Project\Design01.cydsn\Generated_Source\PSoC4\INPUT_TIMER_ISR.c" Guid="69a3257c-4568-41a8-8e6a-ae9cbbc3d6d7" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="924, 360" SelectedTabbedMdiWindow="72aace5f-c2b3-4adf-bd3e-7c5dc65e8e2f"><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 3 - Simon Game\Project\Design01.cydsn\TopDesign\TopDesign.cysch" Guid="b288573b-6e4c-4db4-a210-37480e48f2f9" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 3 - Simon Game\Project\Design01.cydsn\Design01.cydwr" Guid="de6cdb5c-9a0d-4453-96ad-035660532848" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 3 - Simon Game\Project\Design01.cydsn\main.c" Guid="72aace5f-c2b3-4adf-bd3e-7c5dc65e8e2f" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="ead43ad5-701e-41ee-acd3-176a27ede259" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 3 - Simon Game\Project\Design01.cydsn\Generated_Source\PSoC4\INPUT_TIMER_ISR.c" Guid="69a3257c-4568-41a8-8e6a-ae9cbbc3d6d7" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
