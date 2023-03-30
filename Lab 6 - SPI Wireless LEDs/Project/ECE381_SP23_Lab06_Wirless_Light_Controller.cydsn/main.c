@@ -132,7 +132,6 @@ void processMessage(){
                 //PWM_WriteCompare();
                 PWM_Start();
                 PWM_SEL_Write(0);
-                volatile int b = 0;
             }
             else if(readArray[5] == 0x00000000){
                 volatile uint32 bright = (readArray[3]-0x30)*10 + (readArray[4]-0x30);
@@ -140,7 +139,6 @@ void processMessage(){
                 //PWM_WriteCompare();
                 PWM_Start();
                 PWM_SEL_Write(0);
-                volatile int b = 0;
             }
             else{
                 PWM_WriteCompare(99);
@@ -155,7 +153,6 @@ void processMessage(){
                 //PWM_WriteCompare();
                 PWM_Start();
                 PWM_SEL_Write(1);
-                volatile int b = 0;
             }
             else if(readArray[5] == 0x00000000){
                 volatile uint32 bright = (readArray[3]-0x30)*10 + (readArray[4]-0x30);
@@ -163,7 +160,6 @@ void processMessage(){
                 //PWM_WriteCompare();
                 PWM_Start();
                 PWM_SEL_Write(1);
-                volatile int b = 0;
             }
             else{
                 PWM_WriteCompare(99);
@@ -178,7 +174,6 @@ void processMessage(){
                 //PWM_WriteCompare();
                 PWM_Start();
                 PWM_SEL_Write(2);
-                volatile int b = 0;
             }
             else if(readArray[5] == 0x00000000){
                 volatile uint32 bright = (readArray[3]-0x30)*10 + (readArray[4]-0x30);
@@ -186,7 +181,6 @@ void processMessage(){
                 //PWM_WriteCompare();
                 PWM_Start();
                 PWM_SEL_Write(2);
-                volatile int b = 0;
             }
             else{
                 PWM_WriteCompare(99);
@@ -201,7 +195,6 @@ void processMessage(){
                 //PWM_WriteCompare();
                 PWM_Start();
                 PWM_SEL_Write(3);
-                volatile int b = 0;
             }
             else if(readArray[5] == 0x00000000){
                 volatile uint32 bright = (readArray[3]-0x30)*10 + (readArray[4]-0x30);
@@ -209,7 +202,6 @@ void processMessage(){
                 //PWM_WriteCompare();
                 PWM_Start();
                 PWM_SEL_Write(3);
-                volatile int b = 0;
             }
             else{
                 PWM_WriteCompare(99);
@@ -250,7 +242,7 @@ void Transmitter(int group){
     spiWrBuf[1] = 0x00 | (0xF0 | 0x0F);
     writeToSpi(spiWrBuf, 2, radio.SetupRetransmission);
 // - Set the data rate to 250 kbps at maximum power level
-    spiWrBuf[1] = 0x00 | (0x00 | 0x00 | 0x20 | 0x00 | 0x03);
+    spiWrBuf[1] = 0x00 | (0x00 | 0x00 | 0x20 | 0x00 | 0x00 | 0x06);
     writeToSpi(spiWrBuf, 2, radio.RFSetup);
 // - Set the payload size to be fixed at 16 bytes
     spiWrBuf[1] = 16;
@@ -327,7 +319,7 @@ void Receiver(void){
     spiWrBuf[1] = 0x00 | (0xF0 | 0x0F);
     writeToSpi(spiWrBuf, 2, radio.SetupRetransmission);
     //- Set the data rate to 250 kbps at maximum power level
-    spiWrBuf[1] = 0x00 | (0x00 | 0x00 | 0x20 | 0x00 | 0x03);
+    spiWrBuf[1] = 0x00 | (0x00 | 0x00 | 0x20 | 0x00 | 0x06);
     writeToSpi(spiWrBuf, 2, radio.RFSetup);
     //- Set the payload size to be fixed at 16 bytes
     spiWrBuf[1] = 16;
@@ -471,14 +463,6 @@ int main(void){
     NRF24_CE_Write(1);
     
     volatile int error = 0;
-    uint8 mess[16];
-    mess[0] = 'B';
-    mess[1] = ' ';
-    mess[2] = '1';
-    mess[3] = '0';
-    mess[4] = '0';
-    mess[5] = '\0';
-    error = SendMessage(mess,12);    
     for(;;){
         /********************************************************************* 
         This block of code selects the target group.
@@ -488,8 +472,8 @@ int main(void){
         target = 0; //Initialize target group to 0
         char out1[11];
         out1[10] = '\0';
+        LCD_ClearDisplay();
         LCD_PrintString("Target: 0");
-        snprintf(out1,sizeof(out1),"Target: %d",target);
         // Here we wait for the button to be pressed
         while (btn_flag == 0){
             if (NRF24_IRQ_Read() == 0){
@@ -521,30 +505,13 @@ int main(void){
                     }
                     encPos = 0;
                     enc_flag = 0;
-                    snprintf(out1,sizeof(out1),"Target: %d",target);
-                    LCD_ClearDisplay();
+                    snprintf(out1,sizeof(out1),"%d ",target);
+                    LCD_Position(0,8);
                     LCD_PrintString(out1);
             }
         }
         btn_flag = 0;
-        char out2[41];
-        out2[40] = '\0';
-        for(uint i = 0; i < 40; i++){
-            if(out1[i] == '\0'){
-                out2[i] = ' ';
-            }
-            else if(i > sizeof(out1)){
-                out2[i] = ' ';
-            }
-            else{
-                out2[i] = out1[i];
-            }
-        }
-        
-        LCD_ClearDisplay();
-        LCD_PrintString(out2);
-        char out3[6];
-        out3[5] = '\0';
+        LCD_Position(1,0);
         LCD_PrintString("R");
         /********************************************************************* 
              This block of code selects the target LED color.
@@ -552,25 +519,6 @@ int main(void){
              R, G, B, or Y until the button is pressed
         *********************************************************************/        
         color_sel = 0;
-        LCD_ClearDisplay();
-        switch(color_sel){
-            case 0: 
-                LCD_PrintString(out2);
-                LCD_PrintString("R");
-                break;
-            case 1:
-                LCD_PrintString(out2);
-                LCD_PrintString("G");
-                break;
-            case 2:
-                LCD_PrintString(out2);
-                LCD_PrintString("B");
-                break;
-            case 3:
-                LCD_PrintString(out2);
-                LCD_PrintString("Y");
-                break;
-        }
         while(btn_flag == 0){
             if (NRF24_IRQ_Read() == 0){
                 // There's a message for us!
@@ -601,22 +549,21 @@ int main(void){
                     }
                     encPos = 0;
                     enc_flag = 0;
-                    LCD_ClearDisplay();
                     switch(color_sel){
                         case 0: 
-                            LCD_PrintString(out2);
+                            LCD_Position(1,0);
                             LCD_PrintString("R");
                             break;
                         case 1:
-                            LCD_PrintString(out2);
+                            LCD_Position(1,0);
                             LCD_PrintString("G");
                             break;
                         case 2:
-                            LCD_PrintString(out2);
+                            LCD_Position(1,0);
                             LCD_PrintString("B");
                             break;
                         case 3:
-                            LCD_PrintString(out2);
+                            LCD_Position(1,0);
                             LCD_PrintString("Y");
                             break;
                     }
@@ -644,11 +591,11 @@ int main(void){
              button is pressed.
         *********************************************************************/              
         brightness = 50;
-        LCD_ClearDisplay();
-        LCD_PrintString(out2);
         char out4[6];
         out4[5] = '\0';
-        snprintf(out4, 6, "%c %d",command[0], brightness);
+        LCD_Position(1,2);
+        snprintf(out4, 6, "%d", brightness);
+        out4[5] = '\0';
         LCD_PrintString(out4);
         while(btn_flag == 0){
             if (NRF24_IRQ_Read() == 0){
@@ -678,10 +625,11 @@ int main(void){
                     }
                     encPos = 0;
                     enc_flag = 0;
-                    LCD_ClearDisplay();
                     
-                    LCD_PrintString(out2);
-                    snprintf(out4, 6, "%c %d",command[0], brightness);
+                    //LCD_PrintString(out2);
+                    LCD_Position(1,2);
+                    snprintf(out4, 6, "%d  ", brightness);
+                    out4[5] = '\0';
                     LCD_PrintString(out4);
             }
         }
@@ -689,7 +637,15 @@ int main(void){
         snprintf(command, 6, "%c %d", command[0],brightness);
         command[5] = '\0';
         // Now that we have valid input, send it to the target group.
-        SendMessage(command, target);
+        error = SendMessage(command, target);
+        if(error != 2){
+            LCD_ClearDisplay();
+            LCD_Position(0,0);
+            LCD_PrintString("Failed");
+            LCD_Position(1,0);
+            LCD_PrintString("Transmission!!");
+            CyDelay(2000);
+        }
         
     }
 }

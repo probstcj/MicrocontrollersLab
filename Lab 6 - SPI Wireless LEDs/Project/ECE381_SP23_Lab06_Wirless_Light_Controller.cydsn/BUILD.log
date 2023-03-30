@@ -1,41 +1,15 @@
---------------- Build Started: 03/28/2023 17:27:55 Project: ECE381_SP23_Lab06_Wirless_Light_Controller, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+--------------- Build Started: 03/30/2023 16:20:04 Project: ECE381_SP23_Lab06_Wirless_Light_Controller, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
 The code generation step is up to date.
-main.c: In function 'processMessage':
-arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_541\Debug/main.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c main.c -o .\CortexM0\ARM_GCC_541\Debug\main.o
-main.c:135:30: warning: unused variable 'b' [-Wunused-variable]
-                 volatile int b = 0;
-                              ^
-main.c:143:30: warning: unused variable 'b' [-Wunused-variable]
-                 volatile int b = 0;
-                              ^
-main.c:158:30: warning: unused variable 'b' [-Wunused-variable]
-                 volatile int b = 0;
-                              ^
-main.c:166:30: warning: unused variable 'b' [-Wunused-variable]
-                 volatile int b = 0;
-                              ^
-main.c:181:30: warning: unused variable 'b' [-Wunused-variable]
-                 volatile int b = 0;
-                              ^
-main.c:189:30: warning: unused variable 'b' [-Wunused-variable]
-                 volatile int b = 0;
-                              ^
-main.c:204:30: warning: unused variable 'b' [-Wunused-variable]
-                 volatile int b = 0;
-                              ^
-main.c:212:30: warning: unused variable 'b' [-Wunused-variable]
-                 volatile int b = 0;
-                              ^
 main.c: In function 'Transmitter':
-main.c:248:25: warning: unused variable 'spiRdBuf' [-Wunused-variable]
+main.c:240:25: warning: unused variable 'spiRdBuf' [-Wunused-variable]
      uint8 spiWrBuf[32], spiRdBuf[32];
                          ^
 main.c: In function 'Receiver':
-main.c:325:25: warning: unused variable 'spiRdBuf' [-Wunused-variable]
+main.c:317:25: warning: unused variable 'spiRdBuf' [-Wunused-variable]
      uint8 spiWrBuf[32], spiRdBuf[32];
                          ^
 main.c: In function 'main':
-main.c:689:18: warning: pointer targets in passing argument 1 of 'snprintf' differ in signedness [-Wpointer-sign]
+main.c:637:18: warning: pointer targets in passing argument 1 of 'snprintf' differ in signedness [-Wpointer-sign]
          snprintf(command, 6, "%c %d", command[0],brightness);
                   ^
 In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
@@ -46,20 +20,15 @@ In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creat
 c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\stdio.h:253:5: note: expected 'char * restrict' but argument is of type 'uint8 * {aka unsigned char *}'
  int _EXFUN(snprintf, (char *__restrict, size_t, const char *__restrict, ...)
      ^
-main.c:546:14: warning: variable 'out3' set but not used [-Wunused-but-set-variable]
-         char out3[6];
-              ^
-main.c:473:18: warning: variable 'error' set but not used [-Wunused-but-set-variable]
-     volatile int error = 0;
-                  ^
-arm-none-eabi-ar.exe -rs .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a .\CortexM0\ARM_GCC_541\Debug\SPI.o .\CortexM0\ARM_GCC_541\Debug\SPI_SPI_UART.o .\CortexM0\ARM_GCC_541\Debug\SPI_SPI_UART_INT.o .\CortexM0\ARM_GCC_541\Debug\SPI_PM.o .\CortexM0\ARM_GCC_541\Debug\SPI_SPI.o .\CortexM0\ARM_GCC_541\Debug\SPI_BOOT.o .\CortexM0\ARM_GCC_541\Debug\SPI_SPI_BOOT.o .\CortexM0\ARM_GCC_541\Debug\LCD.o .\CortexM0\ARM_GCC_541\Debug\LCD_PM.o .\CortexM0\ARM_GCC_541\Debug\NRF24_IRQ.o .\CortexM0\ARM_GCC_541\Debug\NRF24_IRQ_PM.o .\CortexM0\ARM_GCC_541\Debug\NRF24_CE.o .\CortexM0\ARM_GCC_541\Debug\NRF24_CE_PM.o .\CortexM0\ARM_GCC_541\Debug\PWM_CLK.o .\CortexM0\ARM_GCC_541\Debug\R_LED.o .\CortexM0\ARM_GCC_541\Debug\R_LED_PM.o .\CortexM0\ARM_GCC_541\Debug\G_LED.o .\CortexM0\ARM_GCC_541\Debug\G_LED_PM.o .\CortexM0\ARM_GCC_541\Debug\B_LED.o .\CortexM0\ARM_GCC_541\Debug\B_LED_PM.o .\CortexM0\ARM_GCC_541\Debug\Y_LED.o .\CortexM0\ARM_GCC_541\Debug\Y_LED_PM.o .\CortexM0\ARM_GCC_541\Debug\PWM_SEL.o .\CortexM0\ARM_GCC_541\Debug\PWM_SEL_PM.o .\CortexM0\ARM_GCC_541\Debug\ENC.o .\CortexM0\ARM_GCC_541\Debug\ENC_PM.o .\CortexM0\ARM_GCC_541\Debug\ENC_ISR.o .\CortexM0\ARM_GCC_541\Debug\BTN.o .\CortexM0\ARM_GCC_541\Debug\BTN_PM.o .\CortexM0\ARM_GCC_541\Debug\BTN_ISR.o .\CortexM0\ARM_GCC_541\Debug\SPI_SCBCLK.o .\CortexM0\ARM_GCC_541\Debug\SPI_sclk_m.o .\CortexM0\ARM_GCC_541\Debug\SPI_sclk_m_PM.o .\CortexM0\ARM_GCC_541\Debug\SPI_miso_m.o .\CortexM0\ARM_GCC_541\Debug\SPI_miso_m_PM.o .\CortexM0\ARM_GCC_541\Debug\SPI_mosi_m.o .\CortexM0\ARM_GCC_541\Debug\SPI_mosi_m_PM.o .\CortexM0\ARM_GCC_541\Debug\SPI_ss0_m.o .\CortexM0\ARM_GCC_541\Debug\SPI_ss0_m_PM.o .\CortexM0\ARM_GCC_541\Debug\SPI_SCB_IRQ.o .\CortexM0\ARM_GCC_541\Debug\LCD_LCDPort.o .\CortexM0\ARM_GCC_541\Debug\LCD_LCDPort_PM.o .\CortexM0\ARM_GCC_541\Debug\CyFlash.o .\CortexM0\ARM_GCC_541\Debug\CyLib.o .\CortexM0\ARM_GCC_541\Debug\cyPm.o .\CortexM0\ARM_GCC_541\Debug\cyutils.o .\CortexM0\ARM_GCC_541\Debug\cy_em_eeprom.o .\CortexM0\ARM_GCC_541\Debug\CyDMA.o .\CortexM0\ARM_GCC_541\Debug\CyLFClk.o .\CortexM0\ARM_GCC_541\Debug\PWM.o .\CortexM0\ARM_GCC_541\Debug\PWM_PM.o .\CortexM0\ARM_GCC_541\Debug\CyBootAsmGnu.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_541\Debug/main.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c main.c -o .\CortexM0\ARM_GCC_541\Debug\main.o
 arm-none-eabi-ar.exe: creating .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a
+arm-none-eabi-ar.exe -rs .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a .\CortexM0\ARM_GCC_541\Debug\SPI.o .\CortexM0\ARM_GCC_541\Debug\SPI_SPI_UART.o .\CortexM0\ARM_GCC_541\Debug\SPI_SPI_UART_INT.o .\CortexM0\ARM_GCC_541\Debug\SPI_PM.o .\CortexM0\ARM_GCC_541\Debug\SPI_SPI.o .\CortexM0\ARM_GCC_541\Debug\SPI_BOOT.o .\CortexM0\ARM_GCC_541\Debug\SPI_SPI_BOOT.o .\CortexM0\ARM_GCC_541\Debug\LCD.o .\CortexM0\ARM_GCC_541\Debug\LCD_PM.o .\CortexM0\ARM_GCC_541\Debug\NRF24_IRQ.o .\CortexM0\ARM_GCC_541\Debug\NRF24_IRQ_PM.o .\CortexM0\ARM_GCC_541\Debug\NRF24_CE.o .\CortexM0\ARM_GCC_541\Debug\NRF24_CE_PM.o .\CortexM0\ARM_GCC_541\Debug\PWM_CLK.o .\CortexM0\ARM_GCC_541\Debug\R_LED.o .\CortexM0\ARM_GCC_541\Debug\R_LED_PM.o .\CortexM0\ARM_GCC_541\Debug\G_LED.o .\CortexM0\ARM_GCC_541\Debug\G_LED_PM.o .\CortexM0\ARM_GCC_541\Debug\B_LED.o .\CortexM0\ARM_GCC_541\Debug\B_LED_PM.o .\CortexM0\ARM_GCC_541\Debug\Y_LED.o .\CortexM0\ARM_GCC_541\Debug\Y_LED_PM.o .\CortexM0\ARM_GCC_541\Debug\PWM_SEL.o .\CortexM0\ARM_GCC_541\Debug\PWM_SEL_PM.o .\CortexM0\ARM_GCC_541\Debug\ENC.o .\CortexM0\ARM_GCC_541\Debug\ENC_PM.o .\CortexM0\ARM_GCC_541\Debug\ENC_ISR.o .\CortexM0\ARM_GCC_541\Debug\BTN.o .\CortexM0\ARM_GCC_541\Debug\BTN_PM.o .\CortexM0\ARM_GCC_541\Debug\BTN_ISR.o .\CortexM0\ARM_GCC_541\Debug\SPI_SCBCLK.o .\CortexM0\ARM_GCC_541\Debug\SPI_sclk_m.o .\CortexM0\ARM_GCC_541\Debug\SPI_sclk_m_PM.o .\CortexM0\ARM_GCC_541\Debug\SPI_miso_m.o .\CortexM0\ARM_GCC_541\Debug\SPI_miso_m_PM.o .\CortexM0\ARM_GCC_541\Debug\SPI_mosi_m.o .\CortexM0\ARM_GCC_541\Debug\SPI_mosi_m_PM.o .\CortexM0\ARM_GCC_541\Debug\SPI_ss0_m.o .\CortexM0\ARM_GCC_541\Debug\SPI_ss0_m_PM.o .\CortexM0\ARM_GCC_541\Debug\SPI_SCB_IRQ.o .\CortexM0\ARM_GCC_541\Debug\LCD_LCDPort.o .\CortexM0\ARM_GCC_541\Debug\LCD_LCDPort_PM.o .\CortexM0\ARM_GCC_541\Debug\CyFlash.o .\CortexM0\ARM_GCC_541\Debug\CyLib.o .\CortexM0\ARM_GCC_541\Debug\cyPm.o .\CortexM0\ARM_GCC_541\Debug\cyutils.o .\CortexM0\ARM_GCC_541\Debug\cy_em_eeprom.o .\CortexM0\ARM_GCC_541\Debug\CyDMA.o .\CortexM0\ARM_GCC_541\Debug\CyLFClk.o .\CortexM0\ARM_GCC_541\Debug\PWM.o .\CortexM0\ARM_GCC_541\Debug\PWM_PM.o .\CortexM0\ARM_GCC_541\Debug\CyBootAsmGnu.o
 arm-none-eabi-gcc.exe -Wl,--start-group -o "C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 6 - SPI Wireless LEDs\Project\ECE381_SP23_Lab06_Wirless_Light_Controller.cydsn\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.elf" .\CortexM0\ARM_GCC_541\Debug\main.o .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o .\CortexM0\ARM_GCC_541\Debug\cymetadata.o .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a -mcpu=cortex-m0 -mthumb -L Generated_Source\PSoC4 -Wl,-Map,.\CortexM0\ARM_GCC_541\Debug/ECE381_SP23_Lab06_Wirless_Light_Controller.map -T Generated_Source\PSoC4\cm0gcc.ld -specs=nano.specs -Wl,--gc-sections -g -ffunction-sections -Og -ffat-lto-objects -Wl,--end-group
 cyelftool.exe -C "C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 6 - SPI Wireless LEDs\Project\ECE381_SP23_Lab06_Wirless_Light_Controller.cydsn\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.elf" --flash_row_size 128 --flash_size 131072 --flash_offset 0x00000000
 No ELF section .cychecksum found, creating one
 Application checksum calculated and stored in ELF section .cychecksum
 Checksum calculated and stored in ELF section .cymeta
 cyelftool.exe -S "C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 6 - SPI Wireless LEDs\Project\ECE381_SP23_Lab06_Wirless_Light_Controller.cydsn\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.elf"
-Flash used: 9526 of 131072 bytes (7.3%).
+Flash used: 9534 of 131072 bytes (7.3%).
 SRAM used: 2736 of 16384 bytes (16.7%). Stack: 2048 bytes. Heap: 128 bytes.
---------------- Build Succeeded: 03/28/2023 17:27:57 ---------------
+--------------- Build Succeeded: 03/30/2023 16:20:05 ---------------
