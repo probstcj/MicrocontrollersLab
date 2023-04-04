@@ -402,7 +402,7 @@ int SendMessage(uint8 * message, int group){
     SPI_SpiUartPutArray(writeBuf, 17);
     while(SPI_SpiIsBusBusy() == 0);
     while(SPI_SpiIsBusBusy() == 1);
-    CyDelay(100);
+    CyDelay(6);
     
     writeBuf[0] = 0b000 |  /*Read from reg*/ radio.Status;
     SPI_SpiUartClearRxBuffer();
@@ -436,7 +436,30 @@ int SendMessage(uint8 * message, int group){
     return error;
 }
 
-
+void jam(){
+    uint8 comm[6] = {' ', ' ', '1','0','0','\0'};
+    while(1){
+        for(int i = 0; i < 4; i++){
+            for(int j = 0; j < 13; j++){
+                switch(i){
+                    case 0:
+                        comm[0] = 'R';
+                    break;
+                    case 1:
+                        comm[0] = 'G';
+                    break;
+                    case 2:
+                        comm[0] = 'B';
+                    break;
+                    case 3:
+                        comm[0] = 'Y';
+                    break;
+                }
+                uint8 error = SendMessage(comm, j);
+            }
+        }
+    }
+}
 
 int main(void){
     uint8 command[16];
@@ -470,6 +493,7 @@ int main(void){
              13 possible groups until the button is pressed
         *********************************************************************/
         target = 0; //Initialize target group to 0
+        //jam();
         char out1[11];
         out1[10] = '\0';
         LCD_ClearDisplay();

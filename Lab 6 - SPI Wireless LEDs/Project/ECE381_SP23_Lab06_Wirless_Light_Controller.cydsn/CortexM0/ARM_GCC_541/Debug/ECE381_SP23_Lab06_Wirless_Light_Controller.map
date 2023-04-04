@@ -7,9 +7,7 @@ Archive member included to satisfy reference by file (symbol)
 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI.o)
                               .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI.o) (SPI_SpiPostEnable)
 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
-                              .\CortexM0\ARM_GCC_541\Debug\main.o (LCD_PrintString)
-.\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_IRQ.o)
-                              .\CortexM0\ARM_GCC_541\Debug\main.o (NRF24_IRQ_Read)
+                              .\CortexM0\ARM_GCC_541\Debug\main.o (LCD_Start)
 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_CE.o)
                               .\CortexM0\ARM_GCC_541\Debug\main.o (NRF24_CE_Write)
 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM_SEL.o)
@@ -53,38 +51,13 @@ c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.
 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
                               c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m/crt0.o (__libc_init_array)
 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memcpy-stub.o)
-                              .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyFlash.o) (memcpy)
+                              .\CortexM0\ARM_GCC_541\Debug\main.o (memcpy)
 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
                               c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m/crt0.o (memset)
-c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-snprintf.o)
-                              .\CortexM0\ARM_GCC_541\Debug\main.o (snprintf)
-c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-svfprintf.o)
-                              c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-snprintf.o) (_svfprintf_r)
-c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
-                              c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-svfprintf.o) (_printf_i)
-c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memchr-stub.o)
-                              c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-svfprintf.o) (memchr)
-c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memmove.o)
-                              c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-svfprintf.o) (memmove)
-c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-freer.o)
-                              c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-svfprintf.o) (_free_r)
-c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-mallocr.o)
-                              c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-svfprintf.o) (_malloc_r)
-c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-reallocr.o)
-                              c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-svfprintf.o) (_realloc_r)
-c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-sbrkr.o)
-                              c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-mallocr.o) (_sbrk_r)
-c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-mlock.o)
-                              c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-freer.o) (__malloc_lock)
-c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-msizer.o)
-                              c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-reallocr.o) (_malloc_usable_size_r)
-c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-reent.o)
-                              c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-sbrkr.o) (errno)
 
 Allocating common symbols
 Common symbol       size              file
 
-errno               0x4               c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-reent.o)
 SPI_rxBufferOverflow
                     0x1               .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART.o)
 SPI_rxBufferHead    0x4               .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART.o)
@@ -108,6 +81,8 @@ Discarded input sections
  .ARM.extab     0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m/crt0.o
  .ARM.exidx     0x00000000        0x8 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m/crt0.o
  .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\main.o
+ .text.processMessage
+                0x00000000      0x1f4 .\CortexM0\ARM_GCC_541\Debug\main.o
  .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
  .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
  .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
@@ -115,8 +90,10 @@ Discarded input sections
  .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
  .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
  .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+ .data          0x00000000        0x4 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
  .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
  .text._exit    0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+ .text._sbrk    0x00000000       0x30 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
  .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI.o)
  .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI.o)
  .text.SPI_ScbModeStop
@@ -151,10 +128,18 @@ Discarded input sections
                 0x00000000       0x28 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI.o)
  .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
  .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
+ .text.LCD_WrDatNib
+                0x00000000       0x44 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
+ .text.LCD_WriteData
+                0x00000000       0x18 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
+ .text.LCD_PrintString
+                0x00000000       0x1c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
  .text.LCD_PutChar
                 0x00000000        0x8 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
  .text.LCD_Stop
                 0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
+ .text.LCD_Position
+                0x00000000       0x3c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
  .text.LCD_PrintInt8
                 0x00000000       0x20 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
  .text.LCD_PrintInt16
@@ -164,19 +149,6 @@ Discarded input sections
  .text.LCD_PrintU32Number
                 0x00000000       0x4c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
  .rodata        0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
- .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_IRQ.o)
- .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_IRQ.o)
- .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_IRQ.o)
- .text.NRF24_IRQ_SetDriveMode
-                0x00000000       0x18 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_IRQ.o)
- .text.NRF24_IRQ_Write
-                0x00000000       0x18 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_IRQ.o)
- .text.NRF24_IRQ_ReadDataReg
-                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_IRQ.o)
- .text.NRF24_IRQ_SetInterruptMode
-                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_IRQ.o)
- .text.NRF24_IRQ_ClearInterrupt
-                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_IRQ.o)
  .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_CE.o)
  .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_CE.o)
  .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_CE.o)
@@ -533,11 +505,13 @@ Discarded input sections
                 0x00000000      0x124 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyFlash.o)
  .text.CySysSFlashWriteUserRow
                 0x00000000      0x110 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyFlash.o)
+ .text          0x00000000      0x114 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_udivsi3.o)
  .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_udivsi3.o)
  .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_udivsi3.o)
  .text          0x00000000      0x1d4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_divsi3.o)
  .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_divsi3.o)
  .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_divsi3.o)
+ .text          0x00000000        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_dvmd_tls.o)
  .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_dvmd_tls.o)
  .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_dvmd_tls.o)
  .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
@@ -561,50 +535,6 @@ Discarded input sections
  .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
  .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
  .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
- .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-snprintf.o)
- .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-snprintf.o)
- .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-snprintf.o)
- .text._snprintf_r
-                0x00000000       0x5e c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-snprintf.o)
- .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-svfprintf.o)
- .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-svfprintf.o)
- .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-svfprintf.o)
- .text.__ssprint_r
-                0x00000000      0x100 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-svfprintf.o)
- .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
- .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
- .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
- .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memchr-stub.o)
- .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memchr-stub.o)
- .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memchr-stub.o)
- .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memmove.o)
- .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memmove.o)
- .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memmove.o)
- .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-freer.o)
- .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-freer.o)
- .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-freer.o)
- .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-mallocr.o)
- .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-mallocr.o)
- .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-mallocr.o)
- .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-reallocr.o)
- .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-reallocr.o)
- .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-reallocr.o)
- .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-sbrkr.o)
- .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-sbrkr.o)
- .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-sbrkr.o)
- .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-mlock.o)
- .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-mlock.o)
- .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-mlock.o)
- .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-msizer.o)
- .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-msizer.o)
- .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-msizer.o)
- .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-reent.o)
- .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-reent.o)
- .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-reent.o)
- .text.cleanup_glue
-                0x00000000       0x1a c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-reent.o)
- .text._reclaim_reent
-                0x00000000       0xcc c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-reent.o)
  .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtend.o
  .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtend.o
  .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtend.o
@@ -668,7 +598,7 @@ END GROUP
                 0x00000001                cy_project_type_bootloader = (appl_start == 0x0)?0x1:0x0
                 0x00000000                cy_project_type_app_for_stack_and_copier = (CY_APP_FOR_STACK_AND_COPIER == 0x1)?0x1:0x0
 
-.text           0x00000000     0x22de
+.text           0x00000000     0x1476
  CREATE_OBJECT_SYMBOLS
                 0x00000000                PROVIDE (__cy_interrupt_vector, RomVectors)
  *(.romvectors)
@@ -690,393 +620,321 @@ END GROUP
  .text.writeToSpi
                 0x00000284       0x30 .\CortexM0\ARM_GCC_541\Debug\main.o
                 0x00000284                writeToSpi
- .text.processMessage
-                0x000002b4      0x1f4 .\CortexM0\ARM_GCC_541\Debug\main.o
-                0x000002b4                processMessage
  .text.Transmitter
-                0x000004a8      0x13c .\CortexM0\ARM_GCC_541\Debug\main.o
-                0x000004a8                Transmitter
+                0x000002b4      0x13c .\CortexM0\ARM_GCC_541\Debug\main.o
+                0x000002b4                Transmitter
  .text.Receiver
-                0x000005e4      0x114 .\CortexM0\ARM_GCC_541\Debug\main.o
-                0x000005e4                Receiver
+                0x000003f0      0x114 .\CortexM0\ARM_GCC_541\Debug\main.o
+                0x000003f0                Receiver
  .text.SendMessage
-                0x000006f8       0xcc .\CortexM0\ARM_GCC_541\Debug\main.o
-                0x000006f8                SendMessage
- .text.main     0x000007c4      0x2b8 .\CortexM0\ARM_GCC_541\Debug\main.o
-                0x000007c4                main
+                0x00000504       0xcc .\CortexM0\ARM_GCC_541\Debug\main.o
+                0x00000504                SendMessage
+ .text.jam      0x000005d0       0x68 .\CortexM0\ARM_GCC_541\Debug\main.o
+                0x000005d0                jam
+ .text.main     0x00000638       0x4c .\CortexM0\ARM_GCC_541\Debug\main.o
+                0x00000638                main
  .text.cfg_write_bytes32
-                0x00000a7c       0x34 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00000684       0x34 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.AnalogSetDefault
-                0x00000ab0       0x20 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x000006b8       0x20 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.CYMEMZERO
-                0x00000ad0        0xc .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x000006d8        0xc .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
  .text.IntDefaultHandler
-                0x00000adc       0x10 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
-                0x00000adc                IntDefaultHandler
- .text._sbrk    0x00000aec       0x30 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
-                0x00000aec                _sbrk
- .text.Start_c  0x00000b1c       0x48 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
-                0x00000b1c                Start_c
+                0x000006e4       0x10 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+                0x000006e4                IntDefaultHandler
+ .text.Start_c  0x000006f4       0x48 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+                0x000006f4                Start_c
  .text.initialize_psoc
-                0x00000b64       0x4c .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
-                0x00000b64                initialize_psoc
+                0x0000073c       0x4c .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+                0x0000073c                initialize_psoc
  .text.SPI_ScbEnableIntr
-                0x00000bb0        0xc .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI.o)
+                0x00000788        0xc .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI.o)
  .text.SPI_ScbModePostEnable
-                0x00000bbc        0x8 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI.o)
+                0x00000794        0x8 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI.o)
  .text.SPI_Init
-                0x00000bc4        0x8 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI.o)
-                0x00000bc4                SPI_Init
+                0x0000079c        0x8 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI.o)
+                0x0000079c                SPI_Init
  .text.SPI_Enable
-                0x00000bcc       0x1c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI.o)
-                0x00000bcc                SPI_Enable
+                0x000007a4       0x1c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI.o)
+                0x000007a4                SPI_Enable
  .text.SPI_Start
-                0x00000be8       0x20 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI.o)
-                0x00000be8                SPI_Start
+                0x000007c0       0x20 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI.o)
+                0x000007c0                SPI_Start
  .text.SPI_SpiUartReadRxData
-                0x00000c08       0x34 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART.o)
-                0x00000c08                SPI_SpiUartReadRxData
+                0x000007e0       0x34 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART.o)
+                0x000007e0                SPI_SpiUartReadRxData
  .text.SPI_SpiUartClearRxBuffer
-                0x00000c3c       0x54 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART.o)
-                0x00000c3c                SPI_SpiUartClearRxBuffer
+                0x00000814       0x54 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART.o)
+                0x00000814                SPI_SpiUartClearRxBuffer
  .text.SPI_SpiUartWriteTxData
-                0x00000c90       0x70 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART.o)
-                0x00000c90                SPI_SpiUartWriteTxData
+                0x00000868       0x70 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART.o)
+                0x00000868                SPI_SpiUartWriteTxData
  .text.SPI_SpiUartPutArray
-                0x00000d00       0x18 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART.o)
-                0x00000d00                SPI_SpiUartPutArray
+                0x000008d8       0x18 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART.o)
+                0x000008d8                SPI_SpiUartPutArray
  .text.SPI_SpiPostEnable
-                0x00000d18       0x34 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI.o)
-                0x00000d18                SPI_SpiPostEnable
+                0x000008f0       0x34 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI.o)
+                0x000008f0                SPI_SpiPostEnable
  .text.SPI_SpiSetActiveSlaveSelect
-                0x00000d4c       0x20 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI.o)
-                0x00000d4c                SPI_SpiSetActiveSlaveSelect
+                0x00000924       0x20 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI.o)
+                0x00000924                SPI_SpiSetActiveSlaveSelect
  .text.SPI_SpiInit
-                0x00000d6c       0xd0 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI.o)
-                0x00000d6c                SPI_SpiInit
+                0x00000944       0xd0 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI.o)
+                0x00000944                SPI_SpiInit
  .text.LCD_WrCntrlNib
-                0x00000e3c       0x34 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
- .text.LCD_WrDatNib
-                0x00000e70       0x44 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
+                0x00000a14       0x34 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
  .text.LCD_IsReady
-                0x00000eb4       0xb4 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
-                0x00000eb4                LCD_IsReady
- .text.LCD_WriteData
-                0x00000f68       0x18 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
-                0x00000f68                LCD_WriteData
- .text.LCD_PrintString
-                0x00000f80       0x1c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
-                0x00000f80                LCD_PrintString
+                0x00000a48       0xb4 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
+                0x00000a48                LCD_IsReady
  .text.LCD_WriteControl
-                0x00000f9c       0x18 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
-                0x00000f9c                LCD_WriteControl
+                0x00000afc       0x18 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
+                0x00000afc                LCD_WriteControl
  .text.LCD_Init
-                0x00000fb4       0x6c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
-                0x00000fb4                LCD_Init
+                0x00000b14       0x6c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
+                0x00000b14                LCD_Init
  .text.LCD_Enable
-                0x00001020       0x14 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
-                0x00001020                LCD_Enable
+                0x00000b80       0x14 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
+                0x00000b80                LCD_Enable
  .text.LCD_Start
-                0x00001034       0x20 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
-                0x00001034                LCD_Start
- .text.LCD_Position
-                0x00001054       0x3c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
-                0x00001054                LCD_Position
- .text.NRF24_IRQ_Read
-                0x00001090       0x10 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_IRQ.o)
-                0x00001090                NRF24_IRQ_Read
+                0x00000b94       0x20 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
+                0x00000b94                LCD_Start
  .text.NRF24_CE_Write
-                0x000010a0       0x18 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_CE.o)
-                0x000010a0                NRF24_CE_Write
+                0x00000bb4       0x18 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_CE.o)
+                0x00000bb4                NRF24_CE_Write
  .text.PWM_SEL_Write
-                0x000010b8        0xc .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM_SEL.o)
-                0x000010b8                PWM_SEL_Write
+                0x00000bcc        0xc .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM_SEL.o)
+                0x00000bcc                PWM_SEL_Write
  .text.ENC_ISR_Interrupt
-                0x000010c4       0x9c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC_ISR.o)
-                0x000010c4                ENC_ISR_Interrupt
+                0x00000bd8       0x9c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC_ISR.o)
+                0x00000bd8                ENC_ISR_Interrupt
  .text.ENC_ISR_SetVector
-                0x00001160        0xc .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC_ISR.o)
-                0x00001160                ENC_ISR_SetVector
+                0x00000c74        0xc .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC_ISR.o)
+                0x00000c74                ENC_ISR_SetVector
  .text.ENC_ISR_SetPriority
-                0x0000116c       0x20 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC_ISR.o)
-                0x0000116c                ENC_ISR_SetPriority
+                0x00000c80       0x20 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC_ISR.o)
+                0x00000c80                ENC_ISR_SetPriority
  .text.ENC_ISR_Enable
-                0x0000118c        0xc .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC_ISR.o)
-                0x0000118c                ENC_ISR_Enable
+                0x00000ca0        0xc .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC_ISR.o)
+                0x00000ca0                ENC_ISR_Enable
  .text.ENC_ISR_Disable
-                0x00001198        0xc .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC_ISR.o)
-                0x00001198                ENC_ISR_Disable
+                0x00000cac        0xc .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC_ISR.o)
+                0x00000cac                ENC_ISR_Disable
  .text.ENC_ISR_Start
-                0x000011a4       0x1c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC_ISR.o)
-                0x000011a4                ENC_ISR_Start
+                0x00000cb8       0x1c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC_ISR.o)
+                0x00000cb8                ENC_ISR_Start
  .text.BTN_ISR_Interrupt
-                0x000011c0       0x20 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN_ISR.o)
-                0x000011c0                BTN_ISR_Interrupt
+                0x00000cd4       0x20 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN_ISR.o)
+                0x00000cd4                BTN_ISR_Interrupt
  .text.BTN_ISR_SetVector
-                0x000011e0        0xc .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN_ISR.o)
-                0x000011e0                BTN_ISR_SetVector
+                0x00000cf4        0xc .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN_ISR.o)
+                0x00000cf4                BTN_ISR_SetVector
  .text.BTN_ISR_SetPriority
-                0x000011ec       0x20 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN_ISR.o)
-                0x000011ec                BTN_ISR_SetPriority
+                0x00000d00       0x20 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN_ISR.o)
+                0x00000d00                BTN_ISR_SetPriority
  .text.BTN_ISR_Enable
-                0x0000120c        0xc .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN_ISR.o)
-                0x0000120c                BTN_ISR_Enable
+                0x00000d20        0xc .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN_ISR.o)
+                0x00000d20                BTN_ISR_Enable
  .text.BTN_ISR_Disable
-                0x00001218        0xc .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN_ISR.o)
-                0x00001218                BTN_ISR_Disable
+                0x00000d2c        0xc .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN_ISR.o)
+                0x00000d2c                BTN_ISR_Disable
  .text.BTN_ISR_Start
-                0x00001224       0x1c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN_ISR.o)
-                0x00001224                BTN_ISR_Start
+                0x00000d38       0x1c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN_ISR.o)
+                0x00000d38                BTN_ISR_Start
  .text.CySysClkImoDisableWcoLock
-                0x00001240       0x54 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
-                0x00001240                CySysClkImoDisableWcoLock
+                0x00000d54       0x54 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
+                0x00000d54                CySysClkImoDisableWcoLock
  .text.CySysClkImoGetWcoLock
-                0x00001294       0x14 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
-                0x00001294                CySysClkImoGetWcoLock
+                0x00000da8       0x14 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
+                0x00000da8                CySysClkImoGetWcoLock
  .text.CyIntEnable
-                0x000012a8       0x14 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
-                0x000012a8                CyIntEnable
+                0x00000dbc       0x14 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
+                0x00000dbc                CyIntEnable
  .text.CyIntDisable
-                0x000012bc       0x14 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
-                0x000012bc                CyIntDisable
- .text.CyHalt   0x000012d0        0x4 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
-                0x000012d0                CyHalt
+                0x00000dd0       0x14 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
+                0x00000dd0                CyIntDisable
+ .text.CyHalt   0x00000de4        0x4 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
+                0x00000de4                CyHalt
  .text.CyIntSetVector
-                0x000012d4       0x24 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
-                0x000012d4                CyIntSetVector
+                0x00000de8       0x24 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
+                0x00000de8                CyIntSetVector
  .text.CyIntSetPriority
-                0x000012f8       0x4c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
-                0x000012f8                CyIntSetPriority
- .text.CyDelay  0x00001344       0x30 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
-                0x00001344                CyDelay
+                0x00000e0c       0x4c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
+                0x00000e0c                CyIntSetPriority
+ .text.CyDelay  0x00000e58       0x30 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
+                0x00000e58                CyDelay
  .text.CySysClkImoEnableWcoLock
-                0x00001374       0xf4 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
-                0x00001374                CySysClkImoEnableWcoLock
+                0x00000e88       0xf4 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
+                0x00000e88                CySysClkImoEnableWcoLock
  .text.CySysClkWriteImoFreq
-                0x00001468       0x80 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
-                0x00001468                CySysClkWriteImoFreq
+                0x00000f7c       0x80 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
+                0x00000f7c                CySysClkWriteImoFreq
  .text.CyDelayUs
-                0x000014e8       0x14 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
-                0x000014e8                CyDelayUs
+                0x00000ffc       0x14 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
+                0x00000ffc                CyDelayUs
  .text.CySysWdtLocked
-                0x000014fc       0x14 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
+                0x00001010       0x14 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
  .text.CySysClkWcoEnabled
-                0x00001510       0x14 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
-                0x00001510                CySysClkWcoEnabled
+                0x00001024       0x14 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
+                0x00001024                CySysClkWcoEnabled
  .text.CySysWdtLock
-                0x00001524       0x1c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
-                0x00001524                CySysWdtLock
+                0x00001038       0x1c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
+                0x00001038                CySysWdtLock
  .text.CySysWdtUnlock
-                0x00001540       0x30 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
-                0x00001540                CySysWdtUnlock
+                0x00001054       0x30 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
+                0x00001054                CySysWdtUnlock
  .text.CySysWdtClearInterrupt
-                0x00001570       0x4c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
-                0x00001570                CySysWdtClearInterrupt
+                0x00001084       0x4c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
+                0x00001084                CySysWdtClearInterrupt
  .text.CySysWdtIsr
-                0x000015bc       0xa4 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
-                0x000015bc                CySysWdtIsr
+                0x000010d0       0xa4 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
+                0x000010d0                CySysWdtIsr
  .text.PWM_WriteCounter
-                0x00001660       0x10 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
-                0x00001660                PWM_WriteCounter
+                0x00001174       0x10 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
+                0x00001174                PWM_WriteCounter
  .text.PWM_WritePeriod
-                0x00001670       0x10 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
-                0x00001670                PWM_WritePeriod
+                0x00001184       0x10 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
+                0x00001184                PWM_WritePeriod
  .text.PWM_WriteCompare
-                0x00001680       0x10 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
-                0x00001680                PWM_WriteCompare
+                0x00001194       0x10 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
+                0x00001194                PWM_WriteCompare
  .text.PWM_TriggerCommand
-                0x00001690       0x1c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
-                0x00001690                PWM_TriggerCommand
+                0x000011a4       0x1c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
+                0x000011a4                PWM_TriggerCommand
  .text.PWM_Enable
-                0x000016ac       0x24 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
-                0x000016ac                PWM_Enable
+                0x000011c0       0x24 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
+                0x000011c0                PWM_Enable
  .text.PWM_SetInterruptMode
-                0x000016d0        0xc .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
-                0x000016d0                PWM_SetInterruptMode
+                0x000011e4        0xc .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
+                0x000011e4                PWM_SetInterruptMode
  .text.PWM_Init
-                0x000016dc       0x4c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
-                0x000016dc                PWM_Init
+                0x000011f0       0x4c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
+                0x000011f0                PWM_Init
  .text.PWM_Start
-                0x00001728       0x20 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
-                0x00001728                PWM_Start
- .text          0x00001748       0x20 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyBootAsmGnu.o)
-                0x00001748                CyDelayCycles
-                0x0000175a                CyEnterCriticalSection
-                0x00001762                CyExitCriticalSection
+                0x0000123c       0x20 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
+                0x0000123c                PWM_Start
+ *fill*         0x0000125c        0x4 
+ .text          0x00001260       0x20 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyBootAsmGnu.o)
+                0x00001260                CyDelayCycles
+                0x00001272                CyEnterCriticalSection
+                0x0000127a                CyExitCriticalSection
  .text.SPI_SPI_UART_ISR
-                0x00001768       0xe4 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART_INT.o)
-                0x00001768                SPI_SPI_UART_ISR
+                0x00001280       0xe4 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART_INT.o)
+                0x00001280                SPI_SPI_UART_ISR
  .text.ENC_Read
-                0x0000184c       0x10 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC.o)
-                0x0000184c                ENC_Read
+                0x00001364       0x10 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC.o)
+                0x00001364                ENC_Read
  .text.ENC_ClearInterrupt
-                0x0000185c       0x10 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC.o)
-                0x0000185c                ENC_ClearInterrupt
+                0x00001374       0x10 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC.o)
+                0x00001374                ENC_ClearInterrupt
  .text.BTN_Read
-                0x0000186c       0x10 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN.o)
-                0x0000186c                BTN_Read
+                0x00001384       0x10 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN.o)
+                0x00001384                BTN_Read
  .text.BTN_ClearInterrupt
-                0x0000187c       0x14 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN.o)
-                0x0000187c                BTN_ClearInterrupt
+                0x00001394       0x14 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN.o)
+                0x00001394                BTN_ClearInterrupt
  .text.CySysFlashSetWaitCycles
-                0x00001890       0x54 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyFlash.o)
-                0x00001890                CySysFlashSetWaitCycles
- .text          0x000018e4      0x114 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_udivsi3.o)
-                0x000018e4                __aeabi_uidiv
-                0x000018e4                __udivsi3
-                0x000019f0                __aeabi_uidivmod
- .text          0x000019f8        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_dvmd_tls.o)
-                0x000019f8                __aeabi_idiv0
-                0x000019f8                __aeabi_ldiv0
- .text.__errno  0x000019fc        0xc c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
-                0x000019fc                __errno
+                0x000013a8       0x54 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyFlash.o)
+                0x000013a8                CySysFlashSetWaitCycles
+ .text.__errno  0x000013fc        0xc c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
+                0x000013fc                __errno
  .text.__libc_init_array
-                0x00001a08       0x4c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
-                0x00001a08                __libc_init_array
- .text.memcpy   0x00001a54       0x12 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memcpy-stub.o)
-                0x00001a54                memcpy
- .text.memset   0x00001a66       0x10 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
-                0x00001a66                memset
- *fill*         0x00001a76        0x2 
- .text.snprintf
-                0x00001a78       0x64 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-snprintf.o)
-                0x00001a78                sniprintf
-                0x00001a78                snprintf
- .text.__ssputs_r
-                0x00001adc       0xc4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-svfprintf.o)
-                0x00001adc                __ssputs_r
- .text._svfprintf_r
-                0x00001ba0      0x1fc c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-svfprintf.o)
-                0x00001ba0                _svfiprintf_r
-                0x00001ba0                _svfprintf_r
- .text._printf_common
-                0x00001d9c       0xdc c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
-                0x00001d9c                _printf_common
- .text._printf_i
-                0x00001e78      0x244 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
-                0x00001e78                _printf_i
- .text.memchr   0x000020bc       0x16 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memchr-stub.o)
-                0x000020bc                memchr
- .text.memmove  0x000020d2       0x2a c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memmove.o)
-                0x000020d2                memmove
- .text._free_r  0x000020fc       0x98 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-freer.o)
-                0x000020fc                _free_r
- .text._malloc_r
-                0x00002194       0xc0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-mallocr.o)
-                0x00002194                _malloc_r
- .text._realloc_r
-                0x00002254       0x4c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-reallocr.o)
-                0x00002254                _realloc_r
- .text._sbrk_r  0x000022a0       0x24 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-sbrkr.o)
-                0x000022a0                _sbrk_r
- .text.__malloc_lock
-                0x000022c4        0x2 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-mlock.o)
-                0x000022c4                __malloc_lock
- .text.__malloc_unlock
-                0x000022c6        0x2 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-mlock.o)
-                0x000022c6                __malloc_unlock
- .text._malloc_usable_size_r
-                0x000022c8       0x16 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-msizer.o)
-                0x000022c8                _malloc_usable_size_r
+                0x00001408       0x4c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
+                0x00001408                __libc_init_array
+ .text.memcpy   0x00001454       0x12 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memcpy-stub.o)
+                0x00001454                memcpy
+ .text.memset   0x00001466       0x10 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
+                0x00001466                memset
  *(.plt)
  *(.gnu.warning)
  *(.glue_7t)
- .glue_7t       0x000022de        0x0 linker stubs
+ .glue_7t       0x00001476        0x0 linker stubs
  *(.glue_7)
- .glue_7        0x000022de        0x0 linker stubs
+ .glue_7        0x00001476        0x0 linker stubs
  *(.vfp11_veneer)
- .vfp11_veneer  0x000022de        0x0 linker stubs
+ .vfp11_veneer  0x00001476        0x0 linker stubs
  *(.bootloader)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
  *(.gcc_except_table)
 
-.v4_bx          0x000022e0        0x0
- .v4_bx         0x000022e0        0x0 linker stubs
+.v4_bx          0x00001478        0x0
+ .v4_bx         0x00001478        0x0 linker stubs
 
-.iplt           0x000022e0        0x0
- .iplt          0x000022e0        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+.iplt           0x00001478        0x0
+ .iplt          0x00001478        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
 
 .eh_frame_hdr
  *(.eh_frame_hdr)
 
-.eh_frame       0x000022e0        0x4
+.eh_frame       0x00001478        0x4
  *(.eh_frame)
- .eh_frame      0x000022e0        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
- .eh_frame      0x000022e0        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtend.o
+ .eh_frame      0x00001478        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+ .eh_frame      0x00001478        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtend.o
                 [!provide]                PROVIDE (__exidx_start, .)
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x000022e4                __exidx_end = .
+                0x0000147c                __exidx_end = .
 
-.rodata         0x000022e4      0x1b4
+.rodata         0x0000147c      0x13c
  *(.rodata .rodata.* .gnu.linkonce.r.*)
- .rodata        0x000022e4       0x51 .\CortexM0\ARM_GCC_541\Debug\main.o
-                0x000022e4                group_channel
-                0x000022f4                group_address
- *fill*         0x00002335        0x3 
- .rodata.str1.4
-                0x00002338       0x4c .\CortexM0\ARM_GCC_541\Debug\main.o
-                                 0x4b (size before relaxing)
- .rodata        0x00002384       0x7c .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
- .rodata        0x00002400       0x2e .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
-                0x00002400                cyImoFreqMhz2Reg
+ .rodata        0x0000147c       0x5a .\CortexM0\ARM_GCC_541\Debug\main.o
+                0x0000147c                group_channel
+                0x0000148c                group_address
+ *fill*         0x000014d6        0x2 
+ .rodata        0x000014d8       0x7c .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .rodata        0x00001554       0x2e .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
+                0x00001554                cyImoFreqMhz2Reg
  .rodata.str1.1
-                0x0000242e        0x2 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
- .rodata.str1.1
-                0x00002430       0x11 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-svfprintf.o)
- .rodata.str1.1
-                0x00002441       0x22 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
-                0x00002464                . = ALIGN (0x4)
- *fill*         0x00002463        0x1 
+                0x00001582        0x2 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+                0x00001584                . = ALIGN (0x4)
  *(.init)
- .init          0x00002464        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crti.o
-                0x00002464                _init
- .init          0x00002468        0x8 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtn.o
-                0x00002470                . = ALIGN (0x4)
-                0x00002470                __preinit_array_start = .
+ .init          0x00001584        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crti.o
+                0x00001584                _init
+ .init          0x00001588        0x8 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtn.o
+                0x00001590                . = ALIGN (0x4)
+                0x00001590                __preinit_array_start = .
  *(.preinit_array)
-                0x00002470                __preinit_array_end = .
-                0x00002470                . = ALIGN (0x4)
-                0x00002470                __init_array_start = .
+                0x00001590                __preinit_array_end = .
+                0x00001590                . = ALIGN (0x4)
+                0x00001590                __init_array_start = .
  *(SORT(.init_array.*))
  *(.init_array)
- .init_array    0x00002470        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
- .init_array    0x00002474        0x4 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
-                0x00002478                __init_array_end = .
-                0x00002478                . = ALIGN (0x4)
+ .init_array    0x00001590        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+ .init_array    0x00001594        0x4 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+                0x00001598                __init_array_end = .
+                0x00001598                . = ALIGN (0x4)
  *(.fini)
- .fini          0x00002478        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crti.o
-                0x00002478                _fini
- .fini          0x0000247c        0x8 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtn.o
-                0x00002484                . = ALIGN (0x4)
-                0x00002484                __fini_array_start = .
+ .fini          0x00001598        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crti.o
+                0x00001598                _fini
+ .fini          0x0000159c        0x8 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtn.o
+                0x000015a4                . = ALIGN (0x4)
+                0x000015a4                __fini_array_start = .
  *(.fini_array)
- .fini_array    0x00002484        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+ .fini_array    0x000015a4        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
  *(SORT(.fini_array.*))
-                0x00002488                __fini_array_end = .
-                0x00002488                . = ALIGN (0x4)
+                0x000015a8                __fini_array_end = .
+                0x000015a8                . = ALIGN (0x4)
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT(.ctors.*))
  *crtend.o(.ctors)
-                0x00002488                . = ALIGN (0x4)
+                0x000015a8                . = ALIGN (0x4)
  *crtbegin.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o) .dtors)
  *(SORT(.dtors.*))
  *crtend.o(.dtors)
-                0x00002488                . = ALIGN (0x4)
-                0x00002488                __cy_regions = .
-                0x00002488        0x4 LONG 0x2498 __cy_region_init_ram
-                0x0000248c        0x4 LONG 0x200000c0 __cy_region_start_data
-                0x00002490        0x4 LONG 0xa8 __cy_region_init_size_ram
-                0x00002494        0x4 LONG 0xc8 __cy_region_zero_size_ram
-                0x00002498                __cy_regions_end = .
-                0x00002498                . = ALIGN (0x8)
-                0x00002498                _etext = .
+                0x000015a8                . = ALIGN (0x4)
+                0x000015a8                __cy_regions = .
+                0x000015a8        0x4 LONG 0x15b8 __cy_region_init_ram
+                0x000015ac        0x4 LONG 0x200000c0 __cy_region_start_data
+                0x000015b0        0x4 LONG 0xa0 __cy_region_init_size_ram
+                0x000015b4        0x4 LONG 0xb8 __cy_region_zero_size_ram
+                0x000015b8                __cy_regions_end = .
+                0x000015b8                . = ALIGN (0x8)
+                0x000015b8                _etext = .
 
 .cy_checksum_exclude
-                0x00002498        0x0
+                0x000015b8        0x0
  *(.cy_checksum_exclude)
 
 .ramvectors     0x20000000       0xc0
@@ -1088,7 +946,7 @@ END GROUP
 .noinit
  *(.noinit)
 
-.data           0x200000c0       0xa8 load address 0x00002498
+.data           0x200000c0       0xa0 load address 0x000015b8
                 0x200000c0                __cy_region_start_data = .
  *(.jcr)
  .jcr           0x200000c0        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
@@ -1100,80 +958,69 @@ END GROUP
  .data          0x200000c4       0x1a .\CortexM0\ARM_GCC_541\Debug\main.o
                 0x200000c4                radio
  *fill*         0x200000de        0x2 
- .data          0x200000e0        0x4 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
- .data          0x200000e4       0x14 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
-                0x200000e4                CySysClkPumpConfig
-                0x200000e8                cydelay32kMs
-                0x200000ec                cydelayFreqKhz
-                0x200000f0                cydelayFreqMhz
-                0x200000f4                cydelayFreqHz
- .data          0x200000f8        0x8 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
+ .data          0x200000e0       0x14 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
+                0x200000e0                CySysClkPumpConfig
+                0x200000e4                cydelay32kMs
+                0x200000e8                cydelayFreqKhz
+                0x200000ec                cydelayFreqMhz
+                0x200000f0                cydelayFreqHz
+ .data          0x200000f4        0x8 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
  .data.impure_data
-                0x20000100       0x60 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+                0x200000fc       0x60 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
  .data._impure_ptr
-                0x20000160        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
-                0x20000160                _impure_ptr
-                0x20000168                . = ALIGN (0x8)
- *fill*         0x20000164        0x4 
+                0x2000015c        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+                0x2000015c                _impure_ptr
+                0x20000160                . = ALIGN (0x8)
  *(.ram)
-                0x20000168                _edata = .
+                0x20000160                _edata = .
 
-.igot.plt       0x20000168        0x0 load address 0x00002540
- .igot.plt      0x20000168        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+.igot.plt       0x20000160        0x0 load address 0x00001658
+ .igot.plt      0x20000160        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
 
-.bss            0x20000168       0xc8 load address 0x00002540
-                0x20000168                PROVIDE (__bss_start__, .)
+.bss            0x20000160       0xb8 load address 0x00001658
+                0x20000160                PROVIDE (__bss_start__, .)
  *(.shbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
- .bss           0x20000168       0x1c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
- .bss           0x20000184        0xc .\CortexM0\ARM_GCC_541\Debug\main.o
+ .bss           0x20000160       0x1c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+ .bss           0x2000017c        0xc .\CortexM0\ARM_GCC_541\Debug\main.o
+                0x2000017c                encPos
+                0x20000180                btn_flag
                 0x20000184                enc_flag
-                0x20000188                encPos
-                0x2000018c                btn_flag
- .bss           0x20000190        0xa .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI.o)
-                0x20000190                SPI_initVar
-                0x20000194                SPI_customIntrHandler
-                0x20000198                SPI_IntrTxMask
- .bss           0x2000019a        0x2 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
-                0x2000019a                LCD_enableState
-                0x2000019b                LCD_initVar
- .bss           0x2000019c       0x28 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
- .bss           0x200001c4        0x1 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
-                0x200001c4                PWM_initVar
- *fill*         0x200001c5        0x3 
- .bss.__malloc_sbrk_start
-                0x200001c8        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-mallocr.o)
-                0x200001c8                __malloc_sbrk_start
- .bss.__malloc_free_list
-                0x200001cc        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-mallocr.o)
-                0x200001cc                __malloc_free_list
+ .bss           0x20000188        0xa .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI.o)
+                0x20000188                SPI_initVar
+                0x2000018c                SPI_customIntrHandler
+                0x20000190                SPI_IntrTxMask
+ .bss           0x20000192        0x2 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
+                0x20000192                LCD_enableState
+                0x20000193                LCD_initVar
+ .bss           0x20000194       0x28 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
+ .bss           0x200001bc        0x1 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
+                0x200001bc                PWM_initVar
  *(COMMON)
- COMMON         0x200001d0       0x58 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART.o)
-                0x200001d0                SPI_rxBufferOverflow
-                0x200001d4                SPI_rxBufferHead
-                0x200001d8                SPI_txBufferHead
-                0x200001dc                SPI_txBufferInternal
-                0x200001fc                SPI_rxBufferInternal
-                0x20000220                SPI_txBufferTail
-                0x20000224                SPI_rxBufferTail
- COMMON         0x20000228        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-reent.o)
-                0x20000228                errno
-                0x20000230                . = ALIGN (0x8)
- *fill*         0x2000022c        0x4 
+ *fill*         0x200001bd        0x3 
+ COMMON         0x200001c0       0x58 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART.o)
+                0x200001c0                SPI_rxBufferOverflow
+                0x200001c4                SPI_rxBufferHead
+                0x200001c8                SPI_txBufferHead
+                0x200001cc                SPI_txBufferInternal
+                0x200001ec                SPI_rxBufferInternal
+                0x20000210                SPI_txBufferTail
+                0x20000214                SPI_rxBufferTail
+                0x20000218                . = ALIGN (0x8)
  *(.ram.b)
-                0x20000230                _end = .
-                0x20000230                __end = .
-                0x20000230                PROVIDE (end, .)
-                0x20000230                PROVIDE (__bss_end__, .)
-                0x00002498                __cy_region_init_ram = LOADADDR (.data)
-                0x000000a8                __cy_region_init_size_ram = (_edata - ADDR (.data))
-                0x000000c8                __cy_region_zero_size_ram = (_end - _edata)
+                0x20000218                _end = .
+                0x20000218                __end = .
+                0x20000218                PROVIDE (end, .)
+                0x20000218                PROVIDE (__bss_end__, .)
+                0x000015b8                __cy_region_init_ram = LOADADDR (.data)
+                0x000000a0                __cy_region_init_size_ram = (_edata - ADDR (.data))
+                0x000000b8                __cy_region_zero_size_ram = (_end - _edata)
 
-.heap           0x20000230       0x80 load address 0x00002540
-                0x20000230                . = _end
-                0x200002b0                . = (. + 0x80)
- *fill*         0x20000230       0x80 
-                0x200002b0                __cy_heap_limit = .
+.heap           0x20000218       0x80 load address 0x00001658
+                0x20000218                . = _end
+                0x20000298                . = (. + 0x80)
+ *fill*         0x20000218       0x80 
+                0x20000298                __cy_heap_limit = .
 
 .stack          0x20003800      0x800
                 0x20003800                __cy_stack_limit = .
@@ -1209,8 +1056,8 @@ END GROUP
                 0x90600000        0x1 .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
                 0x90600000                cy_meta_chipprotect
 
-.rel.dyn        0x00002540        0x0 load address 0x90600004
- .rel.iplt      0x00002540        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+.rel.dyn        0x00001658        0x0 load address 0x90600004
+ .rel.iplt      0x00001658        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
 
 .stab
  *(.stab)
@@ -1230,275 +1077,253 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0xa88
+.debug_aranges  0x00000000      0xa48
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x48 .\CortexM0\ARM_GCC_541\Debug\main.o
+                0x00000000       0x50 .\CortexM0\ARM_GCC_541\Debug\main.o
  .debug_aranges
-                0x00000048       0x40 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00000050       0x40 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
  .debug_aranges
-                0x00000088       0x18 .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
+                0x00000090       0x18 .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
  .debug_aranges
-                0x000000a0       0x48 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+                0x000000a8       0x48 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
  .debug_aranges
-                0x000000e8       0x68 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI.o)
+                0x000000f0       0x68 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI.o)
  .debug_aranges
-                0x00000150       0x60 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART.o)
+                0x00000158       0x60 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART.o)
  .debug_aranges
-                0x000001b0       0x40 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI.o)
+                0x000001b8       0x40 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI.o)
  .debug_aranges
-                0x000001f0       0x98 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
+                0x000001f8       0x98 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
  .debug_aranges
-                0x00000288       0x48 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_IRQ.o)
+                0x00000290       0x48 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_CE.o)
  .debug_aranges
-                0x000002d0       0x48 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_CE.o)
+                0x000002d8       0x28 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM_SEL.o)
  .debug_aranges
-                0x00000318       0x28 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM_SEL.o)
+                0x00000300       0x80 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC_ISR.o)
  .debug_aranges
-                0x00000340       0x80 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC_ISR.o)
+                0x00000380       0x80 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN_ISR.o)
  .debug_aranges
-                0x000003c0       0x80 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN_ISR.o)
+                0x00000400       0x48 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_sclk_m.o)
  .debug_aranges
-                0x00000440       0x48 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_sclk_m.o)
+                0x00000448       0x48 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_ss0_m.o)
  .debug_aranges
-                0x00000488       0x48 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_ss0_m.o)
+                0x00000490      0x1c8 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
  .debug_aranges
-                0x000004d0      0x1c8 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
+                0x00000658      0x188 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
  .debug_aranges
-                0x00000698      0x188 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
+                0x000007e0      0x158 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
  .debug_aranges
-                0x00000820      0x158 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
+                0x00000938       0x20 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyBootAsmGnu.o)
  .debug_aranges
-                0x00000978       0x20 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyBootAsmGnu.o)
+                0x00000958       0x20 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART_INT.o)
  .debug_aranges
-                0x00000998       0x20 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART_INT.o)
+                0x00000978       0x48 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC.o)
  .debug_aranges
-                0x000009b8       0x48 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC.o)
+                0x000009c0       0x48 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN.o)
  .debug_aranges
-                0x00000a00       0x48 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN.o)
- .debug_aranges
-                0x00000a48       0x40 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyFlash.o)
+                0x00000a08       0x40 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyFlash.o)
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x66ee
+.debug_info     0x00000000     0x62ba
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000     0x10df .\CortexM0\ARM_GCC_541\Debug\main.o
- .debug_info    0x000010df      0x3bc .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_info    0x0000149b       0xf8 .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
- .debug_info    0x00001593      0x3a2 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
- .debug_info    0x00001935      0x2e9 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI.o)
- .debug_info    0x00001c1e      0x372 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART.o)
- .debug_info    0x00001f90      0x25c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI.o)
- .debug_info    0x000021ec      0x721 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
- .debug_info    0x0000290d      0x19d .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_IRQ.o)
- .debug_info    0x00002aaa      0x19d .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_CE.o)
- .debug_info    0x00002c47       0xd6 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM_SEL.o)
- .debug_info    0x00002d1d      0x3b2 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC_ISR.o)
- .debug_info    0x000030cf      0x365 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN_ISR.o)
- .debug_info    0x00003434      0x19d .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_sclk_m.o)
- .debug_info    0x000035d1      0x19d .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_ss0_m.o)
- .debug_info    0x0000376e      0xd3f .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
- .debug_info    0x000044ad     0x1058 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
- .debug_info    0x00005505      0x909 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
- .debug_info    0x00005e0e       0xd2 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyBootAsmGnu.o)
- .debug_info    0x00005ee0      0x186 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART_INT.o)
- .debug_info    0x00006066      0x19b .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC.o)
- .debug_info    0x00006201      0x19d .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN.o)
- .debug_info    0x0000639e      0x350 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyFlash.o)
+ .debug_info    0x00000000      0xe48 .\CortexM0\ARM_GCC_541\Debug\main.o
+ .debug_info    0x00000e48      0x3bc .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_info    0x00001204       0xf8 .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
+ .debug_info    0x000012fc      0x3a2 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+ .debug_info    0x0000169e      0x2e9 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI.o)
+ .debug_info    0x00001987      0x372 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART.o)
+ .debug_info    0x00001cf9      0x25c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI.o)
+ .debug_info    0x00001f55      0x721 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
+ .debug_info    0x00002676      0x19d .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_CE.o)
+ .debug_info    0x00002813       0xd6 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM_SEL.o)
+ .debug_info    0x000028e9      0x3b2 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC_ISR.o)
+ .debug_info    0x00002c9b      0x365 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN_ISR.o)
+ .debug_info    0x00003000      0x19d .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_sclk_m.o)
+ .debug_info    0x0000319d      0x19d .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_ss0_m.o)
+ .debug_info    0x0000333a      0xd3f .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
+ .debug_info    0x00004079     0x1058 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
+ .debug_info    0x000050d1      0x909 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
+ .debug_info    0x000059da       0xd2 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyBootAsmGnu.o)
+ .debug_info    0x00005aac      0x186 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART_INT.o)
+ .debug_info    0x00005c32      0x19b .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC.o)
+ .debug_info    0x00005dcd      0x19d .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN.o)
+ .debug_info    0x00005f6a      0x350 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyFlash.o)
 
-.debug_abbrev   0x00000000     0x1ac9
+.debug_abbrev   0x00000000     0x1a48
  *(.debug_abbrev)
- .debug_abbrev  0x00000000      0x1f5 .\CortexM0\ARM_GCC_541\Debug\main.o
- .debug_abbrev  0x000001f5      0x1af .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_abbrev  0x000003a4       0x5d .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
- .debug_abbrev  0x00000401      0x1d7 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
- .debug_abbrev  0x000005d8      0x118 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI.o)
- .debug_abbrev  0x000006f0      0x168 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART.o)
- .debug_abbrev  0x00000858      0x108 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI.o)
- .debug_abbrev  0x00000960      0x171 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
- .debug_abbrev  0x00000ad1       0xc8 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_IRQ.o)
- .debug_abbrev  0x00000b99       0xc8 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_CE.o)
- .debug_abbrev  0x00000c61       0x81 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM_SEL.o)
- .debug_abbrev  0x00000ce2      0x191 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC_ISR.o)
- .debug_abbrev  0x00000e73      0x18d .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN_ISR.o)
- .debug_abbrev  0x00001000       0xc8 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_sclk_m.o)
- .debug_abbrev  0x000010c8       0xc8 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_ss0_m.o)
- .debug_abbrev  0x00001190      0x218 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
- .debug_abbrev  0x000013a8      0x248 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
- .debug_abbrev  0x000015f0      0x119 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
- .debug_abbrev  0x00001709       0x14 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyBootAsmGnu.o)
- .debug_abbrev  0x0000171d       0x9a .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART_INT.o)
- .debug_abbrev  0x000017b7       0xc8 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC.o)
- .debug_abbrev  0x0000187f       0xc8 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN.o)
- .debug_abbrev  0x00001947      0x182 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyFlash.o)
+ .debug_abbrev  0x00000000      0x23c .\CortexM0\ARM_GCC_541\Debug\main.o
+ .debug_abbrev  0x0000023c      0x1af .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_abbrev  0x000003eb       0x5d .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
+ .debug_abbrev  0x00000448      0x1d7 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+ .debug_abbrev  0x0000061f      0x118 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI.o)
+ .debug_abbrev  0x00000737      0x168 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART.o)
+ .debug_abbrev  0x0000089f      0x108 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI.o)
+ .debug_abbrev  0x000009a7      0x171 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
+ .debug_abbrev  0x00000b18       0xc8 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_CE.o)
+ .debug_abbrev  0x00000be0       0x81 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM_SEL.o)
+ .debug_abbrev  0x00000c61      0x191 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC_ISR.o)
+ .debug_abbrev  0x00000df2      0x18d .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN_ISR.o)
+ .debug_abbrev  0x00000f7f       0xc8 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_sclk_m.o)
+ .debug_abbrev  0x00001047       0xc8 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_ss0_m.o)
+ .debug_abbrev  0x0000110f      0x218 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
+ .debug_abbrev  0x00001327      0x248 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
+ .debug_abbrev  0x0000156f      0x119 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
+ .debug_abbrev  0x00001688       0x14 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyBootAsmGnu.o)
+ .debug_abbrev  0x0000169c       0x9a .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART_INT.o)
+ .debug_abbrev  0x00001736       0xc8 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC.o)
+ .debug_abbrev  0x000017fe       0xc8 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN.o)
+ .debug_abbrev  0x000018c6      0x182 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyFlash.o)
 
-.debug_line     0x00000000     0x2708
+.debug_line     0x00000000     0x258b
  *(.debug_line)
- .debug_line    0x00000000      0x36c .\CortexM0\ARM_GCC_541\Debug\main.o
- .debug_line    0x0000036c      0x185 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_line    0x000004f1      0x141 .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
- .debug_line    0x00000632      0x236 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
- .debug_line    0x00000868      0x13c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI.o)
- .debug_line    0x000009a4      0x151 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART.o)
- .debug_line    0x00000af5      0x11e .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI.o)
- .debug_line    0x00000c13      0x1e6 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
- .debug_line    0x00000df9       0xc1 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_IRQ.o)
- .debug_line    0x00000eba       0xc0 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_CE.o)
- .debug_line    0x00000f7a       0x70 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM_SEL.o)
- .debug_line    0x00000fea      0x18f .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC_ISR.o)
- .debug_line    0x00001179      0x160 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN_ISR.o)
- .debug_line    0x000012d9       0xc2 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_sclk_m.o)
- .debug_line    0x0000139b       0xc1 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_ss0_m.o)
- .debug_line    0x0000145c      0x563 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
- .debug_line    0x000019bf      0x5d1 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
- .debug_line    0x00001f90      0x37c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
- .debug_line    0x0000230c       0x68 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyBootAsmGnu.o)
- .debug_line    0x00002374       0xab .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART_INT.o)
- .debug_line    0x0000241f       0xbb .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC.o)
- .debug_line    0x000024da       0xbb .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN.o)
- .debug_line    0x00002595      0x173 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyFlash.o)
+ .debug_line    0x00000000      0x2b0 .\CortexM0\ARM_GCC_541\Debug\main.o
+ .debug_line    0x000002b0      0x185 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_line    0x00000435      0x141 .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
+ .debug_line    0x00000576      0x236 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+ .debug_line    0x000007ac      0x13c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI.o)
+ .debug_line    0x000008e8      0x151 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART.o)
+ .debug_line    0x00000a39      0x11e .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI.o)
+ .debug_line    0x00000b57      0x1e6 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
+ .debug_line    0x00000d3d       0xc0 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_CE.o)
+ .debug_line    0x00000dfd       0x70 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM_SEL.o)
+ .debug_line    0x00000e6d      0x18f .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC_ISR.o)
+ .debug_line    0x00000ffc      0x160 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN_ISR.o)
+ .debug_line    0x0000115c       0xc2 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_sclk_m.o)
+ .debug_line    0x0000121e       0xc1 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_ss0_m.o)
+ .debug_line    0x000012df      0x563 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
+ .debug_line    0x00001842      0x5d1 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
+ .debug_line    0x00001e13      0x37c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
+ .debug_line    0x0000218f       0x68 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyBootAsmGnu.o)
+ .debug_line    0x000021f7       0xab .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART_INT.o)
+ .debug_line    0x000022a2       0xbb .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC.o)
+ .debug_line    0x0000235d       0xbb .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN.o)
+ .debug_line    0x00002418      0x173 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyFlash.o)
 
-.debug_frame    0x00000000     0x1ca0
+.debug_frame    0x00000000     0x1998
  *(.debug_frame)
- .debug_frame   0x00000000       0xdc .\CortexM0\ARM_GCC_541\Debug\main.o
- .debug_frame   0x000000dc       0x98 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_frame   0x00000174       0xbc .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
- .debug_frame   0x00000230      0x104 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI.o)
- .debug_frame   0x00000334       0xc8 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART.o)
- .debug_frame   0x000003fc       0x78 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI.o)
- .debug_frame   0x00000474      0x1f0 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
- .debug_frame   0x00000664       0x70 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_IRQ.o)
- .debug_frame   0x000006d4       0x70 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_CE.o)
- .debug_frame   0x00000744       0x30 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM_SEL.o)
- .debug_frame   0x00000774      0x11c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC_ISR.o)
- .debug_frame   0x00000890      0x11c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN_ISR.o)
- .debug_frame   0x000009ac       0x70 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_sclk_m.o)
- .debug_frame   0x00000a1c       0x70 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_ss0_m.o)
- .debug_frame   0x00000a8c      0x48c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
- .debug_frame   0x00000f18      0x4a4 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
- .debug_frame   0x000013bc      0x3a0 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
- .debug_frame   0x0000175c       0x2c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART_INT.o)
- .debug_frame   0x00001788       0x70 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC.o)
- .debug_frame   0x000017f8       0x70 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN.o)
- .debug_frame   0x00001868       0x90 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyFlash.o)
- .debug_frame   0x000018f8       0x20 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_udivsi3.o)
- .debug_frame   0x00001918       0x20 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_divsi3.o)
- .debug_frame   0x00001938       0x20 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
- .debug_frame   0x00001958       0x28 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o)
- .debug_frame   0x00001980       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
- .debug_frame   0x000019ac       0x28 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memcpy-stub.o)
- .debug_frame   0x000019d4       0x20 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
- .debug_frame   0x000019f4       0x50 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-snprintf.o)
- .debug_frame   0x00001a44       0x74 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-svfprintf.o)
- .debug_frame   0x00001ab8       0x54 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
- .debug_frame   0x00001b0c       0x20 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memchr-stub.o)
- .debug_frame   0x00001b2c       0x28 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memmove.o)
- .debug_frame   0x00001b54       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-freer.o)
- .debug_frame   0x00001b80       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-mallocr.o)
- .debug_frame   0x00001bac       0x30 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-reallocr.o)
- .debug_frame   0x00001bdc       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-sbrkr.o)
- .debug_frame   0x00001c08       0x30 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-mlock.o)
- .debug_frame   0x00001c38       0x20 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-msizer.o)
- .debug_frame   0x00001c58       0x48 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-reent.o)
+ .debug_frame   0x00000000       0xf0 .\CortexM0\ARM_GCC_541\Debug\main.o
+ .debug_frame   0x000000f0       0x98 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_frame   0x00000188       0xbc .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+ .debug_frame   0x00000244      0x104 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI.o)
+ .debug_frame   0x00000348       0xc8 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART.o)
+ .debug_frame   0x00000410       0x78 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI.o)
+ .debug_frame   0x00000488      0x1f0 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
+ .debug_frame   0x00000678       0x70 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_CE.o)
+ .debug_frame   0x000006e8       0x30 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM_SEL.o)
+ .debug_frame   0x00000718      0x11c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC_ISR.o)
+ .debug_frame   0x00000834      0x11c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN_ISR.o)
+ .debug_frame   0x00000950       0x70 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_sclk_m.o)
+ .debug_frame   0x000009c0       0x70 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_ss0_m.o)
+ .debug_frame   0x00000a30      0x48c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
+ .debug_frame   0x00000ebc      0x4a4 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
+ .debug_frame   0x00001360      0x3a0 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
+ .debug_frame   0x00001700       0x2c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART_INT.o)
+ .debug_frame   0x0000172c       0x70 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC.o)
+ .debug_frame   0x0000179c       0x70 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN.o)
+ .debug_frame   0x0000180c       0x90 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyFlash.o)
+ .debug_frame   0x0000189c       0x20 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_udivsi3.o)
+ .debug_frame   0x000018bc       0x20 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_divsi3.o)
+ .debug_frame   0x000018dc       0x20 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
+ .debug_frame   0x000018fc       0x28 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o)
+ .debug_frame   0x00001924       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
+ .debug_frame   0x00001950       0x28 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memcpy-stub.o)
+ .debug_frame   0x00001978       0x20 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
 
-.debug_str      0x00000000     0x22da
+.debug_str      0x00000000     0x2233
  *(.debug_str)
- .debug_str     0x00000000      0x4c9 .\CortexM0\ARM_GCC_541\Debug\main.o
-                                0x510 (size before relaxing)
- .debug_str     0x000004c9      0x11f .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_str     0x00000000      0x48f .\CortexM0\ARM_GCC_541\Debug\main.o
+                                0x4d6 (size before relaxing)
+ .debug_str     0x0000048f      0x11f .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
                                 0x318 (size before relaxing)
- .debug_str     0x000005e8       0x63 .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
+ .debug_str     0x000005ae       0x63 .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
                                 0x20a (size before relaxing)
- .debug_str     0x0000064b      0x13a .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+ .debug_str     0x00000611      0x13a .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
                                 0x343 (size before relaxing)
- .debug_str     0x00000785      0x151 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI.o)
+ .debug_str     0x0000074b      0x151 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI.o)
                                 0x33e (size before relaxing)
- .debug_str     0x000008d6      0x17b .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART.o)
+ .debug_str     0x0000089c      0x17b .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART.o)
                                 0x3b2 (size before relaxing)
- .debug_str     0x00000a51       0xb5 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI.o)
+ .debug_str     0x00000a17       0xb5 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI.o)
                                 0x33a (size before relaxing)
- .debug_str     0x00000b06      0x151 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
+ .debug_str     0x00000acc      0x17f .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
                                 0x36e (size before relaxing)
- .debug_str     0x00000c57       0xbd .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_IRQ.o)
-                                0x294 (size before relaxing)
- .debug_str     0x00000d14       0x8d .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_CE.o)
+ .debug_str     0x00000c4b       0xb6 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_CE.o)
                                 0x28d (size before relaxing)
- .debug_str     0x00000da1       0x36 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM_SEL.o)
+ .debug_str     0x00000d01       0x36 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM_SEL.o)
                                 0x1f7 (size before relaxing)
- .debug_str     0x00000dd7      0x164 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC_ISR.o)
+ .debug_str     0x00000d37      0x164 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC_ISR.o)
                                 0x37a (size before relaxing)
- .debug_str     0x00000f3b      0x110 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN_ISR.o)
+ .debug_str     0x00000e9b      0x110 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN_ISR.o)
                                 0x377 (size before relaxing)
- .debug_str     0x0000104b       0x99 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_sclk_m.o)
+ .debug_str     0x00000fab       0x99 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_sclk_m.o)
                                 0x29b (size before relaxing)
- .debug_str     0x000010e4       0x93 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_ss0_m.o)
+ .debug_str     0x00001044       0x93 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_ss0_m.o)
                                 0x294 (size before relaxing)
- .debug_str     0x00001177      0x57d .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
+ .debug_str     0x000010d7      0x57d .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
                                 0x83f (size before relaxing)
- .debug_str     0x000016f4      0x6eb .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
+ .debug_str     0x00001654      0x6eb .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
                                 0x95f (size before relaxing)
- .debug_str     0x00001ddf      0x35f .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
+ .debug_str     0x00001d3f      0x35f .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
                                 0x59f (size before relaxing)
- .debug_str     0x0000213e       0x3b .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART_INT.o)
+ .debug_str     0x0000209e       0x3b .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART_INT.o)
                                 0x2c1 (size before relaxing)
- .debug_str     0x00002179       0x5d .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC.o)
+ .debug_str     0x000020d9       0x5d .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC.o)
                                 0x26a (size before relaxing)
- .debug_str     0x000021d6       0x5d .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN.o)
+ .debug_str     0x00002136       0x5d .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN.o)
                                 0x26a (size before relaxing)
- .debug_str     0x00002233       0xa7 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyFlash.o)
+ .debug_str     0x00002193       0xa0 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyFlash.o)
                                 0x2f2 (size before relaxing)
 
-.debug_loc      0x00000000     0x2e35
+.debug_loc      0x00000000     0x2d5a
  *(.debug_loc)
- .debug_loc     0x00000000      0x37d .\CortexM0\ARM_GCC_541\Debug\main.o
- .debug_loc     0x0000037d      0x118 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_loc     0x00000495      0x14f .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
- .debug_loc     0x000005e4       0x7e .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI.o)
- .debug_loc     0x00000662      0x170 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART.o)
- .debug_loc     0x000007d2       0xc1 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI.o)
- .debug_loc     0x00000893      0x3e3 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
- .debug_loc     0x00000c76       0xa2 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_IRQ.o)
- .debug_loc     0x00000d18       0xa2 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_CE.o)
- .debug_loc     0x00000dba       0xdb .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC_ISR.o)
- .debug_loc     0x00000e95       0x82 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN_ISR.o)
- .debug_loc     0x00000f17       0xa2 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_sclk_m.o)
- .debug_loc     0x00000fb9       0xa2 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_ss0_m.o)
- .debug_loc     0x0000105b      0x81c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
- .debug_loc     0x00001877      0xdb7 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
- .debug_loc     0x0000262e      0x547 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
- .debug_loc     0x00002b75       0x3d .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART_INT.o)
- .debug_loc     0x00002bb2       0x81 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC.o)
- .debug_loc     0x00002c33       0xa2 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN.o)
- .debug_loc     0x00002cd5      0x160 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyFlash.o)
+ .debug_loc     0x00000000      0x344 .\CortexM0\ARM_GCC_541\Debug\main.o
+ .debug_loc     0x00000344      0x118 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_loc     0x0000045c      0x14f .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+ .debug_loc     0x000005ab       0x7e .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI.o)
+ .debug_loc     0x00000629      0x170 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART.o)
+ .debug_loc     0x00000799       0xc1 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI.o)
+ .debug_loc     0x0000085a      0x3e3 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
+ .debug_loc     0x00000c3d       0xa2 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_CE.o)
+ .debug_loc     0x00000cdf       0xdb .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC_ISR.o)
+ .debug_loc     0x00000dba       0x82 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN_ISR.o)
+ .debug_loc     0x00000e3c       0xa2 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_sclk_m.o)
+ .debug_loc     0x00000ede       0xa2 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_ss0_m.o)
+ .debug_loc     0x00000f80      0x81c .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
+ .debug_loc     0x0000179c      0xdb7 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
+ .debug_loc     0x00002553      0x547 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
+ .debug_loc     0x00002a9a       0x3d .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART_INT.o)
+ .debug_loc     0x00002ad7       0x81 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC.o)
+ .debug_loc     0x00002b58       0xa2 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN.o)
+ .debug_loc     0x00002bfa      0x160 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyFlash.o)
 
 .debug_macinfo
  *(.debug_macinfo)
 
-.debug_ranges   0x00000000      0x900
+.debug_ranges   0x00000000      0x8e8
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x38 .\CortexM0\ARM_GCC_541\Debug\main.o
- .debug_ranges  0x00000038       0x30 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
- .debug_ranges  0x00000068       0x38 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
- .debug_ranges  0x000000a0       0x58 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI.o)
- .debug_ranges  0x000000f8       0x50 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART.o)
- .debug_ranges  0x00000148       0x30 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI.o)
- .debug_ranges  0x00000178       0x88 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
- .debug_ranges  0x00000200       0x38 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_IRQ.o)
- .debug_ranges  0x00000238       0x38 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_CE.o)
- .debug_ranges  0x00000270       0x18 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM_SEL.o)
- .debug_ranges  0x00000288       0x70 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC_ISR.o)
- .debug_ranges  0x000002f8       0x70 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN_ISR.o)
- .debug_ranges  0x00000368       0x38 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_sclk_m.o)
- .debug_ranges  0x000003a0       0x38 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_ss0_m.o)
- .debug_ranges  0x000003d8      0x1b8 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
- .debug_ranges  0x00000590      0x178 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
- .debug_ranges  0x00000708      0x148 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
- .debug_ranges  0x00000850       0x10 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART_INT.o)
- .debug_ranges  0x00000860       0x38 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC.o)
- .debug_ranges  0x00000898       0x38 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN.o)
- .debug_ranges  0x000008d0       0x30 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyFlash.o)
+ .debug_ranges  0x00000000       0x58 .\CortexM0\ARM_GCC_541\Debug\main.o
+ .debug_ranges  0x00000058       0x30 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_ranges  0x00000088       0x38 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+ .debug_ranges  0x000000c0       0x58 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI.o)
+ .debug_ranges  0x00000118       0x50 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART.o)
+ .debug_ranges  0x00000168       0x30 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI.o)
+ .debug_ranges  0x00000198       0x88 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
+ .debug_ranges  0x00000220       0x38 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_CE.o)
+ .debug_ranges  0x00000258       0x18 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM_SEL.o)
+ .debug_ranges  0x00000270       0x70 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC_ISR.o)
+ .debug_ranges  0x000002e0       0x70 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN_ISR.o)
+ .debug_ranges  0x00000350       0x38 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_sclk_m.o)
+ .debug_ranges  0x00000388       0x38 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_ss0_m.o)
+ .debug_ranges  0x000003c0      0x1b8 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
+ .debug_ranges  0x00000578      0x178 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
+ .debug_ranges  0x000006f0      0x148 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
+ .debug_ranges  0x00000838       0x10 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART_INT.o)
+ .debug_ranges  0x00000848       0x38 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC.o)
+ .debug_ranges  0x00000880       0x38 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN.o)
+ .debug_ranges  0x000008b8       0x30 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyFlash.o)
 
 .comment        0x00000000       0x6e
  .comment       0x00000000       0x6e .\CortexM0\ARM_GCC_541\Debug\main.o
@@ -1510,7 +1335,6 @@ END GROUP
  .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART.o)
  .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI.o)
  .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
- .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_IRQ.o)
  .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_CE.o)
  .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM_SEL.o)
  .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC_ISR.o)
@@ -1566,81 +1390,55 @@ END GROUP
  .ARM.attributes
                 0x000001bc       0x31 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(LCD.o)
  .ARM.attributes
-                0x000001ed       0x31 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_IRQ.o)
+                0x000001ed       0x31 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_CE.o)
  .ARM.attributes
-                0x0000021e       0x31 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(NRF24_CE.o)
+                0x0000021e       0x31 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM_SEL.o)
  .ARM.attributes
-                0x0000024f       0x31 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM_SEL.o)
+                0x0000024f       0x31 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC_ISR.o)
  .ARM.attributes
-                0x00000280       0x31 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC_ISR.o)
+                0x00000280       0x31 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN_ISR.o)
  .ARM.attributes
-                0x000002b1       0x31 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN_ISR.o)
+                0x000002b1       0x31 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_sclk_m.o)
  .ARM.attributes
-                0x000002e2       0x31 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_sclk_m.o)
+                0x000002e2       0x31 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_ss0_m.o)
  .ARM.attributes
-                0x00000313       0x31 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_ss0_m.o)
+                0x00000313       0x31 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
  .ARM.attributes
-                0x00000344       0x31 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLib.o)
+                0x00000344       0x31 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
  .ARM.attributes
-                0x00000375       0x31 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyLFClk.o)
+                0x00000375       0x31 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
  .ARM.attributes
-                0x000003a6       0x31 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(PWM.o)
+                0x000003a6       0x21 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyBootAsmGnu.o)
  .ARM.attributes
-                0x000003d7       0x21 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyBootAsmGnu.o)
+                0x000003c7       0x31 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART_INT.o)
  .ARM.attributes
-                0x000003f8       0x31 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(SPI_SPI_UART_INT.o)
+                0x000003f8       0x31 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC.o)
  .ARM.attributes
-                0x00000429       0x31 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(ENC.o)
+                0x00000429       0x31 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN.o)
  .ARM.attributes
-                0x0000045a       0x31 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(BTN.o)
+                0x0000045a       0x31 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyFlash.o)
  .ARM.attributes
-                0x0000048b       0x31 .\CortexM0\ARM_GCC_541\Debug\ECE381_SP23_Lab06_Wirless_Light_Controller.a(CyFlash.o)
+                0x0000048b       0x1e c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_udivsi3.o)
  .ARM.attributes
-                0x000004bc       0x1e c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_udivsi3.o)
+                0x000004a9       0x1e c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_divsi3.o)
  .ARM.attributes
-                0x000004da       0x1e c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_divsi3.o)
+                0x000004c7       0x1e c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_dvmd_tls.o)
  .ARM.attributes
-                0x000004f8       0x1e c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_dvmd_tls.o)
+                0x000004e5       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
  .ARM.attributes
-                0x00000516       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
+                0x00000511       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o)
  .ARM.attributes
-                0x00000542       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o)
+                0x0000053d       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
  .ARM.attributes
-                0x0000056e       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+                0x00000569       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
  .ARM.attributes
-                0x0000059a       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
+                0x00000595       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memcpy-stub.o)
  .ARM.attributes
-                0x000005c6       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memcpy-stub.o)
+                0x000005c1       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
  .ARM.attributes
-                0x000005f2       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
+                0x000005ed       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtend.o
  .ARM.attributes
-                0x0000061e       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-snprintf.o)
- .ARM.attributes
-                0x0000064a       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-svfprintf.o)
- .ARM.attributes
-                0x00000676       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
- .ARM.attributes
-                0x000006a2       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memchr-stub.o)
- .ARM.attributes
-                0x000006ce       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memmove.o)
- .ARM.attributes
-                0x000006fa       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-freer.o)
- .ARM.attributes
-                0x00000726       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-mallocr.o)
- .ARM.attributes
-                0x00000752       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-reallocr.o)
- .ARM.attributes
-                0x0000077e       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-sbrkr.o)
- .ARM.attributes
-                0x000007aa       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-mlock.o)
- .ARM.attributes
-                0x000007d6       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-msizer.o)
- .ARM.attributes
-                0x00000802       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-reent.o)
- .ARM.attributes
-                0x0000082e       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtend.o
- .ARM.attributes
-                0x0000085a       0x1e c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtn.o
+                0x00000619       0x1e c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtn.o
 
 /DISCARD/
  *(.note.GNU-stack)
