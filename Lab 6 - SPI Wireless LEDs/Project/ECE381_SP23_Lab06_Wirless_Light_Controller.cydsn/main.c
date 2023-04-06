@@ -18,6 +18,7 @@ volatile int enc_flag = 0;
 volatile int btn_flag = 0;
 volatile int encPos = 0;
 
+// Struct for keeping register addresses
 struct radioAddr{
     uint8 CONFIG;
     uint8 EnhancedShockburst;
@@ -48,24 +49,25 @@ struct radioAddr{
 };
 
 struct radioAddr radio = {
-    0x00,
-    0x01,
-    0x02,
-    0x03,
-    0x04,
-    0x05,
-    0x06,
-    0x07,
-    0x08,
-    0x09,
-    0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,
-    0x10,
-    0x11,0x12,0x13,0x14,0x15,0x16,
-    0x17,
-    0x1C,
-    0x1D
+    0x00, // CONFIG
+    0x01, // EnhancedShockburst
+    0x02, // EnabledRxAddr
+    0x03, // SetupAW
+    0x04, // SetupRetransmission
+    0x05, // RFChannel
+    0x06, // RFSetup
+    0x07, // Status
+    0x08, // ObserveTX
+    0x09, // PowerDetector
+    0x0A,0x0B,0x0C,0x0D,0x0E,0x0F, // RXAddr0-5
+    0x10, // TXAddr
+    0x11,0x12,0x13,0x14,0x15,0x16, // RXPayload0-5
+    0x17, // FIFOStatus
+    0x1C, // DynamicPayloadLength
+    0x1D  // Features
 };
 
+// Radio Addresses
 const uint8 group_address[13][5] = {
     {0x11,0x11,0x11,0x11,0x11},
     {0x22,0x22,0x22,0x22,0x22},
@@ -83,6 +85,7 @@ const uint8 group_address[13][5] = {
     
 };
 
+// Group Channels
 const uint8 group_channel[13] = {
     0x10, //16
     0x18, //24
@@ -99,6 +102,13 @@ const uint8 group_channel[13] = {
     0x70  //110
 };
 
+/*
+This function simply writes to the SPI bus
+- Variables
+    - writeBuf - buffer to write to bus
+    - writeBytes - Number of bytes to write
+    - regAddr - Register address to write to
+*/
 void writeToSpi(uint8* writeBuf, int writeBytes, uint8 regAddr){
     writeBuf[0] = 0b00100000 /*Write to reg*/ | regAddr; /*Reg to write*/
     SPI_SpiUartClearRxBuffer();
@@ -106,58 +116,65 @@ void writeToSpi(uint8* writeBuf, int writeBytes, uint8 regAddr){
     while(SPI_SpiIsBusBusy() == 0);
     while(SPI_SpiIsBusBusy() == 1);
 }
-
+/*
+This function processes the message once the radio interrupts the program. It requires no arguments
+*/
 void processMessage(){
+    // SPI buffer
     uint8 writeBuf[32];
     
+    // Buffer to read the data coming in
     volatile uint32 readArray[6];
     
-    writeBuf[0] = 0b01100001 /*Write to reg*/;
+    writeBuf[0] = 0b01100001 /*Get RX Payload*/;
     SPI_SpiUartClearRxBuffer();
     SPI_SpiUartPutArray(writeBuf, 17);
     while(SPI_SpiIsBusBusy() == 0);
     while(SPI_SpiIsBusBusy() == 1);
+    // Read in data from buffer
     for(int i = 0; i < 6; i++){
         readArray[i] = SPI_SpiUartReadRxData();
     }
     SPI_SpiUartClearRxBuffer();
+    // Clear status register
     writeBuf[1] = 0x00 | (0x00 | 0x40 | 0x00);
     writeToSpi(writeBuf, 2, radio.Status);
     SPI_SpiUartClearRxBuffer();
+    // Process data
     switch(readArray[1]){
         case 'R': 
+            // If less than 10
             if (readArray[4] == 0x00000000){
                 volatile uint32 bright = (readArray[3]-0x30);
                 PWM_WriteCompare(bright);
-                //PWM_WriteCompare();
                 PWM_Start();
                 PWM_SEL_Write(0);
             }
+            // If less than 100
             else if(readArray[5] == 0x00000000){
                 volatile uint32 bright = (readArray[3]-0x30)*10 + (readArray[4]-0x30);
                 PWM_WriteCompare(bright-1);
-                //PWM_WriteCompare();
                 PWM_Start();
                 PWM_SEL_Write(0);
             }
+            // If 100
             else{
                 PWM_WriteCompare(99);
                 PWM_Start();
                 PWM_SEL_Write(0);
             }
             break;
+        // Repeats for every case, see comments above
         case 'G': 
             if (readArray[4] == 0x00000000){
                 volatile uint32 bright = (readArray[3]-0x30);
                 PWM_WriteCompare(bright);
-                //PWM_WriteCompare();
                 PWM_Start();
                 PWM_SEL_Write(1);
             }
             else if(readArray[5] == 0x00000000){
                 volatile uint32 bright = (readArray[3]-0x30)*10 + (readArray[4]-0x30);
                 PWM_WriteCompare(bright-1);
-                //PWM_WriteCompare();
                 PWM_Start();
                 PWM_SEL_Write(1);
             }
@@ -171,14 +188,12 @@ void processMessage(){
             if (readArray[4] == 0x00000000){
                 volatile uint32 bright = (readArray[3]-0x30);
                 PWM_WriteCompare(bright);
-                //PWM_WriteCompare();
                 PWM_Start();
                 PWM_SEL_Write(2);
             }
             else if(readArray[5] == 0x00000000){
                 volatile uint32 bright = (readArray[3]-0x30)*10 + (readArray[4]-0x30);
                 PWM_WriteCompare(bright-1);
-                //PWM_WriteCompare();
                 PWM_Start();
                 PWM_SEL_Write(2);
             }
@@ -192,14 +207,12 @@ void processMessage(){
             if (readArray[4] == 0x00000000){
                 volatile uint32 bright = (readArray[3]-0x30);
                 PWM_WriteCompare(bright);
-                //PWM_WriteCompare();
                 PWM_Start();
                 PWM_SEL_Write(3);
             }
             else if(readArray[5] == 0x00000000){
                 volatile uint32 bright = (readArray[3]-0x30)*10 + (readArray[4]-0x30);
                 PWM_WriteCompare(bright-1);
-                //PWM_WriteCompare();
                 PWM_Start();
                 PWM_SEL_Write(3);
             }
@@ -436,6 +449,9 @@ int SendMessage(uint8 * message, int group){
     return error;
 }
 
+/* 
+Ummm, this function does something special...
+*/
 void jam(){
     uint8 comm[6] = {' ', ' ', '1','0','0','\0'};
     while(1){
@@ -493,7 +509,7 @@ int main(void){
              13 possible groups until the button is pressed
         *********************************************************************/
         target = 0; //Initialize target group to 0
-        //jam();
+        //jam(); // Uncomment this line to mess with other groups :)
         char out1[11];
         out1[10] = '\0';
         LCD_ClearDisplay();
