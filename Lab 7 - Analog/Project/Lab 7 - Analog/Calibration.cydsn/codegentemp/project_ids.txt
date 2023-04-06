@@ -1,0 +1,7 @@
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|c222bb01-ef75-4cea-9faa-3e1267b30f4c
+C:\Users\Hello Kitty\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|e4323683-2cf2-49fb-9751-c1b62d478428
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|5f8765ea-7b5b-4fba-b108-462995200ee0
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|9bbf50b1-b94b-4e05-aa41-dfe879a8602e
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|77a0a12a-a09d-41ca-a74f-ec6c1672af0f
+C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 7 - Analog\Project\Lab 7 - Analog\Lab 7 - Analog.cydsn\Lab 7 - Analog.cyprj|861b9f03-5d1d-4842-9a5c-ed030094f026
+C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 7 - Analog\Project\Lab 7 - Analog\Calibration.cydsn\Calibration.cyprj|c8db4743-eee3-41d3-a185-bd26ecc6927c
