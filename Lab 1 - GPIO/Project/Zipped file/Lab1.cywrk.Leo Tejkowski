@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Lab1\Lab1\Source Files\main.c">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Lab1\Lab1\TopDesign">
 <ExpandedNodeIds>
 <v>Lab1</v>
 <v>Lab1\Lab1</v>
@@ -35,6 +35,7 @@
 <v>Lab1\Lab1\Generated_Source\PSoC4</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
+<v>Lab1</v>
 <v>Lab1\Lab1</v>
 <v>Lab1\Lab1\TopDesign</v>
 <v>Lab1\Lab1\Lab1.cydwr</v>
@@ -81,7 +82,6 @@
 <v>Lab1\Lab1\Generated_Source\PSoC4\cyfitteriar.inc</v>
 <v>Lab1\Lab1\Generated_Source\PSoC4\cyfitterrv.inc</v>
 <v>Lab1\Lab1\Generated_Source\PSoC4\cymetadata.c</v>
-<v>Lab1\Lab1\Generated_Source\PSoC4\project.h</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -242,7 +242,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="822, 463" SelectedTabbedMdiWindow="f41b5e51-a356-4101-9b78-372f7d7ddc97"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="e056d728-48d9-4b86-a8a4-ff12946a9491" /><DocumentWindow Key="C:\Users\Leo Tejkowski\Desktop\ece381\Lab 1 - GPIO\Project\Zipped file\Lab1.cydsn\TopDesign\TopDesign.cysch" Guid="01484664-231a-404d-b6b7-96bb96c9b5a9" /><DocumentWindow Key="C:\Users\Leo Tejkowski\Desktop\ece381\Lab 1 - GPIO\Project\Zipped file\Lab1.cydsn\main.c" Guid="f41b5e51-a356-4101-9b78-372f7d7ddc97" /><DocumentWindow Key="C:\Users\Leo Tejkowski\Desktop\ece381\Lab 1 - GPIO\Project\Zipped file\Lab1.cydsn\Lab1.cydwr" Guid="e9f69daa-585d-4541-a8b6-ecb88725cc96" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="470, 621" SelectedTabbedMdiWindow="01484664-231a-404d-b6b7-96bb96c9b5a9"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="e056d728-48d9-4b86-a8a4-ff12946a9491" /><DocumentWindow Key="C:\Users\Leo Tejkowski\Desktop\ece381\Lab 1 - GPIO\Project\Zipped file\Lab1.cydsn\TopDesign\TopDesign.cysch" Guid="01484664-231a-404d-b6b7-96bb96c9b5a9" /><DocumentWindow Key="C:\Users\Leo Tejkowski\Desktop\ece381\Lab 1 - GPIO\Project\Zipped file\Lab1.cydsn\main.c" Guid="f41b5e51-a356-4101-9b78-372f7d7ddc97" /><DocumentWindow Key="C:\Users\Leo Tejkowski\Desktop\ece381\Lab 1 - GPIO\Project\Zipped file\Lab1.cydsn\Lab1.cydwr" Guid="e9f69daa-585d-4541-a8b6-ecb88725cc96" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

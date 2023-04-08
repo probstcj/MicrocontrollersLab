@@ -1,6 +1,33 @@
+<<<<<<< HEAD
 Last Modified Date & Time: 02/23/2023 16:17:14
 
 Lab 5 - I2C: Lab 5 - I2C.cydwr
 	cy_boot [v5.82] to [v6.10]
 
 
+=======
+Last Modified Date & Time: 03/07/2023 11:14:14
+
+Lab 5 - I2C: Lab 5 - I2C.cydwr
+	cy_boot [v5.82] to [v6.10]
+
+
+Last Modified Date & Time: 03/14/2023 13:21:16
+
+Lab 5 - I2C: Lab 5 - I2C.cydwr
+	cy_boot [v6.10] to [v5.82]
+
+
+Last Modified Date & Time: 03/14/2023 20:51:41
+
+Lab 5 - I2C: Lab 5 - I2C.cydwr
+	cy_boot [v5.82] to [v6.10]
+
+
+Last Modified Date & Time: 03/15/2023 09:54:09
+
+Lab 5 - I2C: Lab 5 - I2C.cydwr
+	cy_boot [v6.10] to [v5.82]
+
+
+>>>>>>> e23e5a7dadfbff1500a361091d478f7823854aed

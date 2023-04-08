@@ -1,10 +1,29 @@
+<<<<<<< HEAD
 <<<<<<< HEAD:Lab 3 - Simon Game/Project/Backup/ECE381_SP23_Lab03_Simon_Clone.4.4/Project/Design01.cydsn/codegentemp/project_ids.txt
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD:Lab 3 - Simon Game/Project/Backup/ECE381_SP23_Lab03_Simon_Clone.4.4/Project/Design01.cydsn/codegentemp/project_ids.txt
+=======
+<<<<<<< HEAD:Lab 3 - Simon Game/Project/Design01.cydsn/codegentemp/project_ids.txt
+C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 3 - Simon Game\Project\Design01.cydsn\Design01.cyprj|a7224940-f707-4570-90e6-e9d600aa8c59
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|2cb1e64f-cb5f-41ba-8ba6-4c014188e80b
+C:\Users\Hello Kitty\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|68ff1717-7cea-49ea-b017-58dc56c833a4
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|c04425a2-c4cd-457e-9b02-5bd3072fd7ba
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|2cc4459c-b37c-428f-8db6-03af9fa7ac55
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|008a1fb9-3147-4a99-9fbf-2e0bd593a6b6
+=======
+>>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
+>>>>>>> e23e5a7dadfbff1500a361091d478f7823854aed
 C:\Users\Leo Tejkowski\Desktop\ece381\Lab 3 - Simon Game\Project\Backup\ECE381_SP23_Lab03_Simon_Clone.4.4\Project\Design01.cydsn\Design01.cyprj|7faabde6-ba1a-4179-849c-96f4b53b2735
 C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|e303a436-1ee9-4c44-95a4-554e4f8dad3d
 C:\Users\Leo Tejkowski\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|8d075d19-2849-442f-bcee-95f60726da21
 C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|5a5a5d1c-e7d7-4f51-af32-94acf0e164a0
 C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|5253cb84-3f0a-4538-9d99-4bd64f677013
 C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|cca3c826-fd8e-4eb5-946a-24e37dd8f73f
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e23e5a7dadfbff1500a361091d478f7823854aed
 =======
 C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 3 - Simon Game\Project\Design01.cydsn\Design01.cyprj|a7224940-f707-4570-90e6-e9d600aa8c59
 C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|2cb1e64f-cb5f-41ba-8ba6-4c014188e80b
@@ -13,3 +32,9 @@ C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomp
 C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|2cc4459c-b37c-428f-8db6-03af9fa7ac55
 C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|008a1fb9-3147-4a99-9fbf-2e0bd593a6b6
 >>>>>>> 8381928c4384acfcb7526ab7a6dd2d315e643534:Lab 3 - Simon Game/Project/Design01.cydsn/codegentemp/project_ids.txt
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> e6b66f492be45cb54e7efb6d0f687a534db08ab8:Lab 3 - Simon Game/Project/Backup/ECE381_SP23_Lab03_Simon_Clone.4.4/Project/Design01.cydsn/codegentemp/project_ids.txt
+>>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e
+>>>>>>> e23e5a7dadfbff1500a361091d478f7823854aed

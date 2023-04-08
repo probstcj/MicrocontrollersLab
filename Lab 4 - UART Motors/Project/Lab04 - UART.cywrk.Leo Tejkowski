@@ -35,6 +35,7 @@
 <v>Lab04 - UART\Design01\Generated_Source\PSoC4</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
+<v>Lab04 - UART</v>
 <v>Lab04 - UART\Design01</v>
 <v>Lab04 - UART\Design01\TopDesign</v>
 <v>Lab04 - UART\Design01\Design01.cydwr</v>
@@ -72,6 +73,14 @@
 <v>Lab04 - UART\Design01\Generated_Source\PSoC4\cydevicegnu_trm.inc</v>
 <v>Lab04 - UART\Design01\Generated_Source\PSoC4\cydeviceiar_trm.inc</v>
 <v>Lab04 - UART\Design01\Generated_Source\PSoC4\cydevicerv_trm.inc</v>
+<v>Lab04 - UART\Design01\Generated_Source\PSoC4\cydisabledsheets.h</v>
+<v>Lab04 - UART\Design01\Generated_Source\PSoC4\cyfitter.h</v>
+<v>Lab04 - UART\Design01\Generated_Source\PSoC4\cyfitter_cfg.c</v>
+<v>Lab04 - UART\Design01\Generated_Source\PSoC4\cyfitter_cfg.h</v>
+<v>Lab04 - UART\Design01\Generated_Source\PSoC4\cyfittergnu.inc</v>
+<v>Lab04 - UART\Design01\Generated_Source\PSoC4\cyfitteriar.inc</v>
+<v>Lab04 - UART\Design01\Generated_Source\PSoC4\cyfitterrv.inc</v>
+<v>Lab04 - UART\Design01\Generated_Source\PSoC4\cymetadata.c</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -175,6 +184,15 @@
 <v>Lab04 - UART\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\UART_SPI_UART.lst</v>
 <v>Lab04 - UART\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\UART_SPI_UART_INT.lst</v>
 <v>Lab04 - UART\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\UART_tx.lst</v>
+<v>Lab04 - UART\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\UART_tx_PM.lst</v>
+<v>Lab04 - UART\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\UART_UART.lst</v>
+<v>Lab04 - UART\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\UART_UART_BOOT.lst</v>
+<v>Lab04 - UART\Design01\CortexM0\ARM_GCC_541\Debug\Design01.elf</v>
+<v>Lab04 - UART\Design01\CortexM0\ARM_GCC_541\Debug\Design01.hex</v>
+<v>Lab04 - UART\Design01\CortexM0\ARM_GCC_541\Debug\Design01.map</v>
+<v>Lab04 - UART\Design01\Design01.gpdsc</v>
+<v>Lab04 - UART\Design01\Design01.rpt</v>
+<v>Lab04 - UART\Design01\Design01_timing.html</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -189,13 +207,6 @@
 <v>Lab04 - UART\Design01\PSoC 4 Architecture TRM</v>
 <v>Lab04 - UART\Design01\PSoC 4200M Family Datasheet</v>
 <v>Lab04 - UART\Design01\System Reference Guides</v>
-<v>Lab04 - UART\Design01\System Reference Guides\cy_boot_v6_10</v>
-<v>Lab04 - UART\Design01\System Reference Guides\cy_dmac_v1_10</v>
-<v>Lab04 - UART\Design01\System Reference Guides\cy_lfclk_v1_20</v>
-<v>Lab04 - UART\Design01\cy_pins_v2_20</v>
-<v>Lab04 - UART\Design01\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
-<v>Lab04 - UART\Design01\CyControlReg_v1_80.pdf</v>
-<v>Lab04 - UART\Design01\SCB_P4_v4_0.pdf</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
 <v>Lab04 - UART</v>
@@ -203,13 +214,6 @@
 <v>Lab04 - UART\Design01\PSoC 4 Architecture TRM</v>
 <v>Lab04 - UART\Design01\PSoC 4200M Family Datasheet</v>
 <v>Lab04 - UART\Design01\System Reference Guides</v>
-<v>Lab04 - UART\Design01\System Reference Guides\cy_boot_v6_10</v>
-<v>Lab04 - UART\Design01\System Reference Guides\cy_dmac_v1_10</v>
-<v>Lab04 - UART\Design01\System Reference Guides\cy_lfclk_v1_20</v>
-<v>Lab04 - UART\Design01\cy_pins_v2_20</v>
-<v>Lab04 - UART\Design01\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
-<v>Lab04 - UART\Design01\CyControlReg_v1_80.pdf</v>
-<v>Lab04 - UART\Design01\SCB_P4_v4_0.pdf</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStatesV2>
@@ -218,18 +222,7 @@
 </userData>
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
-<OpenDocs>
-<name v=".\Design01.cydsn\main.c" />
-<name v=".\Design01.cydsn\TopDesign\TopDesign.cysch" />
-<name v=".\Design01.cydsn\Design01.cydwr" />
-</OpenDocs>
-<OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
-
-  Actipro Docking/MDI for WinForms
-  Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
-  http://www.actiprosoftware.com
-
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="822, 463" SelectedTabbedMdiWindow="52076c95-6721-45cc-86f4-aca17d04c7cf"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="e056d728-48d9-4b86-a8a4-ff12946a9491" /><DocumentWindow Key="C:\Users\Leo Tejkowski\Desktop\ece381\Lab 4 - UART Motors\Project\Design01.cydsn\main.c" Guid="52076c95-6721-45cc-86f4-aca17d04c7cf" /><DocumentWindow Key="C:\Users\Leo Tejkowski\Desktop\ece381\Lab 4 - UART Motors\Project\Design01.cydsn\TopDesign\TopDesign.cysch" Guid="efa647bc-b687-444a-a68e-b1ba07c31692" /><DocumentWindow Key="C:\Users\Leo Tejkowski\Desktop\ece381\Lab 4 - UART Motors\Project\Design01.cydsn\Design01.cydwr" Guid="aebf6061-1cc7-4a9e-bace-d026c9203c44" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+<OpenDocs />
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

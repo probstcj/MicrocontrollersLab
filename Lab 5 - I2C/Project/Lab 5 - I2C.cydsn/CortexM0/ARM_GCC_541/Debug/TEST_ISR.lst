@@ -1,0 +1,2246 @@
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"TEST_ISR.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.TEST_ISR_Interrupt,"ax",%progbits
+  20              		.align	2
+  21              		.global	TEST_ISR_Interrupt
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	TEST_ISR_Interrupt, %function
+  25              	TEST_ISR_Interrupt:
+  26              	.LFB4:
+  27              		.file 1 "Generated_Source\\PSoC4\\TEST_ISR.c"
+   1:Generated_Source\PSoC4/TEST_ISR.c **** /*******************************************************************************
+   2:Generated_Source\PSoC4/TEST_ISR.c **** * File Name: TEST_ISR.c  
+   3:Generated_Source\PSoC4/TEST_ISR.c **** * Version 1.71
+   4:Generated_Source\PSoC4/TEST_ISR.c **** *
+   5:Generated_Source\PSoC4/TEST_ISR.c **** *  Description:
+   6:Generated_Source\PSoC4/TEST_ISR.c **** *   API for controlling the state of an interrupt.
+   7:Generated_Source\PSoC4/TEST_ISR.c **** *
+   8:Generated_Source\PSoC4/TEST_ISR.c **** *
+   9:Generated_Source\PSoC4/TEST_ISR.c **** *  Note:
+  10:Generated_Source\PSoC4/TEST_ISR.c **** *
+  11:Generated_Source\PSoC4/TEST_ISR.c **** ********************************************************************************
+  12:Generated_Source\PSoC4/TEST_ISR.c **** * Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  13:Generated_Source\PSoC4/TEST_ISR.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  14:Generated_Source\PSoC4/TEST_ISR.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  15:Generated_Source\PSoC4/TEST_ISR.c **** * the software package with which this file was provided.
+  16:Generated_Source\PSoC4/TEST_ISR.c **** *******************************************************************************/
+  17:Generated_Source\PSoC4/TEST_ISR.c **** 
+  18:Generated_Source\PSoC4/TEST_ISR.c **** 
+  19:Generated_Source\PSoC4/TEST_ISR.c **** #include <cydevice_trm.h>
+  20:Generated_Source\PSoC4/TEST_ISR.c **** #include <CyLib.h>
+  21:Generated_Source\PSoC4/TEST_ISR.c **** #include <TEST_ISR.h>
+  22:Generated_Source\PSoC4/TEST_ISR.c **** #include "cyapicallbacks.h"
+  23:Generated_Source\PSoC4/TEST_ISR.c **** 
+  24:Generated_Source\PSoC4/TEST_ISR.c **** #if !defined(TEST_ISR__REMOVED) /* Check for removal by optimization */
+  25:Generated_Source\PSoC4/TEST_ISR.c **** 
+  26:Generated_Source\PSoC4/TEST_ISR.c **** /*******************************************************************************
+  27:Generated_Source\PSoC4/TEST_ISR.c **** *  Place your includes, defines and code here 
+  28:Generated_Source\PSoC4/TEST_ISR.c **** ********************************************************************************/
+  29:Generated_Source\PSoC4/TEST_ISR.c **** /* `#START TEST_ISR_intc` */
+  30:Generated_Source\PSoC4/TEST_ISR.c **** 
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 2
+
+
+  31:Generated_Source\PSoC4/TEST_ISR.c **** // Get flag and file
+  32:Generated_Source\PSoC4/TEST_ISR.c **** extern volatile int buttonFlag;
+  33:Generated_Source\PSoC4/TEST_ISR.c **** #include "TEST.h"
+  34:Generated_Source\PSoC4/TEST_ISR.c **** /* `#END` */
+  35:Generated_Source\PSoC4/TEST_ISR.c **** 
+  36:Generated_Source\PSoC4/TEST_ISR.c **** extern cyisraddress CyRamVectors[CYINT_IRQ_BASE + CY_NUM_INTERRUPTS];
+  37:Generated_Source\PSoC4/TEST_ISR.c **** 
+  38:Generated_Source\PSoC4/TEST_ISR.c **** /* Declared in startup, used to set unused interrupts to. */
+  39:Generated_Source\PSoC4/TEST_ISR.c **** CY_ISR_PROTO(IntDefaultHandler);
+  40:Generated_Source\PSoC4/TEST_ISR.c **** 
+  41:Generated_Source\PSoC4/TEST_ISR.c **** 
+  42:Generated_Source\PSoC4/TEST_ISR.c **** /*******************************************************************************
+  43:Generated_Source\PSoC4/TEST_ISR.c **** * Function Name: TEST_ISR_Start
+  44:Generated_Source\PSoC4/TEST_ISR.c **** ********************************************************************************
+  45:Generated_Source\PSoC4/TEST_ISR.c **** *
+  46:Generated_Source\PSoC4/TEST_ISR.c **** * Summary:
+  47:Generated_Source\PSoC4/TEST_ISR.c **** *  Set up the interrupt and enable it. This function disables the interrupt, 
+  48:Generated_Source\PSoC4/TEST_ISR.c **** *  sets the default interrupt vector, sets the priority from the value in the
+  49:Generated_Source\PSoC4/TEST_ISR.c **** *  Design Wide Resources Interrupt Editor, then enables the interrupt to the 
+  50:Generated_Source\PSoC4/TEST_ISR.c **** *  interrupt controller.
+  51:Generated_Source\PSoC4/TEST_ISR.c **** *
+  52:Generated_Source\PSoC4/TEST_ISR.c **** * Parameters:  
+  53:Generated_Source\PSoC4/TEST_ISR.c **** *   None
+  54:Generated_Source\PSoC4/TEST_ISR.c **** *
+  55:Generated_Source\PSoC4/TEST_ISR.c **** * Return:
+  56:Generated_Source\PSoC4/TEST_ISR.c **** *   None
+  57:Generated_Source\PSoC4/TEST_ISR.c **** *
+  58:Generated_Source\PSoC4/TEST_ISR.c **** *******************************************************************************/
+  59:Generated_Source\PSoC4/TEST_ISR.c **** void TEST_ISR_Start(void)
+  60:Generated_Source\PSoC4/TEST_ISR.c **** {
+  61:Generated_Source\PSoC4/TEST_ISR.c ****     /* For all we know the interrupt is active. */
+  62:Generated_Source\PSoC4/TEST_ISR.c ****     TEST_ISR_Disable();
+  63:Generated_Source\PSoC4/TEST_ISR.c **** 
+  64:Generated_Source\PSoC4/TEST_ISR.c ****     /* Set the ISR to point to the TEST_ISR Interrupt. */
+  65:Generated_Source\PSoC4/TEST_ISR.c ****     TEST_ISR_SetVector(&TEST_ISR_Interrupt);
+  66:Generated_Source\PSoC4/TEST_ISR.c **** 
+  67:Generated_Source\PSoC4/TEST_ISR.c ****     /* Set the priority. */
+  68:Generated_Source\PSoC4/TEST_ISR.c ****     TEST_ISR_SetPriority((uint8)TEST_ISR_INTC_PRIOR_NUMBER);
+  69:Generated_Source\PSoC4/TEST_ISR.c **** 
+  70:Generated_Source\PSoC4/TEST_ISR.c ****     /* Enable it. */
+  71:Generated_Source\PSoC4/TEST_ISR.c ****     TEST_ISR_Enable();
+  72:Generated_Source\PSoC4/TEST_ISR.c **** }
+  73:Generated_Source\PSoC4/TEST_ISR.c **** 
+  74:Generated_Source\PSoC4/TEST_ISR.c **** 
+  75:Generated_Source\PSoC4/TEST_ISR.c **** /*******************************************************************************
+  76:Generated_Source\PSoC4/TEST_ISR.c **** * Function Name: TEST_ISR_StartEx
+  77:Generated_Source\PSoC4/TEST_ISR.c **** ********************************************************************************
+  78:Generated_Source\PSoC4/TEST_ISR.c **** *
+  79:Generated_Source\PSoC4/TEST_ISR.c **** * Summary:
+  80:Generated_Source\PSoC4/TEST_ISR.c **** *  Sets up the interrupt and enables it. This function disables the interrupt,
+  81:Generated_Source\PSoC4/TEST_ISR.c **** *  sets the interrupt vector based on the address passed in, sets the priority 
+  82:Generated_Source\PSoC4/TEST_ISR.c **** *  from the value in the Design Wide Resources Interrupt Editor, then enables 
+  83:Generated_Source\PSoC4/TEST_ISR.c **** *  the interrupt to the interrupt controller.
+  84:Generated_Source\PSoC4/TEST_ISR.c **** *  
+  85:Generated_Source\PSoC4/TEST_ISR.c **** *  When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
+  86:Generated_Source\PSoC4/TEST_ISR.c **** *  used to provide consistent definition across compilers:
+  87:Generated_Source\PSoC4/TEST_ISR.c **** *  
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 3
+
+
+  88:Generated_Source\PSoC4/TEST_ISR.c **** *  Function definition example:
+  89:Generated_Source\PSoC4/TEST_ISR.c **** *   CY_ISR(MyISR)
+  90:Generated_Source\PSoC4/TEST_ISR.c **** *   {
+  91:Generated_Source\PSoC4/TEST_ISR.c **** *   }
+  92:Generated_Source\PSoC4/TEST_ISR.c **** *   Function prototype example:
+  93:Generated_Source\PSoC4/TEST_ISR.c **** *   CY_ISR_PROTO(MyISR);
+  94:Generated_Source\PSoC4/TEST_ISR.c **** *
+  95:Generated_Source\PSoC4/TEST_ISR.c **** * Parameters:  
+  96:Generated_Source\PSoC4/TEST_ISR.c **** *   address: Address of the ISR to set in the interrupt vector table.
+  97:Generated_Source\PSoC4/TEST_ISR.c **** *
+  98:Generated_Source\PSoC4/TEST_ISR.c **** * Return:
+  99:Generated_Source\PSoC4/TEST_ISR.c **** *   None
+ 100:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 101:Generated_Source\PSoC4/TEST_ISR.c **** *******************************************************************************/
+ 102:Generated_Source\PSoC4/TEST_ISR.c **** void TEST_ISR_StartEx(cyisraddress address)
+ 103:Generated_Source\PSoC4/TEST_ISR.c **** {
+ 104:Generated_Source\PSoC4/TEST_ISR.c ****     /* For all we know the interrupt is active. */
+ 105:Generated_Source\PSoC4/TEST_ISR.c ****     TEST_ISR_Disable();
+ 106:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 107:Generated_Source\PSoC4/TEST_ISR.c ****     /* Set the ISR to point to the TEST_ISR Interrupt. */
+ 108:Generated_Source\PSoC4/TEST_ISR.c ****     TEST_ISR_SetVector(address);
+ 109:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 110:Generated_Source\PSoC4/TEST_ISR.c ****     /* Set the priority. */
+ 111:Generated_Source\PSoC4/TEST_ISR.c ****     TEST_ISR_SetPriority((uint8)TEST_ISR_INTC_PRIOR_NUMBER);
+ 112:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 113:Generated_Source\PSoC4/TEST_ISR.c ****     /* Enable it. */
+ 114:Generated_Source\PSoC4/TEST_ISR.c ****     TEST_ISR_Enable();
+ 115:Generated_Source\PSoC4/TEST_ISR.c **** }
+ 116:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 117:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 118:Generated_Source\PSoC4/TEST_ISR.c **** /*******************************************************************************
+ 119:Generated_Source\PSoC4/TEST_ISR.c **** * Function Name: TEST_ISR_Stop
+ 120:Generated_Source\PSoC4/TEST_ISR.c **** ********************************************************************************
+ 121:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 122:Generated_Source\PSoC4/TEST_ISR.c **** * Summary:
+ 123:Generated_Source\PSoC4/TEST_ISR.c **** *   Disables and removes the interrupt.
+ 124:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 125:Generated_Source\PSoC4/TEST_ISR.c **** * Parameters:  
+ 126:Generated_Source\PSoC4/TEST_ISR.c **** *   None
+ 127:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 128:Generated_Source\PSoC4/TEST_ISR.c **** * Return:
+ 129:Generated_Source\PSoC4/TEST_ISR.c **** *   None
+ 130:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 131:Generated_Source\PSoC4/TEST_ISR.c **** *******************************************************************************/
+ 132:Generated_Source\PSoC4/TEST_ISR.c **** void TEST_ISR_Stop(void)
+ 133:Generated_Source\PSoC4/TEST_ISR.c **** {
+ 134:Generated_Source\PSoC4/TEST_ISR.c ****     /* Disable this interrupt. */
+ 135:Generated_Source\PSoC4/TEST_ISR.c ****     TEST_ISR_Disable();
+ 136:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 137:Generated_Source\PSoC4/TEST_ISR.c ****     /* Set the ISR to point to the passive one. */
+ 138:Generated_Source\PSoC4/TEST_ISR.c ****     TEST_ISR_SetVector(&IntDefaultHandler);
+ 139:Generated_Source\PSoC4/TEST_ISR.c **** }
+ 140:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 141:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 142:Generated_Source\PSoC4/TEST_ISR.c **** /*******************************************************************************
+ 143:Generated_Source\PSoC4/TEST_ISR.c **** * Function Name: TEST_ISR_Interrupt
+ 144:Generated_Source\PSoC4/TEST_ISR.c **** ********************************************************************************
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 4
+
+
+ 145:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 146:Generated_Source\PSoC4/TEST_ISR.c **** * Summary:
+ 147:Generated_Source\PSoC4/TEST_ISR.c **** *   The default Interrupt Service Routine for TEST_ISR.
+ 148:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 149:Generated_Source\PSoC4/TEST_ISR.c **** *   Add custom code between the START and END comments to keep the next version
+ 150:Generated_Source\PSoC4/TEST_ISR.c **** *   of this file from over-writing your code.
+ 151:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 152:Generated_Source\PSoC4/TEST_ISR.c **** *   Note You may use either the default ISR by using this API, or you may define
+ 153:Generated_Source\PSoC4/TEST_ISR.c **** *   your own separate ISR through ISR_StartEx().
+ 154:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 155:Generated_Source\PSoC4/TEST_ISR.c **** * Parameters:  
+ 156:Generated_Source\PSoC4/TEST_ISR.c **** *   None
+ 157:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 158:Generated_Source\PSoC4/TEST_ISR.c **** * Return:
+ 159:Generated_Source\PSoC4/TEST_ISR.c **** *   None
+ 160:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 161:Generated_Source\PSoC4/TEST_ISR.c **** *******************************************************************************/
+ 162:Generated_Source\PSoC4/TEST_ISR.c **** CY_ISR(TEST_ISR_Interrupt)
+ 163:Generated_Source\PSoC4/TEST_ISR.c **** {
+  28              		.loc 1 163 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+ 164:Generated_Source\PSoC4/TEST_ISR.c ****     #ifdef TEST_ISR_INTERRUPT_INTERRUPT_CALLBACK
+ 165:Generated_Source\PSoC4/TEST_ISR.c ****         TEST_ISR_Interrupt_InterruptCallback();
+ 166:Generated_Source\PSoC4/TEST_ISR.c ****     #endif /* TEST_ISR_INTERRUPT_INTERRUPT_CALLBACK */ 
+ 167:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 168:Generated_Source\PSoC4/TEST_ISR.c ****     /*  Place your Interrupt code here. */
+ 169:Generated_Source\PSoC4/TEST_ISR.c ****     /* `#START TEST_ISR_Interrupt` */
+ 170:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 171:Generated_Source\PSoC4/TEST_ISR.c ****     // Delay of 20ms for debounce
+ 172:Generated_Source\PSoC4/TEST_ISR.c ****     CyDelay(20);
+  36              		.loc 1 172 0
+  37 0002 1420     		movs	r0, #20
+  38 0004 FFF7FEFF 		bl	CyDelay
+  39              	.LVL0:
+ 173:Generated_Source\PSoC4/TEST_ISR.c ****     // Clear interrupt
+ 174:Generated_Source\PSoC4/TEST_ISR.c ****     TEST_ClearInterrupt();
+  40              		.loc 1 174 0
+  41 0008 FFF7FEFF 		bl	TEST_ClearInterrupt
+  42              	.LVL1:
+ 175:Generated_Source\PSoC4/TEST_ISR.c ****     
+ 176:Generated_Source\PSoC4/TEST_ISR.c ****     // If button is still 1 after delay, set flag, if not, don't
+ 177:Generated_Source\PSoC4/TEST_ISR.c ****     if(TEST_Read() == 0){
+  43              		.loc 1 177 0
+  44 000c FFF7FEFF 		bl	TEST_Read
+  45              	.LVL2:
+  46 0010 0028     		cmp	r0, #0
+  47 0012 03D1     		bne	.L2
+ 178:Generated_Source\PSoC4/TEST_ISR.c ****         buttonFlag = 1;
+  48              		.loc 1 178 0
+  49 0014 0122     		movs	r2, #1
+  50 0016 0C4B     		ldr	r3, .L7
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 5
+
+
+  51 0018 1A60     		str	r2, [r3]
+  52 001a 0FE0     		b	.L3
+  53              	.L2:
+ 179:Generated_Source\PSoC4/TEST_ISR.c ****     } else {
+ 180:Generated_Source\PSoC4/TEST_ISR.c ****         buttonFlag = 0;
+  54              		.loc 1 180 0
+  55 001c 0022     		movs	r2, #0
+  56 001e 0A4B     		ldr	r3, .L7
+  57 0020 1A60     		str	r2, [r3]
+  58 0022 0BE0     		b	.L3
+  59              	.LVL3:
+  60              	.L6:
+ 181:Generated_Source\PSoC4/TEST_ISR.c ****     }
+ 182:Generated_Source\PSoC4/TEST_ISR.c ****     
+ 183:Generated_Source\PSoC4/TEST_ISR.c ****     int counter = 0;
+ 184:Generated_Source\PSoC4/TEST_ISR.c ****     // Debounce
+ 185:Generated_Source\PSoC4/TEST_ISR.c ****     while(TEST_Read() != 1){
+ 186:Generated_Source\PSoC4/TEST_ISR.c ****         CyDelayUs(1000);
+  61              		.loc 1 186 0
+  62 0024 FA20     		movs	r0, #250
+  63 0026 8000     		lsls	r0, r0, #2
+  64 0028 FFF7FEFF 		bl	CyDelayUs
+  65              	.LVL4:
+ 187:Generated_Source\PSoC4/TEST_ISR.c ****         counter++;
+  66              		.loc 1 187 0
+  67 002c 0134     		adds	r4, r4, #1
+  68              	.LVL5:
+ 188:Generated_Source\PSoC4/TEST_ISR.c ****         if(counter > 5000){
+  69              		.loc 1 188 0
+  70 002e 074B     		ldr	r3, .L7+4
+  71 0030 9C42     		cmp	r4, r3
+  72 0032 04DD     		ble	.L4
+ 189:Generated_Source\PSoC4/TEST_ISR.c ****             // If held for more than 5 seconds, set flag as new value and break
+ 190:Generated_Source\PSoC4/TEST_ISR.c ****             buttonFlag = 2;
+  73              		.loc 1 190 0
+  74 0034 0222     		movs	r2, #2
+  75 0036 044B     		ldr	r3, .L7
+  76 0038 1A60     		str	r2, [r3]
+ 191:Generated_Source\PSoC4/TEST_ISR.c ****             break;
+  77              		.loc 1 191 0
+  78 003a 04E0     		b	.L1
+  79              	.LVL6:
+  80              	.L3:
+ 163:Generated_Source\PSoC4/TEST_ISR.c ****     #ifdef TEST_ISR_INTERRUPT_INTERRUPT_CALLBACK
+  81              		.loc 1 163 0
+  82 003c 0024     		movs	r4, #0
+  83              	.L4:
+  84              	.LVL7:
+ 185:Generated_Source\PSoC4/TEST_ISR.c ****         CyDelayUs(1000);
+  85              		.loc 1 185 0
+  86 003e FFF7FEFF 		bl	TEST_Read
+  87              	.LVL8:
+  88 0042 0128     		cmp	r0, #1
+  89 0044 EED1     		bne	.L6
+  90              	.L1:
+ 192:Generated_Source\PSoC4/TEST_ISR.c ****         }
+ 193:Generated_Source\PSoC4/TEST_ISR.c ****     };
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 6
+
+
+ 194:Generated_Source\PSoC4/TEST_ISR.c ****     /* `#END` */
+ 195:Generated_Source\PSoC4/TEST_ISR.c **** }
+  91              		.loc 1 195 0
+  92              		@ sp needed
+  93              	.LVL9:
+  94 0046 10BD     		pop	{r4, pc}
+  95              	.L8:
+  96              		.align	2
+  97              	.L7:
+  98 0048 00000000 		.word	buttonFlag
+  99 004c 88130000 		.word	5000
+ 100              		.cfi_endproc
+ 101              	.LFE4:
+ 102              		.size	TEST_ISR_Interrupt, .-TEST_ISR_Interrupt
+ 103              		.section	.text.TEST_ISR_SetVector,"ax",%progbits
+ 104              		.align	2
+ 105              		.global	TEST_ISR_SetVector
+ 106              		.code	16
+ 107              		.thumb_func
+ 108              		.type	TEST_ISR_SetVector, %function
+ 109              	TEST_ISR_SetVector:
+ 110              	.LFB5:
+ 196:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 197:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 198:Generated_Source\PSoC4/TEST_ISR.c **** /*******************************************************************************
+ 199:Generated_Source\PSoC4/TEST_ISR.c **** * Function Name: TEST_ISR_SetVector
+ 200:Generated_Source\PSoC4/TEST_ISR.c **** ********************************************************************************
+ 201:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 202:Generated_Source\PSoC4/TEST_ISR.c **** * Summary:
+ 203:Generated_Source\PSoC4/TEST_ISR.c **** *   Change the ISR vector for the Interrupt. Note calling TEST_ISR_Start
+ 204:Generated_Source\PSoC4/TEST_ISR.c **** *   will override any effect this method would have had. To set the vector 
+ 205:Generated_Source\PSoC4/TEST_ISR.c **** *   before the component has been started use TEST_ISR_StartEx instead.
+ 206:Generated_Source\PSoC4/TEST_ISR.c **** * 
+ 207:Generated_Source\PSoC4/TEST_ISR.c **** *   When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
+ 208:Generated_Source\PSoC4/TEST_ISR.c **** *   used to provide consistent definition across compilers:
+ 209:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 210:Generated_Source\PSoC4/TEST_ISR.c **** *   Function definition example:
+ 211:Generated_Source\PSoC4/TEST_ISR.c **** *   CY_ISR(MyISR)
+ 212:Generated_Source\PSoC4/TEST_ISR.c **** *   {
+ 213:Generated_Source\PSoC4/TEST_ISR.c **** *   }
+ 214:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 215:Generated_Source\PSoC4/TEST_ISR.c **** *   Function prototype example:
+ 216:Generated_Source\PSoC4/TEST_ISR.c **** *     CY_ISR_PROTO(MyISR);
+ 217:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 218:Generated_Source\PSoC4/TEST_ISR.c **** * Parameters:
+ 219:Generated_Source\PSoC4/TEST_ISR.c **** *   address: Address of the ISR to set in the interrupt vector table.
+ 220:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 221:Generated_Source\PSoC4/TEST_ISR.c **** * Return:
+ 222:Generated_Source\PSoC4/TEST_ISR.c **** *   None
+ 223:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 224:Generated_Source\PSoC4/TEST_ISR.c **** *******************************************************************************/
+ 225:Generated_Source\PSoC4/TEST_ISR.c **** void TEST_ISR_SetVector(cyisraddress address)
+ 226:Generated_Source\PSoC4/TEST_ISR.c **** {
+ 111              		.loc 1 226 0
+ 112              		.cfi_startproc
+ 113              		@ args = 0, pretend = 0, frame = 0
+ 114              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 7
+
+
+ 115              		@ link register save eliminated.
+ 116              	.LVL10:
+ 227:Generated_Source\PSoC4/TEST_ISR.c ****     CyRamVectors[CYINT_IRQ_BASE + TEST_ISR__INTC_NUMBER] = address;
+ 117              		.loc 1 227 0
+ 118 0000 014B     		ldr	r3, .L10
+ 119 0002 1864     		str	r0, [r3, #64]
+ 228:Generated_Source\PSoC4/TEST_ISR.c **** }
+ 120              		.loc 1 228 0
+ 121              		@ sp needed
+ 122 0004 7047     		bx	lr
+ 123              	.L11:
+ 124 0006 C046     		.align	2
+ 125              	.L10:
+ 126 0008 00000000 		.word	CyRamVectors
+ 127              		.cfi_endproc
+ 128              	.LFE5:
+ 129              		.size	TEST_ISR_SetVector, .-TEST_ISR_SetVector
+ 130              		.section	.text.TEST_ISR_GetVector,"ax",%progbits
+ 131              		.align	2
+ 132              		.global	TEST_ISR_GetVector
+ 133              		.code	16
+ 134              		.thumb_func
+ 135              		.type	TEST_ISR_GetVector, %function
+ 136              	TEST_ISR_GetVector:
+ 137              	.LFB6:
+ 229:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 230:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 231:Generated_Source\PSoC4/TEST_ISR.c **** /*******************************************************************************
+ 232:Generated_Source\PSoC4/TEST_ISR.c **** * Function Name: TEST_ISR_GetVector
+ 233:Generated_Source\PSoC4/TEST_ISR.c **** ********************************************************************************
+ 234:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 235:Generated_Source\PSoC4/TEST_ISR.c **** * Summary:
+ 236:Generated_Source\PSoC4/TEST_ISR.c **** *   Gets the "address" of the current ISR vector for the Interrupt.
+ 237:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 238:Generated_Source\PSoC4/TEST_ISR.c **** * Parameters:
+ 239:Generated_Source\PSoC4/TEST_ISR.c **** *   None
+ 240:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 241:Generated_Source\PSoC4/TEST_ISR.c **** * Return:
+ 242:Generated_Source\PSoC4/TEST_ISR.c **** *   Address of the ISR in the interrupt vector table.
+ 243:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 244:Generated_Source\PSoC4/TEST_ISR.c **** *******************************************************************************/
+ 245:Generated_Source\PSoC4/TEST_ISR.c **** cyisraddress TEST_ISR_GetVector(void)
+ 246:Generated_Source\PSoC4/TEST_ISR.c **** {
+ 138              		.loc 1 246 0
+ 139              		.cfi_startproc
+ 140              		@ args = 0, pretend = 0, frame = 0
+ 141              		@ frame_needed = 0, uses_anonymous_args = 0
+ 142              		@ link register save eliminated.
+ 247:Generated_Source\PSoC4/TEST_ISR.c ****     return CyRamVectors[CYINT_IRQ_BASE + TEST_ISR__INTC_NUMBER];
+ 143              		.loc 1 247 0
+ 144 0000 014B     		ldr	r3, .L13
+ 145 0002 186C     		ldr	r0, [r3, #64]
+ 248:Generated_Source\PSoC4/TEST_ISR.c **** }
+ 146              		.loc 1 248 0
+ 147              		@ sp needed
+ 148 0004 7047     		bx	lr
+ 149              	.L14:
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 8
+
+
+ 150 0006 C046     		.align	2
+ 151              	.L13:
+ 152 0008 00000000 		.word	CyRamVectors
+ 153              		.cfi_endproc
+ 154              	.LFE6:
+ 155              		.size	TEST_ISR_GetVector, .-TEST_ISR_GetVector
+ 156              		.section	.text.TEST_ISR_SetPriority,"ax",%progbits
+ 157              		.align	2
+ 158              		.global	TEST_ISR_SetPriority
+ 159              		.code	16
+ 160              		.thumb_func
+ 161              		.type	TEST_ISR_SetPriority, %function
+ 162              	TEST_ISR_SetPriority:
+ 163              	.LFB7:
+ 249:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 250:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 251:Generated_Source\PSoC4/TEST_ISR.c **** /*******************************************************************************
+ 252:Generated_Source\PSoC4/TEST_ISR.c **** * Function Name: TEST_ISR_SetPriority
+ 253:Generated_Source\PSoC4/TEST_ISR.c **** ********************************************************************************
+ 254:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 255:Generated_Source\PSoC4/TEST_ISR.c **** * Summary:
+ 256:Generated_Source\PSoC4/TEST_ISR.c **** *   Sets the Priority of the Interrupt. 
+ 257:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 258:Generated_Source\PSoC4/TEST_ISR.c **** *   Note calling TEST_ISR_Start or TEST_ISR_StartEx will 
+ 259:Generated_Source\PSoC4/TEST_ISR.c **** *   override any effect this API would have had. This API should only be called
+ 260:Generated_Source\PSoC4/TEST_ISR.c **** *   after TEST_ISR_Start or TEST_ISR_StartEx has been called. 
+ 261:Generated_Source\PSoC4/TEST_ISR.c **** *   To set the initial priority for the component, use the Design-Wide Resources
+ 262:Generated_Source\PSoC4/TEST_ISR.c **** *   Interrupt Editor.
+ 263:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 264:Generated_Source\PSoC4/TEST_ISR.c **** *   Note This API has no effect on Non-maskable interrupt NMI).
+ 265:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 266:Generated_Source\PSoC4/TEST_ISR.c **** * Parameters:
+ 267:Generated_Source\PSoC4/TEST_ISR.c **** *   priority: Priority of the interrupt, 0 being the highest priority
+ 268:Generated_Source\PSoC4/TEST_ISR.c **** *             PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
+ 269:Generated_Source\PSoC4/TEST_ISR.c **** *             PSoC 4: Priority is from 0 to 3.
+ 270:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 271:Generated_Source\PSoC4/TEST_ISR.c **** * Return:
+ 272:Generated_Source\PSoC4/TEST_ISR.c **** *   None
+ 273:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 274:Generated_Source\PSoC4/TEST_ISR.c **** *******************************************************************************/
+ 275:Generated_Source\PSoC4/TEST_ISR.c **** void TEST_ISR_SetPriority(uint8 priority)
+ 276:Generated_Source\PSoC4/TEST_ISR.c **** {
+ 164              		.loc 1 276 0
+ 165              		.cfi_startproc
+ 166              		@ args = 0, pretend = 0, frame = 0
+ 167              		@ frame_needed = 0, uses_anonymous_args = 0
+ 168              	.LVL11:
+ 169 0000 10B5     		push	{r4, lr}
+ 170              		.cfi_def_cfa_offset 8
+ 171              		.cfi_offset 4, -8
+ 172              		.cfi_offset 14, -4
+ 173 0002 0400     		movs	r4, r0
+ 174              	.LVL12:
+ 277:Generated_Source\PSoC4/TEST_ISR.c **** 	uint8 interruptState;
+ 278:Generated_Source\PSoC4/TEST_ISR.c ****     uint32 priorityOffset = ((TEST_ISR__INTC_NUMBER % 4u) * 8u) + 6u;
+ 279:Generated_Source\PSoC4/TEST_ISR.c ****     
+ 280:Generated_Source\PSoC4/TEST_ISR.c **** 	interruptState = CyEnterCriticalSection();
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 9
+
+
+ 175              		.loc 1 280 0
+ 176 0004 FFF7FEFF 		bl	CyEnterCriticalSection
+ 177              	.LVL13:
+ 281:Generated_Source\PSoC4/TEST_ISR.c ****     *TEST_ISR_INTC_PRIOR = (*TEST_ISR_INTC_PRIOR & (uint32)(~(uint32)TEST_ISR__INTC_PRIOR_MASK)) |
+ 178              		.loc 1 281 0
+ 179 0008 044A     		ldr	r2, .L16
+ 180 000a 1368     		ldr	r3, [r2]
+ 181 000c C021     		movs	r1, #192
+ 182 000e 8B43     		bics	r3, r1
+ 282:Generated_Source\PSoC4/TEST_ISR.c ****                                     ((uint32)priority << priorityOffset);
+ 183              		.loc 1 282 0
+ 184 0010 A401     		lsls	r4, r4, #6
+ 281:Generated_Source\PSoC4/TEST_ISR.c ****     *TEST_ISR_INTC_PRIOR = (*TEST_ISR_INTC_PRIOR & (uint32)(~(uint32)TEST_ISR__INTC_PRIOR_MASK)) |
+ 185              		.loc 1 281 0
+ 186 0012 1C43     		orrs	r4, r3
+ 187 0014 1460     		str	r4, [r2]
+ 283:Generated_Source\PSoC4/TEST_ISR.c **** 	CyExitCriticalSection(interruptState);
+ 188              		.loc 1 283 0
+ 189 0016 FFF7FEFF 		bl	CyExitCriticalSection
+ 190              	.LVL14:
+ 284:Generated_Source\PSoC4/TEST_ISR.c **** }
+ 191              		.loc 1 284 0
+ 192              		@ sp needed
+ 193 001a 10BD     		pop	{r4, pc}
+ 194              	.L17:
+ 195              		.align	2
+ 196              	.L16:
+ 197 001c 00E400E0 		.word	-536812544
+ 198              		.cfi_endproc
+ 199              	.LFE7:
+ 200              		.size	TEST_ISR_SetPriority, .-TEST_ISR_SetPriority
+ 201              		.section	.text.TEST_ISR_GetPriority,"ax",%progbits
+ 202              		.align	2
+ 203              		.global	TEST_ISR_GetPriority
+ 204              		.code	16
+ 205              		.thumb_func
+ 206              		.type	TEST_ISR_GetPriority, %function
+ 207              	TEST_ISR_GetPriority:
+ 208              	.LFB8:
+ 285:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 286:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 287:Generated_Source\PSoC4/TEST_ISR.c **** /*******************************************************************************
+ 288:Generated_Source\PSoC4/TEST_ISR.c **** * Function Name: TEST_ISR_GetPriority
+ 289:Generated_Source\PSoC4/TEST_ISR.c **** ********************************************************************************
+ 290:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 291:Generated_Source\PSoC4/TEST_ISR.c **** * Summary:
+ 292:Generated_Source\PSoC4/TEST_ISR.c **** *   Gets the Priority of the Interrupt.
+ 293:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 294:Generated_Source\PSoC4/TEST_ISR.c **** * Parameters:
+ 295:Generated_Source\PSoC4/TEST_ISR.c **** *   None
+ 296:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 297:Generated_Source\PSoC4/TEST_ISR.c **** * Return:
+ 298:Generated_Source\PSoC4/TEST_ISR.c **** *   Priority of the interrupt, 0 being the highest priority
+ 299:Generated_Source\PSoC4/TEST_ISR.c **** *    PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
+ 300:Generated_Source\PSoC4/TEST_ISR.c **** *    PSoC 4: Priority is from 0 to 3.
+ 301:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 302:Generated_Source\PSoC4/TEST_ISR.c **** *******************************************************************************/
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 10
+
+
+ 303:Generated_Source\PSoC4/TEST_ISR.c **** uint8 TEST_ISR_GetPriority(void)
+ 304:Generated_Source\PSoC4/TEST_ISR.c **** {
+ 209              		.loc 1 304 0
+ 210              		.cfi_startproc
+ 211              		@ args = 0, pretend = 0, frame = 0
+ 212              		@ frame_needed = 0, uses_anonymous_args = 0
+ 213              		@ link register save eliminated.
+ 214              	.LVL15:
+ 305:Generated_Source\PSoC4/TEST_ISR.c ****     uint32 priority;
+ 306:Generated_Source\PSoC4/TEST_ISR.c **** 	uint32 priorityOffset = ((TEST_ISR__INTC_NUMBER % 4u) * 8u) + 6u;
+ 307:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 308:Generated_Source\PSoC4/TEST_ISR.c ****     priority = (*TEST_ISR_INTC_PRIOR & TEST_ISR__INTC_PRIOR_MASK) >> priorityOffset;
+ 215              		.loc 1 308 0
+ 216 0000 024B     		ldr	r3, .L19
+ 217 0002 1868     		ldr	r0, [r3]
+ 218 0004 8009     		lsrs	r0, r0, #6
+ 219              	.LVL16:
+ 309:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 310:Generated_Source\PSoC4/TEST_ISR.c ****     return (uint8)priority;
+ 220              		.loc 1 310 0
+ 221 0006 0323     		movs	r3, #3
+ 222 0008 1840     		ands	r0, r3
+ 223              	.LVL17:
+ 311:Generated_Source\PSoC4/TEST_ISR.c **** }
+ 224              		.loc 1 311 0
+ 225              		@ sp needed
+ 226 000a 7047     		bx	lr
+ 227              	.L20:
+ 228              		.align	2
+ 229              	.L19:
+ 230 000c 00E400E0 		.word	-536812544
+ 231              		.cfi_endproc
+ 232              	.LFE8:
+ 233              		.size	TEST_ISR_GetPriority, .-TEST_ISR_GetPriority
+ 234              		.section	.text.TEST_ISR_Enable,"ax",%progbits
+ 235              		.align	2
+ 236              		.global	TEST_ISR_Enable
+ 237              		.code	16
+ 238              		.thumb_func
+ 239              		.type	TEST_ISR_Enable, %function
+ 240              	TEST_ISR_Enable:
+ 241              	.LFB9:
+ 312:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 313:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 314:Generated_Source\PSoC4/TEST_ISR.c **** /*******************************************************************************
+ 315:Generated_Source\PSoC4/TEST_ISR.c **** * Function Name: TEST_ISR_Enable
+ 316:Generated_Source\PSoC4/TEST_ISR.c **** ********************************************************************************
+ 317:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 318:Generated_Source\PSoC4/TEST_ISR.c **** * Summary:
+ 319:Generated_Source\PSoC4/TEST_ISR.c **** *   Enables the interrupt to the interrupt controller. Do not call this function
+ 320:Generated_Source\PSoC4/TEST_ISR.c **** *   unless ISR_Start() has been called or the functionality of the ISR_Start() 
+ 321:Generated_Source\PSoC4/TEST_ISR.c **** *   function, which sets the vector and the priority, has been called.
+ 322:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 323:Generated_Source\PSoC4/TEST_ISR.c **** * Parameters:
+ 324:Generated_Source\PSoC4/TEST_ISR.c **** *   None
+ 325:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 326:Generated_Source\PSoC4/TEST_ISR.c **** * Return:
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 11
+
+
+ 327:Generated_Source\PSoC4/TEST_ISR.c **** *   None
+ 328:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 329:Generated_Source\PSoC4/TEST_ISR.c **** *******************************************************************************/
+ 330:Generated_Source\PSoC4/TEST_ISR.c **** void TEST_ISR_Enable(void)
+ 331:Generated_Source\PSoC4/TEST_ISR.c **** {
+ 242              		.loc 1 331 0
+ 243              		.cfi_startproc
+ 244              		@ args = 0, pretend = 0, frame = 0
+ 245              		@ frame_needed = 0, uses_anonymous_args = 0
+ 246              		@ link register save eliminated.
+ 332:Generated_Source\PSoC4/TEST_ISR.c ****     /* Enable the general interrupt. */
+ 333:Generated_Source\PSoC4/TEST_ISR.c ****     *TEST_ISR_INTC_SET_EN = TEST_ISR__INTC_MASK;
+ 247              		.loc 1 333 0
+ 248 0000 0122     		movs	r2, #1
+ 249 0002 014B     		ldr	r3, .L22
+ 250 0004 1A60     		str	r2, [r3]
+ 334:Generated_Source\PSoC4/TEST_ISR.c **** }
+ 251              		.loc 1 334 0
+ 252              		@ sp needed
+ 253 0006 7047     		bx	lr
+ 254              	.L23:
+ 255              		.align	2
+ 256              	.L22:
+ 257 0008 00E100E0 		.word	-536813312
+ 258              		.cfi_endproc
+ 259              	.LFE9:
+ 260              		.size	TEST_ISR_Enable, .-TEST_ISR_Enable
+ 261              		.section	.text.TEST_ISR_GetState,"ax",%progbits
+ 262              		.align	2
+ 263              		.global	TEST_ISR_GetState
+ 264              		.code	16
+ 265              		.thumb_func
+ 266              		.type	TEST_ISR_GetState, %function
+ 267              	TEST_ISR_GetState:
+ 268              	.LFB10:
+ 335:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 336:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 337:Generated_Source\PSoC4/TEST_ISR.c **** /*******************************************************************************
+ 338:Generated_Source\PSoC4/TEST_ISR.c **** * Function Name: TEST_ISR_GetState
+ 339:Generated_Source\PSoC4/TEST_ISR.c **** ********************************************************************************
+ 340:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 341:Generated_Source\PSoC4/TEST_ISR.c **** * Summary:
+ 342:Generated_Source\PSoC4/TEST_ISR.c **** *   Gets the state (enabled, disabled) of the Interrupt.
+ 343:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 344:Generated_Source\PSoC4/TEST_ISR.c **** * Parameters:
+ 345:Generated_Source\PSoC4/TEST_ISR.c **** *   None
+ 346:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 347:Generated_Source\PSoC4/TEST_ISR.c **** * Return:
+ 348:Generated_Source\PSoC4/TEST_ISR.c **** *   1 if enabled, 0 if disabled.
+ 349:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 350:Generated_Source\PSoC4/TEST_ISR.c **** *******************************************************************************/
+ 351:Generated_Source\PSoC4/TEST_ISR.c **** uint8 TEST_ISR_GetState(void)
+ 352:Generated_Source\PSoC4/TEST_ISR.c **** {
+ 269              		.loc 1 352 0
+ 270              		.cfi_startproc
+ 271              		@ args = 0, pretend = 0, frame = 0
+ 272              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 12
+
+
+ 273              		@ link register save eliminated.
+ 353:Generated_Source\PSoC4/TEST_ISR.c ****     /* Get the state of the general interrupt. */
+ 354:Generated_Source\PSoC4/TEST_ISR.c ****     return ((*TEST_ISR_INTC_SET_EN & (uint32)TEST_ISR__INTC_MASK) != 0u) ? 1u:0u;
+ 274              		.loc 1 354 0
+ 275 0000 024B     		ldr	r3, .L25
+ 276 0002 1B68     		ldr	r3, [r3]
+ 277 0004 0120     		movs	r0, #1
+ 278 0006 1840     		ands	r0, r3
+ 355:Generated_Source\PSoC4/TEST_ISR.c **** }
+ 279              		.loc 1 355 0
+ 280              		@ sp needed
+ 281 0008 7047     		bx	lr
+ 282              	.L26:
+ 283 000a C046     		.align	2
+ 284              	.L25:
+ 285 000c 00E100E0 		.word	-536813312
+ 286              		.cfi_endproc
+ 287              	.LFE10:
+ 288              		.size	TEST_ISR_GetState, .-TEST_ISR_GetState
+ 289              		.section	.text.TEST_ISR_Disable,"ax",%progbits
+ 290              		.align	2
+ 291              		.global	TEST_ISR_Disable
+ 292              		.code	16
+ 293              		.thumb_func
+ 294              		.type	TEST_ISR_Disable, %function
+ 295              	TEST_ISR_Disable:
+ 296              	.LFB11:
+ 356:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 357:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 358:Generated_Source\PSoC4/TEST_ISR.c **** /*******************************************************************************
+ 359:Generated_Source\PSoC4/TEST_ISR.c **** * Function Name: TEST_ISR_Disable
+ 360:Generated_Source\PSoC4/TEST_ISR.c **** ********************************************************************************
+ 361:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 362:Generated_Source\PSoC4/TEST_ISR.c **** * Summary:
+ 363:Generated_Source\PSoC4/TEST_ISR.c **** *   Disables the Interrupt in the interrupt controller.
+ 364:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 365:Generated_Source\PSoC4/TEST_ISR.c **** * Parameters:
+ 366:Generated_Source\PSoC4/TEST_ISR.c **** *   None
+ 367:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 368:Generated_Source\PSoC4/TEST_ISR.c **** * Return:
+ 369:Generated_Source\PSoC4/TEST_ISR.c **** *   None
+ 370:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 371:Generated_Source\PSoC4/TEST_ISR.c **** *******************************************************************************/
+ 372:Generated_Source\PSoC4/TEST_ISR.c **** void TEST_ISR_Disable(void)
+ 373:Generated_Source\PSoC4/TEST_ISR.c **** {
+ 297              		.loc 1 373 0
+ 298              		.cfi_startproc
+ 299              		@ args = 0, pretend = 0, frame = 0
+ 300              		@ frame_needed = 0, uses_anonymous_args = 0
+ 301              		@ link register save eliminated.
+ 374:Generated_Source\PSoC4/TEST_ISR.c ****     /* Disable the general interrupt. */
+ 375:Generated_Source\PSoC4/TEST_ISR.c ****     *TEST_ISR_INTC_CLR_EN = TEST_ISR__INTC_MASK;
+ 302              		.loc 1 375 0
+ 303 0000 0122     		movs	r2, #1
+ 304 0002 014B     		ldr	r3, .L28
+ 305 0004 1A60     		str	r2, [r3]
+ 376:Generated_Source\PSoC4/TEST_ISR.c **** }
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 13
+
+
+ 306              		.loc 1 376 0
+ 307              		@ sp needed
+ 308 0006 7047     		bx	lr
+ 309              	.L29:
+ 310              		.align	2
+ 311              	.L28:
+ 312 0008 80E100E0 		.word	-536813184
+ 313              		.cfi_endproc
+ 314              	.LFE11:
+ 315              		.size	TEST_ISR_Disable, .-TEST_ISR_Disable
+ 316              		.section	.text.TEST_ISR_Start,"ax",%progbits
+ 317              		.align	2
+ 318              		.global	TEST_ISR_Start
+ 319              		.code	16
+ 320              		.thumb_func
+ 321              		.type	TEST_ISR_Start, %function
+ 322              	TEST_ISR_Start:
+ 323              	.LFB1:
+  60:Generated_Source\PSoC4/TEST_ISR.c ****     /* For all we know the interrupt is active. */
+ 324              		.loc 1 60 0
+ 325              		.cfi_startproc
+ 326              		@ args = 0, pretend = 0, frame = 0
+ 327              		@ frame_needed = 0, uses_anonymous_args = 0
+ 328 0000 10B5     		push	{r4, lr}
+ 329              		.cfi_def_cfa_offset 8
+ 330              		.cfi_offset 4, -8
+ 331              		.cfi_offset 14, -4
+  62:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 332              		.loc 1 62 0
+ 333 0002 FFF7FEFF 		bl	TEST_ISR_Disable
+ 334              	.LVL18:
+  65:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 335              		.loc 1 65 0
+ 336 0006 0448     		ldr	r0, .L31
+ 337 0008 FFF7FEFF 		bl	TEST_ISR_SetVector
+ 338              	.LVL19:
+  68:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 339              		.loc 1 68 0
+ 340 000c 0320     		movs	r0, #3
+ 341 000e FFF7FEFF 		bl	TEST_ISR_SetPriority
+ 342              	.LVL20:
+  71:Generated_Source\PSoC4/TEST_ISR.c **** }
+ 343              		.loc 1 71 0
+ 344 0012 FFF7FEFF 		bl	TEST_ISR_Enable
+ 345              	.LVL21:
+  72:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 346              		.loc 1 72 0
+ 347              		@ sp needed
+ 348 0016 10BD     		pop	{r4, pc}
+ 349              	.L32:
+ 350              		.align	2
+ 351              	.L31:
+ 352 0018 00000000 		.word	TEST_ISR_Interrupt
+ 353              		.cfi_endproc
+ 354              	.LFE1:
+ 355              		.size	TEST_ISR_Start, .-TEST_ISR_Start
+ 356              		.section	.text.TEST_ISR_StartEx,"ax",%progbits
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 14
+
+
+ 357              		.align	2
+ 358              		.global	TEST_ISR_StartEx
+ 359              		.code	16
+ 360              		.thumb_func
+ 361              		.type	TEST_ISR_StartEx, %function
+ 362              	TEST_ISR_StartEx:
+ 363              	.LFB2:
+ 103:Generated_Source\PSoC4/TEST_ISR.c ****     /* For all we know the interrupt is active. */
+ 364              		.loc 1 103 0
+ 365              		.cfi_startproc
+ 366              		@ args = 0, pretend = 0, frame = 0
+ 367              		@ frame_needed = 0, uses_anonymous_args = 0
+ 368              	.LVL22:
+ 369 0000 10B5     		push	{r4, lr}
+ 370              		.cfi_def_cfa_offset 8
+ 371              		.cfi_offset 4, -8
+ 372              		.cfi_offset 14, -4
+ 373 0002 0400     		movs	r4, r0
+ 105:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 374              		.loc 1 105 0
+ 375 0004 FFF7FEFF 		bl	TEST_ISR_Disable
+ 376              	.LVL23:
+ 108:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 377              		.loc 1 108 0
+ 378 0008 2000     		movs	r0, r4
+ 379 000a FFF7FEFF 		bl	TEST_ISR_SetVector
+ 380              	.LVL24:
+ 111:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 381              		.loc 1 111 0
+ 382 000e 0320     		movs	r0, #3
+ 383 0010 FFF7FEFF 		bl	TEST_ISR_SetPriority
+ 384              	.LVL25:
+ 114:Generated_Source\PSoC4/TEST_ISR.c **** }
+ 385              		.loc 1 114 0
+ 386 0014 FFF7FEFF 		bl	TEST_ISR_Enable
+ 387              	.LVL26:
+ 115:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 388              		.loc 1 115 0
+ 389              		@ sp needed
+ 390              	.LVL27:
+ 391 0018 10BD     		pop	{r4, pc}
+ 392              		.cfi_endproc
+ 393              	.LFE2:
+ 394              		.size	TEST_ISR_StartEx, .-TEST_ISR_StartEx
+ 395 001a C046     		.section	.text.TEST_ISR_Stop,"ax",%progbits
+ 396              		.align	2
+ 397              		.global	TEST_ISR_Stop
+ 398              		.code	16
+ 399              		.thumb_func
+ 400              		.type	TEST_ISR_Stop, %function
+ 401              	TEST_ISR_Stop:
+ 402              	.LFB3:
+ 133:Generated_Source\PSoC4/TEST_ISR.c ****     /* Disable this interrupt. */
+ 403              		.loc 1 133 0
+ 404              		.cfi_startproc
+ 405              		@ args = 0, pretend = 0, frame = 0
+ 406              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 15
+
+
+ 407 0000 10B5     		push	{r4, lr}
+ 408              		.cfi_def_cfa_offset 8
+ 409              		.cfi_offset 4, -8
+ 410              		.cfi_offset 14, -4
+ 135:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 411              		.loc 1 135 0
+ 412 0002 FFF7FEFF 		bl	TEST_ISR_Disable
+ 413              	.LVL28:
+ 138:Generated_Source\PSoC4/TEST_ISR.c **** }
+ 414              		.loc 1 138 0
+ 415 0006 0248     		ldr	r0, .L35
+ 416 0008 FFF7FEFF 		bl	TEST_ISR_SetVector
+ 417              	.LVL29:
+ 139:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 418              		.loc 1 139 0
+ 419              		@ sp needed
+ 420 000c 10BD     		pop	{r4, pc}
+ 421              	.L36:
+ 422 000e C046     		.align	2
+ 423              	.L35:
+ 424 0010 00000000 		.word	IntDefaultHandler
+ 425              		.cfi_endproc
+ 426              	.LFE3:
+ 427              		.size	TEST_ISR_Stop, .-TEST_ISR_Stop
+ 428              		.section	.text.TEST_ISR_SetPending,"ax",%progbits
+ 429              		.align	2
+ 430              		.global	TEST_ISR_SetPending
+ 431              		.code	16
+ 432              		.thumb_func
+ 433              		.type	TEST_ISR_SetPending, %function
+ 434              	TEST_ISR_SetPending:
+ 435              	.LFB12:
+ 377:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 378:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 379:Generated_Source\PSoC4/TEST_ISR.c **** /*******************************************************************************
+ 380:Generated_Source\PSoC4/TEST_ISR.c **** * Function Name: TEST_ISR_SetPending
+ 381:Generated_Source\PSoC4/TEST_ISR.c **** ********************************************************************************
+ 382:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 383:Generated_Source\PSoC4/TEST_ISR.c **** * Summary:
+ 384:Generated_Source\PSoC4/TEST_ISR.c **** *   Causes the Interrupt to enter the pending state, a software method of
+ 385:Generated_Source\PSoC4/TEST_ISR.c **** *   generating the interrupt.
+ 386:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 387:Generated_Source\PSoC4/TEST_ISR.c **** * Parameters:
+ 388:Generated_Source\PSoC4/TEST_ISR.c **** *   None
+ 389:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 390:Generated_Source\PSoC4/TEST_ISR.c **** * Return:
+ 391:Generated_Source\PSoC4/TEST_ISR.c **** *   None
+ 392:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 393:Generated_Source\PSoC4/TEST_ISR.c **** * Side Effects:
+ 394:Generated_Source\PSoC4/TEST_ISR.c **** *   If interrupts are enabled and the interrupt is set up properly, the ISR is
+ 395:Generated_Source\PSoC4/TEST_ISR.c **** *   entered (depending on the priority of this interrupt and other pending 
+ 396:Generated_Source\PSoC4/TEST_ISR.c **** *   interrupts).
+ 397:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 398:Generated_Source\PSoC4/TEST_ISR.c **** *******************************************************************************/
+ 399:Generated_Source\PSoC4/TEST_ISR.c **** void TEST_ISR_SetPending(void)
+ 400:Generated_Source\PSoC4/TEST_ISR.c **** {
+ 436              		.loc 1 400 0
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 16
+
+
+ 437              		.cfi_startproc
+ 438              		@ args = 0, pretend = 0, frame = 0
+ 439              		@ frame_needed = 0, uses_anonymous_args = 0
+ 440              		@ link register save eliminated.
+ 401:Generated_Source\PSoC4/TEST_ISR.c ****     *TEST_ISR_INTC_SET_PD = TEST_ISR__INTC_MASK;
+ 441              		.loc 1 401 0
+ 442 0000 0122     		movs	r2, #1
+ 443 0002 014B     		ldr	r3, .L38
+ 444 0004 1A60     		str	r2, [r3]
+ 402:Generated_Source\PSoC4/TEST_ISR.c **** }
+ 445              		.loc 1 402 0
+ 446              		@ sp needed
+ 447 0006 7047     		bx	lr
+ 448              	.L39:
+ 449              		.align	2
+ 450              	.L38:
+ 451 0008 00E200E0 		.word	-536813056
+ 452              		.cfi_endproc
+ 453              	.LFE12:
+ 454              		.size	TEST_ISR_SetPending, .-TEST_ISR_SetPending
+ 455              		.section	.text.TEST_ISR_ClearPending,"ax",%progbits
+ 456              		.align	2
+ 457              		.global	TEST_ISR_ClearPending
+ 458              		.code	16
+ 459              		.thumb_func
+ 460              		.type	TEST_ISR_ClearPending, %function
+ 461              	TEST_ISR_ClearPending:
+ 462              	.LFB13:
+ 403:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 404:Generated_Source\PSoC4/TEST_ISR.c **** 
+ 405:Generated_Source\PSoC4/TEST_ISR.c **** /*******************************************************************************
+ 406:Generated_Source\PSoC4/TEST_ISR.c **** * Function Name: TEST_ISR_ClearPending
+ 407:Generated_Source\PSoC4/TEST_ISR.c **** ********************************************************************************
+ 408:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 409:Generated_Source\PSoC4/TEST_ISR.c **** * Summary:
+ 410:Generated_Source\PSoC4/TEST_ISR.c **** *   Clears a pending interrupt in the interrupt controller.
+ 411:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 412:Generated_Source\PSoC4/TEST_ISR.c **** *   Note Some interrupt sources are clear-on-read and require the block 
+ 413:Generated_Source\PSoC4/TEST_ISR.c **** *   interrupt/status register to be read/cleared with the appropriate block API 
+ 414:Generated_Source\PSoC4/TEST_ISR.c **** *   (GPIO, UART, and so on). Otherwise the ISR will continue to remain in 
+ 415:Generated_Source\PSoC4/TEST_ISR.c **** *   pending state even though the interrupt itself is cleared using this API.
+ 416:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 417:Generated_Source\PSoC4/TEST_ISR.c **** * Parameters:
+ 418:Generated_Source\PSoC4/TEST_ISR.c **** *   None
+ 419:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 420:Generated_Source\PSoC4/TEST_ISR.c **** * Return:
+ 421:Generated_Source\PSoC4/TEST_ISR.c **** *   None
+ 422:Generated_Source\PSoC4/TEST_ISR.c **** *
+ 423:Generated_Source\PSoC4/TEST_ISR.c **** *******************************************************************************/
+ 424:Generated_Source\PSoC4/TEST_ISR.c **** void TEST_ISR_ClearPending(void)
+ 425:Generated_Source\PSoC4/TEST_ISR.c **** {
+ 463              		.loc 1 425 0
+ 464              		.cfi_startproc
+ 465              		@ args = 0, pretend = 0, frame = 0
+ 466              		@ frame_needed = 0, uses_anonymous_args = 0
+ 467              		@ link register save eliminated.
+ 426:Generated_Source\PSoC4/TEST_ISR.c ****     *TEST_ISR_INTC_CLR_PD = TEST_ISR__INTC_MASK;
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 17
+
+
+ 468              		.loc 1 426 0
+ 469 0000 0122     		movs	r2, #1
+ 470 0002 014B     		ldr	r3, .L41
+ 471 0004 1A60     		str	r2, [r3]
+ 427:Generated_Source\PSoC4/TEST_ISR.c **** }
+ 472              		.loc 1 427 0
+ 473              		@ sp needed
+ 474 0006 7047     		bx	lr
+ 475              	.L42:
+ 476              		.align	2
+ 477              	.L41:
+ 478 0008 80E200E0 		.word	-536812928
+ 479              		.cfi_endproc
+ 480              	.LFE13:
+ 481              		.size	TEST_ISR_ClearPending, .-TEST_ISR_ClearPending
+ 482              		.text
+ 483              	.Letext0:
+ 484              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 485              		.file 3 "Generated_Source\\PSoC4/CyLib.h"
+ 486              		.file 4 "Generated_Source\\PSoC4\\TEST.h"
+ 487              		.section	.debug_info,"",%progbits
+ 488              	.Ldebug_info0:
+ 489 0000 98030000 		.4byte	0x398
+ 490 0004 0400     		.2byte	0x4
+ 491 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 492 000a 04       		.byte	0x4
+ 493 000b 01       		.uleb128 0x1
+ 494 000c DC010000 		.4byte	.LASF43
+ 495 0010 0C       		.byte	0xc
+ 496 0011 00000000 		.4byte	.LASF44
+ 497 0015 7F020000 		.4byte	.LASF45
+ 498 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 499 001d 00000000 		.4byte	0
+ 500 0021 00000000 		.4byte	.Ldebug_line0
+ 501 0025 02       		.uleb128 0x2
+ 502 0026 01       		.byte	0x1
+ 503 0027 06       		.byte	0x6
+ 504 0028 37030000 		.4byte	.LASF0
+ 505 002c 02       		.uleb128 0x2
+ 506 002d 01       		.byte	0x1
+ 507 002e 08       		.byte	0x8
+ 508 002f DD000000 		.4byte	.LASF1
+ 509 0033 02       		.uleb128 0x2
+ 510 0034 02       		.byte	0x2
+ 511 0035 05       		.byte	0x5
+ 512 0036 F3020000 		.4byte	.LASF2
+ 513 003a 02       		.uleb128 0x2
+ 514 003b 02       		.byte	0x2
+ 515 003c 07       		.byte	0x7
+ 516 003d 66000000 		.4byte	.LASF3
+ 517 0041 02       		.uleb128 0x2
+ 518 0042 04       		.byte	0x4
+ 519 0043 05       		.byte	0x5
+ 520 0044 1F030000 		.4byte	.LASF4
+ 521 0048 02       		.uleb128 0x2
+ 522 0049 04       		.byte	0x4
+ 523 004a 07       		.byte	0x7
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 18
+
+
+ 524 004b FA000000 		.4byte	.LASF5
+ 525 004f 02       		.uleb128 0x2
+ 526 0050 08       		.byte	0x8
+ 527 0051 05       		.byte	0x5
+ 528 0052 D6020000 		.4byte	.LASF6
+ 529 0056 02       		.uleb128 0x2
+ 530 0057 08       		.byte	0x8
+ 531 0058 07       		.byte	0x7
+ 532 0059 C6000000 		.4byte	.LASF7
+ 533 005d 03       		.uleb128 0x3
+ 534 005e 04       		.byte	0x4
+ 535 005f 05       		.byte	0x5
+ 536 0060 696E7400 		.ascii	"int\000"
+ 537 0064 02       		.uleb128 0x2
+ 538 0065 04       		.byte	0x4
+ 539 0066 07       		.byte	0x7
+ 540 0067 7D010000 		.4byte	.LASF8
+ 541 006b 04       		.uleb128 0x4
+ 542 006c 0C010000 		.4byte	.LASF9
+ 543 0070 02       		.byte	0x2
+ 544 0071 E701     		.2byte	0x1e7
+ 545 0073 2C000000 		.4byte	0x2c
+ 546 0077 04       		.uleb128 0x4
+ 547 0078 5F010000 		.4byte	.LASF10
+ 548 007c 02       		.byte	0x2
+ 549 007d E901     		.2byte	0x1e9
+ 550 007f 48000000 		.4byte	0x48
+ 551 0083 02       		.uleb128 0x2
+ 552 0084 04       		.byte	0x4
+ 553 0085 04       		.byte	0x4
+ 554 0086 60000000 		.4byte	.LASF11
+ 555 008a 02       		.uleb128 0x2
+ 556 008b 08       		.byte	0x8
+ 557 008c 04       		.byte	0x4
+ 558 008d 40010000 		.4byte	.LASF12
+ 559 0091 02       		.uleb128 0x2
+ 560 0092 01       		.byte	0x1
+ 561 0093 08       		.byte	0x8
+ 562 0094 E4020000 		.4byte	.LASF13
+ 563 0098 04       		.uleb128 0x4
+ 564 0099 22000000 		.4byte	.LASF14
+ 565 009d 02       		.byte	0x2
+ 566 009e 9302     		.2byte	0x293
+ 567 00a0 A4000000 		.4byte	0xa4
+ 568 00a4 05       		.uleb128 0x5
+ 569 00a5 77000000 		.4byte	0x77
+ 570 00a9 04       		.uleb128 0x4
+ 571 00aa CF010000 		.4byte	.LASF15
+ 572 00ae 02       		.byte	0x2
+ 573 00af A302     		.2byte	0x2a3
+ 574 00b1 B5000000 		.4byte	0xb5
+ 575 00b5 06       		.uleb128 0x6
+ 576 00b6 04       		.byte	0x4
+ 577 00b7 BB000000 		.4byte	0xbb
+ 578 00bb 07       		.uleb128 0x7
+ 579 00bc 02       		.uleb128 0x2
+ 580 00bd 08       		.byte	0x8
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 19
+
+
+ 581 00be 04       		.byte	0x4
+ 582 00bf 6A020000 		.4byte	.LASF16
+ 583 00c3 02       		.uleb128 0x2
+ 584 00c4 04       		.byte	0x4
+ 585 00c5 07       		.byte	0x7
+ 586 00c6 76020000 		.4byte	.LASF17
+ 587 00ca 08       		.uleb128 0x8
+ 588 00cb 8C000000 		.4byte	.LASF18
+ 589 00cf 01       		.byte	0x1
+ 590 00d0 A2       		.byte	0xa2
+ 591 00d1 00000000 		.4byte	.LFB4
+ 592 00d5 50000000 		.4byte	.LFE4-.LFB4
+ 593 00d9 01       		.uleb128 0x1
+ 594 00da 9C       		.byte	0x9c
+ 595 00db 32010000 		.4byte	0x132
+ 596 00df 09       		.uleb128 0x9
+ 597 00e0 BE000000 		.4byte	.LASF23
+ 598 00e4 01       		.byte	0x1
+ 599 00e5 B7       		.byte	0xb7
+ 600 00e6 5D000000 		.4byte	0x5d
+ 601 00ea 00000000 		.4byte	.LLST0
+ 602 00ee 0A       		.uleb128 0xa
+ 603 00ef 08000000 		.4byte	.LVL0
+ 604 00f3 59030000 		.4byte	0x359
+ 605 00f7 01010000 		.4byte	0x101
+ 606 00fb 0B       		.uleb128 0xb
+ 607 00fc 01       		.uleb128 0x1
+ 608 00fd 50       		.byte	0x50
+ 609 00fe 01       		.uleb128 0x1
+ 610 00ff 44       		.byte	0x44
+ 611 0100 00       		.byte	0
+ 612 0101 0C       		.uleb128 0xc
+ 613 0102 0C000000 		.4byte	.LVL1
+ 614 0106 64030000 		.4byte	0x364
+ 615 010a 0C       		.uleb128 0xc
+ 616 010b 10000000 		.4byte	.LVL2
+ 617 010f 6F030000 		.4byte	0x36f
+ 618 0113 0A       		.uleb128 0xa
+ 619 0114 2C000000 		.4byte	.LVL4
+ 620 0118 7A030000 		.4byte	0x37a
+ 621 011c 28010000 		.4byte	0x128
+ 622 0120 0B       		.uleb128 0xb
+ 623 0121 01       		.uleb128 0x1
+ 624 0122 50       		.byte	0x50
+ 625 0123 03       		.uleb128 0x3
+ 626 0124 0A       		.byte	0xa
+ 627 0125 E803     		.2byte	0x3e8
+ 628 0127 00       		.byte	0
+ 629 0128 0C       		.uleb128 0xc
+ 630 0129 42000000 		.4byte	.LVL8
+ 631 012d 6F030000 		.4byte	0x36f
+ 632 0131 00       		.byte	0
+ 633 0132 08       		.uleb128 0x8
+ 634 0133 FD020000 		.4byte	.LASF19
+ 635 0137 01       		.byte	0x1
+ 636 0138 E1       		.byte	0xe1
+ 637 0139 00000000 		.4byte	.LFB5
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 20
+
+
+ 638 013d 0C000000 		.4byte	.LFE5-.LFB5
+ 639 0141 01       		.uleb128 0x1
+ 640 0142 9C       		.byte	0x9c
+ 641 0143 55010000 		.4byte	0x155
+ 642 0147 0D       		.uleb128 0xd
+ 643 0148 8A010000 		.4byte	.LASF21
+ 644 014c 01       		.byte	0x1
+ 645 014d E1       		.byte	0xe1
+ 646 014e A9000000 		.4byte	0xa9
+ 647 0152 01       		.uleb128 0x1
+ 648 0153 50       		.byte	0x50
+ 649 0154 00       		.byte	0
+ 650 0155 0E       		.uleb128 0xe
+ 651 0156 79000000 		.4byte	.LASF26
+ 652 015a 01       		.byte	0x1
+ 653 015b F5       		.byte	0xf5
+ 654 015c A9000000 		.4byte	0xa9
+ 655 0160 00000000 		.4byte	.LFB6
+ 656 0164 0C000000 		.4byte	.LFE6-.LFB6
+ 657 0168 01       		.uleb128 0x1
+ 658 0169 9C       		.byte	0x9c
+ 659 016a 0F       		.uleb128 0xf
+ 660 016b 28000000 		.4byte	.LASF20
+ 661 016f 01       		.byte	0x1
+ 662 0170 1301     		.2byte	0x113
+ 663 0172 00000000 		.4byte	.LFB7
+ 664 0176 20000000 		.4byte	.LFE7-.LFB7
+ 665 017a 01       		.uleb128 0x1
+ 666 017b 9C       		.byte	0x9c
+ 667 017c C0010000 		.4byte	0x1c0
+ 668 0180 10       		.uleb128 0x10
+ 669 0181 26010000 		.4byte	.LASF22
+ 670 0185 01       		.byte	0x1
+ 671 0186 1301     		.2byte	0x113
+ 672 0188 6B000000 		.4byte	0x6b
+ 673 018c 1E000000 		.4byte	.LLST1
+ 674 0190 11       		.uleb128 0x11
+ 675 0191 EB000000 		.4byte	.LASF24
+ 676 0195 01       		.byte	0x1
+ 677 0196 1501     		.2byte	0x115
+ 678 0198 6B000000 		.4byte	0x6b
+ 679 019c 3F000000 		.4byte	.LLST2
+ 680 01a0 12       		.uleb128 0x12
+ 681 01a1 10030000 		.4byte	.LASF25
+ 682 01a5 01       		.byte	0x1
+ 683 01a6 1601     		.2byte	0x116
+ 684 01a8 77000000 		.4byte	0x77
+ 685 01ac 06       		.byte	0x6
+ 686 01ad 0C       		.uleb128 0xc
+ 687 01ae 08000000 		.4byte	.LVL13
+ 688 01b2 85030000 		.4byte	0x385
+ 689 01b6 0C       		.uleb128 0xc
+ 690 01b7 1A000000 		.4byte	.LVL14
+ 691 01bb 90030000 		.4byte	0x390
+ 692 01bf 00       		.byte	0
+ 693 01c0 13       		.uleb128 0x13
+ 694 01c1 BA010000 		.4byte	.LASF46
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 21
+
+
+ 695 01c5 01       		.byte	0x1
+ 696 01c6 2F01     		.2byte	0x12f
+ 697 01c8 6B000000 		.4byte	0x6b
+ 698 01cc 00000000 		.4byte	.LFB8
+ 699 01d0 10000000 		.4byte	.LFE8-.LFB8
+ 700 01d4 01       		.uleb128 0x1
+ 701 01d5 9C       		.byte	0x9c
+ 702 01d6 F8010000 		.4byte	0x1f8
+ 703 01da 11       		.uleb128 0x11
+ 704 01db 26010000 		.4byte	.LASF22
+ 705 01df 01       		.byte	0x1
+ 706 01e0 3101     		.2byte	0x131
+ 707 01e2 77000000 		.4byte	0x77
+ 708 01e6 52000000 		.4byte	.LLST3
+ 709 01ea 12       		.uleb128 0x12
+ 710 01eb 10030000 		.4byte	.LASF25
+ 711 01ef 01       		.byte	0x1
+ 712 01f0 3201     		.2byte	0x132
+ 713 01f2 77000000 		.4byte	0x77
+ 714 01f6 06       		.byte	0x6
+ 715 01f7 00       		.byte	0
+ 716 01f8 14       		.uleb128 0x14
+ 717 01f9 43030000 		.4byte	.LASF28
+ 718 01fd 01       		.byte	0x1
+ 719 01fe 4A01     		.2byte	0x14a
+ 720 0200 00000000 		.4byte	.LFB9
+ 721 0204 0C000000 		.4byte	.LFE9-.LFB9
+ 722 0208 01       		.uleb128 0x1
+ 723 0209 9C       		.byte	0x9c
+ 724 020a 15       		.uleb128 0x15
+ 725 020b A8010000 		.4byte	.LASF27
+ 726 020f 01       		.byte	0x1
+ 727 0210 5F01     		.2byte	0x15f
+ 728 0212 6B000000 		.4byte	0x6b
+ 729 0216 00000000 		.4byte	.LFB10
+ 730 021a 10000000 		.4byte	.LFE10-.LFB10
+ 731 021e 01       		.uleb128 0x1
+ 732 021f 9C       		.byte	0x9c
+ 733 0220 14       		.uleb128 0x14
+ 734 0221 5B030000 		.4byte	.LASF29
+ 735 0225 01       		.byte	0x1
+ 736 0226 7401     		.2byte	0x174
+ 737 0228 00000000 		.4byte	.LFB11
+ 738 022c 0C000000 		.4byte	.LFE11-.LFB11
+ 739 0230 01       		.uleb128 0x1
+ 740 0231 9C       		.byte	0x9c
+ 741 0232 08       		.uleb128 0x8
+ 742 0233 28030000 		.4byte	.LASF30
+ 743 0237 01       		.byte	0x1
+ 744 0238 3B       		.byte	0x3b
+ 745 0239 00000000 		.4byte	.LFB1
+ 746 023d 1C000000 		.4byte	.LFE1-.LFB1
+ 747 0241 01       		.uleb128 0x1
+ 748 0242 9C       		.byte	0x9c
+ 749 0243 84020000 		.4byte	0x284
+ 750 0247 0C       		.uleb128 0xc
+ 751 0248 06000000 		.4byte	.LVL18
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 22
+
+
+ 752 024c 20020000 		.4byte	0x220
+ 753 0250 0A       		.uleb128 0xa
+ 754 0251 0C000000 		.4byte	.LVL19
+ 755 0255 32010000 		.4byte	0x132
+ 756 0259 67020000 		.4byte	0x267
+ 757 025d 0B       		.uleb128 0xb
+ 758 025e 01       		.uleb128 0x1
+ 759 025f 50       		.byte	0x50
+ 760 0260 05       		.uleb128 0x5
+ 761 0261 03       		.byte	0x3
+ 762 0262 00000000 		.4byte	TEST_ISR_Interrupt
+ 763 0266 00       		.byte	0
+ 764 0267 0A       		.uleb128 0xa
+ 765 0268 12000000 		.4byte	.LVL20
+ 766 026c 6A010000 		.4byte	0x16a
+ 767 0270 7A020000 		.4byte	0x27a
+ 768 0274 0B       		.uleb128 0xb
+ 769 0275 01       		.uleb128 0x1
+ 770 0276 50       		.byte	0x50
+ 771 0277 01       		.uleb128 0x1
+ 772 0278 33       		.byte	0x33
+ 773 0279 00       		.byte	0
+ 774 027a 0C       		.uleb128 0xc
+ 775 027b 16000000 		.4byte	.LVL21
+ 776 027f F8010000 		.4byte	0x1f8
+ 777 0283 00       		.byte	0
+ 778 0284 08       		.uleb128 0x8
+ 779 0285 2F010000 		.4byte	.LASF31
+ 780 0289 01       		.byte	0x1
+ 781 028a 66       		.byte	0x66
+ 782 028b 00000000 		.4byte	.LFB2
+ 783 028f 1A000000 		.4byte	.LFE2-.LFB2
+ 784 0293 01       		.uleb128 0x1
+ 785 0294 9C       		.byte	0x9c
+ 786 0295 E2020000 		.4byte	0x2e2
+ 787 0299 16       		.uleb128 0x16
+ 788 029a 8A010000 		.4byte	.LASF21
+ 789 029e 01       		.byte	0x1
+ 790 029f 66       		.byte	0x66
+ 791 02a0 A9000000 		.4byte	0xa9
+ 792 02a4 74000000 		.4byte	.LLST4
+ 793 02a8 0C       		.uleb128 0xc
+ 794 02a9 08000000 		.4byte	.LVL23
+ 795 02ad 20020000 		.4byte	0x220
+ 796 02b1 0A       		.uleb128 0xa
+ 797 02b2 0E000000 		.4byte	.LVL24
+ 798 02b6 32010000 		.4byte	0x132
+ 799 02ba C5020000 		.4byte	0x2c5
+ 800 02be 0B       		.uleb128 0xb
+ 801 02bf 01       		.uleb128 0x1
+ 802 02c0 50       		.byte	0x50
+ 803 02c1 02       		.uleb128 0x2
+ 804 02c2 74       		.byte	0x74
+ 805 02c3 00       		.sleb128 0
+ 806 02c4 00       		.byte	0
+ 807 02c5 0A       		.uleb128 0xa
+ 808 02c6 14000000 		.4byte	.LVL25
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 23
+
+
+ 809 02ca 6A010000 		.4byte	0x16a
+ 810 02ce D8020000 		.4byte	0x2d8
+ 811 02d2 0B       		.uleb128 0xb
+ 812 02d3 01       		.uleb128 0x1
+ 813 02d4 50       		.byte	0x50
+ 814 02d5 01       		.uleb128 0x1
+ 815 02d6 33       		.byte	0x33
+ 816 02d7 00       		.byte	0
+ 817 02d8 0C       		.uleb128 0xc
+ 818 02d9 18000000 		.4byte	.LVL26
+ 819 02dd F8010000 		.4byte	0x1f8
+ 820 02e1 00       		.byte	0
+ 821 02e2 08       		.uleb128 0x8
+ 822 02e3 51010000 		.4byte	.LASF32
+ 823 02e7 01       		.byte	0x1
+ 824 02e8 84       		.byte	0x84
+ 825 02e9 00000000 		.4byte	.LFB3
+ 826 02ed 14000000 		.4byte	.LFE3-.LFB3
+ 827 02f1 01       		.uleb128 0x1
+ 828 02f2 9C       		.byte	0x9c
+ 829 02f3 0A030000 		.4byte	0x30a
+ 830 02f7 0C       		.uleb128 0xc
+ 831 02f8 06000000 		.4byte	.LVL28
+ 832 02fc 20020000 		.4byte	0x220
+ 833 0300 0C       		.uleb128 0xc
+ 834 0301 0C000000 		.4byte	.LVL29
+ 835 0305 32010000 		.4byte	0x132
+ 836 0309 00       		.byte	0
+ 837 030a 14       		.uleb128 0x14
+ 838 030b AA000000 		.4byte	.LASF33
+ 839 030f 01       		.byte	0x1
+ 840 0310 8F01     		.2byte	0x18f
+ 841 0312 00000000 		.4byte	.LFB12
+ 842 0316 0C000000 		.4byte	.LFE12-.LFB12
+ 843 031a 01       		.uleb128 0x1
+ 844 031b 9C       		.byte	0x9c
+ 845 031c 14       		.uleb128 0x14
+ 846 031d 3D000000 		.4byte	.LASF34
+ 847 0321 01       		.byte	0x1
+ 848 0322 A801     		.2byte	0x1a8
+ 849 0324 00000000 		.4byte	.LFB13
+ 850 0328 0C000000 		.4byte	.LFE13-.LFB13
+ 851 032c 01       		.uleb128 0x1
+ 852 032d 9C       		.byte	0x9c
+ 853 032e 17       		.uleb128 0x17
+ 854 032f 9F000000 		.4byte	.LASF35
+ 855 0333 01       		.byte	0x1
+ 856 0334 20       		.byte	0x20
+ 857 0335 39030000 		.4byte	0x339
+ 858 0339 05       		.uleb128 0x5
+ 859 033a 5D000000 		.4byte	0x5d
+ 860 033e 18       		.uleb128 0x18
+ 861 033f A9000000 		.4byte	0xa9
+ 862 0343 4E030000 		.4byte	0x34e
+ 863 0347 19       		.uleb128 0x19
+ 864 0348 C3000000 		.4byte	0xc3
+ 865 034c 2F       		.byte	0x2f
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 24
+
+
+ 866 034d 00       		.byte	0
+ 867 034e 17       		.uleb128 0x17
+ 868 034f 53000000 		.4byte	.LASF36
+ 869 0353 01       		.byte	0x1
+ 870 0354 24       		.byte	0x24
+ 871 0355 3E030000 		.4byte	0x33e
+ 872 0359 1A       		.uleb128 0x1a
+ 873 035a 53030000 		.4byte	.LASF37
+ 874 035e 53030000 		.4byte	.LASF37
+ 875 0362 03       		.byte	0x3
+ 876 0363 D9       		.byte	0xd9
+ 877 0364 1A       		.uleb128 0x1a
+ 878 0365 12010000 		.4byte	.LASF38
+ 879 0369 12010000 		.4byte	.LASF38
+ 880 036d 04       		.byte	0x4
+ 881 036e 39       		.byte	0x39
+ 882 036f 1A       		.uleb128 0x1a
+ 883 0370 E9020000 		.4byte	.LASF39
+ 884 0374 E9020000 		.4byte	.LASF39
+ 885 0378 04       		.byte	0x4
+ 886 0379 32       		.byte	0x32
+ 887 037a 1A       		.uleb128 0x1a
+ 888 037b 47010000 		.4byte	.LASF40
+ 889 037f 47010000 		.4byte	.LASF40
+ 890 0383 03       		.byte	0x3
+ 891 0384 DA       		.byte	0xda
+ 892 0385 1A       		.uleb128 0x1a
+ 893 0386 66010000 		.4byte	.LASF41
+ 894 038a 66010000 		.4byte	.LASF41
+ 895 038e 03       		.byte	0x3
+ 896 038f E5       		.byte	0xe5
+ 897 0390 1A       		.uleb128 0x1a
+ 898 0391 92010000 		.4byte	.LASF42
+ 899 0395 92010000 		.4byte	.LASF42
+ 900 0399 03       		.byte	0x3
+ 901 039a E6       		.byte	0xe6
+ 902 039b 00       		.byte	0
+ 903              		.section	.debug_abbrev,"",%progbits
+ 904              	.Ldebug_abbrev0:
+ 905 0000 01       		.uleb128 0x1
+ 906 0001 11       		.uleb128 0x11
+ 907 0002 01       		.byte	0x1
+ 908 0003 25       		.uleb128 0x25
+ 909 0004 0E       		.uleb128 0xe
+ 910 0005 13       		.uleb128 0x13
+ 911 0006 0B       		.uleb128 0xb
+ 912 0007 03       		.uleb128 0x3
+ 913 0008 0E       		.uleb128 0xe
+ 914 0009 1B       		.uleb128 0x1b
+ 915 000a 0E       		.uleb128 0xe
+ 916 000b 55       		.uleb128 0x55
+ 917 000c 17       		.uleb128 0x17
+ 918 000d 11       		.uleb128 0x11
+ 919 000e 01       		.uleb128 0x1
+ 920 000f 10       		.uleb128 0x10
+ 921 0010 17       		.uleb128 0x17
+ 922 0011 00       		.byte	0
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 25
+
+
+ 923 0012 00       		.byte	0
+ 924 0013 02       		.uleb128 0x2
+ 925 0014 24       		.uleb128 0x24
+ 926 0015 00       		.byte	0
+ 927 0016 0B       		.uleb128 0xb
+ 928 0017 0B       		.uleb128 0xb
+ 929 0018 3E       		.uleb128 0x3e
+ 930 0019 0B       		.uleb128 0xb
+ 931 001a 03       		.uleb128 0x3
+ 932 001b 0E       		.uleb128 0xe
+ 933 001c 00       		.byte	0
+ 934 001d 00       		.byte	0
+ 935 001e 03       		.uleb128 0x3
+ 936 001f 24       		.uleb128 0x24
+ 937 0020 00       		.byte	0
+ 938 0021 0B       		.uleb128 0xb
+ 939 0022 0B       		.uleb128 0xb
+ 940 0023 3E       		.uleb128 0x3e
+ 941 0024 0B       		.uleb128 0xb
+ 942 0025 03       		.uleb128 0x3
+ 943 0026 08       		.uleb128 0x8
+ 944 0027 00       		.byte	0
+ 945 0028 00       		.byte	0
+ 946 0029 04       		.uleb128 0x4
+ 947 002a 16       		.uleb128 0x16
+ 948 002b 00       		.byte	0
+ 949 002c 03       		.uleb128 0x3
+ 950 002d 0E       		.uleb128 0xe
+ 951 002e 3A       		.uleb128 0x3a
+ 952 002f 0B       		.uleb128 0xb
+ 953 0030 3B       		.uleb128 0x3b
+ 954 0031 05       		.uleb128 0x5
+ 955 0032 49       		.uleb128 0x49
+ 956 0033 13       		.uleb128 0x13
+ 957 0034 00       		.byte	0
+ 958 0035 00       		.byte	0
+ 959 0036 05       		.uleb128 0x5
+ 960 0037 35       		.uleb128 0x35
+ 961 0038 00       		.byte	0
+ 962 0039 49       		.uleb128 0x49
+ 963 003a 13       		.uleb128 0x13
+ 964 003b 00       		.byte	0
+ 965 003c 00       		.byte	0
+ 966 003d 06       		.uleb128 0x6
+ 967 003e 0F       		.uleb128 0xf
+ 968 003f 00       		.byte	0
+ 969 0040 0B       		.uleb128 0xb
+ 970 0041 0B       		.uleb128 0xb
+ 971 0042 49       		.uleb128 0x49
+ 972 0043 13       		.uleb128 0x13
+ 973 0044 00       		.byte	0
+ 974 0045 00       		.byte	0
+ 975 0046 07       		.uleb128 0x7
+ 976 0047 15       		.uleb128 0x15
+ 977 0048 00       		.byte	0
+ 978 0049 27       		.uleb128 0x27
+ 979 004a 19       		.uleb128 0x19
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 26
+
+
+ 980 004b 00       		.byte	0
+ 981 004c 00       		.byte	0
+ 982 004d 08       		.uleb128 0x8
+ 983 004e 2E       		.uleb128 0x2e
+ 984 004f 01       		.byte	0x1
+ 985 0050 3F       		.uleb128 0x3f
+ 986 0051 19       		.uleb128 0x19
+ 987 0052 03       		.uleb128 0x3
+ 988 0053 0E       		.uleb128 0xe
+ 989 0054 3A       		.uleb128 0x3a
+ 990 0055 0B       		.uleb128 0xb
+ 991 0056 3B       		.uleb128 0x3b
+ 992 0057 0B       		.uleb128 0xb
+ 993 0058 27       		.uleb128 0x27
+ 994 0059 19       		.uleb128 0x19
+ 995 005a 11       		.uleb128 0x11
+ 996 005b 01       		.uleb128 0x1
+ 997 005c 12       		.uleb128 0x12
+ 998 005d 06       		.uleb128 0x6
+ 999 005e 40       		.uleb128 0x40
+ 1000 005f 18       		.uleb128 0x18
+ 1001 0060 9742     		.uleb128 0x2117
+ 1002 0062 19       		.uleb128 0x19
+ 1003 0063 01       		.uleb128 0x1
+ 1004 0064 13       		.uleb128 0x13
+ 1005 0065 00       		.byte	0
+ 1006 0066 00       		.byte	0
+ 1007 0067 09       		.uleb128 0x9
+ 1008 0068 34       		.uleb128 0x34
+ 1009 0069 00       		.byte	0
+ 1010 006a 03       		.uleb128 0x3
+ 1011 006b 0E       		.uleb128 0xe
+ 1012 006c 3A       		.uleb128 0x3a
+ 1013 006d 0B       		.uleb128 0xb
+ 1014 006e 3B       		.uleb128 0x3b
+ 1015 006f 0B       		.uleb128 0xb
+ 1016 0070 49       		.uleb128 0x49
+ 1017 0071 13       		.uleb128 0x13
+ 1018 0072 02       		.uleb128 0x2
+ 1019 0073 17       		.uleb128 0x17
+ 1020 0074 00       		.byte	0
+ 1021 0075 00       		.byte	0
+ 1022 0076 0A       		.uleb128 0xa
+ 1023 0077 898201   		.uleb128 0x4109
+ 1024 007a 01       		.byte	0x1
+ 1025 007b 11       		.uleb128 0x11
+ 1026 007c 01       		.uleb128 0x1
+ 1027 007d 31       		.uleb128 0x31
+ 1028 007e 13       		.uleb128 0x13
+ 1029 007f 01       		.uleb128 0x1
+ 1030 0080 13       		.uleb128 0x13
+ 1031 0081 00       		.byte	0
+ 1032 0082 00       		.byte	0
+ 1033 0083 0B       		.uleb128 0xb
+ 1034 0084 8A8201   		.uleb128 0x410a
+ 1035 0087 00       		.byte	0
+ 1036 0088 02       		.uleb128 0x2
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 27
+
+
+ 1037 0089 18       		.uleb128 0x18
+ 1038 008a 9142     		.uleb128 0x2111
+ 1039 008c 18       		.uleb128 0x18
+ 1040 008d 00       		.byte	0
+ 1041 008e 00       		.byte	0
+ 1042 008f 0C       		.uleb128 0xc
+ 1043 0090 898201   		.uleb128 0x4109
+ 1044 0093 00       		.byte	0
+ 1045 0094 11       		.uleb128 0x11
+ 1046 0095 01       		.uleb128 0x1
+ 1047 0096 31       		.uleb128 0x31
+ 1048 0097 13       		.uleb128 0x13
+ 1049 0098 00       		.byte	0
+ 1050 0099 00       		.byte	0
+ 1051 009a 0D       		.uleb128 0xd
+ 1052 009b 05       		.uleb128 0x5
+ 1053 009c 00       		.byte	0
+ 1054 009d 03       		.uleb128 0x3
+ 1055 009e 0E       		.uleb128 0xe
+ 1056 009f 3A       		.uleb128 0x3a
+ 1057 00a0 0B       		.uleb128 0xb
+ 1058 00a1 3B       		.uleb128 0x3b
+ 1059 00a2 0B       		.uleb128 0xb
+ 1060 00a3 49       		.uleb128 0x49
+ 1061 00a4 13       		.uleb128 0x13
+ 1062 00a5 02       		.uleb128 0x2
+ 1063 00a6 18       		.uleb128 0x18
+ 1064 00a7 00       		.byte	0
+ 1065 00a8 00       		.byte	0
+ 1066 00a9 0E       		.uleb128 0xe
+ 1067 00aa 2E       		.uleb128 0x2e
+ 1068 00ab 00       		.byte	0
+ 1069 00ac 3F       		.uleb128 0x3f
+ 1070 00ad 19       		.uleb128 0x19
+ 1071 00ae 03       		.uleb128 0x3
+ 1072 00af 0E       		.uleb128 0xe
+ 1073 00b0 3A       		.uleb128 0x3a
+ 1074 00b1 0B       		.uleb128 0xb
+ 1075 00b2 3B       		.uleb128 0x3b
+ 1076 00b3 0B       		.uleb128 0xb
+ 1077 00b4 27       		.uleb128 0x27
+ 1078 00b5 19       		.uleb128 0x19
+ 1079 00b6 49       		.uleb128 0x49
+ 1080 00b7 13       		.uleb128 0x13
+ 1081 00b8 11       		.uleb128 0x11
+ 1082 00b9 01       		.uleb128 0x1
+ 1083 00ba 12       		.uleb128 0x12
+ 1084 00bb 06       		.uleb128 0x6
+ 1085 00bc 40       		.uleb128 0x40
+ 1086 00bd 18       		.uleb128 0x18
+ 1087 00be 9742     		.uleb128 0x2117
+ 1088 00c0 19       		.uleb128 0x19
+ 1089 00c1 00       		.byte	0
+ 1090 00c2 00       		.byte	0
+ 1091 00c3 0F       		.uleb128 0xf
+ 1092 00c4 2E       		.uleb128 0x2e
+ 1093 00c5 01       		.byte	0x1
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 28
+
+
+ 1094 00c6 3F       		.uleb128 0x3f
+ 1095 00c7 19       		.uleb128 0x19
+ 1096 00c8 03       		.uleb128 0x3
+ 1097 00c9 0E       		.uleb128 0xe
+ 1098 00ca 3A       		.uleb128 0x3a
+ 1099 00cb 0B       		.uleb128 0xb
+ 1100 00cc 3B       		.uleb128 0x3b
+ 1101 00cd 05       		.uleb128 0x5
+ 1102 00ce 27       		.uleb128 0x27
+ 1103 00cf 19       		.uleb128 0x19
+ 1104 00d0 11       		.uleb128 0x11
+ 1105 00d1 01       		.uleb128 0x1
+ 1106 00d2 12       		.uleb128 0x12
+ 1107 00d3 06       		.uleb128 0x6
+ 1108 00d4 40       		.uleb128 0x40
+ 1109 00d5 18       		.uleb128 0x18
+ 1110 00d6 9742     		.uleb128 0x2117
+ 1111 00d8 19       		.uleb128 0x19
+ 1112 00d9 01       		.uleb128 0x1
+ 1113 00da 13       		.uleb128 0x13
+ 1114 00db 00       		.byte	0
+ 1115 00dc 00       		.byte	0
+ 1116 00dd 10       		.uleb128 0x10
+ 1117 00de 05       		.uleb128 0x5
+ 1118 00df 00       		.byte	0
+ 1119 00e0 03       		.uleb128 0x3
+ 1120 00e1 0E       		.uleb128 0xe
+ 1121 00e2 3A       		.uleb128 0x3a
+ 1122 00e3 0B       		.uleb128 0xb
+ 1123 00e4 3B       		.uleb128 0x3b
+ 1124 00e5 05       		.uleb128 0x5
+ 1125 00e6 49       		.uleb128 0x49
+ 1126 00e7 13       		.uleb128 0x13
+ 1127 00e8 02       		.uleb128 0x2
+ 1128 00e9 17       		.uleb128 0x17
+ 1129 00ea 00       		.byte	0
+ 1130 00eb 00       		.byte	0
+ 1131 00ec 11       		.uleb128 0x11
+ 1132 00ed 34       		.uleb128 0x34
+ 1133 00ee 00       		.byte	0
+ 1134 00ef 03       		.uleb128 0x3
+ 1135 00f0 0E       		.uleb128 0xe
+ 1136 00f1 3A       		.uleb128 0x3a
+ 1137 00f2 0B       		.uleb128 0xb
+ 1138 00f3 3B       		.uleb128 0x3b
+ 1139 00f4 05       		.uleb128 0x5
+ 1140 00f5 49       		.uleb128 0x49
+ 1141 00f6 13       		.uleb128 0x13
+ 1142 00f7 02       		.uleb128 0x2
+ 1143 00f8 17       		.uleb128 0x17
+ 1144 00f9 00       		.byte	0
+ 1145 00fa 00       		.byte	0
+ 1146 00fb 12       		.uleb128 0x12
+ 1147 00fc 34       		.uleb128 0x34
+ 1148 00fd 00       		.byte	0
+ 1149 00fe 03       		.uleb128 0x3
+ 1150 00ff 0E       		.uleb128 0xe
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 29
+
+
+ 1151 0100 3A       		.uleb128 0x3a
+ 1152 0101 0B       		.uleb128 0xb
+ 1153 0102 3B       		.uleb128 0x3b
+ 1154 0103 05       		.uleb128 0x5
+ 1155 0104 49       		.uleb128 0x49
+ 1156 0105 13       		.uleb128 0x13
+ 1157 0106 1C       		.uleb128 0x1c
+ 1158 0107 0B       		.uleb128 0xb
+ 1159 0108 00       		.byte	0
+ 1160 0109 00       		.byte	0
+ 1161 010a 13       		.uleb128 0x13
+ 1162 010b 2E       		.uleb128 0x2e
+ 1163 010c 01       		.byte	0x1
+ 1164 010d 3F       		.uleb128 0x3f
+ 1165 010e 19       		.uleb128 0x19
+ 1166 010f 03       		.uleb128 0x3
+ 1167 0110 0E       		.uleb128 0xe
+ 1168 0111 3A       		.uleb128 0x3a
+ 1169 0112 0B       		.uleb128 0xb
+ 1170 0113 3B       		.uleb128 0x3b
+ 1171 0114 05       		.uleb128 0x5
+ 1172 0115 27       		.uleb128 0x27
+ 1173 0116 19       		.uleb128 0x19
+ 1174 0117 49       		.uleb128 0x49
+ 1175 0118 13       		.uleb128 0x13
+ 1176 0119 11       		.uleb128 0x11
+ 1177 011a 01       		.uleb128 0x1
+ 1178 011b 12       		.uleb128 0x12
+ 1179 011c 06       		.uleb128 0x6
+ 1180 011d 40       		.uleb128 0x40
+ 1181 011e 18       		.uleb128 0x18
+ 1182 011f 9742     		.uleb128 0x2117
+ 1183 0121 19       		.uleb128 0x19
+ 1184 0122 01       		.uleb128 0x1
+ 1185 0123 13       		.uleb128 0x13
+ 1186 0124 00       		.byte	0
+ 1187 0125 00       		.byte	0
+ 1188 0126 14       		.uleb128 0x14
+ 1189 0127 2E       		.uleb128 0x2e
+ 1190 0128 00       		.byte	0
+ 1191 0129 3F       		.uleb128 0x3f
+ 1192 012a 19       		.uleb128 0x19
+ 1193 012b 03       		.uleb128 0x3
+ 1194 012c 0E       		.uleb128 0xe
+ 1195 012d 3A       		.uleb128 0x3a
+ 1196 012e 0B       		.uleb128 0xb
+ 1197 012f 3B       		.uleb128 0x3b
+ 1198 0130 05       		.uleb128 0x5
+ 1199 0131 27       		.uleb128 0x27
+ 1200 0132 19       		.uleb128 0x19
+ 1201 0133 11       		.uleb128 0x11
+ 1202 0134 01       		.uleb128 0x1
+ 1203 0135 12       		.uleb128 0x12
+ 1204 0136 06       		.uleb128 0x6
+ 1205 0137 40       		.uleb128 0x40
+ 1206 0138 18       		.uleb128 0x18
+ 1207 0139 9742     		.uleb128 0x2117
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 30
+
+
+ 1208 013b 19       		.uleb128 0x19
+ 1209 013c 00       		.byte	0
+ 1210 013d 00       		.byte	0
+ 1211 013e 15       		.uleb128 0x15
+ 1212 013f 2E       		.uleb128 0x2e
+ 1213 0140 00       		.byte	0
+ 1214 0141 3F       		.uleb128 0x3f
+ 1215 0142 19       		.uleb128 0x19
+ 1216 0143 03       		.uleb128 0x3
+ 1217 0144 0E       		.uleb128 0xe
+ 1218 0145 3A       		.uleb128 0x3a
+ 1219 0146 0B       		.uleb128 0xb
+ 1220 0147 3B       		.uleb128 0x3b
+ 1221 0148 05       		.uleb128 0x5
+ 1222 0149 27       		.uleb128 0x27
+ 1223 014a 19       		.uleb128 0x19
+ 1224 014b 49       		.uleb128 0x49
+ 1225 014c 13       		.uleb128 0x13
+ 1226 014d 11       		.uleb128 0x11
+ 1227 014e 01       		.uleb128 0x1
+ 1228 014f 12       		.uleb128 0x12
+ 1229 0150 06       		.uleb128 0x6
+ 1230 0151 40       		.uleb128 0x40
+ 1231 0152 18       		.uleb128 0x18
+ 1232 0153 9742     		.uleb128 0x2117
+ 1233 0155 19       		.uleb128 0x19
+ 1234 0156 00       		.byte	0
+ 1235 0157 00       		.byte	0
+ 1236 0158 16       		.uleb128 0x16
+ 1237 0159 05       		.uleb128 0x5
+ 1238 015a 00       		.byte	0
+ 1239 015b 03       		.uleb128 0x3
+ 1240 015c 0E       		.uleb128 0xe
+ 1241 015d 3A       		.uleb128 0x3a
+ 1242 015e 0B       		.uleb128 0xb
+ 1243 015f 3B       		.uleb128 0x3b
+ 1244 0160 0B       		.uleb128 0xb
+ 1245 0161 49       		.uleb128 0x49
+ 1246 0162 13       		.uleb128 0x13
+ 1247 0163 02       		.uleb128 0x2
+ 1248 0164 17       		.uleb128 0x17
+ 1249 0165 00       		.byte	0
+ 1250 0166 00       		.byte	0
+ 1251 0167 17       		.uleb128 0x17
+ 1252 0168 34       		.uleb128 0x34
+ 1253 0169 00       		.byte	0
+ 1254 016a 03       		.uleb128 0x3
+ 1255 016b 0E       		.uleb128 0xe
+ 1256 016c 3A       		.uleb128 0x3a
+ 1257 016d 0B       		.uleb128 0xb
+ 1258 016e 3B       		.uleb128 0x3b
+ 1259 016f 0B       		.uleb128 0xb
+ 1260 0170 49       		.uleb128 0x49
+ 1261 0171 13       		.uleb128 0x13
+ 1262 0172 3F       		.uleb128 0x3f
+ 1263 0173 19       		.uleb128 0x19
+ 1264 0174 3C       		.uleb128 0x3c
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 31
+
+
+ 1265 0175 19       		.uleb128 0x19
+ 1266 0176 00       		.byte	0
+ 1267 0177 00       		.byte	0
+ 1268 0178 18       		.uleb128 0x18
+ 1269 0179 01       		.uleb128 0x1
+ 1270 017a 01       		.byte	0x1
+ 1271 017b 49       		.uleb128 0x49
+ 1272 017c 13       		.uleb128 0x13
+ 1273 017d 01       		.uleb128 0x1
+ 1274 017e 13       		.uleb128 0x13
+ 1275 017f 00       		.byte	0
+ 1276 0180 00       		.byte	0
+ 1277 0181 19       		.uleb128 0x19
+ 1278 0182 21       		.uleb128 0x21
+ 1279 0183 00       		.byte	0
+ 1280 0184 49       		.uleb128 0x49
+ 1281 0185 13       		.uleb128 0x13
+ 1282 0186 2F       		.uleb128 0x2f
+ 1283 0187 0B       		.uleb128 0xb
+ 1284 0188 00       		.byte	0
+ 1285 0189 00       		.byte	0
+ 1286 018a 1A       		.uleb128 0x1a
+ 1287 018b 2E       		.uleb128 0x2e
+ 1288 018c 00       		.byte	0
+ 1289 018d 3F       		.uleb128 0x3f
+ 1290 018e 19       		.uleb128 0x19
+ 1291 018f 3C       		.uleb128 0x3c
+ 1292 0190 19       		.uleb128 0x19
+ 1293 0191 6E       		.uleb128 0x6e
+ 1294 0192 0E       		.uleb128 0xe
+ 1295 0193 03       		.uleb128 0x3
+ 1296 0194 0E       		.uleb128 0xe
+ 1297 0195 3A       		.uleb128 0x3a
+ 1298 0196 0B       		.uleb128 0xb
+ 1299 0197 3B       		.uleb128 0x3b
+ 1300 0198 0B       		.uleb128 0xb
+ 1301 0199 00       		.byte	0
+ 1302 019a 00       		.byte	0
+ 1303 019b 00       		.byte	0
+ 1304              		.section	.debug_loc,"",%progbits
+ 1305              	.Ldebug_loc0:
+ 1306              	.LLST0:
+ 1307 0000 24000000 		.4byte	.LVL3
+ 1308 0004 3C000000 		.4byte	.LVL6
+ 1309 0008 0100     		.2byte	0x1
+ 1310 000a 54       		.byte	0x54
+ 1311 000b 3E000000 		.4byte	.LVL7
+ 1312 000f 46000000 		.4byte	.LVL9
+ 1313 0013 0100     		.2byte	0x1
+ 1314 0015 54       		.byte	0x54
+ 1315 0016 00000000 		.4byte	0
+ 1316 001a 00000000 		.4byte	0
+ 1317              	.LLST1:
+ 1318 001e 00000000 		.4byte	.LVL11
+ 1319 0022 07000000 		.4byte	.LVL13-1
+ 1320 0026 0100     		.2byte	0x1
+ 1321 0028 50       		.byte	0x50
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 32
+
+
+ 1322 0029 07000000 		.4byte	.LVL13-1
+ 1323 002d 20000000 		.4byte	.LFE7
+ 1324 0031 0400     		.2byte	0x4
+ 1325 0033 F3       		.byte	0xf3
+ 1326 0034 01       		.uleb128 0x1
+ 1327 0035 50       		.byte	0x50
+ 1328 0036 9F       		.byte	0x9f
+ 1329 0037 00000000 		.4byte	0
+ 1330 003b 00000000 		.4byte	0
+ 1331              	.LLST2:
+ 1332 003f 08000000 		.4byte	.LVL13
+ 1333 0043 19000000 		.4byte	.LVL14-1
+ 1334 0047 0100     		.2byte	0x1
+ 1335 0049 50       		.byte	0x50
+ 1336 004a 00000000 		.4byte	0
+ 1337 004e 00000000 		.4byte	0
+ 1338              	.LLST3:
+ 1339 0052 06000000 		.4byte	.LVL16
+ 1340 0056 0A000000 		.4byte	.LVL17
+ 1341 005a 0500     		.2byte	0x5
+ 1342 005c 70       		.byte	0x70
+ 1343 005d 00       		.sleb128 0
+ 1344 005e 33       		.byte	0x33
+ 1345 005f 1A       		.byte	0x1a
+ 1346 0060 9F       		.byte	0x9f
+ 1347 0061 0A000000 		.4byte	.LVL17
+ 1348 0065 10000000 		.4byte	.LFE8
+ 1349 0069 0100     		.2byte	0x1
+ 1350 006b 50       		.byte	0x50
+ 1351 006c 00000000 		.4byte	0
+ 1352 0070 00000000 		.4byte	0
+ 1353              	.LLST4:
+ 1354 0074 00000000 		.4byte	.LVL22
+ 1355 0078 07000000 		.4byte	.LVL23-1
+ 1356 007c 0100     		.2byte	0x1
+ 1357 007e 50       		.byte	0x50
+ 1358 007f 07000000 		.4byte	.LVL23-1
+ 1359 0083 18000000 		.4byte	.LVL27
+ 1360 0087 0100     		.2byte	0x1
+ 1361 0089 54       		.byte	0x54
+ 1362 008a 18000000 		.4byte	.LVL27
+ 1363 008e 1A000000 		.4byte	.LFE2
+ 1364 0092 0400     		.2byte	0x4
+ 1365 0094 F3       		.byte	0xf3
+ 1366 0095 01       		.uleb128 0x1
+ 1367 0096 50       		.byte	0x50
+ 1368 0097 9F       		.byte	0x9f
+ 1369 0098 00000000 		.4byte	0
+ 1370 009c 00000000 		.4byte	0
+ 1371              		.section	.debug_aranges,"",%progbits
+ 1372 0000 7C000000 		.4byte	0x7c
+ 1373 0004 0200     		.2byte	0x2
+ 1374 0006 00000000 		.4byte	.Ldebug_info0
+ 1375 000a 04       		.byte	0x4
+ 1376 000b 00       		.byte	0
+ 1377 000c 0000     		.2byte	0
+ 1378 000e 0000     		.2byte	0
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 33
+
+
+ 1379 0010 00000000 		.4byte	.LFB4
+ 1380 0014 50000000 		.4byte	.LFE4-.LFB4
+ 1381 0018 00000000 		.4byte	.LFB5
+ 1382 001c 0C000000 		.4byte	.LFE5-.LFB5
+ 1383 0020 00000000 		.4byte	.LFB6
+ 1384 0024 0C000000 		.4byte	.LFE6-.LFB6
+ 1385 0028 00000000 		.4byte	.LFB7
+ 1386 002c 20000000 		.4byte	.LFE7-.LFB7
+ 1387 0030 00000000 		.4byte	.LFB8
+ 1388 0034 10000000 		.4byte	.LFE8-.LFB8
+ 1389 0038 00000000 		.4byte	.LFB9
+ 1390 003c 0C000000 		.4byte	.LFE9-.LFB9
+ 1391 0040 00000000 		.4byte	.LFB10
+ 1392 0044 10000000 		.4byte	.LFE10-.LFB10
+ 1393 0048 00000000 		.4byte	.LFB11
+ 1394 004c 0C000000 		.4byte	.LFE11-.LFB11
+ 1395 0050 00000000 		.4byte	.LFB1
+ 1396 0054 1C000000 		.4byte	.LFE1-.LFB1
+ 1397 0058 00000000 		.4byte	.LFB2
+ 1398 005c 1A000000 		.4byte	.LFE2-.LFB2
+ 1399 0060 00000000 		.4byte	.LFB3
+ 1400 0064 14000000 		.4byte	.LFE3-.LFB3
+ 1401 0068 00000000 		.4byte	.LFB12
+ 1402 006c 0C000000 		.4byte	.LFE12-.LFB12
+ 1403 0070 00000000 		.4byte	.LFB13
+ 1404 0074 0C000000 		.4byte	.LFE13-.LFB13
+ 1405 0078 00000000 		.4byte	0
+ 1406 007c 00000000 		.4byte	0
+ 1407              		.section	.debug_ranges,"",%progbits
+ 1408              	.Ldebug_ranges0:
+ 1409 0000 00000000 		.4byte	.LFB4
+ 1410 0004 50000000 		.4byte	.LFE4
+ 1411 0008 00000000 		.4byte	.LFB5
+ 1412 000c 0C000000 		.4byte	.LFE5
+ 1413 0010 00000000 		.4byte	.LFB6
+ 1414 0014 0C000000 		.4byte	.LFE6
+ 1415 0018 00000000 		.4byte	.LFB7
+ 1416 001c 20000000 		.4byte	.LFE7
+ 1417 0020 00000000 		.4byte	.LFB8
+ 1418 0024 10000000 		.4byte	.LFE8
+ 1419 0028 00000000 		.4byte	.LFB9
+ 1420 002c 0C000000 		.4byte	.LFE9
+ 1421 0030 00000000 		.4byte	.LFB10
+ 1422 0034 10000000 		.4byte	.LFE10
+ 1423 0038 00000000 		.4byte	.LFB11
+ 1424 003c 0C000000 		.4byte	.LFE11
+ 1425 0040 00000000 		.4byte	.LFB1
+ 1426 0044 1C000000 		.4byte	.LFE1
+ 1427 0048 00000000 		.4byte	.LFB2
+ 1428 004c 1A000000 		.4byte	.LFE2
+ 1429 0050 00000000 		.4byte	.LFB3
+ 1430 0054 14000000 		.4byte	.LFE3
+ 1431 0058 00000000 		.4byte	.LFB12
+ 1432 005c 0C000000 		.4byte	.LFE12
+ 1433 0060 00000000 		.4byte	.LFB13
+ 1434 0064 0C000000 		.4byte	.LFE13
+ 1435 0068 00000000 		.4byte	0
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 34
+
+
+ 1436 006c 00000000 		.4byte	0
+ 1437              		.section	.debug_line,"",%progbits
+ 1438              	.Ldebug_line0:
+ 1439 0000 68010000 		.section	.debug_str,"MS",%progbits,1
+ 1439      02005A00 
+ 1439      00000201 
+ 1439      FB0E0D00 
+ 1439      01010101 
+ 1440              	.LASF44:
+ 1441 0000 47656E65 		.ascii	"Generated_Source\\PSoC4\\TEST_ISR.c\000"
+ 1441      72617465 
+ 1441      645F536F 
+ 1441      75726365 
+ 1441      5C50536F 
+ 1442              	.LASF14:
+ 1443 0022 72656733 		.ascii	"reg32\000"
+ 1443      3200
+ 1444              	.LASF20:
+ 1445 0028 54455354 		.ascii	"TEST_ISR_SetPriority\000"
+ 1445      5F495352 
+ 1445      5F536574 
+ 1445      5072696F 
+ 1445      72697479 
+ 1446              	.LASF34:
+ 1447 003d 54455354 		.ascii	"TEST_ISR_ClearPending\000"
+ 1447      5F495352 
+ 1447      5F436C65 
+ 1447      61725065 
+ 1447      6E64696E 
+ 1448              	.LASF36:
+ 1449 0053 43795261 		.ascii	"CyRamVectors\000"
+ 1449      6D566563 
+ 1449      746F7273 
+ 1449      00
+ 1450              	.LASF11:
+ 1451 0060 666C6F61 		.ascii	"float\000"
+ 1451      7400
+ 1452              	.LASF3:
+ 1453 0066 73686F72 		.ascii	"short unsigned int\000"
+ 1453      7420756E 
+ 1453      7369676E 
+ 1453      65642069 
+ 1453      6E7400
+ 1454              	.LASF26:
+ 1455 0079 54455354 		.ascii	"TEST_ISR_GetVector\000"
+ 1455      5F495352 
+ 1455      5F476574 
+ 1455      56656374 
+ 1455      6F7200
+ 1456              	.LASF18:
+ 1457 008c 54455354 		.ascii	"TEST_ISR_Interrupt\000"
+ 1457      5F495352 
+ 1457      5F496E74 
+ 1457      65727275 
+ 1457      707400
+ 1458              	.LASF35:
+ 1459 009f 62757474 		.ascii	"buttonFlag\000"
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 35
+
+
+ 1459      6F6E466C 
+ 1459      616700
+ 1460              	.LASF33:
+ 1461 00aa 54455354 		.ascii	"TEST_ISR_SetPending\000"
+ 1461      5F495352 
+ 1461      5F536574 
+ 1461      50656E64 
+ 1461      696E6700 
+ 1462              	.LASF23:
+ 1463 00be 636F756E 		.ascii	"counter\000"
+ 1463      74657200 
+ 1464              	.LASF7:
+ 1465 00c6 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1465      206C6F6E 
+ 1465      6720756E 
+ 1465      7369676E 
+ 1465      65642069 
+ 1466              	.LASF1:
+ 1467 00dd 756E7369 		.ascii	"unsigned char\000"
+ 1467      676E6564 
+ 1467      20636861 
+ 1467      7200
+ 1468              	.LASF24:
+ 1469 00eb 696E7465 		.ascii	"interruptState\000"
+ 1469      72727570 
+ 1469      74537461 
+ 1469      746500
+ 1470              	.LASF5:
+ 1471 00fa 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1471      20756E73 
+ 1471      69676E65 
+ 1471      6420696E 
+ 1471      7400
+ 1472              	.LASF9:
+ 1473 010c 75696E74 		.ascii	"uint8\000"
+ 1473      3800
+ 1474              	.LASF38:
+ 1475 0112 54455354 		.ascii	"TEST_ClearInterrupt\000"
+ 1475      5F436C65 
+ 1475      6172496E 
+ 1475      74657272 
+ 1475      75707400 
+ 1476              	.LASF22:
+ 1477 0126 7072696F 		.ascii	"priority\000"
+ 1477      72697479 
+ 1477      00
+ 1478              	.LASF31:
+ 1479 012f 54455354 		.ascii	"TEST_ISR_StartEx\000"
+ 1479      5F495352 
+ 1479      5F537461 
+ 1479      72744578 
+ 1479      00
+ 1480              	.LASF12:
+ 1481 0140 646F7562 		.ascii	"double\000"
+ 1481      6C6500
+ 1482              	.LASF40:
+ 1483 0147 43794465 		.ascii	"CyDelayUs\000"
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 36
+
+
+ 1483      6C617955 
+ 1483      7300
+ 1484              	.LASF32:
+ 1485 0151 54455354 		.ascii	"TEST_ISR_Stop\000"
+ 1485      5F495352 
+ 1485      5F53746F 
+ 1485      7000
+ 1486              	.LASF10:
+ 1487 015f 75696E74 		.ascii	"uint32\000"
+ 1487      333200
+ 1488              	.LASF41:
+ 1489 0166 4379456E 		.ascii	"CyEnterCriticalSection\000"
+ 1489      74657243 
+ 1489      72697469 
+ 1489      63616C53 
+ 1489      65637469 
+ 1490              	.LASF8:
+ 1491 017d 756E7369 		.ascii	"unsigned int\000"
+ 1491      676E6564 
+ 1491      20696E74 
+ 1491      00
+ 1492              	.LASF21:
+ 1493 018a 61646472 		.ascii	"address\000"
+ 1493      65737300 
+ 1494              	.LASF42:
+ 1495 0192 43794578 		.ascii	"CyExitCriticalSection\000"
+ 1495      69744372 
+ 1495      69746963 
+ 1495      616C5365 
+ 1495      6374696F 
+ 1496              	.LASF27:
+ 1497 01a8 54455354 		.ascii	"TEST_ISR_GetState\000"
+ 1497      5F495352 
+ 1497      5F476574 
+ 1497      53746174 
+ 1497      6500
+ 1498              	.LASF46:
+ 1499 01ba 54455354 		.ascii	"TEST_ISR_GetPriority\000"
+ 1499      5F495352 
+ 1499      5F476574 
+ 1499      5072696F 
+ 1499      72697479 
+ 1500              	.LASF15:
+ 1501 01cf 63796973 		.ascii	"cyisraddress\000"
+ 1501      72616464 
+ 1501      72657373 
+ 1501      00
+ 1502              	.LASF43:
+ 1503 01dc 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1503      43313120 
+ 1503      352E342E 
+ 1503      31203230 
+ 1503      31363036 
+ 1504 020f 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 1504      20726576 
+ 1504      6973696F 
+ 1504      6E203233 
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 37
+
+
+ 1504      37373135 
+ 1505 0242 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1505      66756E63 
+ 1505      74696F6E 
+ 1505      2D736563 
+ 1505      74696F6E 
+ 1506              	.LASF16:
+ 1507 026a 6C6F6E67 		.ascii	"long double\000"
+ 1507      20646F75 
+ 1507      626C6500 
+ 1508              	.LASF17:
+ 1509 0276 73697A65 		.ascii	"sizetype\000"
+ 1509      74797065 
+ 1509      00
+ 1510              	.LASF45:
+ 1511 027f 433A5C55 		.ascii	"C:\\Users\\Hello Kitty\\Desktop\\MicrocontrollersLa"
+ 1511      73657273 
+ 1511      5C48656C 
+ 1511      6C6F204B 
+ 1511      69747479 
+ 1512 02ae 625C4C61 		.ascii	"b\\Lab 5 - I2C\\Project\\Lab 5 - I2C.cydsn\000"
+ 1512      62203520 
+ 1512      2D204932 
+ 1512      435C5072 
+ 1512      6F6A6563 
+ 1513              	.LASF6:
+ 1514 02d6 6C6F6E67 		.ascii	"long long int\000"
+ 1514      206C6F6E 
+ 1514      6720696E 
+ 1514      7400
+ 1515              	.LASF13:
+ 1516 02e4 63686172 		.ascii	"char\000"
+ 1516      00
+ 1517              	.LASF39:
+ 1518 02e9 54455354 		.ascii	"TEST_Read\000"
+ 1518      5F526561 
+ 1518      6400
+ 1519              	.LASF2:
+ 1520 02f3 73686F72 		.ascii	"short int\000"
+ 1520      7420696E 
+ 1520      7400
+ 1521              	.LASF19:
+ 1522 02fd 54455354 		.ascii	"TEST_ISR_SetVector\000"
+ 1522      5F495352 
+ 1522      5F536574 
+ 1522      56656374 
+ 1522      6F7200
+ 1523              	.LASF25:
+ 1524 0310 7072696F 		.ascii	"priorityOffset\000"
+ 1524      72697479 
+ 1524      4F666673 
+ 1524      657400
+ 1525              	.LASF4:
+ 1526 031f 6C6F6E67 		.ascii	"long int\000"
+ 1526      20696E74 
+ 1526      00
+ 1527              	.LASF30:
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\cc46Rz0b.s 			page 38
+
+
+ 1528 0328 54455354 		.ascii	"TEST_ISR_Start\000"
+ 1528      5F495352 
+ 1528      5F537461 
+ 1528      727400
+ 1529              	.LASF0:
+ 1530 0337 7369676E 		.ascii	"signed char\000"
+ 1530      65642063 
+ 1530      68617200 
+ 1531              	.LASF28:
+ 1532 0343 54455354 		.ascii	"TEST_ISR_Enable\000"
+ 1532      5F495352 
+ 1532      5F456E61 
+ 1532      626C6500 
+ 1533              	.LASF37:
+ 1534 0353 43794465 		.ascii	"CyDelay\000"
+ 1534      6C617900 
+ 1535              	.LASF29:
+ 1536 035b 54455354 		.ascii	"TEST_ISR_Disable\000"
+ 1536      5F495352 
+ 1536      5F446973 
+ 1536      61626C65 
+ 1536      00
+ 1537              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

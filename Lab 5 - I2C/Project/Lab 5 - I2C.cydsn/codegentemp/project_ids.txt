@@ -1,0 +1,6 @@
+C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 5 - I2C\Project\Lab 5 - I2C.cydsn\Lab 5 - I2C.cyprj|7fc74bad-4631-4a2f-b1f2-23b99c3fb79a
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|06e9e753-a7f0-4825-8ab4-2225bb7f3cac
+C:\Users\Hello Kitty\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|7942f72c-629a-46e5-b55c-d022856c292d
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|9b2a86d2-0d09-457b-b5ba-9240cd22402c
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|c0d002f2-80fd-4c45-b640-afd9652c74d7
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|88285e8f-6b3d-4f46-bfbd-f88b4d79ea88

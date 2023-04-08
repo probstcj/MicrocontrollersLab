@@ -1,6 +1,10 @@
 /***************************************************************************//**
 * \file cyPm.h
+<<<<<<<< HEAD:Lab 4 - UART Motors/Project/Backup/Lab04 - UART.4.4/Project/Design01.cydsn/Generated_Source/PSoC4/cyPm.h
 * \version 6.0
+========
+* \version 5.70
+>>>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e:Lab 1 - GPIO/Project/Zipped file/Lab1.cydsn/codegentemp/cyPm.h
 *
 * \brief Provides the function definitions for the power management API.
 *
@@ -202,11 +206,14 @@ void CySysPmDeepSleep(void);
     #define CY_PM_PWR_KEY_DELAY_FREQ_DEFAULT    (48u)
 #endif /* (CY_IP_SRSSV2) */
 
+<<<<<<<< HEAD:Lab 4 - UART Motors/Project/Backup/Lab04 - UART.4.4/Project/Design01.cydsn/Generated_Source/PSoC4/cyPm.h
 #if (CY_IP_IMO_TRIMMABLE_BY_WCO)
     #define CY_PM_WCO_DPLL_WAKEUP_DELAY         (35u)
     #define CY_PM_WCO_DPLL_LF_LIMIT_TEMP_DRIFT  (4u)
 #endif /* (CY_IP_IMO_TRIMMABLE_BY_WCO) */
 
+========
+>>>>>>>> d64eda67b547499d1a0cb642e2e449ca8147df5e:Lab 1 - GPIO/Project/Zipped file/Lab1.cydsn/codegentemp/cyPm.h
 #if (CY_PSOC4_4100 || CY_PSOC4_4200 || CY_PSOC4_4000U)
     /* 0 - normal operation, 1 - Flash Accelerator in bypass mode */
     #define CY_PM_CPUSS_CONFIG_FLSH_ACC_BYPASS      ((uint32) 0x02u)
