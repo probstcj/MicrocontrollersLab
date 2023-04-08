@@ -181,6 +181,12 @@
 <v>Lab 5 - I2C\Lab 5 - I2C\PSoC 4 Architecture TRM</v>
 <v>Lab 5 - I2C\Lab 5 - I2C\PSoC 4200M Family Datasheet</v>
 <v>Lab 5 - I2C\Lab 5 - I2C\System Reference Guides</v>
+<v>Lab 5 - I2C\Lab 5 - I2C\System Reference Guides\cy_boot_v5_82</v>
+<v>Lab 5 - I2C\Lab 5 - I2C\System Reference Guides\cy_dmac_v1_10</v>
+<v>Lab 5 - I2C\Lab 5 - I2C\System Reference Guides\cy_lfclk_v1_20</v>
+<v>Lab 5 - I2C\Lab 5 - I2C\cy_isr_v1_71</v>
+<v>Lab 5 - I2C\Lab 5 - I2C\cy_pins_v2_20</v>
+<v>Lab 5 - I2C\Lab 5 - I2C\SCB_P4_v4_0.pdf</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStatesV2>
@@ -204,7 +210,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="990, 351" SelectedTabbedMdiWindow="52ea1480-3785-42fd-988e-3d6bd8bba742"><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 5 - I2C\Project\Lab 5 - I2C.cydsn\TopDesign\TopDesign.cysch" Guid="d877f3c1-e696-4b5a-8d6e-3b7df6470ef1" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 5 - I2C\Project\Lab 5 - I2C.cydsn\Lab 5 - I2C.cydwr" Guid="52ea1480-3785-42fd-988e-3d6bd8bba742" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 5 - I2C\Project\Lab 5 - I2C.cydsn\main.c" Guid="db09fcda-435f-436a-bf8d-0b0f970cef1a" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 5 - I2C\Project\Lab 5 - I2C.cydsn\Generated_Source\PSoC4\ACCEL_ISR.c" Guid="cd3ad0b8-9535-4cc0-9194-8961e7c74099" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 5 - I2C\Project\Lab 5 - I2C.cydsn\Generated_Source\PSoC4\CyLib.c" Guid="0270ca61-40bf-40f7-84f5-17499e78b584" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 5 - I2C\Project\Lab 5 - I2C.cydsn\Generated_Source\PSoC4\TEST_ISR.c" Guid="921219b9-2813-4da0-b962-6e0b25f6dad5" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 5 - I2C\Project\Lab 5 - I2C.cydsn\Generated_Source\PSoC4\cyPm.c" Guid="44fb5332-2c40-4edd-ad70-43ca8c406a7e" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="ead43ad5-701e-41ee-acd3-176a27ede259" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1096, 351" SelectedTabbedMdiWindow="52ea1480-3785-42fd-988e-3d6bd8bba742"><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 5 - I2C\Project\Lab 5 - I2C.cydsn\TopDesign\TopDesign.cysch" Guid="d877f3c1-e696-4b5a-8d6e-3b7df6470ef1" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 5 - I2C\Project\Lab 5 - I2C.cydsn\Lab 5 - I2C.cydwr" Guid="52ea1480-3785-42fd-988e-3d6bd8bba742" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 5 - I2C\Project\Lab 5 - I2C.cydsn\main.c" Guid="db09fcda-435f-436a-bf8d-0b0f970cef1a" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 5 - I2C\Project\Lab 5 - I2C.cydsn\Generated_Source\PSoC4\ACCEL_ISR.c" Guid="cd3ad0b8-9535-4cc0-9194-8961e7c74099" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 5 - I2C\Project\Lab 5 - I2C.cydsn\Generated_Source\PSoC4\CyLib.c" Guid="0270ca61-40bf-40f7-84f5-17499e78b584" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 5 - I2C\Project\Lab 5 - I2C.cydsn\Generated_Source\PSoC4\TEST_ISR.c" Guid="921219b9-2813-4da0-b962-6e0b25f6dad5" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 5 - I2C\Project\Lab 5 - I2C.cydsn\Generated_Source\PSoC4\cyPm.c" Guid="44fb5332-2c40-4edd-ad70-43ca8c406a7e" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="ead43ad5-701e-41ee-acd3-176a27ede259" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
