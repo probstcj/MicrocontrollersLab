@@ -1,0 +1,26 @@
+# AutomaticPetFeeder
+# 2023-04-01 19:05:45Z
+
+# IO_2@[IOP=(3)][IoId=(2)] is reserved: SWDDebugEnabled
+dont_use_io iocell 3 2
+# IO_3@[IOP=(3)][IoId=(3)] is reserved: SWDDebugEnabled
+dont_use_io iocell 3 3
+set_location "ClockGenBlock" m0s8clockgenblockcell -1 -1 0
+set_io "\UART:tx(0)\" iocell 7 1
+set_io "\UART:rx(0)\" iocell 7 0
+set_io "BTN(0)" iocell 4 5
+set_io "ENC(0)" iocell 0 0
+set_io "ENC(1)" iocell 0 1
+set_io "SPEAKER(0)" iocell 3 4
+set_io "R_LED(0)" iocell 2 2
+set_io "G_LED(0)" iocell 2 1
+set_io "B_LED(0)" iocell 2 0
+set_io "Y_LED(0)" iocell 2 3
+set_io "PhsBNeg(0)" iocell 0 3
+set_io "PhsBPos(0)" iocell 0 2
+set_io "PhsANeg(0)" iocell 3 1
+set_io "PhsAPos(0)" iocell 3 0
+set_io "RTC_INT(0)" iocell 5 5
+set_io "RTC_COT_IN(0)" iocell 5 3
+set_io "\I2C:sda(0)\" iocell 4 1
+set_io "\I2C:scl(0)\" iocell 4 0

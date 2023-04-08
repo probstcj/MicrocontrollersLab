@@ -1,0 +1,2356 @@
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"ENC_ISR.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.ENC_ISR_Interrupt,"ax",%progbits
+  20              		.align	2
+  21              		.global	ENC_ISR_Interrupt
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	ENC_ISR_Interrupt, %function
+  25              	ENC_ISR_Interrupt:
+  26              	.LFB4:
+  27              		.file 1 "Generated_Source\\PSoC4\\ENC_ISR.c"
+   1:Generated_Source\PSoC4/ENC_ISR.c **** /*******************************************************************************
+   2:Generated_Source\PSoC4/ENC_ISR.c **** * File Name: ENC_ISR.c  
+   3:Generated_Source\PSoC4/ENC_ISR.c **** * Version 1.71
+   4:Generated_Source\PSoC4/ENC_ISR.c **** *
+   5:Generated_Source\PSoC4/ENC_ISR.c **** *  Description:
+   6:Generated_Source\PSoC4/ENC_ISR.c **** *   API for controlling the state of an interrupt.
+   7:Generated_Source\PSoC4/ENC_ISR.c **** *
+   8:Generated_Source\PSoC4/ENC_ISR.c **** *
+   9:Generated_Source\PSoC4/ENC_ISR.c **** *  Note:
+  10:Generated_Source\PSoC4/ENC_ISR.c **** *
+  11:Generated_Source\PSoC4/ENC_ISR.c **** ********************************************************************************
+  12:Generated_Source\PSoC4/ENC_ISR.c **** * Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  13:Generated_Source\PSoC4/ENC_ISR.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  14:Generated_Source\PSoC4/ENC_ISR.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  15:Generated_Source\PSoC4/ENC_ISR.c **** * the software package with which this file was provided.
+  16:Generated_Source\PSoC4/ENC_ISR.c **** *******************************************************************************/
+  17:Generated_Source\PSoC4/ENC_ISR.c **** 
+  18:Generated_Source\PSoC4/ENC_ISR.c **** 
+  19:Generated_Source\PSoC4/ENC_ISR.c **** #include <cydevice_trm.h>
+  20:Generated_Source\PSoC4/ENC_ISR.c **** #include <CyLib.h>
+  21:Generated_Source\PSoC4/ENC_ISR.c **** #include <ENC_ISR.h>
+  22:Generated_Source\PSoC4/ENC_ISR.c **** #include "cyapicallbacks.h"
+  23:Generated_Source\PSoC4/ENC_ISR.c **** 
+  24:Generated_Source\PSoC4/ENC_ISR.c **** #if !defined(ENC_ISR__REMOVED) /* Check for removal by optimization */
+  25:Generated_Source\PSoC4/ENC_ISR.c **** 
+  26:Generated_Source\PSoC4/ENC_ISR.c **** /*******************************************************************************
+  27:Generated_Source\PSoC4/ENC_ISR.c **** *  Place your includes, defines and code here 
+  28:Generated_Source\PSoC4/ENC_ISR.c **** ********************************************************************************/
+  29:Generated_Source\PSoC4/ENC_ISR.c **** /* `#START ENC_ISR_intc` */
+  30:Generated_Source\PSoC4/ENC_ISR.c **** #include "ENC.h"
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 2
+
+
+  31:Generated_Source\PSoC4/ENC_ISR.c **** extern volatile int enc_flag;
+  32:Generated_Source\PSoC4/ENC_ISR.c **** extern volatile int encPos;
+  33:Generated_Source\PSoC4/ENC_ISR.c **** /* `#END` */
+  34:Generated_Source\PSoC4/ENC_ISR.c **** 
+  35:Generated_Source\PSoC4/ENC_ISR.c **** extern cyisraddress CyRamVectors[CYINT_IRQ_BASE + CY_NUM_INTERRUPTS];
+  36:Generated_Source\PSoC4/ENC_ISR.c **** 
+  37:Generated_Source\PSoC4/ENC_ISR.c **** /* Declared in startup, used to set unused interrupts to. */
+  38:Generated_Source\PSoC4/ENC_ISR.c **** CY_ISR_PROTO(IntDefaultHandler);
+  39:Generated_Source\PSoC4/ENC_ISR.c **** 
+  40:Generated_Source\PSoC4/ENC_ISR.c **** 
+  41:Generated_Source\PSoC4/ENC_ISR.c **** /*******************************************************************************
+  42:Generated_Source\PSoC4/ENC_ISR.c **** * Function Name: ENC_ISR_Start
+  43:Generated_Source\PSoC4/ENC_ISR.c **** ********************************************************************************
+  44:Generated_Source\PSoC4/ENC_ISR.c **** *
+  45:Generated_Source\PSoC4/ENC_ISR.c **** * Summary:
+  46:Generated_Source\PSoC4/ENC_ISR.c **** *  Set up the interrupt and enable it. This function disables the interrupt, 
+  47:Generated_Source\PSoC4/ENC_ISR.c **** *  sets the default interrupt vector, sets the priority from the value in the
+  48:Generated_Source\PSoC4/ENC_ISR.c **** *  Design Wide Resources Interrupt Editor, then enables the interrupt to the 
+  49:Generated_Source\PSoC4/ENC_ISR.c **** *  interrupt controller.
+  50:Generated_Source\PSoC4/ENC_ISR.c **** *
+  51:Generated_Source\PSoC4/ENC_ISR.c **** * Parameters:  
+  52:Generated_Source\PSoC4/ENC_ISR.c **** *   None
+  53:Generated_Source\PSoC4/ENC_ISR.c **** *
+  54:Generated_Source\PSoC4/ENC_ISR.c **** * Return:
+  55:Generated_Source\PSoC4/ENC_ISR.c **** *   None
+  56:Generated_Source\PSoC4/ENC_ISR.c **** *
+  57:Generated_Source\PSoC4/ENC_ISR.c **** *******************************************************************************/
+  58:Generated_Source\PSoC4/ENC_ISR.c **** void ENC_ISR_Start(void)
+  59:Generated_Source\PSoC4/ENC_ISR.c **** {
+  60:Generated_Source\PSoC4/ENC_ISR.c ****     /* For all we know the interrupt is active. */
+  61:Generated_Source\PSoC4/ENC_ISR.c ****     ENC_ISR_Disable();
+  62:Generated_Source\PSoC4/ENC_ISR.c **** 
+  63:Generated_Source\PSoC4/ENC_ISR.c ****     /* Set the ISR to point to the ENC_ISR Interrupt. */
+  64:Generated_Source\PSoC4/ENC_ISR.c ****     ENC_ISR_SetVector(&ENC_ISR_Interrupt);
+  65:Generated_Source\PSoC4/ENC_ISR.c **** 
+  66:Generated_Source\PSoC4/ENC_ISR.c ****     /* Set the priority. */
+  67:Generated_Source\PSoC4/ENC_ISR.c ****     ENC_ISR_SetPriority((uint8)ENC_ISR_INTC_PRIOR_NUMBER);
+  68:Generated_Source\PSoC4/ENC_ISR.c **** 
+  69:Generated_Source\PSoC4/ENC_ISR.c ****     /* Enable it. */
+  70:Generated_Source\PSoC4/ENC_ISR.c ****     ENC_ISR_Enable();
+  71:Generated_Source\PSoC4/ENC_ISR.c **** }
+  72:Generated_Source\PSoC4/ENC_ISR.c **** 
+  73:Generated_Source\PSoC4/ENC_ISR.c **** 
+  74:Generated_Source\PSoC4/ENC_ISR.c **** /*******************************************************************************
+  75:Generated_Source\PSoC4/ENC_ISR.c **** * Function Name: ENC_ISR_StartEx
+  76:Generated_Source\PSoC4/ENC_ISR.c **** ********************************************************************************
+  77:Generated_Source\PSoC4/ENC_ISR.c **** *
+  78:Generated_Source\PSoC4/ENC_ISR.c **** * Summary:
+  79:Generated_Source\PSoC4/ENC_ISR.c **** *  Sets up the interrupt and enables it. This function disables the interrupt,
+  80:Generated_Source\PSoC4/ENC_ISR.c **** *  sets the interrupt vector based on the address passed in, sets the priority 
+  81:Generated_Source\PSoC4/ENC_ISR.c **** *  from the value in the Design Wide Resources Interrupt Editor, then enables 
+  82:Generated_Source\PSoC4/ENC_ISR.c **** *  the interrupt to the interrupt controller.
+  83:Generated_Source\PSoC4/ENC_ISR.c **** *  
+  84:Generated_Source\PSoC4/ENC_ISR.c **** *  When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
+  85:Generated_Source\PSoC4/ENC_ISR.c **** *  used to provide consistent definition across compilers:
+  86:Generated_Source\PSoC4/ENC_ISR.c **** *  
+  87:Generated_Source\PSoC4/ENC_ISR.c **** *  Function definition example:
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 3
+
+
+  88:Generated_Source\PSoC4/ENC_ISR.c **** *   CY_ISR(MyISR)
+  89:Generated_Source\PSoC4/ENC_ISR.c **** *   {
+  90:Generated_Source\PSoC4/ENC_ISR.c **** *   }
+  91:Generated_Source\PSoC4/ENC_ISR.c **** *   Function prototype example:
+  92:Generated_Source\PSoC4/ENC_ISR.c **** *   CY_ISR_PROTO(MyISR);
+  93:Generated_Source\PSoC4/ENC_ISR.c **** *
+  94:Generated_Source\PSoC4/ENC_ISR.c **** * Parameters:  
+  95:Generated_Source\PSoC4/ENC_ISR.c **** *   address: Address of the ISR to set in the interrupt vector table.
+  96:Generated_Source\PSoC4/ENC_ISR.c **** *
+  97:Generated_Source\PSoC4/ENC_ISR.c **** * Return:
+  98:Generated_Source\PSoC4/ENC_ISR.c **** *   None
+  99:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 100:Generated_Source\PSoC4/ENC_ISR.c **** *******************************************************************************/
+ 101:Generated_Source\PSoC4/ENC_ISR.c **** void ENC_ISR_StartEx(cyisraddress address)
+ 102:Generated_Source\PSoC4/ENC_ISR.c **** {
+ 103:Generated_Source\PSoC4/ENC_ISR.c ****     /* For all we know the interrupt is active. */
+ 104:Generated_Source\PSoC4/ENC_ISR.c ****     ENC_ISR_Disable();
+ 105:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 106:Generated_Source\PSoC4/ENC_ISR.c ****     /* Set the ISR to point to the ENC_ISR Interrupt. */
+ 107:Generated_Source\PSoC4/ENC_ISR.c ****     ENC_ISR_SetVector(address);
+ 108:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 109:Generated_Source\PSoC4/ENC_ISR.c ****     /* Set the priority. */
+ 110:Generated_Source\PSoC4/ENC_ISR.c ****     ENC_ISR_SetPriority((uint8)ENC_ISR_INTC_PRIOR_NUMBER);
+ 111:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 112:Generated_Source\PSoC4/ENC_ISR.c ****     /* Enable it. */
+ 113:Generated_Source\PSoC4/ENC_ISR.c ****     ENC_ISR_Enable();
+ 114:Generated_Source\PSoC4/ENC_ISR.c **** }
+ 115:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 116:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 117:Generated_Source\PSoC4/ENC_ISR.c **** /*******************************************************************************
+ 118:Generated_Source\PSoC4/ENC_ISR.c **** * Function Name: ENC_ISR_Stop
+ 119:Generated_Source\PSoC4/ENC_ISR.c **** ********************************************************************************
+ 120:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 121:Generated_Source\PSoC4/ENC_ISR.c **** * Summary:
+ 122:Generated_Source\PSoC4/ENC_ISR.c **** *   Disables and removes the interrupt.
+ 123:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 124:Generated_Source\PSoC4/ENC_ISR.c **** * Parameters:  
+ 125:Generated_Source\PSoC4/ENC_ISR.c **** *   None
+ 126:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 127:Generated_Source\PSoC4/ENC_ISR.c **** * Return:
+ 128:Generated_Source\PSoC4/ENC_ISR.c **** *   None
+ 129:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 130:Generated_Source\PSoC4/ENC_ISR.c **** *******************************************************************************/
+ 131:Generated_Source\PSoC4/ENC_ISR.c **** void ENC_ISR_Stop(void)
+ 132:Generated_Source\PSoC4/ENC_ISR.c **** {
+ 133:Generated_Source\PSoC4/ENC_ISR.c ****     /* Disable this interrupt. */
+ 134:Generated_Source\PSoC4/ENC_ISR.c ****     ENC_ISR_Disable();
+ 135:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 136:Generated_Source\PSoC4/ENC_ISR.c ****     /* Set the ISR to point to the passive one. */
+ 137:Generated_Source\PSoC4/ENC_ISR.c ****     ENC_ISR_SetVector(&IntDefaultHandler);
+ 138:Generated_Source\PSoC4/ENC_ISR.c **** }
+ 139:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 140:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 141:Generated_Source\PSoC4/ENC_ISR.c **** /*******************************************************************************
+ 142:Generated_Source\PSoC4/ENC_ISR.c **** * Function Name: ENC_ISR_Interrupt
+ 143:Generated_Source\PSoC4/ENC_ISR.c **** ********************************************************************************
+ 144:Generated_Source\PSoC4/ENC_ISR.c **** *
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 4
+
+
+ 145:Generated_Source\PSoC4/ENC_ISR.c **** * Summary:
+ 146:Generated_Source\PSoC4/ENC_ISR.c **** *   The default Interrupt Service Routine for ENC_ISR.
+ 147:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 148:Generated_Source\PSoC4/ENC_ISR.c **** *   Add custom code between the START and END comments to keep the next version
+ 149:Generated_Source\PSoC4/ENC_ISR.c **** *   of this file from over-writing your code.
+ 150:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 151:Generated_Source\PSoC4/ENC_ISR.c **** *   Note You may use either the default ISR by using this API, or you may define
+ 152:Generated_Source\PSoC4/ENC_ISR.c **** *   your own separate ISR through ISR_StartEx().
+ 153:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 154:Generated_Source\PSoC4/ENC_ISR.c **** * Parameters:  
+ 155:Generated_Source\PSoC4/ENC_ISR.c **** *   None
+ 156:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 157:Generated_Source\PSoC4/ENC_ISR.c **** * Return:
+ 158:Generated_Source\PSoC4/ENC_ISR.c **** *   None
+ 159:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 160:Generated_Source\PSoC4/ENC_ISR.c **** *******************************************************************************/
+ 161:Generated_Source\PSoC4/ENC_ISR.c **** CY_ISR(ENC_ISR_Interrupt)
+ 162:Generated_Source\PSoC4/ENC_ISR.c **** {
+  28              		.loc 1 162 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 16
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+  36 0002 84B0     		sub	sp, sp, #16
+  37              		.cfi_def_cfa_offset 24
+ 163:Generated_Source\PSoC4/ENC_ISR.c ****     #ifdef ENC_ISR_INTERRUPT_INTERRUPT_CALLBACK
+ 164:Generated_Source\PSoC4/ENC_ISR.c ****         ENC_ISR_Interrupt_InterruptCallback();
+ 165:Generated_Source\PSoC4/ENC_ISR.c ****     #endif /* ENC_ISR_INTERRUPT_INTERRUPT_CALLBACK */ 
+ 166:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 167:Generated_Source\PSoC4/ENC_ISR.c ****     /*  Place your Interrupt code here. */
+ 168:Generated_Source\PSoC4/ENC_ISR.c ****     /* `#START ENC_ISR_Interrupt` */
+ 169:Generated_Source\PSoC4/ENC_ISR.c ****     // Read the first variable, then wait for it to change
+ 170:Generated_Source\PSoC4/ENC_ISR.c ****     volatile int a  = ENC_Read();
+  38              		.loc 1 170 0
+  39 0004 FFF7FEFF 		bl	ENC_Read
+  40              	.LVL0:
+  41 0008 0390     		str	r0, [sp, #12]
+  42              	.LVL1:
+ 171:Generated_Source\PSoC4/ENC_ISR.c ****     int count = 0;
+  43              		.loc 1 171 0
+  44 000a 0024     		movs	r4, #0
+ 172:Generated_Source\PSoC4/ENC_ISR.c ****     while(a == ENC_Read() && count < 100000){
+  45              		.loc 1 172 0
+  46 000c 00E0     		b	.L2
+  47              	.LVL2:
+  48              	.L4:
+ 173:Generated_Source\PSoC4/ENC_ISR.c ****         count++;
+  49              		.loc 1 173 0
+  50 000e 0134     		adds	r4, r4, #1
+  51              	.LVL3:
+  52              	.L2:
+ 172:Generated_Source\PSoC4/ENC_ISR.c ****     while(a == ENC_Read() && count < 100000){
+  53              		.loc 1 172 0
+  54 0010 FFF7FEFF 		bl	ENC_Read
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 5
+
+
+  55              	.LVL4:
+  56 0014 039B     		ldr	r3, [sp, #12]
+  57 0016 9842     		cmp	r0, r3
+  58 0018 02D1     		bne	.L3
+ 172:Generated_Source\PSoC4/ENC_ISR.c ****     while(a == ENC_Read() && count < 100000){
+  59              		.loc 1 172 0 is_stmt 0 discriminator 1
+  60 001a 1D4B     		ldr	r3, .L13
+  61 001c 9C42     		cmp	r4, r3
+  62 001e F6DD     		ble	.L4
+  63              	.L3:
+  64              	.LVL5:
+ 174:Generated_Source\PSoC4/ENC_ISR.c ****     }
+ 175:Generated_Source\PSoC4/ENC_ISR.c ****     count = 0;
+ 176:Generated_Source\PSoC4/ENC_ISR.c ****     // Read next variable, then wait for it to change
+ 177:Generated_Source\PSoC4/ENC_ISR.c ****     volatile int b  = ENC_Read();
+  65              		.loc 1 177 0 is_stmt 1
+  66 0020 FFF7FEFF 		bl	ENC_Read
+  67              	.LVL6:
+  68 0024 0290     		str	r0, [sp, #8]
+ 175:Generated_Source\PSoC4/ENC_ISR.c ****     // Read next variable, then wait for it to change
+  69              		.loc 1 175 0
+  70 0026 0024     		movs	r4, #0
+ 178:Generated_Source\PSoC4/ENC_ISR.c ****     while(b == ENC_Read() && count < 100000){
+  71              		.loc 1 178 0
+  72 0028 00E0     		b	.L5
+  73              	.LVL7:
+  74              	.L7:
+ 179:Generated_Source\PSoC4/ENC_ISR.c ****         count++;
+  75              		.loc 1 179 0
+  76 002a 0134     		adds	r4, r4, #1
+  77              	.LVL8:
+  78              	.L5:
+ 178:Generated_Source\PSoC4/ENC_ISR.c ****     while(b == ENC_Read() && count < 100000){
+  79              		.loc 1 178 0
+  80 002c FFF7FEFF 		bl	ENC_Read
+  81              	.LVL9:
+  82 0030 029B     		ldr	r3, [sp, #8]
+  83 0032 9842     		cmp	r0, r3
+  84 0034 02D1     		bne	.L6
+ 178:Generated_Source\PSoC4/ENC_ISR.c ****     while(b == ENC_Read() && count < 100000){
+  85              		.loc 1 178 0 is_stmt 0 discriminator 1
+  86 0036 164B     		ldr	r3, .L13
+  87 0038 9C42     		cmp	r4, r3
+  88 003a F6DD     		ble	.L7
+  89              	.L6:
+  90              	.LVL10:
+ 180:Generated_Source\PSoC4/ENC_ISR.c ****     }
+ 181:Generated_Source\PSoC4/ENC_ISR.c ****     count = 0;
+ 182:Generated_Source\PSoC4/ENC_ISR.c ****     // Read next variable, then wait for it to change
+ 183:Generated_Source\PSoC4/ENC_ISR.c ****     volatile int c  = ENC_Read();
+  91              		.loc 1 183 0 is_stmt 1
+  92 003c FFF7FEFF 		bl	ENC_Read
+  93              	.LVL11:
+  94 0040 0190     		str	r0, [sp, #4]
+ 181:Generated_Source\PSoC4/ENC_ISR.c ****     // Read next variable, then wait for it to change
+  95              		.loc 1 181 0
+  96 0042 0024     		movs	r4, #0
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 6
+
+
+ 184:Generated_Source\PSoC4/ENC_ISR.c ****     while(c == ENC_Read() && count < 100000){
+  97              		.loc 1 184 0
+  98 0044 00E0     		b	.L8
+  99              	.LVL12:
+ 100              	.L10:
+ 185:Generated_Source\PSoC4/ENC_ISR.c ****         count++;
+ 101              		.loc 1 185 0
+ 102 0046 0134     		adds	r4, r4, #1
+ 103              	.LVL13:
+ 104              	.L8:
+ 184:Generated_Source\PSoC4/ENC_ISR.c ****     while(c == ENC_Read() && count < 100000){
+ 105              		.loc 1 184 0
+ 106 0048 FFF7FEFF 		bl	ENC_Read
+ 107              	.LVL14:
+ 108 004c 019B     		ldr	r3, [sp, #4]
+ 109 004e 9842     		cmp	r0, r3
+ 110 0050 02D1     		bne	.L9
+ 184:Generated_Source\PSoC4/ENC_ISR.c ****     while(c == ENC_Read() && count < 100000){
+ 111              		.loc 1 184 0 is_stmt 0 discriminator 1
+ 112 0052 0F4B     		ldr	r3, .L13
+ 113 0054 9C42     		cmp	r4, r3
+ 114 0056 F6DD     		ble	.L10
+ 115              	.L9:
+ 116              	.LVL15:
+ 186:Generated_Source\PSoC4/ENC_ISR.c ****     }
+ 187:Generated_Source\PSoC4/ENC_ISR.c ****     count = 0;
+ 188:Generated_Source\PSoC4/ENC_ISR.c ****     // Based on the following variables, decide whether it is CW or CCW
+ 189:Generated_Source\PSoC4/ENC_ISR.c ****     if(a == 1 && c == 2){
+ 117              		.loc 1 189 0 is_stmt 1
+ 118 0058 039B     		ldr	r3, [sp, #12]
+ 119 005a 012B     		cmp	r3, #1
+ 120 005c 08D1     		bne	.L11
+ 121              		.loc 1 189 0 is_stmt 0 discriminator 1
+ 122 005e 019B     		ldr	r3, [sp, #4]
+ 123 0060 022B     		cmp	r3, #2
+ 124 0062 05D1     		bne	.L11
+ 190:Generated_Source\PSoC4/ENC_ISR.c ****         // Clockwise (increase bar)
+ 191:Generated_Source\PSoC4/ENC_ISR.c ****         // Set flag
+ 192:Generated_Source\PSoC4/ENC_ISR.c ****         enc_flag = 1;
+ 125              		.loc 1 192 0 is_stmt 1
+ 126 0064 013B     		subs	r3, r3, #1
+ 127 0066 0B4A     		ldr	r2, .L13+4
+ 128 0068 1360     		str	r3, [r2]
+ 193:Generated_Source\PSoC4/ENC_ISR.c ****         // Set limit of 80 on the right side
+ 194:Generated_Source\PSoC4/ENC_ISR.c ****         encPos = 1;
+ 129              		.loc 1 194 0
+ 130 006a 0B4A     		ldr	r2, .L13+8
+ 131 006c 1360     		str	r3, [r2]
+ 132 006e 0BE0     		b	.L12
+ 133              	.L11:
+ 195:Generated_Source\PSoC4/ENC_ISR.c ****     }
+ 196:Generated_Source\PSoC4/ENC_ISR.c ****     else if(a == 2 && c==1){
+ 134              		.loc 1 196 0
+ 135 0070 039B     		ldr	r3, [sp, #12]
+ 136 0072 022B     		cmp	r3, #2
+ 137 0074 08D1     		bne	.L12
+ 138              		.loc 1 196 0 is_stmt 0 discriminator 1
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 7
+
+
+ 139 0076 019B     		ldr	r3, [sp, #4]
+ 140 0078 012B     		cmp	r3, #1
+ 141 007a 05D1     		bne	.L12
+ 197:Generated_Source\PSoC4/ENC_ISR.c ****         // Counter-Clockwise (decrease bar)
+ 198:Generated_Source\PSoC4/ENC_ISR.c ****         // Set flag
+ 199:Generated_Source\PSoC4/ENC_ISR.c ****         enc_flag = 1;
+ 142              		.loc 1 199 0 is_stmt 1
+ 143 007c 0122     		movs	r2, #1
+ 144 007e 054B     		ldr	r3, .L13+4
+ 145 0080 1A60     		str	r2, [r3]
+ 200:Generated_Source\PSoC4/ENC_ISR.c ****         // Set limit of 0 on the left side
+ 201:Generated_Source\PSoC4/ENC_ISR.c ****         encPos = 2;
+ 146              		.loc 1 201 0
+ 147 0082 0132     		adds	r2, r2, #1
+ 148 0084 044B     		ldr	r3, .L13+8
+ 149 0086 1A60     		str	r2, [r3]
+ 150              	.L12:
+ 202:Generated_Source\PSoC4/ENC_ISR.c ****     }
+ 203:Generated_Source\PSoC4/ENC_ISR.c ****     // Clear interrupt
+ 204:Generated_Source\PSoC4/ENC_ISR.c ****     ENC_ClearInterrupt();
+ 151              		.loc 1 204 0
+ 152 0088 FFF7FEFF 		bl	ENC_ClearInterrupt
+ 153              	.LVL16:
+ 205:Generated_Source\PSoC4/ENC_ISR.c ****     /* `#END` */
+ 206:Generated_Source\PSoC4/ENC_ISR.c **** }
+ 154              		.loc 1 206 0
+ 155 008c 04B0     		add	sp, sp, #16
+ 156              		@ sp needed
+ 157 008e 10BD     		pop	{r4, pc}
+ 158              	.L14:
+ 159              		.align	2
+ 160              	.L13:
+ 161 0090 9F860100 		.word	99999
+ 162 0094 00000000 		.word	enc_flag
+ 163 0098 00000000 		.word	encPos
+ 164              		.cfi_endproc
+ 165              	.LFE4:
+ 166              		.size	ENC_ISR_Interrupt, .-ENC_ISR_Interrupt
+ 167              		.section	.text.ENC_ISR_SetVector,"ax",%progbits
+ 168              		.align	2
+ 169              		.global	ENC_ISR_SetVector
+ 170              		.code	16
+ 171              		.thumb_func
+ 172              		.type	ENC_ISR_SetVector, %function
+ 173              	ENC_ISR_SetVector:
+ 174              	.LFB5:
+ 207:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 208:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 209:Generated_Source\PSoC4/ENC_ISR.c **** /*******************************************************************************
+ 210:Generated_Source\PSoC4/ENC_ISR.c **** * Function Name: ENC_ISR_SetVector
+ 211:Generated_Source\PSoC4/ENC_ISR.c **** ********************************************************************************
+ 212:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 213:Generated_Source\PSoC4/ENC_ISR.c **** * Summary:
+ 214:Generated_Source\PSoC4/ENC_ISR.c **** *   Change the ISR vector for the Interrupt. Note calling ENC_ISR_Start
+ 215:Generated_Source\PSoC4/ENC_ISR.c **** *   will override any effect this method would have had. To set the vector 
+ 216:Generated_Source\PSoC4/ENC_ISR.c **** *   before the component has been started use ENC_ISR_StartEx instead.
+ 217:Generated_Source\PSoC4/ENC_ISR.c **** * 
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 8
+
+
+ 218:Generated_Source\PSoC4/ENC_ISR.c **** *   When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
+ 219:Generated_Source\PSoC4/ENC_ISR.c **** *   used to provide consistent definition across compilers:
+ 220:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 221:Generated_Source\PSoC4/ENC_ISR.c **** *   Function definition example:
+ 222:Generated_Source\PSoC4/ENC_ISR.c **** *   CY_ISR(MyISR)
+ 223:Generated_Source\PSoC4/ENC_ISR.c **** *   {
+ 224:Generated_Source\PSoC4/ENC_ISR.c **** *   }
+ 225:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 226:Generated_Source\PSoC4/ENC_ISR.c **** *   Function prototype example:
+ 227:Generated_Source\PSoC4/ENC_ISR.c **** *     CY_ISR_PROTO(MyISR);
+ 228:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 229:Generated_Source\PSoC4/ENC_ISR.c **** * Parameters:
+ 230:Generated_Source\PSoC4/ENC_ISR.c **** *   address: Address of the ISR to set in the interrupt vector table.
+ 231:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 232:Generated_Source\PSoC4/ENC_ISR.c **** * Return:
+ 233:Generated_Source\PSoC4/ENC_ISR.c **** *   None
+ 234:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 235:Generated_Source\PSoC4/ENC_ISR.c **** *******************************************************************************/
+ 236:Generated_Source\PSoC4/ENC_ISR.c **** void ENC_ISR_SetVector(cyisraddress address)
+ 237:Generated_Source\PSoC4/ENC_ISR.c **** {
+ 175              		.loc 1 237 0
+ 176              		.cfi_startproc
+ 177              		@ args = 0, pretend = 0, frame = 0
+ 178              		@ frame_needed = 0, uses_anonymous_args = 0
+ 179              		@ link register save eliminated.
+ 180              	.LVL17:
+ 238:Generated_Source\PSoC4/ENC_ISR.c ****     CyRamVectors[CYINT_IRQ_BASE + ENC_ISR__INTC_NUMBER] = address;
+ 181              		.loc 1 238 0
+ 182 0000 014B     		ldr	r3, .L16
+ 183 0002 1864     		str	r0, [r3, #64]
+ 239:Generated_Source\PSoC4/ENC_ISR.c **** }
+ 184              		.loc 1 239 0
+ 185              		@ sp needed
+ 186 0004 7047     		bx	lr
+ 187              	.L17:
+ 188 0006 C046     		.align	2
+ 189              	.L16:
+ 190 0008 00000000 		.word	CyRamVectors
+ 191              		.cfi_endproc
+ 192              	.LFE5:
+ 193              		.size	ENC_ISR_SetVector, .-ENC_ISR_SetVector
+ 194              		.section	.text.ENC_ISR_GetVector,"ax",%progbits
+ 195              		.align	2
+ 196              		.global	ENC_ISR_GetVector
+ 197              		.code	16
+ 198              		.thumb_func
+ 199              		.type	ENC_ISR_GetVector, %function
+ 200              	ENC_ISR_GetVector:
+ 201              	.LFB6:
+ 240:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 241:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 242:Generated_Source\PSoC4/ENC_ISR.c **** /*******************************************************************************
+ 243:Generated_Source\PSoC4/ENC_ISR.c **** * Function Name: ENC_ISR_GetVector
+ 244:Generated_Source\PSoC4/ENC_ISR.c **** ********************************************************************************
+ 245:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 246:Generated_Source\PSoC4/ENC_ISR.c **** * Summary:
+ 247:Generated_Source\PSoC4/ENC_ISR.c **** *   Gets the "address" of the current ISR vector for the Interrupt.
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 9
+
+
+ 248:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 249:Generated_Source\PSoC4/ENC_ISR.c **** * Parameters:
+ 250:Generated_Source\PSoC4/ENC_ISR.c **** *   None
+ 251:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 252:Generated_Source\PSoC4/ENC_ISR.c **** * Return:
+ 253:Generated_Source\PSoC4/ENC_ISR.c **** *   Address of the ISR in the interrupt vector table.
+ 254:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 255:Generated_Source\PSoC4/ENC_ISR.c **** *******************************************************************************/
+ 256:Generated_Source\PSoC4/ENC_ISR.c **** cyisraddress ENC_ISR_GetVector(void)
+ 257:Generated_Source\PSoC4/ENC_ISR.c **** {
+ 202              		.loc 1 257 0
+ 203              		.cfi_startproc
+ 204              		@ args = 0, pretend = 0, frame = 0
+ 205              		@ frame_needed = 0, uses_anonymous_args = 0
+ 206              		@ link register save eliminated.
+ 258:Generated_Source\PSoC4/ENC_ISR.c ****     return CyRamVectors[CYINT_IRQ_BASE + ENC_ISR__INTC_NUMBER];
+ 207              		.loc 1 258 0
+ 208 0000 014B     		ldr	r3, .L19
+ 209 0002 186C     		ldr	r0, [r3, #64]
+ 259:Generated_Source\PSoC4/ENC_ISR.c **** }
+ 210              		.loc 1 259 0
+ 211              		@ sp needed
+ 212 0004 7047     		bx	lr
+ 213              	.L20:
+ 214 0006 C046     		.align	2
+ 215              	.L19:
+ 216 0008 00000000 		.word	CyRamVectors
+ 217              		.cfi_endproc
+ 218              	.LFE6:
+ 219              		.size	ENC_ISR_GetVector, .-ENC_ISR_GetVector
+ 220              		.section	.text.ENC_ISR_SetPriority,"ax",%progbits
+ 221              		.align	2
+ 222              		.global	ENC_ISR_SetPriority
+ 223              		.code	16
+ 224              		.thumb_func
+ 225              		.type	ENC_ISR_SetPriority, %function
+ 226              	ENC_ISR_SetPriority:
+ 227              	.LFB7:
+ 260:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 261:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 262:Generated_Source\PSoC4/ENC_ISR.c **** /*******************************************************************************
+ 263:Generated_Source\PSoC4/ENC_ISR.c **** * Function Name: ENC_ISR_SetPriority
+ 264:Generated_Source\PSoC4/ENC_ISR.c **** ********************************************************************************
+ 265:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 266:Generated_Source\PSoC4/ENC_ISR.c **** * Summary:
+ 267:Generated_Source\PSoC4/ENC_ISR.c **** *   Sets the Priority of the Interrupt. 
+ 268:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 269:Generated_Source\PSoC4/ENC_ISR.c **** *   Note calling ENC_ISR_Start or ENC_ISR_StartEx will 
+ 270:Generated_Source\PSoC4/ENC_ISR.c **** *   override any effect this API would have had. This API should only be called
+ 271:Generated_Source\PSoC4/ENC_ISR.c **** *   after ENC_ISR_Start or ENC_ISR_StartEx has been called. 
+ 272:Generated_Source\PSoC4/ENC_ISR.c **** *   To set the initial priority for the component, use the Design-Wide Resources
+ 273:Generated_Source\PSoC4/ENC_ISR.c **** *   Interrupt Editor.
+ 274:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 275:Generated_Source\PSoC4/ENC_ISR.c **** *   Note This API has no effect on Non-maskable interrupt NMI).
+ 276:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 277:Generated_Source\PSoC4/ENC_ISR.c **** * Parameters:
+ 278:Generated_Source\PSoC4/ENC_ISR.c **** *   priority: Priority of the interrupt, 0 being the highest priority
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 10
+
+
+ 279:Generated_Source\PSoC4/ENC_ISR.c **** *             PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
+ 280:Generated_Source\PSoC4/ENC_ISR.c **** *             PSoC 4: Priority is from 0 to 3.
+ 281:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 282:Generated_Source\PSoC4/ENC_ISR.c **** * Return:
+ 283:Generated_Source\PSoC4/ENC_ISR.c **** *   None
+ 284:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 285:Generated_Source\PSoC4/ENC_ISR.c **** *******************************************************************************/
+ 286:Generated_Source\PSoC4/ENC_ISR.c **** void ENC_ISR_SetPriority(uint8 priority)
+ 287:Generated_Source\PSoC4/ENC_ISR.c **** {
+ 228              		.loc 1 287 0
+ 229              		.cfi_startproc
+ 230              		@ args = 0, pretend = 0, frame = 0
+ 231              		@ frame_needed = 0, uses_anonymous_args = 0
+ 232              	.LVL18:
+ 233 0000 10B5     		push	{r4, lr}
+ 234              		.cfi_def_cfa_offset 8
+ 235              		.cfi_offset 4, -8
+ 236              		.cfi_offset 14, -4
+ 237 0002 0400     		movs	r4, r0
+ 238              	.LVL19:
+ 288:Generated_Source\PSoC4/ENC_ISR.c **** 	uint8 interruptState;
+ 289:Generated_Source\PSoC4/ENC_ISR.c ****     uint32 priorityOffset = ((ENC_ISR__INTC_NUMBER % 4u) * 8u) + 6u;
+ 290:Generated_Source\PSoC4/ENC_ISR.c ****     
+ 291:Generated_Source\PSoC4/ENC_ISR.c **** 	interruptState = CyEnterCriticalSection();
+ 239              		.loc 1 291 0
+ 240 0004 FFF7FEFF 		bl	CyEnterCriticalSection
+ 241              	.LVL20:
+ 292:Generated_Source\PSoC4/ENC_ISR.c ****     *ENC_ISR_INTC_PRIOR = (*ENC_ISR_INTC_PRIOR & (uint32)(~(uint32)ENC_ISR__INTC_PRIOR_MASK)) |
+ 242              		.loc 1 292 0
+ 243 0008 044A     		ldr	r2, .L22
+ 244 000a 1368     		ldr	r3, [r2]
+ 245 000c C021     		movs	r1, #192
+ 246 000e 8B43     		bics	r3, r1
+ 293:Generated_Source\PSoC4/ENC_ISR.c ****                                     ((uint32)priority << priorityOffset);
+ 247              		.loc 1 293 0
+ 248 0010 A401     		lsls	r4, r4, #6
+ 292:Generated_Source\PSoC4/ENC_ISR.c ****     *ENC_ISR_INTC_PRIOR = (*ENC_ISR_INTC_PRIOR & (uint32)(~(uint32)ENC_ISR__INTC_PRIOR_MASK)) |
+ 249              		.loc 1 292 0
+ 250 0012 1C43     		orrs	r4, r3
+ 251 0014 1460     		str	r4, [r2]
+ 294:Generated_Source\PSoC4/ENC_ISR.c **** 	CyExitCriticalSection(interruptState);
+ 252              		.loc 1 294 0
+ 253 0016 FFF7FEFF 		bl	CyExitCriticalSection
+ 254              	.LVL21:
+ 295:Generated_Source\PSoC4/ENC_ISR.c **** }
+ 255              		.loc 1 295 0
+ 256              		@ sp needed
+ 257 001a 10BD     		pop	{r4, pc}
+ 258              	.L23:
+ 259              		.align	2
+ 260              	.L22:
+ 261 001c 00E400E0 		.word	-536812544
+ 262              		.cfi_endproc
+ 263              	.LFE7:
+ 264              		.size	ENC_ISR_SetPriority, .-ENC_ISR_SetPriority
+ 265              		.section	.text.ENC_ISR_GetPriority,"ax",%progbits
+ 266              		.align	2
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 11
+
+
+ 267              		.global	ENC_ISR_GetPriority
+ 268              		.code	16
+ 269              		.thumb_func
+ 270              		.type	ENC_ISR_GetPriority, %function
+ 271              	ENC_ISR_GetPriority:
+ 272              	.LFB8:
+ 296:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 297:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 298:Generated_Source\PSoC4/ENC_ISR.c **** /*******************************************************************************
+ 299:Generated_Source\PSoC4/ENC_ISR.c **** * Function Name: ENC_ISR_GetPriority
+ 300:Generated_Source\PSoC4/ENC_ISR.c **** ********************************************************************************
+ 301:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 302:Generated_Source\PSoC4/ENC_ISR.c **** * Summary:
+ 303:Generated_Source\PSoC4/ENC_ISR.c **** *   Gets the Priority of the Interrupt.
+ 304:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 305:Generated_Source\PSoC4/ENC_ISR.c **** * Parameters:
+ 306:Generated_Source\PSoC4/ENC_ISR.c **** *   None
+ 307:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 308:Generated_Source\PSoC4/ENC_ISR.c **** * Return:
+ 309:Generated_Source\PSoC4/ENC_ISR.c **** *   Priority of the interrupt, 0 being the highest priority
+ 310:Generated_Source\PSoC4/ENC_ISR.c **** *    PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
+ 311:Generated_Source\PSoC4/ENC_ISR.c **** *    PSoC 4: Priority is from 0 to 3.
+ 312:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 313:Generated_Source\PSoC4/ENC_ISR.c **** *******************************************************************************/
+ 314:Generated_Source\PSoC4/ENC_ISR.c **** uint8 ENC_ISR_GetPriority(void)
+ 315:Generated_Source\PSoC4/ENC_ISR.c **** {
+ 273              		.loc 1 315 0
+ 274              		.cfi_startproc
+ 275              		@ args = 0, pretend = 0, frame = 0
+ 276              		@ frame_needed = 0, uses_anonymous_args = 0
+ 277              		@ link register save eliminated.
+ 278              	.LVL22:
+ 316:Generated_Source\PSoC4/ENC_ISR.c ****     uint32 priority;
+ 317:Generated_Source\PSoC4/ENC_ISR.c **** 	uint32 priorityOffset = ((ENC_ISR__INTC_NUMBER % 4u) * 8u) + 6u;
+ 318:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 319:Generated_Source\PSoC4/ENC_ISR.c ****     priority = (*ENC_ISR_INTC_PRIOR & ENC_ISR__INTC_PRIOR_MASK) >> priorityOffset;
+ 279              		.loc 1 319 0
+ 280 0000 024B     		ldr	r3, .L25
+ 281 0002 1868     		ldr	r0, [r3]
+ 282 0004 8009     		lsrs	r0, r0, #6
+ 283              	.LVL23:
+ 320:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 321:Generated_Source\PSoC4/ENC_ISR.c ****     return (uint8)priority;
+ 284              		.loc 1 321 0
+ 285 0006 0323     		movs	r3, #3
+ 286 0008 1840     		ands	r0, r3
+ 287              	.LVL24:
+ 322:Generated_Source\PSoC4/ENC_ISR.c **** }
+ 288              		.loc 1 322 0
+ 289              		@ sp needed
+ 290 000a 7047     		bx	lr
+ 291              	.L26:
+ 292              		.align	2
+ 293              	.L25:
+ 294 000c 00E400E0 		.word	-536812544
+ 295              		.cfi_endproc
+ 296              	.LFE8:
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 12
+
+
+ 297              		.size	ENC_ISR_GetPriority, .-ENC_ISR_GetPriority
+ 298              		.section	.text.ENC_ISR_Enable,"ax",%progbits
+ 299              		.align	2
+ 300              		.global	ENC_ISR_Enable
+ 301              		.code	16
+ 302              		.thumb_func
+ 303              		.type	ENC_ISR_Enable, %function
+ 304              	ENC_ISR_Enable:
+ 305              	.LFB9:
+ 323:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 324:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 325:Generated_Source\PSoC4/ENC_ISR.c **** /*******************************************************************************
+ 326:Generated_Source\PSoC4/ENC_ISR.c **** * Function Name: ENC_ISR_Enable
+ 327:Generated_Source\PSoC4/ENC_ISR.c **** ********************************************************************************
+ 328:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 329:Generated_Source\PSoC4/ENC_ISR.c **** * Summary:
+ 330:Generated_Source\PSoC4/ENC_ISR.c **** *   Enables the interrupt to the interrupt controller. Do not call this function
+ 331:Generated_Source\PSoC4/ENC_ISR.c **** *   unless ISR_Start() has been called or the functionality of the ISR_Start() 
+ 332:Generated_Source\PSoC4/ENC_ISR.c **** *   function, which sets the vector and the priority, has been called.
+ 333:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 334:Generated_Source\PSoC4/ENC_ISR.c **** * Parameters:
+ 335:Generated_Source\PSoC4/ENC_ISR.c **** *   None
+ 336:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 337:Generated_Source\PSoC4/ENC_ISR.c **** * Return:
+ 338:Generated_Source\PSoC4/ENC_ISR.c **** *   None
+ 339:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 340:Generated_Source\PSoC4/ENC_ISR.c **** *******************************************************************************/
+ 341:Generated_Source\PSoC4/ENC_ISR.c **** void ENC_ISR_Enable(void)
+ 342:Generated_Source\PSoC4/ENC_ISR.c **** {
+ 306              		.loc 1 342 0
+ 307              		.cfi_startproc
+ 308              		@ args = 0, pretend = 0, frame = 0
+ 309              		@ frame_needed = 0, uses_anonymous_args = 0
+ 310              		@ link register save eliminated.
+ 343:Generated_Source\PSoC4/ENC_ISR.c ****     /* Enable the general interrupt. */
+ 344:Generated_Source\PSoC4/ENC_ISR.c ****     *ENC_ISR_INTC_SET_EN = ENC_ISR__INTC_MASK;
+ 311              		.loc 1 344 0
+ 312 0000 0122     		movs	r2, #1
+ 313 0002 014B     		ldr	r3, .L28
+ 314 0004 1A60     		str	r2, [r3]
+ 345:Generated_Source\PSoC4/ENC_ISR.c **** }
+ 315              		.loc 1 345 0
+ 316              		@ sp needed
+ 317 0006 7047     		bx	lr
+ 318              	.L29:
+ 319              		.align	2
+ 320              	.L28:
+ 321 0008 00E100E0 		.word	-536813312
+ 322              		.cfi_endproc
+ 323              	.LFE9:
+ 324              		.size	ENC_ISR_Enable, .-ENC_ISR_Enable
+ 325              		.section	.text.ENC_ISR_GetState,"ax",%progbits
+ 326              		.align	2
+ 327              		.global	ENC_ISR_GetState
+ 328              		.code	16
+ 329              		.thumb_func
+ 330              		.type	ENC_ISR_GetState, %function
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 13
+
+
+ 331              	ENC_ISR_GetState:
+ 332              	.LFB10:
+ 346:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 347:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 348:Generated_Source\PSoC4/ENC_ISR.c **** /*******************************************************************************
+ 349:Generated_Source\PSoC4/ENC_ISR.c **** * Function Name: ENC_ISR_GetState
+ 350:Generated_Source\PSoC4/ENC_ISR.c **** ********************************************************************************
+ 351:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 352:Generated_Source\PSoC4/ENC_ISR.c **** * Summary:
+ 353:Generated_Source\PSoC4/ENC_ISR.c **** *   Gets the state (enabled, disabled) of the Interrupt.
+ 354:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 355:Generated_Source\PSoC4/ENC_ISR.c **** * Parameters:
+ 356:Generated_Source\PSoC4/ENC_ISR.c **** *   None
+ 357:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 358:Generated_Source\PSoC4/ENC_ISR.c **** * Return:
+ 359:Generated_Source\PSoC4/ENC_ISR.c **** *   1 if enabled, 0 if disabled.
+ 360:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 361:Generated_Source\PSoC4/ENC_ISR.c **** *******************************************************************************/
+ 362:Generated_Source\PSoC4/ENC_ISR.c **** uint8 ENC_ISR_GetState(void)
+ 363:Generated_Source\PSoC4/ENC_ISR.c **** {
+ 333              		.loc 1 363 0
+ 334              		.cfi_startproc
+ 335              		@ args = 0, pretend = 0, frame = 0
+ 336              		@ frame_needed = 0, uses_anonymous_args = 0
+ 337              		@ link register save eliminated.
+ 364:Generated_Source\PSoC4/ENC_ISR.c ****     /* Get the state of the general interrupt. */
+ 365:Generated_Source\PSoC4/ENC_ISR.c ****     return ((*ENC_ISR_INTC_SET_EN & (uint32)ENC_ISR__INTC_MASK) != 0u) ? 1u:0u;
+ 338              		.loc 1 365 0
+ 339 0000 024B     		ldr	r3, .L31
+ 340 0002 1B68     		ldr	r3, [r3]
+ 341 0004 0120     		movs	r0, #1
+ 342 0006 1840     		ands	r0, r3
+ 366:Generated_Source\PSoC4/ENC_ISR.c **** }
+ 343              		.loc 1 366 0
+ 344              		@ sp needed
+ 345 0008 7047     		bx	lr
+ 346              	.L32:
+ 347 000a C046     		.align	2
+ 348              	.L31:
+ 349 000c 00E100E0 		.word	-536813312
+ 350              		.cfi_endproc
+ 351              	.LFE10:
+ 352              		.size	ENC_ISR_GetState, .-ENC_ISR_GetState
+ 353              		.section	.text.ENC_ISR_Disable,"ax",%progbits
+ 354              		.align	2
+ 355              		.global	ENC_ISR_Disable
+ 356              		.code	16
+ 357              		.thumb_func
+ 358              		.type	ENC_ISR_Disable, %function
+ 359              	ENC_ISR_Disable:
+ 360              	.LFB11:
+ 367:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 368:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 369:Generated_Source\PSoC4/ENC_ISR.c **** /*******************************************************************************
+ 370:Generated_Source\PSoC4/ENC_ISR.c **** * Function Name: ENC_ISR_Disable
+ 371:Generated_Source\PSoC4/ENC_ISR.c **** ********************************************************************************
+ 372:Generated_Source\PSoC4/ENC_ISR.c **** *
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 14
+
+
+ 373:Generated_Source\PSoC4/ENC_ISR.c **** * Summary:
+ 374:Generated_Source\PSoC4/ENC_ISR.c **** *   Disables the Interrupt in the interrupt controller.
+ 375:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 376:Generated_Source\PSoC4/ENC_ISR.c **** * Parameters:
+ 377:Generated_Source\PSoC4/ENC_ISR.c **** *   None
+ 378:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 379:Generated_Source\PSoC4/ENC_ISR.c **** * Return:
+ 380:Generated_Source\PSoC4/ENC_ISR.c **** *   None
+ 381:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 382:Generated_Source\PSoC4/ENC_ISR.c **** *******************************************************************************/
+ 383:Generated_Source\PSoC4/ENC_ISR.c **** void ENC_ISR_Disable(void)
+ 384:Generated_Source\PSoC4/ENC_ISR.c **** {
+ 361              		.loc 1 384 0
+ 362              		.cfi_startproc
+ 363              		@ args = 0, pretend = 0, frame = 0
+ 364              		@ frame_needed = 0, uses_anonymous_args = 0
+ 365              		@ link register save eliminated.
+ 385:Generated_Source\PSoC4/ENC_ISR.c ****     /* Disable the general interrupt. */
+ 386:Generated_Source\PSoC4/ENC_ISR.c ****     *ENC_ISR_INTC_CLR_EN = ENC_ISR__INTC_MASK;
+ 366              		.loc 1 386 0
+ 367 0000 0122     		movs	r2, #1
+ 368 0002 014B     		ldr	r3, .L34
+ 369 0004 1A60     		str	r2, [r3]
+ 387:Generated_Source\PSoC4/ENC_ISR.c **** }
+ 370              		.loc 1 387 0
+ 371              		@ sp needed
+ 372 0006 7047     		bx	lr
+ 373              	.L35:
+ 374              		.align	2
+ 375              	.L34:
+ 376 0008 80E100E0 		.word	-536813184
+ 377              		.cfi_endproc
+ 378              	.LFE11:
+ 379              		.size	ENC_ISR_Disable, .-ENC_ISR_Disable
+ 380              		.section	.text.ENC_ISR_Start,"ax",%progbits
+ 381              		.align	2
+ 382              		.global	ENC_ISR_Start
+ 383              		.code	16
+ 384              		.thumb_func
+ 385              		.type	ENC_ISR_Start, %function
+ 386              	ENC_ISR_Start:
+ 387              	.LFB1:
+  59:Generated_Source\PSoC4/ENC_ISR.c ****     /* For all we know the interrupt is active. */
+ 388              		.loc 1 59 0
+ 389              		.cfi_startproc
+ 390              		@ args = 0, pretend = 0, frame = 0
+ 391              		@ frame_needed = 0, uses_anonymous_args = 0
+ 392 0000 10B5     		push	{r4, lr}
+ 393              		.cfi_def_cfa_offset 8
+ 394              		.cfi_offset 4, -8
+ 395              		.cfi_offset 14, -4
+  61:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 396              		.loc 1 61 0
+ 397 0002 FFF7FEFF 		bl	ENC_ISR_Disable
+ 398              	.LVL25:
+  64:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 399              		.loc 1 64 0
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 15
+
+
+ 400 0006 0448     		ldr	r0, .L37
+ 401 0008 FFF7FEFF 		bl	ENC_ISR_SetVector
+ 402              	.LVL26:
+  67:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 403              		.loc 1 67 0
+ 404 000c 0320     		movs	r0, #3
+ 405 000e FFF7FEFF 		bl	ENC_ISR_SetPriority
+ 406              	.LVL27:
+  70:Generated_Source\PSoC4/ENC_ISR.c **** }
+ 407              		.loc 1 70 0
+ 408 0012 FFF7FEFF 		bl	ENC_ISR_Enable
+ 409              	.LVL28:
+  71:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 410              		.loc 1 71 0
+ 411              		@ sp needed
+ 412 0016 10BD     		pop	{r4, pc}
+ 413              	.L38:
+ 414              		.align	2
+ 415              	.L37:
+ 416 0018 00000000 		.word	ENC_ISR_Interrupt
+ 417              		.cfi_endproc
+ 418              	.LFE1:
+ 419              		.size	ENC_ISR_Start, .-ENC_ISR_Start
+ 420              		.section	.text.ENC_ISR_StartEx,"ax",%progbits
+ 421              		.align	2
+ 422              		.global	ENC_ISR_StartEx
+ 423              		.code	16
+ 424              		.thumb_func
+ 425              		.type	ENC_ISR_StartEx, %function
+ 426              	ENC_ISR_StartEx:
+ 427              	.LFB2:
+ 102:Generated_Source\PSoC4/ENC_ISR.c ****     /* For all we know the interrupt is active. */
+ 428              		.loc 1 102 0
+ 429              		.cfi_startproc
+ 430              		@ args = 0, pretend = 0, frame = 0
+ 431              		@ frame_needed = 0, uses_anonymous_args = 0
+ 432              	.LVL29:
+ 433 0000 10B5     		push	{r4, lr}
+ 434              		.cfi_def_cfa_offset 8
+ 435              		.cfi_offset 4, -8
+ 436              		.cfi_offset 14, -4
+ 437 0002 0400     		movs	r4, r0
+ 104:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 438              		.loc 1 104 0
+ 439 0004 FFF7FEFF 		bl	ENC_ISR_Disable
+ 440              	.LVL30:
+ 107:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 441              		.loc 1 107 0
+ 442 0008 2000     		movs	r0, r4
+ 443 000a FFF7FEFF 		bl	ENC_ISR_SetVector
+ 444              	.LVL31:
+ 110:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 445              		.loc 1 110 0
+ 446 000e 0320     		movs	r0, #3
+ 447 0010 FFF7FEFF 		bl	ENC_ISR_SetPriority
+ 448              	.LVL32:
+ 113:Generated_Source\PSoC4/ENC_ISR.c **** }
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 16
+
+
+ 449              		.loc 1 113 0
+ 450 0014 FFF7FEFF 		bl	ENC_ISR_Enable
+ 451              	.LVL33:
+ 114:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 452              		.loc 1 114 0
+ 453              		@ sp needed
+ 454              	.LVL34:
+ 455 0018 10BD     		pop	{r4, pc}
+ 456              		.cfi_endproc
+ 457              	.LFE2:
+ 458              		.size	ENC_ISR_StartEx, .-ENC_ISR_StartEx
+ 459 001a C046     		.section	.text.ENC_ISR_Stop,"ax",%progbits
+ 460              		.align	2
+ 461              		.global	ENC_ISR_Stop
+ 462              		.code	16
+ 463              		.thumb_func
+ 464              		.type	ENC_ISR_Stop, %function
+ 465              	ENC_ISR_Stop:
+ 466              	.LFB3:
+ 132:Generated_Source\PSoC4/ENC_ISR.c ****     /* Disable this interrupt. */
+ 467              		.loc 1 132 0
+ 468              		.cfi_startproc
+ 469              		@ args = 0, pretend = 0, frame = 0
+ 470              		@ frame_needed = 0, uses_anonymous_args = 0
+ 471 0000 10B5     		push	{r4, lr}
+ 472              		.cfi_def_cfa_offset 8
+ 473              		.cfi_offset 4, -8
+ 474              		.cfi_offset 14, -4
+ 134:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 475              		.loc 1 134 0
+ 476 0002 FFF7FEFF 		bl	ENC_ISR_Disable
+ 477              	.LVL35:
+ 137:Generated_Source\PSoC4/ENC_ISR.c **** }
+ 478              		.loc 1 137 0
+ 479 0006 0248     		ldr	r0, .L41
+ 480 0008 FFF7FEFF 		bl	ENC_ISR_SetVector
+ 481              	.LVL36:
+ 138:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 482              		.loc 1 138 0
+ 483              		@ sp needed
+ 484 000c 10BD     		pop	{r4, pc}
+ 485              	.L42:
+ 486 000e C046     		.align	2
+ 487              	.L41:
+ 488 0010 00000000 		.word	IntDefaultHandler
+ 489              		.cfi_endproc
+ 490              	.LFE3:
+ 491              		.size	ENC_ISR_Stop, .-ENC_ISR_Stop
+ 492              		.section	.text.ENC_ISR_SetPending,"ax",%progbits
+ 493              		.align	2
+ 494              		.global	ENC_ISR_SetPending
+ 495              		.code	16
+ 496              		.thumb_func
+ 497              		.type	ENC_ISR_SetPending, %function
+ 498              	ENC_ISR_SetPending:
+ 499              	.LFB12:
+ 388:Generated_Source\PSoC4/ENC_ISR.c **** 
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 17
+
+
+ 389:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 390:Generated_Source\PSoC4/ENC_ISR.c **** /*******************************************************************************
+ 391:Generated_Source\PSoC4/ENC_ISR.c **** * Function Name: ENC_ISR_SetPending
+ 392:Generated_Source\PSoC4/ENC_ISR.c **** ********************************************************************************
+ 393:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 394:Generated_Source\PSoC4/ENC_ISR.c **** * Summary:
+ 395:Generated_Source\PSoC4/ENC_ISR.c **** *   Causes the Interrupt to enter the pending state, a software method of
+ 396:Generated_Source\PSoC4/ENC_ISR.c **** *   generating the interrupt.
+ 397:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 398:Generated_Source\PSoC4/ENC_ISR.c **** * Parameters:
+ 399:Generated_Source\PSoC4/ENC_ISR.c **** *   None
+ 400:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 401:Generated_Source\PSoC4/ENC_ISR.c **** * Return:
+ 402:Generated_Source\PSoC4/ENC_ISR.c **** *   None
+ 403:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 404:Generated_Source\PSoC4/ENC_ISR.c **** * Side Effects:
+ 405:Generated_Source\PSoC4/ENC_ISR.c **** *   If interrupts are enabled and the interrupt is set up properly, the ISR is
+ 406:Generated_Source\PSoC4/ENC_ISR.c **** *   entered (depending on the priority of this interrupt and other pending 
+ 407:Generated_Source\PSoC4/ENC_ISR.c **** *   interrupts).
+ 408:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 409:Generated_Source\PSoC4/ENC_ISR.c **** *******************************************************************************/
+ 410:Generated_Source\PSoC4/ENC_ISR.c **** void ENC_ISR_SetPending(void)
+ 411:Generated_Source\PSoC4/ENC_ISR.c **** {
+ 500              		.loc 1 411 0
+ 501              		.cfi_startproc
+ 502              		@ args = 0, pretend = 0, frame = 0
+ 503              		@ frame_needed = 0, uses_anonymous_args = 0
+ 504              		@ link register save eliminated.
+ 412:Generated_Source\PSoC4/ENC_ISR.c ****     *ENC_ISR_INTC_SET_PD = ENC_ISR__INTC_MASK;
+ 505              		.loc 1 412 0
+ 506 0000 0122     		movs	r2, #1
+ 507 0002 014B     		ldr	r3, .L44
+ 508 0004 1A60     		str	r2, [r3]
+ 413:Generated_Source\PSoC4/ENC_ISR.c **** }
+ 509              		.loc 1 413 0
+ 510              		@ sp needed
+ 511 0006 7047     		bx	lr
+ 512              	.L45:
+ 513              		.align	2
+ 514              	.L44:
+ 515 0008 00E200E0 		.word	-536813056
+ 516              		.cfi_endproc
+ 517              	.LFE12:
+ 518              		.size	ENC_ISR_SetPending, .-ENC_ISR_SetPending
+ 519              		.section	.text.ENC_ISR_ClearPending,"ax",%progbits
+ 520              		.align	2
+ 521              		.global	ENC_ISR_ClearPending
+ 522              		.code	16
+ 523              		.thumb_func
+ 524              		.type	ENC_ISR_ClearPending, %function
+ 525              	ENC_ISR_ClearPending:
+ 526              	.LFB13:
+ 414:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 415:Generated_Source\PSoC4/ENC_ISR.c **** 
+ 416:Generated_Source\PSoC4/ENC_ISR.c **** /*******************************************************************************
+ 417:Generated_Source\PSoC4/ENC_ISR.c **** * Function Name: ENC_ISR_ClearPending
+ 418:Generated_Source\PSoC4/ENC_ISR.c **** ********************************************************************************
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 18
+
+
+ 419:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 420:Generated_Source\PSoC4/ENC_ISR.c **** * Summary:
+ 421:Generated_Source\PSoC4/ENC_ISR.c **** *   Clears a pending interrupt in the interrupt controller.
+ 422:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 423:Generated_Source\PSoC4/ENC_ISR.c **** *   Note Some interrupt sources are clear-on-read and require the block 
+ 424:Generated_Source\PSoC4/ENC_ISR.c **** *   interrupt/status register to be read/cleared with the appropriate block API 
+ 425:Generated_Source\PSoC4/ENC_ISR.c **** *   (GPIO, UART, and so on). Otherwise the ISR will continue to remain in 
+ 426:Generated_Source\PSoC4/ENC_ISR.c **** *   pending state even though the interrupt itself is cleared using this API.
+ 427:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 428:Generated_Source\PSoC4/ENC_ISR.c **** * Parameters:
+ 429:Generated_Source\PSoC4/ENC_ISR.c **** *   None
+ 430:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 431:Generated_Source\PSoC4/ENC_ISR.c **** * Return:
+ 432:Generated_Source\PSoC4/ENC_ISR.c **** *   None
+ 433:Generated_Source\PSoC4/ENC_ISR.c **** *
+ 434:Generated_Source\PSoC4/ENC_ISR.c **** *******************************************************************************/
+ 435:Generated_Source\PSoC4/ENC_ISR.c **** void ENC_ISR_ClearPending(void)
+ 436:Generated_Source\PSoC4/ENC_ISR.c **** {
+ 527              		.loc 1 436 0
+ 528              		.cfi_startproc
+ 529              		@ args = 0, pretend = 0, frame = 0
+ 530              		@ frame_needed = 0, uses_anonymous_args = 0
+ 531              		@ link register save eliminated.
+ 437:Generated_Source\PSoC4/ENC_ISR.c ****     *ENC_ISR_INTC_CLR_PD = ENC_ISR__INTC_MASK;
+ 532              		.loc 1 437 0
+ 533 0000 0122     		movs	r2, #1
+ 534 0002 014B     		ldr	r3, .L47
+ 535 0004 1A60     		str	r2, [r3]
+ 438:Generated_Source\PSoC4/ENC_ISR.c **** }
+ 536              		.loc 1 438 0
+ 537              		@ sp needed
+ 538 0006 7047     		bx	lr
+ 539              	.L48:
+ 540              		.align	2
+ 541              	.L47:
+ 542 0008 80E200E0 		.word	-536812928
+ 543              		.cfi_endproc
+ 544              	.LFE13:
+ 545              		.size	ENC_ISR_ClearPending, .-ENC_ISR_ClearPending
+ 546              		.text
+ 547              	.Letext0:
+ 548              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 549              		.file 3 "Generated_Source\\PSoC4\\ENC.h"
+ 550              		.file 4 "Generated_Source\\PSoC4/CyLib.h"
+ 551              		.section	.debug_info,"",%progbits
+ 552              	.Ldebug_info0:
+ 553 0000 AE030000 		.4byte	0x3ae
+ 554 0004 0400     		.2byte	0x4
+ 555 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 556 000a 04       		.byte	0x4
+ 557 000b 01       		.uleb128 0x1
+ 558 000c CC010000 		.4byte	.LASF42
+ 559 0010 0C       		.byte	0xc
+ 560 0011 7F020000 		.4byte	.LASF43
+ 561 0015 A0020000 		.4byte	.LASF44
+ 562 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 563 001d 00000000 		.4byte	0
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 19
+
+
+ 564 0021 00000000 		.4byte	.Ldebug_line0
+ 565 0025 02       		.uleb128 0x2
+ 566 0026 01       		.byte	0x1
+ 567 0027 06       		.byte	0x6
+ 568 0028 6E030000 		.4byte	.LASF0
+ 569 002c 02       		.uleb128 0x2
+ 570 002d 01       		.byte	0x1
+ 571 002e 08       		.byte	0x8
+ 572 002f 8A000000 		.4byte	.LASF1
+ 573 0033 02       		.uleb128 0x2
+ 574 0034 02       		.byte	0x2
+ 575 0035 05       		.byte	0x5
+ 576 0036 1E010000 		.4byte	.LASF2
+ 577 003a 02       		.uleb128 0x2
+ 578 003b 02       		.byte	0x2
+ 579 003c 07       		.byte	0x7
+ 580 003d 4A000000 		.4byte	.LASF3
+ 581 0041 02       		.uleb128 0x2
+ 582 0042 04       		.byte	0x4
+ 583 0043 05       		.byte	0x5
+ 584 0044 59030000 		.4byte	.LASF4
+ 585 0048 02       		.uleb128 0x2
+ 586 0049 04       		.byte	0x4
+ 587 004a 07       		.byte	0x7
+ 588 004b A7000000 		.4byte	.LASF5
+ 589 004f 02       		.uleb128 0x2
+ 590 0050 08       		.byte	0x8
+ 591 0051 05       		.byte	0x5
+ 592 0052 63020000 		.4byte	.LASF6
+ 593 0056 02       		.uleb128 0x2
+ 594 0057 08       		.byte	0x8
+ 595 0058 07       		.byte	0x7
+ 596 0059 73000000 		.4byte	.LASF7
+ 597 005d 03       		.uleb128 0x3
+ 598 005e 04       		.byte	0x4
+ 599 005f 05       		.byte	0x5
+ 600 0060 696E7400 		.ascii	"int\000"
+ 601 0064 02       		.uleb128 0x2
+ 602 0065 04       		.byte	0x4
+ 603 0066 07       		.byte	0x7
+ 604 0067 62010000 		.4byte	.LASF8
+ 605 006b 04       		.uleb128 0x4
+ 606 006c B9000000 		.4byte	.LASF9
+ 607 0070 02       		.byte	0x2
+ 608 0071 E701     		.2byte	0x1e7
+ 609 0073 2C000000 		.4byte	0x2c
+ 610 0077 04       		.uleb128 0x4
+ 611 0078 44010000 		.4byte	.LASF10
+ 612 007c 02       		.byte	0x2
+ 613 007d E901     		.2byte	0x1e9
+ 614 007f 48000000 		.4byte	0x48
+ 615 0083 02       		.uleb128 0x2
+ 616 0084 04       		.byte	0x4
+ 617 0085 04       		.byte	0x4
+ 618 0086 6D000000 		.4byte	.LASF11
+ 619 008a 02       		.uleb128 0x2
+ 620 008b 08       		.byte	0x8
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 20
+
+
+ 621 008c 04       		.byte	0x4
+ 622 008d F6000000 		.4byte	.LASF12
+ 623 0091 02       		.uleb128 0x2
+ 624 0092 01       		.byte	0x1
+ 625 0093 08       		.byte	0x8
+ 626 0094 7A020000 		.4byte	.LASF13
+ 627 0098 04       		.uleb128 0x4
+ 628 0099 12000000 		.4byte	.LASF14
+ 629 009d 02       		.byte	0x2
+ 630 009e 9302     		.2byte	0x293
+ 631 00a0 A4000000 		.4byte	0xa4
+ 632 00a4 05       		.uleb128 0x5
+ 633 00a5 77000000 		.4byte	0x77
+ 634 00a9 04       		.uleb128 0x4
+ 635 00aa BF010000 		.4byte	.LASF15
+ 636 00ae 02       		.byte	0x2
+ 637 00af A302     		.2byte	0x2a3
+ 638 00b1 B5000000 		.4byte	0xb5
+ 639 00b5 06       		.uleb128 0x6
+ 640 00b6 04       		.byte	0x4
+ 641 00b7 BB000000 		.4byte	0xbb
+ 642 00bb 07       		.uleb128 0x7
+ 643 00bc 02       		.uleb128 0x2
+ 644 00bd 08       		.byte	0x8
+ 645 00be 04       		.byte	0x4
+ 646 00bf 62030000 		.4byte	.LASF16
+ 647 00c3 02       		.uleb128 0x2
+ 648 00c4 04       		.byte	0x4
+ 649 00c5 07       		.byte	0x7
+ 650 00c6 5A020000 		.4byte	.LASF17
+ 651 00ca 08       		.uleb128 0x8
+ 652 00cb BF000000 		.4byte	.LASF19
+ 653 00cf 01       		.byte	0x1
+ 654 00d0 A1       		.byte	0xa1
+ 655 00d1 00000000 		.4byte	.LFB4
+ 656 00d5 9C000000 		.4byte	.LFE4-.LFB4
+ 657 00d9 01       		.uleb128 0x1
+ 658 00da 9C       		.byte	0x9c
+ 659 00db 52010000 		.4byte	0x152
+ 660 00df 09       		.uleb128 0x9
+ 661 00e0 6100     		.ascii	"a\000"
+ 662 00e2 01       		.byte	0x1
+ 663 00e3 AA       		.byte	0xaa
+ 664 00e4 52010000 		.4byte	0x152
+ 665 00e8 02       		.uleb128 0x2
+ 666 00e9 91       		.byte	0x91
+ 667 00ea 74       		.sleb128 -12
+ 668 00eb 0A       		.uleb128 0xa
+ 669 00ec 44000000 		.4byte	.LASF18
+ 670 00f0 01       		.byte	0x1
+ 671 00f1 AB       		.byte	0xab
+ 672 00f2 5D000000 		.4byte	0x5d
+ 673 00f6 00000000 		.4byte	.LLST0
+ 674 00fa 09       		.uleb128 0x9
+ 675 00fb 6200     		.ascii	"b\000"
+ 676 00fd 01       		.byte	0x1
+ 677 00fe B1       		.byte	0xb1
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 21
+
+
+ 678 00ff 52010000 		.4byte	0x152
+ 679 0103 02       		.uleb128 0x2
+ 680 0104 91       		.byte	0x91
+ 681 0105 70       		.sleb128 -16
+ 682 0106 09       		.uleb128 0x9
+ 683 0107 6300     		.ascii	"c\000"
+ 684 0109 01       		.byte	0x1
+ 685 010a B7       		.byte	0xb7
+ 686 010b 52010000 		.4byte	0x152
+ 687 010f 02       		.uleb128 0x2
+ 688 0110 91       		.byte	0x91
+ 689 0111 6C       		.sleb128 -20
+ 690 0112 0B       		.uleb128 0xb
+ 691 0113 08000000 		.4byte	.LVL0
+ 692 0117 85030000 		.4byte	0x385
+ 693 011b 0B       		.uleb128 0xb
+ 694 011c 14000000 		.4byte	.LVL4
+ 695 0120 85030000 		.4byte	0x385
+ 696 0124 0B       		.uleb128 0xb
+ 697 0125 24000000 		.4byte	.LVL6
+ 698 0129 85030000 		.4byte	0x385
+ 699 012d 0B       		.uleb128 0xb
+ 700 012e 30000000 		.4byte	.LVL9
+ 701 0132 85030000 		.4byte	0x385
+ 702 0136 0B       		.uleb128 0xb
+ 703 0137 40000000 		.4byte	.LVL11
+ 704 013b 85030000 		.4byte	0x385
+ 705 013f 0B       		.uleb128 0xb
+ 706 0140 4C000000 		.4byte	.LVL14
+ 707 0144 85030000 		.4byte	0x385
+ 708 0148 0B       		.uleb128 0xb
+ 709 0149 8C000000 		.4byte	.LVL16
+ 710 014d 90030000 		.4byte	0x390
+ 711 0151 00       		.byte	0
+ 712 0152 05       		.uleb128 0x5
+ 713 0153 5D000000 		.4byte	0x5d
+ 714 0157 08       		.uleb128 0x8
+ 715 0158 00000000 		.4byte	.LASF20
+ 716 015c 01       		.byte	0x1
+ 717 015d EC       		.byte	0xec
+ 718 015e 00000000 		.4byte	.LFB5
+ 719 0162 0C000000 		.4byte	.LFE5-.LFB5
+ 720 0166 01       		.uleb128 0x1
+ 721 0167 9C       		.byte	0x9c
+ 722 0168 7A010000 		.4byte	0x17a
+ 723 016c 0C       		.uleb128 0xc
+ 724 016d 80010000 		.4byte	.LASF22
+ 725 0171 01       		.byte	0x1
+ 726 0172 EC       		.byte	0xec
+ 727 0173 A9000000 		.4byte	0xa9
+ 728 0177 01       		.uleb128 0x1
+ 729 0178 50       		.byte	0x50
+ 730 0179 00       		.byte	0
+ 731 017a 0D       		.uleb128 0xd
+ 732 017b 38030000 		.4byte	.LASF26
+ 733 017f 01       		.byte	0x1
+ 734 0180 0001     		.2byte	0x100
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 22
+
+
+ 735 0182 A9000000 		.4byte	0xa9
+ 736 0186 00000000 		.4byte	.LFB6
+ 737 018a 0C000000 		.4byte	.LFE6-.LFB6
+ 738 018e 01       		.uleb128 0x1
+ 739 018f 9C       		.byte	0x9c
+ 740 0190 0E       		.uleb128 0xe
+ 741 0191 9E010000 		.4byte	.LASF21
+ 742 0195 01       		.byte	0x1
+ 743 0196 1E01     		.2byte	0x11e
+ 744 0198 00000000 		.4byte	.LFB7
+ 745 019c 20000000 		.4byte	.LFE7-.LFB7
+ 746 01a0 01       		.uleb128 0x1
+ 747 01a1 9C       		.byte	0x9c
+ 748 01a2 E6010000 		.4byte	0x1e6
+ 749 01a6 0F       		.uleb128 0xf
+ 750 01a7 28010000 		.4byte	.LASF23
+ 751 01ab 01       		.byte	0x1
+ 752 01ac 1E01     		.2byte	0x11e
+ 753 01ae 6B000000 		.4byte	0x6b
+ 754 01b2 59000000 		.4byte	.LLST1
+ 755 01b6 10       		.uleb128 0x10
+ 756 01b7 98000000 		.4byte	.LASF24
+ 757 01bb 01       		.byte	0x1
+ 758 01bc 2001     		.2byte	0x120
+ 759 01be 6B000000 		.4byte	0x6b
+ 760 01c2 7A000000 		.4byte	.LLST2
+ 761 01c6 11       		.uleb128 0x11
+ 762 01c7 4A030000 		.4byte	.LASF25
+ 763 01cb 01       		.byte	0x1
+ 764 01cc 2101     		.2byte	0x121
+ 765 01ce 77000000 		.4byte	0x77
+ 766 01d2 06       		.byte	0x6
+ 767 01d3 0B       		.uleb128 0xb
+ 768 01d4 08000000 		.4byte	.LVL20
+ 769 01d8 9B030000 		.4byte	0x39b
+ 770 01dc 0B       		.uleb128 0xb
+ 771 01dd 1A000000 		.4byte	.LVL21
+ 772 01e1 A6030000 		.4byte	0x3a6
+ 773 01e5 00       		.byte	0
+ 774 01e6 12       		.uleb128 0x12
+ 775 01e7 24030000 		.4byte	.LASF45
+ 776 01eb 01       		.byte	0x1
+ 777 01ec 3A01     		.2byte	0x13a
+ 778 01ee 6B000000 		.4byte	0x6b
+ 779 01f2 00000000 		.4byte	.LFB8
+ 780 01f6 10000000 		.4byte	.LFE8-.LFB8
+ 781 01fa 01       		.uleb128 0x1
+ 782 01fb 9C       		.byte	0x9c
+ 783 01fc 1E020000 		.4byte	0x21e
+ 784 0200 10       		.uleb128 0x10
+ 785 0201 28010000 		.4byte	.LASF23
+ 786 0205 01       		.byte	0x1
+ 787 0206 3C01     		.2byte	0x13c
+ 788 0208 77000000 		.4byte	0x77
+ 789 020c 8D000000 		.4byte	.LLST3
+ 790 0210 11       		.uleb128 0x11
+ 791 0211 4A030000 		.4byte	.LASF25
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 23
+
+
+ 792 0215 01       		.byte	0x1
+ 793 0216 3D01     		.2byte	0x13d
+ 794 0218 77000000 		.4byte	0x77
+ 795 021c 06       		.byte	0x6
+ 796 021d 00       		.byte	0
+ 797 021e 13       		.uleb128 0x13
+ 798 021f 18000000 		.4byte	.LASF28
+ 799 0223 01       		.byte	0x1
+ 800 0224 5501     		.2byte	0x155
+ 801 0226 00000000 		.4byte	.LFB9
+ 802 022a 0C000000 		.4byte	.LFE9-.LFB9
+ 803 022e 01       		.uleb128 0x1
+ 804 022f 9C       		.byte	0x9c
+ 805 0230 0D       		.uleb128 0xd
+ 806 0231 6F010000 		.4byte	.LASF27
+ 807 0235 01       		.byte	0x1
+ 808 0236 6A01     		.2byte	0x16a
+ 809 0238 6B000000 		.4byte	0x6b
+ 810 023c 00000000 		.4byte	.LFB10
+ 811 0240 10000000 		.4byte	.LFE10-.LFB10
+ 812 0244 01       		.uleb128 0x1
+ 813 0245 9C       		.byte	0x9c
+ 814 0246 13       		.uleb128 0x13
+ 815 0247 E6000000 		.4byte	.LASF29
+ 816 024b 01       		.byte	0x1
+ 817 024c 7F01     		.2byte	0x17f
+ 818 024e 00000000 		.4byte	.LFB11
+ 819 0252 0C000000 		.4byte	.LFE11-.LFB11
+ 820 0256 01       		.uleb128 0x1
+ 821 0257 9C       		.byte	0x9c
+ 822 0258 08       		.uleb128 0x8
+ 823 0259 FD000000 		.4byte	.LASF30
+ 824 025d 01       		.byte	0x1
+ 825 025e 3A       		.byte	0x3a
+ 826 025f 00000000 		.4byte	.LFB1
+ 827 0263 1C000000 		.4byte	.LFE1-.LFB1
+ 828 0267 01       		.uleb128 0x1
+ 829 0268 9C       		.byte	0x9c
+ 830 0269 AA020000 		.4byte	0x2aa
+ 831 026d 0B       		.uleb128 0xb
+ 832 026e 06000000 		.4byte	.LVL25
+ 833 0272 46020000 		.4byte	0x246
+ 834 0276 14       		.uleb128 0x14
+ 835 0277 0C000000 		.4byte	.LVL26
+ 836 027b 57010000 		.4byte	0x157
+ 837 027f 8D020000 		.4byte	0x28d
+ 838 0283 15       		.uleb128 0x15
+ 839 0284 01       		.uleb128 0x1
+ 840 0285 50       		.byte	0x50
+ 841 0286 05       		.uleb128 0x5
+ 842 0287 03       		.byte	0x3
+ 843 0288 00000000 		.4byte	ENC_ISR_Interrupt
+ 844 028c 00       		.byte	0
+ 845 028d 14       		.uleb128 0x14
+ 846 028e 12000000 		.4byte	.LVL27
+ 847 0292 90010000 		.4byte	0x190
+ 848 0296 A0020000 		.4byte	0x2a0
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 24
+
+
+ 849 029a 15       		.uleb128 0x15
+ 850 029b 01       		.uleb128 0x1
+ 851 029c 50       		.byte	0x50
+ 852 029d 01       		.uleb128 0x1
+ 853 029e 33       		.byte	0x33
+ 854 029f 00       		.byte	0
+ 855 02a0 0B       		.uleb128 0xb
+ 856 02a1 16000000 		.4byte	.LVL28
+ 857 02a5 1E020000 		.4byte	0x21e
+ 858 02a9 00       		.byte	0
+ 859 02aa 08       		.uleb128 0x8
+ 860 02ab 5D000000 		.4byte	.LASF31
+ 861 02af 01       		.byte	0x1
+ 862 02b0 65       		.byte	0x65
+ 863 02b1 00000000 		.4byte	.LFB2
+ 864 02b5 1A000000 		.4byte	.LFE2-.LFB2
+ 865 02b9 01       		.uleb128 0x1
+ 866 02ba 9C       		.byte	0x9c
+ 867 02bb 08030000 		.4byte	0x308
+ 868 02bf 16       		.uleb128 0x16
+ 869 02c0 80010000 		.4byte	.LASF22
+ 870 02c4 01       		.byte	0x1
+ 871 02c5 65       		.byte	0x65
+ 872 02c6 A9000000 		.4byte	0xa9
+ 873 02ca AF000000 		.4byte	.LLST4
+ 874 02ce 0B       		.uleb128 0xb
+ 875 02cf 08000000 		.4byte	.LVL30
+ 876 02d3 46020000 		.4byte	0x246
+ 877 02d7 14       		.uleb128 0x14
+ 878 02d8 0E000000 		.4byte	.LVL31
+ 879 02dc 57010000 		.4byte	0x157
+ 880 02e0 EB020000 		.4byte	0x2eb
+ 881 02e4 15       		.uleb128 0x15
+ 882 02e5 01       		.uleb128 0x1
+ 883 02e6 50       		.byte	0x50
+ 884 02e7 02       		.uleb128 0x2
+ 885 02e8 74       		.byte	0x74
+ 886 02e9 00       		.sleb128 0
+ 887 02ea 00       		.byte	0
+ 888 02eb 14       		.uleb128 0x14
+ 889 02ec 14000000 		.4byte	.LVL32
+ 890 02f0 90010000 		.4byte	0x190
+ 891 02f4 FE020000 		.4byte	0x2fe
+ 892 02f8 15       		.uleb128 0x15
+ 893 02f9 01       		.uleb128 0x1
+ 894 02fa 50       		.byte	0x50
+ 895 02fb 01       		.uleb128 0x1
+ 896 02fc 33       		.byte	0x33
+ 897 02fd 00       		.byte	0
+ 898 02fe 0B       		.uleb128 0xb
+ 899 02ff 18000000 		.4byte	.LVL33
+ 900 0303 1E020000 		.4byte	0x21e
+ 901 0307 00       		.byte	0
+ 902 0308 08       		.uleb128 0x8
+ 903 0309 B2010000 		.4byte	.LASF32
+ 904 030d 01       		.byte	0x1
+ 905 030e 83       		.byte	0x83
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 25
+
+
+ 906 030f 00000000 		.4byte	.LFB3
+ 907 0313 14000000 		.4byte	.LFE3-.LFB3
+ 908 0317 01       		.uleb128 0x1
+ 909 0318 9C       		.byte	0x9c
+ 910 0319 30030000 		.4byte	0x330
+ 911 031d 0B       		.uleb128 0xb
+ 912 031e 06000000 		.4byte	.LVL35
+ 913 0322 46020000 		.4byte	0x246
+ 914 0326 0B       		.uleb128 0xb
+ 915 0327 0C000000 		.4byte	.LVL36
+ 916 032b 57010000 		.4byte	0x157
+ 917 032f 00       		.byte	0
+ 918 0330 13       		.uleb128 0x13
+ 919 0331 31010000 		.4byte	.LASF33
+ 920 0335 01       		.byte	0x1
+ 921 0336 9A01     		.2byte	0x19a
+ 922 0338 00000000 		.4byte	.LFB12
+ 923 033c 0C000000 		.4byte	.LFE12-.LFB12
+ 924 0340 01       		.uleb128 0x1
+ 925 0341 9C       		.byte	0x9c
+ 926 0342 13       		.uleb128 0x13
+ 927 0343 D1000000 		.4byte	.LASF34
+ 928 0347 01       		.byte	0x1
+ 929 0348 B301     		.2byte	0x1b3
+ 930 034a 00000000 		.4byte	.LFB13
+ 931 034e 0C000000 		.4byte	.LFE13-.LFB13
+ 932 0352 01       		.uleb128 0x1
+ 933 0353 9C       		.byte	0x9c
+ 934 0354 17       		.uleb128 0x17
+ 935 0355 71020000 		.4byte	.LASF35
+ 936 0359 01       		.byte	0x1
+ 937 035a 1F       		.byte	0x1f
+ 938 035b 52010000 		.4byte	0x152
+ 939 035f 17       		.uleb128 0x17
+ 940 0360 27000000 		.4byte	.LASF36
+ 941 0364 01       		.byte	0x1
+ 942 0365 20       		.byte	0x20
+ 943 0366 52010000 		.4byte	0x152
+ 944 036a 18       		.uleb128 0x18
+ 945 036b A9000000 		.4byte	0xa9
+ 946 036f 7A030000 		.4byte	0x37a
+ 947 0373 19       		.uleb128 0x19
+ 948 0374 C3000000 		.4byte	0xc3
+ 949 0378 2F       		.byte	0x2f
+ 950 0379 00       		.byte	0
+ 951 037a 17       		.uleb128 0x17
+ 952 037b 2E000000 		.4byte	.LASF37
+ 953 037f 01       		.byte	0x1
+ 954 0380 23       		.byte	0x23
+ 955 0381 6A030000 		.4byte	0x36a
+ 956 0385 1A       		.uleb128 0x1a
+ 957 0386 3B000000 		.4byte	.LASF38
+ 958 038a 3B000000 		.4byte	.LASF38
+ 959 038e 03       		.byte	0x3
+ 960 038f 32       		.byte	0x32
+ 961 0390 1A       		.uleb128 0x1a
+ 962 0391 0B010000 		.4byte	.LASF39
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 26
+
+
+ 963 0395 0B010000 		.4byte	.LASF39
+ 964 0399 03       		.byte	0x3
+ 965 039a 39       		.byte	0x39
+ 966 039b 1A       		.uleb128 0x1a
+ 967 039c 4B010000 		.4byte	.LASF40
+ 968 03a0 4B010000 		.4byte	.LASF40
+ 969 03a4 04       		.byte	0x4
+ 970 03a5 E5       		.byte	0xe5
+ 971 03a6 1A       		.uleb128 0x1a
+ 972 03a7 88010000 		.4byte	.LASF41
+ 973 03ab 88010000 		.4byte	.LASF41
+ 974 03af 04       		.byte	0x4
+ 975 03b0 E6       		.byte	0xe6
+ 976 03b1 00       		.byte	0
+ 977              		.section	.debug_abbrev,"",%progbits
+ 978              	.Ldebug_abbrev0:
+ 979 0000 01       		.uleb128 0x1
+ 980 0001 11       		.uleb128 0x11
+ 981 0002 01       		.byte	0x1
+ 982 0003 25       		.uleb128 0x25
+ 983 0004 0E       		.uleb128 0xe
+ 984 0005 13       		.uleb128 0x13
+ 985 0006 0B       		.uleb128 0xb
+ 986 0007 03       		.uleb128 0x3
+ 987 0008 0E       		.uleb128 0xe
+ 988 0009 1B       		.uleb128 0x1b
+ 989 000a 0E       		.uleb128 0xe
+ 990 000b 55       		.uleb128 0x55
+ 991 000c 17       		.uleb128 0x17
+ 992 000d 11       		.uleb128 0x11
+ 993 000e 01       		.uleb128 0x1
+ 994 000f 10       		.uleb128 0x10
+ 995 0010 17       		.uleb128 0x17
+ 996 0011 00       		.byte	0
+ 997 0012 00       		.byte	0
+ 998 0013 02       		.uleb128 0x2
+ 999 0014 24       		.uleb128 0x24
+ 1000 0015 00       		.byte	0
+ 1001 0016 0B       		.uleb128 0xb
+ 1002 0017 0B       		.uleb128 0xb
+ 1003 0018 3E       		.uleb128 0x3e
+ 1004 0019 0B       		.uleb128 0xb
+ 1005 001a 03       		.uleb128 0x3
+ 1006 001b 0E       		.uleb128 0xe
+ 1007 001c 00       		.byte	0
+ 1008 001d 00       		.byte	0
+ 1009 001e 03       		.uleb128 0x3
+ 1010 001f 24       		.uleb128 0x24
+ 1011 0020 00       		.byte	0
+ 1012 0021 0B       		.uleb128 0xb
+ 1013 0022 0B       		.uleb128 0xb
+ 1014 0023 3E       		.uleb128 0x3e
+ 1015 0024 0B       		.uleb128 0xb
+ 1016 0025 03       		.uleb128 0x3
+ 1017 0026 08       		.uleb128 0x8
+ 1018 0027 00       		.byte	0
+ 1019 0028 00       		.byte	0
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 27
+
+
+ 1020 0029 04       		.uleb128 0x4
+ 1021 002a 16       		.uleb128 0x16
+ 1022 002b 00       		.byte	0
+ 1023 002c 03       		.uleb128 0x3
+ 1024 002d 0E       		.uleb128 0xe
+ 1025 002e 3A       		.uleb128 0x3a
+ 1026 002f 0B       		.uleb128 0xb
+ 1027 0030 3B       		.uleb128 0x3b
+ 1028 0031 05       		.uleb128 0x5
+ 1029 0032 49       		.uleb128 0x49
+ 1030 0033 13       		.uleb128 0x13
+ 1031 0034 00       		.byte	0
+ 1032 0035 00       		.byte	0
+ 1033 0036 05       		.uleb128 0x5
+ 1034 0037 35       		.uleb128 0x35
+ 1035 0038 00       		.byte	0
+ 1036 0039 49       		.uleb128 0x49
+ 1037 003a 13       		.uleb128 0x13
+ 1038 003b 00       		.byte	0
+ 1039 003c 00       		.byte	0
+ 1040 003d 06       		.uleb128 0x6
+ 1041 003e 0F       		.uleb128 0xf
+ 1042 003f 00       		.byte	0
+ 1043 0040 0B       		.uleb128 0xb
+ 1044 0041 0B       		.uleb128 0xb
+ 1045 0042 49       		.uleb128 0x49
+ 1046 0043 13       		.uleb128 0x13
+ 1047 0044 00       		.byte	0
+ 1048 0045 00       		.byte	0
+ 1049 0046 07       		.uleb128 0x7
+ 1050 0047 15       		.uleb128 0x15
+ 1051 0048 00       		.byte	0
+ 1052 0049 27       		.uleb128 0x27
+ 1053 004a 19       		.uleb128 0x19
+ 1054 004b 00       		.byte	0
+ 1055 004c 00       		.byte	0
+ 1056 004d 08       		.uleb128 0x8
+ 1057 004e 2E       		.uleb128 0x2e
+ 1058 004f 01       		.byte	0x1
+ 1059 0050 3F       		.uleb128 0x3f
+ 1060 0051 19       		.uleb128 0x19
+ 1061 0052 03       		.uleb128 0x3
+ 1062 0053 0E       		.uleb128 0xe
+ 1063 0054 3A       		.uleb128 0x3a
+ 1064 0055 0B       		.uleb128 0xb
+ 1065 0056 3B       		.uleb128 0x3b
+ 1066 0057 0B       		.uleb128 0xb
+ 1067 0058 27       		.uleb128 0x27
+ 1068 0059 19       		.uleb128 0x19
+ 1069 005a 11       		.uleb128 0x11
+ 1070 005b 01       		.uleb128 0x1
+ 1071 005c 12       		.uleb128 0x12
+ 1072 005d 06       		.uleb128 0x6
+ 1073 005e 40       		.uleb128 0x40
+ 1074 005f 18       		.uleb128 0x18
+ 1075 0060 9742     		.uleb128 0x2117
+ 1076 0062 19       		.uleb128 0x19
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 28
+
+
+ 1077 0063 01       		.uleb128 0x1
+ 1078 0064 13       		.uleb128 0x13
+ 1079 0065 00       		.byte	0
+ 1080 0066 00       		.byte	0
+ 1081 0067 09       		.uleb128 0x9
+ 1082 0068 34       		.uleb128 0x34
+ 1083 0069 00       		.byte	0
+ 1084 006a 03       		.uleb128 0x3
+ 1085 006b 08       		.uleb128 0x8
+ 1086 006c 3A       		.uleb128 0x3a
+ 1087 006d 0B       		.uleb128 0xb
+ 1088 006e 3B       		.uleb128 0x3b
+ 1089 006f 0B       		.uleb128 0xb
+ 1090 0070 49       		.uleb128 0x49
+ 1091 0071 13       		.uleb128 0x13
+ 1092 0072 02       		.uleb128 0x2
+ 1093 0073 18       		.uleb128 0x18
+ 1094 0074 00       		.byte	0
+ 1095 0075 00       		.byte	0
+ 1096 0076 0A       		.uleb128 0xa
+ 1097 0077 34       		.uleb128 0x34
+ 1098 0078 00       		.byte	0
+ 1099 0079 03       		.uleb128 0x3
+ 1100 007a 0E       		.uleb128 0xe
+ 1101 007b 3A       		.uleb128 0x3a
+ 1102 007c 0B       		.uleb128 0xb
+ 1103 007d 3B       		.uleb128 0x3b
+ 1104 007e 0B       		.uleb128 0xb
+ 1105 007f 49       		.uleb128 0x49
+ 1106 0080 13       		.uleb128 0x13
+ 1107 0081 02       		.uleb128 0x2
+ 1108 0082 17       		.uleb128 0x17
+ 1109 0083 00       		.byte	0
+ 1110 0084 00       		.byte	0
+ 1111 0085 0B       		.uleb128 0xb
+ 1112 0086 898201   		.uleb128 0x4109
+ 1113 0089 00       		.byte	0
+ 1114 008a 11       		.uleb128 0x11
+ 1115 008b 01       		.uleb128 0x1
+ 1116 008c 31       		.uleb128 0x31
+ 1117 008d 13       		.uleb128 0x13
+ 1118 008e 00       		.byte	0
+ 1119 008f 00       		.byte	0
+ 1120 0090 0C       		.uleb128 0xc
+ 1121 0091 05       		.uleb128 0x5
+ 1122 0092 00       		.byte	0
+ 1123 0093 03       		.uleb128 0x3
+ 1124 0094 0E       		.uleb128 0xe
+ 1125 0095 3A       		.uleb128 0x3a
+ 1126 0096 0B       		.uleb128 0xb
+ 1127 0097 3B       		.uleb128 0x3b
+ 1128 0098 0B       		.uleb128 0xb
+ 1129 0099 49       		.uleb128 0x49
+ 1130 009a 13       		.uleb128 0x13
+ 1131 009b 02       		.uleb128 0x2
+ 1132 009c 18       		.uleb128 0x18
+ 1133 009d 00       		.byte	0
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 29
+
+
+ 1134 009e 00       		.byte	0
+ 1135 009f 0D       		.uleb128 0xd
+ 1136 00a0 2E       		.uleb128 0x2e
+ 1137 00a1 00       		.byte	0
+ 1138 00a2 3F       		.uleb128 0x3f
+ 1139 00a3 19       		.uleb128 0x19
+ 1140 00a4 03       		.uleb128 0x3
+ 1141 00a5 0E       		.uleb128 0xe
+ 1142 00a6 3A       		.uleb128 0x3a
+ 1143 00a7 0B       		.uleb128 0xb
+ 1144 00a8 3B       		.uleb128 0x3b
+ 1145 00a9 05       		.uleb128 0x5
+ 1146 00aa 27       		.uleb128 0x27
+ 1147 00ab 19       		.uleb128 0x19
+ 1148 00ac 49       		.uleb128 0x49
+ 1149 00ad 13       		.uleb128 0x13
+ 1150 00ae 11       		.uleb128 0x11
+ 1151 00af 01       		.uleb128 0x1
+ 1152 00b0 12       		.uleb128 0x12
+ 1153 00b1 06       		.uleb128 0x6
+ 1154 00b2 40       		.uleb128 0x40
+ 1155 00b3 18       		.uleb128 0x18
+ 1156 00b4 9742     		.uleb128 0x2117
+ 1157 00b6 19       		.uleb128 0x19
+ 1158 00b7 00       		.byte	0
+ 1159 00b8 00       		.byte	0
+ 1160 00b9 0E       		.uleb128 0xe
+ 1161 00ba 2E       		.uleb128 0x2e
+ 1162 00bb 01       		.byte	0x1
+ 1163 00bc 3F       		.uleb128 0x3f
+ 1164 00bd 19       		.uleb128 0x19
+ 1165 00be 03       		.uleb128 0x3
+ 1166 00bf 0E       		.uleb128 0xe
+ 1167 00c0 3A       		.uleb128 0x3a
+ 1168 00c1 0B       		.uleb128 0xb
+ 1169 00c2 3B       		.uleb128 0x3b
+ 1170 00c3 05       		.uleb128 0x5
+ 1171 00c4 27       		.uleb128 0x27
+ 1172 00c5 19       		.uleb128 0x19
+ 1173 00c6 11       		.uleb128 0x11
+ 1174 00c7 01       		.uleb128 0x1
+ 1175 00c8 12       		.uleb128 0x12
+ 1176 00c9 06       		.uleb128 0x6
+ 1177 00ca 40       		.uleb128 0x40
+ 1178 00cb 18       		.uleb128 0x18
+ 1179 00cc 9742     		.uleb128 0x2117
+ 1180 00ce 19       		.uleb128 0x19
+ 1181 00cf 01       		.uleb128 0x1
+ 1182 00d0 13       		.uleb128 0x13
+ 1183 00d1 00       		.byte	0
+ 1184 00d2 00       		.byte	0
+ 1185 00d3 0F       		.uleb128 0xf
+ 1186 00d4 05       		.uleb128 0x5
+ 1187 00d5 00       		.byte	0
+ 1188 00d6 03       		.uleb128 0x3
+ 1189 00d7 0E       		.uleb128 0xe
+ 1190 00d8 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 30
+
+
+ 1191 00d9 0B       		.uleb128 0xb
+ 1192 00da 3B       		.uleb128 0x3b
+ 1193 00db 05       		.uleb128 0x5
+ 1194 00dc 49       		.uleb128 0x49
+ 1195 00dd 13       		.uleb128 0x13
+ 1196 00de 02       		.uleb128 0x2
+ 1197 00df 17       		.uleb128 0x17
+ 1198 00e0 00       		.byte	0
+ 1199 00e1 00       		.byte	0
+ 1200 00e2 10       		.uleb128 0x10
+ 1201 00e3 34       		.uleb128 0x34
+ 1202 00e4 00       		.byte	0
+ 1203 00e5 03       		.uleb128 0x3
+ 1204 00e6 0E       		.uleb128 0xe
+ 1205 00e7 3A       		.uleb128 0x3a
+ 1206 00e8 0B       		.uleb128 0xb
+ 1207 00e9 3B       		.uleb128 0x3b
+ 1208 00ea 05       		.uleb128 0x5
+ 1209 00eb 49       		.uleb128 0x49
+ 1210 00ec 13       		.uleb128 0x13
+ 1211 00ed 02       		.uleb128 0x2
+ 1212 00ee 17       		.uleb128 0x17
+ 1213 00ef 00       		.byte	0
+ 1214 00f0 00       		.byte	0
+ 1215 00f1 11       		.uleb128 0x11
+ 1216 00f2 34       		.uleb128 0x34
+ 1217 00f3 00       		.byte	0
+ 1218 00f4 03       		.uleb128 0x3
+ 1219 00f5 0E       		.uleb128 0xe
+ 1220 00f6 3A       		.uleb128 0x3a
+ 1221 00f7 0B       		.uleb128 0xb
+ 1222 00f8 3B       		.uleb128 0x3b
+ 1223 00f9 05       		.uleb128 0x5
+ 1224 00fa 49       		.uleb128 0x49
+ 1225 00fb 13       		.uleb128 0x13
+ 1226 00fc 1C       		.uleb128 0x1c
+ 1227 00fd 0B       		.uleb128 0xb
+ 1228 00fe 00       		.byte	0
+ 1229 00ff 00       		.byte	0
+ 1230 0100 12       		.uleb128 0x12
+ 1231 0101 2E       		.uleb128 0x2e
+ 1232 0102 01       		.byte	0x1
+ 1233 0103 3F       		.uleb128 0x3f
+ 1234 0104 19       		.uleb128 0x19
+ 1235 0105 03       		.uleb128 0x3
+ 1236 0106 0E       		.uleb128 0xe
+ 1237 0107 3A       		.uleb128 0x3a
+ 1238 0108 0B       		.uleb128 0xb
+ 1239 0109 3B       		.uleb128 0x3b
+ 1240 010a 05       		.uleb128 0x5
+ 1241 010b 27       		.uleb128 0x27
+ 1242 010c 19       		.uleb128 0x19
+ 1243 010d 49       		.uleb128 0x49
+ 1244 010e 13       		.uleb128 0x13
+ 1245 010f 11       		.uleb128 0x11
+ 1246 0110 01       		.uleb128 0x1
+ 1247 0111 12       		.uleb128 0x12
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 31
+
+
+ 1248 0112 06       		.uleb128 0x6
+ 1249 0113 40       		.uleb128 0x40
+ 1250 0114 18       		.uleb128 0x18
+ 1251 0115 9742     		.uleb128 0x2117
+ 1252 0117 19       		.uleb128 0x19
+ 1253 0118 01       		.uleb128 0x1
+ 1254 0119 13       		.uleb128 0x13
+ 1255 011a 00       		.byte	0
+ 1256 011b 00       		.byte	0
+ 1257 011c 13       		.uleb128 0x13
+ 1258 011d 2E       		.uleb128 0x2e
+ 1259 011e 00       		.byte	0
+ 1260 011f 3F       		.uleb128 0x3f
+ 1261 0120 19       		.uleb128 0x19
+ 1262 0121 03       		.uleb128 0x3
+ 1263 0122 0E       		.uleb128 0xe
+ 1264 0123 3A       		.uleb128 0x3a
+ 1265 0124 0B       		.uleb128 0xb
+ 1266 0125 3B       		.uleb128 0x3b
+ 1267 0126 05       		.uleb128 0x5
+ 1268 0127 27       		.uleb128 0x27
+ 1269 0128 19       		.uleb128 0x19
+ 1270 0129 11       		.uleb128 0x11
+ 1271 012a 01       		.uleb128 0x1
+ 1272 012b 12       		.uleb128 0x12
+ 1273 012c 06       		.uleb128 0x6
+ 1274 012d 40       		.uleb128 0x40
+ 1275 012e 18       		.uleb128 0x18
+ 1276 012f 9742     		.uleb128 0x2117
+ 1277 0131 19       		.uleb128 0x19
+ 1278 0132 00       		.byte	0
+ 1279 0133 00       		.byte	0
+ 1280 0134 14       		.uleb128 0x14
+ 1281 0135 898201   		.uleb128 0x4109
+ 1282 0138 01       		.byte	0x1
+ 1283 0139 11       		.uleb128 0x11
+ 1284 013a 01       		.uleb128 0x1
+ 1285 013b 31       		.uleb128 0x31
+ 1286 013c 13       		.uleb128 0x13
+ 1287 013d 01       		.uleb128 0x1
+ 1288 013e 13       		.uleb128 0x13
+ 1289 013f 00       		.byte	0
+ 1290 0140 00       		.byte	0
+ 1291 0141 15       		.uleb128 0x15
+ 1292 0142 8A8201   		.uleb128 0x410a
+ 1293 0145 00       		.byte	0
+ 1294 0146 02       		.uleb128 0x2
+ 1295 0147 18       		.uleb128 0x18
+ 1296 0148 9142     		.uleb128 0x2111
+ 1297 014a 18       		.uleb128 0x18
+ 1298 014b 00       		.byte	0
+ 1299 014c 00       		.byte	0
+ 1300 014d 16       		.uleb128 0x16
+ 1301 014e 05       		.uleb128 0x5
+ 1302 014f 00       		.byte	0
+ 1303 0150 03       		.uleb128 0x3
+ 1304 0151 0E       		.uleb128 0xe
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 32
+
+
+ 1305 0152 3A       		.uleb128 0x3a
+ 1306 0153 0B       		.uleb128 0xb
+ 1307 0154 3B       		.uleb128 0x3b
+ 1308 0155 0B       		.uleb128 0xb
+ 1309 0156 49       		.uleb128 0x49
+ 1310 0157 13       		.uleb128 0x13
+ 1311 0158 02       		.uleb128 0x2
+ 1312 0159 17       		.uleb128 0x17
+ 1313 015a 00       		.byte	0
+ 1314 015b 00       		.byte	0
+ 1315 015c 17       		.uleb128 0x17
+ 1316 015d 34       		.uleb128 0x34
+ 1317 015e 00       		.byte	0
+ 1318 015f 03       		.uleb128 0x3
+ 1319 0160 0E       		.uleb128 0xe
+ 1320 0161 3A       		.uleb128 0x3a
+ 1321 0162 0B       		.uleb128 0xb
+ 1322 0163 3B       		.uleb128 0x3b
+ 1323 0164 0B       		.uleb128 0xb
+ 1324 0165 49       		.uleb128 0x49
+ 1325 0166 13       		.uleb128 0x13
+ 1326 0167 3F       		.uleb128 0x3f
+ 1327 0168 19       		.uleb128 0x19
+ 1328 0169 3C       		.uleb128 0x3c
+ 1329 016a 19       		.uleb128 0x19
+ 1330 016b 00       		.byte	0
+ 1331 016c 00       		.byte	0
+ 1332 016d 18       		.uleb128 0x18
+ 1333 016e 01       		.uleb128 0x1
+ 1334 016f 01       		.byte	0x1
+ 1335 0170 49       		.uleb128 0x49
+ 1336 0171 13       		.uleb128 0x13
+ 1337 0172 01       		.uleb128 0x1
+ 1338 0173 13       		.uleb128 0x13
+ 1339 0174 00       		.byte	0
+ 1340 0175 00       		.byte	0
+ 1341 0176 19       		.uleb128 0x19
+ 1342 0177 21       		.uleb128 0x21
+ 1343 0178 00       		.byte	0
+ 1344 0179 49       		.uleb128 0x49
+ 1345 017a 13       		.uleb128 0x13
+ 1346 017b 2F       		.uleb128 0x2f
+ 1347 017c 0B       		.uleb128 0xb
+ 1348 017d 00       		.byte	0
+ 1349 017e 00       		.byte	0
+ 1350 017f 1A       		.uleb128 0x1a
+ 1351 0180 2E       		.uleb128 0x2e
+ 1352 0181 00       		.byte	0
+ 1353 0182 3F       		.uleb128 0x3f
+ 1354 0183 19       		.uleb128 0x19
+ 1355 0184 3C       		.uleb128 0x3c
+ 1356 0185 19       		.uleb128 0x19
+ 1357 0186 6E       		.uleb128 0x6e
+ 1358 0187 0E       		.uleb128 0xe
+ 1359 0188 03       		.uleb128 0x3
+ 1360 0189 0E       		.uleb128 0xe
+ 1361 018a 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 33
+
+
+ 1362 018b 0B       		.uleb128 0xb
+ 1363 018c 3B       		.uleb128 0x3b
+ 1364 018d 0B       		.uleb128 0xb
+ 1365 018e 00       		.byte	0
+ 1366 018f 00       		.byte	0
+ 1367 0190 00       		.byte	0
+ 1368              		.section	.debug_loc,"",%progbits
+ 1369              	.Ldebug_loc0:
+ 1370              	.LLST0:
+ 1371 0000 0A000000 		.4byte	.LVL1
+ 1372 0004 0E000000 		.4byte	.LVL2
+ 1373 0008 0200     		.2byte	0x2
+ 1374 000a 30       		.byte	0x30
+ 1375 000b 9F       		.byte	0x9f
+ 1376 000c 0E000000 		.4byte	.LVL2
+ 1377 0010 20000000 		.4byte	.LVL5
+ 1378 0014 0100     		.2byte	0x1
+ 1379 0016 54       		.byte	0x54
+ 1380 0017 20000000 		.4byte	.LVL5
+ 1381 001b 2A000000 		.4byte	.LVL7
+ 1382 001f 0200     		.2byte	0x2
+ 1383 0021 30       		.byte	0x30
+ 1384 0022 9F       		.byte	0x9f
+ 1385 0023 2A000000 		.4byte	.LVL7
+ 1386 0027 3C000000 		.4byte	.LVL10
+ 1387 002b 0100     		.2byte	0x1
+ 1388 002d 54       		.byte	0x54
+ 1389 002e 3C000000 		.4byte	.LVL10
+ 1390 0032 46000000 		.4byte	.LVL12
+ 1391 0036 0200     		.2byte	0x2
+ 1392 0038 30       		.byte	0x30
+ 1393 0039 9F       		.byte	0x9f
+ 1394 003a 46000000 		.4byte	.LVL12
+ 1395 003e 58000000 		.4byte	.LVL15
+ 1396 0042 0100     		.2byte	0x1
+ 1397 0044 54       		.byte	0x54
+ 1398 0045 58000000 		.4byte	.LVL15
+ 1399 0049 9C000000 		.4byte	.LFE4
+ 1400 004d 0200     		.2byte	0x2
+ 1401 004f 30       		.byte	0x30
+ 1402 0050 9F       		.byte	0x9f
+ 1403 0051 00000000 		.4byte	0
+ 1404 0055 00000000 		.4byte	0
+ 1405              	.LLST1:
+ 1406 0059 00000000 		.4byte	.LVL18
+ 1407 005d 07000000 		.4byte	.LVL20-1
+ 1408 0061 0100     		.2byte	0x1
+ 1409 0063 50       		.byte	0x50
+ 1410 0064 07000000 		.4byte	.LVL20-1
+ 1411 0068 20000000 		.4byte	.LFE7
+ 1412 006c 0400     		.2byte	0x4
+ 1413 006e F3       		.byte	0xf3
+ 1414 006f 01       		.uleb128 0x1
+ 1415 0070 50       		.byte	0x50
+ 1416 0071 9F       		.byte	0x9f
+ 1417 0072 00000000 		.4byte	0
+ 1418 0076 00000000 		.4byte	0
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 34
+
+
+ 1419              	.LLST2:
+ 1420 007a 08000000 		.4byte	.LVL20
+ 1421 007e 19000000 		.4byte	.LVL21-1
+ 1422 0082 0100     		.2byte	0x1
+ 1423 0084 50       		.byte	0x50
+ 1424 0085 00000000 		.4byte	0
+ 1425 0089 00000000 		.4byte	0
+ 1426              	.LLST3:
+ 1427 008d 06000000 		.4byte	.LVL23
+ 1428 0091 0A000000 		.4byte	.LVL24
+ 1429 0095 0500     		.2byte	0x5
+ 1430 0097 70       		.byte	0x70
+ 1431 0098 00       		.sleb128 0
+ 1432 0099 33       		.byte	0x33
+ 1433 009a 1A       		.byte	0x1a
+ 1434 009b 9F       		.byte	0x9f
+ 1435 009c 0A000000 		.4byte	.LVL24
+ 1436 00a0 10000000 		.4byte	.LFE8
+ 1437 00a4 0100     		.2byte	0x1
+ 1438 00a6 50       		.byte	0x50
+ 1439 00a7 00000000 		.4byte	0
+ 1440 00ab 00000000 		.4byte	0
+ 1441              	.LLST4:
+ 1442 00af 00000000 		.4byte	.LVL29
+ 1443 00b3 07000000 		.4byte	.LVL30-1
+ 1444 00b7 0100     		.2byte	0x1
+ 1445 00b9 50       		.byte	0x50
+ 1446 00ba 07000000 		.4byte	.LVL30-1
+ 1447 00be 18000000 		.4byte	.LVL34
+ 1448 00c2 0100     		.2byte	0x1
+ 1449 00c4 54       		.byte	0x54
+ 1450 00c5 18000000 		.4byte	.LVL34
+ 1451 00c9 1A000000 		.4byte	.LFE2
+ 1452 00cd 0400     		.2byte	0x4
+ 1453 00cf F3       		.byte	0xf3
+ 1454 00d0 01       		.uleb128 0x1
+ 1455 00d1 50       		.byte	0x50
+ 1456 00d2 9F       		.byte	0x9f
+ 1457 00d3 00000000 		.4byte	0
+ 1458 00d7 00000000 		.4byte	0
+ 1459              		.section	.debug_aranges,"",%progbits
+ 1460 0000 7C000000 		.4byte	0x7c
+ 1461 0004 0200     		.2byte	0x2
+ 1462 0006 00000000 		.4byte	.Ldebug_info0
+ 1463 000a 04       		.byte	0x4
+ 1464 000b 00       		.byte	0
+ 1465 000c 0000     		.2byte	0
+ 1466 000e 0000     		.2byte	0
+ 1467 0010 00000000 		.4byte	.LFB4
+ 1468 0014 9C000000 		.4byte	.LFE4-.LFB4
+ 1469 0018 00000000 		.4byte	.LFB5
+ 1470 001c 0C000000 		.4byte	.LFE5-.LFB5
+ 1471 0020 00000000 		.4byte	.LFB6
+ 1472 0024 0C000000 		.4byte	.LFE6-.LFB6
+ 1473 0028 00000000 		.4byte	.LFB7
+ 1474 002c 20000000 		.4byte	.LFE7-.LFB7
+ 1475 0030 00000000 		.4byte	.LFB8
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 35
+
+
+ 1476 0034 10000000 		.4byte	.LFE8-.LFB8
+ 1477 0038 00000000 		.4byte	.LFB9
+ 1478 003c 0C000000 		.4byte	.LFE9-.LFB9
+ 1479 0040 00000000 		.4byte	.LFB10
+ 1480 0044 10000000 		.4byte	.LFE10-.LFB10
+ 1481 0048 00000000 		.4byte	.LFB11
+ 1482 004c 0C000000 		.4byte	.LFE11-.LFB11
+ 1483 0050 00000000 		.4byte	.LFB1
+ 1484 0054 1C000000 		.4byte	.LFE1-.LFB1
+ 1485 0058 00000000 		.4byte	.LFB2
+ 1486 005c 1A000000 		.4byte	.LFE2-.LFB2
+ 1487 0060 00000000 		.4byte	.LFB3
+ 1488 0064 14000000 		.4byte	.LFE3-.LFB3
+ 1489 0068 00000000 		.4byte	.LFB12
+ 1490 006c 0C000000 		.4byte	.LFE12-.LFB12
+ 1491 0070 00000000 		.4byte	.LFB13
+ 1492 0074 0C000000 		.4byte	.LFE13-.LFB13
+ 1493 0078 00000000 		.4byte	0
+ 1494 007c 00000000 		.4byte	0
+ 1495              		.section	.debug_ranges,"",%progbits
+ 1496              	.Ldebug_ranges0:
+ 1497 0000 00000000 		.4byte	.LFB4
+ 1498 0004 9C000000 		.4byte	.LFE4
+ 1499 0008 00000000 		.4byte	.LFB5
+ 1500 000c 0C000000 		.4byte	.LFE5
+ 1501 0010 00000000 		.4byte	.LFB6
+ 1502 0014 0C000000 		.4byte	.LFE6
+ 1503 0018 00000000 		.4byte	.LFB7
+ 1504 001c 20000000 		.4byte	.LFE7
+ 1505 0020 00000000 		.4byte	.LFB8
+ 1506 0024 10000000 		.4byte	.LFE8
+ 1507 0028 00000000 		.4byte	.LFB9
+ 1508 002c 0C000000 		.4byte	.LFE9
+ 1509 0030 00000000 		.4byte	.LFB10
+ 1510 0034 10000000 		.4byte	.LFE10
+ 1511 0038 00000000 		.4byte	.LFB11
+ 1512 003c 0C000000 		.4byte	.LFE11
+ 1513 0040 00000000 		.4byte	.LFB1
+ 1514 0044 1C000000 		.4byte	.LFE1
+ 1515 0048 00000000 		.4byte	.LFB2
+ 1516 004c 1A000000 		.4byte	.LFE2
+ 1517 0050 00000000 		.4byte	.LFB3
+ 1518 0054 14000000 		.4byte	.LFE3
+ 1519 0058 00000000 		.4byte	.LFB12
+ 1520 005c 0C000000 		.4byte	.LFE12
+ 1521 0060 00000000 		.4byte	.LFB13
+ 1522 0064 0C000000 		.4byte	.LFE13
+ 1523 0068 00000000 		.4byte	0
+ 1524 006c 00000000 		.4byte	0
+ 1525              		.section	.debug_line,"",%progbits
+ 1526              	.Ldebug_line0:
+ 1527 0000 8B010000 		.section	.debug_str,"MS",%progbits,1
+ 1527      02005800 
+ 1527      00000201 
+ 1527      FB0E0D00 
+ 1527      01010101 
+ 1528              	.LASF20:
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 36
+
+
+ 1529 0000 454E435F 		.ascii	"ENC_ISR_SetVector\000"
+ 1529      4953525F 
+ 1529      53657456 
+ 1529      6563746F 
+ 1529      7200
+ 1530              	.LASF14:
+ 1531 0012 72656733 		.ascii	"reg32\000"
+ 1531      3200
+ 1532              	.LASF28:
+ 1533 0018 454E435F 		.ascii	"ENC_ISR_Enable\000"
+ 1533      4953525F 
+ 1533      456E6162 
+ 1533      6C6500
+ 1534              	.LASF36:
+ 1535 0027 656E6350 		.ascii	"encPos\000"
+ 1535      6F7300
+ 1536              	.LASF37:
+ 1537 002e 43795261 		.ascii	"CyRamVectors\000"
+ 1537      6D566563 
+ 1537      746F7273 
+ 1537      00
+ 1538              	.LASF38:
+ 1539 003b 454E435F 		.ascii	"ENC_Read\000"
+ 1539      52656164 
+ 1539      00
+ 1540              	.LASF18:
+ 1541 0044 636F756E 		.ascii	"count\000"
+ 1541      7400
+ 1542              	.LASF3:
+ 1543 004a 73686F72 		.ascii	"short unsigned int\000"
+ 1543      7420756E 
+ 1543      7369676E 
+ 1543      65642069 
+ 1543      6E7400
+ 1544              	.LASF31:
+ 1545 005d 454E435F 		.ascii	"ENC_ISR_StartEx\000"
+ 1545      4953525F 
+ 1545      53746172 
+ 1545      74457800 
+ 1546              	.LASF11:
+ 1547 006d 666C6F61 		.ascii	"float\000"
+ 1547      7400
+ 1548              	.LASF7:
+ 1549 0073 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1549      206C6F6E 
+ 1549      6720756E 
+ 1549      7369676E 
+ 1549      65642069 
+ 1550              	.LASF1:
+ 1551 008a 756E7369 		.ascii	"unsigned char\000"
+ 1551      676E6564 
+ 1551      20636861 
+ 1551      7200
+ 1552              	.LASF24:
+ 1553 0098 696E7465 		.ascii	"interruptState\000"
+ 1553      72727570 
+ 1553      74537461 
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 37
+
+
+ 1553      746500
+ 1554              	.LASF5:
+ 1555 00a7 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1555      20756E73 
+ 1555      69676E65 
+ 1555      6420696E 
+ 1555      7400
+ 1556              	.LASF9:
+ 1557 00b9 75696E74 		.ascii	"uint8\000"
+ 1557      3800
+ 1558              	.LASF19:
+ 1559 00bf 454E435F 		.ascii	"ENC_ISR_Interrupt\000"
+ 1559      4953525F 
+ 1559      496E7465 
+ 1559      72727570 
+ 1559      7400
+ 1560              	.LASF34:
+ 1561 00d1 454E435F 		.ascii	"ENC_ISR_ClearPending\000"
+ 1561      4953525F 
+ 1561      436C6561 
+ 1561      7250656E 
+ 1561      64696E67 
+ 1562              	.LASF29:
+ 1563 00e6 454E435F 		.ascii	"ENC_ISR_Disable\000"
+ 1563      4953525F 
+ 1563      44697361 
+ 1563      626C6500 
+ 1564              	.LASF12:
+ 1565 00f6 646F7562 		.ascii	"double\000"
+ 1565      6C6500
+ 1566              	.LASF30:
+ 1567 00fd 454E435F 		.ascii	"ENC_ISR_Start\000"
+ 1567      4953525F 
+ 1567      53746172 
+ 1567      7400
+ 1568              	.LASF39:
+ 1569 010b 454E435F 		.ascii	"ENC_ClearInterrupt\000"
+ 1569      436C6561 
+ 1569      72496E74 
+ 1569      65727275 
+ 1569      707400
+ 1570              	.LASF2:
+ 1571 011e 73686F72 		.ascii	"short int\000"
+ 1571      7420696E 
+ 1571      7400
+ 1572              	.LASF23:
+ 1573 0128 7072696F 		.ascii	"priority\000"
+ 1573      72697479 
+ 1573      00
+ 1574              	.LASF33:
+ 1575 0131 454E435F 		.ascii	"ENC_ISR_SetPending\000"
+ 1575      4953525F 
+ 1575      53657450 
+ 1575      656E6469 
+ 1575      6E6700
+ 1576              	.LASF10:
+ 1577 0144 75696E74 		.ascii	"uint32\000"
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 38
+
+
+ 1577      333200
+ 1578              	.LASF40:
+ 1579 014b 4379456E 		.ascii	"CyEnterCriticalSection\000"
+ 1579      74657243 
+ 1579      72697469 
+ 1579      63616C53 
+ 1579      65637469 
+ 1580              	.LASF8:
+ 1581 0162 756E7369 		.ascii	"unsigned int\000"
+ 1581      676E6564 
+ 1581      20696E74 
+ 1581      00
+ 1582              	.LASF27:
+ 1583 016f 454E435F 		.ascii	"ENC_ISR_GetState\000"
+ 1583      4953525F 
+ 1583      47657453 
+ 1583      74617465 
+ 1583      00
+ 1584              	.LASF22:
+ 1585 0180 61646472 		.ascii	"address\000"
+ 1585      65737300 
+ 1586              	.LASF41:
+ 1587 0188 43794578 		.ascii	"CyExitCriticalSection\000"
+ 1587      69744372 
+ 1587      69746963 
+ 1587      616C5365 
+ 1587      6374696F 
+ 1588              	.LASF21:
+ 1589 019e 454E435F 		.ascii	"ENC_ISR_SetPriority\000"
+ 1589      4953525F 
+ 1589      53657450 
+ 1589      72696F72 
+ 1589      69747900 
+ 1590              	.LASF32:
+ 1591 01b2 454E435F 		.ascii	"ENC_ISR_Stop\000"
+ 1591      4953525F 
+ 1591      53746F70 
+ 1591      00
+ 1592              	.LASF15:
+ 1593 01bf 63796973 		.ascii	"cyisraddress\000"
+ 1593      72616464 
+ 1593      72657373 
+ 1593      00
+ 1594              	.LASF42:
+ 1595 01cc 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1595      43313120 
+ 1595      352E342E 
+ 1595      31203230 
+ 1595      31363036 
+ 1596 01ff 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 1596      20726576 
+ 1596      6973696F 
+ 1596      6E203233 
+ 1596      37373135 
+ 1597 0232 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1597      66756E63 
+ 1597      74696F6E 
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 39
+
+
+ 1597      2D736563 
+ 1597      74696F6E 
+ 1598              	.LASF17:
+ 1599 025a 73697A65 		.ascii	"sizetype\000"
+ 1599      74797065 
+ 1599      00
+ 1600              	.LASF6:
+ 1601 0263 6C6F6E67 		.ascii	"long long int\000"
+ 1601      206C6F6E 
+ 1601      6720696E 
+ 1601      7400
+ 1602              	.LASF35:
+ 1603 0271 656E635F 		.ascii	"enc_flag\000"
+ 1603      666C6167 
+ 1603      00
+ 1604              	.LASF13:
+ 1605 027a 63686172 		.ascii	"char\000"
+ 1605      00
+ 1606              	.LASF43:
+ 1607 027f 47656E65 		.ascii	"Generated_Source\\PSoC4\\ENC_ISR.c\000"
+ 1607      72617465 
+ 1607      645F536F 
+ 1607      75726365 
+ 1607      5C50536F 
+ 1608              	.LASF44:
+ 1609 02a0 433A5C55 		.ascii	"C:\\Users\\Hello Kitty\\Desktop\\MicrocontrollersLa"
+ 1609      73657273 
+ 1609      5C48656C 
+ 1609      6C6F204B 
+ 1609      69747479 
+ 1610 02cf 625C4C61 		.ascii	"b\\Lab 6 - SPI Wireless LEDs\\Project\\ECE381_SP23_"
+ 1610      62203620 
+ 1610      2D205350 
+ 1610      49205769 
+ 1610      72656C65 
+ 1611 02ff 4C616230 		.ascii	"Lab06_Wirless_Light_Controller.cydsn\000"
+ 1611      365F5769 
+ 1611      726C6573 
+ 1611      735F4C69 
+ 1611      6768745F 
+ 1612              	.LASF45:
+ 1613 0324 454E435F 		.ascii	"ENC_ISR_GetPriority\000"
+ 1613      4953525F 
+ 1613      47657450 
+ 1613      72696F72 
+ 1613      69747900 
+ 1614              	.LASF26:
+ 1615 0338 454E435F 		.ascii	"ENC_ISR_GetVector\000"
+ 1615      4953525F 
+ 1615      47657456 
+ 1615      6563746F 
+ 1615      7200
+ 1616              	.LASF25:
+ 1617 034a 7072696F 		.ascii	"priorityOffset\000"
+ 1617      72697479 
+ 1617      4F666673 
+ 1617      657400
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccKJjaGL.s 			page 40
+
+
+ 1618              	.LASF4:
+ 1619 0359 6C6F6E67 		.ascii	"long int\000"
+ 1619      20696E74 
+ 1619      00
+ 1620              	.LASF16:
+ 1621 0362 6C6F6E67 		.ascii	"long double\000"
+ 1621      20646F75 
+ 1621      626C6500 
+ 1622              	.LASF0:
+ 1623 036e 7369676E 		.ascii	"signed char\000"
+ 1623      65642063 
+ 1623      68617200 
+ 1624              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

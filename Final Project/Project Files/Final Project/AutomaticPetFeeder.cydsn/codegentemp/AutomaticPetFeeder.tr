@@ -1,0 +1,120 @@
+##################################################################### 
+                    Table of Contents
+===================================================================== 
+	1::Clock Frequency Summary
+	2::Clock Relationship Summary
+	3::Datasheet Report
+		3.1::Setup to Clock
+		3.2::Clock to Out
+		3.3::Pad to Pad
+	4::Path Details for Clock Frequency Summary
+	5::Path Details for Clock Relationship Summary
+===================================================================== 
+                    End of Table of Contents
+##################################################################### 
+
+##################################################################### 
+                    1::Clock Frequency Summary
+===================================================================== 
+Number of clocks: 14
+Clock: ClockBlock/ff_div_13  | N/A  | Target: 100.00 MHz  | 
+Clock: ClockBlock/ff_div_5   | N/A  | Target: 100.00 MHz  | 
+Clock: CyHFClk               | N/A  | Target: 48.00 MHz   | 
+Clock: CyILO                 | N/A  | Target: 0.03 MHz    | 
+Clock: CyIMO                 | N/A  | Target: 48.00 MHz   | 
+Clock: CyLFClk               | N/A  | Target: 0.03 MHz    | 
+Clock: CyRouted1             | N/A  | Target: 48.00 MHz   | 
+Clock: CySysClk              | N/A  | Target: 48.00 MHz   | 
+Clock: I2C_SCBCLK            | N/A  | Target: 1.60 MHz    | 
+Clock: I2C_SCBCLK(FFB)       | N/A  | Target: 1.60 MHz    | 
+Clock: PWM_CLK               | N/A  | Target: 1.00 MHz    | 
+Clock: PWM_CLK(FFB)          | N/A  | Target: 1.00 MHz    | 
+Clock: UART_SCBCLK           | N/A  | Target: 0.70 MHz    | 
+Clock: UART_SCBCLK(FFB)      | N/A  | Target: 0.70 MHz    | 
+
+ =====================================================================
+                    End of Clock Frequency Summary
+ #####################################################################
+
+
+ #####################################################################
+                    2::Clock Relationship Summary
+ =====================================================================
+
+Launch Clock  Capture Clock  Constraint(R-R)  Slack(R-R)  Constraint(R-F)  Slack(R-F)  Constraint(F-F)  Slack(F-F)  Constraint(F-R)  Slack(F-R)  
+
+ =====================================================================
+                    End of Clock Relationship Summary
+ #####################################################################
+
+
+ #####################################################################
+                    3::Datasheet Report
+
+All values are in Picoseconds
+ =====================================================================
+
+3.1::Setup to Clock                     
+-------------------                     
+
+Port Name  Setup to Clk  Clock Name:Phase  
+---------  ------------  ----------------  
+
+
+-----------------------3.2::Clock to Out
+----------------------------------------
+
+Port Name       Clock to Out  Clock Name:Phase        
+--------------  ------------  ----------------------  
+B_LED(0)_PAD    31215         CyHFClk:R               
+B_LED(0)_PAD    30991         PWM_CLK(FFB):R          
+G_LED(0)_PAD    32664         CyHFClk:R               
+G_LED(0)_PAD    32440         PWM_CLK(FFB):R          
+PhsANeg(0)_PAD  25460         CyHFClk:R               
+PhsAPos(0)_PAD  26738         CyHFClk:R               
+PhsBNeg(0)_PAD  23625         CyHFClk:R               
+PhsBPos(0)_PAD  23999         CyHFClk:R               
+R_LED(0)_PAD    31955         CyHFClk:R               
+R_LED(0)_PAD    31731         PWM_CLK(FFB):R          
+SPEAKER(0)_PAD  16910         ClockBlock/ff_div_13:R  
+Y_LED(0)_PAD    33016         CyHFClk:R               
+Y_LED(0)_PAD    32792         PWM_CLK(FFB):R          
+
+
+                         3.3::Pad to Pad
+                         ---------------
+
+Port Name (Source)  Port Name (Destination)  Delay  
+------------------  -----------------------  -----  
+
+===================================================================== 
+                    End of Datasheet Report
+##################################################################### 
+##################################################################### 
+                    4::Path Details for Clock Frequency Summary
+
+===================================================================== 
+                    End of Path Details for Clock Frequency Summary
+##################################################################### 
+
+
+##################################################################### 
+                    5::Path Details for Clock Relationship Summary
+===================================================================== 
+
+
+===================================================================== 
+                    End of Path Details for Clock Relationship Summary
+##################################################################### 
+
+##################################################################### 
+                    Detailed Report for all timing paths 
+===================================================================== 
+===================================================================== 
+                    End of Detailed Report for all timing paths 
+##################################################################### 
+
+##################################################################### 
+                    End of Timing Report 
+##################################################################### 
+

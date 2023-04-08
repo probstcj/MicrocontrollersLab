@@ -1,0 +1,2650 @@
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.tempInit,"ax",%progbits
+  20              		.align	2
+  21              		.global	tempInit
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	tempInit, %function
+  25              	tempInit:
+  26              	.LFB35:
+  27              		.file 1 "main.c"
+   1:main.c        **** /* ========================================
+   2:main.c        ****  *
+   3:main.c        ****  * Copyright YOUR COMPANY, THE YEAR
+   4:main.c        ****  * All Rights Reserved
+   5:main.c        ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:main.c        ****  *
+   7:main.c        ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:main.c        ****  * WHICH IS THE PROPERTY OF your company.
+   9:main.c        ****  *
+  10:main.c        ****  * ========================================
+  11:main.c        **** */
+  12:main.c        **** #include "project.h"
+  13:main.c        **** #include <stdio.h>
+  14:main.c        **** 
+  15:main.c        **** uint8 mode = 0;
+  16:main.c        **** volatile int buttonFlag;
+  17:main.c        **** 
+  18:main.c        **** 
+  19:main.c        **** void tempInit/*Mate*/(){
+  28              		.loc 1 19 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  20:main.c        ****     // Set 6:4 to 100 and 7 to 1
+  21:main.c        ****     ADC_SAR_CTRL_REG = (ADC_SAR_CTRL_REG | 0xC0);
+  33              		.loc 1 21 0
+  34 0000 024A     		ldr	r2, .L2
+  35 0002 1168     		ldr	r1, [r2]
+  36 0004 C023     		movs	r3, #192
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 2
+
+
+  37 0006 0B43     		orrs	r3, r1
+  38 0008 1360     		str	r3, [r2]
+  22:main.c        ****     // Set input to 0
+  23:main.c        ****     //ADC_SetChanMask(0x0000);
+  24:main.c        **** }
+  39              		.loc 1 24 0
+  40              		@ sp needed
+  41 000a 7047     		bx	lr
+  42              	.L3:
+  43              		.align	2
+  44              	.L2:
+  45 000c 00003A40 		.word	1077542912
+  46              		.cfi_endproc
+  47              	.LFE35:
+  48              		.size	tempInit, .-tempInit
+  49              		.section	.text.potInit,"ax",%progbits
+  50              		.align	2
+  51              		.global	potInit
+  52              		.code	16
+  53              		.thumb_func
+  54              		.type	potInit, %function
+  55              	potInit:
+  56              	.LFB36:
+  25:main.c        **** 
+  26:main.c        **** void potInit/*Mate*/(){
+  57              		.loc 1 26 0
+  58              		.cfi_startproc
+  59              		@ args = 0, pretend = 0, frame = 0
+  60              		@ frame_needed = 0, uses_anonymous_args = 0
+  61              		@ link register save eliminated.
+  27:main.c        ****     // Set 6:4 to 100 and 7 to 1
+  28:main.c        ****     ADC_SAR_CTRL_REG = (ADC_SAR_CTRL_REG | 0xE0);
+  62              		.loc 1 28 0
+  63 0000 024A     		ldr	r2, .L5
+  64 0002 1168     		ldr	r1, [r2]
+  65 0004 E023     		movs	r3, #224
+  66 0006 0B43     		orrs	r3, r1
+  67 0008 1360     		str	r3, [r2]
+  29:main.c        ****     // Set input to 0
+  30:main.c        ****     //ADC_SetChanMask(0x0001);
+  31:main.c        **** }
+  68              		.loc 1 31 0
+  69              		@ sp needed
+  70 000a 7047     		bx	lr
+  71              	.L6:
+  72              		.align	2
+  73              	.L5:
+  74 000c 00003A40 		.word	1077542912
+  75              		.cfi_endproc
+  76              	.LFE36:
+  77              		.size	potInit, .-potInit
+  78              		.global	__aeabi_i2d
+  79              		.global	__aeabi_dmul
+  80              		.global	__aeabi_d2f
+  81              		.global	__aeabi_f2d
+  82              		.global	__aeabi_dsub
+  83              		.global	__aeabi_ddiv
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 3
+
+
+  84              		.section	.text.getTempValue,"ax",%progbits
+  85              		.align	2
+  86              		.global	getTempValue
+  87              		.code	16
+  88              		.thumb_func
+  89              		.type	getTempValue, %function
+  90              	getTempValue:
+  91              	.LFB37:
+  32:main.c        **** 
+  33:main.c        **** float getTempValue(){
+  92              		.loc 1 33 0
+  93              		.cfi_startproc
+  94              		@ args = 0, pretend = 0, frame = 0
+  95              		@ frame_needed = 0, uses_anonymous_args = 0
+  96 0000 10B5     		push	{r4, lr}
+  97              		.cfi_def_cfa_offset 8
+  98              		.cfi_offset 4, -8
+  99              		.cfi_offset 14, -4
+  34:main.c        ****     float Vout;
+  35:main.c        ****     ADC_StartConvert();
+ 100              		.loc 1 35 0
+ 101 0002 FFF7FEFF 		bl	ADC_StartConvert
+ 102              	.LVL0:
+  36:main.c        ****     ADC_IsEndConversion(ADC_WAIT_FOR_RESULT);
+ 103              		.loc 1 36 0
+ 104 0006 0220     		movs	r0, #2
+ 105 0008 FFF7FEFF 		bl	ADC_IsEndConversion
+ 106              	.LVL1:
+  37:main.c        ****     int out = ADC_GetResult16(0);
+ 107              		.loc 1 37 0
+ 108 000c 0020     		movs	r0, #0
+ 109 000e FFF7FEFF 		bl	ADC_GetResult16
+ 110              	.LVL2:
+ 111 0012 0400     		movs	r4, r0
+ 112              	.LVL3:
+  38:main.c        ****     ADC_StopConvert();
+ 113              		.loc 1 38 0
+ 114 0014 FFF7FEFF 		bl	ADC_StopConvert
+ 115              	.LVL4:
+  39:main.c        ****     Vout = out * (2.048/4095);
+ 116              		.loc 1 39 0
+ 117 0018 2000     		movs	r0, r4
+ 118 001a FFF7FEFF 		bl	__aeabi_i2d
+ 119              	.LVL5:
+ 120 001e 094A     		ldr	r2, .L8
+ 121 0020 094B     		ldr	r3, .L8+4
+ 122 0022 FFF7FEFF 		bl	__aeabi_dmul
+ 123              	.LVL6:
+ 124 0026 FFF7FEFF 		bl	__aeabi_d2f
+ 125              	.LVL7:
+  40:main.c        ****     // (Vout - V0)/Tc = Ta
+  41:main.c        ****     return (Vout - .400)/(.0195);
+ 126              		.loc 1 41 0
+ 127 002a FFF7FEFF 		bl	__aeabi_f2d
+ 128              	.LVL8:
+ 129 002e 074A     		ldr	r2, .L8+8
+ 130 0030 074B     		ldr	r3, .L8+12
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 4
+
+
+ 131 0032 FFF7FEFF 		bl	__aeabi_dsub
+ 132              	.LVL9:
+ 133 0036 074A     		ldr	r2, .L8+16
+ 134 0038 074B     		ldr	r3, .L8+20
+ 135 003a FFF7FEFF 		bl	__aeabi_ddiv
+ 136              	.LVL10:
+ 137 003e FFF7FEFF 		bl	__aeabi_d2f
+ 138              	.LVL11:
+  42:main.c        **** }
+ 139              		.loc 1 42 0
+ 140              		@ sp needed
+ 141              	.LVL12:
+ 142 0042 10BD     		pop	{r4, pc}
+ 143              	.L9:
+ 144              		.align	2
+ 145              	.L8:
+ 146 0044 1F2D3208 		.word	137506079
+ 147 0048 5463403F 		.word	1061184340
+ 148 004c 9A999999 		.word	-1717986918
+ 149 0050 9999D93F 		.word	1071225241
+ 150 0054 2B8716D9 		.word	-652835029
+ 151 0058 CEF7933F 		.word	1066661838
+ 152              		.cfi_endproc
+ 153              	.LFE37:
+ 154              		.size	getTempValue, .-getTempValue
+ 155              		.global	__aeabi_fmul
+ 156              		.global	__aeabi_fadd
+ 157              		.section	.text.convertCtoF,"ax",%progbits
+ 158              		.align	2
+ 159              		.global	convertCtoF
+ 160              		.code	16
+ 161              		.thumb_func
+ 162              		.type	convertCtoF, %function
+ 163              	convertCtoF:
+ 164              	.LFB38:
+  43:main.c        **** 
+  44:main.c        **** float convertCtoF(float C){
+ 165              		.loc 1 44 0
+ 166              		.cfi_startproc
+ 167              		@ args = 0, pretend = 0, frame = 0
+ 168              		@ frame_needed = 0, uses_anonymous_args = 0
+ 169              	.LVL13:
+ 170 0000 10B5     		push	{r4, lr}
+ 171              		.cfi_def_cfa_offset 8
+ 172              		.cfi_offset 4, -8
+ 173              		.cfi_offset 14, -4
+  45:main.c        ****     return (9/((float)5))*C + 32;
+ 174              		.loc 1 45 0
+ 175 0002 0449     		ldr	r1, .L11
+ 176 0004 FFF7FEFF 		bl	__aeabi_fmul
+ 177              	.LVL14:
+ 178 0008 8421     		movs	r1, #132
+ 179 000a C905     		lsls	r1, r1, #23
+ 180 000c FFF7FEFF 		bl	__aeabi_fadd
+ 181              	.LVL15:
+  46:main.c        **** }
+ 182              		.loc 1 46 0
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 5
+
+
+ 183              		@ sp needed
+ 184 0010 10BD     		pop	{r4, pc}
+ 185              	.L12:
+ 186 0012 C046     		.align	2
+ 187              	.L11:
+ 188 0014 6666E63F 		.word	1072064102
+ 189              		.cfi_endproc
+ 190              	.LFE38:
+ 191              		.size	convertCtoF, .-convertCtoF
+ 192              		.global	__aeabi_fcmplt
+ 193              		.global	__aeabi_d2iz
+ 194              		.section	.text.selectTempLED,"ax",%progbits
+ 195              		.align	2
+ 196              		.global	selectTempLED
+ 197              		.code	16
+ 198              		.thumb_func
+ 199              		.type	selectTempLED, %function
+ 200              	selectTempLED:
+ 201              	.LFB39:
+  47:main.c        **** 
+  48:main.c        **** void selectTempLED(float temp){
+ 202              		.loc 1 48 0
+ 203              		.cfi_startproc
+ 204              		@ args = 0, pretend = 0, frame = 0
+ 205              		@ frame_needed = 0, uses_anonymous_args = 0
+ 206              	.LVL16:
+ 207 0000 10B5     		push	{r4, lr}
+ 208              		.cfi_def_cfa_offset 8
+ 209              		.cfi_offset 4, -8
+ 210              		.cfi_offset 14, -4
+ 211 0002 041C     		adds	r4, r0, #0
+  49:main.c        ****     PWM_WritePeriod(1000);
+ 212              		.loc 1 49 0
+ 213 0004 FA20     		movs	r0, #250
+ 214              	.LVL17:
+ 215 0006 8000     		lsls	r0, r0, #2
+ 216 0008 FFF7FEFF 		bl	PWM_WritePeriod
+ 217              	.LVL18:
+  50:main.c        ****     if(temp < 75.0){
+ 218              		.loc 1 50 0
+ 219 000c 3749     		ldr	r1, .L29
+ 220 000e 201C     		adds	r0, r4, #0
+ 221 0010 FFF7FEFF 		bl	__aeabi_fcmplt
+ 222              	.LVL19:
+ 223 0014 0028     		cmp	r0, #0
+ 224 0016 12D0     		beq	.L26
+  51:main.c        ****         PWM_WriteCompare((int)((temp/75.0) * 1000));
+ 225              		.loc 1 51 0
+ 226 0018 201C     		adds	r0, r4, #0
+ 227 001a FFF7FEFF 		bl	__aeabi_f2d
+ 228              	.LVL20:
+ 229 001e 0022     		movs	r2, #0
+ 230 0020 334B     		ldr	r3, .L29+4
+ 231 0022 FFF7FEFF 		bl	__aeabi_ddiv
+ 232              	.LVL21:
+ 233 0026 0022     		movs	r2, #0
+ 234 0028 324B     		ldr	r3, .L29+8
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 6
+
+
+ 235 002a FFF7FEFF 		bl	__aeabi_dmul
+ 236              	.LVL22:
+ 237 002e FFF7FEFF 		bl	__aeabi_d2iz
+ 238              	.LVL23:
+ 239 0032 FFF7FEFF 		bl	PWM_WriteCompare
+ 240              	.LVL24:
+  52:main.c        ****         LED_SEL_Write(2);
+ 241              		.loc 1 52 0
+ 242 0036 0220     		movs	r0, #2
+ 243 0038 FFF7FEFF 		bl	LED_SEL_Write
+ 244              	.LVL25:
+ 245 003c 55E0     		b	.L13
+ 246              	.L26:
+  53:main.c        ****     } else if(temp < 80.0) {
+ 247              		.loc 1 53 0
+ 248 003e 2E49     		ldr	r1, .L29+12
+ 249 0040 201C     		adds	r0, r4, #0
+ 250 0042 FFF7FEFF 		bl	__aeabi_fcmplt
+ 251              	.LVL26:
+ 252 0046 0028     		cmp	r0, #0
+ 253 0048 16D0     		beq	.L27
+  54:main.c        ****         PWM_WriteCompare((int)((temp-75.0)/(5.0) * 1000));
+ 254              		.loc 1 54 0
+ 255 004a 201C     		adds	r0, r4, #0
+ 256 004c FFF7FEFF 		bl	__aeabi_f2d
+ 257              	.LVL27:
+ 258 0050 0022     		movs	r2, #0
+ 259 0052 274B     		ldr	r3, .L29+4
+ 260 0054 FFF7FEFF 		bl	__aeabi_dsub
+ 261              	.LVL28:
+ 262 0058 0022     		movs	r2, #0
+ 263 005a 284B     		ldr	r3, .L29+16
+ 264 005c FFF7FEFF 		bl	__aeabi_ddiv
+ 265              	.LVL29:
+ 266 0060 0022     		movs	r2, #0
+ 267 0062 244B     		ldr	r3, .L29+8
+ 268 0064 FFF7FEFF 		bl	__aeabi_dmul
+ 269              	.LVL30:
+ 270 0068 FFF7FEFF 		bl	__aeabi_d2iz
+ 271              	.LVL31:
+ 272 006c FFF7FEFF 		bl	PWM_WriteCompare
+ 273              	.LVL32:
+  55:main.c        ****         LED_SEL_Write(1);
+ 274              		.loc 1 55 0
+ 275 0070 0120     		movs	r0, #1
+ 276 0072 FFF7FEFF 		bl	LED_SEL_Write
+ 277              	.LVL33:
+ 278 0076 38E0     		b	.L13
+ 279              	.L27:
+  56:main.c        ****     } else if(temp < 85.0) {
+ 280              		.loc 1 56 0
+ 281 0078 2149     		ldr	r1, .L29+20
+ 282 007a 201C     		adds	r0, r4, #0
+ 283 007c FFF7FEFF 		bl	__aeabi_fcmplt
+ 284              	.LVL34:
+ 285 0080 0028     		cmp	r0, #0
+ 286 0082 16D0     		beq	.L28
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 7
+
+
+  57:main.c        ****         PWM_WriteCompare((int)((temp-80.0)/(5.0) * 1000));
+ 287              		.loc 1 57 0
+ 288 0084 201C     		adds	r0, r4, #0
+ 289 0086 FFF7FEFF 		bl	__aeabi_f2d
+ 290              	.LVL35:
+ 291 008a 0022     		movs	r2, #0
+ 292 008c 1D4B     		ldr	r3, .L29+24
+ 293 008e FFF7FEFF 		bl	__aeabi_dsub
+ 294              	.LVL36:
+ 295 0092 0022     		movs	r2, #0
+ 296 0094 194B     		ldr	r3, .L29+16
+ 297 0096 FFF7FEFF 		bl	__aeabi_ddiv
+ 298              	.LVL37:
+ 299 009a 0022     		movs	r2, #0
+ 300 009c 154B     		ldr	r3, .L29+8
+ 301 009e FFF7FEFF 		bl	__aeabi_dmul
+ 302              	.LVL38:
+ 303 00a2 FFF7FEFF 		bl	__aeabi_d2iz
+ 304              	.LVL39:
+ 305 00a6 FFF7FEFF 		bl	PWM_WriteCompare
+ 306              	.LVL40:
+  58:main.c        ****         LED_SEL_Write(3);
+ 307              		.loc 1 58 0
+ 308 00aa 0320     		movs	r0, #3
+ 309 00ac FFF7FEFF 		bl	LED_SEL_Write
+ 310              	.LVL41:
+ 311 00b0 1BE0     		b	.L13
+ 312              	.L28:
+  59:main.c        ****     } else if(temp < 212.0) {
+ 313              		.loc 1 59 0
+ 314 00b2 1549     		ldr	r1, .L29+28
+ 315 00b4 201C     		adds	r0, r4, #0
+ 316 00b6 FFF7FEFF 		bl	__aeabi_fcmplt
+ 317              	.LVL42:
+ 318 00ba 0028     		cmp	r0, #0
+ 319 00bc 15D0     		beq	.L13
+  60:main.c        ****         PWM_WriteCompare((int)((temp-85.0)/(127.0) * 1000));
+ 320              		.loc 1 60 0
+ 321 00be 201C     		adds	r0, r4, #0
+ 322 00c0 FFF7FEFF 		bl	__aeabi_f2d
+ 323              	.LVL43:
+ 324 00c4 0022     		movs	r2, #0
+ 325 00c6 114B     		ldr	r3, .L29+32
+ 326 00c8 FFF7FEFF 		bl	__aeabi_dsub
+ 327              	.LVL44:
+ 328 00cc 0022     		movs	r2, #0
+ 329 00ce 104B     		ldr	r3, .L29+36
+ 330 00d0 FFF7FEFF 		bl	__aeabi_ddiv
+ 331              	.LVL45:
+ 332 00d4 0022     		movs	r2, #0
+ 333 00d6 074B     		ldr	r3, .L29+8
+ 334 00d8 FFF7FEFF 		bl	__aeabi_dmul
+ 335              	.LVL46:
+ 336 00dc FFF7FEFF 		bl	__aeabi_d2iz
+ 337              	.LVL47:
+ 338 00e0 FFF7FEFF 		bl	PWM_WriteCompare
+ 339              	.LVL48:
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 8
+
+
+  61:main.c        ****         LED_SEL_Write(0);
+ 340              		.loc 1 61 0
+ 341 00e4 0020     		movs	r0, #0
+ 342 00e6 FFF7FEFF 		bl	LED_SEL_Write
+ 343              	.LVL49:
+ 344              	.L13:
+  62:main.c        ****     }
+  63:main.c        **** }
+ 345              		.loc 1 63 0
+ 346              		@ sp needed
+ 347              	.LVL50:
+ 348 00ea 10BD     		pop	{r4, pc}
+ 349              	.L30:
+ 350              		.align	2
+ 351              	.L29:
+ 352 00ec 00009642 		.word	1117126656
+ 353 00f0 00C05240 		.word	1079164928
+ 354 00f4 00408F40 		.word	1083129856
+ 355 00f8 0000A042 		.word	1117782016
+ 356 00fc 00001440 		.word	1075052544
+ 357 0100 0000AA42 		.word	1118437376
+ 358 0104 00005440 		.word	1079246848
+ 359 0108 00005443 		.word	1129578496
+ 360 010c 00405540 		.word	1079328768
+ 361 0110 00C05F40 		.word	1080016896
+ 362              		.cfi_endproc
+ 363              	.LFE39:
+ 364              		.size	selectTempLED, .-selectTempLED
+ 365              		.global	__aeabi_dcmplt
+ 366              		.section	.text.selectVoltageLED,"ax",%progbits
+ 367              		.align	2
+ 368              		.global	selectVoltageLED
+ 369              		.code	16
+ 370              		.thumb_func
+ 371              		.type	selectVoltageLED, %function
+ 372              	selectVoltageLED:
+ 373              	.LFB40:
+  64:main.c        **** 
+  65:main.c        **** void selectVoltageLED(float voltage){
+ 374              		.loc 1 65 0
+ 375              		.cfi_startproc
+ 376              		@ args = 0, pretend = 0, frame = 0
+ 377              		@ frame_needed = 0, uses_anonymous_args = 0
+ 378              	.LVL51:
+ 379 0000 70B5     		push	{r4, r5, r6, lr}
+ 380              		.cfi_def_cfa_offset 16
+ 381              		.cfi_offset 4, -16
+ 382              		.cfi_offset 5, -12
+ 383              		.cfi_offset 6, -8
+ 384              		.cfi_offset 14, -4
+ 385 0002 041C     		adds	r4, r0, #0
+  66:main.c        ****      PWM_WritePeriod(1000);
+ 386              		.loc 1 66 0
+ 387 0004 FA20     		movs	r0, #250
+ 388              	.LVL52:
+ 389 0006 8000     		lsls	r0, r0, #2
+ 390 0008 FFF7FEFF 		bl	PWM_WritePeriod
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 9
+
+
+ 391              	.LVL53:
+  67:main.c        ****     if(voltage < 0.8){
+ 392              		.loc 1 67 0
+ 393 000c 201C     		adds	r0, r4, #0
+ 394 000e FFF7FEFF 		bl	__aeabi_f2d
+ 395              	.LVL54:
+ 396 0012 0400     		movs	r4, r0
+ 397              	.LVL55:
+ 398 0014 0D00     		movs	r5, r1
+ 399 0016 394A     		ldr	r2, .L47
+ 400 0018 394B     		ldr	r3, .L47+4
+ 401 001a FFF7FEFF 		bl	__aeabi_dcmplt
+ 402              	.LVL56:
+ 403 001e 0028     		cmp	r0, #0
+ 404 0020 11D0     		beq	.L44
+  68:main.c        ****         PWM_WriteCompare((int)((voltage/0.8) * 1000));
+ 405              		.loc 1 68 0
+ 406 0022 364A     		ldr	r2, .L47
+ 407 0024 364B     		ldr	r3, .L47+4
+ 408 0026 2000     		movs	r0, r4
+ 409 0028 2900     		movs	r1, r5
+ 410 002a FFF7FEFF 		bl	__aeabi_ddiv
+ 411              	.LVL57:
+ 412 002e 0022     		movs	r2, #0
+ 413 0030 344B     		ldr	r3, .L47+8
+ 414 0032 FFF7FEFF 		bl	__aeabi_dmul
+ 415              	.LVL58:
+ 416 0036 FFF7FEFF 		bl	__aeabi_d2iz
+ 417              	.LVL59:
+ 418 003a FFF7FEFF 		bl	PWM_WriteCompare
+ 419              	.LVL60:
+  69:main.c        ****         LED_SEL_Write(2);
+ 420              		.loc 1 69 0
+ 421 003e 0220     		movs	r0, #2
+ 422 0040 FFF7FEFF 		bl	LED_SEL_Write
+ 423              	.LVL61:
+ 424 0044 58E0     		b	.L31
+ 425              	.L44:
+  70:main.c        ****     } else if(voltage < 1.6) {
+ 426              		.loc 1 70 0
+ 427 0046 2D4A     		ldr	r2, .L47
+ 428 0048 2F4B     		ldr	r3, .L47+12
+ 429 004a 2000     		movs	r0, r4
+ 430 004c 2900     		movs	r1, r5
+ 431 004e FFF7FEFF 		bl	__aeabi_dcmplt
+ 432              	.LVL62:
+ 433 0052 0028     		cmp	r0, #0
+ 434 0054 15D0     		beq	.L45
+  71:main.c        ****         PWM_WriteCompare((int)((voltage-0.8)/(0.8) * 1000));
+ 435              		.loc 1 71 0
+ 436 0056 294A     		ldr	r2, .L47
+ 437 0058 294B     		ldr	r3, .L47+4
+ 438 005a 2000     		movs	r0, r4
+ 439 005c 2900     		movs	r1, r5
+ 440 005e FFF7FEFF 		bl	__aeabi_dsub
+ 441              	.LVL63:
+ 442 0062 264A     		ldr	r2, .L47
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 10
+
+
+ 443 0064 264B     		ldr	r3, .L47+4
+ 444 0066 FFF7FEFF 		bl	__aeabi_ddiv
+ 445              	.LVL64:
+ 446 006a 0022     		movs	r2, #0
+ 447 006c 254B     		ldr	r3, .L47+8
+ 448 006e FFF7FEFF 		bl	__aeabi_dmul
+ 449              	.LVL65:
+ 450 0072 FFF7FEFF 		bl	__aeabi_d2iz
+ 451              	.LVL66:
+ 452 0076 FFF7FEFF 		bl	PWM_WriteCompare
+ 453              	.LVL67:
+  72:main.c        ****         LED_SEL_Write(1);
+ 454              		.loc 1 72 0
+ 455 007a 0120     		movs	r0, #1
+ 456 007c FFF7FEFF 		bl	LED_SEL_Write
+ 457              	.LVL68:
+ 458 0080 3AE0     		b	.L31
+ 459              	.L45:
+  73:main.c        ****     } else if(voltage < 2.4) {
+ 460              		.loc 1 73 0
+ 461 0082 224A     		ldr	r2, .L47+16
+ 462 0084 224B     		ldr	r3, .L47+20
+ 463 0086 2000     		movs	r0, r4
+ 464 0088 2900     		movs	r1, r5
+ 465 008a FFF7FEFF 		bl	__aeabi_dcmplt
+ 466              	.LVL69:
+ 467 008e 0028     		cmp	r0, #0
+ 468 0090 15D0     		beq	.L46
+  74:main.c        ****         PWM_WriteCompare((int)((voltage-1.6)/(0.8) * 1000));
+ 469              		.loc 1 74 0
+ 470 0092 1A4A     		ldr	r2, .L47
+ 471 0094 1C4B     		ldr	r3, .L47+12
+ 472 0096 2000     		movs	r0, r4
+ 473 0098 2900     		movs	r1, r5
+ 474 009a FFF7FEFF 		bl	__aeabi_dsub
+ 475              	.LVL70:
+ 476 009e 174A     		ldr	r2, .L47
+ 477 00a0 174B     		ldr	r3, .L47+4
+ 478 00a2 FFF7FEFF 		bl	__aeabi_ddiv
+ 479              	.LVL71:
+ 480 00a6 0022     		movs	r2, #0
+ 481 00a8 164B     		ldr	r3, .L47+8
+ 482 00aa FFF7FEFF 		bl	__aeabi_dmul
+ 483              	.LVL72:
+ 484 00ae FFF7FEFF 		bl	__aeabi_d2iz
+ 485              	.LVL73:
+ 486 00b2 FFF7FEFF 		bl	PWM_WriteCompare
+ 487              	.LVL74:
+  75:main.c        ****         LED_SEL_Write(3);
+ 488              		.loc 1 75 0
+ 489 00b6 0320     		movs	r0, #3
+ 490 00b8 FFF7FEFF 		bl	LED_SEL_Write
+ 491              	.LVL75:
+ 492 00bc 1CE0     		b	.L31
+ 493              	.L46:
+  76:main.c        ****     } else if(voltage < 3.3) {
+ 494              		.loc 1 76 0
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 11
+
+
+ 495 00be 154A     		ldr	r2, .L47+24
+ 496 00c0 154B     		ldr	r3, .L47+28
+ 497 00c2 2000     		movs	r0, r4
+ 498 00c4 2900     		movs	r1, r5
+ 499 00c6 FFF7FEFF 		bl	__aeabi_dcmplt
+ 500              	.LVL76:
+ 501 00ca 0028     		cmp	r0, #0
+ 502 00cc 14D0     		beq	.L31
+  77:main.c        ****         PWM_WriteCompare((int)((voltage-2.4)/(0.9) * 1000));
+ 503              		.loc 1 77 0
+ 504 00ce 0F4A     		ldr	r2, .L47+16
+ 505 00d0 0F4B     		ldr	r3, .L47+20
+ 506 00d2 2000     		movs	r0, r4
+ 507 00d4 2900     		movs	r1, r5
+ 508 00d6 FFF7FEFF 		bl	__aeabi_dsub
+ 509              	.LVL77:
+ 510 00da 104A     		ldr	r2, .L47+32
+ 511 00dc 104B     		ldr	r3, .L47+36
+ 512 00de FFF7FEFF 		bl	__aeabi_ddiv
+ 513              	.LVL78:
+ 514 00e2 0022     		movs	r2, #0
+ 515 00e4 074B     		ldr	r3, .L47+8
+ 516 00e6 FFF7FEFF 		bl	__aeabi_dmul
+ 517              	.LVL79:
+ 518 00ea FFF7FEFF 		bl	__aeabi_d2iz
+ 519              	.LVL80:
+ 520 00ee FFF7FEFF 		bl	PWM_WriteCompare
+ 521              	.LVL81:
+  78:main.c        ****         LED_SEL_Write(0);
+ 522              		.loc 1 78 0
+ 523 00f2 0020     		movs	r0, #0
+ 524 00f4 FFF7FEFF 		bl	LED_SEL_Write
+ 525              	.LVL82:
+ 526              	.L31:
+  79:main.c        ****     }
+  80:main.c        **** }
+ 527              		.loc 1 80 0
+ 528              		@ sp needed
+ 529 00f8 70BD     		pop	{r4, r5, r6, pc}
+ 530              	.L48:
+ 531 00fa C046     		.align	2
+ 532              	.L47:
+ 533 00fc 9A999999 		.word	-1717986918
+ 534 0100 9999E93F 		.word	1072273817
+ 535 0104 00408F40 		.word	1083129856
+ 536 0108 9999F93F 		.word	1073322393
+ 537 010c 33333333 		.word	858993459
+ 538 0110 33330340 		.word	1073951539
+ 539 0114 66666666 		.word	1717986918
+ 540 0118 66660A40 		.word	1074423398
+ 541 011c CDCCCCCC 		.word	-858993459
+ 542 0120 CCCCEC3F 		.word	1072483532
+ 543              		.cfi_endproc
+ 544              	.LFE40:
+ 545              		.size	selectVoltageLED, .-selectVoltageLED
+ 546              		.section	.text.getVoltage,"ax",%progbits
+ 547              		.align	2
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 12
+
+
+ 548              		.global	getVoltage
+ 549              		.code	16
+ 550              		.thumb_func
+ 551              		.type	getVoltage, %function
+ 552              	getVoltage:
+ 553              	.LFB41:
+  81:main.c        **** 
+  82:main.c        **** float getVoltage(){
+ 554              		.loc 1 82 0
+ 555              		.cfi_startproc
+ 556              		@ args = 0, pretend = 0, frame = 0
+ 557              		@ frame_needed = 0, uses_anonymous_args = 0
+ 558 0000 10B5     		push	{r4, lr}
+ 559              		.cfi_def_cfa_offset 8
+ 560              		.cfi_offset 4, -8
+ 561              		.cfi_offset 14, -4
+  83:main.c        ****     float Vout;
+  84:main.c        ****     ADC_StartConvert();
+ 562              		.loc 1 84 0
+ 563 0002 FFF7FEFF 		bl	ADC_StartConvert
+ 564              	.LVL83:
+  85:main.c        ****     ADC_IsEndConversion(ADC_WAIT_FOR_RESULT);
+ 565              		.loc 1 85 0
+ 566 0006 0220     		movs	r0, #2
+ 567 0008 FFF7FEFF 		bl	ADC_IsEndConversion
+ 568              	.LVL84:
+  86:main.c        ****     int out = ADC_GetResult16(1);
+ 569              		.loc 1 86 0
+ 570 000c 0120     		movs	r0, #1
+ 571 000e FFF7FEFF 		bl	ADC_GetResult16
+ 572              	.LVL85:
+ 573 0012 0400     		movs	r4, r0
+ 574              	.LVL86:
+  87:main.c        ****     ADC_StopConvert();
+ 575              		.loc 1 87 0
+ 576 0014 FFF7FEFF 		bl	ADC_StopConvert
+ 577              	.LVL87:
+  88:main.c        ****     Vout = out * (3.3/4095);
+ 578              		.loc 1 88 0
+ 579 0018 2000     		movs	r0, r4
+ 580 001a FFF7FEFF 		bl	__aeabi_i2d
+ 581              	.LVL88:
+ 582 001e 034A     		ldr	r2, .L50
+ 583 0020 034B     		ldr	r3, .L50+4
+ 584 0022 FFF7FEFF 		bl	__aeabi_dmul
+ 585              	.LVL89:
+ 586 0026 FFF7FEFF 		bl	__aeabi_d2f
+ 587              	.LVL90:
+  89:main.c        ****     return Vout;
+  90:main.c        **** }
+ 588              		.loc 1 90 0
+ 589              		@ sp needed
+ 590              	.LVL91:
+ 591 002a 10BD     		pop	{r4, pc}
+ 592              	.L51:
+ 593              		.align	2
+ 594              	.L50:
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 13
+
+
+ 595 002c B4D934E7 		.word	-415966796
+ 596 0030 0C684A3F 		.word	1061840908
+ 597              		.cfi_endproc
+ 598              	.LFE41:
+ 599              		.size	getVoltage, .-getVoltage
+ 600              		.section	.text.main,"ax",%progbits
+ 601              		.align	2
+ 602              		.global	main
+ 603              		.code	16
+ 604              		.thumb_func
+ 605              		.type	main, %function
+ 606              	main:
+ 607              	.LFB42:
+  91:main.c        **** 
+  92:main.c        **** int main(void)
+  93:main.c        **** {
+ 608              		.loc 1 93 0
+ 609              		.cfi_startproc
+ 610              		@ args = 0, pretend = 0, frame = 32
+ 611              		@ frame_needed = 0, uses_anonymous_args = 0
+ 612 0000 30B5     		push	{r4, r5, lr}
+ 613              		.cfi_def_cfa_offset 12
+ 614              		.cfi_offset 4, -12
+ 615              		.cfi_offset 5, -8
+ 616              		.cfi_offset 14, -4
+ 617 0002 8DB0     		sub	sp, sp, #52
+ 618              		.cfi_def_cfa_offset 64
+  94:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
+ 619              		.loc 1 94 0
+ 620              		.syntax divided
+ 621              	@ 94 "main.c" 1
+ 622 0004 62B6     		CPSIE   i
+ 623              	@ 0 "" 2
+  95:main.c        **** 
+  96:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  97:main.c        ****     ADC_Start();
+ 624              		.loc 1 97 0
+ 625              		.thumb
+ 626              		.syntax unified
+ 627 0006 FFF7FEFF 		bl	ADC_Start
+ 628              	.LVL92:
+  98:main.c        ****     BTN_ISR_Start();
+ 629              		.loc 1 98 0
+ 630 000a FFF7FEFF 		bl	BTN_ISR_Start
+ 631              	.LVL93:
+  99:main.c        ****     LCD_Start();
+ 632              		.loc 1 99 0
+ 633 000e FFF7FEFF 		bl	LCD_Start
+ 634              	.LVL94:
+ 100:main.c        ****     PWM_Start();
+ 635              		.loc 1 100 0
+ 636 0012 FFF7FEFF 		bl	PWM_Start
+ 637              	.LVL95:
+ 101:main.c        ****     
+ 102:main.c        ****     tempInit/*Mate*/();
+ 638              		.loc 1 102 0
+ 639 0016 FFF7FEFF 		bl	tempInit
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 14
+
+
+ 640              	.LVL96:
+ 641              	.L53:
+ 103:main.c        ****     for(;;)
+ 104:main.c        ****     { 
+ 105:main.c        ****         if(buttonFlag == 1){
+ 642              		.loc 1 105 0
+ 643 001a 314B     		ldr	r3, .L58
+ 644 001c 1B68     		ldr	r3, [r3]
+ 645 001e 012B     		cmp	r3, #1
+ 646 0020 0CD1     		bne	.L54
+ 106:main.c        ****             buttonFlag = 0;
+ 647              		.loc 1 106 0
+ 648 0022 0022     		movs	r2, #0
+ 649 0024 2E4B     		ldr	r3, .L58
+ 650 0026 1A60     		str	r2, [r3]
+ 107:main.c        ****             if(mode == 1){
+ 651              		.loc 1 107 0
+ 652 0028 2E4B     		ldr	r3, .L58+4
+ 653 002a 1B78     		ldrb	r3, [r3]
+ 654 002c 012B     		cmp	r3, #1
+ 655 002e 02D1     		bne	.L55
+ 108:main.c        ****                 mode = 0;
+ 656              		.loc 1 108 0
+ 657 0030 2C4B     		ldr	r3, .L58+4
+ 658 0032 1A70     		strb	r2, [r3]
+ 659 0034 02E0     		b	.L54
+ 660              	.L55:
+ 109:main.c        ****             } else {
+ 110:main.c        ****                 mode = 1;
+ 661              		.loc 1 110 0
+ 662 0036 0122     		movs	r2, #1
+ 663 0038 2A4B     		ldr	r3, .L58+4
+ 664 003a 1A70     		strb	r2, [r3]
+ 665              	.L54:
+ 111:main.c        ****             }
+ 112:main.c        ****         }
+ 113:main.c        ****         if(mode ==  0){
+ 666              		.loc 1 113 0
+ 667 003c 294B     		ldr	r3, .L58+4
+ 668 003e 1B78     		ldrb	r3, [r3]
+ 669 0040 002B     		cmp	r3, #0
+ 670 0042 31D1     		bne	.L56
+ 671              	.LBB2:
+ 114:main.c        ****             tempInit();
+ 672              		.loc 1 114 0
+ 673 0044 FFF7FEFF 		bl	tempInit
+ 674              	.LVL97:
+ 115:main.c        ****             CyDelay(100);
+ 675              		.loc 1 115 0
+ 676 0048 6420     		movs	r0, #100
+ 677 004a FFF7FEFF 		bl	CyDelay
+ 678              	.LVL98:
+ 116:main.c        ****             float temp = getTempValue();
+ 679              		.loc 1 116 0
+ 680 004e FFF7FEFF 		bl	getTempValue
+ 681              	.LVL99:
+ 682 0052 041C     		adds	r4, r0, #0
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 15
+
+
+ 683              	.LVL100:
+ 117:main.c        ****             char topLine[16];
+ 118:main.c        ****             char bottomLine[16];
+ 119:main.c        ****             snprintf(topLine, 16, "Temp: %.2f %cC", temp, 223);
+ 684              		.loc 1 119 0
+ 685 0054 DF25     		movs	r5, #223
+ 686 0056 0295     		str	r5, [sp, #8]
+ 687 0058 FFF7FEFF 		bl	__aeabi_f2d
+ 688              	.LVL101:
+ 689 005c 0090     		str	r0, [sp]
+ 690 005e 0191     		str	r1, [sp, #4]
+ 691 0060 214A     		ldr	r2, .L58+8
+ 692 0062 1021     		movs	r1, #16
+ 693 0064 04A8     		add	r0, sp, #16
+ 694 0066 FFF7FEFF 		bl	snprintf
+ 695              	.LVL102:
+ 120:main.c        ****             snprintf(bottomLine, 16, "      %.2f %cF",convertCtoF(temp), 223);
+ 696              		.loc 1 120 0
+ 697 006a 201C     		adds	r0, r4, #0
+ 698 006c FFF7FEFF 		bl	convertCtoF
+ 699              	.LVL103:
+ 700 0070 041C     		adds	r4, r0, #0
+ 701              	.LVL104:
+ 702 0072 0295     		str	r5, [sp, #8]
+ 703 0074 FFF7FEFF 		bl	__aeabi_f2d
+ 704              	.LVL105:
+ 705 0078 0090     		str	r0, [sp]
+ 706 007a 0191     		str	r1, [sp, #4]
+ 707 007c 1B4A     		ldr	r2, .L58+12
+ 708 007e 1021     		movs	r1, #16
+ 709 0080 08A8     		add	r0, sp, #32
+ 710 0082 FFF7FEFF 		bl	snprintf
+ 711              	.LVL106:
+ 121:main.c        ****             LCD_ClearDisplay();
+ 712              		.loc 1 121 0
+ 713 0086 0120     		movs	r0, #1
+ 714 0088 FFF7FEFF 		bl	LCD_WriteControl
+ 715              	.LVL107:
+ 122:main.c        ****             LCD_PrintString(topLine);
+ 716              		.loc 1 122 0
+ 717 008c 04A8     		add	r0, sp, #16
+ 718 008e FFF7FEFF 		bl	LCD_PrintString
+ 719              	.LVL108:
+ 123:main.c        ****             LCD_Position(1,0);
+ 720              		.loc 1 123 0
+ 721 0092 0021     		movs	r1, #0
+ 722 0094 0120     		movs	r0, #1
+ 723 0096 FFF7FEFF 		bl	LCD_Position
+ 724              	.LVL109:
+ 124:main.c        ****             LCD_PrintString(bottomLine);
+ 725              		.loc 1 124 0
+ 726 009a 08A8     		add	r0, sp, #32
+ 727 009c FFF7FEFF 		bl	LCD_PrintString
+ 728              	.LVL110:
+ 125:main.c        ****             selectTempLED(convertCtoF(temp));
+ 729              		.loc 1 125 0
+ 730 00a0 201C     		adds	r0, r4, #0
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 16
+
+
+ 731 00a2 FFF7FEFF 		bl	selectTempLED
+ 732              	.LVL111:
+ 733              	.LBE2:
+ 734 00a6 B8E7     		b	.L53
+ 735              	.L56:
+ 736              	.LBB3:
+ 126:main.c        ****         } else {
+ 127:main.c        ****             potInit();
+ 737              		.loc 1 127 0 discriminator 2
+ 738 00a8 FFF7FEFF 		bl	potInit
+ 739              	.LVL112:
+ 128:main.c        ****             CyDelay(100);
+ 740              		.loc 1 128 0 discriminator 2
+ 741 00ac 6420     		movs	r0, #100
+ 742 00ae FFF7FEFF 		bl	CyDelay
+ 743              	.LVL113:
+ 129:main.c        ****             float voltage = getVoltage();
+ 744              		.loc 1 129 0 discriminator 2
+ 745 00b2 FFF7FEFF 		bl	getVoltage
+ 746              	.LVL114:
+ 747 00b6 041C     		adds	r4, r0, #0
+ 748              	.LVL115:
+ 130:main.c        ****             char topLine[16];
+ 131:main.c        ****             snprintf(topLine, 16, "Voltage: %.2f V", voltage);
+ 749              		.loc 1 131 0 discriminator 2
+ 750 00b8 FFF7FEFF 		bl	__aeabi_f2d
+ 751              	.LVL116:
+ 752 00bc 0090     		str	r0, [sp]
+ 753 00be 0191     		str	r1, [sp, #4]
+ 754 00c0 0B4A     		ldr	r2, .L58+16
+ 755 00c2 1021     		movs	r1, #16
+ 756 00c4 08A8     		add	r0, sp, #32
+ 757 00c6 FFF7FEFF 		bl	snprintf
+ 758              	.LVL117:
+ 132:main.c        ****             LCD_ClearDisplay();
+ 759              		.loc 1 132 0 discriminator 2
+ 760 00ca 0120     		movs	r0, #1
+ 761 00cc FFF7FEFF 		bl	LCD_WriteControl
+ 762              	.LVL118:
+ 133:main.c        ****             LCD_PrintString(topLine);
+ 763              		.loc 1 133 0 discriminator 2
+ 764 00d0 08A8     		add	r0, sp, #32
+ 765 00d2 FFF7FEFF 		bl	LCD_PrintString
+ 766              	.LVL119:
+ 134:main.c        ****             selectVoltageLED(voltage);
+ 767              		.loc 1 134 0 discriminator 2
+ 768 00d6 201C     		adds	r0, r4, #0
+ 769 00d8 FFF7FEFF 		bl	selectVoltageLED
+ 770              	.LVL120:
+ 771 00dc 9DE7     		b	.L53
+ 772              	.L59:
+ 773 00de C046     		.align	2
+ 774              	.L58:
+ 775 00e0 00000000 		.word	buttonFlag
+ 776 00e4 00000000 		.word	.LANCHOR0
+ 777 00e8 00000000 		.word	.LC2
+ 778 00ec 10000000 		.word	.LC4
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 17
+
+
+ 779 00f0 20000000 		.word	.LC6
+ 780              	.LBE3:
+ 781              		.cfi_endproc
+ 782              	.LFE42:
+ 783              		.size	main, .-main
+ 784              		.comm	buttonFlag,4,4
+ 785              		.global	mode
+ 786              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 787              		.align	2
+ 788              	.LC2:
+ 789 0000 54656D70 		.ascii	"Temp: %.2f %cC\000"
+ 789      3A20252E 
+ 789      32662025 
+ 789      634300
+ 790 000f 00       		.space	1
+ 791              	.LC4:
+ 792 0010 20202020 		.ascii	"      %.2f %cF\000"
+ 792      2020252E 
+ 792      32662025 
+ 792      634600
+ 793 001f 00       		.space	1
+ 794              	.LC6:
+ 795 0020 566F6C74 		.ascii	"Voltage: %.2f V\000"
+ 795      6167653A 
+ 795      20252E32 
+ 795      66205600 
+ 796              		.bss
+ 797              		.set	.LANCHOR0,. + 0
+ 798              		.type	mode, %object
+ 799              		.size	mode, 1
+ 800              	mode:
+ 801 0000 00       		.space	1
+ 802              		.text
+ 803              	.Letext0:
+ 804              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 805              		.file 3 "Generated_Source\\PSoC4/ADC.h"
+ 806              		.file 4 "Generated_Source\\PSoC4/PWM.h"
+ 807              		.file 5 "Generated_Source\\PSoC4/LED_SEL.h"
+ 808              		.file 6 "Generated_Source\\PSoC4/CyLib.h"
+ 809              		.file 7 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 810              		.file 8 "Generated_Source\\PSoC4/LCD.h"
+ 811              		.file 9 "Generated_Source\\PSoC4/BTN_ISR.h"
+ 812              		.section	.debug_info,"",%progbits
+ 813              	.Ldebug_info0:
+ 814 0000 2D060000 		.4byte	0x62d
+ 815 0004 0400     		.2byte	0x4
+ 816 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 817 000a 04       		.byte	0x4
+ 818 000b 01       		.uleb128 0x1
+ 819 000c 05020000 		.4byte	.LASF46
+ 820 0010 0C       		.byte	0xc
+ 821 0011 C8020000 		.4byte	.LASF47
+ 822 0015 FE000000 		.4byte	.LASF48
+ 823 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 824 001d 00000000 		.4byte	0
+ 825 0021 00000000 		.4byte	.Ldebug_line0
+ 826 0025 02       		.uleb128 0x2
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 18
+
+
+ 827 0026 04       		.byte	0x4
+ 828 0027 04       		.byte	0x4
+ 829 0028 61000000 		.4byte	.LASF0
+ 830 002c 02       		.uleb128 0x2
+ 831 002d 01       		.byte	0x1
+ 832 002e 06       		.byte	0x6
+ 833 002f 0D030000 		.4byte	.LASF1
+ 834 0033 02       		.uleb128 0x2
+ 835 0034 01       		.byte	0x1
+ 836 0035 08       		.byte	0x8
+ 837 0036 7E000000 		.4byte	.LASF2
+ 838 003a 02       		.uleb128 0x2
+ 839 003b 02       		.byte	0x2
+ 840 003c 05       		.byte	0x5
+ 841 003d D4020000 		.4byte	.LASF3
+ 842 0041 02       		.uleb128 0x2
+ 843 0042 02       		.byte	0x2
+ 844 0043 07       		.byte	0x7
+ 845 0044 CA000000 		.4byte	.LASF4
+ 846 0048 02       		.uleb128 0x2
+ 847 0049 04       		.byte	0x4
+ 848 004a 05       		.byte	0x5
+ 849 004b F8020000 		.4byte	.LASF5
+ 850 004f 02       		.uleb128 0x2
+ 851 0050 04       		.byte	0x4
+ 852 0051 07       		.byte	0x7
+ 853 0052 5F010000 		.4byte	.LASF6
+ 854 0056 02       		.uleb128 0x2
+ 855 0057 08       		.byte	0x8
+ 856 0058 05       		.byte	0x5
+ 857 0059 AC020000 		.4byte	.LASF7
+ 858 005d 02       		.uleb128 0x2
+ 859 005e 08       		.byte	0x8
+ 860 005f 07       		.byte	0x7
+ 861 0060 D2010000 		.4byte	.LASF8
+ 862 0064 03       		.uleb128 0x3
+ 863 0065 04       		.byte	0x4
+ 864 0066 05       		.byte	0x5
+ 865 0067 696E7400 		.ascii	"int\000"
+ 866 006b 02       		.uleb128 0x2
+ 867 006c 04       		.byte	0x4
+ 868 006d 07       		.byte	0x7
+ 869 006e BA010000 		.4byte	.LASF9
+ 870 0072 04       		.uleb128 0x4
+ 871 0073 78000000 		.4byte	.LASF10
+ 872 0077 02       		.byte	0x2
+ 873 0078 FC01     		.2byte	0x1fc
+ 874 007a 33000000 		.4byte	0x33
+ 875 007e 04       		.uleb128 0x4
+ 876 007f B3010000 		.4byte	.LASF11
+ 877 0083 02       		.byte	0x2
+ 878 0084 FE01     		.2byte	0x1fe
+ 879 0086 4F000000 		.4byte	0x4f
+ 880 008a 02       		.uleb128 0x2
+ 881 008b 08       		.byte	0x8
+ 882 008c 04       		.byte	0x4
+ 883 008d 41000000 		.4byte	.LASF12
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 19
+
+
+ 884 0091 02       		.uleb128 0x2
+ 885 0092 01       		.byte	0x1
+ 886 0093 08       		.byte	0x8
+ 887 0094 CF020000 		.4byte	.LASF13
+ 888 0098 04       		.uleb128 0x4
+ 889 0099 00000000 		.4byte	.LASF14
+ 890 009d 02       		.byte	0x2
+ 891 009e A802     		.2byte	0x2a8
+ 892 00a0 A4000000 		.4byte	0xa4
+ 893 00a4 05       		.uleb128 0x5
+ 894 00a5 7E000000 		.4byte	0x7e
+ 895 00a9 02       		.uleb128 0x2
+ 896 00aa 08       		.byte	0x8
+ 897 00ab 04       		.byte	0x4
+ 898 00ac 01030000 		.4byte	.LASF15
+ 899 00b0 02       		.uleb128 0x2
+ 900 00b1 04       		.byte	0x4
+ 901 00b2 07       		.byte	0x7
+ 902 00b3 A3020000 		.4byte	.LASF16
+ 903 00b7 06       		.uleb128 0x6
+ 904 00b8 48000000 		.4byte	.LASF17
+ 905 00bc 01       		.byte	0x1
+ 906 00bd 13       		.byte	0x13
+ 907 00be 00000000 		.4byte	.LFB35
+ 908 00c2 10000000 		.4byte	.LFE35-.LFB35
+ 909 00c6 01       		.uleb128 0x1
+ 910 00c7 9C       		.byte	0x9c
+ 911 00c8 06       		.uleb128 0x6
+ 912 00c9 8C000000 		.4byte	.LASF18
+ 913 00cd 01       		.byte	0x1
+ 914 00ce 1A       		.byte	0x1a
+ 915 00cf 00000000 		.4byte	.LFB36
+ 916 00d3 10000000 		.4byte	.LFE36-.LFB36
+ 917 00d7 01       		.uleb128 0x1
+ 918 00d8 9C       		.byte	0x9c
+ 919 00d9 07       		.uleb128 0x7
+ 920 00da 17000000 		.4byte	.LASF20
+ 921 00de 01       		.byte	0x1
+ 922 00df 21       		.byte	0x21
+ 923 00e0 25000000 		.4byte	0x25
+ 924 00e4 00000000 		.4byte	.LFB37
+ 925 00e8 5C000000 		.4byte	.LFE37-.LFB37
+ 926 00ec 01       		.uleb128 0x1
+ 927 00ed 9C       		.byte	0x9c
+ 928 00ee 49010000 		.4byte	0x149
+ 929 00f2 08       		.uleb128 0x8
+ 930 00f3 DE020000 		.4byte	.LASF19
+ 931 00f7 01       		.byte	0x1
+ 932 00f8 22       		.byte	0x22
+ 933 00f9 25000000 		.4byte	0x25
+ 934 00fd 00000000 		.4byte	.LLST0
+ 935 0101 09       		.uleb128 0x9
+ 936 0102 6F757400 		.ascii	"out\000"
+ 937 0106 01       		.byte	0x1
+ 938 0107 25       		.byte	0x25
+ 939 0108 64000000 		.4byte	0x64
+ 940 010c 13000000 		.4byte	.LLST1
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 20
+
+
+ 941 0110 0A       		.uleb128 0xa
+ 942 0111 06000000 		.4byte	.LVL0
+ 943 0115 7D050000 		.4byte	0x57d
+ 944 0119 0B       		.uleb128 0xb
+ 945 011a 0C000000 		.4byte	.LVL1
+ 946 011e 88050000 		.4byte	0x588
+ 947 0122 2C010000 		.4byte	0x12c
+ 948 0126 0C       		.uleb128 0xc
+ 949 0127 01       		.uleb128 0x1
+ 950 0128 50       		.byte	0x50
+ 951 0129 01       		.uleb128 0x1
+ 952 012a 32       		.byte	0x32
+ 953 012b 00       		.byte	0
+ 954 012c 0B       		.uleb128 0xb
+ 955 012d 12000000 		.4byte	.LVL2
+ 956 0131 93050000 		.4byte	0x593
+ 957 0135 3F010000 		.4byte	0x13f
+ 958 0139 0C       		.uleb128 0xc
+ 959 013a 01       		.uleb128 0x1
+ 960 013b 50       		.byte	0x50
+ 961 013c 01       		.uleb128 0x1
+ 962 013d 30       		.byte	0x30
+ 963 013e 00       		.byte	0
+ 964 013f 0A       		.uleb128 0xa
+ 965 0140 18000000 		.4byte	.LVL4
+ 966 0144 9E050000 		.4byte	0x59e
+ 967 0148 00       		.byte	0
+ 968 0149 0D       		.uleb128 0xd
+ 969 014a A5000000 		.4byte	.LASF49
+ 970 014e 01       		.byte	0x1
+ 971 014f 2C       		.byte	0x2c
+ 972 0150 25000000 		.4byte	0x25
+ 973 0154 00000000 		.4byte	.LFB38
+ 974 0158 18000000 		.4byte	.LFE38-.LFB38
+ 975 015c 01       		.uleb128 0x1
+ 976 015d 9C       		.byte	0x9c
+ 977 015e 70010000 		.4byte	0x170
+ 978 0162 0E       		.uleb128 0xe
+ 979 0163 4300     		.ascii	"C\000"
+ 980 0165 01       		.byte	0x1
+ 981 0166 2C       		.byte	0x2c
+ 982 0167 25000000 		.4byte	0x25
+ 983 016b 2C000000 		.4byte	.LLST2
+ 984 016f 00       		.byte	0
+ 985 0170 0F       		.uleb128 0xf
+ 986 0171 71010000 		.4byte	.LASF21
+ 987 0175 01       		.byte	0x1
+ 988 0176 30       		.byte	0x30
+ 989 0177 00000000 		.4byte	.LFB39
+ 990 017b 14010000 		.4byte	.LFE39-.LFB39
+ 991 017f 01       		.uleb128 0x1
+ 992 0180 9C       		.byte	0x9c
+ 993 0181 16020000 		.4byte	0x216
+ 994 0185 10       		.uleb128 0x10
+ 995 0186 C5000000 		.4byte	.LASF22
+ 996 018a 01       		.byte	0x1
+ 997 018b 30       		.byte	0x30
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 21
+
+
+ 998 018c 25000000 		.4byte	0x25
+ 999 0190 4F000000 		.4byte	.LLST3
+ 1000 0194 0B       		.uleb128 0xb
+ 1001 0195 0C000000 		.4byte	.LVL18
+ 1002 0199 A9050000 		.4byte	0x5a9
+ 1003 019d A9010000 		.4byte	0x1a9
+ 1004 01a1 0C       		.uleb128 0xc
+ 1005 01a2 01       		.uleb128 0x1
+ 1006 01a3 50       		.byte	0x50
+ 1007 01a4 03       		.uleb128 0x3
+ 1008 01a5 0A       		.byte	0xa
+ 1009 01a6 E803     		.2byte	0x3e8
+ 1010 01a8 00       		.byte	0
+ 1011 01a9 0A       		.uleb128 0xa
+ 1012 01aa 36000000 		.4byte	.LVL24
+ 1013 01ae B5050000 		.4byte	0x5b5
+ 1014 01b2 0B       		.uleb128 0xb
+ 1015 01b3 3C000000 		.4byte	.LVL25
+ 1016 01b7 C1050000 		.4byte	0x5c1
+ 1017 01bb C5010000 		.4byte	0x1c5
+ 1018 01bf 0C       		.uleb128 0xc
+ 1019 01c0 01       		.uleb128 0x1
+ 1020 01c1 50       		.byte	0x50
+ 1021 01c2 01       		.uleb128 0x1
+ 1022 01c3 32       		.byte	0x32
+ 1023 01c4 00       		.byte	0
+ 1024 01c5 0A       		.uleb128 0xa
+ 1025 01c6 70000000 		.4byte	.LVL32
+ 1026 01ca B5050000 		.4byte	0x5b5
+ 1027 01ce 0B       		.uleb128 0xb
+ 1028 01cf 76000000 		.4byte	.LVL33
+ 1029 01d3 C1050000 		.4byte	0x5c1
+ 1030 01d7 E1010000 		.4byte	0x1e1
+ 1031 01db 0C       		.uleb128 0xc
+ 1032 01dc 01       		.uleb128 0x1
+ 1033 01dd 50       		.byte	0x50
+ 1034 01de 01       		.uleb128 0x1
+ 1035 01df 31       		.byte	0x31
+ 1036 01e0 00       		.byte	0
+ 1037 01e1 0A       		.uleb128 0xa
+ 1038 01e2 AA000000 		.4byte	.LVL40
+ 1039 01e6 B5050000 		.4byte	0x5b5
+ 1040 01ea 0B       		.uleb128 0xb
+ 1041 01eb B0000000 		.4byte	.LVL41
+ 1042 01ef C1050000 		.4byte	0x5c1
+ 1043 01f3 FD010000 		.4byte	0x1fd
+ 1044 01f7 0C       		.uleb128 0xc
+ 1045 01f8 01       		.uleb128 0x1
+ 1046 01f9 50       		.byte	0x50
+ 1047 01fa 01       		.uleb128 0x1
+ 1048 01fb 33       		.byte	0x33
+ 1049 01fc 00       		.byte	0
+ 1050 01fd 0A       		.uleb128 0xa
+ 1051 01fe E4000000 		.4byte	.LVL48
+ 1052 0202 B5050000 		.4byte	0x5b5
+ 1053 0206 11       		.uleb128 0x11
+ 1054 0207 EA000000 		.4byte	.LVL49
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 22
+
+
+ 1055 020b C1050000 		.4byte	0x5c1
+ 1056 020f 0C       		.uleb128 0xc
+ 1057 0210 01       		.uleb128 0x1
+ 1058 0211 50       		.byte	0x50
+ 1059 0212 01       		.uleb128 0x1
+ 1060 0213 30       		.byte	0x30
+ 1061 0214 00       		.byte	0
+ 1062 0215 00       		.byte	0
+ 1063 0216 0F       		.uleb128 0xf
+ 1064 0217 67000000 		.4byte	.LASF23
+ 1065 021b 01       		.byte	0x1
+ 1066 021c 41       		.byte	0x41
+ 1067 021d 00000000 		.4byte	.LFB40
+ 1068 0221 24010000 		.4byte	.LFE40-.LFB40
+ 1069 0225 01       		.uleb128 0x1
+ 1070 0226 9C       		.byte	0x9c
+ 1071 0227 BC020000 		.4byte	0x2bc
+ 1072 022b 10       		.uleb128 0x10
+ 1073 022c E6000000 		.4byte	.LASF24
+ 1074 0230 01       		.byte	0x1
+ 1075 0231 41       		.byte	0x41
+ 1076 0232 25000000 		.4byte	0x25
+ 1077 0236 7D000000 		.4byte	.LLST4
+ 1078 023a 0B       		.uleb128 0xb
+ 1079 023b 0C000000 		.4byte	.LVL53
+ 1080 023f A9050000 		.4byte	0x5a9
+ 1081 0243 4F020000 		.4byte	0x24f
+ 1082 0247 0C       		.uleb128 0xc
+ 1083 0248 01       		.uleb128 0x1
+ 1084 0249 50       		.byte	0x50
+ 1085 024a 03       		.uleb128 0x3
+ 1086 024b 0A       		.byte	0xa
+ 1087 024c E803     		.2byte	0x3e8
+ 1088 024e 00       		.byte	0
+ 1089 024f 0A       		.uleb128 0xa
+ 1090 0250 3E000000 		.4byte	.LVL60
+ 1091 0254 B5050000 		.4byte	0x5b5
+ 1092 0258 0B       		.uleb128 0xb
+ 1093 0259 44000000 		.4byte	.LVL61
+ 1094 025d C1050000 		.4byte	0x5c1
+ 1095 0261 6B020000 		.4byte	0x26b
+ 1096 0265 0C       		.uleb128 0xc
+ 1097 0266 01       		.uleb128 0x1
+ 1098 0267 50       		.byte	0x50
+ 1099 0268 01       		.uleb128 0x1
+ 1100 0269 32       		.byte	0x32
+ 1101 026a 00       		.byte	0
+ 1102 026b 0A       		.uleb128 0xa
+ 1103 026c 7A000000 		.4byte	.LVL67
+ 1104 0270 B5050000 		.4byte	0x5b5
+ 1105 0274 0B       		.uleb128 0xb
+ 1106 0275 80000000 		.4byte	.LVL68
+ 1107 0279 C1050000 		.4byte	0x5c1
+ 1108 027d 87020000 		.4byte	0x287
+ 1109 0281 0C       		.uleb128 0xc
+ 1110 0282 01       		.uleb128 0x1
+ 1111 0283 50       		.byte	0x50
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 23
+
+
+ 1112 0284 01       		.uleb128 0x1
+ 1113 0285 31       		.byte	0x31
+ 1114 0286 00       		.byte	0
+ 1115 0287 0A       		.uleb128 0xa
+ 1116 0288 B6000000 		.4byte	.LVL74
+ 1117 028c B5050000 		.4byte	0x5b5
+ 1118 0290 0B       		.uleb128 0xb
+ 1119 0291 BC000000 		.4byte	.LVL75
+ 1120 0295 C1050000 		.4byte	0x5c1
+ 1121 0299 A3020000 		.4byte	0x2a3
+ 1122 029d 0C       		.uleb128 0xc
+ 1123 029e 01       		.uleb128 0x1
+ 1124 029f 50       		.byte	0x50
+ 1125 02a0 01       		.uleb128 0x1
+ 1126 02a1 33       		.byte	0x33
+ 1127 02a2 00       		.byte	0
+ 1128 02a3 0A       		.uleb128 0xa
+ 1129 02a4 F2000000 		.4byte	.LVL81
+ 1130 02a8 B5050000 		.4byte	0x5b5
+ 1131 02ac 11       		.uleb128 0x11
+ 1132 02ad F8000000 		.4byte	.LVL82
+ 1133 02b1 C1050000 		.4byte	0x5c1
+ 1134 02b5 0C       		.uleb128 0xc
+ 1135 02b6 01       		.uleb128 0x1
+ 1136 02b7 50       		.byte	0x50
+ 1137 02b8 01       		.uleb128 0x1
+ 1138 02b9 30       		.byte	0x30
+ 1139 02ba 00       		.byte	0
+ 1140 02bb 00       		.byte	0
+ 1141 02bc 07       		.uleb128 0x7
+ 1142 02bd E3020000 		.4byte	.LASF25
+ 1143 02c1 01       		.byte	0x1
+ 1144 02c2 52       		.byte	0x52
+ 1145 02c3 25000000 		.4byte	0x25
+ 1146 02c7 00000000 		.4byte	.LFB41
+ 1147 02cb 34000000 		.4byte	.LFE41-.LFB41
+ 1148 02cf 01       		.uleb128 0x1
+ 1149 02d0 9C       		.byte	0x9c
+ 1150 02d1 2A030000 		.4byte	0x32a
+ 1151 02d5 12       		.uleb128 0x12
+ 1152 02d6 DE020000 		.4byte	.LASF19
+ 1153 02da 01       		.byte	0x1
+ 1154 02db 53       		.byte	0x53
+ 1155 02dc 25000000 		.4byte	0x25
+ 1156 02e0 01       		.uleb128 0x1
+ 1157 02e1 50       		.byte	0x50
+ 1158 02e2 09       		.uleb128 0x9
+ 1159 02e3 6F757400 		.ascii	"out\000"
+ 1160 02e7 01       		.byte	0x1
+ 1161 02e8 56       		.byte	0x56
+ 1162 02e9 64000000 		.4byte	0x64
+ 1163 02ed AB000000 		.4byte	.LLST5
+ 1164 02f1 0A       		.uleb128 0xa
+ 1165 02f2 06000000 		.4byte	.LVL83
+ 1166 02f6 7D050000 		.4byte	0x57d
+ 1167 02fa 0B       		.uleb128 0xb
+ 1168 02fb 0C000000 		.4byte	.LVL84
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 24
+
+
+ 1169 02ff 88050000 		.4byte	0x588
+ 1170 0303 0D030000 		.4byte	0x30d
+ 1171 0307 0C       		.uleb128 0xc
+ 1172 0308 01       		.uleb128 0x1
+ 1173 0309 50       		.byte	0x50
+ 1174 030a 01       		.uleb128 0x1
+ 1175 030b 32       		.byte	0x32
+ 1176 030c 00       		.byte	0
+ 1177 030d 0B       		.uleb128 0xb
+ 1178 030e 12000000 		.4byte	.LVL85
+ 1179 0312 93050000 		.4byte	0x593
+ 1180 0316 20030000 		.4byte	0x320
+ 1181 031a 0C       		.uleb128 0xc
+ 1182 031b 01       		.uleb128 0x1
+ 1183 031c 50       		.byte	0x50
+ 1184 031d 01       		.uleb128 0x1
+ 1185 031e 31       		.byte	0x31
+ 1186 031f 00       		.byte	0
+ 1187 0320 0A       		.uleb128 0xa
+ 1188 0321 18000000 		.4byte	.LVL87
+ 1189 0325 9E050000 		.4byte	0x59e
+ 1190 0329 00       		.byte	0
+ 1191 032a 13       		.uleb128 0x13
+ 1192 032b 90010000 		.4byte	.LASF50
+ 1193 032f 01       		.byte	0x1
+ 1194 0330 5C       		.byte	0x5c
+ 1195 0331 64000000 		.4byte	0x64
+ 1196 0335 00000000 		.4byte	.LFB42
+ 1197 0339 F4000000 		.4byte	.LFE42-.LFB42
+ 1198 033d 01       		.uleb128 0x1
+ 1199 033e 9C       		.byte	0x9c
+ 1200 033f 46050000 		.4byte	0x546
+ 1201 0343 14       		.uleb128 0x14
+ 1202 0344 44000000 		.4byte	.LBB2
+ 1203 0348 62000000 		.4byte	.LBE2-.LBB2
+ 1204 034c 6D040000 		.4byte	0x46d
+ 1205 0350 08       		.uleb128 0x8
+ 1206 0351 C5000000 		.4byte	.LASF22
+ 1207 0355 01       		.byte	0x1
+ 1208 0356 74       		.byte	0x74
+ 1209 0357 25000000 		.4byte	0x25
+ 1210 035b C4000000 		.4byte	.LLST6
+ 1211 035f 12       		.uleb128 0x12
+ 1212 0360 39000000 		.4byte	.LASF26
+ 1213 0364 01       		.byte	0x1
+ 1214 0365 75       		.byte	0x75
+ 1215 0366 46050000 		.4byte	0x546
+ 1216 036a 02       		.uleb128 0x2
+ 1217 036b 91       		.byte	0x91
+ 1218 036c 50       		.sleb128 -48
+ 1219 036d 12       		.uleb128 0x12
+ 1220 036e 24000000 		.4byte	.LASF27
+ 1221 0372 01       		.byte	0x1
+ 1222 0373 76       		.byte	0x76
+ 1223 0374 46050000 		.4byte	0x546
+ 1224 0378 02       		.uleb128 0x2
+ 1225 0379 91       		.byte	0x91
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 25
+
+
+ 1226 037a 60       		.sleb128 -32
+ 1227 037b 0A       		.uleb128 0xa
+ 1228 037c 48000000 		.4byte	.LVL97
+ 1229 0380 B7000000 		.4byte	0xb7
+ 1230 0384 0B       		.uleb128 0xb
+ 1231 0385 4E000000 		.4byte	.LVL98
+ 1232 0389 CC050000 		.4byte	0x5cc
+ 1233 038d 98030000 		.4byte	0x398
+ 1234 0391 0C       		.uleb128 0xc
+ 1235 0392 01       		.uleb128 0x1
+ 1236 0393 50       		.byte	0x50
+ 1237 0394 02       		.uleb128 0x2
+ 1238 0395 08       		.byte	0x8
+ 1239 0396 64       		.byte	0x64
+ 1240 0397 00       		.byte	0
+ 1241 0398 0A       		.uleb128 0xa
+ 1242 0399 52000000 		.4byte	.LVL99
+ 1243 039d D9000000 		.4byte	0xd9
+ 1244 03a1 0B       		.uleb128 0xb
+ 1245 03a2 6A000000 		.4byte	.LVL102
+ 1246 03a6 D7050000 		.4byte	0x5d7
+ 1247 03aa CA030000 		.4byte	0x3ca
+ 1248 03ae 0C       		.uleb128 0xc
+ 1249 03af 01       		.uleb128 0x1
+ 1250 03b0 50       		.byte	0x50
+ 1251 03b1 02       		.uleb128 0x2
+ 1252 03b2 91       		.byte	0x91
+ 1253 03b3 50       		.sleb128 -48
+ 1254 03b4 0C       		.uleb128 0xc
+ 1255 03b5 01       		.uleb128 0x1
+ 1256 03b6 51       		.byte	0x51
+ 1257 03b7 01       		.uleb128 0x1
+ 1258 03b8 40       		.byte	0x40
+ 1259 03b9 0C       		.uleb128 0xc
+ 1260 03ba 01       		.uleb128 0x1
+ 1261 03bb 52       		.byte	0x52
+ 1262 03bc 05       		.uleb128 0x5
+ 1263 03bd 03       		.byte	0x3
+ 1264 03be 00000000 		.4byte	.LC2
+ 1265 03c2 0C       		.uleb128 0xc
+ 1266 03c3 02       		.uleb128 0x2
+ 1267 03c4 7D       		.byte	0x7d
+ 1268 03c5 08       		.sleb128 8
+ 1269 03c6 02       		.uleb128 0x2
+ 1270 03c7 75       		.byte	0x75
+ 1271 03c8 00       		.sleb128 0
+ 1272 03c9 00       		.byte	0
+ 1273 03ca 0B       		.uleb128 0xb
+ 1274 03cb 70000000 		.4byte	.LVL103
+ 1275 03cf 49010000 		.4byte	0x149
+ 1276 03d3 DF030000 		.4byte	0x3df
+ 1277 03d7 0C       		.uleb128 0xc
+ 1278 03d8 01       		.uleb128 0x1
+ 1279 03d9 50       		.byte	0x50
+ 1280 03da 03       		.uleb128 0x3
+ 1281 03db F5       		.byte	0xf5
+ 1282 03dc 04       		.uleb128 0x4
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 26
+
+
+ 1283 03dd 25       		.uleb128 0x25
+ 1284 03de 00       		.byte	0
+ 1285 03df 0B       		.uleb128 0xb
+ 1286 03e0 86000000 		.4byte	.LVL106
+ 1287 03e4 D7050000 		.4byte	0x5d7
+ 1288 03e8 08040000 		.4byte	0x408
+ 1289 03ec 0C       		.uleb128 0xc
+ 1290 03ed 01       		.uleb128 0x1
+ 1291 03ee 50       		.byte	0x50
+ 1292 03ef 02       		.uleb128 0x2
+ 1293 03f0 91       		.byte	0x91
+ 1294 03f1 60       		.sleb128 -32
+ 1295 03f2 0C       		.uleb128 0xc
+ 1296 03f3 01       		.uleb128 0x1
+ 1297 03f4 51       		.byte	0x51
+ 1298 03f5 01       		.uleb128 0x1
+ 1299 03f6 40       		.byte	0x40
+ 1300 03f7 0C       		.uleb128 0xc
+ 1301 03f8 01       		.uleb128 0x1
+ 1302 03f9 52       		.byte	0x52
+ 1303 03fa 05       		.uleb128 0x5
+ 1304 03fb 03       		.byte	0x3
+ 1305 03fc 10000000 		.4byte	.LC4
+ 1306 0400 0C       		.uleb128 0xc
+ 1307 0401 02       		.uleb128 0x2
+ 1308 0402 7D       		.byte	0x7d
+ 1309 0403 08       		.sleb128 8
+ 1310 0404 02       		.uleb128 0x2
+ 1311 0405 75       		.byte	0x75
+ 1312 0406 00       		.sleb128 0
+ 1313 0407 00       		.byte	0
+ 1314 0408 0B       		.uleb128 0xb
+ 1315 0409 8C000000 		.4byte	.LVL107
+ 1316 040d E2050000 		.4byte	0x5e2
+ 1317 0411 1B040000 		.4byte	0x41b
+ 1318 0415 0C       		.uleb128 0xc
+ 1319 0416 01       		.uleb128 0x1
+ 1320 0417 50       		.byte	0x50
+ 1321 0418 01       		.uleb128 0x1
+ 1322 0419 31       		.byte	0x31
+ 1323 041a 00       		.byte	0
+ 1324 041b 0B       		.uleb128 0xb
+ 1325 041c 92000000 		.4byte	.LVL108
+ 1326 0420 ED050000 		.4byte	0x5ed
+ 1327 0424 2F040000 		.4byte	0x42f
+ 1328 0428 0C       		.uleb128 0xc
+ 1329 0429 01       		.uleb128 0x1
+ 1330 042a 50       		.byte	0x50
+ 1331 042b 02       		.uleb128 0x2
+ 1332 042c 91       		.byte	0x91
+ 1333 042d 50       		.sleb128 -48
+ 1334 042e 00       		.byte	0
+ 1335 042f 0B       		.uleb128 0xb
+ 1336 0430 9A000000 		.4byte	.LVL109
+ 1337 0434 F8050000 		.4byte	0x5f8
+ 1338 0438 47040000 		.4byte	0x447
+ 1339 043c 0C       		.uleb128 0xc
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 27
+
+
+ 1340 043d 01       		.uleb128 0x1
+ 1341 043e 50       		.byte	0x50
+ 1342 043f 01       		.uleb128 0x1
+ 1343 0440 31       		.byte	0x31
+ 1344 0441 0C       		.uleb128 0xc
+ 1345 0442 01       		.uleb128 0x1
+ 1346 0443 51       		.byte	0x51
+ 1347 0444 01       		.uleb128 0x1
+ 1348 0445 30       		.byte	0x30
+ 1349 0446 00       		.byte	0
+ 1350 0447 0B       		.uleb128 0xb
+ 1351 0448 A0000000 		.4byte	.LVL110
+ 1352 044c ED050000 		.4byte	0x5ed
+ 1353 0450 5B040000 		.4byte	0x45b
+ 1354 0454 0C       		.uleb128 0xc
+ 1355 0455 01       		.uleb128 0x1
+ 1356 0456 50       		.byte	0x50
+ 1357 0457 02       		.uleb128 0x2
+ 1358 0458 91       		.byte	0x91
+ 1359 0459 60       		.sleb128 -32
+ 1360 045a 00       		.byte	0
+ 1361 045b 11       		.uleb128 0x11
+ 1362 045c A6000000 		.4byte	.LVL111
+ 1363 0460 70010000 		.4byte	0x170
+ 1364 0464 0C       		.uleb128 0xc
+ 1365 0465 01       		.uleb128 0x1
+ 1366 0466 50       		.byte	0x50
+ 1367 0467 03       		.uleb128 0x3
+ 1368 0468 F5       		.byte	0xf5
+ 1369 0469 04       		.uleb128 0x4
+ 1370 046a 25       		.uleb128 0x25
+ 1371 046b 00       		.byte	0
+ 1372 046c 00       		.byte	0
+ 1373 046d 14       		.uleb128 0x14
+ 1374 046e A8000000 		.4byte	.LBB3
+ 1375 0472 4C000000 		.4byte	.LBE3-.LBB3
+ 1376 0476 18050000 		.4byte	0x518
+ 1377 047a 08       		.uleb128 0x8
+ 1378 047b E6000000 		.4byte	.LASF24
+ 1379 047f 01       		.byte	0x1
+ 1380 0480 81       		.byte	0x81
+ 1381 0481 25000000 		.4byte	0x25
+ 1382 0485 E2000000 		.4byte	.LLST7
+ 1383 0489 12       		.uleb128 0x12
+ 1384 048a 39000000 		.4byte	.LASF26
+ 1385 048e 01       		.byte	0x1
+ 1386 048f 82       		.byte	0x82
+ 1387 0490 46050000 		.4byte	0x546
+ 1388 0494 02       		.uleb128 0x2
+ 1389 0495 91       		.byte	0x91
+ 1390 0496 60       		.sleb128 -32
+ 1391 0497 0A       		.uleb128 0xa
+ 1392 0498 AC000000 		.4byte	.LVL112
+ 1393 049c C8000000 		.4byte	0xc8
+ 1394 04a0 0B       		.uleb128 0xb
+ 1395 04a1 B2000000 		.4byte	.LVL113
+ 1396 04a5 CC050000 		.4byte	0x5cc
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 28
+
+
+ 1397 04a9 B4040000 		.4byte	0x4b4
+ 1398 04ad 0C       		.uleb128 0xc
+ 1399 04ae 01       		.uleb128 0x1
+ 1400 04af 50       		.byte	0x50
+ 1401 04b0 02       		.uleb128 0x2
+ 1402 04b1 08       		.byte	0x8
+ 1403 04b2 64       		.byte	0x64
+ 1404 04b3 00       		.byte	0
+ 1405 04b4 0A       		.uleb128 0xa
+ 1406 04b5 B6000000 		.4byte	.LVL114
+ 1407 04b9 BC020000 		.4byte	0x2bc
+ 1408 04bd 0B       		.uleb128 0xb
+ 1409 04be CA000000 		.4byte	.LVL117
+ 1410 04c2 D7050000 		.4byte	0x5d7
+ 1411 04c6 DF040000 		.4byte	0x4df
+ 1412 04ca 0C       		.uleb128 0xc
+ 1413 04cb 01       		.uleb128 0x1
+ 1414 04cc 50       		.byte	0x50
+ 1415 04cd 02       		.uleb128 0x2
+ 1416 04ce 91       		.byte	0x91
+ 1417 04cf 60       		.sleb128 -32
+ 1418 04d0 0C       		.uleb128 0xc
+ 1419 04d1 01       		.uleb128 0x1
+ 1420 04d2 51       		.byte	0x51
+ 1421 04d3 01       		.uleb128 0x1
+ 1422 04d4 40       		.byte	0x40
+ 1423 04d5 0C       		.uleb128 0xc
+ 1424 04d6 01       		.uleb128 0x1
+ 1425 04d7 52       		.byte	0x52
+ 1426 04d8 05       		.uleb128 0x5
+ 1427 04d9 03       		.byte	0x3
+ 1428 04da 20000000 		.4byte	.LC6
+ 1429 04de 00       		.byte	0
+ 1430 04df 0B       		.uleb128 0xb
+ 1431 04e0 D0000000 		.4byte	.LVL118
+ 1432 04e4 E2050000 		.4byte	0x5e2
+ 1433 04e8 F2040000 		.4byte	0x4f2
+ 1434 04ec 0C       		.uleb128 0xc
+ 1435 04ed 01       		.uleb128 0x1
+ 1436 04ee 50       		.byte	0x50
+ 1437 04ef 01       		.uleb128 0x1
+ 1438 04f0 31       		.byte	0x31
+ 1439 04f1 00       		.byte	0
+ 1440 04f2 0B       		.uleb128 0xb
+ 1441 04f3 D6000000 		.4byte	.LVL119
+ 1442 04f7 ED050000 		.4byte	0x5ed
+ 1443 04fb 06050000 		.4byte	0x506
+ 1444 04ff 0C       		.uleb128 0xc
+ 1445 0500 01       		.uleb128 0x1
+ 1446 0501 50       		.byte	0x50
+ 1447 0502 02       		.uleb128 0x2
+ 1448 0503 91       		.byte	0x91
+ 1449 0504 60       		.sleb128 -32
+ 1450 0505 00       		.byte	0
+ 1451 0506 11       		.uleb128 0x11
+ 1452 0507 DC000000 		.4byte	.LVL120
+ 1453 050b 16020000 		.4byte	0x216
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 29
+
+
+ 1454 050f 0C       		.uleb128 0xc
+ 1455 0510 01       		.uleb128 0x1
+ 1456 0511 50       		.byte	0x50
+ 1457 0512 03       		.uleb128 0x3
+ 1458 0513 F5       		.byte	0xf5
+ 1459 0514 04       		.uleb128 0x4
+ 1460 0515 25       		.uleb128 0x25
+ 1461 0516 00       		.byte	0
+ 1462 0517 00       		.byte	0
+ 1463 0518 0A       		.uleb128 0xa
+ 1464 0519 0A000000 		.4byte	.LVL92
+ 1465 051d 03060000 		.4byte	0x603
+ 1466 0521 0A       		.uleb128 0xa
+ 1467 0522 0E000000 		.4byte	.LVL93
+ 1468 0526 0E060000 		.4byte	0x60e
+ 1469 052a 0A       		.uleb128 0xa
+ 1470 052b 12000000 		.4byte	.LVL94
+ 1471 052f 19060000 		.4byte	0x619
+ 1472 0533 0A       		.uleb128 0xa
+ 1473 0534 16000000 		.4byte	.LVL95
+ 1474 0538 24060000 		.4byte	0x624
+ 1475 053c 0A       		.uleb128 0xa
+ 1476 053d 1A000000 		.4byte	.LVL96
+ 1477 0541 B7000000 		.4byte	0xb7
+ 1478 0545 00       		.byte	0
+ 1479 0546 15       		.uleb128 0x15
+ 1480 0547 91000000 		.4byte	0x91
+ 1481 054b 56050000 		.4byte	0x556
+ 1482 054f 16       		.uleb128 0x16
+ 1483 0550 B0000000 		.4byte	0xb0
+ 1484 0554 0F       		.byte	0xf
+ 1485 0555 00       		.byte	0
+ 1486 0556 17       		.uleb128 0x17
+ 1487 0557 F6010000 		.4byte	.LASF28
+ 1488 055b 01       		.byte	0x1
+ 1489 055c 0F       		.byte	0xf
+ 1490 055d 72000000 		.4byte	0x72
+ 1491 0561 05       		.uleb128 0x5
+ 1492 0562 03       		.byte	0x3
+ 1493 0563 00000000 		.4byte	mode
+ 1494 0567 17       		.uleb128 0x17
+ 1495 0568 C7010000 		.4byte	.LASF29
+ 1496 056c 01       		.byte	0x1
+ 1497 056d 10       		.byte	0x10
+ 1498 056e 78050000 		.4byte	0x578
+ 1499 0572 05       		.uleb128 0x5
+ 1500 0573 03       		.byte	0x3
+ 1501 0574 00000000 		.4byte	buttonFlag
+ 1502 0578 05       		.uleb128 0x5
+ 1503 0579 64000000 		.4byte	0x64
+ 1504 057d 18       		.uleb128 0x18
+ 1505 057e 94000000 		.4byte	.LASF30
+ 1506 0582 94000000 		.4byte	.LASF30
+ 1507 0586 03       		.byte	0x3
+ 1508 0587 9D       		.byte	0x9d
+ 1509 0588 18       		.uleb128 0x18
+ 1510 0589 B1000000 		.4byte	.LASF31
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 30
+
+
+ 1511 058d B1000000 		.4byte	.LASF31
+ 1512 0591 03       		.byte	0x3
+ 1513 0592 9F       		.byte	0x9f
+ 1514 0593 18       		.uleb128 0x18
+ 1515 0594 51000000 		.4byte	.LASF32
+ 1516 0598 51000000 		.4byte	.LASF32
+ 1517 059c 03       		.byte	0x3
+ 1518 059d A0       		.byte	0xa0
+ 1519 059e 18       		.uleb128 0x18
+ 1520 059f EE000000 		.4byte	.LASF33
+ 1521 05a3 EE000000 		.4byte	.LASF33
+ 1522 05a7 03       		.byte	0x3
+ 1523 05a8 9E       		.byte	0x9e
+ 1524 05a9 19       		.uleb128 0x19
+ 1525 05aa 93020000 		.4byte	.LASF34
+ 1526 05ae 93020000 		.4byte	.LASF34
+ 1527 05b2 04       		.byte	0x4
+ 1528 05b3 5001     		.2byte	0x150
+ 1529 05b5 19       		.uleb128 0x19
+ 1530 05b6 7F010000 		.4byte	.LASF35
+ 1531 05ba 7F010000 		.4byte	.LASF35
+ 1532 05be 04       		.byte	0x4
+ 1533 05bf 5501     		.2byte	0x155
+ 1534 05c1 18       		.uleb128 0x18
+ 1535 05c2 A5010000 		.4byte	.LASF36
+ 1536 05c6 A5010000 		.4byte	.LASF36
+ 1537 05ca 05       		.byte	0x5
+ 1538 05cb 2F       		.byte	0x2f
+ 1539 05cc 18       		.uleb128 0x18
+ 1540 05cd 19030000 		.4byte	.LASF37
+ 1541 05d1 19030000 		.4byte	.LASF37
+ 1542 05d5 06       		.byte	0x6
+ 1543 05d6 EC       		.byte	0xec
+ 1544 05d7 18       		.uleb128 0x18
+ 1545 05d8 DD000000 		.4byte	.LASF38
+ 1546 05dc DD000000 		.4byte	.LASF38
+ 1547 05e0 07       		.byte	0x7
+ 1548 05e1 FD       		.byte	0xfd
+ 1549 05e2 18       		.uleb128 0x18
+ 1550 05e3 06000000 		.4byte	.LASF39
+ 1551 05e7 06000000 		.4byte	.LASF39
+ 1552 05eb 08       		.byte	0x8
+ 1553 05ec 3A       		.byte	0x3a
+ 1554 05ed 18       		.uleb128 0x18
+ 1555 05ee 95010000 		.4byte	.LASF40
+ 1556 05f2 95010000 		.4byte	.LASF40
+ 1557 05f6 08       		.byte	0x8
+ 1558 05f7 3C       		.byte	0x3c
+ 1559 05f8 18       		.uleb128 0x18
+ 1560 05f9 E9010000 		.4byte	.LASF41
+ 1561 05fd E9010000 		.4byte	.LASF41
+ 1562 0601 08       		.byte	0x8
+ 1563 0602 3D       		.byte	0x3d
+ 1564 0603 18       		.uleb128 0x18
+ 1565 0604 FB010000 		.4byte	.LASF42
+ 1566 0608 FB010000 		.4byte	.LASF42
+ 1567 060c 03       		.byte	0x3
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 31
+
+
+ 1568 060d 99       		.byte	0x99
+ 1569 060e 18       		.uleb128 0x18
+ 1570 060f BA020000 		.4byte	.LASF43
+ 1571 0613 BA020000 		.4byte	.LASF43
+ 1572 0617 09       		.byte	0x9
+ 1573 0618 17       		.byte	0x17
+ 1574 0619 18       		.uleb128 0x18
+ 1575 061a EE020000 		.4byte	.LASF44
+ 1576 061e EE020000 		.4byte	.LASF44
+ 1577 0622 08       		.byte	0x8
+ 1578 0623 38       		.byte	0x38
+ 1579 0624 19       		.uleb128 0x19
+ 1580 0625 2F000000 		.4byte	.LASF45
+ 1581 0629 2F000000 		.4byte	.LASF45
+ 1582 062d 04       		.byte	0x4
+ 1583 062e 3201     		.2byte	0x132
+ 1584 0630 00       		.byte	0
+ 1585              		.section	.debug_abbrev,"",%progbits
+ 1586              	.Ldebug_abbrev0:
+ 1587 0000 01       		.uleb128 0x1
+ 1588 0001 11       		.uleb128 0x11
+ 1589 0002 01       		.byte	0x1
+ 1590 0003 25       		.uleb128 0x25
+ 1591 0004 0E       		.uleb128 0xe
+ 1592 0005 13       		.uleb128 0x13
+ 1593 0006 0B       		.uleb128 0xb
+ 1594 0007 03       		.uleb128 0x3
+ 1595 0008 0E       		.uleb128 0xe
+ 1596 0009 1B       		.uleb128 0x1b
+ 1597 000a 0E       		.uleb128 0xe
+ 1598 000b 55       		.uleb128 0x55
+ 1599 000c 17       		.uleb128 0x17
+ 1600 000d 11       		.uleb128 0x11
+ 1601 000e 01       		.uleb128 0x1
+ 1602 000f 10       		.uleb128 0x10
+ 1603 0010 17       		.uleb128 0x17
+ 1604 0011 00       		.byte	0
+ 1605 0012 00       		.byte	0
+ 1606 0013 02       		.uleb128 0x2
+ 1607 0014 24       		.uleb128 0x24
+ 1608 0015 00       		.byte	0
+ 1609 0016 0B       		.uleb128 0xb
+ 1610 0017 0B       		.uleb128 0xb
+ 1611 0018 3E       		.uleb128 0x3e
+ 1612 0019 0B       		.uleb128 0xb
+ 1613 001a 03       		.uleb128 0x3
+ 1614 001b 0E       		.uleb128 0xe
+ 1615 001c 00       		.byte	0
+ 1616 001d 00       		.byte	0
+ 1617 001e 03       		.uleb128 0x3
+ 1618 001f 24       		.uleb128 0x24
+ 1619 0020 00       		.byte	0
+ 1620 0021 0B       		.uleb128 0xb
+ 1621 0022 0B       		.uleb128 0xb
+ 1622 0023 3E       		.uleb128 0x3e
+ 1623 0024 0B       		.uleb128 0xb
+ 1624 0025 03       		.uleb128 0x3
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 32
+
+
+ 1625 0026 08       		.uleb128 0x8
+ 1626 0027 00       		.byte	0
+ 1627 0028 00       		.byte	0
+ 1628 0029 04       		.uleb128 0x4
+ 1629 002a 16       		.uleb128 0x16
+ 1630 002b 00       		.byte	0
+ 1631 002c 03       		.uleb128 0x3
+ 1632 002d 0E       		.uleb128 0xe
+ 1633 002e 3A       		.uleb128 0x3a
+ 1634 002f 0B       		.uleb128 0xb
+ 1635 0030 3B       		.uleb128 0x3b
+ 1636 0031 05       		.uleb128 0x5
+ 1637 0032 49       		.uleb128 0x49
+ 1638 0033 13       		.uleb128 0x13
+ 1639 0034 00       		.byte	0
+ 1640 0035 00       		.byte	0
+ 1641 0036 05       		.uleb128 0x5
+ 1642 0037 35       		.uleb128 0x35
+ 1643 0038 00       		.byte	0
+ 1644 0039 49       		.uleb128 0x49
+ 1645 003a 13       		.uleb128 0x13
+ 1646 003b 00       		.byte	0
+ 1647 003c 00       		.byte	0
+ 1648 003d 06       		.uleb128 0x6
+ 1649 003e 2E       		.uleb128 0x2e
+ 1650 003f 00       		.byte	0
+ 1651 0040 3F       		.uleb128 0x3f
+ 1652 0041 19       		.uleb128 0x19
+ 1653 0042 03       		.uleb128 0x3
+ 1654 0043 0E       		.uleb128 0xe
+ 1655 0044 3A       		.uleb128 0x3a
+ 1656 0045 0B       		.uleb128 0xb
+ 1657 0046 3B       		.uleb128 0x3b
+ 1658 0047 0B       		.uleb128 0xb
+ 1659 0048 11       		.uleb128 0x11
+ 1660 0049 01       		.uleb128 0x1
+ 1661 004a 12       		.uleb128 0x12
+ 1662 004b 06       		.uleb128 0x6
+ 1663 004c 40       		.uleb128 0x40
+ 1664 004d 18       		.uleb128 0x18
+ 1665 004e 9742     		.uleb128 0x2117
+ 1666 0050 19       		.uleb128 0x19
+ 1667 0051 00       		.byte	0
+ 1668 0052 00       		.byte	0
+ 1669 0053 07       		.uleb128 0x7
+ 1670 0054 2E       		.uleb128 0x2e
+ 1671 0055 01       		.byte	0x1
+ 1672 0056 3F       		.uleb128 0x3f
+ 1673 0057 19       		.uleb128 0x19
+ 1674 0058 03       		.uleb128 0x3
+ 1675 0059 0E       		.uleb128 0xe
+ 1676 005a 3A       		.uleb128 0x3a
+ 1677 005b 0B       		.uleb128 0xb
+ 1678 005c 3B       		.uleb128 0x3b
+ 1679 005d 0B       		.uleb128 0xb
+ 1680 005e 49       		.uleb128 0x49
+ 1681 005f 13       		.uleb128 0x13
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 33
+
+
+ 1682 0060 11       		.uleb128 0x11
+ 1683 0061 01       		.uleb128 0x1
+ 1684 0062 12       		.uleb128 0x12
+ 1685 0063 06       		.uleb128 0x6
+ 1686 0064 40       		.uleb128 0x40
+ 1687 0065 18       		.uleb128 0x18
+ 1688 0066 9642     		.uleb128 0x2116
+ 1689 0068 19       		.uleb128 0x19
+ 1690 0069 01       		.uleb128 0x1
+ 1691 006a 13       		.uleb128 0x13
+ 1692 006b 00       		.byte	0
+ 1693 006c 00       		.byte	0
+ 1694 006d 08       		.uleb128 0x8
+ 1695 006e 34       		.uleb128 0x34
+ 1696 006f 00       		.byte	0
+ 1697 0070 03       		.uleb128 0x3
+ 1698 0071 0E       		.uleb128 0xe
+ 1699 0072 3A       		.uleb128 0x3a
+ 1700 0073 0B       		.uleb128 0xb
+ 1701 0074 3B       		.uleb128 0x3b
+ 1702 0075 0B       		.uleb128 0xb
+ 1703 0076 49       		.uleb128 0x49
+ 1704 0077 13       		.uleb128 0x13
+ 1705 0078 02       		.uleb128 0x2
+ 1706 0079 17       		.uleb128 0x17
+ 1707 007a 00       		.byte	0
+ 1708 007b 00       		.byte	0
+ 1709 007c 09       		.uleb128 0x9
+ 1710 007d 34       		.uleb128 0x34
+ 1711 007e 00       		.byte	0
+ 1712 007f 03       		.uleb128 0x3
+ 1713 0080 08       		.uleb128 0x8
+ 1714 0081 3A       		.uleb128 0x3a
+ 1715 0082 0B       		.uleb128 0xb
+ 1716 0083 3B       		.uleb128 0x3b
+ 1717 0084 0B       		.uleb128 0xb
+ 1718 0085 49       		.uleb128 0x49
+ 1719 0086 13       		.uleb128 0x13
+ 1720 0087 02       		.uleb128 0x2
+ 1721 0088 17       		.uleb128 0x17
+ 1722 0089 00       		.byte	0
+ 1723 008a 00       		.byte	0
+ 1724 008b 0A       		.uleb128 0xa
+ 1725 008c 898201   		.uleb128 0x4109
+ 1726 008f 00       		.byte	0
+ 1727 0090 11       		.uleb128 0x11
+ 1728 0091 01       		.uleb128 0x1
+ 1729 0092 31       		.uleb128 0x31
+ 1730 0093 13       		.uleb128 0x13
+ 1731 0094 00       		.byte	0
+ 1732 0095 00       		.byte	0
+ 1733 0096 0B       		.uleb128 0xb
+ 1734 0097 898201   		.uleb128 0x4109
+ 1735 009a 01       		.byte	0x1
+ 1736 009b 11       		.uleb128 0x11
+ 1737 009c 01       		.uleb128 0x1
+ 1738 009d 31       		.uleb128 0x31
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 34
+
+
+ 1739 009e 13       		.uleb128 0x13
+ 1740 009f 01       		.uleb128 0x1
+ 1741 00a0 13       		.uleb128 0x13
+ 1742 00a1 00       		.byte	0
+ 1743 00a2 00       		.byte	0
+ 1744 00a3 0C       		.uleb128 0xc
+ 1745 00a4 8A8201   		.uleb128 0x410a
+ 1746 00a7 00       		.byte	0
+ 1747 00a8 02       		.uleb128 0x2
+ 1748 00a9 18       		.uleb128 0x18
+ 1749 00aa 9142     		.uleb128 0x2111
+ 1750 00ac 18       		.uleb128 0x18
+ 1751 00ad 00       		.byte	0
+ 1752 00ae 00       		.byte	0
+ 1753 00af 0D       		.uleb128 0xd
+ 1754 00b0 2E       		.uleb128 0x2e
+ 1755 00b1 01       		.byte	0x1
+ 1756 00b2 3F       		.uleb128 0x3f
+ 1757 00b3 19       		.uleb128 0x19
+ 1758 00b4 03       		.uleb128 0x3
+ 1759 00b5 0E       		.uleb128 0xe
+ 1760 00b6 3A       		.uleb128 0x3a
+ 1761 00b7 0B       		.uleb128 0xb
+ 1762 00b8 3B       		.uleb128 0x3b
+ 1763 00b9 0B       		.uleb128 0xb
+ 1764 00ba 27       		.uleb128 0x27
+ 1765 00bb 19       		.uleb128 0x19
+ 1766 00bc 49       		.uleb128 0x49
+ 1767 00bd 13       		.uleb128 0x13
+ 1768 00be 11       		.uleb128 0x11
+ 1769 00bf 01       		.uleb128 0x1
+ 1770 00c0 12       		.uleb128 0x12
+ 1771 00c1 06       		.uleb128 0x6
+ 1772 00c2 40       		.uleb128 0x40
+ 1773 00c3 18       		.uleb128 0x18
+ 1774 00c4 9642     		.uleb128 0x2116
+ 1775 00c6 19       		.uleb128 0x19
+ 1776 00c7 01       		.uleb128 0x1
+ 1777 00c8 13       		.uleb128 0x13
+ 1778 00c9 00       		.byte	0
+ 1779 00ca 00       		.byte	0
+ 1780 00cb 0E       		.uleb128 0xe
+ 1781 00cc 05       		.uleb128 0x5
+ 1782 00cd 00       		.byte	0
+ 1783 00ce 03       		.uleb128 0x3
+ 1784 00cf 08       		.uleb128 0x8
+ 1785 00d0 3A       		.uleb128 0x3a
+ 1786 00d1 0B       		.uleb128 0xb
+ 1787 00d2 3B       		.uleb128 0x3b
+ 1788 00d3 0B       		.uleb128 0xb
+ 1789 00d4 49       		.uleb128 0x49
+ 1790 00d5 13       		.uleb128 0x13
+ 1791 00d6 02       		.uleb128 0x2
+ 1792 00d7 17       		.uleb128 0x17
+ 1793 00d8 00       		.byte	0
+ 1794 00d9 00       		.byte	0
+ 1795 00da 0F       		.uleb128 0xf
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 35
+
+
+ 1796 00db 2E       		.uleb128 0x2e
+ 1797 00dc 01       		.byte	0x1
+ 1798 00dd 3F       		.uleb128 0x3f
+ 1799 00de 19       		.uleb128 0x19
+ 1800 00df 03       		.uleb128 0x3
+ 1801 00e0 0E       		.uleb128 0xe
+ 1802 00e1 3A       		.uleb128 0x3a
+ 1803 00e2 0B       		.uleb128 0xb
+ 1804 00e3 3B       		.uleb128 0x3b
+ 1805 00e4 0B       		.uleb128 0xb
+ 1806 00e5 27       		.uleb128 0x27
+ 1807 00e6 19       		.uleb128 0x19
+ 1808 00e7 11       		.uleb128 0x11
+ 1809 00e8 01       		.uleb128 0x1
+ 1810 00e9 12       		.uleb128 0x12
+ 1811 00ea 06       		.uleb128 0x6
+ 1812 00eb 40       		.uleb128 0x40
+ 1813 00ec 18       		.uleb128 0x18
+ 1814 00ed 9642     		.uleb128 0x2116
+ 1815 00ef 19       		.uleb128 0x19
+ 1816 00f0 01       		.uleb128 0x1
+ 1817 00f1 13       		.uleb128 0x13
+ 1818 00f2 00       		.byte	0
+ 1819 00f3 00       		.byte	0
+ 1820 00f4 10       		.uleb128 0x10
+ 1821 00f5 05       		.uleb128 0x5
+ 1822 00f6 00       		.byte	0
+ 1823 00f7 03       		.uleb128 0x3
+ 1824 00f8 0E       		.uleb128 0xe
+ 1825 00f9 3A       		.uleb128 0x3a
+ 1826 00fa 0B       		.uleb128 0xb
+ 1827 00fb 3B       		.uleb128 0x3b
+ 1828 00fc 0B       		.uleb128 0xb
+ 1829 00fd 49       		.uleb128 0x49
+ 1830 00fe 13       		.uleb128 0x13
+ 1831 00ff 02       		.uleb128 0x2
+ 1832 0100 17       		.uleb128 0x17
+ 1833 0101 00       		.byte	0
+ 1834 0102 00       		.byte	0
+ 1835 0103 11       		.uleb128 0x11
+ 1836 0104 898201   		.uleb128 0x4109
+ 1837 0107 01       		.byte	0x1
+ 1838 0108 11       		.uleb128 0x11
+ 1839 0109 01       		.uleb128 0x1
+ 1840 010a 31       		.uleb128 0x31
+ 1841 010b 13       		.uleb128 0x13
+ 1842 010c 00       		.byte	0
+ 1843 010d 00       		.byte	0
+ 1844 010e 12       		.uleb128 0x12
+ 1845 010f 34       		.uleb128 0x34
+ 1846 0110 00       		.byte	0
+ 1847 0111 03       		.uleb128 0x3
+ 1848 0112 0E       		.uleb128 0xe
+ 1849 0113 3A       		.uleb128 0x3a
+ 1850 0114 0B       		.uleb128 0xb
+ 1851 0115 3B       		.uleb128 0x3b
+ 1852 0116 0B       		.uleb128 0xb
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 36
+
+
+ 1853 0117 49       		.uleb128 0x49
+ 1854 0118 13       		.uleb128 0x13
+ 1855 0119 02       		.uleb128 0x2
+ 1856 011a 18       		.uleb128 0x18
+ 1857 011b 00       		.byte	0
+ 1858 011c 00       		.byte	0
+ 1859 011d 13       		.uleb128 0x13
+ 1860 011e 2E       		.uleb128 0x2e
+ 1861 011f 01       		.byte	0x1
+ 1862 0120 3F       		.uleb128 0x3f
+ 1863 0121 19       		.uleb128 0x19
+ 1864 0122 03       		.uleb128 0x3
+ 1865 0123 0E       		.uleb128 0xe
+ 1866 0124 3A       		.uleb128 0x3a
+ 1867 0125 0B       		.uleb128 0xb
+ 1868 0126 3B       		.uleb128 0x3b
+ 1869 0127 0B       		.uleb128 0xb
+ 1870 0128 27       		.uleb128 0x27
+ 1871 0129 19       		.uleb128 0x19
+ 1872 012a 49       		.uleb128 0x49
+ 1873 012b 13       		.uleb128 0x13
+ 1874 012c 8701     		.uleb128 0x87
+ 1875 012e 19       		.uleb128 0x19
+ 1876 012f 11       		.uleb128 0x11
+ 1877 0130 01       		.uleb128 0x1
+ 1878 0131 12       		.uleb128 0x12
+ 1879 0132 06       		.uleb128 0x6
+ 1880 0133 40       		.uleb128 0x40
+ 1881 0134 18       		.uleb128 0x18
+ 1882 0135 9642     		.uleb128 0x2116
+ 1883 0137 19       		.uleb128 0x19
+ 1884 0138 01       		.uleb128 0x1
+ 1885 0139 13       		.uleb128 0x13
+ 1886 013a 00       		.byte	0
+ 1887 013b 00       		.byte	0
+ 1888 013c 14       		.uleb128 0x14
+ 1889 013d 0B       		.uleb128 0xb
+ 1890 013e 01       		.byte	0x1
+ 1891 013f 11       		.uleb128 0x11
+ 1892 0140 01       		.uleb128 0x1
+ 1893 0141 12       		.uleb128 0x12
+ 1894 0142 06       		.uleb128 0x6
+ 1895 0143 01       		.uleb128 0x1
+ 1896 0144 13       		.uleb128 0x13
+ 1897 0145 00       		.byte	0
+ 1898 0146 00       		.byte	0
+ 1899 0147 15       		.uleb128 0x15
+ 1900 0148 01       		.uleb128 0x1
+ 1901 0149 01       		.byte	0x1
+ 1902 014a 49       		.uleb128 0x49
+ 1903 014b 13       		.uleb128 0x13
+ 1904 014c 01       		.uleb128 0x1
+ 1905 014d 13       		.uleb128 0x13
+ 1906 014e 00       		.byte	0
+ 1907 014f 00       		.byte	0
+ 1908 0150 16       		.uleb128 0x16
+ 1909 0151 21       		.uleb128 0x21
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 37
+
+
+ 1910 0152 00       		.byte	0
+ 1911 0153 49       		.uleb128 0x49
+ 1912 0154 13       		.uleb128 0x13
+ 1913 0155 2F       		.uleb128 0x2f
+ 1914 0156 0B       		.uleb128 0xb
+ 1915 0157 00       		.byte	0
+ 1916 0158 00       		.byte	0
+ 1917 0159 17       		.uleb128 0x17
+ 1918 015a 34       		.uleb128 0x34
+ 1919 015b 00       		.byte	0
+ 1920 015c 03       		.uleb128 0x3
+ 1921 015d 0E       		.uleb128 0xe
+ 1922 015e 3A       		.uleb128 0x3a
+ 1923 015f 0B       		.uleb128 0xb
+ 1924 0160 3B       		.uleb128 0x3b
+ 1925 0161 0B       		.uleb128 0xb
+ 1926 0162 49       		.uleb128 0x49
+ 1927 0163 13       		.uleb128 0x13
+ 1928 0164 3F       		.uleb128 0x3f
+ 1929 0165 19       		.uleb128 0x19
+ 1930 0166 02       		.uleb128 0x2
+ 1931 0167 18       		.uleb128 0x18
+ 1932 0168 00       		.byte	0
+ 1933 0169 00       		.byte	0
+ 1934 016a 18       		.uleb128 0x18
+ 1935 016b 2E       		.uleb128 0x2e
+ 1936 016c 00       		.byte	0
+ 1937 016d 3F       		.uleb128 0x3f
+ 1938 016e 19       		.uleb128 0x19
+ 1939 016f 3C       		.uleb128 0x3c
+ 1940 0170 19       		.uleb128 0x19
+ 1941 0171 6E       		.uleb128 0x6e
+ 1942 0172 0E       		.uleb128 0xe
+ 1943 0173 03       		.uleb128 0x3
+ 1944 0174 0E       		.uleb128 0xe
+ 1945 0175 3A       		.uleb128 0x3a
+ 1946 0176 0B       		.uleb128 0xb
+ 1947 0177 3B       		.uleb128 0x3b
+ 1948 0178 0B       		.uleb128 0xb
+ 1949 0179 00       		.byte	0
+ 1950 017a 00       		.byte	0
+ 1951 017b 19       		.uleb128 0x19
+ 1952 017c 2E       		.uleb128 0x2e
+ 1953 017d 00       		.byte	0
+ 1954 017e 3F       		.uleb128 0x3f
+ 1955 017f 19       		.uleb128 0x19
+ 1956 0180 3C       		.uleb128 0x3c
+ 1957 0181 19       		.uleb128 0x19
+ 1958 0182 6E       		.uleb128 0x6e
+ 1959 0183 0E       		.uleb128 0xe
+ 1960 0184 03       		.uleb128 0x3
+ 1961 0185 0E       		.uleb128 0xe
+ 1962 0186 3A       		.uleb128 0x3a
+ 1963 0187 0B       		.uleb128 0xb
+ 1964 0188 3B       		.uleb128 0x3b
+ 1965 0189 05       		.uleb128 0x5
+ 1966 018a 00       		.byte	0
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 38
+
+
+ 1967 018b 00       		.byte	0
+ 1968 018c 00       		.byte	0
+ 1969              		.section	.debug_loc,"",%progbits
+ 1970              	.Ldebug_loc0:
+ 1971              	.LLST0:
+ 1972 0000 2A000000 		.4byte	.LVL7
+ 1973 0004 2D000000 		.4byte	.LVL8-1
+ 1974 0008 0100     		.2byte	0x1
+ 1975 000a 50       		.byte	0x50
+ 1976 000b 00000000 		.4byte	0
+ 1977 000f 00000000 		.4byte	0
+ 1978              	.LLST1:
+ 1979 0013 14000000 		.4byte	.LVL3
+ 1980 0017 42000000 		.4byte	.LVL12
+ 1981 001b 0700     		.2byte	0x7
+ 1982 001d 74       		.byte	0x74
+ 1983 001e 00       		.sleb128 0
+ 1984 001f 40       		.byte	0x40
+ 1985 0020 24       		.byte	0x24
+ 1986 0021 40       		.byte	0x40
+ 1987 0022 26       		.byte	0x26
+ 1988 0023 9F       		.byte	0x9f
+ 1989 0024 00000000 		.4byte	0
+ 1990 0028 00000000 		.4byte	0
+ 1991              	.LLST2:
+ 1992 002c 00000000 		.4byte	.LVL13
+ 1993 0030 07000000 		.4byte	.LVL14-1
+ 1994 0034 0100     		.2byte	0x1
+ 1995 0036 50       		.byte	0x50
+ 1996 0037 07000000 		.4byte	.LVL14-1
+ 1997 003b 18000000 		.4byte	.LFE38
+ 1998 003f 0600     		.2byte	0x6
+ 1999 0041 F3       		.byte	0xf3
+ 2000 0042 03       		.uleb128 0x3
+ 2001 0043 F5       		.byte	0xf5
+ 2002 0044 00       		.uleb128 0
+ 2003 0045 25       		.uleb128 0x25
+ 2004 0046 9F       		.byte	0x9f
+ 2005 0047 00000000 		.4byte	0
+ 2006 004b 00000000 		.4byte	0
+ 2007              	.LLST3:
+ 2008 004f 00000000 		.4byte	.LVL16
+ 2009 0053 06000000 		.4byte	.LVL17
+ 2010 0057 0100     		.2byte	0x1
+ 2011 0059 50       		.byte	0x50
+ 2012 005a 06000000 		.4byte	.LVL17
+ 2013 005e EA000000 		.4byte	.LVL50
+ 2014 0062 0100     		.2byte	0x1
+ 2015 0064 54       		.byte	0x54
+ 2016 0065 EA000000 		.4byte	.LVL50
+ 2017 0069 14010000 		.4byte	.LFE39
+ 2018 006d 0600     		.2byte	0x6
+ 2019 006f F3       		.byte	0xf3
+ 2020 0070 03       		.uleb128 0x3
+ 2021 0071 F5       		.byte	0xf5
+ 2022 0072 00       		.uleb128 0
+ 2023 0073 25       		.uleb128 0x25
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 39
+
+
+ 2024 0074 9F       		.byte	0x9f
+ 2025 0075 00000000 		.4byte	0
+ 2026 0079 00000000 		.4byte	0
+ 2027              	.LLST4:
+ 2028 007d 00000000 		.4byte	.LVL51
+ 2029 0081 06000000 		.4byte	.LVL52
+ 2030 0085 0100     		.2byte	0x1
+ 2031 0087 50       		.byte	0x50
+ 2032 0088 06000000 		.4byte	.LVL52
+ 2033 008c 14000000 		.4byte	.LVL55
+ 2034 0090 0100     		.2byte	0x1
+ 2035 0092 54       		.byte	0x54
+ 2036 0093 14000000 		.4byte	.LVL55
+ 2037 0097 24010000 		.4byte	.LFE40
+ 2038 009b 0600     		.2byte	0x6
+ 2039 009d F3       		.byte	0xf3
+ 2040 009e 03       		.uleb128 0x3
+ 2041 009f F5       		.byte	0xf5
+ 2042 00a0 00       		.uleb128 0
+ 2043 00a1 25       		.uleb128 0x25
+ 2044 00a2 9F       		.byte	0x9f
+ 2045 00a3 00000000 		.4byte	0
+ 2046 00a7 00000000 		.4byte	0
+ 2047              	.LLST5:
+ 2048 00ab 14000000 		.4byte	.LVL86
+ 2049 00af 2A000000 		.4byte	.LVL91
+ 2050 00b3 0700     		.2byte	0x7
+ 2051 00b5 74       		.byte	0x74
+ 2052 00b6 00       		.sleb128 0
+ 2053 00b7 40       		.byte	0x40
+ 2054 00b8 24       		.byte	0x24
+ 2055 00b9 40       		.byte	0x40
+ 2056 00ba 26       		.byte	0x26
+ 2057 00bb 9F       		.byte	0x9f
+ 2058 00bc 00000000 		.4byte	0
+ 2059 00c0 00000000 		.4byte	0
+ 2060              	.LLST6:
+ 2061 00c4 54000000 		.4byte	.LVL100
+ 2062 00c8 5B000000 		.4byte	.LVL101-1
+ 2063 00cc 0100     		.2byte	0x1
+ 2064 00ce 50       		.byte	0x50
+ 2065 00cf 5B000000 		.4byte	.LVL101-1
+ 2066 00d3 72000000 		.4byte	.LVL104
+ 2067 00d7 0100     		.2byte	0x1
+ 2068 00d9 54       		.byte	0x54
+ 2069 00da 00000000 		.4byte	0
+ 2070 00de 00000000 		.4byte	0
+ 2071              	.LLST7:
+ 2072 00e2 B8000000 		.4byte	.LVL115
+ 2073 00e6 BB000000 		.4byte	.LVL116-1
+ 2074 00ea 0100     		.2byte	0x1
+ 2075 00ec 50       		.byte	0x50
+ 2076 00ed BB000000 		.4byte	.LVL116-1
+ 2077 00f1 F4000000 		.4byte	.LFE42
+ 2078 00f5 0100     		.2byte	0x1
+ 2079 00f7 54       		.byte	0x54
+ 2080 00f8 00000000 		.4byte	0
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 40
+
+
+ 2081 00fc 00000000 		.4byte	0
+ 2082              		.section	.debug_aranges,"",%progbits
+ 2083 0000 54000000 		.4byte	0x54
+ 2084 0004 0200     		.2byte	0x2
+ 2085 0006 00000000 		.4byte	.Ldebug_info0
+ 2086 000a 04       		.byte	0x4
+ 2087 000b 00       		.byte	0
+ 2088 000c 0000     		.2byte	0
+ 2089 000e 0000     		.2byte	0
+ 2090 0010 00000000 		.4byte	.LFB35
+ 2091 0014 10000000 		.4byte	.LFE35-.LFB35
+ 2092 0018 00000000 		.4byte	.LFB36
+ 2093 001c 10000000 		.4byte	.LFE36-.LFB36
+ 2094 0020 00000000 		.4byte	.LFB37
+ 2095 0024 5C000000 		.4byte	.LFE37-.LFB37
+ 2096 0028 00000000 		.4byte	.LFB38
+ 2097 002c 18000000 		.4byte	.LFE38-.LFB38
+ 2098 0030 00000000 		.4byte	.LFB39
+ 2099 0034 14010000 		.4byte	.LFE39-.LFB39
+ 2100 0038 00000000 		.4byte	.LFB40
+ 2101 003c 24010000 		.4byte	.LFE40-.LFB40
+ 2102 0040 00000000 		.4byte	.LFB41
+ 2103 0044 34000000 		.4byte	.LFE41-.LFB41
+ 2104 0048 00000000 		.4byte	.LFB42
+ 2105 004c F4000000 		.4byte	.LFE42-.LFB42
+ 2106 0050 00000000 		.4byte	0
+ 2107 0054 00000000 		.4byte	0
+ 2108              		.section	.debug_ranges,"",%progbits
+ 2109              	.Ldebug_ranges0:
+ 2110 0000 00000000 		.4byte	.LFB35
+ 2111 0004 10000000 		.4byte	.LFE35
+ 2112 0008 00000000 		.4byte	.LFB36
+ 2113 000c 10000000 		.4byte	.LFE36
+ 2114 0010 00000000 		.4byte	.LFB37
+ 2115 0014 5C000000 		.4byte	.LFE37
+ 2116 0018 00000000 		.4byte	.LFB38
+ 2117 001c 18000000 		.4byte	.LFE38
+ 2118 0020 00000000 		.4byte	.LFB39
+ 2119 0024 14010000 		.4byte	.LFE39
+ 2120 0028 00000000 		.4byte	.LFB40
+ 2121 002c 24010000 		.4byte	.LFE40
+ 2122 0030 00000000 		.4byte	.LFB41
+ 2123 0034 34000000 		.4byte	.LFE41
+ 2124 0038 00000000 		.4byte	.LFB42
+ 2125 003c F4000000 		.4byte	.LFE42
+ 2126 0040 00000000 		.4byte	0
+ 2127 0044 00000000 		.4byte	0
+ 2128              		.section	.debug_line,"",%progbits
+ 2129              	.Ldebug_line0:
+ 2130 0000 E3010000 		.section	.debug_str,"MS",%progbits,1
+ 2130      0200F400 
+ 2130      00000201 
+ 2130      FB0E0D00 
+ 2130      01010101 
+ 2131              	.LASF14:
+ 2132 0000 72656733 		.ascii	"reg32\000"
+ 2132      3200
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 41
+
+
+ 2133              	.LASF39:
+ 2134 0006 4C43445F 		.ascii	"LCD_WriteControl\000"
+ 2134      57726974 
+ 2134      65436F6E 
+ 2134      74726F6C 
+ 2134      00
+ 2135              	.LASF20:
+ 2136 0017 67657454 		.ascii	"getTempValue\000"
+ 2136      656D7056 
+ 2136      616C7565 
+ 2136      00
+ 2137              	.LASF27:
+ 2138 0024 626F7474 		.ascii	"bottomLine\000"
+ 2138      6F6D4C69 
+ 2138      6E6500
+ 2139              	.LASF45:
+ 2140 002f 50574D5F 		.ascii	"PWM_Start\000"
+ 2140      53746172 
+ 2140      7400
+ 2141              	.LASF26:
+ 2142 0039 746F704C 		.ascii	"topLine\000"
+ 2142      696E6500 
+ 2143              	.LASF12:
+ 2144 0041 646F7562 		.ascii	"double\000"
+ 2144      6C6500
+ 2145              	.LASF17:
+ 2146 0048 74656D70 		.ascii	"tempInit\000"
+ 2146      496E6974 
+ 2146      00
+ 2147              	.LASF32:
+ 2148 0051 4144435F 		.ascii	"ADC_GetResult16\000"
+ 2148      47657452 
+ 2148      6573756C 
+ 2148      74313600 
+ 2149              	.LASF0:
+ 2150 0061 666C6F61 		.ascii	"float\000"
+ 2150      7400
+ 2151              	.LASF23:
+ 2152 0067 73656C65 		.ascii	"selectVoltageLED\000"
+ 2152      6374566F 
+ 2152      6C746167 
+ 2152      654C4544 
+ 2152      00
+ 2153              	.LASF10:
+ 2154 0078 75696E74 		.ascii	"uint8\000"
+ 2154      3800
+ 2155              	.LASF2:
+ 2156 007e 756E7369 		.ascii	"unsigned char\000"
+ 2156      676E6564 
+ 2156      20636861 
+ 2156      7200
+ 2157              	.LASF18:
+ 2158 008c 706F7449 		.ascii	"potInit\000"
+ 2158      6E697400 
+ 2159              	.LASF30:
+ 2160 0094 4144435F 		.ascii	"ADC_StartConvert\000"
+ 2160      53746172 
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 42
+
+
+ 2160      74436F6E 
+ 2160      76657274 
+ 2160      00
+ 2161              	.LASF49:
+ 2162 00a5 636F6E76 		.ascii	"convertCtoF\000"
+ 2162      65727443 
+ 2162      746F4600 
+ 2163              	.LASF31:
+ 2164 00b1 4144435F 		.ascii	"ADC_IsEndConversion\000"
+ 2164      4973456E 
+ 2164      64436F6E 
+ 2164      76657273 
+ 2164      696F6E00 
+ 2165              	.LASF22:
+ 2166 00c5 74656D70 		.ascii	"temp\000"
+ 2166      00
+ 2167              	.LASF4:
+ 2168 00ca 73686F72 		.ascii	"short unsigned int\000"
+ 2168      7420756E 
+ 2168      7369676E 
+ 2168      65642069 
+ 2168      6E7400
+ 2169              	.LASF38:
+ 2170 00dd 736E7072 		.ascii	"snprintf\000"
+ 2170      696E7466 
+ 2170      00
+ 2171              	.LASF24:
+ 2172 00e6 766F6C74 		.ascii	"voltage\000"
+ 2172      61676500 
+ 2173              	.LASF33:
+ 2174 00ee 4144435F 		.ascii	"ADC_StopConvert\000"
+ 2174      53746F70 
+ 2174      436F6E76 
+ 2174      65727400 
+ 2175              	.LASF48:
+ 2176 00fe 433A5C55 		.ascii	"C:\\Users\\Leo Tejkowski\\Desktop\\ece381\\Lab 7 - "
+ 2176      73657273 
+ 2176      5C4C656F 
+ 2176      2054656A 
+ 2176      6B6F7773 
+ 2177 012c 416E616C 		.ascii	"Analog\\Project\\Lab 7 - Analog\\Lab 7 - Analog.cyd"
+ 2177      6F675C50 
+ 2177      726F6A65 
+ 2177      63745C4C 
+ 2177      61622037 
+ 2178 015c 736E00   		.ascii	"sn\000"
+ 2179              	.LASF6:
+ 2180 015f 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2180      20756E73 
+ 2180      69676E65 
+ 2180      6420696E 
+ 2180      7400
+ 2181              	.LASF21:
+ 2182 0171 73656C65 		.ascii	"selectTempLED\000"
+ 2182      63745465 
+ 2182      6D704C45 
+ 2182      4400
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 43
+
+
+ 2183              	.LASF35:
+ 2184 017f 50574D5F 		.ascii	"PWM_WriteCompare\000"
+ 2184      57726974 
+ 2184      65436F6D 
+ 2184      70617265 
+ 2184      00
+ 2185              	.LASF50:
+ 2186 0190 6D61696E 		.ascii	"main\000"
+ 2186      00
+ 2187              	.LASF40:
+ 2188 0195 4C43445F 		.ascii	"LCD_PrintString\000"
+ 2188      5072696E 
+ 2188      74537472 
+ 2188      696E6700 
+ 2189              	.LASF36:
+ 2190 01a5 4C45445F 		.ascii	"LED_SEL_Write\000"
+ 2190      53454C5F 
+ 2190      57726974 
+ 2190      6500
+ 2191              	.LASF11:
+ 2192 01b3 75696E74 		.ascii	"uint32\000"
+ 2192      333200
+ 2193              	.LASF9:
+ 2194 01ba 756E7369 		.ascii	"unsigned int\000"
+ 2194      676E6564 
+ 2194      20696E74 
+ 2194      00
+ 2195              	.LASF29:
+ 2196 01c7 62757474 		.ascii	"buttonFlag\000"
+ 2196      6F6E466C 
+ 2196      616700
+ 2197              	.LASF8:
+ 2198 01d2 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2198      206C6F6E 
+ 2198      6720756E 
+ 2198      7369676E 
+ 2198      65642069 
+ 2199              	.LASF41:
+ 2200 01e9 4C43445F 		.ascii	"LCD_Position\000"
+ 2200      506F7369 
+ 2200      74696F6E 
+ 2200      00
+ 2201              	.LASF28:
+ 2202 01f6 6D6F6465 		.ascii	"mode\000"
+ 2202      00
+ 2203              	.LASF42:
+ 2204 01fb 4144435F 		.ascii	"ADC_Start\000"
+ 2204      53746172 
+ 2204      7400
+ 2205              	.LASF46:
+ 2206 0205 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 2206      43313120 
+ 2206      352E342E 
+ 2206      31203230 
+ 2206      31363036 
+ 2207 0238 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 2207      20726576 
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 44
+
+
+ 2207      6973696F 
+ 2207      6E203233 
+ 2207      37373135 
+ 2208 026b 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 2208      66756E63 
+ 2208      74696F6E 
+ 2208      2D736563 
+ 2208      74696F6E 
+ 2209              	.LASF34:
+ 2210 0293 50574D5F 		.ascii	"PWM_WritePeriod\000"
+ 2210      57726974 
+ 2210      65506572 
+ 2210      696F6400 
+ 2211              	.LASF16:
+ 2212 02a3 73697A65 		.ascii	"sizetype\000"
+ 2212      74797065 
+ 2212      00
+ 2213              	.LASF7:
+ 2214 02ac 6C6F6E67 		.ascii	"long long int\000"
+ 2214      206C6F6E 
+ 2214      6720696E 
+ 2214      7400
+ 2215              	.LASF43:
+ 2216 02ba 42544E5F 		.ascii	"BTN_ISR_Start\000"
+ 2216      4953525F 
+ 2216      53746172 
+ 2216      7400
+ 2217              	.LASF47:
+ 2218 02c8 6D61696E 		.ascii	"main.c\000"
+ 2218      2E6300
+ 2219              	.LASF13:
+ 2220 02cf 63686172 		.ascii	"char\000"
+ 2220      00
+ 2221              	.LASF3:
+ 2222 02d4 73686F72 		.ascii	"short int\000"
+ 2222      7420696E 
+ 2222      7400
+ 2223              	.LASF19:
+ 2224 02de 566F7574 		.ascii	"Vout\000"
+ 2224      00
+ 2225              	.LASF25:
+ 2226 02e3 67657456 		.ascii	"getVoltage\000"
+ 2226      6F6C7461 
+ 2226      676500
+ 2227              	.LASF44:
+ 2228 02ee 4C43445F 		.ascii	"LCD_Start\000"
+ 2228      53746172 
+ 2228      7400
+ 2229              	.LASF5:
+ 2230 02f8 6C6F6E67 		.ascii	"long int\000"
+ 2230      20696E74 
+ 2230      00
+ 2231              	.LASF15:
+ 2232 0301 6C6F6E67 		.ascii	"long double\000"
+ 2232      20646F75 
+ 2232      626C6500 
+ 2233              	.LASF1:
+ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc4KYXb1.s 			page 45
+
+
+ 2234 030d 7369676E 		.ascii	"signed char\000"
+ 2234      65642063 
+ 2234      68617200 
+ 2235              	.LASF37:
+ 2236 0319 43794465 		.ascii	"CyDelay\000"
+ 2236      6C617900 
+ 2237              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
