@@ -1,6 +1,0 @@
-C:\Users\Leo Tejkowski\Desktop\ece381\Lab 3 - Simon Game\Project\Backup\ECE381_SP23_Lab03_Simon_Clone.4.4\Project\Design01.cydsn\Design01.cyprj|7faabde6-ba1a-4179-849c-96f4b53b2735
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|e303a436-1ee9-4c44-95a4-554e4f8dad3d
-C:\Users\Leo Tejkowski\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|8d075d19-2849-442f-bcee-95f60726da21
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|5a5a5d1c-e7d7-4f51-af32-94acf0e164a0
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|5253cb84-3f0a-4538-9d99-4bd64f677013
-C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|cca3c826-fd8e-4eb5-946a-24e37dd8f73f
