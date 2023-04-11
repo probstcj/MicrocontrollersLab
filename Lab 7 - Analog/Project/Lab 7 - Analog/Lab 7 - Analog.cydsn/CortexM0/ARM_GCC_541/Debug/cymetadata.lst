@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccNT812O.s 			page 1
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE8sLVz.s 			page 1
 
 
    1              		.syntax unified
@@ -57,11 +57,11 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccNT812O.s 			page 1
   50      00000000 
   51              		.text
   52              	.Letext0:
-  53              		.file 1 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccNT812O.s 			page 2
+  53              		.file 1 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE8sLVz.s 			page 2
 
 
-  54              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+  54              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
   55              		.file 3 "Generated_Source\\PSoC4\\cymetadata.c"
   56              		.section	.debug_info,"",%progbits
   57              	.Ldebug_info0:
@@ -70,7 +70,7 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccNT812O.s 			page 1
   60 0006 00000000 		.4byte	.Ldebug_abbrev0
   61 000a 04       		.byte	0x4
   62 000b 01       		.uleb128 0x1
-  63 000c 23010000 		.4byte	.LASF15
+  63 000c 2E010000 		.4byte	.LASF15
   64 0010 0C       		.byte	0xc
   65 0011 38000000 		.4byte	.LASF16
   66 0015 81000000 		.4byte	.LASF17
@@ -78,7 +78,7 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccNT812O.s 			page 1
   68 001d 02       		.uleb128 0x2
   69 001e 01       		.byte	0x1
   70 001f 06       		.byte	0x6
-  71 0020 DB010000 		.4byte	.LASF0
+  71 0020 E6010000 		.4byte	.LASF0
   72 0024 03       		.uleb128 0x3
   73 0025 00000000 		.4byte	.LASF9
   74 0029 01       		.byte	0x1
@@ -91,7 +91,7 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccNT812O.s 			page 1
   81 0036 02       		.uleb128 0x2
   82 0037 02       		.byte	0x2
   83 0038 05       		.byte	0x5
-  84 0039 C8010000 		.4byte	.LASF2
+  84 0039 D3010000 		.4byte	.LASF2
   85 003d 02       		.uleb128 0x2
   86 003e 02       		.byte	0x2
   87 003f 07       		.byte	0x7
@@ -99,7 +99,7 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccNT812O.s 			page 1
   89 0044 02       		.uleb128 0x2
   90 0045 04       		.byte	0x4
   91 0046 05       		.byte	0x5
-  92 0047 D2010000 		.4byte	.LASF4
+  92 0047 DD010000 		.4byte	.LASF4
   93 004b 02       		.uleb128 0x2
   94 004c 04       		.byte	0x4
   95 004d 07       		.byte	0x7
@@ -107,24 +107,24 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccNT812O.s 			page 1
   97 0052 02       		.uleb128 0x2
   98 0053 08       		.byte	0x8
   99 0054 05       		.byte	0x5
- 100 0055 BA010000 		.4byte	.LASF6
+ 100 0055 C5010000 		.4byte	.LASF6
  101 0059 02       		.uleb128 0x2
  102 005a 08       		.byte	0x8
  103 005b 07       		.byte	0x7
- 104 005c EF000000 		.4byte	.LASF7
+ 104 005c FA000000 		.4byte	.LASF7
  105 0060 04       		.uleb128 0x4
  106 0061 04       		.byte	0x4
  107 0062 05       		.byte	0x5
  108 0063 696E7400 		.ascii	"int\000"
  109 0067 02       		.uleb128 0x2
  110 0068 04       		.byte	0x4
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccNT812O.s 			page 3
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE8sLVz.s 			page 3
 
 
  111 0069 07       		.byte	0x7
- 112 006a E2000000 		.4byte	.LASF8
+ 112 006a ED000000 		.4byte	.LASF8
  113 006e 03       		.uleb128 0x3
- 114 006f 06010000 		.4byte	.LASF10
+ 114 006f 11010000 		.4byte	.LASF10
  115 0073 02       		.byte	0x2
  116 0074 18       		.byte	0x18
  117 0075 24000000 		.4byte	0x24
@@ -138,11 +138,11 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccNT812O.s 			page 1
  125 0089 02       		.uleb128 0x2
  126 008a 04       		.byte	0x4
  127 008b 07       		.byte	0x7
- 128 008c B1010000 		.4byte	.LASF11
+ 128 008c BC010000 		.4byte	.LASF11
  129 0090 07       		.uleb128 0x7
  130 0091 6E000000 		.4byte	0x6e
  131 0095 08       		.uleb128 0x8
- 132 0096 0E010000 		.4byte	.LASF12
+ 132 0096 19010000 		.4byte	.LASF12
  133 009a 03       		.byte	0x3
  134 009b 1F       		.byte	0x1f
  135 009c A6000000 		.4byte	0xa6
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccNT812O.s 			page 1
  165 00e1 08       		.uleb128 0x8
  166 00e2 0A000000 		.4byte	.LASF14
  167 00e6 03       		.byte	0x3
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccNT812O.s 			page 4
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE8sLVz.s 			page 4
 
 
  168 00e7 4B       		.byte	0x4b
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccNT812O.s 			page 1
  222 002c 3E       		.uleb128 0x3e
  223 002d 0B       		.uleb128 0xb
  224 002e 03       		.uleb128 0x3
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccNT812O.s 			page 5
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE8sLVz.s 			page 5
 
 
  225 002f 08       		.uleb128 0x8
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccNT812O.s 			page 1
  279 0010 00000000 		.4byte	0
  280 0014 00000000 		.4byte	0
  281              		.section	.debug_line,"",%progbits
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccNT812O.s 			page 6
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE8sLVz.s 			page 6
 
 
  282              	.Ldebug_line0:
@@ -345,75 +345,81 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccNT812O.s 			page 1
  297      65642069 
  297      6E7400
  298              	.LASF17:
- 299 0081 433A5C55 		.ascii	"C:\\Users\\Leo Tejkowski\\Desktop\\ece381\\Lab 7 - "
+ 299 0081 433A5C55 		.ascii	"C:\\Users\\Hello Kitty\\Desktop\\MicrocontrollersLa"
  299      73657273 
- 299      5C4C656F 
- 299      2054656A 
- 299      6B6F7773 
- 300 00af 416E616C 		.ascii	"Analog\\Project\\Lab 7 - Analog\\Lab 7 - Analog.cyd"
- 300      6F675C50 
- 300      726F6A65 
- 300      63745C4C 
- 300      61622037 
- 301 00df 736E00   		.ascii	"sn\000"
+ 299      5C48656C 
+ 299      6C6F204B 
+ 299      69747479 
+ 300 00b0 625C4C61 		.ascii	"b\\Lab 7 - Analog\\Project\\Lab 7 - Analog\\Lab 7 -"
+ 300      62203720 
+ 300      2D20416E 
+ 300      616C6F67 
+ 300      5C50726F 
+ 301 00df 20416E61 		.ascii	" Analog.cydsn\000"
+ 301      6C6F672E 
+ 301      63796473 
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE8sLVz.s 			page 7
+
+
+ 301      6E00
  302              	.LASF8:
- 303 00e2 756E7369 		.ascii	"unsigned int\000"
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\ccNT812O.s 			page 7
-
-
+ 303 00ed 756E7369 		.ascii	"unsigned int\000"
  303      676E6564 
  303      20696E74 
  303      00
  304              	.LASF7:
- 305 00ef 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 305 00fa 6C6F6E67 		.ascii	"long long unsigned int\000"
  305      206C6F6E 
  305      6720756E 
  305      7369676E 
  305      65642069 
  306              	.LASF10:
- 307 0106 75696E74 		.ascii	"uint8_t\000"
+ 307 0111 75696E74 		.ascii	"uint8_t\000"
  307      385F7400 
  308              	.LASF12:
- 309 010e 63795F6D 		.ascii	"cy_meta_flashprotect\000"
+ 309 0119 63795F6D 		.ascii	"cy_meta_flashprotect\000"
  309      6574615F 
  309      666C6173 
  309      6870726F 
  309      74656374 
  310              	.LASF15:
- 311 0123 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 311 012e 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
  311      43313120 
  311      352E342E 
  311      31203230 
  311      31363036 
- 312 0156 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 312 0161 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
  312      20726576 
  312      6973696F 
  312      6E203233 
  312      37373135 
- 313 0189 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 313 0194 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
  313      66756E63 
  313      74696F6E 
  313      2D736563 
  313      74696F6E 
  314              	.LASF11:
- 315 01b1 73697A65 		.ascii	"sizetype\000"
+ 315 01bc 73697A65 		.ascii	"sizetype\000"
  315      74797065 
  315      00
  316              	.LASF6:
- 317 01ba 6C6F6E67 		.ascii	"long long int\000"
+ 317 01c5 6C6F6E67 		.ascii	"long long int\000"
  317      206C6F6E 
  317      6720696E 
  317      7400
  318              	.LASF2:
- 319 01c8 73686F72 		.ascii	"short int\000"
+ 319 01d3 73686F72 		.ascii	"short int\000"
  319      7420696E 
  319      7400
  320              	.LASF4:
- 321 01d2 6C6F6E67 		.ascii	"long int\000"
+ 321 01dd 6C6F6E67 		.ascii	"long int\000"
  321      20696E74 
  321      00
  322              	.LASF0:
- 323 01db 7369676E 		.ascii	"signed char\000"
+ 323 01e6 7369676E 		.ascii	"signed char\000"
  323      65642063 
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccE8sLVz.s 			page 8
+
+
  323      68617200 
  324              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

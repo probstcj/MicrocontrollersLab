@@ -79,8 +79,15 @@ const char* months[12] = {
     "Dec"
 };
 
+struct Time feedTimes[10] = {
+    {4,25,"PM"},
+    {4,26,"PM"},
+    {5,5,"PM"}
+};
+
 const uint32 LCDAddr = 0x27;
 const uint32 RTCAddr = 0x51;
+uint8 feedCounter = 0;
 /*
 This function simply reads from any I2C device.
 readBuf will be the size of readBytes and any read data will be stored here..
@@ -154,6 +161,32 @@ void LCDInit(struct Time currTime, struct Time nextTime, struct Date currDate, s
     LCD_print(printString);
 }
 
+void updateNextFeed(struct Time nextTime, struct Date nextDate){
+    char printString[21];
+    setCursor(0,2);
+    LCD_print("Time of Next Feed:");
+    setCursor(0,3);
+    snprintf(printString, 21, "%d:%.2d%s %s %d, 20%d ",nextTime.hour, nextTime.minute,nextTime.AM, nextDate.month,nextDate.day, nextDate.year);
+    printString[20] = '\0';
+    LCD_print(printString);
+}
+
+void updateCurrTime(struct Time currTime, struct Date currDate){
+    setCursor(0,0);
+    char printString[21];
+    snprintf(printString, 21, "%d:%.2d%s %s %d, 20%d ",currTime.hour, currTime.minute,currTime.AM, currDate.month,currDate.day, currDate.year);
+    printString[20] = '\0';
+    LCD_print(printString);
+    setCursor(0,1);
+}
+
+void FEEEEED(){
+    // Turn on motor
+    // Set LED's
+    // Set speakers
+}
+
+
 uint8 bcdToDec(uint8 value)
 {
   return (uint8)((value / 16) * 10 + value % 16);
@@ -209,7 +242,18 @@ int main(void)
         }
         
         struct Date updateDate = {bcdToDec(day[0]),months[bcdToDec(month[0])-1],bcdToDec(year[0])};
-        LCDInit(updateTime, nextTime, updateDate, nextDate);
+        updateCurrTime(updateTime, updateDate);
+        if(updateTime.hour == feedTimes[feedCounter].hour && updateTime.minute == feedTimes[feedCounter].minute && updateTime.AM == feedTimes[feedCounter].AM){
+            if(feedCounter == 2 || strncmp(feedTimes[feedCounter+1].AM,"AM",2) != 0 || strncmp(feedTimes[feedCounter+1].AM,"AM",2) != 0){
+                feedCounter++;
+                updateNextFeed(feedTimes[feedCounter],updateDate);
+                FEEEEED();
+                volatile int a = 0;
+            }
+        }
+        else if(feedCounter == 2){
+            feedCounter = 0;
+        }
         CyDelay(1000);
         
         //CySysPmDeepSleep();

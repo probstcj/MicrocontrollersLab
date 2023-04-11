@@ -1,6 +1,6 @@
 -- Project:   Lab 7 - Analog
--- Generated: 04/08/2023 12:33:52
--- PSoC Creator  4.4
+-- Generated: 04/11/2023 15:37:04
+-- PSoC Creator  4.2
 
 ENTITY \Lab 7 - Analog\ IS
     PORT(
@@ -41,6 +41,8 @@ ARCHITECTURE __DEFAULT__ OF \Lab 7 - Analog\ IS
     SIGNAL ClockBlock_SysClk : bit;
     SIGNAL ClockBlock_WCO : bit;
     SIGNAL G_LED(0)__PA : bit;
+    SIGNAL Net_130 : bit;
+    SIGNAL Net_131 : bit;
     SIGNAL Net_36 : bit;
     SIGNAL Net_42 : bit;
     SIGNAL Net_43 : bit;
@@ -60,8 +62,6 @@ ARCHITECTURE __DEFAULT__ OF \Lab 7 - Analog\ IS
     ATTRIBUTE placement_force OF Net_54 : SIGNAL IS "U(1,0,A)3";
     SIGNAL Net_56_0 : bit;
     SIGNAL Net_56_1 : bit;
-    SIGNAL Net_69 : bit;
-    SIGNAL Net_70 : bit;
     SIGNAL POT_IN(0)__PA : bit;
     SIGNAL R_LED(0)__PA : bit;
     SIGNAL TEMP_IN(0)__PA : bit;
@@ -1458,7 +1458,7 @@ BEGIN
             cy_registers => "")
         PORT MAP(
             clock => \ADC:Net_1845_ff10\,
-            sample_done => Net_70,
+            sample_done => Net_130,
             chan_id_valid => \ADC:Net_3108\,
             chan_id_3 => \ADC:Net_3109_3\,
             chan_id_2 => \ADC:Net_3109_2\,
@@ -1477,7 +1477,7 @@ BEGIN
             data_2 => \ADC:Net_3111_2\,
             data_1 => \ADC:Net_3111_1\,
             data_0 => \ADC:Net_3111_0\,
-            tr_sar_out => Net_69,
+            tr_sar_out => Net_131,
             irq => \ADC:Net_3112\,
             sw_negvref => open,
             cfg_st_sel_1 => open,

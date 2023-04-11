@@ -2,7 +2,7 @@
 --	Conversion of AutomaticPetFeeder.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Sun Apr 09 19:30:03 2023
+--	Tue Apr 11 15:06:42 2023
 --
 
 USE cypress.cypress.all;
@@ -51,16 +51,16 @@ SIGNAL Net_91 : bit;
 SIGNAL Net_76 : bit;
 SIGNAL Net_75 : bit;
 SIGNAL \UART:Net_1028\ : bit;
+SIGNAL Net_72 : bit;
 SIGNAL Net_81 : bit;
 SIGNAL Net_82 : bit;
 SIGNAL Net_83 : bit;
 SIGNAL Net_84 : bit;
 SIGNAL Net_85 : bit;
 SIGNAL Net_86 : bit;
-SIGNAL Net_72 : bit;
-SIGNAL Net_92 : bit;
 SIGNAL Net_87 : bit;
 SIGNAL Net_89 : bit;
+SIGNAL Net_92 : bit;
 SIGNAL tmpOE__BTN_net_0 : bit;
 SIGNAL tmpFB_0__BTN_net_0 : bit;
 SIGNAL tmpIO_0__BTN_net_0 : bit;
@@ -255,16 +255,16 @@ SIGNAL \I2C:miso_s_wire\ : bit;
 SIGNAL Net_152 : bit;
 SIGNAL Net_143 : bit;
 SIGNAL \I2C:Net_1028\ : bit;
+SIGNAL Net_142 : bit;
 SIGNAL Net_136 : bit;
 SIGNAL Net_137 : bit;
 SIGNAL Net_138 : bit;
 SIGNAL Net_139 : bit;
 SIGNAL Net_140 : bit;
 SIGNAL Net_141 : bit;
-SIGNAL Net_142 : bit;
-SIGNAL Net_145 : bit;
 SIGNAL Net_146 : bit;
 SIGNAL Net_153 : bit;
+SIGNAL Net_145 : bit;
 BEGIN
 
 zero <=  ('0') ;

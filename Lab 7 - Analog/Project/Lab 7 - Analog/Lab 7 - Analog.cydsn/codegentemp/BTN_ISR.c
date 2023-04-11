@@ -27,7 +27,8 @@
 *  Place your includes, defines and code here 
 ********************************************************************************/
 /* `#START BTN_ISR_intc` */
-
+#include "BTN.h"
+extern volatile int buttonFlag;
 /* `#END` */
 
 extern cyisraddress CyRamVectors[CYINT_IRQ_BASE + CY_NUM_INTERRUPTS];
@@ -164,7 +165,17 @@ CY_ISR(BTN_ISR_Interrupt)
 
     /*  Place your Interrupt code here. */
     /* `#START BTN_ISR_Interrupt` */
-
+    // Small delay for debouncing
+     CyDelay(20);
+     // Clear interrupt
+     BTN_ClearInterrupt();
+     
+     // If button is still 1 after delay, set flag, if not, don't
+     if(BTN_Read() == 0){
+     buttonFlag = 1;
+     } else {
+     buttonFlag = 0;
+     }
     /* `#END` */
 }
 

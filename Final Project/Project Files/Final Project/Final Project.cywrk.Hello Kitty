@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Final Project\AutomaticPetFeeder\AutomaticPetFeeder.cydwr\Pins">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Final Project\AutomaticPetFeeder">
 <ExpandedNodeIds>
 <v>Final Project</v>
 <v>Final Project\AutomaticPetFeeder</v>
@@ -47,8 +47,11 @@
 <v>Final Project\AutomaticPetFeeder\AutomaticPetFeeder.cydwr\Flash Security</v>
 <v>Final Project\AutomaticPetFeeder\Header Files</v>
 <v>Final Project\AutomaticPetFeeder\Header Files\cyapicallbacks.h</v>
+<v>Final Project\AutomaticPetFeeder\Header Files\LiquidCrystal_I2C.h</v>
 <v>Final Project\AutomaticPetFeeder\Source Files</v>
+<v>Final Project\AutomaticPetFeeder\Source Files\LiquidCrystal_i2C.c</v>
 <v>Final Project\AutomaticPetFeeder\Source Files\main.c</v>
+<v>Final Project\AutomaticPetFeeder\Generated_Source</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -69,6 +72,89 @@
 <ExpandedNodeIds>
 <v>Final Project</v>
 <v>Final Project\AutomaticPetFeeder</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\B_LED.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\B_LED_PM.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\BTN.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\BTN_ISR.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\BTN_PM.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\Cm0Start.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\CyDMA.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\CyLFClk.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\ENC.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\ENC_ISR.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\ENC_PM.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\G_LED.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\G_LED_PM.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\I2C.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\I2C_BOOT.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\I2C_I2C.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\I2C_I2C_BOOT.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\I2C_I2C_INT.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\I2C_I2C_MASTER.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\I2C_PM.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\I2C_SCB_IRQ.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\I2C_SCBCLK.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\I2C_scl.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\I2C_scl_PM.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\I2C_sda.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\I2C_sda_PM.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\LED_PWM.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\LED_PWM_PM.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\LED_SEL.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\LED_SEL_PM.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\LiquidCrystal_i2C.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\Motor.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\Motor_PM.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\PhsANeg.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\PhsANeg_PM.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\PhsAPos.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\PhsAPos_PM.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\PhsBNeg.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\PhsBNeg_PM.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\PhsBPos.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\PhsBPos_PM.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\PWM_CLK.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\R_LED.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\R_LED_PM.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\RTC_COT_IN.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\RTC_COT_IN_PM.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\RTC_INT.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\RTC_INT_ISR.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\RTC_INT_PM.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\SPEAKER.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\SPEAKER_PM.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\SPEAKER_PWM.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\SPEAKER_PWM_PM.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\UART.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\UART_BOOT.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\UART_PM.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\UART_rx.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\UART_rx_PM.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\UART_SCBCLK.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\UART_SPI_UART.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\UART_SPI_UART_INT.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\UART_tx.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\UART_tx_PM.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\UART_UART.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\UART_UART_BOOT.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\Y_LED.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\Listing Files\Y_LED_PM.lst</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.elf</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.hex</v>
+<v>Final Project\AutomaticPetFeeder\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.map</v>
 <v>Final Project\AutomaticPetFeeder\AutomaticPetFeeder.gpdsc</v>
 <v>Final Project\AutomaticPetFeeder\AutomaticPetFeeder.rpt</v>
 <v>Final Project\AutomaticPetFeeder\AutomaticPetFeeder_timing.html</v>
@@ -76,9 +162,6 @@
 <VisibleNodeIds>
 <v>Final Project</v>
 <v>Final Project\AutomaticPetFeeder</v>
-<v>Final Project\AutomaticPetFeeder\AutomaticPetFeeder.gpdsc</v>
-<v>Final Project\AutomaticPetFeeder\AutomaticPetFeeder.rpt</v>
-<v>Final Project\AutomaticPetFeeder\AutomaticPetFeeder_timing.html</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -104,7 +187,6 @@
 <v>Final Project\AutomaticPetFeeder\CyControlReg_v1_80</v>
 <v>Final Project\AutomaticPetFeeder\CyControlReg_v1_80\CyControlReg_v1_80.pdf</v>
 <v>Final Project\AutomaticPetFeeder\demux_v1_10.pdf</v>
-<v>Final Project\AutomaticPetFeeder\I2C_LCD_v1_20.pdf</v>
 <v>Final Project\AutomaticPetFeeder\SCB_P4_v4_0</v>
 <v>Final Project\AutomaticPetFeeder\SCB_P4_v4_0\SCB_P4_v4_0.pdf</v>
 <v>Final Project\AutomaticPetFeeder\TCPWM_P4_v2_10</v>
@@ -127,7 +209,6 @@
 <v>Final Project\AutomaticPetFeeder\CyControlReg_v1_80</v>
 <v>Final Project\AutomaticPetFeeder\CyControlReg_v1_80\CyControlReg_v1_80.pdf</v>
 <v>Final Project\AutomaticPetFeeder\demux_v1_10.pdf</v>
-<v>Final Project\AutomaticPetFeeder\I2C_LCD_v1_20.pdf</v>
 <v>Final Project\AutomaticPetFeeder\SCB_P4_v4_0</v>
 <v>Final Project\AutomaticPetFeeder\SCB_P4_v4_0\SCB_P4_v4_0.pdf</v>
 <v>Final Project\AutomaticPetFeeder\TCPWM_P4_v2_10</v>
@@ -143,6 +224,8 @@
 <OpenDocs>
 <name v=".\AutomaticPetFeeder.cydsn\TopDesign\TopDesign.cysch" />
 <name v=".\AutomaticPetFeeder.cydsn\AutomaticPetFeeder.cydwr" />
+<name v=".\AutomaticPetFeeder.cydsn\main.c" />
+<name v=".\AutomaticPetFeeder.cydsn\Generated_Source\PSoC4\CyBootAsmGnu.s" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -150,7 +233,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="753, 350" SelectedTabbedMdiWindow="6fbc26b4-6fb2-48d1-a1d1-3922784bdeaf"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="ead43ad5-701e-41ee-acd3-176a27ede259" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Final Project\Project Files\Final Project\AutomaticPetFeeder.cydsn\TopDesign\TopDesign.cysch" Guid="6fbc26b4-6fb2-48d1-a1d1-3922784bdeaf" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Final Project\Project Files\Final Project\AutomaticPetFeeder.cydsn\AutomaticPetFeeder.cydwr" Guid="dd92df75-d775-42cc-aa31-38f48c6218ed" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="963, 314" SelectedTabbedMdiWindow="61e5633d-4668-4578-beba-216cc42dcd4b"><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Final Project\Project Files\Final Project\AutomaticPetFeeder.cydsn\TopDesign\TopDesign.cysch" Guid="6fbc26b4-6fb2-48d1-a1d1-3922784bdeaf" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Final Project\Project Files\Final Project\AutomaticPetFeeder.cydsn\AutomaticPetFeeder.cydwr" Guid="dd92df75-d775-42cc-aa31-38f48c6218ed" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Final Project\Project Files\Final Project\AutomaticPetFeeder.cydsn\main.c" Guid="61e5633d-4668-4578-beba-216cc42dcd4b" /><DocumentWindow Key="C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Final Project\Project Files\Final Project\AutomaticPetFeeder.cydsn\Generated_Source\PSoC4\CyBootAsmGnu.s" Guid="10b7ed02-9858-4bc5-819b-cf733efd25fa" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="ead43ad5-701e-41ee-acd3-176a27ede259" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

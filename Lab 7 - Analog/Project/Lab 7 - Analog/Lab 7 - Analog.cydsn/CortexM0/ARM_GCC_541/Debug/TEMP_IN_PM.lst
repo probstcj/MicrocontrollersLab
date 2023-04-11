@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc0RPaZE.s 			page 1
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccunttMX.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc0RPaZE.s 			page 1
   28:Generated_Source\PSoC4/TEMP_IN_PM.c **** *  deep-sleep/hibernate modes. This function applies only to SIO and USBIO pins.
   29:Generated_Source\PSoC4/TEMP_IN_PM.c **** *  It should not be called for GPIO or GPIO_OVT pins.
   30:Generated_Source\PSoC4/TEMP_IN_PM.c **** *
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc0RPaZE.s 			page 2
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccunttMX.s 			page 2
 
 
   31:Generated_Source\PSoC4/TEMP_IN_PM.c **** * <b>Note</b> This function is available in PSoC 4 only.
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc0RPaZE.s 			page 1
   51              		.global	TEMP_IN_Wakeup
   52              		.code	16
   53              		.thumb_func
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc0RPaZE.s 			page 3
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccunttMX.s 			page 3
 
 
   54              		.type	TEMP_IN_Wakeup, %function
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc0RPaZE.s 			page 1
   72              	.L5:
   73 000c 00000000 		.word	.LANCHOR0
   74 0010 08020440 		.word	1074004488
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc0RPaZE.s 			page 4
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccunttMX.s 			page 4
 
 
   75              		.cfi_endproc
@@ -204,17 +204,17 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc0RPaZE.s 			page 1
   93 0006 00000000 		.4byte	.Ldebug_abbrev0
   94 000a 04       		.byte	0x4
   95 000b 01       		.uleb128 0x1
-  96 000c 1D010000 		.4byte	.LASF20
+  96 000c 28010000 		.4byte	.LASF20
   97 0010 0C       		.byte	0xc
-  98 0011 EE010000 		.4byte	.LASF21
-  99 0015 6D000000 		.4byte	.LASF22
+  98 0011 F9010000 		.4byte	.LASF21
+  99 0015 83000000 		.4byte	.LASF22
  100 0019 00000000 		.4byte	.Ldebug_ranges0+0
  101 001d 00000000 		.4byte	0
  102 0021 00000000 		.4byte	.Ldebug_line0
  103 0025 02       		.uleb128 0x2
  104 0026 01       		.byte	0x1
  105 0027 06       		.byte	0x6
- 106 0028 E2010000 		.4byte	.LASF0
+ 106 0028 ED010000 		.4byte	.LASF0
  107 002c 02       		.uleb128 0x2
  108 002d 01       		.byte	0x1
  109 002e 08       		.byte	0x8
@@ -222,7 +222,7 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc0RPaZE.s 			page 1
  111 0033 02       		.uleb128 0x2
  112 0034 02       		.byte	0x2
  113 0035 05       		.byte	0x5
- 114 0036 C7010000 		.4byte	.LASF2
+ 114 0036 D2010000 		.4byte	.LASF2
  115 003a 02       		.uleb128 0x2
  116 003b 02       		.byte	0x2
  117 003c 07       		.byte	0x7
@@ -230,7 +230,7 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc0RPaZE.s 			page 1
  119 0041 02       		.uleb128 0x2
  120 0042 04       		.byte	0x4
  121 0043 05       		.byte	0x5
- 122 0044 D9010000 		.4byte	.LASF4
+ 122 0044 E4010000 		.4byte	.LASF4
  123 0048 02       		.uleb128 0x2
  124 0049 04       		.byte	0x4
  125 004a 07       		.byte	0x7
@@ -238,14 +238,14 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc0RPaZE.s 			page 1
  127 004f 02       		.uleb128 0x2
  128 0050 08       		.byte	0x8
  129 0051 05       		.byte	0x5
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc0RPaZE.s 			page 5
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccunttMX.s 			page 5
 
 
- 130 0052 B4010000 		.4byte	.LASF6
+ 130 0052 BF010000 		.4byte	.LASF6
  131 0056 02       		.uleb128 0x2
  132 0057 08       		.byte	0x8
  133 0058 07       		.byte	0x7
- 134 0059 06010000 		.4byte	.LASF7
+ 134 0059 11010000 		.4byte	.LASF7
  135 005d 03       		.uleb128 0x3
  136 005e 04       		.byte	0x4
  137 005f 05       		.byte	0x5
@@ -253,11 +253,11 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc0RPaZE.s 			page 1
  139 0064 02       		.uleb128 0x2
  140 0065 04       		.byte	0x4
  141 0066 07       		.byte	0x7
- 142 0067 F9000000 		.4byte	.LASF8
+ 142 0067 04010000 		.4byte	.LASF8
  143 006b 04       		.uleb128 0x4
- 144 006c F2000000 		.4byte	.LASF12
+ 144 006c FD000000 		.4byte	.LASF12
  145 0070 02       		.byte	0x2
- 146 0071 FE01     		.2byte	0x1fe
+ 146 0071 E901     		.2byte	0x1e9
  147 0073 48000000 		.4byte	0x48
  148 0077 02       		.uleb128 0x2
  149 0078 04       		.byte	0x4
@@ -266,15 +266,15 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc0RPaZE.s 			page 1
  152 007e 02       		.uleb128 0x2
  153 007f 08       		.byte	0x8
  154 0080 04       		.byte	0x4
- 155 0081 CE000000 		.4byte	.LASF10
+ 155 0081 7C000000 		.4byte	.LASF10
  156 0085 02       		.uleb128 0x2
  157 0086 01       		.byte	0x1
  158 0087 08       		.byte	0x8
- 159 0088 C2010000 		.4byte	.LASF11
+ 159 0088 CD010000 		.4byte	.LASF11
  160 008c 04       		.uleb128 0x4
  161 008d 00000000 		.4byte	.LASF13
  162 0091 02       		.byte	0x2
- 163 0092 A802     		.2byte	0x2a8
+ 163 0092 9302     		.2byte	0x293
  164 0094 98000000 		.4byte	0x98
  165 0098 05       		.uleb128 0x5
  166 0099 6B000000 		.4byte	0x6b
@@ -284,13 +284,13 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc0RPaZE.s 			page 1
  170 00a0 21       		.byte	0x21
  171 00a1 CA000000 		.4byte	0xca
  172 00a5 07       		.uleb128 0x7
- 173 00a6 D1010000 		.4byte	.LASF14
+ 173 00a6 DC010000 		.4byte	.LASF14
  174 00aa 03       		.byte	0x3
  175 00ab 23       		.byte	0x23
  176 00ac 6B000000 		.4byte	0x6b
  177 00b0 00       		.byte	0
  178 00b1 07       		.uleb128 0x7
- 179 00b2 AB010000 		.4byte	.LASF15
+ 179 00b2 B6010000 		.4byte	.LASF15
  180 00b6 03       		.byte	0x3
  181 00b7 24       		.byte	0x24
  182 00b8 6B000000 		.4byte	0x6b
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc0RPaZE.s 			page 1
  184 00bd 07       		.uleb128 0x7
  185 00be 06000000 		.4byte	.LASF16
  186 00c2 03       		.byte	0x3
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc0RPaZE.s 			page 6
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccunttMX.s 			page 6
 
 
  187 00c3 25       		.byte	0x25
@@ -311,7 +311,7 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc0RPaZE.s 			page 1
  194 00d0 26       		.byte	0x26
  195 00d1 9D000000 		.4byte	0x9d
  196 00d5 09       		.uleb128 0x9
- 197 00d6 E4000000 		.4byte	.LASF18
+ 197 00d6 EF000000 		.4byte	.LASF18
  198 00da 01       		.byte	0x1
  199 00db 2C       		.byte	0x2c
  200 00dc 00000000 		.4byte	.LFB0
@@ -319,7 +319,7 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc0RPaZE.s 			page 1
  202 00e4 01       		.uleb128 0x1
  203 00e5 9C       		.byte	0x9c
  204 00e6 09       		.uleb128 0x9
- 205 00e7 D5000000 		.4byte	.LASF19
+ 205 00e7 6D000000 		.4byte	.LASF19
  206 00eb 01       		.byte	0x1
  207 00ec 52       		.byte	0x52
  208 00ed 00000000 		.4byte	.LFB1
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc0RPaZE.s 			page 1
  241 0012 00       		.byte	0
  242 0013 02       		.uleb128 0x2
  243 0014 24       		.uleb128 0x24
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc0RPaZE.s 			page 7
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccunttMX.s 			page 7
 
 
  244 0015 00       		.byte	0
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc0RPaZE.s 			page 1
  298 004b 0D       		.uleb128 0xd
  299 004c 00       		.byte	0
  300 004d 03       		.uleb128 0x3
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc0RPaZE.s 			page 8
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccunttMX.s 			page 8
 
 
  301 004e 0E       		.uleb128 0xe
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc0RPaZE.s 			page 1
  355 0085 3B       		.uleb128 0x3b
  356 0086 0B       		.uleb128 0xb
  357 0087 49       		.uleb128 0x49
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc0RPaZE.s 			page 9
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccunttMX.s 			page 9
 
 
  358 0088 13       		.uleb128 0x13
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc0RPaZE.s 			page 1
  398      20636861 
  398      7200
  399              	.LASF23:
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc0RPaZE.s 			page 10
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccunttMX.s 			page 10
 
 
  400 0039 54454D50 		.ascii	"TEMP_IN_backup\000"
@@ -557,93 +557,96 @@ ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc0RPaZE.s 			page 1
  404      7369676E 
  404      65642069 
  404      6E7400
- 405              	.LASF22:
- 406 006d 433A5C55 		.ascii	"C:\\Users\\Leo Tejkowski\\Desktop\\ece381\\Lab 7 - "
- 406      73657273 
- 406      5C4C656F 
- 406      2054656A 
- 406      6B6F7773 
- 407 009b 416E616C 		.ascii	"Analog\\Project\\Lab 7 - Analog\\Lab 7 - Analog.cyd"
- 407      6F675C50 
- 407      726F6A65 
- 407      63745C4C 
- 407      61622037 
- 408 00cb 736E00   		.ascii	"sn\000"
- 409              	.LASF10:
- 410 00ce 646F7562 		.ascii	"double\000"
- 410      6C6500
- 411              	.LASF19:
- 412 00d5 54454D50 		.ascii	"TEMP_IN_Wakeup\000"
- 412      5F494E5F 
- 412      57616B65 
- 412      757000
+ 405              	.LASF19:
+ 406 006d 54454D50 		.ascii	"TEMP_IN_Wakeup\000"
+ 406      5F494E5F 
+ 406      57616B65 
+ 406      757000
+ 407              	.LASF10:
+ 408 007c 646F7562 		.ascii	"double\000"
+ 408      6C6500
+ 409              	.LASF22:
+ 410 0083 433A5C55 		.ascii	"C:\\Users\\Hello Kitty\\Desktop\\MicrocontrollersLa"
+ 410      73657273 
+ 410      5C48656C 
+ 410      6C6F204B 
+ 410      69747479 
+ 411 00b2 625C4C61 		.ascii	"b\\Lab 7 - Analog\\Project\\Lab 7 - Analog\\Lab 7 -"
+ 411      62203720 
+ 411      2D20416E 
+ 411      616C6F67 
+ 411      5C50726F 
+ 412 00e1 20416E61 		.ascii	" Analog.cydsn\000"
+ 412      6C6F672E 
+ 412      63796473 
+ 412      6E00
  413              	.LASF18:
- 414 00e4 54454D50 		.ascii	"TEMP_IN_Sleep\000"
+ 414 00ef 54454D50 		.ascii	"TEMP_IN_Sleep\000"
  414      5F494E5F 
  414      536C6565 
  414      7000
  415              	.LASF12:
- 416 00f2 75696E74 		.ascii	"uint32\000"
+ 416 00fd 75696E74 		.ascii	"uint32\000"
  416      333200
  417              	.LASF8:
- 418 00f9 756E7369 		.ascii	"unsigned int\000"
+ 418 0104 756E7369 		.ascii	"unsigned int\000"
  418      676E6564 
  418      20696E74 
  418      00
  419              	.LASF7:
- 420 0106 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 420 0111 6C6F6E67 		.ascii	"long long unsigned int\000"
  420      206C6F6E 
  420      6720756E 
  420      7369676E 
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccunttMX.s 			page 11
+
+
  420      65642069 
  421              	.LASF20:
- 422 011d 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
-ARM GAS  C:\Users\LEOTEJ~1\AppData\Local\Temp\cc0RPaZE.s 			page 11
-
-
+ 422 0128 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
  422      43313120 
  422      352E342E 
  422      31203230 
  422      31363036 
- 423 0150 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 423 015b 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
  423      20726576 
  423      6973696F 
  423      6E203233 
  423      37373135 
- 424 0183 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 424 018e 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
  424      66756E63 
  424      74696F6E 
  424      2D736563 
  424      74696F6E 
  425              	.LASF15:
- 426 01ab 73696F53 		.ascii	"sioState\000"
+ 426 01b6 73696F53 		.ascii	"sioState\000"
  426      74617465 
  426      00
  427              	.LASF6:
- 428 01b4 6C6F6E67 		.ascii	"long long int\000"
+ 428 01bf 6C6F6E67 		.ascii	"long long int\000"
  428      206C6F6E 
  428      6720696E 
  428      7400
  429              	.LASF11:
- 430 01c2 63686172 		.ascii	"char\000"
+ 430 01cd 63686172 		.ascii	"char\000"
  430      00
  431              	.LASF2:
- 432 01c7 73686F72 		.ascii	"short int\000"
+ 432 01d2 73686F72 		.ascii	"short int\000"
  432      7420696E 
  432      7400
  433              	.LASF14:
- 434 01d1 70635374 		.ascii	"pcState\000"
+ 434 01dc 70635374 		.ascii	"pcState\000"
  434      61746500 
  435              	.LASF4:
- 436 01d9 6C6F6E67 		.ascii	"long int\000"
+ 436 01e4 6C6F6E67 		.ascii	"long int\000"
  436      20696E74 
  436      00
  437              	.LASF0:
- 438 01e2 7369676E 		.ascii	"signed char\000"
+ 438 01ed 7369676E 		.ascii	"signed char\000"
  438      65642063 
  438      68617200 
  439              	.LASF21:
- 440 01ee 47656E65 		.ascii	"Generated_Source\\PSoC4\\TEMP_IN_PM.c\000"
+ 440 01f9 47656E65 		.ascii	"Generated_Source\\PSoC4\\TEMP_IN_PM.c\000"
  440      72617465 
  440      645F536F 
  440      75726365 

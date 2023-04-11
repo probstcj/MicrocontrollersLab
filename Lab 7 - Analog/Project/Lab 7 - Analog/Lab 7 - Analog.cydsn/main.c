@@ -23,7 +23,7 @@ Init mate?
 */
 void tempInit/*Mate*/(){
     // Set 6:4 to 100 and 7 to 1
-    ADC_SAR_CTRL_REG = (ADC_SAR_CTRL_REG | 0xC0);
+    ADC_SAR_CTRL_REG = (ADC_SAR_CTRL_REG & 0xFFFFFF0F) | 0x000000C0;
     // Set input to 0
     //ADC_SetChanMask(0x0000);
 }
@@ -34,7 +34,9 @@ Init mate?
 */
 void potInit/*Mate*/(){
     // Set 6:4 to 100 and 7 to 1
-    ADC_SAR_CTRL_REG = (ADC_SAR_CTRL_REG | 0xE0);
+    //ADC_Stop();
+    ADC_SAR_CTRL_REG = (ADC_SAR_CTRL_REG & 0xFFFFFF0F) | 0x000000E0;
+    //ADC_Start();
     // Set input to 0
     //ADC_SetChanMask(0x0001);
 }
@@ -56,6 +58,7 @@ float getTempValue(){
     ADC_StopConvert();
     // Convert digital to voltage
     Vout = out * (2.048/4095);
+    
     // (Vout - V0)/Tc = Ta
     return (Vout - .400)/(.0195);
 }
@@ -160,14 +163,16 @@ int main(void)
             // Change mode
             if(mode == 1){
                 mode = 0;
+                tempInit();
+                CyDelay(100);
             } else {
                 mode = 1;
+                potInit();
+                CyDelay(100);
             }
         }
         // Temperature mode
         if(mode ==  0){
-            // Initialize temperatures
-            tempInit();
             // Delay for refresh rate
             CyDelay(100);
             float temp = getTempValue();
@@ -187,8 +192,6 @@ int main(void)
         }
         // Voltage mode
         else {
-            // Initialize voltage mode
-            potInit();
             // Refresh rate for LCD
             CyDelay(100);
             float voltage = getVoltage();
