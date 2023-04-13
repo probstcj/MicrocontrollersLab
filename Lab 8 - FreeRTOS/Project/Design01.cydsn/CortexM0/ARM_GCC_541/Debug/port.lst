@@ -1,0 +1,2240 @@
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"port.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.prvTaskExitError,"ax",%progbits
+  20              		.align	2
+  21              		.code	16
+  22              		.thumb_func
+  23              		.type	prvTaskExitError, %function
+  24              	prvTaskExitError:
+  25              	.LFB35:
+  26              		.file 1 "FreeRTOS\\Source\\port.c"
+   1:FreeRTOS\Source/port.c **** /*
+   2:FreeRTOS\Source/port.c ****  * FreeRTOS Kernel V10.5.1
+   3:FreeRTOS\Source/port.c ****  * Copyright (C) 2021 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
+   4:FreeRTOS\Source/port.c ****  *
+   5:FreeRTOS\Source/port.c ****  * SPDX-License-Identifier: MIT
+   6:FreeRTOS\Source/port.c ****  *
+   7:FreeRTOS\Source/port.c ****  * Permission is hereby granted, free of charge, to any person obtaining a copy of
+   8:FreeRTOS\Source/port.c ****  * this software and associated documentation files (the "Software"), to deal in
+   9:FreeRTOS\Source/port.c ****  * the Software without restriction, including without limitation the rights to
+  10:FreeRTOS\Source/port.c ****  * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+  11:FreeRTOS\Source/port.c ****  * the Software, and to permit persons to whom the Software is furnished to do so,
+  12:FreeRTOS\Source/port.c ****  * subject to the following conditions:
+  13:FreeRTOS\Source/port.c ****  *
+  14:FreeRTOS\Source/port.c ****  * The above copyright notice and this permission notice shall be included in all
+  15:FreeRTOS\Source/port.c ****  * copies or substantial portions of the Software.
+  16:FreeRTOS\Source/port.c ****  *
+  17:FreeRTOS\Source/port.c ****  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  18:FreeRTOS\Source/port.c ****  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+  19:FreeRTOS\Source/port.c ****  * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+  20:FreeRTOS\Source/port.c ****  * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+  21:FreeRTOS\Source/port.c ****  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+  22:FreeRTOS\Source/port.c ****  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  23:FreeRTOS\Source/port.c ****  *
+  24:FreeRTOS\Source/port.c ****  * https://www.FreeRTOS.org
+  25:FreeRTOS\Source/port.c ****  * https://github.com/FreeRTOS
+  26:FreeRTOS\Source/port.c ****  *
+  27:FreeRTOS\Source/port.c ****  */
+  28:FreeRTOS\Source/port.c **** 
+  29:FreeRTOS\Source/port.c **** /*-----------------------------------------------------------
+  30:FreeRTOS\Source/port.c **** * Implementation of functions defined in portable.h for the ARM CM0 port.
+  31:FreeRTOS\Source/port.c **** *----------------------------------------------------------*/
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 2
+
+
+  32:FreeRTOS\Source/port.c **** 
+  33:FreeRTOS\Source/port.c **** /* Scheduler includes. */
+  34:FreeRTOS\Source/port.c **** #include "FreeRTOS.h"
+  35:FreeRTOS\Source/port.c **** #include "task.h"
+  36:FreeRTOS\Source/port.c **** 
+  37:FreeRTOS\Source/port.c **** /* Constants required to manipulate the NVIC. */
+  38:FreeRTOS\Source/port.c **** #define portNVIC_SYSTICK_CTRL_REG             ( *( ( volatile uint32_t * ) 0xe000e010 ) )
+  39:FreeRTOS\Source/port.c **** #define portNVIC_SYSTICK_LOAD_REG             ( *( ( volatile uint32_t * ) 0xe000e014 ) )
+  40:FreeRTOS\Source/port.c **** #define portNVIC_SYSTICK_CURRENT_VALUE_REG    ( *( ( volatile uint32_t * ) 0xe000e018 ) )
+  41:FreeRTOS\Source/port.c **** #define portNVIC_INT_CTRL_REG                 ( *( ( volatile uint32_t * ) 0xe000ed04 ) )
+  42:FreeRTOS\Source/port.c **** #define portNVIC_SHPR3_REG                    ( *( ( volatile uint32_t * ) 0xe000ed20 ) )
+  43:FreeRTOS\Source/port.c **** #define portNVIC_SYSTICK_CLK_BIT              ( 1UL << 2UL )
+  44:FreeRTOS\Source/port.c **** #define portNVIC_SYSTICK_INT_BIT              ( 1UL << 1UL )
+  45:FreeRTOS\Source/port.c **** #define portNVIC_SYSTICK_ENABLE_BIT           ( 1UL << 0UL )
+  46:FreeRTOS\Source/port.c **** #define portNVIC_SYSTICK_COUNT_FLAG_BIT       ( 1UL << 16UL )
+  47:FreeRTOS\Source/port.c **** #define portNVIC_PENDSVSET_BIT                ( 1UL << 28UL )
+  48:FreeRTOS\Source/port.c **** #define portNVIC_PEND_SYSTICK_SET_BIT         ( 1UL << 26UL )
+  49:FreeRTOS\Source/port.c **** #define portNVIC_PEND_SYSTICK_CLEAR_BIT       ( 1UL << 25UL )
+  50:FreeRTOS\Source/port.c **** #define portMIN_INTERRUPT_PRIORITY            ( 255UL )
+  51:FreeRTOS\Source/port.c **** #define portNVIC_PENDSV_PRI                   ( portMIN_INTERRUPT_PRIORITY << 16UL )
+  52:FreeRTOS\Source/port.c **** #define portNVIC_SYSTICK_PRI                  ( portMIN_INTERRUPT_PRIORITY << 24UL )
+  53:FreeRTOS\Source/port.c **** 
+  54:FreeRTOS\Source/port.c **** /* Constants required to set up the initial stack. */
+  55:FreeRTOS\Source/port.c **** #define portINITIAL_XPSR                      ( 0x01000000 )
+  56:FreeRTOS\Source/port.c **** 
+  57:FreeRTOS\Source/port.c **** /* The systick is a 24-bit counter. */
+  58:FreeRTOS\Source/port.c **** #define portMAX_24_BIT_NUMBER                 ( 0xffffffUL )
+  59:FreeRTOS\Source/port.c **** 
+  60:FreeRTOS\Source/port.c **** /* A fiddle factor to estimate the number of SysTick counts that would have
+  61:FreeRTOS\Source/port.c ****  * occurred while the SysTick counter is stopped during tickless idle
+  62:FreeRTOS\Source/port.c ****  * calculations. */
+  63:FreeRTOS\Source/port.c **** #ifndef portMISSED_COUNTS_FACTOR
+  64:FreeRTOS\Source/port.c ****     #define portMISSED_COUNTS_FACTOR    ( 94UL )
+  65:FreeRTOS\Source/port.c **** #endif
+  66:FreeRTOS\Source/port.c **** 
+  67:FreeRTOS\Source/port.c **** /* Let the user override the default SysTick clock rate.  If defined by the
+  68:FreeRTOS\Source/port.c ****  * user, this symbol must equal the SysTick clock rate when the CLK bit is 0 in the
+  69:FreeRTOS\Source/port.c ****  * configuration register. */
+  70:FreeRTOS\Source/port.c **** #ifndef configSYSTICK_CLOCK_HZ
+  71:FreeRTOS\Source/port.c ****     #define configSYSTICK_CLOCK_HZ             ( configCPU_CLOCK_HZ )
+  72:FreeRTOS\Source/port.c ****     /* Ensure the SysTick is clocked at the same frequency as the core. */
+  73:FreeRTOS\Source/port.c ****     #define portNVIC_SYSTICK_CLK_BIT_CONFIG    ( portNVIC_SYSTICK_CLK_BIT )
+  74:FreeRTOS\Source/port.c **** #else
+  75:FreeRTOS\Source/port.c ****     /* Select the option to clock SysTick not at the same frequency as the core. */
+  76:FreeRTOS\Source/port.c ****     #define portNVIC_SYSTICK_CLK_BIT_CONFIG    ( 0 )
+  77:FreeRTOS\Source/port.c **** #endif
+  78:FreeRTOS\Source/port.c **** 
+  79:FreeRTOS\Source/port.c **** /* Let the user override the pre-loading of the initial LR with the address of
+  80:FreeRTOS\Source/port.c ****  * prvTaskExitError() in case it messes up unwinding of the stack in the
+  81:FreeRTOS\Source/port.c ****  * debugger. */
+  82:FreeRTOS\Source/port.c **** #ifdef configTASK_RETURN_ADDRESS
+  83:FreeRTOS\Source/port.c ****     #define portTASK_RETURN_ADDRESS    configTASK_RETURN_ADDRESS
+  84:FreeRTOS\Source/port.c **** #else
+  85:FreeRTOS\Source/port.c ****     #define portTASK_RETURN_ADDRESS    prvTaskExitError
+  86:FreeRTOS\Source/port.c **** #endif
+  87:FreeRTOS\Source/port.c **** 
+  88:FreeRTOS\Source/port.c **** /*
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 3
+
+
+  89:FreeRTOS\Source/port.c ****  * Setup the timer to generate the tick interrupts.  The implementation in this
+  90:FreeRTOS\Source/port.c ****  * file is weak to allow application writers to change the timer used to
+  91:FreeRTOS\Source/port.c ****  * generate the tick interrupt.
+  92:FreeRTOS\Source/port.c ****  */
+  93:FreeRTOS\Source/port.c **** void vPortSetupTimerInterrupt( void );
+  94:FreeRTOS\Source/port.c **** 
+  95:FreeRTOS\Source/port.c **** /*
+  96:FreeRTOS\Source/port.c ****  * Exception handlers.
+  97:FreeRTOS\Source/port.c ****  */
+  98:FreeRTOS\Source/port.c **** void xPortPendSVHandler( void ) __attribute__( ( naked ) );
+  99:FreeRTOS\Source/port.c **** void xPortSysTickHandler( void );
+ 100:FreeRTOS\Source/port.c **** void vPortSVCHandler( void );
+ 101:FreeRTOS\Source/port.c **** 
+ 102:FreeRTOS\Source/port.c **** /*
+ 103:FreeRTOS\Source/port.c ****  * Start first task is a separate function so it can be tested in isolation.
+ 104:FreeRTOS\Source/port.c ****  */
+ 105:FreeRTOS\Source/port.c **** static void vPortStartFirstTask( void ) __attribute__( ( naked ) );
+ 106:FreeRTOS\Source/port.c **** 
+ 107:FreeRTOS\Source/port.c **** /*
+ 108:FreeRTOS\Source/port.c ****  * Used to catch tasks that attempt to return from their implementing function.
+ 109:FreeRTOS\Source/port.c ****  */
+ 110:FreeRTOS\Source/port.c **** static void prvTaskExitError( void );
+ 111:FreeRTOS\Source/port.c **** 
+ 112:FreeRTOS\Source/port.c **** /*-----------------------------------------------------------*/
+ 113:FreeRTOS\Source/port.c **** 
+ 114:FreeRTOS\Source/port.c **** /* Each task maintains its own interrupt status in the critical nesting
+ 115:FreeRTOS\Source/port.c ****  * variable. */
+ 116:FreeRTOS\Source/port.c **** static UBaseType_t uxCriticalNesting = 0xaaaaaaaa;
+ 117:FreeRTOS\Source/port.c **** 
+ 118:FreeRTOS\Source/port.c **** /*-----------------------------------------------------------*/
+ 119:FreeRTOS\Source/port.c **** 
+ 120:FreeRTOS\Source/port.c **** /*
+ 121:FreeRTOS\Source/port.c ****  * The number of SysTick increments that make up one tick period.
+ 122:FreeRTOS\Source/port.c ****  */
+ 123:FreeRTOS\Source/port.c **** #if ( configUSE_TICKLESS_IDLE == 1 )
+ 124:FreeRTOS\Source/port.c ****     static uint32_t ulTimerCountsForOneTick = 0;
+ 125:FreeRTOS\Source/port.c **** #endif /* configUSE_TICKLESS_IDLE */
+ 126:FreeRTOS\Source/port.c **** 
+ 127:FreeRTOS\Source/port.c **** /*
+ 128:FreeRTOS\Source/port.c ****  * The maximum number of tick periods that can be suppressed is limited by the
+ 129:FreeRTOS\Source/port.c ****  * 24 bit resolution of the SysTick timer.
+ 130:FreeRTOS\Source/port.c ****  */
+ 131:FreeRTOS\Source/port.c **** #if ( configUSE_TICKLESS_IDLE == 1 )
+ 132:FreeRTOS\Source/port.c ****     static uint32_t xMaximumPossibleSuppressedTicks = 0;
+ 133:FreeRTOS\Source/port.c **** #endif /* configUSE_TICKLESS_IDLE */
+ 134:FreeRTOS\Source/port.c **** 
+ 135:FreeRTOS\Source/port.c **** /*
+ 136:FreeRTOS\Source/port.c ****  * Compensate for the CPU cycles that pass while the SysTick is stopped (low
+ 137:FreeRTOS\Source/port.c ****  * power functionality only.
+ 138:FreeRTOS\Source/port.c ****  */
+ 139:FreeRTOS\Source/port.c **** #if ( configUSE_TICKLESS_IDLE == 1 )
+ 140:FreeRTOS\Source/port.c ****     static uint32_t ulStoppedTimerCompensation = 0;
+ 141:FreeRTOS\Source/port.c **** #endif /* configUSE_TICKLESS_IDLE */
+ 142:FreeRTOS\Source/port.c **** 
+ 143:FreeRTOS\Source/port.c **** /*-----------------------------------------------------------*/
+ 144:FreeRTOS\Source/port.c **** 
+ 145:FreeRTOS\Source/port.c **** /*
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 4
+
+
+ 146:FreeRTOS\Source/port.c ****  * See header file for description.
+ 147:FreeRTOS\Source/port.c ****  */
+ 148:FreeRTOS\Source/port.c **** StackType_t * pxPortInitialiseStack( StackType_t * pxTopOfStack,
+ 149:FreeRTOS\Source/port.c ****                                      TaskFunction_t pxCode,
+ 150:FreeRTOS\Source/port.c ****                                      void * pvParameters )
+ 151:FreeRTOS\Source/port.c **** {
+ 152:FreeRTOS\Source/port.c ****     /* Simulate the stack frame as it would be created by a context switch
+ 153:FreeRTOS\Source/port.c ****      * interrupt. */
+ 154:FreeRTOS\Source/port.c ****     pxTopOfStack--;                                          /* Offset added to account for the way
+ 155:FreeRTOS\Source/port.c ****     *pxTopOfStack = portINITIAL_XPSR;                        /* xPSR */
+ 156:FreeRTOS\Source/port.c ****     pxTopOfStack--;
+ 157:FreeRTOS\Source/port.c ****     *pxTopOfStack = ( StackType_t ) pxCode;                  /* PC */
+ 158:FreeRTOS\Source/port.c ****     pxTopOfStack--;
+ 159:FreeRTOS\Source/port.c ****     *pxTopOfStack = ( StackType_t ) portTASK_RETURN_ADDRESS; /* LR */
+ 160:FreeRTOS\Source/port.c ****     pxTopOfStack -= 5;                                       /* R12, R3, R2 and R1. */
+ 161:FreeRTOS\Source/port.c ****     *pxTopOfStack = ( StackType_t ) pvParameters;            /* R0 */
+ 162:FreeRTOS\Source/port.c ****     pxTopOfStack -= 8;                                       /* R11..R4. */
+ 163:FreeRTOS\Source/port.c **** 
+ 164:FreeRTOS\Source/port.c ****     return pxTopOfStack;
+ 165:FreeRTOS\Source/port.c **** }
+ 166:FreeRTOS\Source/port.c **** /*-----------------------------------------------------------*/
+ 167:FreeRTOS\Source/port.c **** 
+ 168:FreeRTOS\Source/port.c **** static void prvTaskExitError( void )
+ 169:FreeRTOS\Source/port.c **** {
+  27              		.loc 1 169 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 8
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32 0000 82B0     		sub	sp, sp, #8
+  33              		.cfi_def_cfa_offset 8
+ 170:FreeRTOS\Source/port.c ****     volatile uint32_t ulDummy = 0UL;
+  34              		.loc 1 170 0
+  35 0002 0023     		movs	r3, #0
+  36 0004 0193     		str	r3, [sp, #4]
+ 171:FreeRTOS\Source/port.c **** 
+ 172:FreeRTOS\Source/port.c ****     /* A function that implements a task must not exit or attempt to return to
+ 173:FreeRTOS\Source/port.c ****      * its caller as there is nothing to return to.  If a task wants to exit it
+ 174:FreeRTOS\Source/port.c ****      * should instead call vTaskDelete( NULL ).
+ 175:FreeRTOS\Source/port.c ****      *
+ 176:FreeRTOS\Source/port.c ****      * Artificially force an assert() to be triggered if configASSERT() is
+ 177:FreeRTOS\Source/port.c ****      * defined, then stop here so application writers can catch the error. */
+ 178:FreeRTOS\Source/port.c ****     configASSERT( uxCriticalNesting == ~0UL );
+ 179:FreeRTOS\Source/port.c ****     portDISABLE_INTERRUPTS();
+  37              		.loc 1 179 0
+  38              		.syntax divided
+  39              	@ 179 "FreeRTOS\Source\port.c" 1
+  40 0006 72B6     		 cpsid i 
+  41              	@ 0 "" 2
+  42              		.thumb
+  43              		.syntax unified
+  44              	.L2:
+ 180:FreeRTOS\Source/port.c **** 
+ 181:FreeRTOS\Source/port.c ****     while( ulDummy == 0 )
+  45              		.loc 1 181 0 discriminator 1
+  46 0008 019B     		ldr	r3, [sp, #4]
+  47 000a 002B     		cmp	r3, #0
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 5
+
+
+  48 000c FCD0     		beq	.L2
+ 182:FreeRTOS\Source/port.c ****     {
+ 183:FreeRTOS\Source/port.c ****         /* This file calls prvTaskExitError() after the scheduler has been
+ 184:FreeRTOS\Source/port.c ****          * started to remove a compiler warning about the function being defined
+ 185:FreeRTOS\Source/port.c ****          * but never called.  ulDummy is used purely to quieten other warnings
+ 186:FreeRTOS\Source/port.c ****          * about code appearing after this function is called - making ulDummy
+ 187:FreeRTOS\Source/port.c ****          * volatile makes the compiler think the function could return and
+ 188:FreeRTOS\Source/port.c ****          * therefore not output an 'unreachable code' warning for code that appears
+ 189:FreeRTOS\Source/port.c ****          * after it. */
+ 190:FreeRTOS\Source/port.c ****     }
+ 191:FreeRTOS\Source/port.c **** }
+  49              		.loc 1 191 0
+  50 000e 02B0     		add	sp, sp, #8
+  51              		@ sp needed
+  52 0010 7047     		bx	lr
+  53              		.cfi_endproc
+  54              	.LFE35:
+  55              		.size	prvTaskExitError, .-prvTaskExitError
+  56 0012 C046     		.section	.text.vPortStartFirstTask,"ax",%progbits
+  57              		.align	2
+  58              		.code	16
+  59              		.thumb_func
+  60              		.type	vPortStartFirstTask, %function
+  61              	vPortStartFirstTask:
+  62              	.LFB37:
+ 192:FreeRTOS\Source/port.c **** /*-----------------------------------------------------------*/
+ 193:FreeRTOS\Source/port.c **** 
+ 194:FreeRTOS\Source/port.c **** void vPortSVCHandler( void )
+ 195:FreeRTOS\Source/port.c **** {
+ 196:FreeRTOS\Source/port.c ****     /* This function is no longer used, but retained for backward
+ 197:FreeRTOS\Source/port.c ****      * compatibility. */
+ 198:FreeRTOS\Source/port.c **** }
+ 199:FreeRTOS\Source/port.c **** /*-----------------------------------------------------------*/
+ 200:FreeRTOS\Source/port.c **** 
+ 201:FreeRTOS\Source/port.c **** void vPortStartFirstTask( void )
+ 202:FreeRTOS\Source/port.c **** {
+  63              		.loc 1 202 0
+  64              		.cfi_startproc
+  65              		@ Naked Function: prologue and epilogue provided by programmer.
+  66              		@ args = 0, pretend = 0, frame = 0
+  67              		@ frame_needed = 0, uses_anonymous_args = 0
+ 203:FreeRTOS\Source/port.c ****     /* The MSP stack is not reset as, unlike on M3/4 parts, there is no vector
+ 204:FreeRTOS\Source/port.c ****      * table offset register that can be used to locate the initial stack value.
+ 205:FreeRTOS\Source/port.c ****      * Not all M0 parts have the application vector table at address 0. */
+ 206:FreeRTOS\Source/port.c ****     __asm volatile (
+  68              		.loc 1 206 0
+  69              		.syntax divided
+  70              	@ 206 "FreeRTOS\Source\port.c" 1
+  71              			.syntax unified				
+  72 0000 0B4A     		ldr  r2, pxCurrentTCBConst2	
+  73 0002 1368     		ldr  r3, [r2]				
+  74 0004 1868     		ldr  r0, [r3]				
+  75 0006 2030     		adds r0, #32					
+  76 0008 80F30988 		msr  psp, r0					
+  77 000c 0220     		movs r0, #2					
+  78 000e 80F31488 		msr  CONTROL, r0				
+  79 0012 BFF36F8F 		isb							
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 6
+
+
+  80 0016 3FBC     		pop  {r0-r5}					
+  81 0018 AE46     		mov  lr, r5					
+  82 001a 08BC     		pop  {r3}					
+  83 001c 04BC     		pop  {r2}					
+  84 001e 62B6     		cpsie i						
+  85 0020 1847     		bx   r3						
+  86              									
+  87 0022 C046C046 		.align 4					
+  87      C046C046 
+  87      C046C046 
+  87      C046
+  88 0030 00000000 	pxCurrentTCBConst2: .word pxCurrentTCB	  
+  89              	@ 0 "" 2
+ 207:FreeRTOS\Source/port.c ****         "	.syntax unified				\n"
+ 208:FreeRTOS\Source/port.c ****         "	ldr  r2, pxCurrentTCBConst2	\n"/* Obtain location of pxCurrentTCB. */
+ 209:FreeRTOS\Source/port.c ****         "	ldr  r3, [r2]				\n"
+ 210:FreeRTOS\Source/port.c ****         "	ldr  r0, [r3]				\n"/* The first item in pxCurrentTCB is the task top of stack. */
+ 211:FreeRTOS\Source/port.c ****         "	adds r0, #32					\n"/* Discard everything up to r0. */
+ 212:FreeRTOS\Source/port.c ****         "	msr  psp, r0					\n"/* This is now the new top of stack to use in the task. */
+ 213:FreeRTOS\Source/port.c ****         "	movs r0, #2					\n"/* Switch to the psp stack. */
+ 214:FreeRTOS\Source/port.c ****         "	msr  CONTROL, r0				\n"
+ 215:FreeRTOS\Source/port.c ****         "	isb							\n"
+ 216:FreeRTOS\Source/port.c ****         "	pop  {r0-r5}					\n"/* Pop the registers that are saved automatically. */
+ 217:FreeRTOS\Source/port.c ****         "	mov  lr, r5					\n"/* lr is now in r5. */
+ 218:FreeRTOS\Source/port.c ****         "	pop  {r3}					\n"/* Return address is now in r3. */
+ 219:FreeRTOS\Source/port.c ****         "	pop  {r2}					\n"/* Pop and discard XPSR. */
+ 220:FreeRTOS\Source/port.c ****         "	cpsie i						\n"/* The first task has its context and interrupts can be enabled. */
+ 221:FreeRTOS\Source/port.c ****         "	bx   r3						\n"/* Finally, jump to the user defined task code. */
+ 222:FreeRTOS\Source/port.c ****         "								\n"
+ 223:FreeRTOS\Source/port.c ****         "	.align 4					\n"
+ 224:FreeRTOS\Source/port.c ****         "pxCurrentTCBConst2: .word pxCurrentTCB	  "
+ 225:FreeRTOS\Source/port.c ****         );
+ 226:FreeRTOS\Source/port.c **** }
+  90              		.loc 1 226 0
+  91              		.thumb
+  92              		.syntax unified
+  93              		.cfi_endproc
+  94              	.LFE37:
+  95              		.size	vPortStartFirstTask, .-vPortStartFirstTask
+  96              		.section	.text.pxPortInitialiseStack,"ax",%progbits
+  97              		.align	2
+  98              		.global	pxPortInitialiseStack
+  99              		.code	16
+ 100              		.thumb_func
+ 101              		.type	pxPortInitialiseStack, %function
+ 102              	pxPortInitialiseStack:
+ 103              	.LFB34:
+ 151:FreeRTOS\Source/port.c ****     /* Simulate the stack frame as it would be created by a context switch
+ 104              		.loc 1 151 0
+ 105              		.cfi_startproc
+ 106              		@ args = 0, pretend = 0, frame = 0
+ 107              		@ frame_needed = 0, uses_anonymous_args = 0
+ 108              	.LVL0:
+ 109 0000 10B5     		push	{r4, lr}
+ 110              		.cfi_def_cfa_offset 8
+ 111              		.cfi_offset 4, -8
+ 112              		.cfi_offset 14, -4
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 7
+
+
+ 113              	.LVL1:
+ 155:FreeRTOS\Source/port.c ****     pxTopOfStack--;
+ 114              		.loc 1 155 0
+ 115 0002 031F     		subs	r3, r0, #4
+ 116              	.LVL2:
+ 117 0004 8024     		movs	r4, #128
+ 118 0006 6404     		lsls	r4, r4, #17
+ 119 0008 1C60     		str	r4, [r3]
+ 120              	.LVL3:
+ 157:FreeRTOS\Source/port.c ****     pxTopOfStack--;
+ 121              		.loc 1 157 0
+ 122 000a 043B     		subs	r3, r3, #4
+ 123 000c 1960     		str	r1, [r3]
+ 124              	.LVL4:
+ 159:FreeRTOS\Source/port.c ****     pxTopOfStack -= 5;                                       /* R12, R3, R2 and R1. */
+ 125              		.loc 1 159 0
+ 126 000e 043B     		subs	r3, r3, #4
+ 127 0010 0249     		ldr	r1, .L5
+ 128              	.LVL5:
+ 129 0012 1960     		str	r1, [r3]
+ 130              	.LVL6:
+ 161:FreeRTOS\Source/port.c ****     pxTopOfStack -= 8;                                       /* R11..R4. */
+ 131              		.loc 1 161 0
+ 132 0014 143B     		subs	r3, r3, #20
+ 133              	.LVL7:
+ 134 0016 1A60     		str	r2, [r3]
+ 162:FreeRTOS\Source/port.c **** 
+ 135              		.loc 1 162 0
+ 136 0018 4038     		subs	r0, r0, #64
+ 137              	.LVL8:
+ 165:FreeRTOS\Source/port.c **** /*-----------------------------------------------------------*/
+ 138              		.loc 1 165 0
+ 139              		@ sp needed
+ 140 001a 10BD     		pop	{r4, pc}
+ 141              	.L6:
+ 142              		.align	2
+ 143              	.L5:
+ 144 001c 00000000 		.word	prvTaskExitError
+ 145              		.cfi_endproc
+ 146              	.LFE34:
+ 147              		.size	pxPortInitialiseStack, .-pxPortInitialiseStack
+ 148              		.section	.text.vPortSVCHandler,"ax",%progbits
+ 149              		.align	2
+ 150              		.global	vPortSVCHandler
+ 151              		.code	16
+ 152              		.thumb_func
+ 153              		.type	vPortSVCHandler, %function
+ 154              	vPortSVCHandler:
+ 155              	.LFB36:
+ 195:FreeRTOS\Source/port.c ****     /* This function is no longer used, but retained for backward
+ 156              		.loc 1 195 0
+ 157              		.cfi_startproc
+ 158              		@ args = 0, pretend = 0, frame = 0
+ 159              		@ frame_needed = 0, uses_anonymous_args = 0
+ 160              		@ link register save eliminated.
+ 198:FreeRTOS\Source/port.c **** /*-----------------------------------------------------------*/
+ 161              		.loc 1 198 0
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 8
+
+
+ 162              		@ sp needed
+ 163 0000 7047     		bx	lr
+ 164              		.cfi_endproc
+ 165              	.LFE36:
+ 166              		.size	vPortSVCHandler, .-vPortSVCHandler
+ 167 0002 C046     		.section	.text.vPortEndScheduler,"ax",%progbits
+ 168              		.align	2
+ 169              		.global	vPortEndScheduler
+ 170              		.code	16
+ 171              		.thumb_func
+ 172              		.type	vPortEndScheduler, %function
+ 173              	vPortEndScheduler:
+ 174              	.LFB39:
+ 227:FreeRTOS\Source/port.c **** /*-----------------------------------------------------------*/
+ 228:FreeRTOS\Source/port.c **** 
+ 229:FreeRTOS\Source/port.c **** /*
+ 230:FreeRTOS\Source/port.c ****  * See header file for description.
+ 231:FreeRTOS\Source/port.c ****  */
+ 232:FreeRTOS\Source/port.c **** BaseType_t xPortStartScheduler( void )
+ 233:FreeRTOS\Source/port.c **** {
+ 234:FreeRTOS\Source/port.c ****     /* Make PendSV, CallSV and SysTick the same priority as the kernel. */
+ 235:FreeRTOS\Source/port.c ****     portNVIC_SHPR3_REG |= portNVIC_PENDSV_PRI;
+ 236:FreeRTOS\Source/port.c ****     portNVIC_SHPR3_REG |= portNVIC_SYSTICK_PRI;
+ 237:FreeRTOS\Source/port.c **** 
+ 238:FreeRTOS\Source/port.c ****     /* Start the timer that generates the tick ISR.  Interrupts are disabled
+ 239:FreeRTOS\Source/port.c ****      * here already. */
+ 240:FreeRTOS\Source/port.c ****     vPortSetupTimerInterrupt();
+ 241:FreeRTOS\Source/port.c **** 
+ 242:FreeRTOS\Source/port.c ****     /* Initialise the critical nesting count ready for the first task. */
+ 243:FreeRTOS\Source/port.c ****     uxCriticalNesting = 0;
+ 244:FreeRTOS\Source/port.c **** 
+ 245:FreeRTOS\Source/port.c ****     /* Start the first task. */
+ 246:FreeRTOS\Source/port.c ****     vPortStartFirstTask();
+ 247:FreeRTOS\Source/port.c **** 
+ 248:FreeRTOS\Source/port.c ****     /* Should never get here as the tasks will now be executing!  Call the task
+ 249:FreeRTOS\Source/port.c ****      * exit error function to prevent compiler warnings about a static function
+ 250:FreeRTOS\Source/port.c ****      * not being called in the case that the application writer overrides this
+ 251:FreeRTOS\Source/port.c ****      * functionality by defining configTASK_RETURN_ADDRESS.  Call
+ 252:FreeRTOS\Source/port.c ****      * vTaskSwitchContext() so link time optimisation does not remove the
+ 253:FreeRTOS\Source/port.c ****      * symbol. */
+ 254:FreeRTOS\Source/port.c ****     vTaskSwitchContext();
+ 255:FreeRTOS\Source/port.c ****     prvTaskExitError();
+ 256:FreeRTOS\Source/port.c **** 
+ 257:FreeRTOS\Source/port.c ****     /* Should not get here! */
+ 258:FreeRTOS\Source/port.c ****     return 0;
+ 259:FreeRTOS\Source/port.c **** }
+ 260:FreeRTOS\Source/port.c **** /*-----------------------------------------------------------*/
+ 261:FreeRTOS\Source/port.c **** 
+ 262:FreeRTOS\Source/port.c **** void vPortEndScheduler( void )
+ 263:FreeRTOS\Source/port.c **** {
+ 175              		.loc 1 263 0
+ 176              		.cfi_startproc
+ 177              		@ args = 0, pretend = 0, frame = 0
+ 178              		@ frame_needed = 0, uses_anonymous_args = 0
+ 179              		@ link register save eliminated.
+ 264:FreeRTOS\Source/port.c ****     /* Not implemented in ports where there is nothing to return to.
+ 265:FreeRTOS\Source/port.c ****      * Artificially force an assert. */
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 9
+
+
+ 266:FreeRTOS\Source/port.c ****     configASSERT( uxCriticalNesting == 1000UL );
+ 267:FreeRTOS\Source/port.c **** }
+ 180              		.loc 1 267 0
+ 181              		@ sp needed
+ 182 0000 7047     		bx	lr
+ 183              		.cfi_endproc
+ 184              	.LFE39:
+ 185              		.size	vPortEndScheduler, .-vPortEndScheduler
+ 186 0002 C046     		.section	.text.vPortYield,"ax",%progbits
+ 187              		.align	2
+ 188              		.global	vPortYield
+ 189              		.code	16
+ 190              		.thumb_func
+ 191              		.type	vPortYield, %function
+ 192              	vPortYield:
+ 193              	.LFB40:
+ 268:FreeRTOS\Source/port.c **** /*-----------------------------------------------------------*/
+ 269:FreeRTOS\Source/port.c **** 
+ 270:FreeRTOS\Source/port.c **** void vPortYield( void )
+ 271:FreeRTOS\Source/port.c **** {
+ 194              		.loc 1 271 0
+ 195              		.cfi_startproc
+ 196              		@ args = 0, pretend = 0, frame = 0
+ 197              		@ frame_needed = 0, uses_anonymous_args = 0
+ 198              		@ link register save eliminated.
+ 272:FreeRTOS\Source/port.c ****     /* Set a PendSV to request a context switch. */
+ 273:FreeRTOS\Source/port.c ****     portNVIC_INT_CTRL_REG = portNVIC_PENDSVSET_BIT;
+ 199              		.loc 1 273 0
+ 200 0000 8022     		movs	r2, #128
+ 201 0002 5205     		lsls	r2, r2, #21
+ 202 0004 034B     		ldr	r3, .L10
+ 203 0006 1A60     		str	r2, [r3]
+ 274:FreeRTOS\Source/port.c **** 
+ 275:FreeRTOS\Source/port.c ****     /* Barriers are normally not required but do ensure the code is completely
+ 276:FreeRTOS\Source/port.c ****      * within the specified behaviour for the architecture. */
+ 277:FreeRTOS\Source/port.c ****     __asm volatile ( "dsb" ::: "memory" );
+ 204              		.loc 1 277 0
+ 205              		.syntax divided
+ 206              	@ 277 "FreeRTOS\Source\port.c" 1
+ 207 0008 BFF34F8F 		dsb
+ 208              	@ 0 "" 2
+ 278:FreeRTOS\Source/port.c ****     __asm volatile ( "isb" );
+ 209              		.loc 1 278 0
+ 210              	@ 278 "FreeRTOS\Source\port.c" 1
+ 211 000c BFF36F8F 		isb
+ 212              	@ 0 "" 2
+ 279:FreeRTOS\Source/port.c **** }
+ 213              		.loc 1 279 0
+ 214              		.thumb
+ 215              		.syntax unified
+ 216              		@ sp needed
+ 217 0010 7047     		bx	lr
+ 218              	.L11:
+ 219 0012 C046     		.align	2
+ 220              	.L10:
+ 221 0014 04ED00E0 		.word	-536810236
+ 222              		.cfi_endproc
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 10
+
+
+ 223              	.LFE40:
+ 224              		.size	vPortYield, .-vPortYield
+ 225              		.section	.text.vPortEnterCritical,"ax",%progbits
+ 226              		.align	2
+ 227              		.global	vPortEnterCritical
+ 228              		.code	16
+ 229              		.thumb_func
+ 230              		.type	vPortEnterCritical, %function
+ 231              	vPortEnterCritical:
+ 232              	.LFB41:
+ 280:FreeRTOS\Source/port.c **** /*-----------------------------------------------------------*/
+ 281:FreeRTOS\Source/port.c **** 
+ 282:FreeRTOS\Source/port.c **** void vPortEnterCritical( void )
+ 283:FreeRTOS\Source/port.c **** {
+ 233              		.loc 1 283 0
+ 234              		.cfi_startproc
+ 235              		@ args = 0, pretend = 0, frame = 0
+ 236              		@ frame_needed = 0, uses_anonymous_args = 0
+ 237              		@ link register save eliminated.
+ 284:FreeRTOS\Source/port.c ****     portDISABLE_INTERRUPTS();
+ 238              		.loc 1 284 0
+ 239              		.syntax divided
+ 240              	@ 284 "FreeRTOS\Source\port.c" 1
+ 241 0000 72B6     		 cpsid i 
+ 242              	@ 0 "" 2
+ 285:FreeRTOS\Source/port.c ****     uxCriticalNesting++;
+ 243              		.loc 1 285 0
+ 244              		.thumb
+ 245              		.syntax unified
+ 246 0002 044A     		ldr	r2, .L13
+ 247 0004 1368     		ldr	r3, [r2]
+ 248 0006 0133     		adds	r3, r3, #1
+ 249 0008 1360     		str	r3, [r2]
+ 286:FreeRTOS\Source/port.c ****     __asm volatile ( "dsb" ::: "memory" );
+ 250              		.loc 1 286 0
+ 251              		.syntax divided
+ 252              	@ 286 "FreeRTOS\Source\port.c" 1
+ 253 000a BFF34F8F 		dsb
+ 254              	@ 0 "" 2
+ 287:FreeRTOS\Source/port.c ****     __asm volatile ( "isb" );
+ 255              		.loc 1 287 0
+ 256              	@ 287 "FreeRTOS\Source\port.c" 1
+ 257 000e BFF36F8F 		isb
+ 258              	@ 0 "" 2
+ 288:FreeRTOS\Source/port.c **** }
+ 259              		.loc 1 288 0
+ 260              		.thumb
+ 261              		.syntax unified
+ 262              		@ sp needed
+ 263 0012 7047     		bx	lr
+ 264              	.L14:
+ 265              		.align	2
+ 266              	.L13:
+ 267 0014 00000000 		.word	.LANCHOR0
+ 268              		.cfi_endproc
+ 269              	.LFE41:
+ 270              		.size	vPortEnterCritical, .-vPortEnterCritical
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 11
+
+
+ 271              		.section	.text.vPortExitCritical,"ax",%progbits
+ 272              		.align	2
+ 273              		.global	vPortExitCritical
+ 274              		.code	16
+ 275              		.thumb_func
+ 276              		.type	vPortExitCritical, %function
+ 277              	vPortExitCritical:
+ 278              	.LFB42:
+ 289:FreeRTOS\Source/port.c **** /*-----------------------------------------------------------*/
+ 290:FreeRTOS\Source/port.c **** 
+ 291:FreeRTOS\Source/port.c **** void vPortExitCritical( void )
+ 292:FreeRTOS\Source/port.c **** {
+ 279              		.loc 1 292 0
+ 280              		.cfi_startproc
+ 281              		@ args = 0, pretend = 0, frame = 0
+ 282              		@ frame_needed = 0, uses_anonymous_args = 0
+ 283              		@ link register save eliminated.
+ 293:FreeRTOS\Source/port.c ****     configASSERT( uxCriticalNesting );
+ 294:FreeRTOS\Source/port.c ****     uxCriticalNesting--;
+ 284              		.loc 1 294 0
+ 285 0000 034A     		ldr	r2, .L17
+ 286 0002 1368     		ldr	r3, [r2]
+ 287 0004 013B     		subs	r3, r3, #1
+ 288 0006 1360     		str	r3, [r2]
+ 295:FreeRTOS\Source/port.c **** 
+ 296:FreeRTOS\Source/port.c ****     if( uxCriticalNesting == 0 )
+ 289              		.loc 1 296 0
+ 290 0008 002B     		cmp	r3, #0
+ 291 000a 00D1     		bne	.L15
+ 297:FreeRTOS\Source/port.c ****     {
+ 298:FreeRTOS\Source/port.c ****         portENABLE_INTERRUPTS();
+ 292              		.loc 1 298 0
+ 293              		.syntax divided
+ 294              	@ 298 "FreeRTOS\Source\port.c" 1
+ 295 000c 62B6     		 cpsie i 
+ 296              	@ 0 "" 2
+ 297              		.thumb
+ 298              		.syntax unified
+ 299              	.L15:
+ 299:FreeRTOS\Source/port.c ****     }
+ 300:FreeRTOS\Source/port.c **** }
+ 300              		.loc 1 300 0
+ 301              		@ sp needed
+ 302 000e 7047     		bx	lr
+ 303              	.L18:
+ 304              		.align	2
+ 305              	.L17:
+ 306 0010 00000000 		.word	.LANCHOR0
+ 307              		.cfi_endproc
+ 308              	.LFE42:
+ 309              		.size	vPortExitCritical, .-vPortExitCritical
+ 310              		.section	.text.ulSetInterruptMaskFromISR,"ax",%progbits
+ 311              		.align	2
+ 312              		.global	ulSetInterruptMaskFromISR
+ 313              		.code	16
+ 314              		.thumb_func
+ 315              		.type	ulSetInterruptMaskFromISR, %function
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 12
+
+
+ 316              	ulSetInterruptMaskFromISR:
+ 317              	.LFB43:
+ 301:FreeRTOS\Source/port.c **** /*-----------------------------------------------------------*/
+ 302:FreeRTOS\Source/port.c **** 
+ 303:FreeRTOS\Source/port.c **** uint32_t ulSetInterruptMaskFromISR( void )
+ 304:FreeRTOS\Source/port.c **** {
+ 318              		.loc 1 304 0
+ 319              		.cfi_startproc
+ 320              		@ Naked Function: prologue and epilogue provided by programmer.
+ 321              		@ args = 0, pretend = 0, frame = 0
+ 322              		@ frame_needed = 0, uses_anonymous_args = 0
+ 305:FreeRTOS\Source/port.c ****     __asm volatile (
+ 323              		.loc 1 305 0
+ 324              		.syntax divided
+ 325              	@ 305 "FreeRTOS\Source\port.c" 1
+ 326 0000 EFF31080 		 mrs r0, PRIMASK	
+ 327 0004 72B6     	 cpsid i			
+ 328 0006 7047     	 bx lr				  
+ 329              	@ 0 "" 2
+ 306:FreeRTOS\Source/port.c ****         " mrs r0, PRIMASK	\n"
+ 307:FreeRTOS\Source/port.c ****         " cpsid i			\n"
+ 308:FreeRTOS\Source/port.c ****         " bx lr				  "
+ 309:FreeRTOS\Source/port.c ****         ::: "memory"
+ 310:FreeRTOS\Source/port.c ****         );
+ 311:FreeRTOS\Source/port.c **** }
+ 330              		.loc 1 311 0
+ 331              		.thumb
+ 332              		.syntax unified
+ 333              		.cfi_endproc
+ 334              	.LFE43:
+ 335              		.size	ulSetInterruptMaskFromISR, .-ulSetInterruptMaskFromISR
+ 336              		.section	.text.vClearInterruptMaskFromISR,"ax",%progbits
+ 337              		.align	2
+ 338              		.global	vClearInterruptMaskFromISR
+ 339              		.code	16
+ 340              		.thumb_func
+ 341              		.type	vClearInterruptMaskFromISR, %function
+ 342              	vClearInterruptMaskFromISR:
+ 343              	.LFB44:
+ 312:FreeRTOS\Source/port.c **** /*-----------------------------------------------------------*/
+ 313:FreeRTOS\Source/port.c **** 
+ 314:FreeRTOS\Source/port.c **** void vClearInterruptMaskFromISR( __attribute__( ( unused ) ) uint32_t ulMask )
+ 315:FreeRTOS\Source/port.c **** {
+ 344              		.loc 1 315 0
+ 345              		.cfi_startproc
+ 346              		@ Naked Function: prologue and epilogue provided by programmer.
+ 347              		@ args = 0, pretend = 0, frame = 0
+ 348              		@ frame_needed = 0, uses_anonymous_args = 0
+ 349              	.LVL9:
+ 316:FreeRTOS\Source/port.c ****     __asm volatile (
+ 350              		.loc 1 316 0
+ 351              		.syntax divided
+ 352              	@ 316 "FreeRTOS\Source\port.c" 1
+ 353 0000 80F31088 		 msr PRIMASK, r0	
+ 354 0004 7047     	 bx lr				  
+ 355              	@ 0 "" 2
+ 317:FreeRTOS\Source/port.c ****         " msr PRIMASK, r0	\n"
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 13
+
+
+ 318:FreeRTOS\Source/port.c ****         " bx lr				  "
+ 319:FreeRTOS\Source/port.c ****         ::: "memory"
+ 320:FreeRTOS\Source/port.c ****         );
+ 321:FreeRTOS\Source/port.c **** }
+ 356              		.loc 1 321 0
+ 357              		.thumb
+ 358              		.syntax unified
+ 359              		.cfi_endproc
+ 360              	.LFE44:
+ 361              		.size	vClearInterruptMaskFromISR, .-vClearInterruptMaskFromISR
+ 362 0006 C046     		.section	.text.xPortPendSVHandler,"ax",%progbits
+ 363              		.align	2
+ 364              		.global	xPortPendSVHandler
+ 365              		.code	16
+ 366              		.thumb_func
+ 367              		.type	xPortPendSVHandler, %function
+ 368              	xPortPendSVHandler:
+ 369              	.LFB45:
+ 322:FreeRTOS\Source/port.c **** /*-----------------------------------------------------------*/
+ 323:FreeRTOS\Source/port.c **** 
+ 324:FreeRTOS\Source/port.c **** void xPortPendSVHandler( void )
+ 325:FreeRTOS\Source/port.c **** {
+ 370              		.loc 1 325 0
+ 371              		.cfi_startproc
+ 372              		@ Naked Function: prologue and epilogue provided by programmer.
+ 373              		@ args = 0, pretend = 0, frame = 0
+ 374              		@ frame_needed = 0, uses_anonymous_args = 0
+ 326:FreeRTOS\Source/port.c ****     /* This is a naked function. */
+ 327:FreeRTOS\Source/port.c **** 
+ 328:FreeRTOS\Source/port.c ****     __asm volatile
+ 375              		.loc 1 328 0
+ 376              		.syntax divided
+ 377              	@ 328 "FreeRTOS\Source\port.c" 1
+ 378              			.syntax unified						
+ 379 0000 EFF30980 		mrs r0, psp							
+ 380              											
+ 381 0004 0E4B     		ldr	r3, pxCurrentTCBConst			
+ 382 0006 1A68     		ldr	r2, [r3]						
+ 383              											
+ 384 0008 2038     		subs r0, r0, #32					
+ 385 000a 1060     		str r0, [r2]						
+ 386 000c F0C0     		stmia r0!, {r4-r7}					
+ 387 000e 4446     	 	mov r4, r8							
+ 388 0010 4D46     	 	mov r5, r9							
+ 389 0012 5646     	 	mov r6, r10							
+ 390 0014 5F46     	 	mov r7, r11							
+ 391 0016 F0C0     	 	stmia r0!, {r4-r7}					
+ 392              											
+ 393 0018 08B5     		push {r3, r14}						
+ 394 001a 72B6     		cpsid i								
+ 395 001c FFF7FEFF 		bl vTaskSwitchContext				
+ 396 0020 62B6     		cpsie i								
+ 397 0022 0CBC     		pop {r2, r3}						
+ 398              											
+ 399 0024 1168     		ldr r1, [r2]						
+ 400 0026 0868     		ldr r0, [r1]						
+ 401 0028 1030     		adds r0, r0, #16					
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 14
+
+
+ 402 002a F0C8     		ldmia r0!, {r4-r7}					
+ 403 002c A046     	 	mov r8, r4							
+ 404 002e A946     	 	mov r9, r5							
+ 405 0030 B246     	 	mov r10, r6							
+ 406 0032 BB46     	 	mov r11, r7							
+ 407              											
+ 408 0034 80F30988 		msr psp, r0							
+ 409              											
+ 410 0038 2038     		subs r0, r0, #32					
+ 411 003a F0C8     	 	ldmia r0!, {r4-r7}					
+ 412              											
+ 413 003c 1847     		bx r3								
+ 414              											
+ 415 003e C046     		.align 4							
+ 416 0040 00000000 	pxCurrentTCBConst: .word pxCurrentTCB	  
+ 417              	@ 0 "" 2
+ 329:FreeRTOS\Source/port.c ****     (
+ 330:FreeRTOS\Source/port.c ****         "	.syntax unified						\n"
+ 331:FreeRTOS\Source/port.c ****         "	mrs r0, psp							\n"
+ 332:FreeRTOS\Source/port.c ****         "										\n"
+ 333:FreeRTOS\Source/port.c ****         "	ldr	r3, pxCurrentTCBConst			\n"/* Get the location of the current TCB. */
+ 334:FreeRTOS\Source/port.c ****         "	ldr	r2, [r3]						\n"
+ 335:FreeRTOS\Source/port.c ****         "										\n"
+ 336:FreeRTOS\Source/port.c ****         "	subs r0, r0, #32					\n"/* Make space for the remaining low registers. */
+ 337:FreeRTOS\Source/port.c ****         "	str r0, [r2]						\n"/* Save the new top of stack. */
+ 338:FreeRTOS\Source/port.c ****         "	stmia r0!, {r4-r7}					\n"/* Store the low registers that are not saved automatically. */
+ 339:FreeRTOS\Source/port.c ****         " 	mov r4, r8							\n"/* Store the high registers. */
+ 340:FreeRTOS\Source/port.c ****         " 	mov r5, r9							\n"
+ 341:FreeRTOS\Source/port.c ****         " 	mov r6, r10							\n"
+ 342:FreeRTOS\Source/port.c ****         " 	mov r7, r11							\n"
+ 343:FreeRTOS\Source/port.c ****         " 	stmia r0!, {r4-r7}					\n"
+ 344:FreeRTOS\Source/port.c ****         "										\n"
+ 345:FreeRTOS\Source/port.c ****         "	push {r3, r14}						\n"
+ 346:FreeRTOS\Source/port.c ****         "	cpsid i								\n"
+ 347:FreeRTOS\Source/port.c ****         "	bl vTaskSwitchContext				\n"
+ 348:FreeRTOS\Source/port.c ****         "	cpsie i								\n"
+ 349:FreeRTOS\Source/port.c ****         "	pop {r2, r3}						\n"/* lr goes in r3. r2 now holds tcb pointer. */
+ 350:FreeRTOS\Source/port.c ****         "										\n"
+ 351:FreeRTOS\Source/port.c ****         "	ldr r1, [r2]						\n"
+ 352:FreeRTOS\Source/port.c ****         "	ldr r0, [r1]						\n"/* The first item in pxCurrentTCB is the task top of stack. */
+ 353:FreeRTOS\Source/port.c ****         "	adds r0, r0, #16					\n"/* Move to the high registers. */
+ 354:FreeRTOS\Source/port.c ****         "	ldmia r0!, {r4-r7}					\n"/* Pop the high registers. */
+ 355:FreeRTOS\Source/port.c ****         " 	mov r8, r4							\n"
+ 356:FreeRTOS\Source/port.c ****         " 	mov r9, r5							\n"
+ 357:FreeRTOS\Source/port.c ****         " 	mov r10, r6							\n"
+ 358:FreeRTOS\Source/port.c ****         " 	mov r11, r7							\n"
+ 359:FreeRTOS\Source/port.c ****         "										\n"
+ 360:FreeRTOS\Source/port.c ****         "	msr psp, r0							\n"/* Remember the new top of stack for the task. */
+ 361:FreeRTOS\Source/port.c ****         "										\n"
+ 362:FreeRTOS\Source/port.c ****         "	subs r0, r0, #32					\n"/* Go back for the low registers that are not automatically resto
+ 363:FreeRTOS\Source/port.c ****         " 	ldmia r0!, {r4-r7}					\n"/* Pop low registers.  */
+ 364:FreeRTOS\Source/port.c ****         "										\n"
+ 365:FreeRTOS\Source/port.c ****         "	bx r3								\n"
+ 366:FreeRTOS\Source/port.c ****         "										\n"
+ 367:FreeRTOS\Source/port.c ****         "	.align 4							\n"
+ 368:FreeRTOS\Source/port.c ****         "pxCurrentTCBConst: .word pxCurrentTCB	  "
+ 369:FreeRTOS\Source/port.c ****     );
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 15
+
+
+ 370:FreeRTOS\Source/port.c **** }
+ 418              		.loc 1 370 0
+ 419              		.thumb
+ 420              		.syntax unified
+ 421              		.cfi_endproc
+ 422              	.LFE45:
+ 423              		.size	xPortPendSVHandler, .-xPortPendSVHandler
+ 424              		.section	.text.xPortSysTickHandler,"ax",%progbits
+ 425              		.align	2
+ 426              		.global	xPortSysTickHandler
+ 427              		.code	16
+ 428              		.thumb_func
+ 429              		.type	xPortSysTickHandler, %function
+ 430              	xPortSysTickHandler:
+ 431              	.LFB46:
+ 371:FreeRTOS\Source/port.c **** /*-----------------------------------------------------------*/
+ 372:FreeRTOS\Source/port.c **** 
+ 373:FreeRTOS\Source/port.c **** void xPortSysTickHandler( void )
+ 374:FreeRTOS\Source/port.c **** {
+ 432              		.loc 1 374 0
+ 433              		.cfi_startproc
+ 434              		@ args = 0, pretend = 0, frame = 0
+ 435              		@ frame_needed = 0, uses_anonymous_args = 0
+ 436 0000 10B5     		push	{r4, lr}
+ 437              		.cfi_def_cfa_offset 8
+ 438              		.cfi_offset 4, -8
+ 439              		.cfi_offset 14, -4
+ 375:FreeRTOS\Source/port.c ****     uint32_t ulPreviousMask;
+ 376:FreeRTOS\Source/port.c **** 
+ 377:FreeRTOS\Source/port.c ****     ulPreviousMask = portSET_INTERRUPT_MASK_FROM_ISR();
+ 440              		.loc 1 377 0
+ 441 0002 FFF7FEFF 		bl	ulSetInterruptMaskFromISR
+ 442              	.LVL10:
+ 443 0006 0400     		movs	r4, r0
+ 444              	.LVL11:
+ 378:FreeRTOS\Source/port.c ****     {
+ 379:FreeRTOS\Source/port.c ****         /* Increment the RTOS tick. */
+ 380:FreeRTOS\Source/port.c ****         if( xTaskIncrementTick() != pdFALSE )
+ 445              		.loc 1 380 0
+ 446 0008 FFF7FEFF 		bl	xTaskIncrementTick
+ 447              	.LVL12:
+ 448 000c 0028     		cmp	r0, #0
+ 449 000e 03D0     		beq	.L23
+ 381:FreeRTOS\Source/port.c ****         {
+ 382:FreeRTOS\Source/port.c ****             /* Pend a context switch. */
+ 383:FreeRTOS\Source/port.c ****             portNVIC_INT_CTRL_REG = portNVIC_PENDSVSET_BIT;
+ 450              		.loc 1 383 0
+ 451 0010 8022     		movs	r2, #128
+ 452 0012 5205     		lsls	r2, r2, #21
+ 453 0014 024B     		ldr	r3, .L24
+ 454 0016 1A60     		str	r2, [r3]
+ 455              	.L23:
+ 384:FreeRTOS\Source/port.c ****         }
+ 385:FreeRTOS\Source/port.c ****     }
+ 386:FreeRTOS\Source/port.c ****     portCLEAR_INTERRUPT_MASK_FROM_ISR( ulPreviousMask );
+ 456              		.loc 1 386 0
+ 457 0018 2000     		movs	r0, r4
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 16
+
+
+ 458 001a FFF7FEFF 		bl	vClearInterruptMaskFromISR
+ 459              	.LVL13:
+ 387:FreeRTOS\Source/port.c **** }
+ 460              		.loc 1 387 0
+ 461              		@ sp needed
+ 462              	.LVL14:
+ 463 001e 10BD     		pop	{r4, pc}
+ 464              	.L25:
+ 465              		.align	2
+ 466              	.L24:
+ 467 0020 04ED00E0 		.word	-536810236
+ 468              		.cfi_endproc
+ 469              	.LFE46:
+ 470              		.size	xPortSysTickHandler, .-xPortSysTickHandler
+ 471              		.section	.text.vPortSetupTimerInterrupt,"ax",%progbits
+ 472              		.align	2
+ 473              		.weak	vPortSetupTimerInterrupt
+ 474              		.code	16
+ 475              		.thumb_func
+ 476              		.type	vPortSetupTimerInterrupt, %function
+ 477              	vPortSetupTimerInterrupt:
+ 478              	.LFB47:
+ 388:FreeRTOS\Source/port.c **** /*-----------------------------------------------------------*/
+ 389:FreeRTOS\Source/port.c **** 
+ 390:FreeRTOS\Source/port.c **** /*
+ 391:FreeRTOS\Source/port.c ****  * Setup the systick timer to generate the tick interrupts at the required
+ 392:FreeRTOS\Source/port.c ****  * frequency.
+ 393:FreeRTOS\Source/port.c ****  */
+ 394:FreeRTOS\Source/port.c **** __attribute__( ( weak ) ) void vPortSetupTimerInterrupt( void )
+ 395:FreeRTOS\Source/port.c **** {
+ 479              		.loc 1 395 0
+ 480              		.cfi_startproc
+ 481              		@ args = 0, pretend = 0, frame = 0
+ 482              		@ frame_needed = 0, uses_anonymous_args = 0
+ 483              		@ link register save eliminated.
+ 396:FreeRTOS\Source/port.c ****     /* Calculate the constants required to configure the tick interrupt. */
+ 397:FreeRTOS\Source/port.c ****     #if ( configUSE_TICKLESS_IDLE == 1 )
+ 398:FreeRTOS\Source/port.c ****     {
+ 399:FreeRTOS\Source/port.c ****         ulTimerCountsForOneTick = ( configSYSTICK_CLOCK_HZ / configTICK_RATE_HZ );
+ 400:FreeRTOS\Source/port.c ****         xMaximumPossibleSuppressedTicks = portMAX_24_BIT_NUMBER / ulTimerCountsForOneTick;
+ 401:FreeRTOS\Source/port.c ****         ulStoppedTimerCompensation = portMISSED_COUNTS_FACTOR / ( configCPU_CLOCK_HZ / configSYSTIC
+ 402:FreeRTOS\Source/port.c ****     }
+ 403:FreeRTOS\Source/port.c ****     #endif /* configUSE_TICKLESS_IDLE */
+ 404:FreeRTOS\Source/port.c **** 
+ 405:FreeRTOS\Source/port.c ****     /* Stop and reset the SysTick. */
+ 406:FreeRTOS\Source/port.c ****     portNVIC_SYSTICK_CTRL_REG = 0UL;
+ 484              		.loc 1 406 0
+ 485 0000 054B     		ldr	r3, .L27
+ 486 0002 0022     		movs	r2, #0
+ 487 0004 1A60     		str	r2, [r3]
+ 407:FreeRTOS\Source/port.c ****     portNVIC_SYSTICK_CURRENT_VALUE_REG = 0UL;
+ 488              		.loc 1 407 0
+ 489 0006 0549     		ldr	r1, .L27+4
+ 490 0008 0A60     		str	r2, [r1]
+ 408:FreeRTOS\Source/port.c **** 
+ 409:FreeRTOS\Source/port.c ****     /* Configure SysTick to interrupt at the requested rate. */
+ 410:FreeRTOS\Source/port.c ****     portNVIC_SYSTICK_LOAD_REG = ( configSYSTICK_CLOCK_HZ / configTICK_RATE_HZ ) - 1UL;
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 17
+
+
+ 491              		.loc 1 410 0
+ 492 000a 0549     		ldr	r1, .L27+8
+ 493 000c 054A     		ldr	r2, .L27+12
+ 494 000e 1160     		str	r1, [r2]
+ 411:FreeRTOS\Source/port.c ****     portNVIC_SYSTICK_CTRL_REG = ( portNVIC_SYSTICK_CLK_BIT_CONFIG | portNVIC_SYSTICK_INT_BIT | port
+ 495              		.loc 1 411 0
+ 496 0010 0722     		movs	r2, #7
+ 497 0012 1A60     		str	r2, [r3]
+ 412:FreeRTOS\Source/port.c **** }
+ 498              		.loc 1 412 0
+ 499              		@ sp needed
+ 500 0014 7047     		bx	lr
+ 501              	.L28:
+ 502 0016 C046     		.align	2
+ 503              	.L27:
+ 504 0018 10E000E0 		.word	-536813552
+ 505 001c 18E000E0 		.word	-536813544
+ 506 0020 7FBB0000 		.word	47999
+ 507 0024 14E000E0 		.word	-536813548
+ 508              		.cfi_endproc
+ 509              	.LFE47:
+ 510              		.size	vPortSetupTimerInterrupt, .-vPortSetupTimerInterrupt
+ 511              		.section	.text.xPortStartScheduler,"ax",%progbits
+ 512              		.align	2
+ 513              		.global	xPortStartScheduler
+ 514              		.code	16
+ 515              		.thumb_func
+ 516              		.type	xPortStartScheduler, %function
+ 517              	xPortStartScheduler:
+ 518              	.LFB38:
+ 233:FreeRTOS\Source/port.c ****     /* Make PendSV, CallSV and SysTick the same priority as the kernel. */
+ 519              		.loc 1 233 0
+ 520              		.cfi_startproc
+ 521              		@ args = 0, pretend = 0, frame = 0
+ 522              		@ frame_needed = 0, uses_anonymous_args = 0
+ 523 0000 10B5     		push	{r4, lr}
+ 524              		.cfi_def_cfa_offset 8
+ 525              		.cfi_offset 4, -8
+ 526              		.cfi_offset 14, -4
+ 235:FreeRTOS\Source/port.c ****     portNVIC_SHPR3_REG |= portNVIC_SYSTICK_PRI;
+ 527              		.loc 1 235 0
+ 528 0002 0C4B     		ldr	r3, .L30
+ 529 0004 1A68     		ldr	r2, [r3]
+ 530 0006 FF21     		movs	r1, #255
+ 531 0008 0904     		lsls	r1, r1, #16
+ 532 000a 0A43     		orrs	r2, r1
+ 533 000c 1A60     		str	r2, [r3]
+ 236:FreeRTOS\Source/port.c **** 
+ 534              		.loc 1 236 0
+ 535 000e 1A68     		ldr	r2, [r3]
+ 536 0010 FF21     		movs	r1, #255
+ 537 0012 0906     		lsls	r1, r1, #24
+ 538 0014 0A43     		orrs	r2, r1
+ 539 0016 1A60     		str	r2, [r3]
+ 240:FreeRTOS\Source/port.c **** 
+ 540              		.loc 1 240 0
+ 541 0018 FFF7FEFF 		bl	vPortSetupTimerInterrupt
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 18
+
+
+ 542              	.LVL15:
+ 243:FreeRTOS\Source/port.c **** 
+ 543              		.loc 1 243 0
+ 544 001c 0022     		movs	r2, #0
+ 545 001e 064B     		ldr	r3, .L30+4
+ 546 0020 1A60     		str	r2, [r3]
+ 246:FreeRTOS\Source/port.c **** 
+ 547              		.loc 1 246 0
+ 548 0022 FFF7FEFF 		bl	vPortStartFirstTask
+ 549              	.LVL16:
+ 254:FreeRTOS\Source/port.c ****     prvTaskExitError();
+ 550              		.loc 1 254 0
+ 551 0026 FFF7FEFF 		bl	vTaskSwitchContext
+ 552              	.LVL17:
+ 255:FreeRTOS\Source/port.c **** 
+ 553              		.loc 1 255 0
+ 554 002a FFF7FEFF 		bl	prvTaskExitError
+ 555              	.LVL18:
+ 259:FreeRTOS\Source/port.c **** /*-----------------------------------------------------------*/
+ 556              		.loc 1 259 0
+ 557 002e 0020     		movs	r0, #0
+ 558              		@ sp needed
+ 559 0030 10BD     		pop	{r4, pc}
+ 560              	.L31:
+ 561 0032 C046     		.align	2
+ 562              	.L30:
+ 563 0034 20ED00E0 		.word	-536810208
+ 564 0038 00000000 		.word	.LANCHOR0
+ 565              		.cfi_endproc
+ 566              	.LFE38:
+ 567              		.size	xPortStartScheduler, .-xPortStartScheduler
+ 568              		.data
+ 569              		.align	2
+ 570              		.set	.LANCHOR0,. + 0
+ 571              		.type	uxCriticalNesting, %object
+ 572              		.size	uxCriticalNesting, 4
+ 573              	uxCriticalNesting:
+ 574 0000 AAAAAAAA 		.word	-1431655766
+ 575              		.text
+ 576              	.Letext0:
+ 577              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 578              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 579              		.file 4 ".\\FreeRTOS\\Include/projdefs.h"
+ 580              		.file 5 ".\\FreeRTOS\\Include/portmacro.h"
+ 581              		.file 6 ".\\FreeRTOS\\Include/task.h"
+ 582              		.section	.debug_info,"",%progbits
+ 583              	.Ldebug_info0:
+ 584 0000 D8020000 		.4byte	0x2d8
+ 585 0004 0400     		.2byte	0x4
+ 586 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 587 000a 04       		.byte	0x4
+ 588 000b 01       		.uleb128 0x1
+ 589 000c A7010000 		.4byte	.LASF41
+ 590 0010 0C       		.byte	0xc
+ 591 0011 D6000000 		.4byte	.LASF42
+ 592 0015 B5020000 		.4byte	.LASF43
+ 593 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 19
+
+
+ 594 001d 00000000 		.4byte	0
+ 595 0021 00000000 		.4byte	.Ldebug_line0
+ 596 0025 02       		.uleb128 0x2
+ 597 0026 04       		.byte	0x4
+ 598 0027 05       		.byte	0x5
+ 599 0028 696E7400 		.ascii	"int\000"
+ 600 002c 03       		.uleb128 0x3
+ 601 002d 04       		.byte	0x4
+ 602 002e 07       		.byte	0x7
+ 603 002f 77000000 		.4byte	.LASF0
+ 604 0033 03       		.uleb128 0x3
+ 605 0034 08       		.byte	0x8
+ 606 0035 05       		.byte	0x5
+ 607 0036 71020000 		.4byte	.LASF1
+ 608 003a 03       		.uleb128 0x3
+ 609 003b 08       		.byte	0x8
+ 610 003c 04       		.byte	0x4
+ 611 003d 30030000 		.4byte	.LASF2
+ 612 0041 03       		.uleb128 0x3
+ 613 0042 01       		.byte	0x1
+ 614 0043 06       		.byte	0x6
+ 615 0044 3C030000 		.4byte	.LASF3
+ 616 0048 03       		.uleb128 0x3
+ 617 0049 01       		.byte	0x1
+ 618 004a 08       		.byte	0x8
+ 619 004b C8000000 		.4byte	.LASF4
+ 620 004f 03       		.uleb128 0x3
+ 621 0050 02       		.byte	0x2
+ 622 0051 05       		.byte	0x5
+ 623 0052 AB020000 		.4byte	.LASF5
+ 624 0056 03       		.uleb128 0x3
+ 625 0057 02       		.byte	0x2
+ 626 0058 07       		.byte	0x7
+ 627 0059 FF000000 		.4byte	.LASF6
+ 628 005d 03       		.uleb128 0x3
+ 629 005e 04       		.byte	0x4
+ 630 005f 05       		.byte	0x5
+ 631 0060 20030000 		.4byte	.LASF7
+ 632 0064 04       		.uleb128 0x4
+ 633 0065 28010000 		.4byte	.LASF10
+ 634 0069 02       		.byte	0x2
+ 635 006a 41       		.byte	0x41
+ 636 006b 6F000000 		.4byte	0x6f
+ 637 006f 03       		.uleb128 0x3
+ 638 0070 04       		.byte	0x4
+ 639 0071 07       		.byte	0x7
+ 640 0072 ED000000 		.4byte	.LASF8
+ 641 0076 03       		.uleb128 0x3
+ 642 0077 08       		.byte	0x8
+ 643 0078 07       		.byte	0x7
+ 644 0079 7F010000 		.4byte	.LASF9
+ 645 007d 04       		.uleb128 0x4
+ 646 007e 17030000 		.4byte	.LASF11
+ 647 0082 03       		.byte	0x3
+ 648 0083 30       		.byte	0x30
+ 649 0084 64000000 		.4byte	0x64
+ 650 0088 03       		.uleb128 0x3
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 20
+
+
+ 651 0089 04       		.byte	0x4
+ 652 008a 04       		.byte	0x4
+ 653 008b A6000000 		.4byte	.LASF12
+ 654 008f 03       		.uleb128 0x3
+ 655 0090 08       		.byte	0x8
+ 656 0091 04       		.byte	0x4
+ 657 0092 21010000 		.4byte	.LASF13
+ 658 0096 03       		.uleb128 0x3
+ 659 0097 01       		.byte	0x1
+ 660 0098 08       		.byte	0x8
+ 661 0099 7F020000 		.4byte	.LASF14
+ 662 009d 03       		.uleb128 0x3
+ 663 009e 04       		.byte	0x4
+ 664 009f 07       		.byte	0x7
+ 665 00a0 4E020000 		.4byte	.LASF15
+ 666 00a4 05       		.uleb128 0x5
+ 667 00a5 04       		.byte	0x4
+ 668 00a6 06       		.uleb128 0x6
+ 669 00a7 7D000000 		.4byte	0x7d
+ 670 00ab 04       		.uleb128 0x4
+ 671 00ac 97000000 		.4byte	.LASF16
+ 672 00b0 04       		.byte	0x4
+ 673 00b1 24       		.byte	0x24
+ 674 00b2 B6000000 		.4byte	0xb6
+ 675 00b6 07       		.uleb128 0x7
+ 676 00b7 04       		.byte	0x4
+ 677 00b8 BC000000 		.4byte	0xbc
+ 678 00bc 08       		.uleb128 0x8
+ 679 00bd C7000000 		.4byte	0xc7
+ 680 00c1 09       		.uleb128 0x9
+ 681 00c2 A4000000 		.4byte	0xa4
+ 682 00c6 00       		.byte	0
+ 683 00c7 04       		.uleb128 0x4
+ 684 00c8 84020000 		.4byte	.LASF17
+ 685 00cc 05       		.byte	0x5
+ 686 00cd 38       		.byte	0x38
+ 687 00ce 7D000000 		.4byte	0x7d
+ 688 00d2 04       		.uleb128 0x4
+ 689 00d3 A0020000 		.4byte	.LASF18
+ 690 00d7 05       		.byte	0x5
+ 691 00d8 3A       		.byte	0x3a
+ 692 00d9 5D000000 		.4byte	0x5d
+ 693 00dd 04       		.uleb128 0x4
+ 694 00de 5C030000 		.4byte	.LASF19
+ 695 00e2 05       		.byte	0x5
+ 696 00e3 3B       		.byte	0x3b
+ 697 00e4 6F000000 		.4byte	0x6f
+ 698 00e8 04       		.uleb128 0x4
+ 699 00e9 59000000 		.4byte	.LASF20
+ 700 00ed 05       		.byte	0x5
+ 701 00ee 41       		.byte	0x41
+ 702 00ef 7D000000 		.4byte	0x7d
+ 703 00f3 07       		.uleb128 0x7
+ 704 00f4 04       		.byte	0x4
+ 705 00f5 C7000000 		.4byte	0xc7
+ 706 00f9 0A       		.uleb128 0xa
+ 707 00fa 96010000 		.4byte	.LASF44
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 21
+
+
+ 708 00fe 01       		.byte	0x1
+ 709 00ff A8       		.byte	0xa8
+ 710 0100 00000000 		.4byte	.LFB35
+ 711 0104 12000000 		.4byte	.LFE35-.LFB35
+ 712 0108 01       		.uleb128 0x1
+ 713 0109 9C       		.byte	0x9c
+ 714 010a 1D010000 		.4byte	0x11d
+ 715 010e 0B       		.uleb128 0xb
+ 716 010f C0000000 		.4byte	.LASF33
+ 717 0113 01       		.byte	0x1
+ 718 0114 AA       		.byte	0xaa
+ 719 0115 A6000000 		.4byte	0xa6
+ 720 0119 02       		.uleb128 0x2
+ 721 011a 91       		.byte	0x91
+ 722 011b 7C       		.sleb128 -4
+ 723 011c 00       		.byte	0
+ 724 011d 0C       		.uleb128 0xc
+ 725 011e AC000000 		.4byte	.LASF45
+ 726 0122 01       		.byte	0x1
+ 727 0123 C9       		.byte	0xc9
+ 728 0124 00000000 		.4byte	.LFB37
+ 729 0128 34000000 		.4byte	.LFE37-.LFB37
+ 730 012c 01       		.uleb128 0x1
+ 731 012d 9C       		.byte	0x9c
+ 732 012e 0D       		.uleb128 0xd
+ 733 012f 68030000 		.4byte	.LASF36
+ 734 0133 01       		.byte	0x1
+ 735 0134 94       		.byte	0x94
+ 736 0135 F3000000 		.4byte	0xf3
+ 737 0139 00000000 		.4byte	.LFB34
+ 738 013d 20000000 		.4byte	.LFE34-.LFB34
+ 739 0141 01       		.uleb128 0x1
+ 740 0142 9C       		.byte	0x9c
+ 741 0143 73010000 		.4byte	0x173
+ 742 0147 0E       		.uleb128 0xe
+ 743 0148 72010000 		.4byte	.LASF21
+ 744 014c 01       		.byte	0x1
+ 745 014d 94       		.byte	0x94
+ 746 014e F3000000 		.4byte	0xf3
+ 747 0152 00000000 		.4byte	.LLST0
+ 748 0156 0E       		.uleb128 0xe
+ 749 0157 40000000 		.4byte	.LASF22
+ 750 015b 01       		.byte	0x1
+ 751 015c 95       		.byte	0x95
+ 752 015d AB000000 		.4byte	0xab
+ 753 0161 5D000000 		.4byte	.LLST1
+ 754 0165 0F       		.uleb128 0xf
+ 755 0166 33010000 		.4byte	.LASF23
+ 756 016a 01       		.byte	0x1
+ 757 016b 96       		.byte	0x96
+ 758 016c A4000000 		.4byte	0xa4
+ 759 0170 01       		.uleb128 0x1
+ 760 0171 52       		.byte	0x52
+ 761 0172 00       		.byte	0
+ 762 0173 10       		.uleb128 0x10
+ 763 0174 90020000 		.4byte	.LASF24
+ 764 0178 01       		.byte	0x1
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 22
+
+
+ 765 0179 C2       		.byte	0xc2
+ 766 017a 00000000 		.4byte	.LFB36
+ 767 017e 02000000 		.4byte	.LFE36-.LFB36
+ 768 0182 01       		.uleb128 0x1
+ 769 0183 9C       		.byte	0x9c
+ 770 0184 11       		.uleb128 0x11
+ 771 0185 47000000 		.4byte	.LASF25
+ 772 0189 01       		.byte	0x1
+ 773 018a 0601     		.2byte	0x106
+ 774 018c 00000000 		.4byte	.LFB39
+ 775 0190 02000000 		.4byte	.LFE39-.LFB39
+ 776 0194 01       		.uleb128 0x1
+ 777 0195 9C       		.byte	0x9c
+ 778 0196 11       		.uleb128 0x11
+ 779 0197 67010000 		.4byte	.LASF26
+ 780 019b 01       		.byte	0x1
+ 781 019c 0E01     		.2byte	0x10e
+ 782 019e 00000000 		.4byte	.LFB40
+ 783 01a2 18000000 		.4byte	.LFE40-.LFB40
+ 784 01a6 01       		.uleb128 0x1
+ 785 01a7 9C       		.byte	0x9c
+ 786 01a8 11       		.uleb128 0x11
+ 787 01a9 2D000000 		.4byte	.LASF27
+ 788 01ad 01       		.byte	0x1
+ 789 01ae 1A01     		.2byte	0x11a
+ 790 01b0 00000000 		.4byte	.LFB41
+ 791 01b4 18000000 		.4byte	.LFE41-.LFB41
+ 792 01b8 01       		.uleb128 0x1
+ 793 01b9 9C       		.byte	0x9c
+ 794 01ba 11       		.uleb128 0x11
+ 795 01bb 05030000 		.4byte	.LASF28
+ 796 01bf 01       		.byte	0x1
+ 797 01c0 2301     		.2byte	0x123
+ 798 01c2 00000000 		.4byte	.LFB42
+ 799 01c6 14000000 		.4byte	.LFE42-.LFB42
+ 800 01ca 01       		.uleb128 0x1
+ 801 01cb 9C       		.byte	0x9c
+ 802 01cc 12       		.uleb128 0x12
+ 803 01cd 57020000 		.4byte	.LASF46
+ 804 01d1 01       		.byte	0x1
+ 805 01d2 2F01     		.2byte	0x12f
+ 806 01d4 7D000000 		.4byte	0x7d
+ 807 01d8 00000000 		.4byte	.LFB43
+ 808 01dc 08000000 		.4byte	.LFE43-.LFB43
+ 809 01e0 01       		.uleb128 0x1
+ 810 01e1 9C       		.byte	0x9c
+ 811 01e2 13       		.uleb128 0x13
+ 812 01e3 12000000 		.4byte	.LASF31
+ 813 01e7 01       		.byte	0x1
+ 814 01e8 3A01     		.2byte	0x13a
+ 815 01ea 00000000 		.4byte	.LFB44
+ 816 01ee 06000000 		.4byte	.LFE44-.LFB44
+ 817 01f2 01       		.uleb128 0x1
+ 818 01f3 9C       		.byte	0x9c
+ 819 01f4 07020000 		.4byte	0x207
+ 820 01f8 14       		.uleb128 0x14
+ 821 01f9 29030000 		.4byte	.LASF29
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 23
+
+
+ 822 01fd 01       		.byte	0x1
+ 823 01fe 3A01     		.2byte	0x13a
+ 824 0200 7D000000 		.4byte	0x7d
+ 825 0204 01       		.uleb128 0x1
+ 826 0205 50       		.byte	0x50
+ 827 0206 00       		.byte	0
+ 828 0207 11       		.uleb128 0x11
+ 829 0208 84000000 		.4byte	.LASF30
+ 830 020c 01       		.byte	0x1
+ 831 020d 4401     		.2byte	0x144
+ 832 020f 00000000 		.4byte	.LFB45
+ 833 0213 44000000 		.4byte	.LFE45-.LFB45
+ 834 0217 01       		.uleb128 0x1
+ 835 0218 9C       		.byte	0x9c
+ 836 0219 13       		.uleb128 0x13
+ 837 021a 53010000 		.4byte	.LASF32
+ 838 021e 01       		.byte	0x1
+ 839 021f 7501     		.2byte	0x175
+ 840 0221 00000000 		.4byte	.LFB46
+ 841 0225 24000000 		.4byte	.LFE46-.LFB46
+ 842 0229 01       		.uleb128 0x1
+ 843 022a 9C       		.byte	0x9c
+ 844 022b 62020000 		.4byte	0x262
+ 845 022f 15       		.uleb128 0x15
+ 846 0230 12010000 		.4byte	.LASF34
+ 847 0234 01       		.byte	0x1
+ 848 0235 7701     		.2byte	0x177
+ 849 0237 7D000000 		.4byte	0x7d
+ 850 023b 88000000 		.4byte	.LLST2
+ 851 023f 16       		.uleb128 0x16
+ 852 0240 06000000 		.4byte	.LVL10
+ 853 0244 CC010000 		.4byte	0x1cc
+ 854 0248 16       		.uleb128 0x16
+ 855 0249 0C000000 		.4byte	.LVL12
+ 856 024d C3020000 		.4byte	0x2c3
+ 857 0251 17       		.uleb128 0x17
+ 858 0252 1E000000 		.4byte	.LVL13
+ 859 0256 E2010000 		.4byte	0x1e2
+ 860 025a 18       		.uleb128 0x18
+ 861 025b 01       		.uleb128 0x1
+ 862 025c 50       		.byte	0x50
+ 863 025d 02       		.uleb128 0x2
+ 864 025e 74       		.byte	0x74
+ 865 025f 00       		.sleb128 0
+ 866 0260 00       		.byte	0
+ 867 0261 00       		.byte	0
+ 868 0262 11       		.uleb128 0x11
+ 869 0263 35020000 		.4byte	.LASF35
+ 870 0267 01       		.byte	0x1
+ 871 0268 8A01     		.2byte	0x18a
+ 872 026a 00000000 		.4byte	.LFB47
+ 873 026e 28000000 		.4byte	.LFE47-.LFB47
+ 874 0272 01       		.uleb128 0x1
+ 875 0273 9C       		.byte	0x9c
+ 876 0274 0D       		.uleb128 0xd
+ 877 0275 48030000 		.4byte	.LASF37
+ 878 0279 01       		.byte	0x1
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 24
+
+
+ 879 027a E8       		.byte	0xe8
+ 880 027b D2000000 		.4byte	0xd2
+ 881 027f 00000000 		.4byte	.LFB38
+ 882 0283 3C000000 		.4byte	.LFE38-.LFB38
+ 883 0287 01       		.uleb128 0x1
+ 884 0288 9C       		.byte	0x9c
+ 885 0289 B2020000 		.4byte	0x2b2
+ 886 028d 16       		.uleb128 0x16
+ 887 028e 1C000000 		.4byte	.LVL15
+ 888 0292 62020000 		.4byte	0x262
+ 889 0296 16       		.uleb128 0x16
+ 890 0297 26000000 		.4byte	.LVL16
+ 891 029b 1D010000 		.4byte	0x11d
+ 892 029f 16       		.uleb128 0x16
+ 893 02a0 2A000000 		.4byte	.LVL17
+ 894 02a4 CF020000 		.4byte	0x2cf
+ 895 02a8 16       		.uleb128 0x16
+ 896 02a9 2E000000 		.4byte	.LVL18
+ 897 02ad F9000000 		.4byte	0xf9
+ 898 02b1 00       		.byte	0
+ 899 02b2 0B       		.uleb128 0xb
+ 900 02b3 00000000 		.4byte	.LASF38
+ 901 02b7 01       		.byte	0x1
+ 902 02b8 74       		.byte	0x74
+ 903 02b9 DD000000 		.4byte	0xdd
+ 904 02bd 05       		.uleb128 0x5
+ 905 02be 03       		.byte	0x3
+ 906 02bf 00000000 		.4byte	uxCriticalNesting
+ 907 02c3 19       		.uleb128 0x19
+ 908 02c4 40010000 		.4byte	.LASF39
+ 909 02c8 40010000 		.4byte	.LASF39
+ 910 02cc 06       		.byte	0x6
+ 911 02cd 6C0B     		.2byte	0xb6c
+ 912 02cf 19       		.uleb128 0x19
+ 913 02d0 64000000 		.4byte	.LASF40
+ 914 02d4 64000000 		.4byte	.LASF40
+ 915 02d8 06       		.byte	0x6
+ 916 02d9 C60B     		.2byte	0xbc6
+ 917 02db 00       		.byte	0
+ 918              		.section	.debug_abbrev,"",%progbits
+ 919              	.Ldebug_abbrev0:
+ 920 0000 01       		.uleb128 0x1
+ 921 0001 11       		.uleb128 0x11
+ 922 0002 01       		.byte	0x1
+ 923 0003 25       		.uleb128 0x25
+ 924 0004 0E       		.uleb128 0xe
+ 925 0005 13       		.uleb128 0x13
+ 926 0006 0B       		.uleb128 0xb
+ 927 0007 03       		.uleb128 0x3
+ 928 0008 0E       		.uleb128 0xe
+ 929 0009 1B       		.uleb128 0x1b
+ 930 000a 0E       		.uleb128 0xe
+ 931 000b 55       		.uleb128 0x55
+ 932 000c 17       		.uleb128 0x17
+ 933 000d 11       		.uleb128 0x11
+ 934 000e 01       		.uleb128 0x1
+ 935 000f 10       		.uleb128 0x10
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 25
+
+
+ 936 0010 17       		.uleb128 0x17
+ 937 0011 00       		.byte	0
+ 938 0012 00       		.byte	0
+ 939 0013 02       		.uleb128 0x2
+ 940 0014 24       		.uleb128 0x24
+ 941 0015 00       		.byte	0
+ 942 0016 0B       		.uleb128 0xb
+ 943 0017 0B       		.uleb128 0xb
+ 944 0018 3E       		.uleb128 0x3e
+ 945 0019 0B       		.uleb128 0xb
+ 946 001a 03       		.uleb128 0x3
+ 947 001b 08       		.uleb128 0x8
+ 948 001c 00       		.byte	0
+ 949 001d 00       		.byte	0
+ 950 001e 03       		.uleb128 0x3
+ 951 001f 24       		.uleb128 0x24
+ 952 0020 00       		.byte	0
+ 953 0021 0B       		.uleb128 0xb
+ 954 0022 0B       		.uleb128 0xb
+ 955 0023 3E       		.uleb128 0x3e
+ 956 0024 0B       		.uleb128 0xb
+ 957 0025 03       		.uleb128 0x3
+ 958 0026 0E       		.uleb128 0xe
+ 959 0027 00       		.byte	0
+ 960 0028 00       		.byte	0
+ 961 0029 04       		.uleb128 0x4
+ 962 002a 16       		.uleb128 0x16
+ 963 002b 00       		.byte	0
+ 964 002c 03       		.uleb128 0x3
+ 965 002d 0E       		.uleb128 0xe
+ 966 002e 3A       		.uleb128 0x3a
+ 967 002f 0B       		.uleb128 0xb
+ 968 0030 3B       		.uleb128 0x3b
+ 969 0031 0B       		.uleb128 0xb
+ 970 0032 49       		.uleb128 0x49
+ 971 0033 13       		.uleb128 0x13
+ 972 0034 00       		.byte	0
+ 973 0035 00       		.byte	0
+ 974 0036 05       		.uleb128 0x5
+ 975 0037 0F       		.uleb128 0xf
+ 976 0038 00       		.byte	0
+ 977 0039 0B       		.uleb128 0xb
+ 978 003a 0B       		.uleb128 0xb
+ 979 003b 00       		.byte	0
+ 980 003c 00       		.byte	0
+ 981 003d 06       		.uleb128 0x6
+ 982 003e 35       		.uleb128 0x35
+ 983 003f 00       		.byte	0
+ 984 0040 49       		.uleb128 0x49
+ 985 0041 13       		.uleb128 0x13
+ 986 0042 00       		.byte	0
+ 987 0043 00       		.byte	0
+ 988 0044 07       		.uleb128 0x7
+ 989 0045 0F       		.uleb128 0xf
+ 990 0046 00       		.byte	0
+ 991 0047 0B       		.uleb128 0xb
+ 992 0048 0B       		.uleb128 0xb
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 26
+
+
+ 993 0049 49       		.uleb128 0x49
+ 994 004a 13       		.uleb128 0x13
+ 995 004b 00       		.byte	0
+ 996 004c 00       		.byte	0
+ 997 004d 08       		.uleb128 0x8
+ 998 004e 15       		.uleb128 0x15
+ 999 004f 01       		.byte	0x1
+ 1000 0050 27       		.uleb128 0x27
+ 1001 0051 19       		.uleb128 0x19
+ 1002 0052 01       		.uleb128 0x1
+ 1003 0053 13       		.uleb128 0x13
+ 1004 0054 00       		.byte	0
+ 1005 0055 00       		.byte	0
+ 1006 0056 09       		.uleb128 0x9
+ 1007 0057 05       		.uleb128 0x5
+ 1008 0058 00       		.byte	0
+ 1009 0059 49       		.uleb128 0x49
+ 1010 005a 13       		.uleb128 0x13
+ 1011 005b 00       		.byte	0
+ 1012 005c 00       		.byte	0
+ 1013 005d 0A       		.uleb128 0xa
+ 1014 005e 2E       		.uleb128 0x2e
+ 1015 005f 01       		.byte	0x1
+ 1016 0060 03       		.uleb128 0x3
+ 1017 0061 0E       		.uleb128 0xe
+ 1018 0062 3A       		.uleb128 0x3a
+ 1019 0063 0B       		.uleb128 0xb
+ 1020 0064 3B       		.uleb128 0x3b
+ 1021 0065 0B       		.uleb128 0xb
+ 1022 0066 27       		.uleb128 0x27
+ 1023 0067 19       		.uleb128 0x19
+ 1024 0068 11       		.uleb128 0x11
+ 1025 0069 01       		.uleb128 0x1
+ 1026 006a 12       		.uleb128 0x12
+ 1027 006b 06       		.uleb128 0x6
+ 1028 006c 40       		.uleb128 0x40
+ 1029 006d 18       		.uleb128 0x18
+ 1030 006e 9742     		.uleb128 0x2117
+ 1031 0070 19       		.uleb128 0x19
+ 1032 0071 01       		.uleb128 0x1
+ 1033 0072 13       		.uleb128 0x13
+ 1034 0073 00       		.byte	0
+ 1035 0074 00       		.byte	0
+ 1036 0075 0B       		.uleb128 0xb
+ 1037 0076 34       		.uleb128 0x34
+ 1038 0077 00       		.byte	0
+ 1039 0078 03       		.uleb128 0x3
+ 1040 0079 0E       		.uleb128 0xe
+ 1041 007a 3A       		.uleb128 0x3a
+ 1042 007b 0B       		.uleb128 0xb
+ 1043 007c 3B       		.uleb128 0x3b
+ 1044 007d 0B       		.uleb128 0xb
+ 1045 007e 49       		.uleb128 0x49
+ 1046 007f 13       		.uleb128 0x13
+ 1047 0080 02       		.uleb128 0x2
+ 1048 0081 18       		.uleb128 0x18
+ 1049 0082 00       		.byte	0
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 27
+
+
+ 1050 0083 00       		.byte	0
+ 1051 0084 0C       		.uleb128 0xc
+ 1052 0085 2E       		.uleb128 0x2e
+ 1053 0086 00       		.byte	0
+ 1054 0087 03       		.uleb128 0x3
+ 1055 0088 0E       		.uleb128 0xe
+ 1056 0089 3A       		.uleb128 0x3a
+ 1057 008a 0B       		.uleb128 0xb
+ 1058 008b 3B       		.uleb128 0x3b
+ 1059 008c 0B       		.uleb128 0xb
+ 1060 008d 27       		.uleb128 0x27
+ 1061 008e 19       		.uleb128 0x19
+ 1062 008f 11       		.uleb128 0x11
+ 1063 0090 01       		.uleb128 0x1
+ 1064 0091 12       		.uleb128 0x12
+ 1065 0092 06       		.uleb128 0x6
+ 1066 0093 40       		.uleb128 0x40
+ 1067 0094 18       		.uleb128 0x18
+ 1068 0095 9742     		.uleb128 0x2117
+ 1069 0097 19       		.uleb128 0x19
+ 1070 0098 00       		.byte	0
+ 1071 0099 00       		.byte	0
+ 1072 009a 0D       		.uleb128 0xd
+ 1073 009b 2E       		.uleb128 0x2e
+ 1074 009c 01       		.byte	0x1
+ 1075 009d 3F       		.uleb128 0x3f
+ 1076 009e 19       		.uleb128 0x19
+ 1077 009f 03       		.uleb128 0x3
+ 1078 00a0 0E       		.uleb128 0xe
+ 1079 00a1 3A       		.uleb128 0x3a
+ 1080 00a2 0B       		.uleb128 0xb
+ 1081 00a3 3B       		.uleb128 0x3b
+ 1082 00a4 0B       		.uleb128 0xb
+ 1083 00a5 27       		.uleb128 0x27
+ 1084 00a6 19       		.uleb128 0x19
+ 1085 00a7 49       		.uleb128 0x49
+ 1086 00a8 13       		.uleb128 0x13
+ 1087 00a9 11       		.uleb128 0x11
+ 1088 00aa 01       		.uleb128 0x1
+ 1089 00ab 12       		.uleb128 0x12
+ 1090 00ac 06       		.uleb128 0x6
+ 1091 00ad 40       		.uleb128 0x40
+ 1092 00ae 18       		.uleb128 0x18
+ 1093 00af 9742     		.uleb128 0x2117
+ 1094 00b1 19       		.uleb128 0x19
+ 1095 00b2 01       		.uleb128 0x1
+ 1096 00b3 13       		.uleb128 0x13
+ 1097 00b4 00       		.byte	0
+ 1098 00b5 00       		.byte	0
+ 1099 00b6 0E       		.uleb128 0xe
+ 1100 00b7 05       		.uleb128 0x5
+ 1101 00b8 00       		.byte	0
+ 1102 00b9 03       		.uleb128 0x3
+ 1103 00ba 0E       		.uleb128 0xe
+ 1104 00bb 3A       		.uleb128 0x3a
+ 1105 00bc 0B       		.uleb128 0xb
+ 1106 00bd 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 28
+
+
+ 1107 00be 0B       		.uleb128 0xb
+ 1108 00bf 49       		.uleb128 0x49
+ 1109 00c0 13       		.uleb128 0x13
+ 1110 00c1 02       		.uleb128 0x2
+ 1111 00c2 17       		.uleb128 0x17
+ 1112 00c3 00       		.byte	0
+ 1113 00c4 00       		.byte	0
+ 1114 00c5 0F       		.uleb128 0xf
+ 1115 00c6 05       		.uleb128 0x5
+ 1116 00c7 00       		.byte	0
+ 1117 00c8 03       		.uleb128 0x3
+ 1118 00c9 0E       		.uleb128 0xe
+ 1119 00ca 3A       		.uleb128 0x3a
+ 1120 00cb 0B       		.uleb128 0xb
+ 1121 00cc 3B       		.uleb128 0x3b
+ 1122 00cd 0B       		.uleb128 0xb
+ 1123 00ce 49       		.uleb128 0x49
+ 1124 00cf 13       		.uleb128 0x13
+ 1125 00d0 02       		.uleb128 0x2
+ 1126 00d1 18       		.uleb128 0x18
+ 1127 00d2 00       		.byte	0
+ 1128 00d3 00       		.byte	0
+ 1129 00d4 10       		.uleb128 0x10
+ 1130 00d5 2E       		.uleb128 0x2e
+ 1131 00d6 00       		.byte	0
+ 1132 00d7 3F       		.uleb128 0x3f
+ 1133 00d8 19       		.uleb128 0x19
+ 1134 00d9 03       		.uleb128 0x3
+ 1135 00da 0E       		.uleb128 0xe
+ 1136 00db 3A       		.uleb128 0x3a
+ 1137 00dc 0B       		.uleb128 0xb
+ 1138 00dd 3B       		.uleb128 0x3b
+ 1139 00de 0B       		.uleb128 0xb
+ 1140 00df 27       		.uleb128 0x27
+ 1141 00e0 19       		.uleb128 0x19
+ 1142 00e1 11       		.uleb128 0x11
+ 1143 00e2 01       		.uleb128 0x1
+ 1144 00e3 12       		.uleb128 0x12
+ 1145 00e4 06       		.uleb128 0x6
+ 1146 00e5 40       		.uleb128 0x40
+ 1147 00e6 18       		.uleb128 0x18
+ 1148 00e7 9742     		.uleb128 0x2117
+ 1149 00e9 19       		.uleb128 0x19
+ 1150 00ea 00       		.byte	0
+ 1151 00eb 00       		.byte	0
+ 1152 00ec 11       		.uleb128 0x11
+ 1153 00ed 2E       		.uleb128 0x2e
+ 1154 00ee 00       		.byte	0
+ 1155 00ef 3F       		.uleb128 0x3f
+ 1156 00f0 19       		.uleb128 0x19
+ 1157 00f1 03       		.uleb128 0x3
+ 1158 00f2 0E       		.uleb128 0xe
+ 1159 00f3 3A       		.uleb128 0x3a
+ 1160 00f4 0B       		.uleb128 0xb
+ 1161 00f5 3B       		.uleb128 0x3b
+ 1162 00f6 05       		.uleb128 0x5
+ 1163 00f7 27       		.uleb128 0x27
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 29
+
+
+ 1164 00f8 19       		.uleb128 0x19
+ 1165 00f9 11       		.uleb128 0x11
+ 1166 00fa 01       		.uleb128 0x1
+ 1167 00fb 12       		.uleb128 0x12
+ 1168 00fc 06       		.uleb128 0x6
+ 1169 00fd 40       		.uleb128 0x40
+ 1170 00fe 18       		.uleb128 0x18
+ 1171 00ff 9742     		.uleb128 0x2117
+ 1172 0101 19       		.uleb128 0x19
+ 1173 0102 00       		.byte	0
+ 1174 0103 00       		.byte	0
+ 1175 0104 12       		.uleb128 0x12
+ 1176 0105 2E       		.uleb128 0x2e
+ 1177 0106 00       		.byte	0
+ 1178 0107 3F       		.uleb128 0x3f
+ 1179 0108 19       		.uleb128 0x19
+ 1180 0109 03       		.uleb128 0x3
+ 1181 010a 0E       		.uleb128 0xe
+ 1182 010b 3A       		.uleb128 0x3a
+ 1183 010c 0B       		.uleb128 0xb
+ 1184 010d 3B       		.uleb128 0x3b
+ 1185 010e 05       		.uleb128 0x5
+ 1186 010f 27       		.uleb128 0x27
+ 1187 0110 19       		.uleb128 0x19
+ 1188 0111 49       		.uleb128 0x49
+ 1189 0112 13       		.uleb128 0x13
+ 1190 0113 11       		.uleb128 0x11
+ 1191 0114 01       		.uleb128 0x1
+ 1192 0115 12       		.uleb128 0x12
+ 1193 0116 06       		.uleb128 0x6
+ 1194 0117 40       		.uleb128 0x40
+ 1195 0118 18       		.uleb128 0x18
+ 1196 0119 9742     		.uleb128 0x2117
+ 1197 011b 19       		.uleb128 0x19
+ 1198 011c 00       		.byte	0
+ 1199 011d 00       		.byte	0
+ 1200 011e 13       		.uleb128 0x13
+ 1201 011f 2E       		.uleb128 0x2e
+ 1202 0120 01       		.byte	0x1
+ 1203 0121 3F       		.uleb128 0x3f
+ 1204 0122 19       		.uleb128 0x19
+ 1205 0123 03       		.uleb128 0x3
+ 1206 0124 0E       		.uleb128 0xe
+ 1207 0125 3A       		.uleb128 0x3a
+ 1208 0126 0B       		.uleb128 0xb
+ 1209 0127 3B       		.uleb128 0x3b
+ 1210 0128 05       		.uleb128 0x5
+ 1211 0129 27       		.uleb128 0x27
+ 1212 012a 19       		.uleb128 0x19
+ 1213 012b 11       		.uleb128 0x11
+ 1214 012c 01       		.uleb128 0x1
+ 1215 012d 12       		.uleb128 0x12
+ 1216 012e 06       		.uleb128 0x6
+ 1217 012f 40       		.uleb128 0x40
+ 1218 0130 18       		.uleb128 0x18
+ 1219 0131 9742     		.uleb128 0x2117
+ 1220 0133 19       		.uleb128 0x19
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 30
+
+
+ 1221 0134 01       		.uleb128 0x1
+ 1222 0135 13       		.uleb128 0x13
+ 1223 0136 00       		.byte	0
+ 1224 0137 00       		.byte	0
+ 1225 0138 14       		.uleb128 0x14
+ 1226 0139 05       		.uleb128 0x5
+ 1227 013a 00       		.byte	0
+ 1228 013b 03       		.uleb128 0x3
+ 1229 013c 0E       		.uleb128 0xe
+ 1230 013d 3A       		.uleb128 0x3a
+ 1231 013e 0B       		.uleb128 0xb
+ 1232 013f 3B       		.uleb128 0x3b
+ 1233 0140 05       		.uleb128 0x5
+ 1234 0141 49       		.uleb128 0x49
+ 1235 0142 13       		.uleb128 0x13
+ 1236 0143 02       		.uleb128 0x2
+ 1237 0144 18       		.uleb128 0x18
+ 1238 0145 00       		.byte	0
+ 1239 0146 00       		.byte	0
+ 1240 0147 15       		.uleb128 0x15
+ 1241 0148 34       		.uleb128 0x34
+ 1242 0149 00       		.byte	0
+ 1243 014a 03       		.uleb128 0x3
+ 1244 014b 0E       		.uleb128 0xe
+ 1245 014c 3A       		.uleb128 0x3a
+ 1246 014d 0B       		.uleb128 0xb
+ 1247 014e 3B       		.uleb128 0x3b
+ 1248 014f 05       		.uleb128 0x5
+ 1249 0150 49       		.uleb128 0x49
+ 1250 0151 13       		.uleb128 0x13
+ 1251 0152 02       		.uleb128 0x2
+ 1252 0153 17       		.uleb128 0x17
+ 1253 0154 00       		.byte	0
+ 1254 0155 00       		.byte	0
+ 1255 0156 16       		.uleb128 0x16
+ 1256 0157 898201   		.uleb128 0x4109
+ 1257 015a 00       		.byte	0
+ 1258 015b 11       		.uleb128 0x11
+ 1259 015c 01       		.uleb128 0x1
+ 1260 015d 31       		.uleb128 0x31
+ 1261 015e 13       		.uleb128 0x13
+ 1262 015f 00       		.byte	0
+ 1263 0160 00       		.byte	0
+ 1264 0161 17       		.uleb128 0x17
+ 1265 0162 898201   		.uleb128 0x4109
+ 1266 0165 01       		.byte	0x1
+ 1267 0166 11       		.uleb128 0x11
+ 1268 0167 01       		.uleb128 0x1
+ 1269 0168 31       		.uleb128 0x31
+ 1270 0169 13       		.uleb128 0x13
+ 1271 016a 00       		.byte	0
+ 1272 016b 00       		.byte	0
+ 1273 016c 18       		.uleb128 0x18
+ 1274 016d 8A8201   		.uleb128 0x410a
+ 1275 0170 00       		.byte	0
+ 1276 0171 02       		.uleb128 0x2
+ 1277 0172 18       		.uleb128 0x18
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 31
+
+
+ 1278 0173 9142     		.uleb128 0x2111
+ 1279 0175 18       		.uleb128 0x18
+ 1280 0176 00       		.byte	0
+ 1281 0177 00       		.byte	0
+ 1282 0178 19       		.uleb128 0x19
+ 1283 0179 2E       		.uleb128 0x2e
+ 1284 017a 00       		.byte	0
+ 1285 017b 3F       		.uleb128 0x3f
+ 1286 017c 19       		.uleb128 0x19
+ 1287 017d 3C       		.uleb128 0x3c
+ 1288 017e 19       		.uleb128 0x19
+ 1289 017f 6E       		.uleb128 0x6e
+ 1290 0180 0E       		.uleb128 0xe
+ 1291 0181 03       		.uleb128 0x3
+ 1292 0182 0E       		.uleb128 0xe
+ 1293 0183 3A       		.uleb128 0x3a
+ 1294 0184 0B       		.uleb128 0xb
+ 1295 0185 3B       		.uleb128 0x3b
+ 1296 0186 05       		.uleb128 0x5
+ 1297 0187 00       		.byte	0
+ 1298 0188 00       		.byte	0
+ 1299 0189 00       		.byte	0
+ 1300              		.section	.debug_loc,"",%progbits
+ 1301              	.Ldebug_loc0:
+ 1302              	.LLST0:
+ 1303 0000 00000000 		.4byte	.LVL0
+ 1304 0004 02000000 		.4byte	.LVL1
+ 1305 0008 0100     		.2byte	0x1
+ 1306 000a 50       		.byte	0x50
+ 1307 000b 02000000 		.4byte	.LVL1
+ 1308 000f 04000000 		.4byte	.LVL2
+ 1309 0013 0300     		.2byte	0x3
+ 1310 0015 70       		.byte	0x70
+ 1311 0016 7C       		.sleb128 -4
+ 1312 0017 9F       		.byte	0x9f
+ 1313 0018 04000000 		.4byte	.LVL2
+ 1314 001c 0A000000 		.4byte	.LVL3
+ 1315 0020 0100     		.2byte	0x1
+ 1316 0022 53       		.byte	0x53
+ 1317 0023 0A000000 		.4byte	.LVL3
+ 1318 0027 0E000000 		.4byte	.LVL4
+ 1319 002b 0300     		.2byte	0x3
+ 1320 002d 70       		.byte	0x70
+ 1321 002e 78       		.sleb128 -8
+ 1322 002f 9F       		.byte	0x9f
+ 1323 0030 0E000000 		.4byte	.LVL4
+ 1324 0034 14000000 		.4byte	.LVL6
+ 1325 0038 0300     		.2byte	0x3
+ 1326 003a 70       		.byte	0x70
+ 1327 003b 74       		.sleb128 -12
+ 1328 003c 9F       		.byte	0x9f
+ 1329 003d 14000000 		.4byte	.LVL6
+ 1330 0041 1A000000 		.4byte	.LVL8
+ 1331 0045 0300     		.2byte	0x3
+ 1332 0047 70       		.byte	0x70
+ 1333 0048 60       		.sleb128 -32
+ 1334 0049 9F       		.byte	0x9f
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 32
+
+
+ 1335 004a 1A000000 		.4byte	.LVL8
+ 1336 004e 20000000 		.4byte	.LFE34
+ 1337 0052 0100     		.2byte	0x1
+ 1338 0054 50       		.byte	0x50
+ 1339 0055 00000000 		.4byte	0
+ 1340 0059 00000000 		.4byte	0
+ 1341              	.LLST1:
+ 1342 005d 00000000 		.4byte	.LVL0
+ 1343 0061 12000000 		.4byte	.LVL5
+ 1344 0065 0100     		.2byte	0x1
+ 1345 0067 51       		.byte	0x51
+ 1346 0068 12000000 		.4byte	.LVL5
+ 1347 006c 16000000 		.4byte	.LVL7
+ 1348 0070 0200     		.2byte	0x2
+ 1349 0072 73       		.byte	0x73
+ 1350 0073 04       		.sleb128 4
+ 1351 0074 16000000 		.4byte	.LVL7
+ 1352 0078 20000000 		.4byte	.LFE34
+ 1353 007c 0200     		.2byte	0x2
+ 1354 007e 73       		.byte	0x73
+ 1355 007f 18       		.sleb128 24
+ 1356 0080 00000000 		.4byte	0
+ 1357 0084 00000000 		.4byte	0
+ 1358              	.LLST2:
+ 1359 0088 08000000 		.4byte	.LVL11
+ 1360 008c 0B000000 		.4byte	.LVL12-1
+ 1361 0090 0100     		.2byte	0x1
+ 1362 0092 50       		.byte	0x50
+ 1363 0093 0B000000 		.4byte	.LVL12-1
+ 1364 0097 1E000000 		.4byte	.LVL14
+ 1365 009b 0100     		.2byte	0x1
+ 1366 009d 54       		.byte	0x54
+ 1367 009e 00000000 		.4byte	0
+ 1368 00a2 00000000 		.4byte	0
+ 1369              		.section	.debug_aranges,"",%progbits
+ 1370 0000 84000000 		.4byte	0x84
+ 1371 0004 0200     		.2byte	0x2
+ 1372 0006 00000000 		.4byte	.Ldebug_info0
+ 1373 000a 04       		.byte	0x4
+ 1374 000b 00       		.byte	0
+ 1375 000c 0000     		.2byte	0
+ 1376 000e 0000     		.2byte	0
+ 1377 0010 00000000 		.4byte	.LFB35
+ 1378 0014 12000000 		.4byte	.LFE35-.LFB35
+ 1379 0018 00000000 		.4byte	.LFB37
+ 1380 001c 34000000 		.4byte	.LFE37-.LFB37
+ 1381 0020 00000000 		.4byte	.LFB34
+ 1382 0024 20000000 		.4byte	.LFE34-.LFB34
+ 1383 0028 00000000 		.4byte	.LFB36
+ 1384 002c 02000000 		.4byte	.LFE36-.LFB36
+ 1385 0030 00000000 		.4byte	.LFB39
+ 1386 0034 02000000 		.4byte	.LFE39-.LFB39
+ 1387 0038 00000000 		.4byte	.LFB40
+ 1388 003c 18000000 		.4byte	.LFE40-.LFB40
+ 1389 0040 00000000 		.4byte	.LFB41
+ 1390 0044 18000000 		.4byte	.LFE41-.LFB41
+ 1391 0048 00000000 		.4byte	.LFB42
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 33
+
+
+ 1392 004c 14000000 		.4byte	.LFE42-.LFB42
+ 1393 0050 00000000 		.4byte	.LFB43
+ 1394 0054 08000000 		.4byte	.LFE43-.LFB43
+ 1395 0058 00000000 		.4byte	.LFB44
+ 1396 005c 06000000 		.4byte	.LFE44-.LFB44
+ 1397 0060 00000000 		.4byte	.LFB45
+ 1398 0064 44000000 		.4byte	.LFE45-.LFB45
+ 1399 0068 00000000 		.4byte	.LFB46
+ 1400 006c 24000000 		.4byte	.LFE46-.LFB46
+ 1401 0070 00000000 		.4byte	.LFB47
+ 1402 0074 28000000 		.4byte	.LFE47-.LFB47
+ 1403 0078 00000000 		.4byte	.LFB38
+ 1404 007c 3C000000 		.4byte	.LFE38-.LFB38
+ 1405 0080 00000000 		.4byte	0
+ 1406 0084 00000000 		.4byte	0
+ 1407              		.section	.debug_ranges,"",%progbits
+ 1408              	.Ldebug_ranges0:
+ 1409 0000 00000000 		.4byte	.LFB35
+ 1410 0004 12000000 		.4byte	.LFE35
+ 1411 0008 00000000 		.4byte	.LFB37
+ 1412 000c 34000000 		.4byte	.LFE37
+ 1413 0010 00000000 		.4byte	.LFB34
+ 1414 0014 20000000 		.4byte	.LFE34
+ 1415 0018 00000000 		.4byte	.LFB36
+ 1416 001c 02000000 		.4byte	.LFE36
+ 1417 0020 00000000 		.4byte	.LFB39
+ 1418 0024 02000000 		.4byte	.LFE39
+ 1419 0028 00000000 		.4byte	.LFB40
+ 1420 002c 18000000 		.4byte	.LFE40
+ 1421 0030 00000000 		.4byte	.LFB41
+ 1422 0034 18000000 		.4byte	.LFE41
+ 1423 0038 00000000 		.4byte	.LFB42
+ 1424 003c 14000000 		.4byte	.LFE42
+ 1425 0040 00000000 		.4byte	.LFB43
+ 1426 0044 08000000 		.4byte	.LFE43
+ 1427 0048 00000000 		.4byte	.LFB44
+ 1428 004c 06000000 		.4byte	.LFE44
+ 1429 0050 00000000 		.4byte	.LFB45
+ 1430 0054 44000000 		.4byte	.LFE45
+ 1431 0058 00000000 		.4byte	.LFB46
+ 1432 005c 24000000 		.4byte	.LFE46
+ 1433 0060 00000000 		.4byte	.LFB47
+ 1434 0064 28000000 		.4byte	.LFE47
+ 1435 0068 00000000 		.4byte	.LFB38
+ 1436 006c 3C000000 		.4byte	.LFE38
+ 1437 0070 00000000 		.4byte	0
+ 1438 0074 00000000 		.4byte	0
+ 1439              		.section	.debug_line,"",%progbits
+ 1440              	.Ldebug_line0:
+ 1441 0000 8A020000 		.section	.debug_str,"MS",%progbits,1
+ 1441      02006401 
+ 1441      00000201 
+ 1441      FB0E0D00 
+ 1441      01010101 
+ 1442              	.LASF38:
+ 1443 0000 75784372 		.ascii	"uxCriticalNesting\000"
+ 1443      69746963 
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 34
+
+
+ 1443      616C4E65 
+ 1443      7374696E 
+ 1443      6700
+ 1444              	.LASF31:
+ 1445 0012 76436C65 		.ascii	"vClearInterruptMaskFromISR\000"
+ 1445      6172496E 
+ 1445      74657272 
+ 1445      7570744D 
+ 1445      61736B46 
+ 1446              	.LASF27:
+ 1447 002d 76506F72 		.ascii	"vPortEnterCritical\000"
+ 1447      74456E74 
+ 1447      65724372 
+ 1447      69746963 
+ 1447      616C00
+ 1448              	.LASF22:
+ 1449 0040 7078436F 		.ascii	"pxCode\000"
+ 1449      646500
+ 1450              	.LASF25:
+ 1451 0047 76506F72 		.ascii	"vPortEndScheduler\000"
+ 1451      74456E64 
+ 1451      53636865 
+ 1451      64756C65 
+ 1451      7200
+ 1452              	.LASF20:
+ 1453 0059 5469636B 		.ascii	"TickType_t\000"
+ 1453      54797065 
+ 1453      5F7400
+ 1454              	.LASF40:
+ 1455 0064 76546173 		.ascii	"vTaskSwitchContext\000"
+ 1455      6B537769 
+ 1455      74636843 
+ 1455      6F6E7465 
+ 1455      787400
+ 1456              	.LASF0:
+ 1457 0077 756E7369 		.ascii	"unsigned int\000"
+ 1457      676E6564 
+ 1457      20696E74 
+ 1457      00
+ 1458              	.LASF30:
+ 1459 0084 78506F72 		.ascii	"xPortPendSVHandler\000"
+ 1459      7450656E 
+ 1459      64535648 
+ 1459      616E646C 
+ 1459      657200
+ 1460              	.LASF16:
+ 1461 0097 5461736B 		.ascii	"TaskFunction_t\000"
+ 1461      46756E63 
+ 1461      74696F6E 
+ 1461      5F7400
+ 1462              	.LASF12:
+ 1463 00a6 666C6F61 		.ascii	"float\000"
+ 1463      7400
+ 1464              	.LASF45:
+ 1465 00ac 76506F72 		.ascii	"vPortStartFirstTask\000"
+ 1465      74537461 
+ 1465      72744669 
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 35
+
+
+ 1465      72737454 
+ 1465      61736B00 
+ 1466              	.LASF33:
+ 1467 00c0 756C4475 		.ascii	"ulDummy\000"
+ 1467      6D6D7900 
+ 1468              	.LASF4:
+ 1469 00c8 756E7369 		.ascii	"unsigned char\000"
+ 1469      676E6564 
+ 1469      20636861 
+ 1469      7200
+ 1470              	.LASF42:
+ 1471 00d6 46726565 		.ascii	"FreeRTOS\\Source\\port.c\000"
+ 1471      52544F53 
+ 1471      5C536F75 
+ 1471      7263655C 
+ 1471      706F7274 
+ 1472              	.LASF8:
+ 1473 00ed 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1473      20756E73 
+ 1473      69676E65 
+ 1473      6420696E 
+ 1473      7400
+ 1474              	.LASF6:
+ 1475 00ff 73686F72 		.ascii	"short unsigned int\000"
+ 1475      7420756E 
+ 1475      7369676E 
+ 1475      65642069 
+ 1475      6E7400
+ 1476              	.LASF34:
+ 1477 0112 756C5072 		.ascii	"ulPreviousMask\000"
+ 1477      6576696F 
+ 1477      75734D61 
+ 1477      736B00
+ 1478              	.LASF13:
+ 1479 0121 646F7562 		.ascii	"double\000"
+ 1479      6C6500
+ 1480              	.LASF10:
+ 1481 0128 5F5F7569 		.ascii	"__uint32_t\000"
+ 1481      6E743332 
+ 1481      5F7400
+ 1482              	.LASF23:
+ 1483 0133 70765061 		.ascii	"pvParameters\000"
+ 1483      72616D65 
+ 1483      74657273 
+ 1483      00
+ 1484              	.LASF39:
+ 1485 0140 78546173 		.ascii	"xTaskIncrementTick\000"
+ 1485      6B496E63 
+ 1485      72656D65 
+ 1485      6E745469 
+ 1485      636B00
+ 1486              	.LASF32:
+ 1487 0153 78506F72 		.ascii	"xPortSysTickHandler\000"
+ 1487      74537973 
+ 1487      5469636B 
+ 1487      48616E64 
+ 1487      6C657200 
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 36
+
+
+ 1488              	.LASF26:
+ 1489 0167 76506F72 		.ascii	"vPortYield\000"
+ 1489      74596965 
+ 1489      6C6400
+ 1490              	.LASF21:
+ 1491 0172 7078546F 		.ascii	"pxTopOfStack\000"
+ 1491      704F6653 
+ 1491      7461636B 
+ 1491      00
+ 1492              	.LASF9:
+ 1493 017f 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1493      206C6F6E 
+ 1493      6720756E 
+ 1493      7369676E 
+ 1493      65642069 
+ 1494              	.LASF44:
+ 1495 0196 70727654 		.ascii	"prvTaskExitError\000"
+ 1495      61736B45 
+ 1495      78697445 
+ 1495      72726F72 
+ 1495      00
+ 1496              	.LASF41:
+ 1497 01a7 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1497      43313120 
+ 1497      352E342E 
+ 1497      31203230 
+ 1497      31363036 
+ 1498 01da 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 1498      20726576 
+ 1498      6973696F 
+ 1498      6E203233 
+ 1498      37373135 
+ 1499 020d 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1499      66756E63 
+ 1499      74696F6E 
+ 1499      2D736563 
+ 1499      74696F6E 
+ 1500              	.LASF35:
+ 1501 0235 76506F72 		.ascii	"vPortSetupTimerInterrupt\000"
+ 1501      74536574 
+ 1501      75705469 
+ 1501      6D657249 
+ 1501      6E746572 
+ 1502              	.LASF15:
+ 1503 024e 73697A65 		.ascii	"sizetype\000"
+ 1503      74797065 
+ 1503      00
+ 1504              	.LASF46:
+ 1505 0257 756C5365 		.ascii	"ulSetInterruptMaskFromISR\000"
+ 1505      74496E74 
+ 1505      65727275 
+ 1505      70744D61 
+ 1505      736B4672 
+ 1506              	.LASF1:
+ 1507 0271 6C6F6E67 		.ascii	"long long int\000"
+ 1507      206C6F6E 
+ 1507      6720696E 
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 37
+
+
+ 1507      7400
+ 1508              	.LASF14:
+ 1509 027f 63686172 		.ascii	"char\000"
+ 1509      00
+ 1510              	.LASF17:
+ 1511 0284 53746163 		.ascii	"StackType_t\000"
+ 1511      6B547970 
+ 1511      655F7400 
+ 1512              	.LASF24:
+ 1513 0290 76506F72 		.ascii	"vPortSVCHandler\000"
+ 1513      74535643 
+ 1513      48616E64 
+ 1513      6C657200 
+ 1514              	.LASF18:
+ 1515 02a0 42617365 		.ascii	"BaseType_t\000"
+ 1515      54797065 
+ 1515      5F7400
+ 1516              	.LASF5:
+ 1517 02ab 73686F72 		.ascii	"short int\000"
+ 1517      7420696E 
+ 1517      7400
+ 1518              	.LASF43:
+ 1519 02b5 433A5C55 		.ascii	"C:\\Users\\tyork\\Documents\\PSoC Creator\\ECE381_S"
+ 1519      73657273 
+ 1519      5C74796F 
+ 1519      726B5C44 
+ 1519      6F63756D 
+ 1520 02e3 5032335F 		.ascii	"P23_Lab08_FreeRTOS\\Design01.cydsn\000"
+ 1520      4C616230 
+ 1520      385F4672 
+ 1520      65655254 
+ 1520      4F535C44 
+ 1521              	.LASF28:
+ 1522 0305 76506F72 		.ascii	"vPortExitCritical\000"
+ 1522      74457869 
+ 1522      74437269 
+ 1522      74696361 
+ 1522      6C00
+ 1523              	.LASF11:
+ 1524 0317 75696E74 		.ascii	"uint32_t\000"
+ 1524      33325F74 
+ 1524      00
+ 1525              	.LASF7:
+ 1526 0320 6C6F6E67 		.ascii	"long int\000"
+ 1526      20696E74 
+ 1526      00
+ 1527              	.LASF29:
+ 1528 0329 756C4D61 		.ascii	"ulMask\000"
+ 1528      736B00
+ 1529              	.LASF2:
+ 1530 0330 6C6F6E67 		.ascii	"long double\000"
+ 1530      20646F75 
+ 1530      626C6500 
+ 1531              	.LASF3:
+ 1532 033c 7369676E 		.ascii	"signed char\000"
+ 1532      65642063 
+ 1532      68617200 
+ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 38
+
+
+ 1533              	.LASF37:
+ 1534 0348 78506F72 		.ascii	"xPortStartScheduler\000"
+ 1534      74537461 
+ 1534      72745363 
+ 1534      68656475 
+ 1534      6C657200 
+ 1535              	.LASF19:
+ 1536 035c 55426173 		.ascii	"UBaseType_t\000"
+ 1536      65547970 
+ 1536      655F7400 
+ 1537              	.LASF36:
+ 1538 0368 7078506F 		.ascii	"pxPortInitialiseStack\000"
+ 1538      7274496E 
+ 1538      69746961 
+ 1538      6C697365 
+ 1538      53746163 
+ 1539              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

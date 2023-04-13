@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CyXmlSerializer>
+<!--This file is machine generated and read. It is not intended to be edited by hand.-->
+<!--Due to this, there is no schema for this file.-->
+<CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspcCustomData" version="4">
+<CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997 type_name="CyDesigner.Common.Base.CyCustomData" version="2">
+<userData>
+<dataGuid v="1b906a0f-a7b6-4e4d-a428-82f98b53cb35">
+<CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35 type_name="CyDesigner.Common.ProjMgmt.GUI.CyExplorerWindow+CyExplorerWindowState" version="3" SelectedTab="Source">
+<TreeKeys>
+<v>Source</v>
+<v>Components</v>
+<v>Output</v>
+</TreeKeys>
+<TreeStates>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4\SW_ISR\SW_ISR.c">
+<ExpandedNodeIds>
+<v>ECE381_SP23_Lab08_FreeRTOS</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\TopDesign</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Design01.cydwr</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Design01.cydwr\Pins</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Design01.cydwr\Analog</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Design01.cydwr\DMA</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Design01.cydwr\Clocks</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Design01.cydwr\Interrupts</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Design01.cydwr\System</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Design01.cydwr\Directives</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Design01.cydwr\Flash Security</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\FreeRTOS</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\FreeRTOS\Include\croutine.h</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\FreeRTOS\Include\deprecated_definitions.h</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\FreeRTOS\Include\FreeRTOS.h</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\FreeRTOS\Include\list.h</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\FreeRTOS\Include\mpu_wrappers.h</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\FreeRTOS\Include\portable.h</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\FreeRTOS\Include\portmacro.h</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\FreeRTOS\Include\projdefs.h</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\FreeRTOS\Include\queue.h</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\FreeRTOS\Include\semphr.h</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\FreeRTOS\Include\stack_macros.h</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\FreeRTOS\Include\StackMacros.h</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\FreeRTOS\Include\task.h</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\FreeRTOS\Include\timers.h</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\FreeRTOS\Source\croutine.c</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\FreeRTOS\Source\heap_1.c</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\FreeRTOS\Source\list.c</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\FreeRTOS\Source\port.c</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\FreeRTOS\Source\queue.c</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\FreeRTOS\Source\tasks.c</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\FreeRTOS\Source\timers.c</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Header Files</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Header Files\cyapicallbacks.h</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Header Files\FreeRTOSConfig.h</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Source Files</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Source Files\main.c</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4\ADC_ISR</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4\SW_ISR</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>ECE381_SP23_Lab08_FreeRTOS</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\TopDesign</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Design01.cydwr</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Design01.cydwr\Pins</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Design01.cydwr\Analog</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Design01.cydwr\DMA</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Design01.cydwr\Clocks</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Design01.cydwr\Interrupts</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Design01.cydwr\System</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Design01.cydwr\Directives</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Design01.cydwr\Flash Security</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\FreeRTOS</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\FreeRTOS\Include</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\FreeRTOS\Source</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Header Files</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Header Files\cyapicallbacks.h</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Header Files\FreeRTOSConfig.h</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Source Files</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Source Files\main.c</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4\ADC</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4\ADC_IN</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4\ADC_intClock</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4\ADC_IRQ</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4\ADC_ISR</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4\ADC_ISR\ADC_ISR.c</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4\ADC_ISR\ADC_ISR.h</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4\cy_boot</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4\cy_dmac</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4\cy_lfclk</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4\Em_EEPROM_Dynamic</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4\LCD</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4\LCD_LCDPort</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4\MOTOR</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4\R_LED</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4\SW</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4\SW_ISR</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4\SW_ISR\SW_ISR.c</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4\SW_ISR\SW_ISR.h</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4\cycodeshareexport.ld</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4\cycodeshareimport.ld</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4\cycodeshareimport.scat</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4\cydevice_trm.h</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4\cydevicegnu_trm.inc</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4\cydeviceiar_trm.inc</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4\cydevicerv_trm.inc</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4\cydisabledsheets.h</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Generated_Source\PSoC4\cyfitter.h</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>ECE381_SP23_Lab08_FreeRTOS</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\TopDesign</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\TopDesign\TopDesign.cysch</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>ECE381_SP23_Lab08_FreeRTOS</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\TopDesign</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\TopDesign\TopDesign.cysch</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>ECE381_SP23_Lab08_FreeRTOS</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\ADC.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\ADC_IN.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\ADC_IN_PM.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\ADC_INT.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\ADC_intClock.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\ADC_IRQ.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\ADC_ISR.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\ADC_PM.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\Cm0Start.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\croutine.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\CyDMA.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\CyLFClk.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\heap_1.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\LCD.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\LCD_LCDPort.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\LCD_LCDPort_PM.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\LCD_PM.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\list.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\MOTOR.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\MOTOR_PM.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\port.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\queue.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\R_LED.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\R_LED_PM.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\SW.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\SW_ISR.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\SW_PM.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\tasks.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Listing Files\timers.lst</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Design01.elf</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Design01.hex</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CortexM0\ARM_GCC_541\Debug\Design01.map</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Design01.gpdsc</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Design01.rpt</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Design01_timing.html</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>ECE381_SP23_Lab08_FreeRTOS</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Design01.rpt</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\Design01_timing.html</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStates>
+<TreeKeysV2>
+<v>Datasheet</v>
+</TreeKeysV2>
+<TreeStatesV2>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>ECE381_SP23_Lab08_FreeRTOS</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\PSoC 4 Architecture TRM</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\PSoC 4200M Family Datasheet</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\System Reference Guides</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\System Reference Guides\cy_boot_v6_10</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\System Reference Guides\cy_dmac_v1_10</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\System Reference Guides\cy_lfclk_v1_20</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\ADC_SAR_SEQ_P4_v2_60.pdf</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CharLCD_v2_20.pdf</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\cy_isr_v1_71</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\cy_isr_v1_71\cy_isr_v1_71.pdf</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\cy_pins_v2_20</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>ECE381_SP23_Lab08_FreeRTOS</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\PSoC 4 Architecture TRM</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\PSoC 4200M Family Datasheet</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\System Reference Guides</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\System Reference Guides\cy_boot_v6_10</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\System Reference Guides\cy_dmac_v1_10</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\System Reference Guides\cy_lfclk_v1_20</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\ADC_SAR_SEQ_P4_v2_60.pdf</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\CharLCD_v2_20.pdf</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\cy_isr_v1_71</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\cy_isr_v1_71\cy_isr_v1_71.pdf</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\cy_pins_v2_20</v>
+<v>ECE381_SP23_Lab08_FreeRTOS\Design01\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStatesV2>
+</CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
+</dataGuid>
+</userData>
+</CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
+<Unloaded />
+<OpenDocs>
+<name v=".\Design01.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\Design01.cydsn\Design01.cydwr" />
+<name v=".\Design01.cydsn\main.c" />
+<name v=".\Design01.cydsn\Generated_Source\PSoC4\ADC_ISR.c" />
+<name v=".\Design01.cydsn\Generated_Source\PSoC4\SW_ISR.c" />
+</OpenDocs>
+<OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
+
+  Actipro Docking/MDI for WinForms
+  Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
+  http://www.actiprosoftware.com
+
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1341, 690" SelectedTabbedMdiWindow="03bd85e6-b5c3-4ec2-a141-4214d6ecf771"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="2f621f04-aa40-4f75-ae92-a5691918bbd6" /><DocumentWindow Key="C:\Users\tyork\Documents\PSoC Creator\ECE381_SP23_Lab08_FreeRTOS\Design01.cydsn\TopDesign\TopDesign.cysch" Guid="579397fe-17a2-4ae5-bd78-9e7d107f5e2c" /><DocumentWindow Key="C:\Users\tyork\Documents\PSoC Creator\ECE381_SP23_Lab08_FreeRTOS\Design01.cydsn\Design01.cydwr" Guid="56e7db24-e977-4a5f-8325-7d38cffefd49" /><DocumentWindow Key="C:\Users\tyork\Documents\PSoC Creator\ECE381_SP23_Lab08_FreeRTOS\Design01.cydsn\main.c" Guid="03bd85e6-b5c3-4ec2-a141-4214d6ecf771" /><DocumentWindow Key="C:\Users\tyork\Documents\PSoC Creator\ECE381_SP23_Lab08_FreeRTOS\Design01.cydsn\Generated_Source\PSoC4\ADC_ISR.c" Guid="eaf9bc5b-aac7-4ec2-aba0-183067df86a7" /><DocumentWindow Key="C:\Users\tyork\Documents\PSoC Creator\ECE381_SP23_Lab08_FreeRTOS\Design01.cydsn\Generated_Source\PSoC4\SW_ISR.c" Guid="af5368c8-93d4-441a-8e2d-dab49adeb9df" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+<config v="" />
+<AutoUpdate v="true" />
+</CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
+</CyXmlSerializer>

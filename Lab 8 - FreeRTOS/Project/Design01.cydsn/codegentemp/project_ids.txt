@@ -1,0 +1,8 @@
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|01a92d13-0045-4060-bd3e-d845e498a17c
+C:\Users\tyork\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|8074a0ce-4e89-43f4-9b81-c8e147c5f3c6
+C:\Users\tyork\Documents\PSoC Creator\4.3\Downloads ( 4.3).cylib\Downloads ( 4.3).cyprj|91946b21-a37a-4ce8-b909-5a2bee7c57d2
+C:\Users\tyork\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|c762f059-04c2-4a40-ab9c-8794560199ca
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|f714825f-83ac-437b-948f-391688aa81d6
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|ad42427f-e789-4bba-9bde-f54331ac5a2a
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|9beeb661-1224-4357-9b5d-1e30fc5735a2
+C:\Users\tyork\Documents\PSoC Creator\ECE381_SP23_Lab08_FreeRTOS\Design01.cydsn\Design01.cyprj|bd5abd80-9892-4d46-a733-1c878e91d5a4
