@@ -1,6 +1,6 @@
--- Project:   C:\Users\tyork\Documents\PSoC Creator\ECE381_SP23_Lab08_FreeRTOS\Design01.cydsn\Design01.cyprj
--- Generated: 04/13/2023 10:59:45
--- PSoC Creator  4.4
+-- Project:   C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Lab 8 - FreeRTOS\Project\Design01.cydsn\Design01.cyprj
+-- Generated: 04/13/2023 15:25:44
+-- PSoC Creator  4.2
 
 ENTITY Design01 IS
     PORT(

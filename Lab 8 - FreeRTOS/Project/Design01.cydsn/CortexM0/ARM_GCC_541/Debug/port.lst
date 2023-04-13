@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
   29:FreeRTOS\Source/port.c **** /*-----------------------------------------------------------
   30:FreeRTOS\Source/port.c **** * Implementation of functions defined in portable.h for the ARM CM0 port.
   31:FreeRTOS\Source/port.c **** *----------------------------------------------------------*/
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 2
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 2
 
 
   32:FreeRTOS\Source/port.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
   86:FreeRTOS\Source/port.c **** #endif
   87:FreeRTOS\Source/port.c **** 
   88:FreeRTOS\Source/port.c **** /*
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 3
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 3
 
 
   89:FreeRTOS\Source/port.c ****  * Setup the timer to generate the tick interrupts.  The implementation in this
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  143:FreeRTOS\Source/port.c **** /*-----------------------------------------------------------*/
  144:FreeRTOS\Source/port.c **** 
  145:FreeRTOS\Source/port.c **** /*
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 4
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 4
 
 
  146:FreeRTOS\Source/port.c ****  * See header file for description.
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
   45              		.loc 1 181 0 discriminator 1
   46 0008 019B     		ldr	r3, [sp, #4]
   47 000a 002B     		cmp	r3, #0
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 5
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 5
 
 
   48 000c FCD0     		beq	.L2
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
   77 000c 0220     		movs r0, #2					
   78 000e 80F31488 		msr  CONTROL, r0				
   79 0012 BFF36F8F 		isb							
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 6
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 6
 
 
   80 0016 3FBC     		pop  {r0-r5}					
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  110              		.cfi_def_cfa_offset 8
  111              		.cfi_offset 4, -8
  112              		.cfi_offset 14, -4
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 7
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 7
 
 
  113              	.LVL1:
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  160              		@ link register save eliminated.
  198:FreeRTOS\Source/port.c **** /*-----------------------------------------------------------*/
  161              		.loc 1 198 0
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 8
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 8
 
 
  162              		@ sp needed
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  179              		@ link register save eliminated.
  264:FreeRTOS\Source/port.c ****     /* Not implemented in ports where there is nothing to return to.
  265:FreeRTOS\Source/port.c ****      * Artificially force an assert. */
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 9
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 9
 
 
  266:FreeRTOS\Source/port.c ****     configASSERT( uxCriticalNesting == 1000UL );
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  220              	.L10:
  221 0014 04ED00E0 		.word	-536810236
  222              		.cfi_endproc
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 10
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 10
 
 
  223              	.LFE40:
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  268              		.cfi_endproc
  269              	.LFE41:
  270              		.size	vPortEnterCritical, .-vPortEnterCritical
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 11
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 11
 
 
  271              		.section	.text.vPortExitCritical,"ax",%progbits
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  313              		.code	16
  314              		.thumb_func
  315              		.type	ulSetInterruptMaskFromISR, %function
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 12
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 12
 
 
  316              	ulSetInterruptMaskFromISR:
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  354 0004 7047     	 bx lr				  
  355              	@ 0 "" 2
  317:FreeRTOS\Source/port.c ****         " msr PRIMASK, r0	\n"
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 13
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 13
 
 
  318:FreeRTOS\Source/port.c ****         " bx lr				  "
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  399 0024 1168     		ldr r1, [r2]						
  400 0026 0868     		ldr r0, [r1]						
  401 0028 1030     		adds r0, r0, #16					
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 14
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 14
 
 
  402 002a F0C8     		ldmia r0!, {r4-r7}					
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  367:FreeRTOS\Source/port.c ****         "	.align 4							\n"
  368:FreeRTOS\Source/port.c ****         "pxCurrentTCBConst: .word pxCurrentTCB	  "
  369:FreeRTOS\Source/port.c ****     );
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 15
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 15
 
 
  370:FreeRTOS\Source/port.c **** }
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  386:FreeRTOS\Source/port.c ****     portCLEAR_INTERRUPT_MASK_FROM_ISR( ulPreviousMask );
  456              		.loc 1 386 0
  457 0018 2000     		movs	r0, r4
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 16
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 16
 
 
  458 001a FFF7FEFF 		bl	vClearInterruptMaskFromISR
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  408:FreeRTOS\Source/port.c **** 
  409:FreeRTOS\Source/port.c ****     /* Configure SysTick to interrupt at the requested rate. */
  410:FreeRTOS\Source/port.c ****     portNVIC_SYSTICK_LOAD_REG = ( configSYSTICK_CLOCK_HZ / configTICK_RATE_HZ ) - 1UL;
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 17
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 17
 
 
  491              		.loc 1 410 0
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  240:FreeRTOS\Source/port.c **** 
  540              		.loc 1 240 0
  541 0018 FFF7FEFF 		bl	vPortSetupTimerInterrupt
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 18
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 18
 
 
  542              	.LVL15:
@@ -1061,8 +1061,8 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  574 0000 AAAAAAAA 		.word	-1431655766
  575              		.text
  576              	.Letext0:
- 577              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
- 578              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 577              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 578              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
  579              		.file 4 ".\\FreeRTOS\\Include/projdefs.h"
  580              		.file 5 ".\\FreeRTOS\\Include/portmacro.h"
  581              		.file 6 ".\\FreeRTOS\\Include/task.h"
@@ -1073,12 +1073,12 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  586 0006 00000000 		.4byte	.Ldebug_abbrev0
  587 000a 04       		.byte	0x4
  588 000b 01       		.uleb128 0x1
- 589 000c A7010000 		.4byte	.LASF41
+ 589 000c 00020000 		.4byte	.LASF41
  590 0010 0C       		.byte	0xc
  591 0011 D6000000 		.4byte	.LASF42
- 592 0015 B5020000 		.4byte	.LASF43
+ 592 0015 FF000000 		.4byte	.LASF43
  593 0019 00000000 		.4byte	.Ldebug_ranges0+0
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 19
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 19
 
 
  594 001d 00000000 		.4byte	0
@@ -1094,15 +1094,15 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  604 0033 03       		.uleb128 0x3
  605 0034 08       		.byte	0x8
  606 0035 05       		.byte	0x5
- 607 0036 71020000 		.4byte	.LASF1
+ 607 0036 CA020000 		.4byte	.LASF1
  608 003a 03       		.uleb128 0x3
  609 003b 08       		.byte	0x8
  610 003c 04       		.byte	0x4
- 611 003d 30030000 		.4byte	.LASF2
+ 611 003d 39030000 		.4byte	.LASF2
  612 0041 03       		.uleb128 0x3
  613 0042 01       		.byte	0x1
  614 0043 06       		.byte	0x6
- 615 0044 3C030000 		.4byte	.LASF3
+ 615 0044 45030000 		.4byte	.LASF3
  616 0048 03       		.uleb128 0x3
  617 0049 01       		.byte	0x1
  618 004a 08       		.byte	0x8
@@ -1110,17 +1110,17 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  620 004f 03       		.uleb128 0x3
  621 0050 02       		.byte	0x2
  622 0051 05       		.byte	0x5
- 623 0052 AB020000 		.4byte	.LASF5
+ 623 0052 04030000 		.4byte	.LASF5
  624 0056 03       		.uleb128 0x3
  625 0057 02       		.byte	0x2
  626 0058 07       		.byte	0x7
- 627 0059 FF000000 		.4byte	.LASF6
+ 627 0059 58010000 		.4byte	.LASF6
  628 005d 03       		.uleb128 0x3
  629 005e 04       		.byte	0x4
  630 005f 05       		.byte	0x5
- 631 0060 20030000 		.4byte	.LASF7
+ 631 0060 29030000 		.4byte	.LASF7
  632 0064 04       		.uleb128 0x4
- 633 0065 28010000 		.4byte	.LASF10
+ 633 0065 81010000 		.4byte	.LASF10
  634 0069 02       		.byte	0x2
  635 006a 41       		.byte	0x41
  636 006b 6F000000 		.4byte	0x6f
@@ -1131,14 +1131,14 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  641 0076 03       		.uleb128 0x3
  642 0077 08       		.byte	0x8
  643 0078 07       		.byte	0x7
- 644 0079 7F010000 		.4byte	.LASF9
+ 644 0079 D8010000 		.4byte	.LASF9
  645 007d 04       		.uleb128 0x4
- 646 007e 17030000 		.4byte	.LASF11
+ 646 007e 20030000 		.4byte	.LASF11
  647 0082 03       		.byte	0x3
  648 0083 30       		.byte	0x30
  649 0084 64000000 		.4byte	0x64
  650 0088 03       		.uleb128 0x3
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 20
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 20
 
 
  651 0089 04       		.byte	0x4
@@ -1147,15 +1147,15 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  654 008f 03       		.uleb128 0x3
  655 0090 08       		.byte	0x8
  656 0091 04       		.byte	0x4
- 657 0092 21010000 		.4byte	.LASF13
+ 657 0092 7A010000 		.4byte	.LASF13
  658 0096 03       		.uleb128 0x3
  659 0097 01       		.byte	0x1
  660 0098 08       		.byte	0x8
- 661 0099 7F020000 		.4byte	.LASF14
+ 661 0099 D8020000 		.4byte	.LASF14
  662 009d 03       		.uleb128 0x3
  663 009e 04       		.byte	0x4
  664 009f 07       		.byte	0x7
- 665 00a0 4E020000 		.4byte	.LASF15
+ 665 00a0 A7020000 		.4byte	.LASF15
  666 00a4 05       		.uleb128 0x5
  667 00a5 04       		.byte	0x4
  668 00a6 06       		.uleb128 0x6
@@ -1174,17 +1174,17 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  681 00c2 A4000000 		.4byte	0xa4
  682 00c6 00       		.byte	0
  683 00c7 04       		.uleb128 0x4
- 684 00c8 84020000 		.4byte	.LASF17
+ 684 00c8 DD020000 		.4byte	.LASF17
  685 00cc 05       		.byte	0x5
  686 00cd 38       		.byte	0x38
  687 00ce 7D000000 		.4byte	0x7d
  688 00d2 04       		.uleb128 0x4
- 689 00d3 A0020000 		.4byte	.LASF18
+ 689 00d3 F9020000 		.4byte	.LASF18
  690 00d7 05       		.byte	0x5
  691 00d8 3A       		.byte	0x3a
  692 00d9 5D000000 		.4byte	0x5d
  693 00dd 04       		.uleb128 0x4
- 694 00de 5C030000 		.4byte	.LASF19
+ 694 00de 65030000 		.4byte	.LASF19
  695 00e2 05       		.byte	0x5
  696 00e3 3B       		.byte	0x3b
  697 00e4 6F000000 		.4byte	0x6f
@@ -1197,8 +1197,8 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  704 00f4 04       		.byte	0x4
  705 00f5 C7000000 		.4byte	0xc7
  706 00f9 0A       		.uleb128 0xa
- 707 00fa 96010000 		.4byte	.LASF44
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 21
+ 707 00fa EF010000 		.4byte	.LASF44
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 21
 
 
  708 00fe 01       		.byte	0x1
@@ -1226,7 +1226,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  730 012c 01       		.uleb128 0x1
  731 012d 9C       		.byte	0x9c
  732 012e 0D       		.uleb128 0xd
- 733 012f 68030000 		.4byte	.LASF36
+ 733 012f 71030000 		.4byte	.LASF36
  734 0133 01       		.byte	0x1
  735 0134 94       		.byte	0x94
  736 0135 F3000000 		.4byte	0xf3
@@ -1236,7 +1236,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  740 0142 9C       		.byte	0x9c
  741 0143 73010000 		.4byte	0x173
  742 0147 0E       		.uleb128 0xe
- 743 0148 72010000 		.4byte	.LASF21
+ 743 0148 CB010000 		.4byte	.LASF21
  744 014c 01       		.byte	0x1
  745 014d 94       		.byte	0x94
  746 014e F3000000 		.4byte	0xf3
@@ -1248,7 +1248,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  752 015d AB000000 		.4byte	0xab
  753 0161 5D000000 		.4byte	.LLST1
  754 0165 0F       		.uleb128 0xf
- 755 0166 33010000 		.4byte	.LASF23
+ 755 0166 8C010000 		.4byte	.LASF23
  756 016a 01       		.byte	0x1
  757 016b 96       		.byte	0x96
  758 016c A4000000 		.4byte	0xa4
@@ -1256,9 +1256,9 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  760 0171 52       		.byte	0x52
  761 0172 00       		.byte	0
  762 0173 10       		.uleb128 0x10
- 763 0174 90020000 		.4byte	.LASF24
+ 763 0174 E9020000 		.4byte	.LASF24
  764 0178 01       		.byte	0x1
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 22
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 22
 
 
  765 0179 C2       		.byte	0xc2
@@ -1275,7 +1275,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  776 0194 01       		.uleb128 0x1
  777 0195 9C       		.byte	0x9c
  778 0196 11       		.uleb128 0x11
- 779 0197 67010000 		.4byte	.LASF26
+ 779 0197 C0010000 		.4byte	.LASF26
  780 019b 01       		.byte	0x1
  781 019c 0E01     		.2byte	0x10e
  782 019e 00000000 		.4byte	.LFB40
@@ -1291,7 +1291,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  792 01b8 01       		.uleb128 0x1
  793 01b9 9C       		.byte	0x9c
  794 01ba 11       		.uleb128 0x11
- 795 01bb 05030000 		.4byte	.LASF28
+ 795 01bb 0E030000 		.4byte	.LASF28
  796 01bf 01       		.byte	0x1
  797 01c0 2301     		.2byte	0x123
  798 01c2 00000000 		.4byte	.LFB42
@@ -1299,7 +1299,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  800 01ca 01       		.uleb128 0x1
  801 01cb 9C       		.byte	0x9c
  802 01cc 12       		.uleb128 0x12
- 803 01cd 57020000 		.4byte	.LASF46
+ 803 01cd B0020000 		.4byte	.LASF46
  804 01d1 01       		.byte	0x1
  805 01d2 2F01     		.2byte	0x12f
  806 01d4 7D000000 		.4byte	0x7d
@@ -1317,8 +1317,8 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  818 01f3 9C       		.byte	0x9c
  819 01f4 07020000 		.4byte	0x207
  820 01f8 14       		.uleb128 0x14
- 821 01f9 29030000 		.4byte	.LASF29
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 23
+ 821 01f9 32030000 		.4byte	.LASF29
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 23
 
 
  822 01fd 01       		.byte	0x1
@@ -1336,7 +1336,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  834 0217 01       		.uleb128 0x1
  835 0218 9C       		.byte	0x9c
  836 0219 13       		.uleb128 0x13
- 837 021a 53010000 		.4byte	.LASF32
+ 837 021a AC010000 		.4byte	.LASF32
  838 021e 01       		.byte	0x1
  839 021f 7501     		.2byte	0x175
  840 0221 00000000 		.4byte	.LFB46
@@ -1345,7 +1345,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  843 022a 9C       		.byte	0x9c
  844 022b 62020000 		.4byte	0x262
  845 022f 15       		.uleb128 0x15
- 846 0230 12010000 		.4byte	.LASF34
+ 846 0230 6B010000 		.4byte	.LASF34
  847 0234 01       		.byte	0x1
  848 0235 7701     		.2byte	0x177
  849 0237 7D000000 		.4byte	0x7d
@@ -1368,7 +1368,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  866 0260 00       		.byte	0
  867 0261 00       		.byte	0
  868 0262 11       		.uleb128 0x11
- 869 0263 35020000 		.4byte	.LASF35
+ 869 0263 8E020000 		.4byte	.LASF35
  870 0267 01       		.byte	0x1
  871 0268 8A01     		.2byte	0x18a
  872 026a 00000000 		.4byte	.LFB47
@@ -1376,9 +1376,9 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  874 0272 01       		.uleb128 0x1
  875 0273 9C       		.byte	0x9c
  876 0274 0D       		.uleb128 0xd
- 877 0275 48030000 		.4byte	.LASF37
+ 877 0275 51030000 		.4byte	.LASF37
  878 0279 01       		.byte	0x1
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 24
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 24
 
 
  879 027a E8       		.byte	0xe8
@@ -1410,8 +1410,8 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  905 02be 03       		.byte	0x3
  906 02bf 00000000 		.4byte	uxCriticalNesting
  907 02c3 19       		.uleb128 0x19
- 908 02c4 40010000 		.4byte	.LASF39
- 909 02c8 40010000 		.4byte	.LASF39
+ 908 02c4 99010000 		.4byte	.LASF39
+ 909 02c8 99010000 		.4byte	.LASF39
  910 02cc 06       		.byte	0x6
  911 02cd 6C0B     		.2byte	0xb6c
  912 02cf 19       		.uleb128 0x19
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  933 000d 11       		.uleb128 0x11
  934 000e 01       		.uleb128 0x1
  935 000f 10       		.uleb128 0x10
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 25
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 25
 
 
  936 0010 17       		.uleb128 0x17
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  990 0046 00       		.byte	0
  991 0047 0B       		.uleb128 0xb
  992 0048 0B       		.uleb128 0xb
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 26
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 26
 
 
  993 0049 49       		.uleb128 0x49
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  1047 0080 02       		.uleb128 0x2
  1048 0081 18       		.uleb128 0x18
  1049 0082 00       		.byte	0
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 27
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 27
 
 
  1050 0083 00       		.byte	0
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  1104 00bb 3A       		.uleb128 0x3a
  1105 00bc 0B       		.uleb128 0xb
  1106 00bd 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 28
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 28
 
 
  1107 00be 0B       		.uleb128 0xb
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  1161 00f5 3B       		.uleb128 0x3b
  1162 00f6 05       		.uleb128 0x5
  1163 00f7 27       		.uleb128 0x27
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 29
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 29
 
 
  1164 00f8 19       		.uleb128 0x19
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  1218 0130 18       		.uleb128 0x18
  1219 0131 9742     		.uleb128 0x2117
  1220 0133 19       		.uleb128 0x19
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 30
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 30
 
 
  1221 0134 01       		.uleb128 0x1
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  1275 0170 00       		.byte	0
  1276 0171 02       		.uleb128 0x2
  1277 0172 18       		.uleb128 0x18
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 31
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 31
 
 
  1278 0173 9142     		.uleb128 0x2111
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  1332 0047 70       		.byte	0x70
  1333 0048 60       		.sleb128 -32
  1334 0049 9F       		.byte	0x9f
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 32
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 32
 
 
  1335 004a 1A000000 		.4byte	.LVL8
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  1389 0040 00000000 		.4byte	.LFB41
  1390 0044 18000000 		.4byte	.LFE41-.LFB41
  1391 0048 00000000 		.4byte	.LFB42
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 33
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 33
 
 
  1392 004c 14000000 		.4byte	.LFE42-.LFB42
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  1442              	.LASF38:
  1443 0000 75784372 		.ascii	"uxCriticalNesting\000"
  1443      69746963 
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 34
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 34
 
 
  1443      616C4E65 
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  1465 00ac 76506F72 		.ascii	"vPortStartFirstTask\000"
  1465      74537461 
  1465      72744669 
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 35
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 35
 
 
  1465      72737454 
@@ -2063,176 +2063,176 @@ ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 1
  1473      69676E65 
  1473      6420696E 
  1473      7400
- 1474              	.LASF6:
- 1475 00ff 73686F72 		.ascii	"short unsigned int\000"
- 1475      7420756E 
- 1475      7369676E 
- 1475      65642069 
- 1475      6E7400
- 1476              	.LASF34:
- 1477 0112 756C5072 		.ascii	"ulPreviousMask\000"
- 1477      6576696F 
- 1477      75734D61 
- 1477      736B00
- 1478              	.LASF13:
- 1479 0121 646F7562 		.ascii	"double\000"
- 1479      6C6500
- 1480              	.LASF10:
- 1481 0128 5F5F7569 		.ascii	"__uint32_t\000"
- 1481      6E743332 
- 1481      5F7400
- 1482              	.LASF23:
- 1483 0133 70765061 		.ascii	"pvParameters\000"
- 1483      72616D65 
- 1483      74657273 
- 1483      00
- 1484              	.LASF39:
- 1485 0140 78546173 		.ascii	"xTaskIncrementTick\000"
- 1485      6B496E63 
- 1485      72656D65 
- 1485      6E745469 
- 1485      636B00
- 1486              	.LASF32:
- 1487 0153 78506F72 		.ascii	"xPortSysTickHandler\000"
- 1487      74537973 
- 1487      5469636B 
- 1487      48616E64 
- 1487      6C657200 
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 36
+ 1474              	.LASF43:
+ 1475 00ff 433A5C55 		.ascii	"C:\\Users\\Hello Kitty\\Desktop\\MicrocontrollersLa"
+ 1475      73657273 
+ 1475      5C48656C 
+ 1475      6C6F204B 
+ 1475      69747479 
+ 1476 012e 625C4C61 		.ascii	"b\\Lab 8 - FreeRTOS\\Project\\Design01.cydsn\000"
+ 1476      62203820 
+ 1476      2D204672 
+ 1476      65655254 
+ 1476      4F535C50 
+ 1477              	.LASF6:
+ 1478 0158 73686F72 		.ascii	"short unsigned int\000"
+ 1478      7420756E 
+ 1478      7369676E 
+ 1478      65642069 
+ 1478      6E7400
+ 1479              	.LASF34:
+ 1480 016b 756C5072 		.ascii	"ulPreviousMask\000"
+ 1480      6576696F 
+ 1480      75734D61 
+ 1480      736B00
+ 1481              	.LASF13:
+ 1482 017a 646F7562 		.ascii	"double\000"
+ 1482      6C6500
+ 1483              	.LASF10:
+ 1484 0181 5F5F7569 		.ascii	"__uint32_t\000"
+ 1484      6E743332 
+ 1484      5F7400
+ 1485              	.LASF23:
+ 1486 018c 70765061 		.ascii	"pvParameters\000"
+ 1486      72616D65 
+ 1486      74657273 
+ 1486      00
+ 1487              	.LASF39:
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 36
 
 
- 1488              	.LASF26:
- 1489 0167 76506F72 		.ascii	"vPortYield\000"
- 1489      74596965 
- 1489      6C6400
- 1490              	.LASF21:
- 1491 0172 7078546F 		.ascii	"pxTopOfStack\000"
- 1491      704F6653 
- 1491      7461636B 
- 1491      00
- 1492              	.LASF9:
- 1493 017f 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1493      206C6F6E 
- 1493      6720756E 
- 1493      7369676E 
- 1493      65642069 
- 1494              	.LASF44:
- 1495 0196 70727654 		.ascii	"prvTaskExitError\000"
- 1495      61736B45 
- 1495      78697445 
- 1495      72726F72 
- 1495      00
- 1496              	.LASF41:
- 1497 01a7 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 1497      43313120 
- 1497      352E342E 
- 1497      31203230 
- 1497      31363036 
- 1498 01da 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
- 1498      20726576 
- 1498      6973696F 
- 1498      6E203233 
- 1498      37373135 
- 1499 020d 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 1499      66756E63 
- 1499      74696F6E 
- 1499      2D736563 
- 1499      74696F6E 
- 1500              	.LASF35:
- 1501 0235 76506F72 		.ascii	"vPortSetupTimerInterrupt\000"
- 1501      74536574 
- 1501      75705469 
- 1501      6D657249 
- 1501      6E746572 
- 1502              	.LASF15:
- 1503 024e 73697A65 		.ascii	"sizetype\000"
- 1503      74797065 
- 1503      00
- 1504              	.LASF46:
- 1505 0257 756C5365 		.ascii	"ulSetInterruptMaskFromISR\000"
- 1505      74496E74 
- 1505      65727275 
- 1505      70744D61 
- 1505      736B4672 
- 1506              	.LASF1:
- 1507 0271 6C6F6E67 		.ascii	"long long int\000"
- 1507      206C6F6E 
- 1507      6720696E 
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 37
+ 1488 0199 78546173 		.ascii	"xTaskIncrementTick\000"
+ 1488      6B496E63 
+ 1488      72656D65 
+ 1488      6E745469 
+ 1488      636B00
+ 1489              	.LASF32:
+ 1490 01ac 78506F72 		.ascii	"xPortSysTickHandler\000"
+ 1490      74537973 
+ 1490      5469636B 
+ 1490      48616E64 
+ 1490      6C657200 
+ 1491              	.LASF26:
+ 1492 01c0 76506F72 		.ascii	"vPortYield\000"
+ 1492      74596965 
+ 1492      6C6400
+ 1493              	.LASF21:
+ 1494 01cb 7078546F 		.ascii	"pxTopOfStack\000"
+ 1494      704F6653 
+ 1494      7461636B 
+ 1494      00
+ 1495              	.LASF9:
+ 1496 01d8 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1496      206C6F6E 
+ 1496      6720756E 
+ 1496      7369676E 
+ 1496      65642069 
+ 1497              	.LASF44:
+ 1498 01ef 70727654 		.ascii	"prvTaskExitError\000"
+ 1498      61736B45 
+ 1498      78697445 
+ 1498      72726F72 
+ 1498      00
+ 1499              	.LASF41:
+ 1500 0200 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1500      43313120 
+ 1500      352E342E 
+ 1500      31203230 
+ 1500      31363036 
+ 1501 0233 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 1501      20726576 
+ 1501      6973696F 
+ 1501      6E203233 
+ 1501      37373135 
+ 1502 0266 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1502      66756E63 
+ 1502      74696F6E 
+ 1502      2D736563 
+ 1502      74696F6E 
+ 1503              	.LASF35:
+ 1504 028e 76506F72 		.ascii	"vPortSetupTimerInterrupt\000"
+ 1504      74536574 
+ 1504      75705469 
+ 1504      6D657249 
+ 1504      6E746572 
+ 1505              	.LASF15:
+ 1506 02a7 73697A65 		.ascii	"sizetype\000"
+ 1506      74797065 
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 37
 
 
- 1507      7400
- 1508              	.LASF14:
- 1509 027f 63686172 		.ascii	"char\000"
- 1509      00
- 1510              	.LASF17:
- 1511 0284 53746163 		.ascii	"StackType_t\000"
- 1511      6B547970 
- 1511      655F7400 
- 1512              	.LASF24:
- 1513 0290 76506F72 		.ascii	"vPortSVCHandler\000"
- 1513      74535643 
- 1513      48616E64 
- 1513      6C657200 
- 1514              	.LASF18:
- 1515 02a0 42617365 		.ascii	"BaseType_t\000"
- 1515      54797065 
- 1515      5F7400
- 1516              	.LASF5:
- 1517 02ab 73686F72 		.ascii	"short int\000"
- 1517      7420696E 
- 1517      7400
- 1518              	.LASF43:
- 1519 02b5 433A5C55 		.ascii	"C:\\Users\\tyork\\Documents\\PSoC Creator\\ECE381_S"
- 1519      73657273 
- 1519      5C74796F 
- 1519      726B5C44 
- 1519      6F63756D 
- 1520 02e3 5032335F 		.ascii	"P23_Lab08_FreeRTOS\\Design01.cydsn\000"
- 1520      4C616230 
- 1520      385F4672 
- 1520      65655254 
- 1520      4F535C44 
+ 1506      00
+ 1507              	.LASF46:
+ 1508 02b0 756C5365 		.ascii	"ulSetInterruptMaskFromISR\000"
+ 1508      74496E74 
+ 1508      65727275 
+ 1508      70744D61 
+ 1508      736B4672 
+ 1509              	.LASF1:
+ 1510 02ca 6C6F6E67 		.ascii	"long long int\000"
+ 1510      206C6F6E 
+ 1510      6720696E 
+ 1510      7400
+ 1511              	.LASF14:
+ 1512 02d8 63686172 		.ascii	"char\000"
+ 1512      00
+ 1513              	.LASF17:
+ 1514 02dd 53746163 		.ascii	"StackType_t\000"
+ 1514      6B547970 
+ 1514      655F7400 
+ 1515              	.LASF24:
+ 1516 02e9 76506F72 		.ascii	"vPortSVCHandler\000"
+ 1516      74535643 
+ 1516      48616E64 
+ 1516      6C657200 
+ 1517              	.LASF18:
+ 1518 02f9 42617365 		.ascii	"BaseType_t\000"
+ 1518      54797065 
+ 1518      5F7400
+ 1519              	.LASF5:
+ 1520 0304 73686F72 		.ascii	"short int\000"
+ 1520      7420696E 
+ 1520      7400
  1521              	.LASF28:
- 1522 0305 76506F72 		.ascii	"vPortExitCritical\000"
+ 1522 030e 76506F72 		.ascii	"vPortExitCritical\000"
  1522      74457869 
  1522      74437269 
  1522      74696361 
  1522      6C00
  1523              	.LASF11:
- 1524 0317 75696E74 		.ascii	"uint32_t\000"
+ 1524 0320 75696E74 		.ascii	"uint32_t\000"
  1524      33325F74 
  1524      00
  1525              	.LASF7:
- 1526 0320 6C6F6E67 		.ascii	"long int\000"
+ 1526 0329 6C6F6E67 		.ascii	"long int\000"
  1526      20696E74 
  1526      00
  1527              	.LASF29:
- 1528 0329 756C4D61 		.ascii	"ulMask\000"
+ 1528 0332 756C4D61 		.ascii	"ulMask\000"
  1528      736B00
  1529              	.LASF2:
- 1530 0330 6C6F6E67 		.ascii	"long double\000"
+ 1530 0339 6C6F6E67 		.ascii	"long double\000"
  1530      20646F75 
  1530      626C6500 
  1531              	.LASF3:
- 1532 033c 7369676E 		.ascii	"signed char\000"
+ 1532 0345 7369676E 		.ascii	"signed char\000"
  1532      65642063 
  1532      68617200 
-ARM GAS  C:\Users\tyork\AppData\Local\Temp\ccKovJ3X.s 			page 38
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccBTPaK1.s 			page 38
 
 
  1533              	.LASF37:
- 1534 0348 78506F72 		.ascii	"xPortStartScheduler\000"
+ 1534 0351 78506F72 		.ascii	"xPortStartScheduler\000"
  1534      74537461 
  1534      72745363 
  1534      68656475 
  1534      6C657200 
  1535              	.LASF19:
- 1536 035c 55426173 		.ascii	"UBaseType_t\000"
+ 1536 0365 55426173 		.ascii	"UBaseType_t\000"
  1536      65547970 
  1536      655F7400 
  1537              	.LASF36:
- 1538 0368 7078506F 		.ascii	"pxPortInitialiseStack\000"
+ 1538 0371 7078506F 		.ascii	"pxPortInitialiseStack\000"
  1538      7274496E 
  1538      69746961 
  1538      6C697365 

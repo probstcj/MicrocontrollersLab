@@ -31,7 +31,7 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "semphr.h"
-TaskHandle_t blink_task, lcd_task, motor_task;
+extern TaskHandle_t blink_task, lcd_task, motor_task;
 int onOff = 1;
 /* `#END` */
 
