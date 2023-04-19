@@ -85,10 +85,28 @@ struct Time feedTimes[10] = {
     {5,5,"PM"}
 };
 
+char* commands[6] = {
+    "Set Global Time     ",
+    "Change Feed Times   ",
+    "Change Feed Amount  ",
+    "Turn on/off LED's   ",
+    "Turn on/off Speakers",
+    "Exit                "
+};
+// Feed times
+    // Amount of food
+    // LED's
+    // Speakers
+    // Exit
 
 const uint32 LCDAddr = 0x27;
 const uint32 RTCAddr = 0x51;
 uint8 feedCounter = 0;
+uint8 speakerToggle = 0;
+uint8 LEDToggle = 0;
+volatile uint8 buttonFlag = 0;
+volatile uint8 encFlag = 0;
+volatile uint8 encPos = 0;
 /*
 This function simply reads from any I2C device.
 readBuf will be the size of readBytes and any read data will be stored here..
@@ -96,6 +114,14 @@ readBytes is the number of bytes that the I2C is reading.
 devAddr is the I2C address that the microcontroller is talking to.
 memAddr is the memory or register address that is inside the I2C device.
 */
+uint8 bcdToDec(uint8 value)
+{
+  return (uint8)((value / 16) * 10 + value % 16);
+}
+
+uint8 decToBcd(uint8 value){
+  return (value / 10 * 16 + value % 10);
+}
 void readFromAddr(uint8* readBuf, int readBytes, uint32 devAddr, uint32 memAddr){
     // First write the memory address to the I2C bus.
     uint8 wrBuf[1];
@@ -131,11 +157,11 @@ void RTCInit(){
     uint8 wrBuf[2];
     wrBuf[1] = 0x00;
     writeToAddr(wrBuf,2,RTCAddr,rtc.VL_Sec);
-    wrBuf[1] = 0x37;
+    wrBuf[1] = 0x44;
     writeToAddr(wrBuf,2,RTCAddr,rtc.Minutes);
-    wrBuf[1] = 0x21;
+    wrBuf[1] = 0x10;
     writeToAddr(wrBuf,2,RTCAddr,rtc.Hours);
-    wrBuf[1] = 0x09;
+    wrBuf[1] = 0x16;
     writeToAddr(wrBuf,2,RTCAddr,rtc.Days);
     wrBuf[1] = 0x06;
     writeToAddr(wrBuf,2,RTCAddr,rtc.Weekdays);
@@ -180,25 +206,375 @@ void updateCurrTime(struct Time currTime, struct Date currDate){
     LCD_print(printString);
     setCursor(0,1);
 }
-
+void exitLCD(){
+    char printString[21];
+    struct Time nextTime = feedTimes[feedCounter];
+    uint8 day[1];
+    readFromAddr(day,1,RTCAddr,rtc.Days);
+    uint8 month[1];
+    readFromAddr(month,1,RTCAddr,rtc.Century_Months);
+    uint8 year[1];
+    readFromAddr(year,1,RTCAddr,rtc.Years);
+    struct Date nextDate = {bcdToDec(day[0]),months[bcdToDec(month[0])-1],bcdToDec(year[0])};
+    setCursor(0,1);
+    LCD_print("--------------------");
+    setCursor(0,2);
+    LCD_print("Time of Next Feed:  ");
+    setCursor(0,3);
+    snprintf(printString, 21, "%d:%.2d%s %s %d, 20%d ",nextTime.hour, nextTime.minute,nextTime.AM, nextDate.month,nextDate.day, nextDate.year);
+    printString[20] = '\0';
+    LCD_print(printString);
+}
 void FEEEEED(){
     // Turn on motor
+    LED_PWM_WritePeriod(1000);
+    LED_PWM_WriteCompare(1000);
+    SPEAKER_PWM_Start();
+    SPEAKER_PWM_WritePeriod(750);
+    SPEAKER_PWM_WriteCompare(50);
+    SPEAKER_PWM_Stop();
+    for(int k = 0; k<8; k++){
+        if(speakerToggle == 1){
+            SPEAKER_PWM_Start();
+        }
+        if(LEDToggle == 1){
+            LED_PWM_Start();
+        }
+        for(int i = 0; i<100; i++){
+            for(int j = 0; j < 4; j++){
+                LED_SEL_Write(j);
+                CyDelay(1);
+            }
+        }
+        LED_PWM_Stop();
+        SPEAKER_PWM_Stop();
+        CyDelay(300);
+    }
     // Set LED's
     // Set speakers
 }
-
-
-uint8 bcdToDec(uint8 value)
-{
-  return (uint8)((value / 16) * 10 + value % 16);
+void setGlobalTime(){
+    clear();
+    setCursor(0,0);
+    LCD_print("Set Month");
+    char printMessage[21];
+    struct Time nextTime = feedTimes[feedCounter];
+    uint8 day[1];
+    readFromAddr(day,1,RTCAddr,rtc.Days);
+    uint8 month[1];
+    readFromAddr(month,1,RTCAddr,rtc.Century_Months);
+    uint8 year[1];
+    readFromAddr(year,1,RTCAddr,rtc.Years);
+    struct Date currDate = {bcdToDec(day[0]),months[bcdToDec(month[0])-1],bcdToDec(year[0])};
+    struct Date setDate;
+    int currentIndex = bcdToDec(month[0])-1;
+    setCursor(0,2);
+    snprintf(printMessage,21,"%s %d, 20%d",currDate.month,currDate.day,currDate.year);
+    LCD_print(printMessage);
+    while(buttonFlag == 0){
+        if(encFlag == 1){
+            encFlag = 0;
+            if(encPos == 1){
+                if(currentIndex == 12){
+                    currentIndex = 1;
+                }
+                else{
+                    currentIndex++;
+                }
+            }
+            else if(encPos == 2){
+                if(currentIndex == 1){
+                    currentIndex = 12;
+                }
+                else{
+                    currentIndex--;
+                }
+            }
+            setCursor(0,2);
+            LCD_print(months[currentIndex-1]);
+        }
+    }
+    uint8 numberMonth = currentIndex;
+    setDate.month = months[currentIndex-1];
+    buttonFlag = 0;
+    setCursor(0,0);
+    LCD_print("Set Day  ");
+    currentIndex = currDate.day;
+    while(buttonFlag == 0){
+        if(encFlag == 1){
+            encFlag = 0;
+            if(encPos == 1){
+                if(currentIndex == 31){
+                    currentIndex = 1;
+                }
+                else{
+                    currentIndex++;
+                }
+            }
+            else if(encPos == 2){
+                if(currentIndex == 1){
+                    currentIndex = 31;
+                }
+                else{
+                    currentIndex--;
+                }
+            }
+            setCursor(4,2);
+            char printDay[3];
+            snprintf(printDay,3,"%02d",currentIndex);
+            LCD_print(printDay);
+        }
+    }
+    buttonFlag = 0;
+    
+    setDate.day = currentIndex;
+    buttonFlag = 0;
+    setCursor(0,0);
+    LCD_print("Set Year");
+    currentIndex = currDate.year;
+    while(buttonFlag == 0){
+        if(encFlag == 1){
+            encFlag = 0;
+            if(encPos == 1){
+                if(currentIndex == 99){
+                    currentIndex = 0;
+                }
+                else{
+                    currentIndex++;
+                }
+            }
+            else if(encPos == 2){
+                if(currentIndex == 0){
+                    currentIndex = 99;
+                }
+                else{
+                    currentIndex--;
+                }
+            }
+            setCursor(8,2);
+            char printYear[5];
+            snprintf(printYear,5,"20%02d",currentIndex);
+            LCD_print(printYear);
+        }
+    }
+    buttonFlag = 0;
+    setDate.year = currentIndex;
+    
+    uint8 min[1];
+    readFromAddr(min,1,RTCAddr,rtc.Minutes);
+    uint8 hour[1];
+    readFromAddr(hour,1,RTCAddr,rtc.Hours);
+    struct Time updateTime;
+    struct Time setTime;
+    if(hour[0] > 0x12){
+            volatile struct Time currTime = {bcdToDec(hour[0])-12,bcdToDec(min[0]),"PM"};
+            updateTime = currTime;
+        }
+        else{
+            volatile struct Time currTime = {bcdToDec(hour[0]),bcdToDec(min[0]),"AM"};
+            updateTime = currTime;
+    }
+    setCursor(0,0);
+    LCD_print("Set Hour");
+    setCursor(0,2);
+    snprintf(printMessage,21,"%d:%.2d%s        ",updateTime.hour,updateTime.minute,updateTime.AM);
+    LCD_print(printMessage);
+    currentIndex = updateTime.hour;
+    while(buttonFlag == 0){
+        if(encFlag == 1){
+            encFlag = 0;
+            if(encPos == 1){
+                if(currentIndex == 12){
+                    currentIndex = 1;
+                }
+                else{
+                    currentIndex++;
+                }
+            }
+            else if(encPos == 2){
+                if(currentIndex == 1){
+                    currentIndex = 12;
+                }
+                else{
+                    currentIndex--;
+                }
+            }
+            setCursor(0,2);
+            char printHour[3];
+            snprintf(printHour,3,"%02d",currentIndex);
+            LCD_print(printHour);
+            
+        }
+    }
+    
+    setTime.hour = currentIndex;
+    buttonFlag = 0;
+    setCursor(0,0);
+    LCD_print("Set Minute");
+    currentIndex = updateTime.minute;
+    while(buttonFlag == 0){
+        if(encFlag == 1){
+            encFlag = 0;
+            if(encPos == 1){
+                if(currentIndex == 59){
+                    currentIndex = 0;
+                }
+                else{
+                    currentIndex++;
+                }
+            }
+            else if(encPos == 2){
+                if(currentIndex == 0){
+                    currentIndex = 59;
+                }
+                else{
+                    currentIndex--;
+                }
+            }
+            setCursor(3,2);
+            char printMinute[3];
+            snprintf(printMinute,5,"%02d",currentIndex);
+            LCD_print(printMinute);
+        }
+    }
+    
+    setTime.minute = currentIndex;
+    buttonFlag = 0;
+    setCursor(0,0);
+    LCD_print("Set AM/PM    ");
+    currentIndex = 0;
+    while(buttonFlag == 0){
+        if(encFlag == 1){
+            encFlag = 0;
+            if(currentIndex == 0){
+                currentIndex = 1;
+            }
+            else{
+                currentIndex = 0;
+            }
+            setCursor(5,2);
+            if(currentIndex == 0){
+                LCD_print("AM");
+            }
+            else{
+                LCD_print("PM");
+            }
+        }
+    }
+    buttonFlag = 0;
+    if(currentIndex == 0){
+        
+    }
+    else{
+        setTime.hour = setTime.hour + 12;
+    }
+    
+    uint8 wrBuf[2];
+    wrBuf[1] = 0x00;
+    writeToAddr(wrBuf,2,RTCAddr,rtc.VL_Sec);
+    wrBuf[1] = decToBcd(setTime.minute);
+    writeToAddr(wrBuf,2,RTCAddr,rtc.Minutes);
+    wrBuf[1] = decToBcd(setTime.hour);
+    writeToAddr(wrBuf,2,RTCAddr,rtc.Hours);
+    wrBuf[1] = decToBcd(setDate.day);
+    writeToAddr(wrBuf,2,RTCAddr,rtc.Days);
+    wrBuf[1] = 0x06;
+    writeToAddr(wrBuf,2,RTCAddr,rtc.Weekdays);
+    wrBuf[1] = decToBcd(numberMonth);
+    writeToAddr(wrBuf,2,RTCAddr,rtc.Century_Months);
+    wrBuf[1] = decToBcd(setDate.year);
+    writeToAddr(wrBuf,2,RTCAddr,rtc.Years);
+    exitLCD();
+    
+}
+void setFeedTimes(){
+    
+}
+void setAmountOfFood(){
+    
+}
+void toggleLEDs(){
+    
+}
+void toggleSpeakers(){
+    
 }
 
-uint8 decToBcd(uint8 value){
-  return (value / 10 * 16 + value % 10);
+
+void startSettings(){
+    clear();
+    uint8 choice = 0;
+    setCursor(0,0);
+    LCD_print("Button = Select");
+    setCursor(0,1);
+    LCD_print("Knob = Choice");
+    setCursor(0,2);
+    LCD_print("--------------------");
+    // Clock Time
+    setCursor(0,3);
+    LCD_print("Set Global Time");
+    CyDelay(1000);
+    while(buttonFlag == 0){
+        if(encFlag == 1){
+            encFlag = 0;
+            if(encPos == 1){
+                if(choice == 5){
+                    choice = 0;
+                }
+                else{
+                    choice++;
+                }
+            }
+            else if(encPos == 2){
+                if(choice == 0){
+                    choice = 5;
+                }
+                else{
+                    choice--;
+                }
+            }
+        }
+        setCursor(0,3);
+        LCD_print(commands[choice]);
+    }
+    buttonFlag = 0;
+    switch(choice){
+        case 0:
+            setGlobalTime();
+            break;
+        case 1:
+            setFeedTimes();
+            break;
+        case 2:
+            setAmountOfFood();
+            break;
+        case 3:
+            toggleLEDs();
+            break;
+        case 4:
+            toggleSpeakers();
+            break;
+        case 5:
+            // Done
+            exitLCD();
+            break;
+        default:
+            choice = 0;
+            break;
+    }
+    // Feed times
+    // Amount of food
+    // LED's
+    // Speakers
+    // Exit
 }
+
+
 
 int main(void)
 {
+    BTN_ISR_Start();
+    ENC_ISR_Start();
     CyGlobalIntEnable; /* Enable global interrupts. */
     I2C_Start();
     LiquidCrystal_I2C_init(LCDAddr, 20,4,0);
@@ -233,7 +609,7 @@ int main(void)
         readFromAddr(month,1,RTCAddr,rtc.Century_Months);
         uint8 year[1];
         readFromAddr(year,1,RTCAddr,rtc.Years);
-        if(hour[0] > 12){
+        if(hour[0] > 0x12){
             volatile struct Time currTime = {bcdToDec(hour[0])-12,bcdToDec(min[0]),"PM"};
             updateTime = currTime;
         }
@@ -254,6 +630,10 @@ int main(void)
         }
         else if(feedCounter == 2){
             feedCounter = 0;
+        }
+        if(buttonFlag == 1){
+            buttonFlag = 0;
+            startSettings();
         }
         CyDelay(1000);
         
