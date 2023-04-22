@@ -28,8 +28,8 @@
 ********************************************************************************/
 /* `#START ENC_ISR_intc` */
 #include "ENC.h"
-extern volatile int encFlag;
-extern volatile int encPos;
+extern volatile uint8 encFlag;
+extern volatile uint8 encPos;
 /* `#END` */
 
 extern cyisraddress CyRamVectors[CYINT_IRQ_BASE + CY_NUM_INTERRUPTS];
@@ -191,14 +191,14 @@ CY_ISR(ENC_ISR_Interrupt)
         // Set flag
         encFlag = 1;
         // Set limit of 80 on the right side
-        encPos = 1;
+        encPos = 2;
     }
     else if(a == 2 && c==1){
         // Counter-Clockwise (decrease bar)
         // Set flag
         encFlag = 1;
         // Set limit of 0 on the left side
-        encPos = 2;
+        encPos = 1;
     }
     // Clear interrupt
     ENC_ClearInterrupt();

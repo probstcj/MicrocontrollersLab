@@ -13,7 +13,83 @@
 #include <stdio.h>
 #include "LiquidCrystal_I2C.h"
 
+struct MTR{
+    unsigned int position : 4;
+};
+struct MTR motor = {1};
+int motorDelay = 7000;
+int feedSteps = 4000;
 
+int MVCCW(struct MTR motor){
+    // If motor position is at edge, reset, otherwise increment
+    if(motor.position >= 4){
+        motor.position = 1;
+    }
+    else{
+        motor.position += 1;
+    }
+    // Write correct motor position
+    switch(motor.position){
+        case 1:
+            // 0011 -> 1001
+            Motor_Write(0x9);
+            break;
+        case 2:
+            // 1001 -> 1100
+            Motor_Write(0xC);
+            break;
+        case 3:
+            // 1100 -> 0110
+            Motor_Write(0x6);
+            break;
+        case 4:
+            // 0110 -> 0011
+            Motor_Write(0x3);
+            break;
+    }
+    // Delay defined by either default or RPM
+    CyDelayUs(motorDelay);
+    // Ground so motor doesn't get hot
+    // Can change to where it only goes to ground only after all steps have been taken
+    //Motor_Write(0b0000);
+    // Return position of motor
+    return motor.position;
+}
+// Function for moving clockwise
+int MVCW(struct MTR motor){
+    // If motor is at edge, reset, if not, decrement
+    if(motor.position <= 1){
+        motor.position = 4;
+    }
+    else{
+        motor.position -= 1;
+    }
+    // Write correct motor position
+    switch(motor.position){
+        case 4:
+            // 1100 -> 1001
+            Motor_Write(0x9);
+            break;
+        case 3:
+            // 1001 -> 0011
+            Motor_Write(0x3);
+            break;
+        case 2:
+            // 0011 -> 0110
+            Motor_Write(0x6);
+            break;
+        case 1:
+            // 0110 -> 1100
+            Motor_Write(0xC);
+            break;
+    }
+    // Delay
+    CyDelayUs(motorDelay);
+    // Ground so motor doesn't get hot
+    //Motor_Write(0b0000);
+    // Return motor position
+    return motor.position;
+}
 
 struct Time{
     uint8 hour;
@@ -103,7 +179,7 @@ const uint32 LCDAddr = 0x27;
 const uint32 RTCAddr = 0x51;
 uint8 feedCounter = 0;
 uint8 speakerToggle = 0;
-uint8 LEDToggle = 0;
+uint8 LEDToggle = 1;
 volatile uint8 buttonFlag = 0;
 volatile uint8 encFlag = 0;
 volatile uint8 encPos = 0;
@@ -226,6 +302,12 @@ void exitLCD(){
     LCD_print(printString);
 }
 void FEEEEED(){
+    for(int i = 0; i < feedSteps; i++){
+        motor.position = MVCW(motor);
+        
+    }
+    Motor_Write(0b0000);
+    
     // Turn on motor
     LED_PWM_WritePeriod(1000);
     LED_PWM_WriteCompare(1000);
@@ -579,6 +661,7 @@ int main(void)
     I2C_Start();
     LiquidCrystal_I2C_init(LCDAddr, 20,4,0);
     LCDBegin();
+    FEEEEED();
     struct Time time = {12,45, "AM"};
     struct Date date = {31, "Mar",23};
     struct Time nextTime = {6,00, "PM"};
