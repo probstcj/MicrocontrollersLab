@@ -17,44 +17,9 @@ struct MTR{
     unsigned int position : 4;
 };
 struct MTR motor = {1};
-int motorDelay = 7000;
-int feedSteps = 4000;
+int motorDelay = 5000;
+uint32 feedSteps = 500;
 
-int MVCCW(struct MTR motor){
-    // If motor position is at edge, reset, otherwise increment
-    if(motor.position >= 4){
-        motor.position = 1;
-    }
-    else{
-        motor.position += 1;
-    }
-    // Write correct motor position
-    switch(motor.position){
-        case 1:
-            // 0011 -> 1001
-            Motor_Write(0x9);
-            break;
-        case 2:
-            // 1001 -> 1100
-            Motor_Write(0xC);
-            break;
-        case 3:
-            // 1100 -> 0110
-            Motor_Write(0x6);
-            break;
-        case 4:
-            // 0110 -> 0011
-            Motor_Write(0x3);
-            break;
-    }
-    // Delay defined by either default or RPM
-    CyDelayUs(motorDelay);
-    // Ground so motor doesn't get hot
-    // Can change to where it only goes to ground only after all steps have been taken
-    //Motor_Write(0b0000);
-    // Return position of motor
-    return motor.position;
-}
 // Function for moving clockwise
 int MVCW(struct MTR motor){
     // If motor is at edge, reset, if not, decrement
@@ -94,7 +59,7 @@ int MVCW(struct MTR motor){
 struct Time{
     uint8 hour;
     uint8 minute;
-    char* AM;
+    uint8* AM;
 };
 
 struct Date{
@@ -160,6 +125,86 @@ struct Time feedTimes[10] = {
     {4,26,"PM"},
     {5,5,"PM"}
 };
+struct FRAM{
+    uint32 feedCounter;
+    uint32 speakerToggle;
+    uint32 LEDToggle;
+    uint32 timesToFeed;
+    
+    uint32 feedStepsP1;
+    uint32 feedStepsP2;
+    uint32 feedStepsP3;
+    uint32 feedStepsP4;
+    
+    uint32 feedTime1P1;
+    uint32 feedTime1P2;
+    uint32 feedTime1P3;
+    
+    uint32 feedTime2P1;
+    uint32 feedTime2P2;
+    uint32 feedTime2P3;
+    
+    uint32 feedTime3P1;
+    uint32 feedTime3P2;
+    uint32 feedTime3P3;
+    
+    uint32 feedTime4P1;
+    uint32 feedTime4P2;
+    uint32 feedTime4P3;
+    
+    uint32 feedTime5P1;
+    uint32 feedTime5P2;
+    uint32 feedTime5P3;
+    
+    uint32 feedTime6P1;
+    uint32 feedTime6P2;
+    uint32 feedTime6P3;
+    
+    uint32 feedTime7P1;
+    uint32 feedTime7P2;
+    uint32 feedTime7P3;
+    
+    uint32 feedTime8P1;
+    uint32 feedTime8P2;
+    uint32 feedTime8P3;
+    
+    uint32 feedTime9P1;
+    uint32 feedTime9P2;
+    uint32 feedTime9P3;
+    
+    uint32 feedTime10P1;
+    uint32 feedTime10P2;
+    uint32 feedTime10P3;
+};
+
+const struct FRAM ram = {
+    0x00,
+    0x02,
+    0x04,
+    0x06,
+    
+    0x08,0x0A,0x0C,0x0E,
+    
+    0x10,0x12,0x14,
+    
+    0x16,0x18,0x1A,
+    
+    0x1C,0x1E,0x20,
+    
+    0x22,0x24,0x26,
+    
+    0x28,0x2A,0x2C,
+    
+    0x2E,0x30,0x32,
+    
+    0x34,0x36,0x38,
+    
+    0x3A,0x3C,0x3E,
+    
+    0x40,0x42,0x44,
+    
+    0x46,0x48,0x4A
+};
 
 char* commands[6] = {
     "Set Global Time     ",
@@ -177,12 +222,17 @@ char* commands[6] = {
 
 const uint32 LCDAddr = 0x27;
 const uint32 RTCAddr = 0x51;
+const uint32 ramAddr = 0x52;
+
 uint8 feedCounter = 0;
-uint8 speakerToggle = 0;
+uint8 speakerToggle = 1;
 uint8 LEDToggle = 1;
+
 volatile uint8 buttonFlag = 0;
 volatile uint8 encFlag = 0;
 volatile uint8 encPos = 0;
+
+uint8 timesToFeed = 0;
 /*
 This function simply reads from any I2C device.
 readBuf will be the size of readBytes and any read data will be stored here..
@@ -198,6 +248,44 @@ uint8 bcdToDec(uint8 value)
 uint8 decToBcd(uint8 value){
   return (value / 10 * 16 + value % 10);
 }
+
+void readFromRam(uint8* readBuf, int readBytes, uint32 devAddr, uint32 memAddr1, uint32 memAddr2){
+    uint8 wrBuf[2];
+    wrBuf[0] = memAddr1;
+    wrBuf[1] = memAddr2;
+    I2C_I2CMasterWriteBuf(devAddr, wrBuf, 2, I2C_I2C_MODE_NO_STOP);
+    while(!(I2C_I2CMasterStatus() & I2C_I2C_MSTAT_WR_CMPLT));
+    I2C_I2CMasterClearStatus();
+    
+    I2C_I2CMasterReadBuf(devAddr, readBuf, readBytes, I2C_I2C_MODE_REPEAT_START);
+    while(!(I2C_I2CMasterStatus() & I2C_I2C_MSTAT_RD_CMPLT));
+    I2C_I2CMasterClearStatus();
+    
+}
+void writeToRam(uint8* writeBuf, int writeBytes, uint32 devAddr, uint32 memAddr1, uint32 memAddr2){
+    writeBuf[0] = memAddr1;
+    writeBuf[1] = memAddr2;
+    I2C_I2CMasterWriteBuf(devAddr, writeBuf, writeBytes, I2C_I2C_MODE_COMPLETE_XFER);
+    while(!(I2C_I2CMasterStatus() & I2C_I2C_MSTAT_WR_CMPLT));
+    I2C_I2CMasterClearStatus();
+}
+
+void saveToFRAM(){
+    uint8 wrBuf[3];
+    wrBuf[2] = feedCounter;
+    writeToRam(wrBuf, 2, ramAddr,0x00,ram.feedCounter);
+    wrBuf[2] = speakerToggle;
+    writeToRam(wrBuf, 2, ramAddr,0x00,ram.speakerToggle);
+    wrBuf[2] = LEDToggle;
+    writeToRam(wrBuf, 2, ramAddr,0x00,ram.LEDToggle);
+    wrBuf[2] = timesToFeed;
+    writeToRam(wrBuf, 2, ramAddr,0x00,ram.timesToFeed);
+    
+    // 0010 1010 1010 1010
+    // 1100 1110 1100 1011 (if divide by 256, you get first byte)
+    // 1100 1110 1100 1011 1100 0101
+}
+
 void readFromAddr(uint8* readBuf, int readBytes, uint32 devAddr, uint32 memAddr){
     // First write the memory address to the I2C bus.
     uint8 wrBuf[1];
@@ -308,7 +396,6 @@ void FEEEEED(){
     }
     Motor_Write(0b0000);
     
-    // Turn on motor
     LED_PWM_WritePeriod(1000);
     LED_PWM_WriteCompare(1000);
     SPEAKER_PWM_Start();
@@ -332,8 +419,6 @@ void FEEEEED(){
         SPEAKER_PWM_Stop();
         CyDelay(300);
     }
-    // Set LED's
-    // Set speakers
 }
 void setGlobalTime(){
     clear();
@@ -570,16 +655,282 @@ void setGlobalTime(){
     
 }
 void setFeedTimes(){
+    clear();
+    timesToFeed=0;
+    setCursor(0,0);
+    LCD_print("Set amount of times");
+    setCursor(0,1);
+    LCD_print("to feed");
+    setCursor(0,2);
+    char message[21];
+    snprintf(message,21,"Number of feeds: %d",timesToFeed);
+    message[20] = '\0';
+    LCD_print(message);
     
+    while(buttonFlag == 0){
+        if(encFlag == 1){
+            encFlag = 0;
+            if(encPos == 1){
+                if(timesToFeed == 10){
+                    clear();
+                    setCursor(0,0);
+                    LCD_print("Your cat doesn't");
+                    setCursor(0,1);
+                    LCD_print("need to be fed more");
+                    setCursor(0,2);
+                    LCD_print("than 10 times.");
+                    CyDelay(2000);
+                    clear();
+                    setCursor(0,0);
+                    LCD_print("Set amount of times");
+                    setCursor(0,1);
+                    LCD_print("to feed");
+                    setCursor(0,2);
+                    snprintf(message,21,"Number of feeds: %d",timesToFeed);
+                    message[20] = '\0';
+                    LCD_print(message);
+                }
+                else{
+                    timesToFeed++;
+                }
+            }
+            else if(encPos == 2){
+                if(timesToFeed == 0){
+                }
+                else{
+                    timesToFeed--;
+                }
+            }
+            setCursor(0,2);
+            snprintf(message,21,"Number of feeds: %d ",timesToFeed);
+            message[20] = '\0';
+            LCD_print(message);
+        }
+    }
+    buttonFlag = 0;
+    clear();
+    for(int i = 0; i < timesToFeed; i++){
+        setCursor(0,0);
+        snprintf(message,21,"Feed #%d",i+1);
+        LCD_print(message);
+        uint8 min[1];
+        readFromAddr(min,1,RTCAddr,rtc.Minutes);
+        uint8 hour[1];
+        uint8 currentIndex = 0;
+        readFromAddr(hour,1,RTCAddr,rtc.Hours);
+        struct Time updateTime;
+        struct Time setTime;
+        if(hour[0] > 0x12){
+                volatile struct Time currTime = {bcdToDec(hour[0])-12,bcdToDec(min[0]),"PM"};
+                updateTime = currTime;
+            }
+            else{
+                volatile struct Time currTime = {bcdToDec(hour[0]),bcdToDec(min[0]),"AM"};
+                updateTime = currTime;
+        }
+        setCursor(0,1);
+        LCD_print("Set Hour   ");
+        setCursor(0,2);
+        snprintf(message,21,"%02d:%02d%s        ",updateTime.hour,updateTime.minute,updateTime.AM);
+        LCD_print(message);
+        currentIndex = updateTime.hour;
+        while(buttonFlag == 0){
+            if(encFlag == 1){
+                encFlag = 0;
+                if(encPos == 1){
+                    if(currentIndex == 12){
+                        currentIndex = 1;
+                    }
+                    else{
+                        currentIndex++;
+                    }
+                }
+                else if(encPos == 2){
+                    if(currentIndex == 1){
+                        currentIndex = 12;
+                    }
+                    else{
+                        currentIndex--;
+                    }
+                }
+                setCursor(0,2);
+                char printHour[21];
+                snprintf(printHour,21,"%02d:%02d%s        ",currentIndex,updateTime.minute,updateTime.AM);
+                LCD_print(printHour);
+                
+            }
+        }
+        
+        setTime.hour = currentIndex;
+        buttonFlag = 0;
+        setCursor(0,1);
+        LCD_print("Set Minute");
+        currentIndex = updateTime.minute;
+        while(buttonFlag == 0){
+            if(encFlag == 1){
+                encFlag = 0;
+                if(encPos == 1){
+                    if(currentIndex == 59){
+                        currentIndex = 0;
+                    }
+                    else{
+                        currentIndex++;
+                    }
+                }
+                else if(encPos == 2){
+                    if(currentIndex == 0){
+                        currentIndex = 59;
+                    }
+                    else{
+                        currentIndex--;
+                    }
+                }
+                setCursor(0,2);
+                char printMinute[21];
+                snprintf(printMinute,21,"%02d:%02d%s        ",setTime.hour,currentIndex,updateTime.AM);
+                LCD_print(printMinute);
+            }
+        }
+        
+        setTime.minute = currentIndex;
+        buttonFlag = 0;
+        setCursor(0,1);
+        LCD_print("Set AM/PM    ");
+        currentIndex = 0;
+        while(buttonFlag == 0){
+            if(encFlag == 1){
+                encFlag = 0;
+                if(currentIndex == 0){
+                    currentIndex = 1;
+                }
+                else{
+                    currentIndex = 0;
+                }
+                setCursor(5,2);
+                if(currentIndex == 0){
+                    LCD_print("AM");
+                }
+                else{
+                    LCD_print("PM");
+                }
+            }
+        }
+        buttonFlag = 0;
+        if(currentIndex == 0){
+            setTime.AM = "PM";
+        }
+        else if(currentIndex == 1){
+            setTime.AM = "AM";
+        }
+        feedTimes[i] = setTime;
+    }
+    exitLCD();
 }
 void setAmountOfFood(){
+    clear();
+    setCursor(0,0);
+    LCD_print("Hold button to");
+    setCursor(0,1);
+    LCD_print("adjust amount of");
+    setCursor(0,2);
+    LCD_print("food. Release when");
+    setCursor(0,3);
+    LCD_print("satisfied.");
+    while(buttonFlag == 0){}
+    feedSteps = 0;
+    buttonFlag = 0;
+    while(BTN_Read() == 1){
+        feedSteps++;
+        motor.position = MVCW(motor);
+    }
     
+    Motor_Write(0b0000);
+    buttonFlag = 0;
+    exitLCD();
 }
 void toggleLEDs(){
-    
+    clear();
+    setCursor(0,0);
+    LCD_print("Turn knob to toggle");
+    setCursor(0,2);
+    if(LEDToggle == 0){
+        LCD_print("Off");
+    }
+    else{
+        LCD_print("On");
+    }
+    while(buttonFlag == 0){
+        if(encFlag == 1){
+            encFlag = 0;
+            if(encPos == 1){
+                if(LEDToggle == 0){
+                   LEDToggle = 1;
+                }
+                else{
+                    LEDToggle = 0;
+                }
+            }
+            else if(encPos == 2){
+                if(LEDToggle == 0){
+                    LEDToggle = 1;
+                }
+                else{
+                    LEDToggle = 0;
+                }
+            }
+        }
+        setCursor(0,2);
+        if(LEDToggle == 0){
+            LCD_print("Off");
+        }
+        else{
+            LCD_print("On ");
+        }
+    }
+    buttonFlag = 0;
+    exitLCD();
 }
 void toggleSpeakers(){
-    
+    clear();
+    setCursor(0,0);
+    LCD_print("Turn knob to toggle");
+    setCursor(0,2);
+    if(speakerToggle == 0){
+        LCD_print("Off");
+    }
+    else{
+        LCD_print("On");
+    }
+    while(buttonFlag == 0){
+        if(encFlag == 1){
+            encFlag = 0;
+            if(encPos == 1){
+                if(speakerToggle == 0){
+                   speakerToggle = 1;
+                }
+                else{
+                    speakerToggle = 0;
+                }
+            }
+            else if(encPos == 2){
+                if(speakerToggle == 0){
+                    speakerToggle = 1;
+                }
+                else{
+                    speakerToggle = 0;
+                }
+            }
+        }
+        setCursor(0,2);
+        if(speakerToggle == 0){
+            LCD_print("Off");
+        }
+        else{
+            LCD_print("On ");
+        }
+    }
+    buttonFlag = 0;
+    exitLCD();
 }
 
 
@@ -644,6 +995,7 @@ void startSettings(){
             choice = 0;
             break;
     }
+    return;
     // Feed times
     // Amount of food
     // LED's
@@ -661,7 +1013,7 @@ int main(void)
     I2C_Start();
     LiquidCrystal_I2C_init(LCDAddr, 20,4,0);
     LCDBegin();
-    FEEEEED();
+    //FEEEEED();
     struct Time time = {12,45, "AM"};
     struct Date date = {31, "Mar",23};
     struct Time nextTime = {6,00, "PM"};
@@ -708,7 +1060,6 @@ int main(void)
                 feedCounter++;
                 updateNextFeed(feedTimes[feedCounter],updateDate);
                 FEEEEED();
-                volatile int a = 0;
             }
         }
         else if(feedCounter == 2){
