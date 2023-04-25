@@ -1,6 +1,5 @@
---------------- Build Started: 04/22/2023 13:26:25 Project: AutomaticPetFeeder, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+--------------- Build Started: 04/25/2023 16:09:51 Project: AutomaticPetFeeder, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
 The code generation step is up to date.
-arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_541\Debug/main.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c main.c -o .\CortexM0\ARM_GCC_541\Debug\main.o
 main.c:124:11: warning: pointer targets in initialization differ in signedness [-Wpointer-sign]
      {4,25,"PM"},
            ^
@@ -13,100 +12,432 @@ main.c:126:10: warning: pointer targets in initialization differ in signedness [
      {5,5,"PM"}
           ^
 main.c:126:10: note: (near initialization for 'feedTimes[2].AM')
+main.c: In function 'saveToFRAM':
+main.c:294:16: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
+     if(strncmp(feedTimes[0].AM, "AM",3) || strncmp(feedTimes[0].AM, "PM",3)){
+                ^
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+                 from Generated_Source\PSoC4/CyLib.h:25,
+                 from Generated_Source\PSoC4/UART.h:24,
+                 from Generated_Source\PSoC4/project.h:21,
+                 from main.c:12:
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
+ int  _EXFUN(strncmp,(const char *, const char *, size_t));
+      ^
+main.c:294:52: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
+     if(strncmp(feedTimes[0].AM, "AM",3) || strncmp(feedTimes[0].AM, "PM",3)){
+                                                    ^
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+                 from Generated_Source\PSoC4/CyLib.h:25,
+                 from Generated_Source\PSoC4/UART.h:24,
+                 from Generated_Source\PSoC4/project.h:21,
+                 from main.c:12:
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
+ int  _EXFUN(strncmp,(const char *, const char *, size_t));
+      ^
+main.c:297:20: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
+         if(strncmp(feedTimes[0].AM, "AM",3)){
+                    ^
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+                 from Generated_Source\PSoC4/CyLib.h:25,
+                 from Generated_Source\PSoC4/UART.h:24,
+                 from Generated_Source\PSoC4/project.h:21,
+                 from main.c:12:
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
+ int  _EXFUN(strncmp,(const char *, const char *, size_t));
+      ^
+main.c:316:16: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
+     if(strncmp(feedTimes[1].AM, "AM",3) || strncmp(feedTimes[1].AM, "PM",3)){
+                ^
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+                 from Generated_Source\PSoC4/CyLib.h:25,
+                 from Generated_Source\PSoC4/UART.h:24,
+                 from Generated_Source\PSoC4/project.h:21,
+                 from main.c:12:
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
+ int  _EXFUN(strncmp,(const char *, const char *, size_t));
+      ^
+main.c:316:52: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
+     if(strncmp(feedTimes[1].AM, "AM",3) || strncmp(feedTimes[1].AM, "PM",3)){
+                                                    ^
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+                 from Generated_Source\PSoC4/CyLib.h:25,
+                 from Generated_Source\PSoC4/UART.h:24,
+                 from Generated_Source\PSoC4/project.h:21,
+                 from main.c:12:
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
+ int  _EXFUN(strncmp,(const char *, const char *, size_t));
+      ^
+main.c:319:20: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
+         if(strncmp(feedTimes[1].AM, "AM",3)){
+                    ^
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+                 from Generated_Source\PSoC4/CyLib.h:25,
+                 from Generated_Source\PSoC4/UART.h:24,
+                 from Generated_Source\PSoC4/project.h:21,
+                 from main.c:12:
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
+ int  _EXFUN(strncmp,(const char *, const char *, size_t));
+      ^
+main.c:338:16: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
+     if(strncmp(feedTimes[2].AM, "AM",3) || strncmp(feedTimes[2].AM, "PM",3)){
+                ^
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+                 from Generated_Source\PSoC4/CyLib.h:25,
+                 from Generated_Source\PSoC4/UART.h:24,
+                 from Generated_Source\PSoC4/project.h:21,
+                 from main.c:12:
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
+ int  _EXFUN(strncmp,(const char *, const char *, size_t));
+      ^
+main.c:338:52: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
+     if(strncmp(feedTimes[2].AM, "AM",3) || strncmp(feedTimes[2].AM, "PM",3)){
+                                                    ^
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+                 from Generated_Source\PSoC4/CyLib.h:25,
+                 from Generated_Source\PSoC4/UART.h:24,
+                 from Generated_Source\PSoC4/project.h:21,
+                 from main.c:12:
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
+ int  _EXFUN(strncmp,(const char *, const char *, size_t));
+      ^
+main.c:341:20: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
+         if(strncmp(feedTimes[2].AM, "AM",3)){
+                    ^
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+                 from Generated_Source\PSoC4/CyLib.h:25,
+                 from Generated_Source\PSoC4/UART.h:24,
+                 from Generated_Source\PSoC4/project.h:21,
+                 from main.c:12:
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
+ int  _EXFUN(strncmp,(const char *, const char *, size_t));
+      ^
+main.c:360:16: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
+     if(strncmp(feedTimes[3].AM, "AM",3) || strncmp(feedTimes[3].AM, "PM",3)){
+                ^
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+                 from Generated_Source\PSoC4/CyLib.h:25,
+                 from Generated_Source\PSoC4/UART.h:24,
+                 from Generated_Source\PSoC4/project.h:21,
+                 from main.c:12:
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
+ int  _EXFUN(strncmp,(const char *, const char *, size_t));
+      ^
+main.c:360:52: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
+     if(strncmp(feedTimes[3].AM, "AM",3) || strncmp(feedTimes[3].AM, "PM",3)){
+                                                    ^
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+                 from Generated_Source\PSoC4/CyLib.h:25,
+                 from Generated_Source\PSoC4/UART.h:24,
+                 from Generated_Source\PSoC4/project.h:21,
+                 from main.c:12:
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
+ int  _EXFUN(strncmp,(const char *, const char *, size_t));
+      ^
+main.c:363:20: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
+         if(strncmp(feedTimes[3].AM, "AM",3)){
+                    ^
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+                 from Generated_Source\PSoC4/CyLib.h:25,
+                 from Generated_Source\PSoC4/UART.h:24,
+                 from Generated_Source\PSoC4/project.h:21,
+                 from main.c:12:
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
+ int  _EXFUN(strncmp,(const char *, const char *, size_t));
+      ^
+main.c:382:16: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
+     if(strncmp(feedTimes[4].AM, "AM",3) || strncmp(feedTimes[4].AM, "PM",3)){
+                ^
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+                 from Generated_Source\PSoC4/CyLib.h:25,
+                 from Generated_Source\PSoC4/UART.h:24,
+                 from Generated_Source\PSoC4/project.h:21,
+                 from main.c:12:
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
+ int  _EXFUN(strncmp,(const char *, const char *, size_t));
+      ^
+main.c:382:52: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
+     if(strncmp(feedTimes[4].AM, "AM",3) || strncmp(feedTimes[4].AM, "PM",3)){
+                                                    ^
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+                 from Generated_Source\PSoC4/CyLib.h:25,
+                 from Generated_Source\PSoC4/UART.h:24,
+                 from Generated_Source\PSoC4/project.h:21,
+                 from main.c:12:
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
+ int  _EXFUN(strncmp,(const char *, const char *, size_t));
+      ^
+main.c:385:20: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
+         if(strncmp(feedTimes[4].AM, "AM",3)){
+                    ^
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+                 from Generated_Source\PSoC4/CyLib.h:25,
+                 from Generated_Source\PSoC4/UART.h:24,
+                 from Generated_Source\PSoC4/project.h:21,
+                 from main.c:12:
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
+ int  _EXFUN(strncmp,(const char *, const char *, size_t));
+      ^
+main.c:404:16: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
+     if(strncmp(feedTimes[5].AM, "AM",3) || strncmp(feedTimes[5].AM, "PM",3)){
+                ^
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+                 from Generated_Source\PSoC4/CyLib.h:25,
+                 from Generated_Source\PSoC4/UART.h:24,
+                 from Generated_Source\PSoC4/project.h:21,
+                 from main.c:12:
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
+ int  _EXFUN(strncmp,(const char *, const char *, size_t));
+      ^
+main.c:404:52: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
+     if(strncmp(feedTimes[5].AM, "AM",3) || strncmp(feedTimes[5].AM, "PM",3)){
+                                                    ^
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+                 from Generated_Source\PSoC4/CyLib.h:25,
+                 from Generated_Source\PSoC4/UART.h:24,
+                 from Generated_Source\PSoC4/project.h:21,
+                 from main.c:12:
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
+ int  _EXFUN(strncmp,(const char *, const char *, size_t));
+      ^
+main.c:407:20: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
+         if(strncmp(feedTimes[5].AM, "AM",3)){
+                    ^
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+                 from Generated_Source\PSoC4/CyLib.h:25,
+                 from Generated_Source\PSoC4/UART.h:24,
+                 from Generated_Source\PSoC4/project.h:21,
+                 from main.c:12:
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
+ int  _EXFUN(strncmp,(const char *, const char *, size_t));
+      ^
+main.c:426:16: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
+     if(strncmp(feedTimes[6].AM, "AM",3) || strncmp(feedTimes[6].AM, "PM",3)){
+                ^
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+                 from Generated_Source\PSoC4/CyLib.h:25,
+                 from Generated_Source\PSoC4/UART.h:24,
+                 from Generated_Source\PSoC4/project.h:21,
+                 from main.c:12:
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
+ int  _EXFUN(strncmp,(const char *, const char *, size_t));
+      ^
+main.c:426:52: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
+     if(strncmp(feedTimes[6].AM, "AM",3) || strncmp(feedTimes[6].AM, "PM",3)){
+                                                    ^
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+                 from Generated_Source\PSoC4/CyLib.h:25,
+                 from Generated_Source\PSoC4/UART.h:24,
+                 from Generated_Source\PSoC4/project.h:21,
+                 from main.c:12:
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
+ int  _EXFUN(strncmp,(const char *, const char *, size_t));
+      ^
+main.c:429:20: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
+         if(strncmp(feedTimes[6].AM, "AM",3)){
+                    ^
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+                 from Generated_Source\PSoC4/CyLib.h:25,
+                 from Generated_Source\PSoC4/UART.h:24,
+                 from Generated_Source\PSoC4/project.h:21,
+                 from main.c:12:
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
+ int  _EXFUN(strncmp,(const char *, const char *, size_t));
+      ^
+main.c:448:16: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
+     if(strncmp(feedTimes[7].AM, "AM",3) || strncmp(feedTimes[7].AM, "PM",3)){
+                ^
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+                 from Generated_Source\PSoC4/CyLib.h:25,
+                 from Generated_Source\PSoC4/UART.h:24,
+                 from Generated_Source\PSoC4/project.h:21,
+                 from main.c:12:
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
+ int  _EXFUN(strncmp,(const char *, const char *, size_t));
+      ^
+main.c:448:52: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
+     if(strncmp(feedTimes[7].AM, "AM",3) || strncmp(feedTimes[7].AM, "PM",3)){
+                                                    ^
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+                 from Generated_Source\PSoC4/CyLib.h:25,
+                 from Generated_Source\PSoC4/UART.h:24,
+                 from Generated_Source\PSoC4/project.h:21,
+                 from main.c:12:
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
+ int  _EXFUN(strncmp,(const char *, const char *, size_t));
+      ^
+main.c:451:20: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
+         if(strncmp(feedTimes[7].AM, "AM",3)){
+                    ^
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+                 from Generated_Source\PSoC4/CyLib.h:25,
+                 from Generated_Source\PSoC4/UART.h:24,
+                 from Generated_Source\PSoC4/project.h:21,
+                 from main.c:12:
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
+ int  _EXFUN(strncmp,(const char *, const char *, size_t));
+      ^
+main.c:470:16: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
+     if(strncmp(feedTimes[8].AM, "AM",3) || strncmp(feedTimes[8].AM, "PM",3)){
+                ^
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+                 from Generated_Source\PSoC4/CyLib.h:25,
+                 from Generated_Source\PSoC4/UART.h:24,
+                 from Generated_Source\PSoC4/project.h:21,
+                 from main.c:12:
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
+ int  _EXFUN(strncmp,(const char *, const char *, size_t));
+      ^
+main.c:470:52: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
+     if(strncmp(feedTimes[8].AM, "AM",3) || strncmp(feedTimes[8].AM, "PM",3)){
+                                                    ^
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+                 from Generated_Source\PSoC4/CyLib.h:25,
+                 from Generated_Source\PSoC4/UART.h:24,
+                 from Generated_Source\PSoC4/project.h:21,
+                 from main.c:12:
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
+ int  _EXFUN(strncmp,(const char *, const char *, size_t));
+      ^
+main.c:473:20: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
+         if(strncmp(feedTimes[8].AM, "AM",3)){
+                    ^
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+                 from Generated_Source\PSoC4/CyLib.h:25,
+                 from Generated_Source\PSoC4/UART.h:24,
+                 from Generated_Source\PSoC4/project.h:21,
+                 from main.c:12:
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
+ int  _EXFUN(strncmp,(const char *, const char *, size_t));
+      ^
+main.c:492:16: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
+     if(strncmp(feedTimes[9].AM, "AM",3) || strncmp(feedTimes[9].AM, "PM",3)){
+                ^
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+                 from Generated_Source\PSoC4/CyLib.h:25,
+                 from Generated_Source\PSoC4/UART.h:24,
+                 from Generated_Source\PSoC4/project.h:21,
+                 from main.c:12:
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
+ int  _EXFUN(strncmp,(const char *, const char *, size_t));
+      ^
+main.c:492:52: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
+     if(strncmp(feedTimes[9].AM, "AM",3) || strncmp(feedTimes[9].AM, "PM",3)){
+                                                    ^
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+                 from Generated_Source\PSoC4/CyLib.h:25,
+                 from Generated_Source\PSoC4/UART.h:24,
+                 from Generated_Source\PSoC4/project.h:21,
+                 from main.c:12:
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
+ int  _EXFUN(strncmp,(const char *, const char *, size_t));
+      ^
+main.c:495:20: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
+         if(strncmp(feedTimes[9].AM, "AM",3)){
+                    ^
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+                 from Generated_Source\PSoC4/CyLib.h:25,
+                 from Generated_Source\PSoC4/UART.h:24,
+                 from Generated_Source\PSoC4/project.h:21,
+                 from main.c:12:
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
+ int  _EXFUN(strncmp,(const char *, const char *, size_t));
+      ^
 main.c: In function 'exitLCD':
-main.c:326:46: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+main.c:612:46: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
      struct Date nextDate = {bcdToDec(day[0]),months[bcdToDec(month[0])-1],bcdToDec(year[0])};
                                               ^
 main.c: In function 'setGlobalTime':
-main.c:379:46: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+main.c:665:46: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
      struct Date currDate = {bcdToDec(day[0]),months[bcdToDec(month[0])-1],bcdToDec(year[0])};
                                               ^
-main.c:405:23: warning: passing argument 1 of 'LCD_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+main.c:691:23: warning: passing argument 1 of 'LCD_print' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
              LCD_print(months[currentIndex-1]);
                        ^
 In file included from main.c:14:0:
 LiquidCrystal_I2C.h:139:6: note: expected 'char *' but argument is of type 'const char *'
  void LCD_print(char word[]);
       ^
-main.c:409:19: warning: assignment discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+main.c:695:19: warning: assignment discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
      setDate.month = months[currentIndex-1];
                    ^
-main.c:481:84: warning: pointer targets in initialization differ in signedness [-Wpointer-sign]
+main.c:767:84: warning: pointer targets in initialization differ in signedness [-Wpointer-sign]
              volatile struct Time currTime = {bcdToDec(hour[0])-12,bcdToDec(min[0]),"PM"};
                                                                                     ^
-main.c:481:84: note: (near initialization for 'currTime.AM')
-main.c:485:81: warning: pointer targets in initialization differ in signedness [-Wpointer-sign]
+main.c:767:84: note: (near initialization for 'currTime.AM')
+main.c:771:81: warning: pointer targets in initialization differ in signedness [-Wpointer-sign]
              volatile struct Time currTime = {bcdToDec(hour[0]),bcdToDec(min[0]),"AM"};
                                                                                  ^
-main.c:485:81: note: (near initialization for 'currTime.AM')
-main.c:372:17: warning: unused variable 'nextTime' [-Wunused-variable]
+main.c:771:81: note: (near initialization for 'currTime.AM')
+main.c:658:17: warning: unused variable 'nextTime' [-Wunused-variable]
      struct Time nextTime = feedTimes[feedCounter];
                  ^
 main.c: In function 'setFeedTimes':
-main.c:668:88: warning: pointer targets in initialization differ in signedness [-Wpointer-sign]
+main.c:954:88: warning: pointer targets in initialization differ in signedness [-Wpointer-sign]
                  volatile struct Time currTime = {bcdToDec(hour[0])-12,bcdToDec(min[0]),"PM"};
                                                                                         ^
-main.c:668:88: note: (near initialization for 'currTime.AM')
-main.c:672:85: warning: pointer targets in initialization differ in signedness [-Wpointer-sign]
+main.c:954:88: note: (near initialization for 'currTime.AM')
+main.c:958:85: warning: pointer targets in initialization differ in signedness [-Wpointer-sign]
                  volatile struct Time currTime = {bcdToDec(hour[0]),bcdToDec(min[0]),"AM"};
                                                                                      ^
-main.c:672:85: note: (near initialization for 'currTime.AM')
-main.c:764:24: warning: pointer targets in assignment differ in signedness [-Wpointer-sign]
+main.c:958:85: note: (near initialization for 'currTime.AM')
+main.c:1050:24: warning: pointer targets in assignment differ in signedness [-Wpointer-sign]
              setTime.AM = "PM";
                         ^
-main.c:767:24: warning: pointer targets in assignment differ in signedness [-Wpointer-sign]
+main.c:1053:24: warning: pointer targets in assignment differ in signedness [-Wpointer-sign]
              setTime.AM = "AM";
                         ^
 main.c: In function 'main':
-main.c:961:32: warning: pointer targets in initialization differ in signedness [-Wpointer-sign]
+main.c:1248:32: warning: pointer targets in initialization differ in signedness [-Wpointer-sign]
      struct Time time = {12,45, "AM"};
                                 ^
-main.c:961:32: note: (near initialization for 'time.AM')
-main.c:963:35: warning: pointer targets in initialization differ in signedness [-Wpointer-sign]
+main.c:1248:32: note: (near initialization for 'time.AM')
+main.c:1250:35: warning: pointer targets in initialization differ in signedness [-Wpointer-sign]
      struct Time nextTime = {6,00, "PM"};
                                    ^
-main.c:963:35: note: (near initialization for 'nextTime.AM')
-main.c:992:84: warning: pointer targets in initialization differ in signedness [-Wpointer-sign]
+main.c:1250:35: note: (near initialization for 'nextTime.AM')
+main.c:1279:84: warning: pointer targets in initialization differ in signedness [-Wpointer-sign]
              volatile struct Time currTime = {bcdToDec(hour[0])-12,bcdToDec(min[0]),"PM"};
                                                                                     ^
-main.c:992:84: note: (near initialization for 'currTime.AM')
-main.c:996:81: warning: pointer targets in initialization differ in signedness [-Wpointer-sign]
+main.c:1279:84: note: (near initialization for 'currTime.AM')
+main.c:1283:81: warning: pointer targets in initialization differ in signedness [-Wpointer-sign]
              volatile struct Time currTime = {bcdToDec(hour[0]),bcdToDec(min[0]),"AM"};
                                                                                  ^
-main.c:996:81: note: (near initialization for 'currTime.AM')
-main.c:1000:52: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+main.c:1283:81: note: (near initialization for 'currTime.AM')
+main.c:1287:52: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
          struct Date updateDate = {bcdToDec(day[0]),months[bcdToDec(month[0])-1],bcdToDec(year[0])};
                                                     ^
-main.c:1003:44: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
+main.c:1290:44: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
              if(feedCounter == 2 || strncmp(feedTimes[feedCounter+1].AM,"AM",2) != 0 || strncmp(feedTimes[feedCounter+1].AM,"AM",2) != 0){
                                             ^
-In file included from c:\program files (x86)\cypress\psoc creator\4.4\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
                  from Generated_Source\PSoC4/CyLib.h:25,
                  from Generated_Source\PSoC4/UART.h:24,
                  from Generated_Source\PSoC4/project.h:21,
                  from main.c:12:
-c:\program files (x86)\cypress\psoc creator\4.4\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
  int  _EXFUN(strncmp,(const char *, const char *, size_t));
       ^
-main.c:1003:96: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
+main.c:1290:96: warning: pointer targets in passing argument 1 of 'strncmp' differ in signedness [-Wpointer-sign]
              if(feedCounter == 2 || strncmp(feedTimes[feedCounter+1].AM,"AM",2) != 0 || strncmp(feedTimes[feedCounter+1].AM,"AM",2) != 0){
                                                                                                 ^
-In file included from c:\program files (x86)\cypress\psoc creator\4.4\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
+In file included from c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:10:0,
                  from Generated_Source\PSoC4/CyLib.h:25,
                  from Generated_Source\PSoC4/UART.h:24,
                  from Generated_Source\PSoC4/project.h:21,
                  from main.c:12:
-c:\program files (x86)\cypress\psoc creator\4.4\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
+c:\program files (x86)\cypress\psoc creator\4.2\psoc creator\import\gnu\arm\5.4.1\arm-none-eabi\include\string.h:35:6: note: expected 'const char *' but argument is of type 'uint8 * {aka unsigned char *}'
  int  _EXFUN(strncmp,(const char *, const char *, size_t));
       ^
+arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_541\Debug/main.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c main.c -o .\CortexM0\ARM_GCC_541\Debug\main.o
 arm-none-eabi-ar.exe -rs .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a .\CortexM0\ARM_GCC_541\Debug\UART.o .\CortexM0\ARM_GCC_541\Debug\UART_SPI_UART.o .\CortexM0\ARM_GCC_541\Debug\UART_SPI_UART_INT.o .\CortexM0\ARM_GCC_541\Debug\UART_PM.o .\CortexM0\ARM_GCC_541\Debug\UART_UART.o .\CortexM0\ARM_GCC_541\Debug\UART_BOOT.o .\CortexM0\ARM_GCC_541\Debug\UART_UART_BOOT.o .\CortexM0\ARM_GCC_541\Debug\BTN.o .\CortexM0\ARM_GCC_541\Debug\BTN_PM.o .\CortexM0\ARM_GCC_541\Debug\ENC.o .\CortexM0\ARM_GCC_541\Debug\ENC_PM.o .\CortexM0\ARM_GCC_541\Debug\LED_PWM.o .\CortexM0\ARM_GCC_541\Debug\LED_PWM_PM.o .\CortexM0\ARM_GCC_541\Debug\SPEAKER_PWM.o .\CortexM0\ARM_GCC_541\Debug\SPEAKER_PWM_PM.o .\CortexM0\ARM_GCC_541\Debug\SPEAKER.o .\CortexM0\ARM_GCC_541\Debug\SPEAKER_PM.o .\CortexM0\ARM_GCC_541\Debug\LED_SEL.o .\CortexM0\ARM_GCC_541\Debug\LED_SEL_PM.o .\CortexM0\ARM_GCC_541\Debug\PWM_CLK.o .\CortexM0\ARM_GCC_541\Debug\R_LED.o .\CortexM0\ARM_GCC_541\Debug\R_LED_PM.o .\CortexM0\ARM_GCC_541\Debug\G_LED.o .\CortexM0\ARM_GCC_541\Debug\G_LED_PM.o .\CortexM0\ARM_GCC_541\Debug\B_LED.o .\CortexM0\ARM_GCC_541\Debug\B_LED_PM.o .\CortexM0\ARM_GCC_541\Debug\Y_LED.o .\CortexM0\ARM_GCC_541\Debug\Y_LED_PM.o .\CortexM0\ARM_GCC_541\Debug\Motor.o .\CortexM0\ARM_GCC_541\Debug\Motor_PM.o .\CortexM0\ARM_GCC_541\Debug\PhsBNeg.o .\CortexM0\ARM_GCC_541\Debug\PhsBNeg_PM.o .\CortexM0\ARM_GCC_541\Debug\PhsBPos.o .\CortexM0\ARM_GCC_541\Debug\PhsBPos_PM.o .\CortexM0\ARM_GCC_541\Debug\PhsANeg.o .\CortexM0\ARM_GCC_541\Debug\PhsANeg_PM.o .\CortexM0\ARM_GCC_541\Debug\PhsAPos.o .\CortexM0\ARM_GCC_541\Debug\PhsAPos_PM.o .\CortexM0\ARM_GCC_541\Debug\BTN_ISR.o .\CortexM0\ARM_GCC_541\Debug\ENC_ISR.o .\CortexM0\ARM_GCC_541\Debug\RTC_INT.o .\CortexM0\ARM_GCC_541\Debug\RTC_INT_PM.o .\CortexM0\ARM_GCC_541\Debug\RTC_INT_ISR.o .\CortexM0\ARM_GCC_541\Debug\RTC_COT_IN.o .\CortexM0\ARM_GCC_541\Debug\RTC_COT_IN_PM.o .\CortexM0\ARM_GCC_541\Debug\UART_SCBCLK.o .\CortexM0\ARM_GCC_541\Debug\UART_tx.o .\CortexM0\ARM_GCC_541\Debug\UART_tx_PM.o .\CortexM0\ARM_GCC_541\Debug\UART_rx.o .\CortexM0\ARM_GCC_541\Debug\UART_rx_PM.o .\CortexM0\ARM_GCC_541\Debug\CyFlash.o .\CortexM0\ARM_GCC_541\Debug\CyLib.o .\CortexM0\ARM_GCC_541\Debug\cyPm.o .\CortexM0\ARM_GCC_541\Debug\cyutils.o .\CortexM0\ARM_GCC_541\Debug\CyDMA.o .\CortexM0\ARM_GCC_541\Debug\CyLFClk.o .\CortexM0\ARM_GCC_541\Debug\cy_em_eeprom.o .\CortexM0\ARM_GCC_541\Debug\I2C.o .\CortexM0\ARM_GCC_541\Debug\I2C_I2C_INT.o .\CortexM0\ARM_GCC_541\Debug\I2C_I2C.o .\CortexM0\ARM_GCC_541\Debug\I2C_I2C_BOOT.o .\CortexM0\ARM_GCC_541\Debug\I2C_I2C_MASTER.o .\CortexM0\ARM_GCC_541\Debug\I2C_PM.o .\CortexM0\ARM_GCC_541\Debug\I2C_BOOT.o .\CortexM0\ARM_GCC_541\Debug\I2C_SCBCLK.o .\CortexM0\ARM_GCC_541\Debug\I2C_sda.o .\CortexM0\ARM_GCC_541\Debug\I2C_sda_PM.o .\CortexM0\ARM_GCC_541\Debug\I2C_scl.o .\CortexM0\ARM_GCC_541\Debug\I2C_scl_PM.o .\CortexM0\ARM_GCC_541\Debug\I2C_SCB_IRQ.o .\CortexM0\ARM_GCC_541\Debug\CyBootAsmGnu.o
 arm-none-eabi-ar.exe: creating .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a
-arm-none-eabi-gcc.exe -Wl,--start-group -o "C:\Users\hElLo KiTtY 2.1\Desktop\Final Project\Project Files\Final Project\AutomaticPetFeeder.cydsn\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.elf" .\CortexM0\ARM_GCC_541\Debug\main.o .\CortexM0\ARM_GCC_541\Debug\LiquidCrystal_i2C.o .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o .\CortexM0\ARM_GCC_541\Debug\cymetadata.o .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a -mcpu=cortex-m0 -mthumb -L Generated_Source\PSoC4 -Wl,-Map,.\CortexM0\ARM_GCC_541\Debug/AutomaticPetFeeder.map -T Generated_Source\PSoC4\cm0gcc.ld -specs=nano.specs -Wl,--gc-sections -g -ffunction-sections -Og -ffat-lto-objects -Wl,--end-group
-cyelftool.exe -C "C:\Users\hElLo KiTtY 2.1\Desktop\Final Project\Project Files\Final Project\AutomaticPetFeeder.cydsn\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.elf" --flash_row_size 128 --flash_size 131072 --flash_offset 0x00000000
+arm-none-eabi-gcc.exe -Wl,--start-group -o "C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Final Project\Project Files\Final Project\AutomaticPetFeeder.cydsn\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.elf" .\CortexM0\ARM_GCC_541\Debug\main.o .\CortexM0\ARM_GCC_541\Debug\LiquidCrystal_i2C.o .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o .\CortexM0\ARM_GCC_541\Debug\cymetadata.o .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a -mcpu=cortex-m0 -mthumb -L Generated_Source\PSoC4 -Wl,-Map,.\CortexM0\ARM_GCC_541\Debug/AutomaticPetFeeder.map -T Generated_Source\PSoC4\cm0gcc.ld -specs=nano.specs -Wl,--gc-sections -g -ffunction-sections -Og -ffat-lto-objects -Wl,--end-group
+cyelftool.exe -C "C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Final Project\Project Files\Final Project\AutomaticPetFeeder.cydsn\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.elf" --flash_row_size 128 --flash_size 131072 --flash_offset 0x00000000
 No ELF section .cychecksum found, creating one
 Application checksum calculated and stored in ELF section .cychecksum
 Checksum calculated and stored in ELF section .cymeta
-cyelftool.exe -S "C:\Users\hElLo KiTtY 2.1\Desktop\Final Project\Project Files\Final Project\AutomaticPetFeeder.cydsn\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.elf"
-Flash used: 14782 of 131072 bytes (11.3%).
+cyelftool.exe -S "C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Final Project\Project Files\Final Project\AutomaticPetFeeder.cydsn\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.elf"
+Flash used: 17006 of 131072 bytes (13.0%).
 SRAM used: 2832 of 16384 bytes (17.3%). Stack: 2048 bytes. Heap: 128 bytes.
---------------- Build Succeeded: 04/22/2023 13:26:25 ---------------
+--------------- Build Succeeded: 04/25/2023 16:09:54 ---------------

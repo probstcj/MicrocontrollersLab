@@ -1,6 +1,6 @@
 -- Project:   AutomaticPetFeeder
--- Generated: 04/22/2023 11:30:36
--- PSoC Creator  4.4
+-- Generated: 04/25/2023 15:41:18
+-- PSoC Creator  4.2
 
 ENTITY AutomaticPetFeeder IS
     PORT(
