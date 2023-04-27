@@ -59,7 +59,8 @@ int MVCW(struct MTR motor){
 struct Time{
     uint8 hour;
     uint8 minute;
-    uint8* AM;
+    //uint8* AM;
+    char AM[3];
 };
 
 struct Date{
@@ -121,9 +122,7 @@ const char* months[12] = {
 };
 
 struct Time feedTimes[10] = {
-    {4,25,"PM"},
-    {4,26,"PM"},
-    {5,5,"PM"}
+    {6,0,"AM"}
 };
 struct FRAM{
     uint32 feedCounter;
@@ -222,7 +221,7 @@ char* commands[6] = {
 
 const uint32 LCDAddr = 0x27;
 const uint32 RTCAddr = 0x51;
-const uint32 ramAddr = 0x52;
+const uint32 ramAddr = 0x53;
 
 uint8 feedCounter = 0;
 uint8 speakerToggle = 1;
@@ -273,23 +272,26 @@ void writeToRam(uint8* writeBuf, int writeBytes, uint32 devAddr, uint32 memAddr1
 void saveToFRAM(){
     uint8 wrBuf[3];
     wrBuf[2] = feedCounter;
-    writeToRam(wrBuf, 2, ramAddr,0x00,ram.feedCounter);
+    writeToRam(wrBuf, 2, ramAddr,0x12,ram.feedCounter);
     wrBuf[2] = speakerToggle;
-    writeToRam(wrBuf, 2, ramAddr,0x00,ram.speakerToggle);
+    writeToRam(wrBuf, 2, ramAddr,0x12,ram.speakerToggle);
+    
+    uint8 rdBuf[1];
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.speakerToggle);
     wrBuf[2] = LEDToggle;
-    writeToRam(wrBuf, 2, ramAddr,0x00,ram.LEDToggle);
+    writeToRam(wrBuf, 2, ramAddr,0x12,ram.LEDToggle);
     wrBuf[2] = timesToFeed;
-    writeToRam(wrBuf, 2, ramAddr,0x00,ram.timesToFeed);
+    writeToRam(wrBuf, 2, ramAddr,0x12,ram.timesToFeed);
     uint8 convert[4];
     *(uint32 *)convert = feedSteps;
     wrBuf[2] = convert[0];
-    writeToRam(wrBuf,2,ramAddr,0x00,ram.feedStepsP1);
+    writeToRam(wrBuf,2,ramAddr,0x12,ram.feedStepsP1);
     wrBuf[2] = convert[1];
-    writeToRam(wrBuf,2,ramAddr,0x00,ram.feedStepsP2);
+    writeToRam(wrBuf,2,ramAddr,0x12,ram.feedStepsP2);
     wrBuf[2] = convert[2];
-    writeToRam(wrBuf,2,ramAddr,0x00,ram.feedStepsP3);
+    writeToRam(wrBuf,2,ramAddr,0x12,ram.feedStepsP3);
     wrBuf[2] = convert[3];
-    writeToRam(wrBuf,2,ramAddr,0x00,ram.feedStepsP4);
+    writeToRam(wrBuf,2,ramAddr,0x12,ram.feedStepsP4);
     uint8 convertTimes[3];
     if(strncmp(feedTimes[0].AM, "AM",3) || strncmp(feedTimes[0].AM, "PM",3)){
         convertTimes[0] = feedTimes[0].hour;
@@ -301,17 +303,17 @@ void saveToFRAM(){
             convertTimes[2] = 1;
         }
         wrBuf[2] = convertTimes[0];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime1P1);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime1P1);
         wrBuf[2] = convertTimes[1];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime1P2);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime1P2);
         wrBuf[2] = convertTimes[2];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime1P3);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime1P3);
     }
     else{
         wrBuf[2] = 0xFF;
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime1P1);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime1P2);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime1P3);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime1P1);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime1P2);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime1P3);
     }
     if(strncmp(feedTimes[1].AM, "AM",3) || strncmp(feedTimes[1].AM, "PM",3)){
         convertTimes[0] = feedTimes[1].hour;
@@ -323,17 +325,17 @@ void saveToFRAM(){
             convertTimes[2] = 1;
         }
         wrBuf[2] = convertTimes[0];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime2P1);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime2P1);
         wrBuf[2] = convertTimes[1];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime2P2);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime2P2);
         wrBuf[2] = convertTimes[2];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime2P3);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime2P3);
     }
     else{
         wrBuf[2] = 0xFF;
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime2P1);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime2P2);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime2P3);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime2P1);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime2P2);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime2P3);
     }
     if(strncmp(feedTimes[2].AM, "AM",3) || strncmp(feedTimes[2].AM, "PM",3)){
         convertTimes[0] = feedTimes[2].hour;
@@ -345,17 +347,17 @@ void saveToFRAM(){
             convertTimes[2] = 1;
         }
         wrBuf[2] = convertTimes[0];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime3P1);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime3P1);
         wrBuf[2] = convertTimes[1];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime3P2);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime3P2);
         wrBuf[2] = convertTimes[2];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime3P3);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime3P3);
     }
     else{
         wrBuf[2] = 0xFF;
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime3P1);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime3P2);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime3P3);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime3P1);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime3P2);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime3P3);
     }
     if(strncmp(feedTimes[3].AM, "AM",3) || strncmp(feedTimes[3].AM, "PM",3)){
         convertTimes[0] = feedTimes[3].hour;
@@ -367,17 +369,17 @@ void saveToFRAM(){
             convertTimes[2] = 1;
         }
         wrBuf[2] = convertTimes[0];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime4P1);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime4P1);
         wrBuf[2] = convertTimes[1];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime4P2);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime4P2);
         wrBuf[2] = convertTimes[2];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime4P3);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime4P3);
     }
     else{
         wrBuf[2] = 0xFF;
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime4P1);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime4P2);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime4P3);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime4P1);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime4P2);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime4P3);
     }
     if(strncmp(feedTimes[4].AM, "AM",3) || strncmp(feedTimes[4].AM, "PM",3)){
         convertTimes[0] = feedTimes[4].hour;
@@ -389,17 +391,17 @@ void saveToFRAM(){
             convertTimes[2] = 1;
         }
         wrBuf[2] = convertTimes[0];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime5P1);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime5P1);
         wrBuf[2] = convertTimes[1];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime5P2);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime5P2);
         wrBuf[2] = convertTimes[2];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime5P3);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime5P3);
     }
     else{
         wrBuf[2] = 0xFF;
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime5P1);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime5P2);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime5P3);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime5P1);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime5P2);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime5P3);
     }
     if(strncmp(feedTimes[5].AM, "AM",3) || strncmp(feedTimes[5].AM, "PM",3)){
         convertTimes[0] = feedTimes[5].hour;
@@ -411,17 +413,17 @@ void saveToFRAM(){
             convertTimes[2] = 1;
         }
         wrBuf[2] = convertTimes[0];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime6P1);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime6P1);
         wrBuf[2] = convertTimes[1];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime6P2);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime6P2);
         wrBuf[2] = convertTimes[2];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime6P3);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime6P3);
     }
     else{
         wrBuf[2] = 0xFF;
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime6P1);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime6P2);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime6P3);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime6P1);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime6P2);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime6P3);
     }
     if(strncmp(feedTimes[6].AM, "AM",3) || strncmp(feedTimes[6].AM, "PM",3)){
         convertTimes[0] = feedTimes[6].hour;
@@ -433,17 +435,17 @@ void saveToFRAM(){
             convertTimes[2] = 1;
         }
         wrBuf[2] = convertTimes[0];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime7P1);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime7P1);
         wrBuf[2] = convertTimes[1];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime7P2);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime7P2);
         wrBuf[2] = convertTimes[2];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime7P3);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime7P3);
     }
     else{
         wrBuf[2] = 0xFF;
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime7P1);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime7P2);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime7P3);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime7P1);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime7P2);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime7P3);
     }
     if(strncmp(feedTimes[7].AM, "AM",3) || strncmp(feedTimes[7].AM, "PM",3)){
         convertTimes[0] = feedTimes[7].hour;
@@ -455,17 +457,17 @@ void saveToFRAM(){
             convertTimes[2] = 1;
         }
         wrBuf[2] = convertTimes[0];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime8P1);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime8P1);
         wrBuf[2] = convertTimes[1];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime8P2);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime8P2);
         wrBuf[2] = convertTimes[2];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime8P3);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime8P3);
     }
     else{
         wrBuf[2] = 0xFF;
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime8P1);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime8P2);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime8P3);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime8P1);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime8P2);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime8P3);
     }
     if(strncmp(feedTimes[8].AM, "AM",3) || strncmp(feedTimes[8].AM, "PM",3)){
         convertTimes[0] = feedTimes[8].hour;
@@ -477,17 +479,17 @@ void saveToFRAM(){
             convertTimes[2] = 1;
         }
         wrBuf[2] = convertTimes[0];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime9P1);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime9P1);
         wrBuf[2] = convertTimes[1];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime9P2);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime9P2);
         wrBuf[2] = convertTimes[2];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime9P3);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime9P3);
     }
     else{
         wrBuf[2] = 0xFF;
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime9P1);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime9P2);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime9P3);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime9P1);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime9P2);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime9P3);
     }
     if(strncmp(feedTimes[9].AM, "AM",3) || strncmp(feedTimes[9].AM, "PM",3)){
         convertTimes[0] = feedTimes[9].hour;
@@ -499,261 +501,240 @@ void saveToFRAM(){
             convertTimes[2] = 1;
         }
         wrBuf[2] = convertTimes[0];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime10P1);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime10P1);
         wrBuf[2] = convertTimes[1];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime10P2);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime10P2);
         wrBuf[2] = convertTimes[2];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime10P3);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime10P3);
     }
     else{
         wrBuf[2] = 0xFF;
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime10P1);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime10P2);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime10P3);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime10P1);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime10P2);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime10P3);
     }
 }
 
 void recoverFRAM(){
     uint8 rdBuf[1];
-    readFromRam(rdBuf, 1, ramAddr,0x00,ram.feedCounter);
+    readFromRam(rdBuf, 1, ramAddr,0x12,ram.feedCounter);
     feedCounter = rdBuf[0];
-    readFromRam(rdBuf, 1, ramAddr,0x00,ram.speakerToggle);
+    readFromRam(rdBuf, 1, ramAddr,0x12,ram.speakerToggle);
     speakerToggle = rdBuf[0];
-    readFromRam(rdBuf, 1, ramAddr,0x00,ram.LEDToggle);
+    readFromRam(rdBuf, 1, ramAddr,0x12,ram.LEDToggle);
     LEDToggle = rdBuf[0];
-    readFromRam(rdBuf, 1, ramAddr,0x00,ram.timesToFeed);
+    readFromRam(rdBuf, 1, ramAddr,0x12,ram.timesToFeed);
     timesToFeed = rdBuf[0];
     uint8 convert[4];
-    readFromRam(rdBuf,1,ramAddr,0x00,ram.feedStepsP1);
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedStepsP1);
     convert[0] = rdBuf[0];
-    readFromRam(rdBuf,1,ramAddr,0x00,ram.feedStepsP2);
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedStepsP2);
     convert[1] = rdBuf[0];
-    readFromRam(rdBuf,1,ramAddr,0x00,ram.feedStepsP3);
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedStepsP3);
     convert[2] = rdBuf[0];
-    readFromRam(rdBuf,1,ramAddr,0x00,ram.feedStepsP4);
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedStepsP4);
     convert[3] = rdBuf[0];
     feedSteps = *((uint32*)convert);
-    uint8 convertTimes[3];
-    readFromRam(rdBuf,1,ramAddr,0x00,ram.feedTime1P1);
+    volatile uint8 convertTimes[3];
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedTime1P1);
     convertTimes[0] = rdBuf[0];
-    readFromRam(rdBuf,1,ramAddr,0x00,ram.feedTime1P2);
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedTime1P2);
     convertTimes[1] = rdBuf[0];
-    readFromRam(rdBuf,1,ramAddr,0x00,ram.feedTime1P3);
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedTime1P3);
     convertTimes[2] = rdBuf[0];
     
     if(convertTimes[2] != 0xFF){
         feedTimes[0].hour = convertTimes[0];
         feedTimes[0].minute = convertTimes[1];
         if(convertTimes[2] == 0){
-            feedTimes[0].AM = "AM";
+            strcpy(feedTimes[0].AM, "AM");
         }
         else{
-           feedTimes[0].AM = "PM";
+           strcpy(feedTimes[0].AM, "PM");
         }
     }
     else{
-        wrBuf[2] = 0xFF;
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime1P1);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime1P2);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime1P3);
+        return;
     }
-    if(strncmp(feedTimes[1].AM, "AM",3) || strncmp(feedTimes[1].AM, "PM",3)){
-        convertTimes[0] = feedTimes[1].hour;
-        convertTimes[1] = feedTimes[1].minute;
-        if(strncmp(feedTimes[1].AM, "AM",3)){
-            convertTimes[2] = 0;
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedTime2P1);
+    convertTimes[0] = rdBuf[0];
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedTime2P2);
+    convertTimes[1] = rdBuf[0];
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedTime2P3);
+    convertTimes[2] = rdBuf[0];
+    
+    if(convertTimes[2] != 0xFF){
+        feedTimes[1].hour = convertTimes[0];
+        feedTimes[1].minute = convertTimes[1];
+        if(convertTimes[2] == 0){
+            strcpy(feedTimes[1].AM, "AM");
         }
         else{
-            convertTimes[2] = 1;
+           strcpy(feedTimes[1].AM, "PM");
         }
-        wrBuf[2] = convertTimes[0];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime2P1);
-        wrBuf[2] = convertTimes[1];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime2P2);
-        wrBuf[2] = convertTimes[2];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime2P3);
     }
     else{
-        wrBuf[2] = 0xFF;
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime2P1);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime2P2);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime2P3);
+        return;
     }
-    if(strncmp(feedTimes[2].AM, "AM",3) || strncmp(feedTimes[2].AM, "PM",3)){
-        convertTimes[0] = feedTimes[2].hour;
-        convertTimes[1] = feedTimes[2].minute;
-        if(strncmp(feedTimes[2].AM, "AM",3)){
-            convertTimes[2] = 0;
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedTime3P1);
+    convertTimes[0] = rdBuf[0];
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedTime3P2);
+    convertTimes[1] = rdBuf[0];
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedTime3P3);
+    convertTimes[2] = rdBuf[0];
+    
+    if(convertTimes[2] != 0xFF){
+        feedTimes[2].hour = convertTimes[0];
+        feedTimes[2].minute = convertTimes[1];
+        if(convertTimes[2] == 0){
+            strcpy(feedTimes[2].AM, "AM");
         }
         else{
-            convertTimes[2] = 1;
+           strcpy(feedTimes[2].AM, "PM");
         }
-        wrBuf[2] = convertTimes[0];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime3P1);
-        wrBuf[2] = convertTimes[1];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime3P2);
-        wrBuf[2] = convertTimes[2];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime3P3);
     }
     else{
-        wrBuf[2] = 0xFF;
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime3P1);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime3P2);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime3P3);
+        return;
     }
-    if(strncmp(feedTimes[3].AM, "AM",3) || strncmp(feedTimes[3].AM, "PM",3)){
-        convertTimes[0] = feedTimes[3].hour;
-        convertTimes[1] = feedTimes[3].minute;
-        if(strncmp(feedTimes[3].AM, "AM",3)){
-            convertTimes[2] = 0;
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedTime4P1);
+    convertTimes[0] = rdBuf[0];
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedTime4P2);
+    convertTimes[1] = rdBuf[0];
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedTime4P3);
+    convertTimes[2] = rdBuf[0];
+    
+    if(convertTimes[2] != 0xFF){
+        feedTimes[3].hour = convertTimes[0];
+        feedTimes[3].minute = convertTimes[1];
+        if(convertTimes[2] == 0){
+            strcpy(feedTimes[3].AM, "AM");
         }
         else{
-            convertTimes[2] = 1;
+           strcpy(feedTimes[3].AM, "PM");
         }
-        wrBuf[2] = convertTimes[0];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime4P1);
-        wrBuf[2] = convertTimes[1];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime4P2);
-        wrBuf[2] = convertTimes[2];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime4P3);
     }
     else{
-        wrBuf[2] = 0xFF;
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime4P1);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime4P2);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime4P3);
+        return;
     }
-    if(strncmp(feedTimes[4].AM, "AM",3) || strncmp(feedTimes[4].AM, "PM",3)){
-        convertTimes[0] = feedTimes[4].hour;
-        convertTimes[1] = feedTimes[4].minute;
-        if(strncmp(feedTimes[4].AM, "AM",3)){
-            convertTimes[2] = 0;
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedTime5P1);
+    convertTimes[0] = rdBuf[0];
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedTime5P2);
+    convertTimes[1] = rdBuf[0];
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedTime5P3);
+    convertTimes[2] = rdBuf[0];
+    
+    if(convertTimes[2] != 0xFF){
+        feedTimes[4].hour = convertTimes[0];
+        feedTimes[4].minute = convertTimes[1];
+        if(convertTimes[2] == 0){
+            strcpy(feedTimes[4].AM, "AM");
         }
         else{
-            convertTimes[2] = 1;
+           strcpy(feedTimes[4].AM, "PM");
         }
-        wrBuf[2] = convertTimes[0];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime5P1);
-        wrBuf[2] = convertTimes[1];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime5P2);
-        wrBuf[2] = convertTimes[2];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime5P3);
     }
     else{
-        wrBuf[2] = 0xFF;
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime5P1);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime5P2);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime5P3);
+        return;
     }
-    if(strncmp(feedTimes[5].AM, "AM",3) || strncmp(feedTimes[5].AM, "PM",3)){
-        convertTimes[0] = feedTimes[5].hour;
-        convertTimes[1] = feedTimes[5].minute;
-        if(strncmp(feedTimes[5].AM, "AM",3)){
-            convertTimes[2] = 0;
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedTime6P1);
+    convertTimes[0] = rdBuf[0];
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedTime6P2);
+    convertTimes[1] = rdBuf[0];
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedTime6P3);
+    convertTimes[2] = rdBuf[0];
+    
+    if(convertTimes[2] != 0xFF){
+        feedTimes[5].hour = convertTimes[0];
+        feedTimes[5].minute = convertTimes[1];
+        if(convertTimes[2] == 0){
+            strcpy(feedTimes[5].AM, "AM");
         }
         else{
-            convertTimes[2] = 1;
+           strcpy(feedTimes[5].AM, "PM");
         }
-        wrBuf[2] = convertTimes[0];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime6P1);
-        wrBuf[2] = convertTimes[1];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime6P2);
-        wrBuf[2] = convertTimes[2];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime6P3);
     }
     else{
-        wrBuf[2] = 0xFF;
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime6P1);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime6P2);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime6P3);
+        return;
     }
-    if(strncmp(feedTimes[6].AM, "AM",3) || strncmp(feedTimes[6].AM, "PM",3)){
-        convertTimes[0] = feedTimes[6].hour;
-        convertTimes[1] = feedTimes[6].minute;
-        if(strncmp(feedTimes[6].AM, "AM",3)){
-            convertTimes[2] = 0;
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedTime7P1);
+    convertTimes[0] = rdBuf[0];
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedTime7P2);
+    convertTimes[1] = rdBuf[0];
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedTime7P3);
+    convertTimes[2] = rdBuf[0];
+    
+    if(convertTimes[2] != 0xFF){
+        feedTimes[6].hour = convertTimes[0];
+        feedTimes[6].minute = convertTimes[1];
+        if(convertTimes[2] == 0){
+            strcpy(feedTimes[6].AM, "AM");
         }
         else{
-            convertTimes[2] = 1;
+           strcpy(feedTimes[6].AM, "PM");
         }
-        wrBuf[2] = convertTimes[0];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime7P1);
-        wrBuf[2] = convertTimes[1];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime7P2);
-        wrBuf[2] = convertTimes[2];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime7P3);
     }
     else{
-        wrBuf[2] = 0xFF;
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime7P1);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime7P2);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime7P3);
+        return;
     }
-    if(strncmp(feedTimes[7].AM, "AM",3) || strncmp(feedTimes[7].AM, "PM",3)){
-        convertTimes[0] = feedTimes[7].hour;
-        convertTimes[1] = feedTimes[7].minute;
-        if(strncmp(feedTimes[7].AM, "AM",3)){
-            convertTimes[2] = 0;
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedTime8P1);
+    convertTimes[0] = rdBuf[0];
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedTime8P2);
+    convertTimes[1] = rdBuf[0];
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedTime8P3);
+    convertTimes[2] = rdBuf[0];
+    
+    if(convertTimes[2] != 0xFF){
+        feedTimes[7].hour = convertTimes[0];
+        feedTimes[7].minute = convertTimes[1];
+        if(convertTimes[2] == 0){
+            strcpy(feedTimes[7].AM, "AM");
         }
         else{
-            convertTimes[2] = 1;
+           strcpy(feedTimes[7].AM, "PM");
         }
-        wrBuf[2] = convertTimes[0];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime8P1);
-        wrBuf[2] = convertTimes[1];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime8P2);
-        wrBuf[2] = convertTimes[2];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime8P3);
     }
     else{
-        wrBuf[2] = 0xFF;
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime8P1);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime8P2);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime8P3);
+        return;
     }
-    if(strncmp(feedTimes[8].AM, "AM",3) || strncmp(feedTimes[8].AM, "PM",3)){
-        convertTimes[0] = feedTimes[8].hour;
-        convertTimes[1] = feedTimes[8].minute;
-        if(strncmp(feedTimes[8].AM, "AM",3)){
-            convertTimes[2] = 0;
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedTime9P1);
+    convertTimes[0] = rdBuf[0];
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedTime9P2);
+    convertTimes[1] = rdBuf[0];
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedTime9P3);
+    convertTimes[2] = rdBuf[0];
+    
+    if(convertTimes[2] != 0xFF){
+        feedTimes[8].hour = convertTimes[0];
+        feedTimes[8].minute = convertTimes[1];
+        if(convertTimes[2] == 0){
+            strcpy(feedTimes[8].AM, "AM");
         }
         else{
-            convertTimes[2] = 1;
+           strcpy(feedTimes[8].AM, "PM");
         }
-        wrBuf[2] = convertTimes[0];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime9P1);
-        wrBuf[2] = convertTimes[1];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime9P2);
-        wrBuf[2] = convertTimes[2];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime9P3);
     }
     else{
-        wrBuf[2] = 0xFF;
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime9P1);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime9P2);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime9P3);
+        return;
     }
-    if(strncmp(feedTimes[9].AM, "AM",3) || strncmp(feedTimes[9].AM, "PM",3)){
-        convertTimes[0] = feedTimes[9].hour;
-        convertTimes[1] = feedTimes[9].minute;
-        if(strncmp(feedTimes[9].AM, "AM",3)){
-            convertTimes[2] = 0;
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedTime10P1);
+    convertTimes[0] = rdBuf[0];
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedTime10P2);
+    convertTimes[1] = rdBuf[0];
+    readFromRam(rdBuf,1,ramAddr,0x12,ram.feedTime10P3);
+    convertTimes[2] = rdBuf[0];
+    
+    if(convertTimes[2] != 0xFF){
+        feedTimes[9].hour = convertTimes[0];
+        feedTimes[9].minute = convertTimes[1];
+        if(convertTimes[2] == 0){
+            strcpy(feedTimes[9].AM, "AM");
         }
         else{
-            convertTimes[2] = 1;
+           strcpy(feedTimes[9].AM, "PM");
         }
-        wrBuf[2] = convertTimes[0];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime10P1);
-        wrBuf[2] = convertTimes[1];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime10P2);
-        wrBuf[2] = convertTimes[2];
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime10P3);
     }
     else{
-        wrBuf[2] = 0xFF;
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime10P1);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime10P2);
-        writeToRam(wrBuf,2,ramAddr,0x00,ram.feedTime10P3);
+        return;
     }
 }
 
@@ -1288,10 +1269,10 @@ void setFeedTimes(){
         }
         buttonFlag = 0;
         if(currentIndex == 0){
-            setTime.AM = "PM";
+            strcpy(setTime.AM, "PM");
         }
         else if(currentIndex == 1){
-            setTime.AM = "AM";
+            strcpy(setTime.AM, "AM");
         }
         feedTimes[i] = setTime;
     }
@@ -1466,6 +1447,7 @@ void startSettings(){
             choice = 0;
             break;
     }
+    //saveToFRAM();
     return;
     // Feed times
     // Amount of food
@@ -1484,13 +1466,18 @@ int main(void)
     I2C_Start();
     LiquidCrystal_I2C_init(LCDAddr, 20,4,0);
     LCDBegin();
-    saveToFRAM();
+    //saveToFRAM();
+    //uint8 readBuf[1];
+    //readFromRam(readBuf,1,ramAddr,0x12,ram.feedCounter);
+    //recoverFRAM();
+    //saveToFRAM();
     //FEEEEED();
     struct Time time = {12,45, "AM"};
     struct Date date = {31, "Mar",23};
-    struct Time nextTime = {6,00, "PM"};
-    struct Date nextDate = {1, "Apr", 23};
+    struct Time nextTime = feedTimes[0];
+    struct Date nextDate = date;
     LCDInit(time, nextTime, date, nextDate);
+    //exitLCD();
     uint8 wrBuf[2];
     wrBuf[1] = 0b0000000;
     writeToAddr(wrBuf,2,RTCAddr,rtc.CtrlStat1);

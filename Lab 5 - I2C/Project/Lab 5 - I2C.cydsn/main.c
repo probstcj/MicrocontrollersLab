@@ -13,8 +13,8 @@
 
 // Create gloabl variables for device addresses and flags
 static const uint32 accelAddr = 0x0F;
-static const uint32 ramLowerAddr = 0x50;
-static const uint32 ramUpperAddr = 0x51;
+static const uint32 ramLowerAddr = 0x51;
+static const uint32 ramUpperAddr = 0x52;
 volatile int accelFlag = 0;
 volatile int buttonFlag = 0;
 
