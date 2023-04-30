@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 1
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFzrTUu.s 			page 1
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
    1              		.syntax unified
@@ -58,7 +62,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 1
   28:Generated_Source\PSoC4/UART_SPI_UART.c ****     volatile uint32 UART_rxBufferHead;
   29:Generated_Source\PSoC4/UART_SPI_UART.c ****     /* Start index to get data from the software receive buffer.*/
   30:Generated_Source\PSoC4/UART_SPI_UART.c ****     volatile uint32 UART_rxBufferTail;
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 2
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFzrTUu.s 			page 2
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
   31:Generated_Source\PSoC4/UART_SPI_UART.c ****     /**
@@ -118,7 +126,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 1
   28              		.loc 1 84 0
   29              		.cfi_startproc
   30              		@ args = 0, pretend = 0, frame = 0
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 3
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFzrTUu.s 			page 3
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
   31              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -178,7 +190,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 1
  132:Generated_Source\PSoC4/UART_SPI_UART.c **** 
  133:Generated_Source\PSoC4/UART_SPI_UART.c ****         return (rxData);
  134:Generated_Source\PSoC4/UART_SPI_UART.c ****     }
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 4
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFzrTUu.s 			page 4
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
   38              		.loc 1 134 0
@@ -238,7 +254,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 1
  166:Generated_Source\PSoC4/UART_SPI_UART.c ****             locHead = UART_rxBufferHead;
  167:Generated_Source\PSoC4/UART_SPI_UART.c **** 
  168:Generated_Source\PSoC4/UART_SPI_UART.c ****             if(locHead >= UART_rxBufferTail)
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 5
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFzrTUu.s 			page 5
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  169:Generated_Source\PSoC4/UART_SPI_UART.c ****             {
@@ -298,7 +318,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 1
  199:Generated_Source\PSoC4/UART_SPI_UART.c ****     *******************************************************************************/
  200:Generated_Source\PSoC4/UART_SPI_UART.c ****     void UART_SpiUartClearRxBuffer(void)
  201:Generated_Source\PSoC4/UART_SPI_UART.c ****     {
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 6
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFzrTUu.s 			page 6
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
   85              		.loc 1 201 0
@@ -358,7 +382,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 1
  109              		.cfi_endproc
  110              	.LFE3:
  111              		.size	UART_SpiUartClearRxBuffer, .-UART_SpiUartClearRxBuffer
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 7
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFzrTUu.s 			page 7
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  112              		.section	.text.UART_SpiUartWriteTxData,"ax",%progbits
@@ -418,7 +446,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 1
  271:Generated_Source\PSoC4/UART_SPI_UART.c ****             }
  272:Generated_Source\PSoC4/UART_SPI_UART.c ****             /* Put data into TX software buffer */
  273:Generated_Source\PSoC4/UART_SPI_UART.c ****             else
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 8
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFzrTUu.s 			page 8
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  274:Generated_Source\PSoC4/UART_SPI_UART.c ****             {
@@ -478,7 +510,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 1
  138              		@ sp needed
  139 0010 7047     		bx	lr
  140              	.L13:
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 9
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFzrTUu.s 			page 9
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  141 0012 C046     		.align	2
@@ -538,7 +574,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 1
  342:Generated_Source\PSoC4/UART_SPI_UART.c ****         uint32 i;
  343:Generated_Source\PSoC4/UART_SPI_UART.c **** 
  344:Generated_Source\PSoC4/UART_SPI_UART.c ****         for (i=0u; i < count; i++)
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 10
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFzrTUu.s 			page 10
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  170              		.loc 1 344 0
@@ -598,7 +638,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 1
  364:Generated_Source\PSoC4/UART_SPI_UART.c ****     *  Number of data elements ready to transmit.
  365:Generated_Source\PSoC4/UART_SPI_UART.c ****     *
  366:Generated_Source\PSoC4/UART_SPI_UART.c ****     * \globalvars
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 11
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFzrTUu.s 			page 11
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  367:Generated_Source\PSoC4/UART_SPI_UART.c ****     *  UART_txBufferHead - the start index to put data into the 
@@ -658,7 +702,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 1
  222              	.LFE6:
  223              		.size	UART_SpiUartGetTxBufferSize, .-UART_SpiUartGetTxBufferSize
  224              		.section	.text.UART_SpiUartClearTxBuffer,"ax",%progbits
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 12
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFzrTUu.s 			page 12
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  225              		.align	2
@@ -718,7 +766,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 1
  244 000c 1968     		ldr	r1, [r3]
  245 000e 034A     		ldr	r2, .L21+4
  246 0010 0A40     		ands	r2, r1
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 13
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFzrTUu.s 			page 13
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  247 0012 1A60     		str	r2, [r3]
@@ -778,7 +830,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 1
  277 0004 0022     		movs	r2, #0
  278 0006 1A60     		str	r2, [r3]
  461:Generated_Source\PSoC4/UART_SPI_UART.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 14
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFzrTUu.s 			page 14
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  462:Generated_Source\PSoC4/UART_SPI_UART.c ****     return (intSource);
@@ -838,7 +894,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 1
  309              		.loc 1 485 0
  310              		@ sp needed
  311 0008 7047     		bx	lr
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 15
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFzrTUu.s 			page 15
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  312              	.L28:
@@ -898,7 +958,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 1
  366 0058 07       		.byte	0x7
  367 0059 F8000000 		.4byte	.LASF7
  368 005d 03       		.uleb128 0x3
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 16
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFzrTUu.s 			page 16
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  369 005e 04       		.byte	0x4
@@ -958,7 +1022,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 1
  423 00d0 07       		.uleb128 0x7
  424 00d1 88000000 		.4byte	.LASF19
  425 00d5 01       		.byte	0x1
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 17
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFzrTUu.s 			page 17
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  426 00d6 55       		.byte	0x55
@@ -1018,7 +1086,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 1
  480 014e 9C       		.byte	0x9c
  481 014f 8B010000 		.4byte	0x18b
  482 0153 0C       		.uleb128 0xc
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 18
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFzrTUu.s 			page 18
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  483 0154 8F000000 		.4byte	.LASF24
@@ -1078,7 +1150,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 1
  537 01d6 01       		.byte	0x1
  538 01d7 C601     		.2byte	0x1c6
  539 01d9 77000000 		.4byte	0x77
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 19
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFzrTUu.s 			page 19
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  540 01dd 00000000 		.4byte	.LFB8
@@ -1138,7 +1214,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 1
  594 0015 00       		.byte	0
  595 0016 0B       		.uleb128 0xb
  596 0017 0B       		.uleb128 0xb
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 20
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFzrTUu.s 			page 20
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  597 0018 3E       		.uleb128 0x3e
@@ -1198,7 +1278,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 1
  651 004e 12       		.uleb128 0x12
  652 004f 06       		.uleb128 0x6
  653 0050 40       		.uleb128 0x40
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 21
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFzrTUu.s 			page 21
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  654 0051 18       		.uleb128 0x18
@@ -1258,7 +1342,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 1
  708 0088 40       		.uleb128 0x40
  709 0089 18       		.uleb128 0x18
  710 008a 9742     		.uleb128 0x2117
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 22
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFzrTUu.s 			page 22
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  711 008c 19       		.uleb128 0x19
@@ -1318,7 +1406,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 1
  765 00c3 02       		.uleb128 0x2
  766 00c4 17       		.uleb128 0x17
  767 00c5 00       		.byte	0
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 23
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFzrTUu.s 			page 23
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  768 00c6 00       		.byte	0
@@ -1378,7 +1470,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 1
  822 00fe 49       		.uleb128 0x49
  823 00ff 13       		.uleb128 0x13
  824 0100 11       		.uleb128 0x11
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 24
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFzrTUu.s 			page 24
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  825 0101 01       		.uleb128 0x1
@@ -1438,7 +1534,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 1
  879 0139 03       		.uleb128 0x3
  880 013a 0E       		.uleb128 0xe
  881 013b 3A       		.uleb128 0x3a
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 25
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFzrTUu.s 			page 25
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  882 013c 0B       		.uleb128 0xb
@@ -1498,7 +1598,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 1
  936 0055 51       		.byte	0x51
  937 0056 0A000000 		.4byte	.LVL6
  938 005a 16000000 		.4byte	.LVL10
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 26
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFzrTUu.s 			page 26
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  939 005e 0100     		.2byte	0x1
@@ -1558,7 +1662,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 1
  993 0004 0C000000 		.4byte	.LFE1
  994 0008 00000000 		.4byte	.LFB2
  995 000c 10000000 		.4byte	.LFE2
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 27
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFzrTUu.s 			page 27
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  996 0010 00000000 		.4byte	.LFB3
@@ -1618,7 +1726,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 1
  1030      5F537069 
  1030      55617274 
  1030      44697361 
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 28
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFzrTUu.s 			page 28
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  1030      626C6549 
@@ -1678,7 +1790,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 1
  1056      6720756E 
  1056      7369676E 
  1056      65642069 
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 29
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFzrTUu.s 			page 29
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  1057              	.LASF33:
@@ -1697,6 +1813,7 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 1
  1060      74696F6E 
  1060      2D736563 
  1060      74696F6E 
+<<<<<<< HEAD
  1061              	.LASF35:
  1062 019d 433A5C55 		.ascii	"C:\\Users\\hElLo KiTtY 2.1\\Desktop\\Final Project\\"
  1062      73657273 
@@ -1734,6 +1851,52 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccTql5r4.s 			page 1
  1074 024c 73686F72 		.ascii	"short int\000"
  1074      7420696E 
  1074      7400
+=======
+ 1061              	.LASF16:
+ 1062 019d 73697A65 		.ascii	"sizetype\000"
+ 1062      74797065 
+ 1062      00
+ 1063              	.LASF6:
+ 1064 01a6 6C6F6E67 		.ascii	"long long int\000"
+ 1064      206C6F6E 
+ 1064      6720696E 
+ 1064      7400
+ 1065              	.LASF21:
+ 1066 01b4 55415254 		.ascii	"UART_SpiUartWriteTxData\000"
+ 1066      5F537069 
+ 1066      55617274 
+ 1066      57726974 
+ 1066      65547844 
+ 1067              	.LASF26:
+ 1068 01cc 55415254 		.ascii	"UART_SpiUartGetTxBufferSize\000"
+ 1068      5F537069 
+ 1068      55617274 
+ 1068      47657454 
+ 1068      78427566 
+ 1069              	.LASF2:
+ 1070 01e8 73686F72 		.ascii	"short int\000"
+ 1070      7420696E 
+ 1070      7400
+ 1071              	.LASF35:
+ 1072 01f2 433A5C55 		.ascii	"C:\\Users\\Hello Kitty\\Desktop\\MicrocontrollersLa"
+ 1072      73657273 
+ 1072      5C48656C 
+ 1072      6C6F204B 
+ 1072      69747479 
+ 1073 0221 625C4669 		.ascii	"b\\Final Project\\Project Files\\Final Project\\Aut"
+ 1073      6E616C20 
+ 1073      50726F6A 
+ 1073      6563745C 
+ 1073      50726F6A 
+ 1074 0250 6F6D6174 		.ascii	"omaticPetFeeder.cydsn\000"
+ 1074      69635065 
+ 1074      74466565 
+ 1074      6465722E 
+ 1074      63796473 
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFzrTUu.s 			page 30
+
+
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
  1075              	.LASF34:
  1076 0256 47656E65 		.ascii	"Generated_Source\\PSoC4\\UART_SPI_UART.c\000"
  1076      72617465 

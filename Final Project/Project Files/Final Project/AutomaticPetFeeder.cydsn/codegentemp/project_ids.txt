@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\hElLo KiTtY 2.1\Desktop\Final Project\Project Files\Final Project\AutomaticPetFeeder.cydsn\AutomaticPetFeeder.cyprj|3bf9eef7-9344-4021-ad40-eb20bf1fd1dc
 C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|80ceddd6-a295-4e85-a993-1656a3cfcda0
 C:\Users\hElLo KiTtY 2.1\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|3deb718c-8d7a-4431-bc3a-137c9bbe515e
@@ -6,3 +7,12 @@ C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomp
 C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|a4972b6d-1b5f-4d45-b8ae-a6d755f1f102
 C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|c795068c-ce14-46f7-8637-53182bf7f233
 C:\Users\hElLo KiTtY 2.1\Desktop\CharLCD_I2C.cylib\CharLCD_I2C.cyprj|b99d78d2-8584-469d-9767-2b847f6c76e8
+=======
+C:\Users\Hello Kitty\Desktop\MicrocontrollersLab\Final Project\Project Files\Final Project\AutomaticPetFeeder.cydsn\AutomaticPetFeeder.cyprj|87956c9a-b496-4378-b105-7207cced02e6
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|69252ac7-512b-40bb-8bb7-ea2c527b8d83
+C:\Users\Hello Kitty\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|f724bc9c-eadd-4301-991e-8bd677203375
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|f6343f16-abf1-4754-a5d2-64df9243f0a3
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|1516a3c7-faf8-46cc-99da-b0f056633e6c
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|af27ea5e-93e5-4538-aca2-df082796cc24
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|b6aee99a-cafb-4c58-843f-21c10c4e07ac
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403

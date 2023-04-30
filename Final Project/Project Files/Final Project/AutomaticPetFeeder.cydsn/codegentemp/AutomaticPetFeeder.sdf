@@ -1,6 +1,10 @@
 (DELAYFILE
  (SDFVERSION "IEEE 1497 4.0")
+<<<<<<< HEAD
  (DATE "2023-04-29T18:58:43Z")
+=======
+ (DATE "2023-04-27T19:50:02Z")
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
  (DESIGN "AutomaticPetFeeder")
  (VENDOR "Cypress Semiconductor")
  (PROGRAM "PSoC Creator")

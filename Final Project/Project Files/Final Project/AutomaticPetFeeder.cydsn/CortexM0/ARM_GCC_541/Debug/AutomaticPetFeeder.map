@@ -117,7 +117,21 @@ Discarded input sections
  .ARM.extab     0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m/crt0.o
  .ARM.exidx     0x00000000        0x8 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m/crt0.o
  .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\main.o
+<<<<<<< HEAD
+=======
+ .text.readFromRam
+                0x00000000       0x44 .\CortexM0\ARM_GCC_541\Debug\main.o
+ .text.writeToRam
+                0x00000000       0x24 .\CortexM0\ARM_GCC_541\Debug\main.o
+ .text.saveToFRAM
+                0x00000000      0x81c .\CortexM0\ARM_GCC_541\Debug\main.o
+ .text.recoverFRAM
+                0x00000000      0x584 .\CortexM0\ARM_GCC_541\Debug\main.o
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
  .text.RTCInit  0x00000000       0x84 .\CortexM0\ARM_GCC_541\Debug\main.o
+ .text.updateNextFeed
+                0x00000000       0x6c .\CortexM0\ARM_GCC_541\Debug\main.o
+ .text.FEEEEED  0x00000000       0xb0 .\CortexM0\ARM_GCC_541\Debug\main.o
  .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\LiquidCrystal_i2C.o
  .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\LiquidCrystal_i2C.o
  .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\LiquidCrystal_i2C.o
@@ -172,6 +186,9 @@ Discarded input sections
                 0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(BTN.o)
  .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_PWM.o)
  .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_PWM.o)
+ .bss           0x00000000        0x1 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_PWM.o)
+ .text.LED_PWM_Stop
+                0x00000000       0x1c .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_PWM.o)
  .text.LED_PWM_SetMode
                 0x00000000       0x28 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_PWM.o)
  .text.LED_PWM_SetQDMode
@@ -190,10 +207,14 @@ Discarded input sections
                 0x00000000       0x2c .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_PWM.o)
  .text.LED_PWM_SetPWMInvert
                 0x00000000       0x28 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_PWM.o)
+ .text.LED_PWM_WriteCounter
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_PWM.o)
  .text.LED_PWM_ReadCounter
                 0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_PWM.o)
  .text.LED_PWM_SetCounterMode
                 0x00000000       0x28 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_PWM.o)
+ .text.LED_PWM_WritePeriod
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_PWM.o)
  .text.LED_PWM_ReadPeriod
                 0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_PWM.o)
  .text.LED_PWM_SetCompareSwap
@@ -204,6 +225,8 @@ Discarded input sections
                 0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_PWM.o)
  .text.LED_PWM_SetPeriodSwap
                 0x00000000       0x28 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_PWM.o)
+ .text.LED_PWM_WriteCompare
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_PWM.o)
  .text.LED_PWM_ReadCompare
                 0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_PWM.o)
  .text.LED_PWM_WriteCompareBuf
@@ -224,8 +247,18 @@ Discarded input sections
                 0x00000000       0x24 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_PWM.o)
  .text.LED_PWM_SetCountMode
                 0x00000000       0x24 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_PWM.o)
+ .text.LED_PWM_TriggerCommand
+                0x00000000       0x1c .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_PWM.o)
+ .text.LED_PWM_Enable
+                0x00000000       0x24 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_PWM.o)
  .text.LED_PWM_ReadStatus
                 0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_PWM.o)
+ .text.LED_PWM_SetInterruptMode
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_PWM.o)
+ .text.LED_PWM_Init
+                0x00000000       0x4c .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_PWM.o)
+ .text.LED_PWM_Start
+                0x00000000       0x20 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_PWM.o)
  .text.LED_PWM_GetInterruptSourceMasked
                 0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_PWM.o)
  .text.LED_PWM_GetInterruptSource
@@ -236,6 +269,9 @@ Discarded input sections
                 0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_PWM.o)
  .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(SPEAKER_PWM.o)
  .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(SPEAKER_PWM.o)
+ .bss           0x00000000        0x1 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(SPEAKER_PWM.o)
+ .text.SPEAKER_PWM_Stop
+                0x00000000       0x1c .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(SPEAKER_PWM.o)
  .text.SPEAKER_PWM_SetMode
                 0x00000000       0x28 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(SPEAKER_PWM.o)
  .text.SPEAKER_PWM_SetQDMode
@@ -254,10 +290,14 @@ Discarded input sections
                 0x00000000       0x2c .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(SPEAKER_PWM.o)
  .text.SPEAKER_PWM_SetPWMInvert
                 0x00000000       0x28 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(SPEAKER_PWM.o)
+ .text.SPEAKER_PWM_WriteCounter
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(SPEAKER_PWM.o)
  .text.SPEAKER_PWM_ReadCounter
                 0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(SPEAKER_PWM.o)
  .text.SPEAKER_PWM_SetCounterMode
                 0x00000000       0x28 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(SPEAKER_PWM.o)
+ .text.SPEAKER_PWM_WritePeriod
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(SPEAKER_PWM.o)
  .text.SPEAKER_PWM_ReadPeriod
                 0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(SPEAKER_PWM.o)
  .text.SPEAKER_PWM_SetCompareSwap
@@ -268,6 +308,8 @@ Discarded input sections
                 0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(SPEAKER_PWM.o)
  .text.SPEAKER_PWM_SetPeriodSwap
                 0x00000000       0x28 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(SPEAKER_PWM.o)
+ .text.SPEAKER_PWM_WriteCompare
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(SPEAKER_PWM.o)
  .text.SPEAKER_PWM_ReadCompare
                 0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(SPEAKER_PWM.o)
  .text.SPEAKER_PWM_WriteCompareBuf
@@ -288,8 +330,18 @@ Discarded input sections
                 0x00000000       0x24 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(SPEAKER_PWM.o)
  .text.SPEAKER_PWM_SetCountMode
                 0x00000000       0x24 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(SPEAKER_PWM.o)
+ .text.SPEAKER_PWM_TriggerCommand
+                0x00000000       0x1c .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(SPEAKER_PWM.o)
+ .text.SPEAKER_PWM_Enable
+                0x00000000       0x24 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(SPEAKER_PWM.o)
  .text.SPEAKER_PWM_ReadStatus
                 0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(SPEAKER_PWM.o)
+ .text.SPEAKER_PWM_SetInterruptMode
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(SPEAKER_PWM.o)
+ .text.SPEAKER_PWM_Init
+                0x00000000       0x4c .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(SPEAKER_PWM.o)
+ .text.SPEAKER_PWM_Start
+                0x00000000       0x20 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(SPEAKER_PWM.o)
  .text.SPEAKER_PWM_GetInterruptSourceMasked
                 0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(SPEAKER_PWM.o)
  .text.SPEAKER_PWM_GetInterruptSource
@@ -301,6 +353,8 @@ Discarded input sections
  .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_SEL.o)
  .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_SEL.o)
  .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_SEL.o)
+ .text.LED_SEL_Write
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_SEL.o)
  .text.LED_SEL_Read
                 0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_SEL.o)
  .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(Motor.o)
@@ -603,6 +657,7 @@ Discarded input sections
  .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-snprintf.o)
  .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-snprintf.o)
  .text._snprintf_r
+<<<<<<< HEAD
                 0x00000000       0x5e c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-snprintf.o)
  .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-strcpy.o)
  .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-strcpy.o)
@@ -615,6 +670,18 @@ Discarded input sections
  .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-svfprintf.o)
  .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-svfprintf.o)
  .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-svfprintf.o)
+=======
+                0x00000000       0x5e c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-snprintf.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-strlen.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-strlen.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-strncmp.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-strncmp.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-strncmp.o)
+ .text.strncmp  0x00000000       0x24 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-strncmp.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-svfprintf.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-svfprintf.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-svfprintf.o)
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
  .text.__ssprint_r
                 0x00000000      0x100 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-svfprintf.o)
  .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
@@ -715,7 +782,11 @@ END GROUP
                 0x00000001                cy_project_type_bootloader = (appl_start == 0x0)?0x1:0x0
                 0x00000000                cy_project_type_app_for_stack_and_copier = (CY_APP_FOR_STACK_AND_COPIER == 0x1)?0x1:0x0
 
+<<<<<<< HEAD
 .text           0x00000000     0x4312
+=======
+.text           0x00000000     0x3086
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
  CREATE_OBJECT_SYMBOLS
                 0x00000000                PROVIDE (__cy_interrupt_vector, RomVectors)
  *(.romvectors)
@@ -742,6 +813,7 @@ END GROUP
  .text.decToBcd
                 0x00000350       0x1c .\CortexM0\ARM_GCC_541\Debug\main.o
                 0x00000350                decToBcd
+<<<<<<< HEAD
  .text.readFromRam
                 0x0000036c       0x44 .\CortexM0\ARM_GCC_541\Debug\main.o
                 0x0000036c                readFromRam
@@ -1128,27 +1200,352 @@ END GROUP
  .glue_7        0x00004312        0x0 linker stubs
  *(.vfp11_veneer)
  .vfp11_veneer  0x00004312        0x0 linker stubs
+=======
+ .text.readFromAddr
+                0x0000036c       0x40 .\CortexM0\ARM_GCC_541\Debug\main.o
+                0x0000036c                readFromAddr
+ .text.writeToAddr
+                0x000003ac       0x20 .\CortexM0\ARM_GCC_541\Debug\main.o
+                0x000003ac                writeToAddr
+ .text.LCDInit  0x000003cc       0xac .\CortexM0\ARM_GCC_541\Debug\main.o
+                0x000003cc                LCDInit
+ .text.updateCurrTime
+                0x00000478       0x60 .\CortexM0\ARM_GCC_541\Debug\main.o
+                0x00000478                updateCurrTime
+ .text.exitLCD  0x000004d8       0xe4 .\CortexM0\ARM_GCC_541\Debug\main.o
+                0x000004d8                exitLCD
+ .text.setGlobalTime
+                0x000005bc      0x498 .\CortexM0\ARM_GCC_541\Debug\main.o
+                0x000005bc                setGlobalTime
+ .text.setFeedTimes
+                0x00000a54      0x3ec .\CortexM0\ARM_GCC_541\Debug\main.o
+                0x00000a54                setFeedTimes
+ .text.setAmountOfFood
+                0x00000e40       0xa8 .\CortexM0\ARM_GCC_541\Debug\main.o
+                0x00000e40                setAmountOfFood
+ .text.toggleLEDs
+                0x00000ee8       0xc8 .\CortexM0\ARM_GCC_541\Debug\main.o
+                0x00000ee8                toggleLEDs
+ .text.toggleSpeakers
+                0x00000fb0       0xc8 .\CortexM0\ARM_GCC_541\Debug\main.o
+                0x00000fb0                toggleSpeakers
+ .text.startSettings
+                0x00001078       0xf0 .\CortexM0\ARM_GCC_541\Debug\main.o
+                0x00001078                startSettings
+ .text.main     0x00001168      0x1e0 .\CortexM0\ARM_GCC_541\Debug\main.o
+                0x00001168                main
+ .text.LiquidCrystal_I2C_init
+                0x00001348       0x30 .\CortexM0\ARM_GCC_541\Debug\LiquidCrystal_i2C.o
+                0x00001348                LiquidCrystal_I2C_init
+ .text.I2C_M_write_byte
+                0x00001378       0x1c .\CortexM0\ARM_GCC_541\Debug\LiquidCrystal_i2C.o
+                0x00001378                I2C_M_write_byte
+ .text.expanderWrite
+                0x00001394       0x1c .\CortexM0\ARM_GCC_541\Debug\LiquidCrystal_i2C.o
+                0x00001394                expanderWrite
+ .text.pulseEnable
+                0x000013b0       0x28 .\CortexM0\ARM_GCC_541\Debug\LiquidCrystal_i2C.o
+                0x000013b0                pulseEnable
+ .text.write4bits
+                0x000013d8       0x10 .\CortexM0\ARM_GCC_541\Debug\LiquidCrystal_i2C.o
+                0x000013d8                write4bits
+ .text.send     0x000013e8       0x24 .\CortexM0\ARM_GCC_541\Debug\LiquidCrystal_i2C.o
+                0x000013e8                send
+ .text.command  0x0000140c        0xc .\CortexM0\ARM_GCC_541\Debug\LiquidCrystal_i2C.o
+                0x0000140c                command
+ .text.clear    0x00001418       0x10 .\CortexM0\ARM_GCC_541\Debug\LiquidCrystal_i2C.o
+                0x00001418                clear
+ .text.home     0x00001428       0x10 .\CortexM0\ARM_GCC_541\Debug\LiquidCrystal_i2C.o
+                0x00001428                home
+ .text.setCursor
+                0x00001438       0x40 .\CortexM0\ARM_GCC_541\Debug\LiquidCrystal_i2C.o
+                0x00001438                setCursor
+ .text.display  0x00001478       0x20 .\CortexM0\ARM_GCC_541\Debug\LiquidCrystal_i2C.o
+                0x00001478                display
+ .text.write    0x00001498        0xc .\CortexM0\ARM_GCC_541\Debug\LiquidCrystal_i2C.o
+                0x00001498                write
+ .text.LCD_print
+                0x000014a4       0x20 .\CortexM0\ARM_GCC_541\Debug\LiquidCrystal_i2C.o
+                0x000014a4                LCD_print
+ .text.LCDBegin
+                0x000014c4       0xb8 .\CortexM0\ARM_GCC_541\Debug\LiquidCrystal_i2C.o
+                0x000014c4                LCDBegin
+ .text.cfg_write_bytes32
+                0x0000157c       0x34 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .text.AnalogSetDefault
+                0x000015b0       0x20 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .text.CYMEMZERO
+                0x000015d0        0xc .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .text.IntDefaultHandler
+                0x000015dc       0x10 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+                0x000015dc                IntDefaultHandler
+ .text._sbrk    0x000015ec       0x34 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+                0x000015ec                _sbrk
+ .text.Start_c  0x00001620       0x48 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+                0x00001620                Start_c
+ .text.initialize_psoc
+                0x00001668       0x4c .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+                0x00001668                initialize_psoc
+ .text.BTN_Read
+                0x000016b4       0x10 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(BTN.o)
+                0x000016b4                BTN_Read
+ .text.BTN_ClearInterrupt
+                0x000016c4       0x14 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(BTN.o)
+                0x000016c4                BTN_ClearInterrupt
+ .text.Motor_Write
+                0x000016d8        0xc .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(Motor.o)
+                0x000016d8                Motor_Write
+ .text.BTN_ISR_Interrupt
+                0x000016e4       0x28 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(BTN_ISR.o)
+                0x000016e4                BTN_ISR_Interrupt
+ .text.BTN_ISR_SetVector
+                0x0000170c        0xc .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(BTN_ISR.o)
+                0x0000170c                BTN_ISR_SetVector
+ .text.BTN_ISR_SetPriority
+                0x00001718       0x20 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(BTN_ISR.o)
+                0x00001718                BTN_ISR_SetPriority
+ .text.BTN_ISR_Enable
+                0x00001738        0xc .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(BTN_ISR.o)
+                0x00001738                BTN_ISR_Enable
+ .text.BTN_ISR_Disable
+                0x00001744        0xc .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(BTN_ISR.o)
+                0x00001744                BTN_ISR_Disable
+ .text.BTN_ISR_Start
+                0x00001750       0x1c .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(BTN_ISR.o)
+                0x00001750                BTN_ISR_Start
+ .text.ENC_ISR_Interrupt
+                0x0000176c       0x9c .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(ENC_ISR.o)
+                0x0000176c                ENC_ISR_Interrupt
+ .text.ENC_ISR_SetVector
+                0x00001808        0xc .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(ENC_ISR.o)
+                0x00001808                ENC_ISR_SetVector
+ .text.ENC_ISR_SetPriority
+                0x00001814       0x20 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(ENC_ISR.o)
+                0x00001814                ENC_ISR_SetPriority
+ .text.ENC_ISR_Enable
+                0x00001834        0xc .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(ENC_ISR.o)
+                0x00001834                ENC_ISR_Enable
+ .text.ENC_ISR_Disable
+                0x00001840        0xc .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(ENC_ISR.o)
+                0x00001840                ENC_ISR_Disable
+ .text.ENC_ISR_Start
+                0x0000184c       0x1c .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(ENC_ISR.o)
+                0x0000184c                ENC_ISR_Start
+ .text.CySysClkImoDisableWcoLock
+                0x00001868       0x54 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyLib.o)
+                0x00001868                CySysClkImoDisableWcoLock
+ .text.CySysClkImoGetWcoLock
+                0x000018bc       0x14 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyLib.o)
+                0x000018bc                CySysClkImoGetWcoLock
+ .text.CyIntEnable
+                0x000018d0       0x14 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyLib.o)
+                0x000018d0                CyIntEnable
+ .text.CyIntDisable
+                0x000018e4       0x14 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyLib.o)
+                0x000018e4                CyIntDisable
+ .text.CyHalt   0x000018f8        0x4 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyLib.o)
+                0x000018f8                CyHalt
+ .text.CyIntSetVector
+                0x000018fc       0x24 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyLib.o)
+                0x000018fc                CyIntSetVector
+ .text.CyIntSetPriority
+                0x00001920       0x4c .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyLib.o)
+                0x00001920                CyIntSetPriority
+ .text.CyDelay  0x0000196c       0x30 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyLib.o)
+                0x0000196c                CyDelay
+ .text.CySysClkImoEnableWcoLock
+                0x0000199c       0xf4 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyLib.o)
+                0x0000199c                CySysClkImoEnableWcoLock
+ .text.CySysClkWriteImoFreq
+                0x00001a90       0x80 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyLib.o)
+                0x00001a90                CySysClkWriteImoFreq
+ .text.CyDelayUs
+                0x00001b10       0x14 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyLib.o)
+                0x00001b10                CyDelayUs
+ .text.CySysWdtLocked
+                0x00001b24       0x14 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyLFClk.o)
+ .text.CySysClkWcoEnabled
+                0x00001b38       0x14 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyLFClk.o)
+                0x00001b38                CySysClkWcoEnabled
+ .text.CySysWdtLock
+                0x00001b4c       0x1c .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyLFClk.o)
+                0x00001b4c                CySysWdtLock
+ .text.CySysWdtUnlock
+                0x00001b68       0x30 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyLFClk.o)
+                0x00001b68                CySysWdtUnlock
+ .text.CySysWdtClearInterrupt
+                0x00001b98       0x4c .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyLFClk.o)
+                0x00001b98                CySysWdtClearInterrupt
+ .text.CySysWdtIsr
+                0x00001be4       0xa4 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyLFClk.o)
+                0x00001be4                CySysWdtIsr
+ .text.I2C_ScbEnableIntr
+                0x00001c88        0xc .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C.o)
+ .text.I2C_Init
+                0x00001c94        0x8 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C.o)
+                0x00001c94                I2C_Init
+ .text.I2C_Enable
+                0x00001c9c       0x18 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C.o)
+                0x00001c9c                I2C_Enable
+ .text.I2C_Start
+                0x00001cb4       0x20 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C.o)
+                0x00001cb4                I2C_Start
+ .text.I2C_I2CInit
+                0x00001cd4       0xb8 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C_I2C.o)
+                0x00001cd4                I2C_I2CInit
+ .text.I2C_I2CFwBlockReset
+                0x00001d8c       0x5c .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C_I2C.o)
+                0x00001d8c                I2C_I2CFwBlockReset
+ .text.I2C_I2CMasterWaitOneUnit
+                0x00001de8       0x28 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C_I2C_MASTER.o)
+ .text.I2C_I2CMasterHandleStatus
+                0x00001e10       0xc4 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C_I2C_MASTER.o)
+ .text.I2C_I2CMasterSendStart
+                0x00001ed4       0xc4 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C_I2C_MASTER.o)
+                0x00001ed4                I2C_I2CMasterSendStart
+ .text.I2C_I2CMasterSendStop
+                0x00001f98       0x58 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C_I2C_MASTER.o)
+                0x00001f98                I2C_I2CMasterSendStop
+ .text.I2C_I2CMasterWriteByte
+                0x00001ff0       0x48 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C_I2C_MASTER.o)
+                0x00001ff0                I2C_I2CMasterWriteByte
+ .text.I2C_I2CMasterStatus
+                0x00002038       0x30 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C_I2C_MASTER.o)
+                0x00002038                I2C_I2CMasterStatus
+ .text.I2C_I2CMasterClearStatus
+                0x00002068       0x20 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C_I2C_MASTER.o)
+                0x00002068                I2C_I2CMasterClearStatus
+ .text.I2C_I2CReStartGeneration
+                0x00002088       0x20 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C_I2C_MASTER.o)
+                0x00002088                I2C_I2CReStartGeneration
+ .text.I2C_I2CMasterWriteBuf
+                0x000020a8       0xf8 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C_I2C_MASTER.o)
+                0x000020a8                I2C_I2CMasterWriteBuf
+ .text.I2C_I2CMasterReadBuf
+                0x000021a0      0x108 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C_I2C_MASTER.o)
+                0x000021a0                I2C_I2CMasterReadBuf
+ .text          0x000022a8       0x20 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyBootAsmGnu.o)
+                0x000022a8                CyDelayCycles
+                0x000022ba                CyEnterCriticalSection
+                0x000022c2                CyExitCriticalSection
+ .text.ENC_Read
+                0x000022c8       0x10 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(ENC.o)
+                0x000022c8                ENC_Read
+ .text.ENC_ClearInterrupt
+                0x000022d8       0x10 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(ENC.o)
+                0x000022d8                ENC_ClearInterrupt
+ .text.CySysFlashSetWaitCycles
+                0x000022e8       0x54 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyFlash.o)
+                0x000022e8                CySysFlashSetWaitCycles
+ .text.I2C_I2C_ISR
+                0x0000233c      0x340 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C_I2C_INT.o)
+                0x0000233c                I2C_I2C_ISR
+ .text          0x0000267c      0x114 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_udivsi3.o)
+                0x0000267c                __aeabi_uidiv
+                0x0000267c                __udivsi3
+                0x00002788                __aeabi_uidivmod
+ .text          0x00002790        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_dvmd_tls.o)
+                0x00002790                __aeabi_idiv0
+                0x00002790                __aeabi_ldiv0
+ .text.__errno  0x00002794        0xc c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
+                0x00002794                __errno
+ .text.__libc_init_array
+                0x000027a0       0x4c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
+                0x000027a0                __libc_init_array
+ .text.memcpy   0x000027ec       0x12 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memcpy-stub.o)
+                0x000027ec                memcpy
+ .text.memset   0x000027fe       0x10 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
+                0x000027fe                memset
+ *fill*         0x0000280e        0x2 
+ .text.snprintf
+                0x00002810       0x64 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-snprintf.o)
+                0x00002810                sniprintf
+                0x00002810                snprintf
+ .text          0x00002874        0xe c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-strlen.o)
+                0x00002874                strlen
+ *fill*         0x00002882        0x2 
+ .text.__ssputs_r
+                0x00002884       0xc4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x00002884                __ssputs_r
+ .text._svfprintf_r
+                0x00002948      0x1fc c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x00002948                _svfiprintf_r
+                0x00002948                _svfprintf_r
+ .text._printf_common
+                0x00002b44       0xdc c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x00002b44                _printf_common
+ .text._printf_i
+                0x00002c20      0x244 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x00002c20                _printf_i
+ .text.memchr   0x00002e64       0x16 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memchr-stub.o)
+                0x00002e64                memchr
+ .text.memmove  0x00002e7a       0x2a c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memmove.o)
+                0x00002e7a                memmove
+ .text._free_r  0x00002ea4       0x98 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-freer.o)
+                0x00002ea4                _free_r
+ .text._malloc_r
+                0x00002f3c       0xc0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x00002f3c                _malloc_r
+ .text._realloc_r
+                0x00002ffc       0x4c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-reallocr.o)
+                0x00002ffc                _realloc_r
+ .text._sbrk_r  0x00003048       0x24 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-sbrkr.o)
+                0x00003048                _sbrk_r
+ .text.__malloc_lock
+                0x0000306c        0x2 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-mlock.o)
+                0x0000306c                __malloc_lock
+ .text.__malloc_unlock
+                0x0000306e        0x2 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-mlock.o)
+                0x0000306e                __malloc_unlock
+ .text._malloc_usable_size_r
+                0x00003070       0x16 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-msizer.o)
+                0x00003070                _malloc_usable_size_r
+ *(.plt)
+ *(.gnu.warning)
+ *(.glue_7t)
+ .glue_7t       0x00003086        0x0 linker stubs
+ *(.glue_7)
+ .glue_7        0x00003086        0x0 linker stubs
+ *(.vfp11_veneer)
+ .vfp11_veneer  0x00003086        0x0 linker stubs
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
  *(.bootloader)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
  *(.gcc_except_table)
 
+<<<<<<< HEAD
 .v4_bx          0x00004314        0x0
  .v4_bx         0x00004314        0x0 linker stubs
 
 .iplt           0x00004314        0x0
  .iplt          0x00004314        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+=======
+.v4_bx          0x00003088        0x0
+ .v4_bx         0x00003088        0x0 linker stubs
+
+.iplt           0x00003088        0x0
+ .iplt          0x00003088        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 .eh_frame_hdr
  *(.eh_frame_hdr)
 
+<<<<<<< HEAD
 .eh_frame       0x00004314        0x4
  *(.eh_frame)
  .eh_frame      0x00004314        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
  .eh_frame      0x00004314        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtend.o
+=======
+.eh_frame       0x00003088        0x4
+ *(.eh_frame)
+ .eh_frame      0x00003088        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+ .eh_frame      0x00003088        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtend.o
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
                 [!provide]                PROVIDE (__exidx_start, .)
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+<<<<<<< HEAD
                 0x00004318                __exidx_end = .
 
 .rodata         0x00004318      0x510
@@ -1199,15 +1596,72 @@ END GROUP
  *(SORT(.fini_array.*))
                 0x00004818                __fini_array_end = .
                 0x00004818                . = ALIGN (0x4)
+=======
+                0x0000308c                __exidx_end = .
+
+.rodata         0x0000308c      0x514
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata        0x0000308c       0xd0 .\CortexM0\ARM_GCC_541\Debug\main.o
+                0x000030b8                ramAddr
+                0x000030bc                RTCAddr
+                0x000030c0                LCDAddr
+                0x000030c4                ram
+ .rodata.str1.4
+                0x0000315c      0x2e0 .\CortexM0\ARM_GCC_541\Debug\main.o
+ .rodata        0x0000343c       0x10 .\CortexM0\ARM_GCC_541\Debug\LiquidCrystal_i2C.o
+ .rodata        0x0000344c       0xbc .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .rodata        0x00003508       0x2e .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyLib.o)
+                0x00003508                cyImoFreqMhz2Reg
+ .rodata.str1.1
+                0x00003536        0x2 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+ .rodata.str1.1
+                0x00003538       0x11 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-svfprintf.o)
+ .rodata.str1.1
+                0x00003549       0x22 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x0000356c                . = ALIGN (0x4)
+ *fill*         0x0000356b        0x1 
+ *(.init)
+ .init          0x0000356c        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crti.o
+                0x0000356c                _init
+ .init          0x00003570        0x8 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtn.o
+                0x00003578                . = ALIGN (0x4)
+                0x00003578                __preinit_array_start = .
+ *(.preinit_array)
+                0x00003578                __preinit_array_end = .
+                0x00003578                . = ALIGN (0x4)
+                0x00003578                __init_array_start = .
+ *(SORT(.init_array.*))
+ *(.init_array)
+ .init_array    0x00003578        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+ .init_array    0x0000357c        0x4 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+                0x00003580                __init_array_end = .
+                0x00003580                . = ALIGN (0x4)
+ *(.fini)
+ .fini          0x00003580        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crti.o
+                0x00003580                _fini
+ .fini          0x00003584        0x8 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtn.o
+                0x0000358c                . = ALIGN (0x4)
+                0x0000358c                __fini_array_start = .
+ *(.fini_array)
+ .fini_array    0x0000358c        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+ *(SORT(.fini_array.*))
+                0x00003590                __fini_array_end = .
+                0x00003590                . = ALIGN (0x4)
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT(.ctors.*))
  *crtend.o(.ctors)
+<<<<<<< HEAD
                 0x00004818                . = ALIGN (0x4)
+=======
+                0x00003590                . = ALIGN (0x4)
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
  *crtbegin.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o) .dtors)
  *(SORT(.dtors.*))
  *crtend.o(.dtors)
+<<<<<<< HEAD
                 0x00004818                . = ALIGN (0x4)
                 0x00004818                __cy_regions = .
                 0x00004818        0x4 LONG 0x4828 __cy_region_init_ram
@@ -1220,6 +1674,20 @@ END GROUP
 
 .cy_checksum_exclude
                 0x00004828        0x0
+=======
+                0x00003590                . = ALIGN (0x4)
+                0x00003590                __cy_regions = .
+                0x00003590        0x4 LONG 0x35a0 __cy_region_init_ram
+                0x00003594        0x4 LONG 0x200000c0 __cy_region_start_data
+                0x00003598        0x4 LONG 0x128 __cy_region_init_size_ram
+                0x0000359c        0x4 LONG 0x90 __cy_region_zero_size_ram
+                0x000035a0                __cy_regions_end = .
+                0x000035a0                . = ALIGN (0x8)
+                0x000035a0                _etext = .
+
+.cy_checksum_exclude
+                0x000035a0        0x0
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
  *(.cy_checksum_exclude)
 
 .ramvectors     0x20000000       0xc0
@@ -1231,7 +1699,11 @@ END GROUP
 .noinit
  *(.noinit)
 
+<<<<<<< HEAD
 .data           0x200000c0      0x128 load address 0x00004828
+=======
+.data           0x200000c0      0x128 load address 0x000035a0
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
                 0x200000c0                __cy_region_start_data = .
  *(.jcr)
  .jcr           0x200000c0        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
@@ -1259,15 +1731,22 @@ END GROUP
                 0x20000174                cydelayFreqHz
  .data          0x20000178        0x8 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyLFClk.o)
  .data.impure_data
+<<<<<<< HEAD
                 0x20000180       0x60 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
  .data._impure_ptr
                 0x200001e0        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+=======
+                0x20000180       0x60 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+ .data._impure_ptr
+                0x200001e0        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
                 0x200001e0                _impure_ptr
                 0x200001e8                . = ALIGN (0x8)
  *fill*         0x200001e4        0x4 
  *(.ram)
                 0x200001e8                _edata = .
 
+<<<<<<< HEAD
 .igot.plt       0x200001e8        0x0 load address 0x00004950
  .igot.plt      0x200001e8        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
 
@@ -1276,26 +1755,47 @@ END GROUP
  *(.shbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
  .bss           0x200001e8       0x1c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+=======
+.igot.plt       0x200001e8        0x0 load address 0x000036c8
+ .igot.plt      0x200001e8        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+
+.bss            0x200001e8       0x90 load address 0x000036c8
+                0x200001e8                PROVIDE (__bss_start__, .)
+ *(.shbss)
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x200001e8       0x1c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
  .bss           0x20000204        0x5 .\CortexM0\ARM_GCC_541\Debug\main.o
                 0x20000204                feedCounter
                 0x20000205                timesToFeed
                 0x20000206                encFlag
                 0x20000207                encPos
                 0x20000208                buttonFlag
+<<<<<<< HEAD
  .bss           0x20000209        0x1 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_PWM.o)
                 0x20000209                LED_PWM_initVar
  .bss           0x2000020a        0x1 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(SPEAKER_PWM.o)
                 0x2000020a                SPEAKER_PWM_initVar
  *fill*         0x2000020b        0x1 
+=======
+ *fill*         0x20000209        0x3 
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
  .bss           0x2000020c       0x28 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyLFClk.o)
  .bss           0x20000234        0x8 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C.o)
                 0x20000234                I2C_initVar
                 0x20000238                I2C_customIntrHandler
  .bss.__malloc_sbrk_start
+<<<<<<< HEAD
                 0x2000023c        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-mallocr.o)
                 0x2000023c                __malloc_sbrk_start
  .bss.__malloc_free_list
                 0x20000240        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-mallocr.o)
+=======
+                0x2000023c        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x2000023c                __malloc_sbrk_start
+ .bss.__malloc_free_list
+                0x20000240        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-mallocr.o)
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
                 0x20000240                __malloc_free_list
  *(COMMON)
  COMMON         0x20000244        0x8 .\CortexM0\ARM_GCC_541\Debug\LiquidCrystal_i2C.o
@@ -1320,7 +1820,11 @@ END GROUP
                 0x20000268                I2C_mstrRdBufSize
                 0x2000026c                I2C_mstrRdBufIndex
                 0x20000270                I2C_mstrWrBufPtr
+<<<<<<< HEAD
  COMMON         0x20000274        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-reent.o)
+=======
+ COMMON         0x20000274        0x4 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-reent.o)
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
                 0x20000274                errno
                 0x20000278                . = ALIGN (0x8)
  *(.ram.b)
@@ -1328,11 +1832,19 @@ END GROUP
                 0x20000278                __end = .
                 0x20000278                PROVIDE (end, .)
                 0x20000278                PROVIDE (__bss_end__, .)
+<<<<<<< HEAD
                 0x00004828                __cy_region_init_ram = LOADADDR (.data)
                 0x00000128                __cy_region_init_size_ram = (_edata - ADDR (.data))
                 0x00000090                __cy_region_zero_size_ram = (_end - _edata)
 
 .heap           0x20000278      0x200 load address 0x00004950
+=======
+                0x000035a0                __cy_region_init_ram = LOADADDR (.data)
+                0x00000128                __cy_region_init_size_ram = (_edata - ADDR (.data))
+                0x00000090                __cy_region_zero_size_ram = (_end - _edata)
+
+.heap           0x20000278      0x200 load address 0x000036c8
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
                 0x20000278                . = _end
                 0x20000478                . = (. + 0x200)
  *fill*         0x20000278      0x200 
@@ -1372,8 +1884,13 @@ END GROUP
                 0x90600000        0x1 .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
                 0x90600000                cy_meta_chipprotect
 
+<<<<<<< HEAD
 .rel.dyn        0x00004950        0x0 load address 0x90600004
  .rel.iplt      0x00004950        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+=======
+.rel.dyn        0x000036c8        0x0 load address 0x90600004
+ .rel.iplt      0x000036c8        0x0 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 .stab
  *(.stab)
@@ -1441,6 +1958,7 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
+<<<<<<< HEAD
 .debug_info     0x00000000     0xa1b8
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000     0x42d7 .\CortexM0\ARM_GCC_541\Debug\main.o
@@ -1464,6 +1982,31 @@ END GROUP
  .debug_info    0x00009b25      0x19b .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(ENC.o)
  .debug_info    0x00009cc0      0x350 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyFlash.o)
  .debug_info    0x0000a010      0x1a8 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C_I2C_INT.o)
+=======
+.debug_info     0x00000000     0xa0d8
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000     0x41e8 .\CortexM0\ARM_GCC_541\Debug\main.o
+ .debug_info    0x000041e8      0x8f8 .\CortexM0\ARM_GCC_541\Debug\LiquidCrystal_i2C.o
+ .debug_info    0x00004ae0      0x3bc .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_info    0x00004e9c       0xf8 .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
+ .debug_info    0x00004f94      0x3a2 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+ .debug_info    0x00005336      0x19d .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(BTN.o)
+ .debug_info    0x000054d3      0x909 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_PWM.o)
+ .debug_info    0x00005ddc      0x909 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(SPEAKER_PWM.o)
+ .debug_info    0x000066e5       0xd6 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_SEL.o)
+ .debug_info    0x000067bb       0xd6 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(Motor.o)
+ .debug_info    0x00006891      0x364 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(BTN_ISR.o)
+ .debug_info    0x00006bf5      0x3b7 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(ENC_ISR.o)
+ .debug_info    0x00006fac      0xd3f .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyLib.o)
+ .debug_info    0x00007ceb     0x1058 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyLFClk.o)
+ .debug_info    0x00008d43      0x298 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C.o)
+ .debug_info    0x00008fdb      0x195 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C_I2C.o)
+ .debug_info    0x00009170      0x813 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C_I2C_MASTER.o)
+ .debug_info    0x00009983       0xc2 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyBootAsmGnu.o)
+ .debug_info    0x00009a45      0x19b .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(ENC.o)
+ .debug_info    0x00009be0      0x350 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyFlash.o)
+ .debug_info    0x00009f30      0x1a8 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C_I2C_INT.o)
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 .debug_abbrev   0x00000000     0x19c7
  *(.debug_abbrev)
@@ -1489,6 +2032,7 @@ END GROUP
  .debug_abbrev  0x000017a1      0x182 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyFlash.o)
  .debug_abbrev  0x00001923       0xa4 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C_I2C_INT.o)
 
+<<<<<<< HEAD
 .debug_line     0x00000000     0x3086
  *(.debug_line)
  .debug_line    0x00000000      0x79e .\CortexM0\ARM_GCC_541\Debug\main.o
@@ -1617,6 +2161,135 @@ END GROUP
  .debug_loc     0x00003835       0x81 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(ENC.o)
  .debug_loc     0x000038b6      0x160 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyFlash.o)
  .debug_loc     0x00003a16      0x10c .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C_I2C_INT.o)
+=======
+.debug_line     0x00000000     0x3061
+ *(.debug_line)
+ .debug_line    0x00000000      0x779 .\CortexM0\ARM_GCC_541\Debug\main.o
+ .debug_line    0x00000779      0x44f .\CortexM0\ARM_GCC_541\Debug\LiquidCrystal_i2C.o
+ .debug_line    0x00000bc8      0x18f .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_line    0x00000d57      0x141 .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
+ .debug_line    0x00000e98      0x236 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+ .debug_line    0x000010ce       0xbb .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(BTN.o)
+ .debug_line    0x00001189      0x380 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_PWM.o)
+ .debug_line    0x00001509      0x384 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(SPEAKER_PWM.o)
+ .debug_line    0x0000188d       0x70 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_SEL.o)
+ .debug_line    0x000018fd       0x6e .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(Motor.o)
+ .debug_line    0x0000196b      0x15f .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(BTN_ISR.o)
+ .debug_line    0x00001aca      0x18f .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(ENC_ISR.o)
+ .debug_line    0x00001c59      0x563 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyLib.o)
+ .debug_line    0x000021bc      0x5d1 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyLFClk.o)
+ .debug_line    0x0000278d      0x124 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C.o)
+ .debug_line    0x000028b1       0xc2 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C_I2C.o)
+ .debug_line    0x00002973      0x2fc .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C_I2C_MASTER.o)
+ .debug_line    0x00002c6f       0x68 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyBootAsmGnu.o)
+ .debug_line    0x00002cd7       0xbb .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(ENC.o)
+ .debug_line    0x00002d92      0x173 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyFlash.o)
+ .debug_line    0x00002f05      0x15c .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C_I2C_INT.o)
+
+.debug_frame    0x00000000     0x2348
+ *(.debug_frame)
+ .debug_frame   0x00000000      0x2f8 .\CortexM0\ARM_GCC_541\Debug\main.o
+ .debug_frame   0x000002f8      0x36c .\CortexM0\ARM_GCC_541\Debug\LiquidCrystal_i2C.o
+ .debug_frame   0x00000664       0x98 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_frame   0x000006fc       0xbc .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+ .debug_frame   0x000007b8       0x70 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(BTN.o)
+ .debug_frame   0x00000828      0x3a0 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_PWM.o)
+ .debug_frame   0x00000bc8      0x3a0 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(SPEAKER_PWM.o)
+ .debug_frame   0x00000f68       0x30 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_SEL.o)
+ .debug_frame   0x00000f98       0x30 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(Motor.o)
+ .debug_frame   0x00000fc8      0x11c .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(BTN_ISR.o)
+ .debug_frame   0x000010e4      0x11c .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(ENC_ISR.o)
+ .debug_frame   0x00001200      0x48c .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyLib.o)
+ .debug_frame   0x0000168c      0x4a4 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyLFClk.o)
+ .debug_frame   0x00001b30       0xe8 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C.o)
+ .debug_frame   0x00001c18       0x58 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C_I2C.o)
+ .debug_frame   0x00001c70      0x1d8 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C_I2C_MASTER.o)
+ .debug_frame   0x00001e48       0x70 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(ENC.o)
+ .debug_frame   0x00001eb8       0x90 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyFlash.o)
+ .debug_frame   0x00001f48       0x2c .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C_I2C_INT.o)
+ .debug_frame   0x00001f74       0x20 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_udivsi3.o)
+ .debug_frame   0x00001f94       0x20 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_divsi3.o)
+ .debug_frame   0x00001fb4       0x20 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
+ .debug_frame   0x00001fd4       0x28 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o)
+ .debug_frame   0x00001ffc       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
+ .debug_frame   0x00002028       0x28 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memcpy-stub.o)
+ .debug_frame   0x00002050       0x20 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
+ .debug_frame   0x00002070       0x50 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-snprintf.o)
+ .debug_frame   0x000020c0       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-strncmp.o)
+ .debug_frame   0x000020ec       0x74 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-svfprintf.o)
+ .debug_frame   0x00002160       0x54 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+ .debug_frame   0x000021b4       0x20 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memchr-stub.o)
+ .debug_frame   0x000021d4       0x28 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memmove.o)
+ .debug_frame   0x000021fc       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-freer.o)
+ .debug_frame   0x00002228       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-mallocr.o)
+ .debug_frame   0x00002254       0x30 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-reallocr.o)
+ .debug_frame   0x00002284       0x2c c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-sbrkr.o)
+ .debug_frame   0x000022b0       0x30 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-mlock.o)
+ .debug_frame   0x000022e0       0x20 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-nano-msizer.o)
+ .debug_frame   0x00002300       0x48 c:/program files (x86)/cypress/psoc creator/4.2/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-reent.o)
+
+.debug_str      0x00000000     0x2956
+ *(.debug_str)
+ .debug_str     0x00000000      0x831 .\CortexM0\ARM_GCC_541\Debug\main.o
+                                0x880 (size before relaxing)
+ .debug_str     0x00000831      0x234 .\CortexM0\ARM_GCC_541\Debug\LiquidCrystal_i2C.o
+                                0x478 (size before relaxing)
+ .debug_str     0x00000a65      0x11e .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+                                0x308 (size before relaxing)
+ .debug_str     0x00000b83       0x59 .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
+                                0x1fa (size before relaxing)
+ .debug_str     0x00000bdc      0x135 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+                                0x333 (size before relaxing)
+ .debug_str     0x00000d11       0x8b .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(BTN.o)
+                                0x25a (size before relaxing)
+ .debug_str     0x00000d9c      0x420 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_PWM.o)
+                                0x637 (size before relaxing)
+ .debug_str     0x000011bc      0x3cf .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(SPEAKER_PWM.o)
+                                0x6df (size before relaxing)
+ .debug_str     0x0000158b       0x2e .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_SEL.o)
+                                0x1e7 (size before relaxing)
+ .debug_str     0x000015b9       0x2a .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(Motor.o)
+                                0x1e1 (size before relaxing)
+ .debug_str     0x000015e3      0x11b .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(BTN_ISR.o)
+                                0x367 (size before relaxing)
+ .debug_str     0x000016fe      0x110 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(ENC_ISR.o)
+                                0x369 (size before relaxing)
+ .debug_str     0x0000180e      0x5ac .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyLib.o)
+                                0x82f (size before relaxing)
+ .debug_str     0x00001dba      0x6e6 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyLFClk.o)
+                                0x94f (size before relaxing)
+ .debug_str     0x000024a0       0xfb .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C.o)
+                                0x2f0 (size before relaxing)
+ .debug_str     0x0000259b       0x74 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C_I2C.o)
+                                0x280 (size before relaxing)
+ .debug_str     0x0000260f      0x203 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C_I2C_MASTER.o)
+                                0x4e8 (size before relaxing)
+ .debug_str     0x00002812       0x5d .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(ENC.o)
+                                0x25a (size before relaxing)
+ .debug_str     0x0000286f       0xa0 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyFlash.o)
+                                0x2e2 (size before relaxing)
+ .debug_str     0x0000290f       0x47 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C_I2C_INT.o)
+                                0x2f0 (size before relaxing)
+
+.debug_loc      0x00000000     0x3b20
+ *(.debug_loc)
+ .debug_loc     0x00000000      0x536 .\CortexM0\ARM_GCC_541\Debug\main.o
+ .debug_loc     0x00000536      0x36f .\CortexM0\ARM_GCC_541\Debug\LiquidCrystal_i2C.o
+ .debug_loc     0x000008a5      0x118 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_loc     0x000009bd      0x14f .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+ .debug_loc     0x00000b0c       0xa2 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(BTN.o)
+ .debug_loc     0x00000bae      0x547 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(LED_PWM.o)
+ .debug_loc     0x000010f5      0x547 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(SPEAKER_PWM.o)
+ .debug_loc     0x0000163c       0x82 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(BTN_ISR.o)
+ .debug_loc     0x000016be       0xdb .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(ENC_ISR.o)
+ .debug_loc     0x00001799      0x81c .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyLib.o)
+ .debug_loc     0x00001fb5      0xdb7 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyLFClk.o)
+ .debug_loc     0x00002d6c       0x7e .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C.o)
+ .debug_loc     0x00002dea      0xa49 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C_I2C_MASTER.o)
+ .debug_loc     0x00003833       0x81 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(ENC.o)
+ .debug_loc     0x000038b4      0x160 .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(CyFlash.o)
+ .debug_loc     0x00003a14      0x10c .\CortexM0\ARM_GCC_541\Debug\AutomaticPetFeeder.a(I2C_I2C_INT.o)
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 .debug_macinfo
  *(.debug_macinfo)

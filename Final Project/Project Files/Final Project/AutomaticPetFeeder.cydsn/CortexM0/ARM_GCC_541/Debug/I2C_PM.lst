@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccu7PRUv.s 			page 1
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFvmASy.s 			page 1
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
    1              		.syntax unified
@@ -58,7 +62,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccu7PRUv.s 			page 1
   28:Generated_Source\PSoC4/I2C_PM.c **** #endif /* (I2C_SCB_MODE_EZI2C_INC) */
   29:Generated_Source\PSoC4/I2C_PM.c **** 
   30:Generated_Source\PSoC4/I2C_PM.c **** #if(I2C_SCB_MODE_SPI_INC || I2C_SCB_MODE_UART_INC)
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccu7PRUv.s 			page 2
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFvmASy.s 			page 2
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
   31:Generated_Source\PSoC4/I2C_PM.c ****     #include "I2C_SPI_UART_PVT.h"
@@ -118,7 +126,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccu7PRUv.s 			page 1
   77:Generated_Source\PSoC4/I2C_PM.c ****     if(I2C_SCB_WAKE_ENABLE_CHECK)
   78:Generated_Source\PSoC4/I2C_PM.c ****     {
   79:Generated_Source\PSoC4/I2C_PM.c ****         if(I2C_SCB_MODE_I2C_RUNTM_CFG)
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccu7PRUv.s 			page 3
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFvmASy.s 			page 3
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
   80:Generated_Source\PSoC4/I2C_PM.c ****         {
@@ -178,7 +190,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccu7PRUv.s 			page 1
   41 000a 1370     		strb	r3, [r2]
  129:Generated_Source\PSoC4/I2C_PM.c **** 
  130:Generated_Source\PSoC4/I2C_PM.c ****         if(0u != I2C_backup.enableState)
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccu7PRUv.s 			page 4
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFvmASy.s 			page 4
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
   42              		.loc 1 130 0
@@ -238,7 +254,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccu7PRUv.s 			page 1
  160:Generated_Source\PSoC4/I2C_PM.c **** {
   67              		.loc 1 160 0
   68              		.cfi_startproc
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccu7PRUv.s 			page 5
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFvmASy.s 			page 5
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
   69              		@ args = 0, pretend = 0, frame = 0
@@ -298,7 +318,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccu7PRUv.s 			page 1
  209:Generated_Source\PSoC4/I2C_PM.c **** 
  210:Generated_Source\PSoC4/I2C_PM.c ****     #else
  211:Generated_Source\PSoC4/I2C_PM.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccu7PRUv.s 			page 6
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFvmASy.s 			page 6
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  212:Generated_Source\PSoC4/I2C_PM.c ****         if(0u != I2C_backup.enableState)
@@ -358,7 +382,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccu7PRUv.s 			page 1
  120 0025 02       		.uleb128 0x2
  121 0026 01       		.byte	0x1
  122 0027 06       		.byte	0x6
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccu7PRUv.s 			page 7
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFvmASy.s 			page 7
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  123 0028 E2010000 		.4byte	.LASF0
@@ -418,7 +446,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccu7PRUv.s 			page 1
  177 008d 34010000 		.4byte	.LASF12
  178 0091 02       		.uleb128 0x2
  179 0092 01       		.byte	0x1
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccu7PRUv.s 			page 8
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFvmASy.s 			page 8
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  180 0093 08       		.byte	0x8
@@ -478,7 +510,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccu7PRUv.s 			page 1
  234 0106 9C       		.byte	0x9c
  235 0107 15010000 		.4byte	0x115
  236 010b 0A       		.uleb128 0xa
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccu7PRUv.s 			page 9
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFvmASy.s 			page 9
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  237 010c 0E000000 		.4byte	.LVL1
@@ -538,7 +574,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccu7PRUv.s 			page 1
  291 001e 03       		.uleb128 0x3
  292 001f 24       		.uleb128 0x24
  293 0020 00       		.byte	0
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccu7PRUv.s 			page 10
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFvmASy.s 			page 10
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  294 0021 0B       		.uleb128 0xb
@@ -598,7 +638,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccu7PRUv.s 			page 1
  348 0057 00       		.byte	0
  349 0058 00       		.byte	0
  350 0059 08       		.uleb128 0x8
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccu7PRUv.s 			page 11
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFvmASy.s 			page 11
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  351 005a 16       		.uleb128 0x16
@@ -658,7 +702,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccu7PRUv.s 			page 1
  405 0093 0B       		.uleb128 0xb
  406 0094 49       		.uleb128 0x49
  407 0095 13       		.uleb128 0x13
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccu7PRUv.s 			page 12
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFvmASy.s 			page 12
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  408 0096 3F       		.uleb128 0x3f
@@ -718,7 +766,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccu7PRUv.s 			page 1
  458 0000 6C6F6E67 		.ascii	"long long int\000"
  458      206C6F6E 
  458      6720696E 
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccu7PRUv.s 			page 13
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFvmASy.s 			page 13
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  458      7400
@@ -773,7 +825,14 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccu7PRUv.s 			page 1
  480 00d7 666C6F61 		.ascii	"float\000"
  480      7400
  481              	.LASF23:
+<<<<<<< HEAD
  482 00dd 47656E65 		.ascii	"Generated_Source\\PSoC4\\I2C_PM.c\000"
+=======
+ 482 00ed 47656E65 		.ascii	"Generated_Source\\PSoC4\\I2C_PM.c\000"
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFvmASy.s 			page 14
+
+
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
  482      72617465 
  482      645F536F 
  482      75726365 
@@ -834,6 +893,12 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccu7PRUv.s 			page 1
  503              	.LASF0:
  504 01e2 7369676E 		.ascii	"signed char\000"
  504      65642063 
+<<<<<<< HEAD
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccFvmASy.s 			page 15
+
+
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
  504      68617200 
  505              	.LASF15:
  506 01ee 6C6F6E67 		.ascii	"long double\000"

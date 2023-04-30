@@ -241,7 +241,7 @@ char* commands[6] = {
 
 const uint32 LCDAddr = 0x27;
 const uint32 RTCAddr = 0x51;
-const uint32 ramAddr = 0x52;
+const uint32 ramAddr = 0x53;
 
 uint8 feedCounter = 0;
 uint8 speakerToggle = 1;
@@ -292,26 +292,46 @@ void writeToRam(uint8* writeBuf, int writeBytes, uint32 devAddr, uint32 memAddr1
 void saveToFRAM(){
     uint8 wrBuf[3];
     wrBuf[2] = feedCounter;
+<<<<<<< HEAD
     writeToRam(wrBuf, 3, ramAddr,0x12,ram.feedCounter);
     wrBuf[2] = speakerToggle;
     writeToRam(wrBuf, 3, ramAddr,0x12,ram.speakerToggle);
+=======
+    writeToRam(wrBuf, 2, ramAddr,0x12,ram.feedCounter);
+    wrBuf[2] = speakerToggle;
+    writeToRam(wrBuf, 2, ramAddr,0x12,ram.speakerToggle);
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
     
     uint8 rdBuf[1];
     readFromRam(rdBuf,1,ramAddr,0x12,ram.speakerToggle);
     wrBuf[2] = LEDToggle;
+<<<<<<< HEAD
     writeToRam(wrBuf, 3, ramAddr,0x12,ram.LEDToggle);
     wrBuf[2] = timesToFeed;
     writeToRam(wrBuf, 3, ramAddr,0x12,ram.timesToFeed);
+=======
+    writeToRam(wrBuf, 2, ramAddr,0x12,ram.LEDToggle);
+    wrBuf[2] = timesToFeed;
+    writeToRam(wrBuf, 2, ramAddr,0x12,ram.timesToFeed);
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
     uint8 convert[4];
     *(uint32 *)convert = feedSteps;
     wrBuf[2] = convert[0];
     writeToRam(wrBuf,2,ramAddr,0x12,ram.feedStepsP1);
     wrBuf[2] = convert[1];
+<<<<<<< HEAD
     writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedStepsP2);
     wrBuf[2] = convert[2];
     writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedStepsP3);
     wrBuf[2] = convert[3];
     writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedStepsP4);
+=======
+    writeToRam(wrBuf,2,ramAddr,0x12,ram.feedStepsP2);
+    wrBuf[2] = convert[2];
+    writeToRam(wrBuf,2,ramAddr,0x12,ram.feedStepsP3);
+    wrBuf[2] = convert[3];
+    writeToRam(wrBuf,2,ramAddr,0x12,ram.feedStepsP4);
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
     uint8 convertTimes[3];
     if(strncmp(feedTimes[0].AM, "AM",3) || strncmp(feedTimes[0].AM, "PM",3)){
         convertTimes[0] = feedTimes[0].hour;
@@ -323,6 +343,7 @@ void saveToFRAM(){
             convertTimes[2] = 1;
         }
         wrBuf[2] = convertTimes[0];
+<<<<<<< HEAD
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime1P1);
         wrBuf[2] = convertTimes[1];
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime1P2);
@@ -334,6 +355,19 @@ void saveToFRAM(){
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime1P1);
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime1P2);
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime1P3);
+=======
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime1P1);
+        wrBuf[2] = convertTimes[1];
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime1P2);
+        wrBuf[2] = convertTimes[2];
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime1P3);
+    }
+    else{
+        wrBuf[2] = 0xFF;
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime1P1);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime1P2);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime1P3);
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
     }
     if(strncmp(feedTimes[1].AM, "AM",3) || strncmp(feedTimes[1].AM, "PM",3)){
         convertTimes[0] = feedTimes[1].hour;
@@ -345,6 +379,7 @@ void saveToFRAM(){
             convertTimes[2] = 1;
         }
         wrBuf[2] = convertTimes[0];
+<<<<<<< HEAD
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime2P1);
         wrBuf[2] = convertTimes[1];
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime2P2);
@@ -356,6 +391,19 @@ void saveToFRAM(){
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime2P1);
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime2P2);
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime2P3);
+=======
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime2P1);
+        wrBuf[2] = convertTimes[1];
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime2P2);
+        wrBuf[2] = convertTimes[2];
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime2P3);
+    }
+    else{
+        wrBuf[2] = 0xFF;
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime2P1);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime2P2);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime2P3);
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
     }
     if(strncmp(feedTimes[2].AM, "AM",3) || strncmp(feedTimes[2].AM, "PM",3)){
         convertTimes[0] = feedTimes[2].hour;
@@ -367,6 +415,7 @@ void saveToFRAM(){
             convertTimes[2] = 1;
         }
         wrBuf[2] = convertTimes[0];
+<<<<<<< HEAD
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime3P1);
         wrBuf[2] = convertTimes[1];
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime3P2);
@@ -378,6 +427,19 @@ void saveToFRAM(){
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime3P1);
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime3P2);
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime3P3);
+=======
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime3P1);
+        wrBuf[2] = convertTimes[1];
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime3P2);
+        wrBuf[2] = convertTimes[2];
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime3P3);
+    }
+    else{
+        wrBuf[2] = 0xFF;
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime3P1);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime3P2);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime3P3);
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
     }
     if(strncmp(feedTimes[3].AM, "AM",3) || strncmp(feedTimes[3].AM, "PM",3)){
         convertTimes[0] = feedTimes[3].hour;
@@ -389,6 +451,7 @@ void saveToFRAM(){
             convertTimes[2] = 1;
         }
         wrBuf[2] = convertTimes[0];
+<<<<<<< HEAD
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime4P1);
         wrBuf[2] = convertTimes[1];
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime4P2);
@@ -400,6 +463,19 @@ void saveToFRAM(){
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime4P1);
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime4P2);
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime4P3);
+=======
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime4P1);
+        wrBuf[2] = convertTimes[1];
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime4P2);
+        wrBuf[2] = convertTimes[2];
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime4P3);
+    }
+    else{
+        wrBuf[2] = 0xFF;
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime4P1);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime4P2);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime4P3);
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
     }
     if(strncmp(feedTimes[4].AM, "AM",3) || strncmp(feedTimes[4].AM, "PM",3)){
         convertTimes[0] = feedTimes[4].hour;
@@ -411,6 +487,7 @@ void saveToFRAM(){
             convertTimes[2] = 1;
         }
         wrBuf[2] = convertTimes[0];
+<<<<<<< HEAD
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime5P1);
         wrBuf[2] = convertTimes[1];
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime5P2);
@@ -422,6 +499,19 @@ void saveToFRAM(){
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime5P1);
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime5P2);
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime5P3);
+=======
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime5P1);
+        wrBuf[2] = convertTimes[1];
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime5P2);
+        wrBuf[2] = convertTimes[2];
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime5P3);
+    }
+    else{
+        wrBuf[2] = 0xFF;
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime5P1);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime5P2);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime5P3);
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
     }
     if(strncmp(feedTimes[5].AM, "AM",3) || strncmp(feedTimes[5].AM, "PM",3)){
         convertTimes[0] = feedTimes[5].hour;
@@ -433,6 +523,7 @@ void saveToFRAM(){
             convertTimes[2] = 1;
         }
         wrBuf[2] = convertTimes[0];
+<<<<<<< HEAD
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime6P1);
         wrBuf[2] = convertTimes[1];
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime6P2);
@@ -444,6 +535,19 @@ void saveToFRAM(){
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime6P1);
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime6P2);
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime6P3);
+=======
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime6P1);
+        wrBuf[2] = convertTimes[1];
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime6P2);
+        wrBuf[2] = convertTimes[2];
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime6P3);
+    }
+    else{
+        wrBuf[2] = 0xFF;
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime6P1);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime6P2);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime6P3);
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
     }
     if(strncmp(feedTimes[6].AM, "AM",3) || strncmp(feedTimes[6].AM, "PM",3)){
         convertTimes[0] = feedTimes[6].hour;
@@ -455,6 +559,7 @@ void saveToFRAM(){
             convertTimes[2] = 1;
         }
         wrBuf[2] = convertTimes[0];
+<<<<<<< HEAD
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime7P1);
         wrBuf[2] = convertTimes[1];
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime7P2);
@@ -466,6 +571,19 @@ void saveToFRAM(){
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime7P1);
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime7P2);
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime7P3);
+=======
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime7P1);
+        wrBuf[2] = convertTimes[1];
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime7P2);
+        wrBuf[2] = convertTimes[2];
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime7P3);
+    }
+    else{
+        wrBuf[2] = 0xFF;
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime7P1);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime7P2);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime7P3);
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
     }
     if(strncmp(feedTimes[7].AM, "AM",3) || strncmp(feedTimes[7].AM, "PM",3)){
         convertTimes[0] = feedTimes[7].hour;
@@ -477,6 +595,7 @@ void saveToFRAM(){
             convertTimes[2] = 1;
         }
         wrBuf[2] = convertTimes[0];
+<<<<<<< HEAD
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime8P1);
         wrBuf[2] = convertTimes[1];
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime8P2);
@@ -488,6 +607,19 @@ void saveToFRAM(){
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime8P1);
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime8P2);
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime8P3);
+=======
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime8P1);
+        wrBuf[2] = convertTimes[1];
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime8P2);
+        wrBuf[2] = convertTimes[2];
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime8P3);
+    }
+    else{
+        wrBuf[2] = 0xFF;
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime8P1);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime8P2);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime8P3);
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
     }
     if(strncmp(feedTimes[8].AM, "AM",3) || strncmp(feedTimes[8].AM, "PM",3)){
         convertTimes[0] = feedTimes[8].hour;
@@ -499,6 +631,7 @@ void saveToFRAM(){
             convertTimes[2] = 1;
         }
         wrBuf[2] = convertTimes[0];
+<<<<<<< HEAD
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime9P1);
         wrBuf[2] = convertTimes[1];
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime9P2);
@@ -510,6 +643,19 @@ void saveToFRAM(){
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime9P1);
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime9P2);
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime9P3);
+=======
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime9P1);
+        wrBuf[2] = convertTimes[1];
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime9P2);
+        wrBuf[2] = convertTimes[2];
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime9P3);
+    }
+    else{
+        wrBuf[2] = 0xFF;
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime9P1);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime9P2);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime9P3);
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
     }
     if(strncmp(feedTimes[9].AM, "AM",3) || strncmp(feedTimes[9].AM, "PM",3)){
         convertTimes[0] = feedTimes[9].hour;
@@ -521,6 +667,7 @@ void saveToFRAM(){
             convertTimes[2] = 1;
         }
         wrBuf[2] = convertTimes[0];
+<<<<<<< HEAD
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime10P1);
         wrBuf[2] = convertTimes[1];
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime10P2);
@@ -532,6 +679,19 @@ void saveToFRAM(){
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime10P1);
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime10P2);
         writeToRam(wrBuf ,3,ramAddr,0x12,ram.feedTime10P3);
+=======
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime10P1);
+        wrBuf[2] = convertTimes[1];
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime10P2);
+        wrBuf[2] = convertTimes[2];
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime10P3);
+    }
+    else{
+        wrBuf[2] = 0xFF;
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime10P1);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime10P2);
+        writeToRam(wrBuf,2,ramAddr,0x12,ram.feedTime10P3);
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
     }
 }
 
@@ -1291,10 +1451,17 @@ void setFeedTimes(){
         }
         buttonFlag = 0;
         if(currentIndex == 0){
+<<<<<<< HEAD
             strcpy(setTime.AM, "AM");
         }
         else if(currentIndex == 1){
             strcpy(setTime.AM, "PM");
+=======
+            strcpy(setTime.AM, "PM");
+        }
+        else if(currentIndex == 1){
+            strcpy(setTime.AM, "AM");
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
         }
         feedTimes[i] = setTime;
     }
@@ -1469,7 +1636,11 @@ void startSettings(){
             choice = 0;
             break;
     }
+<<<<<<< HEAD
     saveToFRAM();
+=======
+    //saveToFRAM();
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
     return;
     // Feed times
     // Amount of food
@@ -1489,7 +1660,14 @@ int main(void)
     LiquidCrystal_I2C_init(LCDAddr, 20,4,0);
     LCDBegin();
     //saveToFRAM();
+<<<<<<< HEAD
     recoverFRAM();
+=======
+    //uint8 readBuf[1];
+    //readFromRam(readBuf,1,ramAddr,0x12,ram.feedCounter);
+    //recoverFRAM();
+    //saveToFRAM();
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
     //FEEEEED();
     
     struct Time time = {12,45, "AM"};
@@ -1497,7 +1675,11 @@ int main(void)
     struct Time nextTime = feedTimes[0];
     struct Date nextDate = date;
     LCDInit(time, nextTime, date, nextDate);
+<<<<<<< HEAD
     exitLCD();
+=======
+    //exitLCD();
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
     uint8 wrBuf[2];
     wrBuf[1] = 0b0000000;
     writeToAddr(wrBuf,2,RTCAddr,rtc.CtrlStat1);

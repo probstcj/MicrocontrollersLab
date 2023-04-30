@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 1
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccTyC8Oq.s 			page 1
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
    1              		.syntax unified
@@ -58,7 +62,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 1
   28:Generated_Source\PSoC4/UART_SCBCLK.c **** * Summary:
   29:Generated_Source\PSoC4/UART_SCBCLK.c **** *  Starts the clock, aligned to the specified running clock.
   30:Generated_Source\PSoC4/UART_SCBCLK.c **** *
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 2
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccTyC8Oq.s 			page 2
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
   31:Generated_Source\PSoC4/UART_SCBCLK.c **** * Parameters:
@@ -118,7 +126,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 1
   60              		.align	2
   61              		.global	UART_SCBCLK_Stop
   62              		.code	16
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 3
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccTyC8Oq.s 			page 3
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
   63              		.thumb_func
@@ -178,7 +190,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 1
   72              	.L6:
   97:Generated_Source\PSoC4/UART_SCBCLK.c **** #if defined CYREG_PERI_DIV_CMD
   98:Generated_Source\PSoC4/UART_SCBCLK.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 4
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccTyC8Oq.s 			page 4
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
   99:Generated_Source\PSoC4/UART_SCBCLK.c ****     /* Make sure any previous start command has finished. */
@@ -238,7 +254,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 1
  125:Generated_Source\PSoC4/UART_SCBCLK.c **** * Parameters:
  126:Generated_Source\PSoC4/UART_SCBCLK.c **** *  clkDivider:  Divider register value (0-65535). This value is NOT the
  127:Generated_Source\PSoC4/UART_SCBCLK.c **** *    divider; the clock hardware divides by clkDivider plus one. For example,
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 5
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccTyC8Oq.s 			page 5
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  128:Generated_Source\PSoC4/UART_SCBCLK.c **** *    to divide the clock by 2, this parameter should be set to 1.
@@ -298,7 +318,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 1
  151:Generated_Source\PSoC4/UART_SCBCLK.c ****     maskVal = UART_SCBCLK_DIV_REG & (uint32)(~(uint32)UART_SCBCLK__DIVIDER_MASK);
  152:Generated_Source\PSoC4/UART_SCBCLK.c ****     /* combine mask and new divider val into 32-bit value */
  153:Generated_Source\PSoC4/UART_SCBCLK.c ****     regVal = clkDivider | maskVal;
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 6
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccTyC8Oq.s 			page 6
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  154:Generated_Source\PSoC4/UART_SCBCLK.c ****     
@@ -358,7 +382,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 1
  159 0006 80B2     		uxth	r0, r0
  179:Generated_Source\PSoC4/UART_SCBCLK.c ****         >> UART_SCBCLK_DIV_INT_SHIFT);
  180:Generated_Source\PSoC4/UART_SCBCLK.c **** }
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 7
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccTyC8Oq.s 			page 7
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  160              		.loc 1 180 0
@@ -418,7 +446,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 1
  187              		.cfi_endproc
  188              	.LFE4:
  189              		.size	UART_SCBCLK_GetFractionalDividerRegister, .-UART_SCBCLK_GetFractionalDividerRegister
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 8
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccTyC8Oq.s 			page 8
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  190              		.text
@@ -478,7 +510,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 1
  244 0065 04       		.byte	0x4
  245 0066 07       		.byte	0x7
  246 0067 D6000000 		.4byte	.LASF8
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 9
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccTyC8Oq.s 			page 9
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  247 006b 04       		.uleb128 0x4
@@ -538,7 +574,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 1
  301 00e1 00000000 		.4byte	.LFB1
  302 00e5 18000000 		.4byte	.LFE1-.LFB1
  303 00e9 01       		.uleb128 0x1
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 10
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccTyC8Oq.s 			page 10
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  304 00ea 9C       		.byte	0x9c
@@ -598,7 +638,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 1
  358 0165 00       		.byte	0
  359              		.section	.debug_abbrev,"",%progbits
  360              	.Ldebug_abbrev0:
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 11
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccTyC8Oq.s 			page 11
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  361 0000 01       		.uleb128 0x1
@@ -658,7 +702,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 1
  415 0036 05       		.uleb128 0x5
  416 0037 35       		.uleb128 0x35
  417 0038 00       		.byte	0
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 12
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccTyC8Oq.s 			page 12
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  418 0039 49       		.uleb128 0x49
@@ -718,7 +766,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 1
  472 0070 0B       		.uleb128 0xb
  473 0071 27       		.uleb128 0x27
  474 0072 19       		.uleb128 0x19
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 13
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccTyC8Oq.s 			page 13
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  475 0073 11       		.uleb128 0x11
@@ -778,7 +830,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 1
  529 00aa 13       		.uleb128 0x13
  530 00ab 11       		.uleb128 0x11
  531 00ac 01       		.uleb128 0x1
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 14
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccTyC8Oq.s 			page 14
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  532 00ad 12       		.uleb128 0x12
@@ -838,7 +894,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 1
  586 0063 0A000000 		.4byte	.LVL3
  587 0067 10000000 		.4byte	.LVL5
  588 006b 0100     		.2byte	0x1
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 15
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccTyC8Oq.s 			page 15
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  589 006d 53       		.byte	0x53
@@ -898,7 +958,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 1
  634      53746F70 
  634      00
  635              	.LASF16:
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 16
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccTyC8Oq.s 			page 16
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  636 001f 55415254 		.ascii	"UART_SCBCLK_StartEx\000"
@@ -958,7 +1022,11 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 1
  660 00cf 75696E74 		.ascii	"uint32\000"
  660      333200
  661              	.LASF8:
+<<<<<<< HEAD
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 17
+=======
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccTyC8Oq.s 			page 17
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  662 00d6 756E7369 		.ascii	"unsigned int\000"
@@ -999,6 +1067,7 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 1
  672      74696F6E 
  672      2D736563 
  672      74696F6E 
+<<<<<<< HEAD
  673              	.LASF27:
  674 01d0 433A5C55 		.ascii	"C:\\Users\\hElLo KiTtY 2.1\\Desktop\\Final Project\\"
  674      73657273 
@@ -1019,6 +1088,28 @@ ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 1
  679              	.LASF14:
  680 0242 63686172 		.ascii	"char\000"
 ARM GAS  C:\Users\HELLOK~1.1\AppData\Local\Temp\ccs96mlB.s 			page 18
+=======
+ 673              	.LASF6:
+ 674 01d0 6C6F6E67 		.ascii	"long long int\000"
+ 674      206C6F6E 
+ 674      6720696E 
+ 674      7400
+ 675              	.LASF14:
+ 676 01de 63686172 		.ascii	"char\000"
+ 676      00
+ 677              	.LASF26:
+ 678 01e3 47656E65 		.ascii	"Generated_Source\\PSoC4\\UART_SCBCLK.c\000"
+ 678      72617465 
+ 678      645F536F 
+ 678      75726365 
+ 678      5C50536F 
+ 679              	.LASF2:
+ 680 0208 73686F72 		.ascii	"short int\000"
+ 680      7420696E 
+ 680      7400
+ 681              	.LASF27:
+ARM GAS  C:\Users\HELLOK~1\AppData\Local\Temp\ccTyC8Oq.s 			page 18
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 
  680      00

@@ -6,7 +6,11 @@
 
 #Build Date:         Sep  9 2019 11:47:43
 
+<<<<<<< HEAD
 #File Generated:     Apr 29 2023 13:58:42
+=======
+#File Generated:     Apr 27 2023 14:50:00
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 #Purpose:            
 
@@ -90,5 +94,9 @@ D2088: Phase 8, elapsed time : 0.0 (sec)
 
 D2054: Placement of the design completed successfully
 
+<<<<<<< HEAD
 I2076: Total run-time: 0.1 sec.
+=======
+I2076: Total run-time: 0.3 sec.
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 

@@ -1,5 +1,9 @@
 # AutomaticPetFeeder
+<<<<<<< HEAD
 # 2023-04-29 18:58:43Z
+=======
+# 2023-04-27 19:50:01Z
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 
 # IO_2@[IOP=(3)][IoId=(2)] is reserved: SWDDebugEnabled
 dont_use_io iocell 3 2

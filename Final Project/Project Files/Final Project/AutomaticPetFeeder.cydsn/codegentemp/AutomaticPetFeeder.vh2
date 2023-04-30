@@ -2,7 +2,11 @@
 --	Conversion of AutomaticPetFeeder.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
+<<<<<<< HEAD
 --	Sat Apr 29 13:58:42 2023
+=======
+--	Thu Apr 27 14:49:59 2023
+>>>>>>> d0ccfe3d9fb777f0317fe20803376abf12008403
 --
 
 USE cypress.cypress.all;
