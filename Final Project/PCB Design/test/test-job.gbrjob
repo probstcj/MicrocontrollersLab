@@ -5,7 +5,7 @@
       "Application": "Pcbnew",
       "Version": "(7.0.0)"
     },
-    "CreationDate": "2023-03-28T14:28:47-05:00"
+    "CreationDate": "2023-04-26T12:46:47-05:00"
   },
   "GeneralSpecs": {
     "ProjectId": {
@@ -45,16 +45,6 @@
     {
       "Path": "test-TOP.gbr",
       "FileFunction": "Copper,L1,Top",
-      "FilePolarity": "Positive"
-    },
-    {
-      "Path": "test-GND.gbr",
-      "FileFunction": "Copper,L2,Inr",
-      "FilePolarity": "Positive"
-    },
-    {
-      "Path": "test-POWER.gbr",
-      "FileFunction": "Copper,L3,Inr",
       "FilePolarity": "Positive"
     },
     {
